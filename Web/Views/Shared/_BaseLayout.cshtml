@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
 
 <html>
 
@@ -6,7 +7,7 @@
     <meta name="charset" content="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="noindex,nofollow" />
-    <link href="~/Content/css/Shared/cssreset.css" rel="stylesheet" />
+    <link href="@BundleTable.Bundles.ResolveBundleUrl("~/css/clear")" rel="stylesheet" />
     <style>
         * {
             font-family: Verdana, Roboto, "Droid Sans", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
@@ -23,8 +24,7 @@
         ga('create', 'UA-53737858-1', 'auto');
         ga('send', 'pageview');
     </script>
-    <script src="~/Scripts/jquery-2.1.1.js"></script>
-    <script src="~/Scripts/collections.js"></script>
+    <script src="@BundleTable.Bundles.ResolveBundleUrl("~/js/common")"></script>
     @RenderSection("CSS", false)
     <title>@ViewBag.Title</title>
 </head>
