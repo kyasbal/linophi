@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "file": "novel-viewer.css",
+  "sources": [
+    "novel-viewer.less"
+  ],
+  "names": [],
+  "mappings": "AACA;EACI,mBAAA;;EACA,yBAAA;EACA,8BAAA;EACA,4BAAA;EACA,iCAAA;;AAEJ,WAAY;EACR,YAAA;EACA,gBAAA;;EACA,qBAAA;;EACA,qBAAA;;EACA,sBAAA;;EACA,wBAAA;;EACA,0BAAA;;EACA,yBAAA;;EACA,yBAAA;EACA,qBAAA;;;AAEJ;AAAY;EACR,uBAAA"
+}

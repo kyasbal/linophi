@@ -1,8 +1,49 @@
-﻿@model dynamic
-
+﻿
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Edit";
 }
 
-<h2>title</h2>
+@{
+    Layout = "../Shared/_BaseLayout.cshtml";
+}
+
+@section CSS{
+    <link href="~/Content/css/Edit/header.css" rel="stylesheet" />
+    <link href="~/Content/css/Edit/index.css" rel="stylesheet" />
+    <link href="~/Content/css/Novel/novel-editor.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.17.2/build/cssreset/cssreset-min.css">
+}
+
+@section JS
+{
+    <script src="~/Scripts/collections.js"></script>
+    <script src="~/Scripts/caret-util.js"></script>
+    <script src="~/Scripts/underscore.js"></script>
+    <script src="~/Scripts/Edit/EditPage.js"></script>
+    <script src="~/Scripts/Novel/novel-editor.js"></script>
+    <script src="~/Scripts/Utility/AspectRatioStretcher.js"></script>
+    <script src="~/Scripts/Utility/HeightStretcher.js"></script>
+    <script src="~/Scripts/Novel/Markups.js"></script>
+
+}
+<div class="edit-bg-overlay">
+    <header>
+        <div class="edit-header">
+            <p>
+                linophi > 新規投稿画面
+                <div class="edit-header-profile">
+                    <img src="/Content/imgs/profile.png" />
+                </div>
+            </p>
+        </div>
+    </header>
+    <!--div class="editor-content-bg">
+        @RenderPage("~/Views/Edit/EditBody.cshtml")
+    </div>
+    <div class="editor-footer">
+        <div class="editor-footer-inner">
+            <button class="editor-submit-button">編集を適用する</button>
+        </div>
+    </div-->
+</div>
+

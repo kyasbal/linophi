@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="charset" content="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex,nofollow" />
+    <link href="~/Content/css/Shared/cssreset.css" rel="stylesheet" />
+    <style>
+        * {
+            font-family: Verdana, Roboto, "Droid Sans", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+        }
+    </style>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-53737858-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+    <script src="~/Scripts/collections.js"></script>
+    @RenderSection("CSS", false)
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    @RenderBody()
+    @RenderSection("JS", false)
+</body>
+</html>

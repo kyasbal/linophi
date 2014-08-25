@@ -1,0 +1,33 @@
+﻿.novel-side {
+  writing-mode: tb-rl;
+  /* IE独自仕様 */
+  writing-mode: vertical-rl;
+  -moz-writing-mode: vertical-rl;
+  -o-writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+}
+.novel-side p {
+  height: 35em;
+  white-space: pre;
+  /* CSS 2.0 */
+  white-space: pre-wrap;
+  /* CSS 2.1 */
+  white-space: pre-line;
+  /* CSS 3.0 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla */
+  white-space: -hp-pre-wrap;
+  /* HP Printers */
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  /* IE 5+ */
+}
+#left-inner,
+#right-inner {
+  margin: 3em 2em 3em 2em;
+}
+/*# sourceMappingURL=novel-viewer.css.map */

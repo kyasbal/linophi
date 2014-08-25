@@ -62,8 +62,9 @@
     <Reference Include="Microsoft.WindowsAzure.Storage">
       <HintPath>..\packages\WindowsAzure.Storage.4.0.1\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
@@ -109,9 +110,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\Edit\header.css" />
+    <Content Include="Content\css\Edit\header.min.css" />
+    <Content Include="Content\css\Edit\index.css" />
+    <Content Include="Content\css\Edit\index.min.css" />
+    <Content Include="Content\css\Edit\ObiEdit.css" />
+    <Content Include="Content\css\Edit\ObiEdit.min.css" />
+    <Content Include="Content\css\Novel\novel-editor.css" />
+    <Content Include="Content\css\Novel\novel-editor.min.css" />
+    <Content Include="Content\css\Novel\novel-viewer.css" />
+    <Content Include="Content\css\Novel\novel-viewer.min.css" />
+    <Content Include="Content\css\Site.css" />
+    <Content Include="Content\imgs\linophi-logo.png" />
+    <Content Include="Content\imgs\logo2.png" />
+    <Content Include="Content\imgs\profile.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Account\externalLoginConfirmation.js" />
@@ -121,6 +135,17 @@
     <Content Include="Scripts\collections.js" />
     <Content Include="Scripts\Edit\EditPage.js" />
     <Content Include="Scripts\Home\AfterLogin.js" />
+    <Content Include="Content\css\Edit\header.css.map" />
+    <Content Include="Content\css\Edit\header.less" />
+    <Content Include="Content\css\Edit\index.css.map" />
+    <Content Include="Content\css\Edit\index.less" />
+    <Content Include="Content\css\Edit\ObiEdit.css.map" />
+    <Content Include="Content\css\Edit\ObiEdit.less" />
+    <Content Include="Content\css\Novel\novel-editor.css.map" />
+    <Content Include="Content\css\Novel\novel-editor.less" />
+    <Content Include="Content\css\Novel\novel-viewer.css.map" />
+    <Content Include="Content\css\Novel\novel-viewer.less" />
+    <Content Include="Content\imgs\Thumbs.db" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -165,7 +190,7 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Edit\Edit.cshtml" />
+    <Content Include="Views\Edit\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -185,6 +210,7 @@
     <Content Include="Scripts\Utility\HeightStretcher.js.map" />
     <Content Include="Scripts\View\index.js.map" />
     <Content Include="Views\Edit\EditBody.cshtml" />
+    <Content Include="Views\Shared\_BaseLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -195,7 +221,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Edit\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Account\externalLoginConfirmation.ts" />

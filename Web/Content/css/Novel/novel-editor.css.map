@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "file": "novel-editor.css",
+  "sources": [
+    "novel-editor.less"
+  ],
+  "names": [],
+  "mappings": "AAAA;EACI,WAAA;EACA,UAAA;EACA,UAAA;;AAGJ;EACI,gBAAA;EACA,gBAAA;EACA,kBAAA;EACA,WAAA;EACA,UAAA;EACA,WAAA;EACA,yBAAA;EACA,yBAAA;EACA,mBAAA;;EACA,yBAAA;EACA,8BAAA;EACA,4BAAA;EACA,iCAAA;;AAGJ;EACI,mBAAA"
+}
