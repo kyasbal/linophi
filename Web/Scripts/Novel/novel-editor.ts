@@ -272,19 +272,9 @@
             return this._paragraphList.elementAtIndex(paragraphIndex - 1) + 1;
         }
 
-        updateToshow()
-        {
-            var i: number = 1;
-            while (i <= this._paragraphManager.lastParagraphIndex + 1) {
-                this._previewTarget.html(this._paragraphManager.headParagraph.getParagraphHtmls(i));
-                if (this._previewTarget.width() > this._previewBounds.width()) {
-                    this._previewTarget.html(this._paragraphManager.headParagraph.getParagraphHtmls(i - 1));
-                    break;
-                }
-                i++;
-            }
-            this._nextPageFirstParagraph = this._paragraphManager.headParagraph.getParagraphFromthis(i);
-            console.warn(this._nextPageFirstParagraph);
+        updateToshow() {
+            var ml = this._paragraphManager.headParagraph.getParagraphHtmls(this._paragraphManager.paragraphCount);
+            this._previewTarget.html(ml);
         }
 
         //改行の数をカウントする
