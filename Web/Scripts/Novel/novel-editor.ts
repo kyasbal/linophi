@@ -273,6 +273,7 @@
         }
 
         updateToshow() {
+
             var ml = this._paragraphManager.headParagraph.getParagraphHtmls(this._paragraphManager.paragraphCount);
             this._previewTarget.html(ml);
         }

@@ -45,7 +45,7 @@ namespace Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(string data)
+        public ActionResult Index(EditViewModel vm)
         {
             return null;
         }

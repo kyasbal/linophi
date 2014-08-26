@@ -5,7 +5,11 @@ $(() => {
     editPage = new EditPage();
         editorInstance = new NovelEditer.NovelEditer($(".edit-context"), $(".preview-body"), $(".preview-context"));
         editorInstance.updateToshow();
-        editPage.onChanged();
+    editPage.onChanged();
+    $(".edit-submit-button").click(() => {
+        $("#context").val(editorInstance.toJSON());
+        $(".edit-form").submit();
+    });
 
 });
 

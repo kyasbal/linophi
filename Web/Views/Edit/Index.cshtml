@@ -1,4 +1,4 @@
-﻿
+﻿@model Web.Models.EditViewModel
 @{
     ViewBag.Title = "Edit";
 }
@@ -38,13 +38,13 @@
         </div>
     </header>
 
-    <form>
+    @using(Html.BeginForm("Index","Edit",FormMethod.Post,new{@class="edit-form"})){
         <div class="edit-title-container">
-            <input type="text" class="edit-title" placeholder="タイトル" />
+            @Html.TextBoxFor((m) => m.Title, new { id = "title", type = "text",@class="edit-title",placeholder="タイトル" })
         </div>
 
         <div class="edit-tag-container">
-            <input type="text" class="edit-tag" placeholder="タグ" />
+            @Html.TextBoxFor((m)=>m.Tag,new{id="tag",type="text",@class="edit-tag",placeholder="タグ"})
         </div>
 
         <div class="edit-preview-container">
@@ -54,8 +54,9 @@
         <div class="edit-text-container">
             <textarea class="edit-text edit-context" placeholder="textarea"></textarea>
         </div>
-        <button type="submit" value="投稿する" class="edit-submit-button">投稿する</button>
-    </form>
+        @Html.HiddenFor((m)=>m.Context,new{id="context"})
+        <a class="edit-submit-button">投稿する</a>
+    }
 
     
     <div class="edit_footer">
