@@ -37,13 +37,33 @@
             </p>
         </div>
     </header>
-    <!--div class="editor-content-bg">
-        @RenderPage("~/Views/Edit/EditBody.cshtml")
-    </div>
-    <div class="editor-footer">
-        <div class="editor-footer-inner">
-            <button class="editor-submit-button">編集を適用する</button>
-        </div>
-    </div-->
-</div>
 
+    <form>
+        <div class="edit-title-container">
+            <input type="text" class="edit-title" placeholder="タイトル" /></input>
+        </div>
+
+        <div class="edit-tag-container">
+            <input type="text" class="edit-tag" placeholder="タグ" /></input>
+        </div>
+
+        <div class="edit-preview-container">
+            <div class="edit-preview"></div>
+        </div>
+
+        <div class="edit-text-container">
+            <textarea class="edit-text" placeholder="textarea"></textarea>
+        </div>
+        <button type="submit" value="投稿する" class="edit-submit-button">投稿する</button>
+    </form>
+
+    
+    <div class="edit_footer">
+        <footer>
+            <h2>linophi</h2>
+            <p>
+                sss
+            </p>
+        </footer>
+    </div>
+</div>
