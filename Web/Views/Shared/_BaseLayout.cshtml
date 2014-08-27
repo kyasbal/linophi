@@ -26,10 +26,12 @@
     </script>
     <script src="@BundleTable.Bundles.ResolveBundleUrl("~/js/common")"></script>
     @RenderSection("CSS", false)
+    @*ここにFooterのCSSをそうにゅうすること*@
     <title>@ViewBag.Title</title>
 </head>
 <body>
     @RenderBody()
+    @RenderPage("_Footer.cshtml")
     @RenderSection("JS", false)
 </body>
 </html>
