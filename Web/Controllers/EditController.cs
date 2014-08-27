@@ -1,7 +1,5 @@
 ﻿using System.Web.Mvc;
 using Web.Models;
-// using Web.Storage;
-
 
 namespace Web.Controllers
 {
@@ -45,6 +43,9 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult Index(EditViewModel vm)
         {
+            ApplicationDbContext context=new ApplicationDbContext();
+            context.Articles.Add(ArticleModel.GenerateArticle(vm.Title, null));
+            context.SaveChanges();
             return null;
         }
     }

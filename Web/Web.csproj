@@ -46,6 +46,18 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -55,6 +67,12 @@
     </Reference>
     <Reference Include="Microsoft.Data.Services.Client, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Configuration">
       <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
@@ -71,6 +89,9 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
@@ -122,6 +143,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Debug.mdf" />
+    <Content Include="App_Data\Debug_log.ldf">
+      <DependentUpon>Debug.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\Edit\header.css" />
@@ -130,11 +155,11 @@
     <Content Include="Content\css\Edit\index.min.css" />
     <Content Include="Content\css\Edit\ObiEdit.css" />
     <Content Include="Content\css\Edit\ObiEdit.min.css" />
-    <Content Include="Content\css\Home\StyleSheet.css">
-      <DependentUpon>StyleSheet.less</DependentUpon>
+    <Content Include="Content\css\Home\viewarticle.css">
+      <DependentUpon>viewarticle.less</DependentUpon>
     </Content>
-    <Content Include="Content\css\Home\StyleSheet.min.css">
-      <DependentUpon>StyleSheet.css</DependentUpon>
+    <Content Include="Content\css\Home\viewarticle.min.css">
+      <DependentUpon>viewarticle.css</DependentUpon>
     </Content>
     <Content Include="Content\css\Novel\novel-editor.css" />
     <Content Include="Content\css\Novel\novel-editor.min.css" />
@@ -172,9 +197,9 @@
     <Content Include="Content\css\Novel\novel-viewer.css.map" />
     <Content Include="Content\css\Novel\novel-viewer.less" />
     <Content Include="Content\imgs\Thumbs.db" />
-    <Content Include="Content\css\Home\StyleSheet.less" />
-    <Content Include="Content\css\Home\StyleSheet.css.map">
-      <DependentUpon>StyleSheet.css</DependentUpon>
+    <Content Include="Content\css\Home\viewarticle.less" />
+    <Content Include="Content\css\Home\viewarticle.css.map">
+      <DependentUpon>viewarticle.css</DependentUpon>
     </Content>
     <Content Include="Scripts\Edit\TagMaker.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -215,8 +240,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\EditViewModel.cs" />
+    <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Storage\AzureStorageTableAttribute.cs" />
+    <Compile Include="Storage\AzureTableManagerBase.cs" />
+    <Compile Include="Storage\ParagraphEntity.cs" />
+    <Compile Include="Storage\ParagraphTableManager.cs" />
+    <Compile Include="Storage\TableStorageConnection.cs" />
+    <Compile Include="Utility\BirthDayInputHelper.cs" />
+    <Compile Include="Utility\ChallengeResult.cs" />
+    <Compile Include="Utility\Configuration\ConfigurationLoader.cs" />
+    <Compile Include="Utility\ExtensionUtility.cs" />
+    <Compile Include="Utility\GenderInputHelper.cs" />
+    <Compile Include="Utility\IdGenerator.cs" />
+    <Compile Include="Utility\IGravatarLoader.cs" />
+    <Compile Include="Utility\MathEx.cs" />
     <Compile Include="WebRole.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -253,9 +295,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Account\externalLoginConfirmation.ts" />
     <TypeScriptCompile Include="Scripts\collections.ts" />
