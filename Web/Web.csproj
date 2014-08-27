@@ -135,6 +135,14 @@
     <Content Include="Content\css\Novel\novel-viewer.css" />
     <Content Include="Content\css\Novel\novel-viewer.min.css" />
     <Content Include="Content\css\Site.css" />
+    <Content Include="Content\imgs\Home\anger.png" />
+    <Content Include="Content\imgs\Home\bethink.png" />
+    <Content Include="Content\imgs\Home\fun.png" />
+    <Content Include="Content\imgs\Home\good.png" />
+    <Content Include="Content\imgs\Home\noidea.png" />
+    <Content Include="Content\imgs\Home\red.jpg" />
+    <Content Include="Content\imgs\Home\sad.png" />
+    <Content Include="Content\imgs\Home\surprized.png" />
     <Content Include="Content\imgs\linophi-logo.png" />
     <Content Include="Content\imgs\logo2.png" />
     <Content Include="Content\imgs\profile.png" />
@@ -158,6 +166,7 @@
     <Content Include="Content\css\Novel\novel-viewer.css.map" />
     <Content Include="Content\css\Novel\novel-viewer.less" />
     <Content Include="Content\imgs\Thumbs.db" />
+    <Content Include="Content\css\Home\StyleSheet.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -191,6 +200,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EditController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -224,6 +234,7 @@
     <Content Include="Scripts\View\index.js.map" />
     <Content Include="Views\Edit\EditBody.cshtml" />
     <Content Include="Views\Shared\_BaseLayout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
