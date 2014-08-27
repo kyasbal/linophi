@@ -12,13 +12,21 @@ namespace Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapRoute(
+name: "Edit",
+url: "Edit",
+defaults: new { controller = "Edit", action = "Index", id = UrlParameter.Optional }
+);
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
+                url: "{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
+            routes.MapRoute(
+    name: "Pages",
+    url: "Pages/{controller}/{action}/{id}",
+    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+);
         }
     }
 }
