@@ -106,11 +106,6 @@ input[type="text"] {
   padding: 0 0 0 0;
   border-bottom: 0;
 }
-.container .contents .top .top-inner .viewhead .viewhead-inner .topicwordlist {
-  min-height: 29px;
-  padding: 10px 0 5px;
-  border-bottom: 1px solid #e6e6e6;
-}
 .container .contents .top .top-inner .viewhead .viewhead-inner .topicwordlist .topicwordlistul {
   display: inline;
   border: 3px;
