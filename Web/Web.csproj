@@ -130,6 +130,12 @@
     <Content Include="Content\css\Edit\index.min.css" />
     <Content Include="Content\css\Edit\ObiEdit.css" />
     <Content Include="Content\css\Edit\ObiEdit.min.css" />
+    <Content Include="Content\css\Home\StyleSheet.css">
+      <DependentUpon>StyleSheet.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\StyleSheet.min.css">
+      <DependentUpon>StyleSheet.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Novel\novel-editor.css" />
     <Content Include="Content\css\Novel\novel-editor.min.css" />
     <Content Include="Content\css\Novel\novel-viewer.css" />
@@ -167,6 +173,9 @@
     <Content Include="Content\css\Novel\novel-viewer.less" />
     <Content Include="Content\imgs\Thumbs.db" />
     <Content Include="Content\css\Home\StyleSheet.less" />
+    <Content Include="Content\css\Home\StyleSheet.css.map">
+      <DependentUpon>StyleSheet.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
