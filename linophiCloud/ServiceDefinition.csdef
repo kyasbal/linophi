@@ -14,5 +14,8 @@
     <Imports>
       <Import moduleName="Diagnostics" />
     </Imports>
+    <ConfigurationSettings>
+      <Setting name="SQL-ConnectionString"/>
+    </ConfigurationSettings>
   </WebRole>
 </ServiceDefinition>

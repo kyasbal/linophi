@@ -15,6 +15,8 @@ namespace Web.Controllers
         // GET: Edit
         public ActionResult Index()
         {
+            ParagraphTableManager tm=new ParagraphTableManager(new TableStorageConnection());
+            tm.AddParagraph();
 //            EditViewModel vm = new EditViewModel();
 //            vm.title = "Title";
 //            vm.parapraphs = new ParagraphViewModel[]
