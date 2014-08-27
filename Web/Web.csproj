@@ -162,6 +162,12 @@
     </Content>
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\Edit\footer.css">
+      <DependentUpon>footer.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\footer.min.css">
+      <DependentUpon>footer.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Edit\header.css" />
     <Content Include="Content\css\Edit\header.min.css" />
     <Content Include="Content\css\Edit\index.css" />
@@ -197,6 +203,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\caret-util.js" />
     <Content Include="Scripts\collections.js" />
+    <Content Include="Scripts\Edit\Edit-autoHeight.js" />
     <Content Include="Scripts\Edit\EditPage.js" />
     <Content Include="Scripts\Home\AfterLogin.js" />
     <Content Include="Content\css\Edit\header.css.map" />
@@ -215,6 +222,10 @@
       <DependentUpon>viewarticle.css</DependentUpon>
     </Content>
     <Content Include="Scripts\Edit\TagMaker.js.map" />
+    <Content Include="Content\css\Edit\footer.less" />
+    <Content Include="Content\css\Edit\footer.css.map">
+      <DependentUpon>footer.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -247,9 +258,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Response\Article\ExistenceRequest.cs" />
+    <Compile Include="Api\Response\Article\ExistenceResponse.cs" />
+    <Compile Include="Api\Response\Article\VerifyTitleRequest.cs" />
+    <Compile Include="Api\Response\Article\VerifyTitleResponse.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="ArticleController.cs" />
+    <Compile Include="Api\Article\ArticleController.cs" />
     <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
