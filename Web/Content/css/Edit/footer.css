@@ -29,8 +29,8 @@
   margin-top: 5px;
 }
 .foot .boxcontainer .border {
-  widht: 2px;
-  border-right: 2px;
+  width: 2px;
+  border-right: 1px #FFF;
 }
 .foot .boxcontainer:before,
 .foot .boxcontainer:after {
