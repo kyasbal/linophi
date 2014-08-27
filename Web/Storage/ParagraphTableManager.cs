@@ -14,8 +14,9 @@ namespace Web.Storage
         {
         }
 
-        public void AddParagraph()
-        {   
+        public void AddParagraph(string articleId,int version,ParagraphDataModel paragraphDataModel)
+        {
+            _table.Execute(TableOperation.Insert(ParagraphEntity.FromDataModel(articleId, version, paragraphDataModel)));
         }
     }
 }

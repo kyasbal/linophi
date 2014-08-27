@@ -14,7 +14,12 @@ namespace Web.Models
         public string Context { get; set; }
     }
 
-    public class ParagraphViewModel
+    public class ContextDataModel
+    {
+        public ICollection<ParagraphDataModel> Paragraphs { get; set; }
+    }
+
+    public class ParagraphDataModel
     {
         public string prevParagraph { get; set; }
 

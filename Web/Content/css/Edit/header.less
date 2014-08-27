@@ -118,17 +118,30 @@ body {
   -moz-placeholder { color: #888; }
 }
 .edit-tag-container{
-  width:100%;
+  width: 100%;
+  overflow: hidden;
 }
 .edit-tag{
-  height:5%;
-  width:50%;
+  float: left;
+  height: 5%;
+  width: 50%;
   margin: 10px 0 0 9%;
   padding: 5px;
   border: 1px solid #888;
   border-radius: 5px;
   -webkit-input-placeholder { color: #888; }
   -moz-placeholder { color: #888; }
+}
+.edit-editted-tag {
+  float: left;
+  margin: 10px 0.5em;
+  padding: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  background: #eee;
+  border-radius: 4px;
 }
 .edit-preview-container{
   display:inline-block;
