@@ -140,13 +140,10 @@ body {
 .edit-tag -moz-placeholder {
   color: #888;
 }
-.edit-editted-tag {
+div[class^="edit-editted-tag"] {
   float: left;
   margin: 10px 0.5em;
   padding: 5px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   border: 1px solid #ccc;
   background: #eee;
   border-radius: 4px;
