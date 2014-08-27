@@ -215,7 +215,7 @@ body {
   border-style: none;
   display: block;
   padding: 2px;
-  margin: 30px auto 10% auto;
+  margin: 10% auto 10% auto;
 }
 .edit-submit-button:hover {
   background-color: #3CB371;
