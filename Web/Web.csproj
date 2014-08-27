@@ -209,6 +209,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\caret-util.js" />
     <Content Include="Scripts\collections.js" />
+    <Content Include="Scripts\Edit\Edit-autoHeight.js" />
     <Content Include="Scripts\Edit\EditPage.js" />
     <Content Include="Scripts\Home\AfterLogin.js" />
     <Content Include="Content\css\Edit\header.css.map" />
@@ -283,6 +284,7 @@
     <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\EditViewModel.cs" />
     <Compile Include="Models\UserAccount.cs" />
+    <Compile Include="Models\ViewArticleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Storage\AzureStorageTableAttribute.cs" />

@@ -41,6 +41,7 @@ namespace Web.Controllers
 //            return Json(vm,JsonRequestBehavior.AllowGet);
             return View();
         }
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Index(EditViewModel vm)
         {
@@ -54,7 +55,7 @@ namespace Web.Controllers
             {
                 ptm.AddParagraph(article.ArticleId,0,paragraphDataModel);
             }
-            return null;
+            return Redirect("~/"+article.ArticleId);
         }
     }
 }

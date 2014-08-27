@@ -107,8 +107,8 @@ body {
   width: 100%;
 }
 .edit-title {
-  height: 10%;
-  width: 80%;
+  height: 15%;
+  width: 70%;
   float: left;
   margin: 10% 0 0 9%;
   padding: 5px;
@@ -129,7 +129,7 @@ body {
   float: left;
   height: 5%;
   width: 50%;
-  margin: 10px 0 0 9%;
+  margin: 1% 0 0 9%;
   padding: 5px;
   border: 1px solid #888;
   border-radius: 5px;
@@ -140,18 +140,16 @@ body {
 .edit-tag -moz-placeholder {
   color: #888;
 }
-.edit-editted-tag {
+div[class^="edit-editted-tag"] {
   float: left;
   margin: 10px 0.5em;
   padding: 5px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   border: 1px solid #ccc;
   background: #eee;
   border-radius: 4px;
 }
 .edit-preview-container {
+  overflow: hidden;
   display: inline-block;
   *display: inline;
   /*for IE*/
@@ -162,12 +160,14 @@ body {
 .edit-preview {
   height: 500px;
   width: 80%;
-  margin: 5px 0 0 auto;
+  resize: vertical;
+  margin: 0 0 0 auto;
   padding: 5px;
   float: right;
   background-color: #fff;
   border: 1px solid #888;
   border-radius: 5px;
+  word-break: break-all;
 }
 .edit-preview -webkit-input-placeholder {
   color: #888;
@@ -176,6 +176,8 @@ body {
   color: #888;
 }
 .edit-text-container {
+  margin: 0 0 0 0;
+  overflow: hidden;
   display: inline-block;
   *display: inline;
   /*for IE*/
@@ -186,6 +188,7 @@ body {
 .edit-text {
   height: 500px;
   width: 80%;
+  max-width: 80%;
   margin: 2% 0 0 auto;
   padding: 5px;
   float: left;
