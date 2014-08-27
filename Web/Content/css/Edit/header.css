@@ -123,11 +123,19 @@ body {
 }
 .edit-tag-container {
   width: 100%;
+  overflow: hidden;
 }
 .edit-tag {
+<<<<<<< HEAD
   height: 10%;
   width: 45%;
   margin: 1% 0 0 9%;
+=======
+  float: left;
+  height: 5%;
+  width: 50%;
+  margin: 10px 0 0 9%;
+>>>>>>> b9c3c9f93f56da66700f7822381f9a31b6883233
   padding: 5px;
   border: 1px solid #888;
   border-radius: 5px;
@@ -137,6 +145,17 @@ body {
 }
 .edit-tag -moz-placeholder {
   color: #888;
+}
+.edit-editted-tag {
+  float: left;
+  margin: 10px 0.5em;
+  padding: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  background: #eee;
+  border-radius: 4px;
 }
 .edit-preview-container {
   overflow: hidden;

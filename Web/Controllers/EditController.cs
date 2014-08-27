@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Web.Models;
+using Web.Storage;
 
 namespace Web.Controllers
 {
@@ -44,8 +45,15 @@ namespace Web.Controllers
         public ActionResult Index(EditViewModel vm)
         {
             ApplicationDbContext context=new ApplicationDbContext();
-            context.Articles.Add(ArticleModel.GenerateArticle(vm.Title, null));
+            var article = ArticleModel.GenerateArticle(vm.Title, null);
+            context.Articles.Add(article);
             context.SaveChanges();
+            var data=System.Web.Helpers.Json.Decode<ParagraphDataModel[]>(vm.Context);
+            ParagraphTableManager ptm=new ParagraphTableManager(new TableStorageConnection());
+            foreach (var paragraphDataModel in data)
+            {
+                ptm.AddParagraph(article.ArticleId,0,paragraphDataModel);
+            }
             return null;
         }
     }
