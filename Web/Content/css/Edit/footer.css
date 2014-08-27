@@ -18,7 +18,7 @@
 }
 .foot .boxcontainer .box {
   float: left;
-  margin-left: 20%;
+  padding-left: 18%;
 }
 .foot .boxcontainer .box .ulist {
   font-weight: 900;
@@ -27,10 +27,6 @@
 .foot .boxcontainer .box .ulist .list {
   font-weight: normal;
   margin-top: 5px;
-}
-.foot .boxcontainer .border {
-  width: 2px;
-  border-right: 1px #FFF;
 }
 .foot .boxcontainer:before,
 .foot .boxcontainer:after {
