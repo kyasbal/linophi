@@ -1,0 +1,55 @@
+﻿.foot {
+  height: 250px;
+  width: 100%;
+  background: #F5B273;
+}
+.foot .linophi {
+  margin-top: -240px;
+  margin-left: 50%;
+  color: black;
+  font-weight: bold;
+  box-shadow: -10px 0 0 0 #f58971;
+}
+.foot .boxcontainer {
+  margin-top: 20px;
+  margin-left: 15%;
+  overflow: hidden;
+  zoom: 1;
+}
+.foot .boxcontainer .box {
+  float: left;
+  margin-left: 20%;
+}
+.foot .boxcontainer .box .ulist {
+  font-weight: 900;
+  color: #f58971;
+}
+.foot .boxcontainer .box .ulist .list {
+  font-weight: normal;
+  margin-top: 5px;
+}
+.foot .boxcontainer .border {
+  widht: 2px;
+  border-right: 2px;
+}
+.foot .boxcontainer:before,
+.foot .boxcontainer:after {
+  content: "";
+  display: table;
+}
+.foot .boxcontainer:after {
+  clear: both;
+}
+.foot a {
+  color: #000;
+  text-decoration: underline;
+}
+.foot a:hover {
+  color: #444;
+  text-decoration: underline;
+}
+.foot .copyright {
+  margin-top: 20px;
+  margin-left: 70%;
+}
+/*# sourceMappingURL=footer.css.map */

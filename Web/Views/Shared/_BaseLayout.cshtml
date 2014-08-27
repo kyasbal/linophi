@@ -25,7 +25,8 @@
         ga('send', 'pageview');
     </script>
     <script src="@BundleTable.Bundles.ResolveBundleUrl("~/js/common")"></script>
-    @RenderSection("CSS", false)
+        @RenderSection("CSS", false)
+    <link href="~/Content/css/Edit/footer.css" rel="stylesheet" />
     @*ここにFooterのCSSをそうにゅうすること*@
     <title>@ViewBag.Title</title>
 </head>
