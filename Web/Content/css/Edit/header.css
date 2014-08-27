@@ -8,10 +8,9 @@ body {
   height: 100%;
 }
 .edit-bg-overlay {
-  background-color: #fff;
   color: #888;
-  height: 100%;
   width: 100%;
+  clear: both;
 }
 .edit-header {
   height: 10px;
@@ -72,10 +71,8 @@ body {
   background-image: url("/Content/imgs/bg-common.png");
 }
 .edit-footer {
-  z-index: 0;
   height: 100px;
   width: 100%;
-  background-image: url("/Content/imgs/bg-common.png");
   position: fixed;
   bottom: 0;
   text-align: center;
@@ -105,5 +102,114 @@ body {
 }
 .selected-tab-content {
   display: block!important;
+}
+.edit-title-container {
+  width: 100%;
+}
+.edit-title {
+  height: 10%;
+  width: 80%;
+  float: left;
+  margin: 10% 0 0 9%;
+  padding: 5px;
+  border: 1px solid #888;
+  border-radius: 5px;
+}
+.edit-title -webkit-input-placeholder {
+  color: #888;
+}
+.edit-title -moz-placeholder {
+  color: #888;
+}
+.edit-tag-container {
+  width: 100%;
+}
+.edit-tag {
+  height: 5%;
+  width: 50%;
+  margin: 10px 0 0 9%;
+  padding: 5px;
+  border: 1px solid #888;
+  border-radius: 5px;
+}
+.edit-tag -webkit-input-placeholder {
+  color: #888;
+}
+.edit-tag -moz-placeholder {
+  color: #888;
+}
+.edit-preview-container {
+  display: inline-block;
+  *display: inline;
+  /*for IE*/
+  *zoom: 1;
+  /*for IE*/
+  width: 49%;
+}
+.edit-preview {
+  height: 500px;
+  width: 80%;
+  margin: 5px 0 0 auto;
+  padding: 5px;
+  float: right;
+  background-color: #fff;
+  border: 1px solid #888;
+  border-radius: 5px;
+}
+.edit-preview -webkit-input-placeholder {
+  color: #888;
+}
+.edit-preview -moz-placeholder {
+  color: #888;
+}
+.edit-text-container {
+  display: inline-block;
+  *display: inline;
+  /*for IE*/
+  *zoom: 1;
+  /*for IE*/
+  width: 49%;
+}
+.edit-text {
+  height: 500px;
+  width: 80%;
+  margin: 2% 0 0 auto;
+  padding: 5px;
+  float: left;
+  border: 1px solid #888;
+  border-radius: 5px;
+  overflow: auto;
+}
+.edit-text -webkit-input-placeholder {
+  color: #888;
+}
+.edit-text -moz-placeholder {
+  color: #888;
+}
+.edit-submit-button {
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+  padding: 10px 30px;
+  background-color: #7FFFD4;
+  color: #888;
+  border-style: none;
+  display: block;
+  padding: 2px;
+  margin: 30px auto 10% auto;
+}
+.edit-submit-button:hover {
+  background-color: #3CB371;
+  color: #888;
+}
+.edit_footer {
+  height: 150px;
+  width: 100%;
+  background-color: #FFA07A;
+  color: #000;
+}
+.edit_footer h2 {
+  font-size: 40px;
+  margin: 20px 0 10px 20px;
 }
 /*# sourceMappingURL=header.css.map */

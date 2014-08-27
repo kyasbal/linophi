@@ -6,6 +6,10 @@ $(function () {
     editorInstance = new NovelEditer.NovelEditer($(".edit-context"), $(".preview-body"), $(".preview-context"));
     editorInstance.updateToshow();
     editPage.onChanged();
+    $(".edit-submit-button").click(function () {
+        $("#context").val(editorInstance.toJSON());
+        $(".edit-form").submit();
+    });
 });
 
 function selectEditBody() {

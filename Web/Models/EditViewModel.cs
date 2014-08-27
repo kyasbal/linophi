@@ -7,9 +7,11 @@ namespace Web.Models
 {
     public class EditViewModel
     {
-        public string title { get; set; }
+        public string Title { get; set; }
 
-        public ParagraphViewModel[] parapraphs { get; set; }
+        public string Tag { get; set; }
+
+        public string Context { get; set; }
     }
 
     public class ParagraphViewModel

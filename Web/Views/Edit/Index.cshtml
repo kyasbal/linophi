@@ -1,4 +1,4 @@
-﻿
+﻿@model Web.Models.EditViewModel
 @{
     ViewBag.Title = "Edit";
 }
@@ -37,13 +37,33 @@
             </p>
         </div>
     </header>
-    <!--div class="editor-content-bg">
-        @RenderPage("~/Views/Edit/EditBody.cshtml")
-    </div>
-    <div class="editor-footer">
-        <div class="editor-footer-inner">
-            <button class="editor-submit-button">編集を適用する</button>
-        </div>
-    </div-->
-</div>
 
+    @using(Html.BeginForm("Index","Edit",FormMethod.Post,new{@class="edit-form"})){
+        <div class="edit-title-container">
+            @Html.TextBoxFor((m) => m.Title, new { id = "title", type = "text",@class="edit-title",placeholder="タイトル" })
+        </div>
+
+        <div class="edit-tag-container">
+            @Html.TextBoxFor((m)=>m.Tag,new{id="tag",type="text",@class="edit-tag",placeholder="タグ"})
+        </div>
+
+        <div class="edit-preview-container">
+            <div class="edit-preview preview-body"></div>
+        </div>
+        <div class="edit-text-container">
+            <textarea class="edit-text edit-context" placeholder="textarea"></textarea>
+        </div>
+        @Html.HiddenFor((m)=>m.Context,new{id="context"})
+        <a class="edit-submit-button">投稿する</a>
+    }
+
+    
+    <div class="edit_footer">
+        <footer>
+            <h2>linophi</h2>
+            <p>
+                sss
+            </p>
+        </footer>
+    </div>
+</div>
