@@ -44,219 +44,82 @@ input[type="text"] {
   display: block;
   clear: both;
 }
-.head {
+.container .head {
   z-index: 501;
   width: 100%;
   border-top: 3px solid #333;
   border-bottom: 1px solid #e7e7e7;
 }
-.head .head-inner {
+.container .head .head-inner {
   position: relative;
   width: 960px;
   height: 44px;
   margin: 0 auto;
 }
-.contents {
+.container .contents {
   padding-bottom: 25px;
 }
-.contents .contentswrapper {
-  width: 960px;
-  margin: 0 auto;
-}
-.top {
+.container .contents .top {
   margin-bottom: 30px;
   border-bottom: 1px solid #f2f2f2;
   background-color: #fdf8f2;
 }
-.top .top-inner {
+.container .contents .top .top-inner {
   width: 960px;
   margin: 0 auto;
   padding-bottom: 15px;
 }
-.top .topicwordlist {
-  padding: 10px 0 5px;
-  border-bottom: 1px solid #e6e6e6;
-}
-.main {
-  float: left;
-  width: 635px;
-  padding-bottom: 40px;
-}
-.sub {
-  position: relative;
-  float: right;
-  width: 300px;
-}
-.foot {
+.container .contents .top .top-inner .viewhead {
   width: 100%;
-  border-top: 1px solid #e7e7e7;
-}
-.foot .foot-inner {
-  width: 960px;
+  min-width: 960px;
   margin: 0 auto;
-  padding: 25px 0;
+  z-index: 500;
 }
-.pagebutton {
-  line-height: 1.2;
-  margin: 30px 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  text-align: center;
-}
-.pagebutton strong {
-  padding: 9px 11px;
-  color: #000;
-}
-.pagebutton a,
-.pagebutton strong {
-  display: inline-block;
-  margin: 0 2px;
-  padding: 8px 11px;
-  font-weight: bold;
-  vertical-align: top;
-}
-.pagebutton a:link,
-.pagebutton a:visited {
-  border: 1px solid #ebebeb;
-  color: #999;
-  text-decoration: none;
-}
-.pagebutton a:hover,
-.pagebutton a:active,
-.pagebutton a:focus {
-  cursor: pointer;
-  background-color: #f0f0f0;
-  color: #000;
-  text-decoration: none;
-}
-.navbar {
-  padding-top: 15px;
+.container .contents .top .top-inner .viewhead .viewhead-inner {
   position: relative;
-}
-.navbar .navbarmain {
-  float: left;
-  width: 725px;
-}
-.navbar .navbarthumb {
-  float: right;
-  margin: 0 15px 15px 0;
-}
-.navbar .navbarthumb img {
-  width: 105px;
-  height: 105px;
-}
-.navbar .navbartxt {
-  margin-top: -13px;
-}
-.navbar .navbarmainwiththumb .navbartxt {
-  margin-bottom: 10px;
-  font-size: 30px;
-}
-.navbar .navbartitle a {
-  margin: 0 15px 0 0;
+  width: 960px;
+  height: 24px;
+  line-height: 23px;
+  margin: 0 auto;
   padding: 6px 0;
-  color: #000;
-  text-decoration: none;
 }
-.navbar .navbartitle a:hover {
-  color: #000;
-  text-decoration: underline;
-}
-.navbar .navbaruser {
+.container .contents .top .top-inner .viewhead .viewhead-inner .topicpath {
   display: inline-block;
-  margin-right: 6px;
-}
-.navbar .navbaruserthumb {
-  margin-right: 10px;
-}
-.navbar .navbarusername {
-  line-height: 30px;
-  vertical-align: middle;
-}
-.navbar .navbarsub {
-  float: left;
-  width: 220px;
-  text-align: right;
-}
-.navbar .navbarcount {
-  margin: 0 0 8px 20px;
-}
-.navbar .navbarcountfv {
-  display: inline-block;
-  padding-right: 13px;
+  margin-right: 12px;
   vertical-align: top;
-  text-align: center;
 }
-.navbar .navbarcountfv .navbarcountlabel {
-  margin-top: 5px;
-  font-size: 10px;
-}
-.navbar .navbarcountpv {
-  display: inline-block;
-  padding-left: 13px;
-  border-left: 1px solid #ebebeb;
-  text-align: center;
-  font-family: Tahoma, Geneva, sans-serif;
-}
-.navbar .navbarcountnum {
-  display: block;
-  line-height: 1;
-  margin-top: -3px;
-  color: #000;
-  font-size: 22px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.navbar .navbarcountlabel {
-  display: block;
-  margin-top: 3px;
-  line-height: 1;
-  color: #666;
-  font-size: 11px;
-}
-.navbar .navbartitle {
-  display: inline;
-  font-size: 32px;
-  line-height: 38px;
-}
-.navbar .navbarusername > a {
-  color: #000 !important;
-  font-weight: bold;
-}
-.navbar .navbarusername  > a:link,
-.navbar .navbarusername  > a:visited {
-  text-decoration: none;
-}
-.navbar .navbarusername  > a:hover,
-.navbar .navbarusername  > a:active,
-.navbar .navbarusername  > a:focus {
-  text-decoration: underline;
-}
-.topicpath {
-  display: inline-block;
-}
-.topicpath li {
+.container .contents .top .top-inner .viewhead .viewhead-inner .topicpath li {
   display: inline;
   margin: 0 0 0 4px;
+  vertical-align: -1px;
 }
-.topicpath li a {
+.container .contents .top .top-inner .viewhead .viewhead-inner .topicpath li a {
   color: #4c4c4c;
 }
-.topicpath li:first-child {
+.container .contents .top .top-inner .viewhead .viewhead-inner .topicpath li:first-child {
   margin-left: 0;
   padding: 0 13px 0 0;
 }
-.topicwordlist {
-  min-height: 29px;
+.container .contents .top .top-inner .viewhead .viewhead-inner .topicwordlist {
+  display: inline-block;
+  max-height: 24px;
+  padding: 0 0 0 0;
+  border-bottom: 0;
 }
-.topicwordlist .topicwordlistul {
+.container .contents .top .top-inner .viewhead .viewhead-inner .topicwordlist {
+  min-height: 29px;
+  padding: 10px 0 5px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.container .contents .top .top-inner .viewhead .viewhead-inner .topicwordlist .topicwordlistul {
   display: inline;
   border: 3px;
 }
-.topicwordlist .topicwordlistli {
+.container .contents .top .top-inner .viewhead .viewhead-inner .topicwordlist .topicwordlistli {
   float: left;
   margin: 0 5px 5px 0;
 }
-.topicword {
+.container .contents .top .top-inner .viewhead .viewhead-inner .topicwordlist .topicwordlistli .topicword {
   position: relative;
   display: inline-block;
   height: 21px;
@@ -269,7 +132,7 @@ input[type="text"] {
   font-size: 11px;
   white-space: nowrap;
 }
-.topicword .topicwordnum {
+.container .contents .top .top-inner .viewhead .viewhead-inner .topicwordlist .topicwordlistli .topicword .topicwordnum {
   position: relative;
   top: -1px;
   display: inline-block;
@@ -277,138 +140,280 @@ input[type="text"] {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
 }
-a.topicword {
-  cursor: pointer;
-}
-a.topicword:hover {
-  background: #f0f0f0;
-}
-.subcontents {
-  position: fixed;
-  background-color: #fdf8f2;
-}
-.subtitle {
+.container .contents .top .navbar {
+  padding-top: 15px;
   position: relative;
-  padding: 13px 15px 0;
-  color: #000;
-  font-weight: bold;
-  font-size: 12px;
 }
-.sublist {
-  padding: 15px 30px 9px;
+.container .contents .top .navbar .navbar-main {
+  float: left;
+  width: 725px;
 }
-.list .listitem {
-  display: table;
-  width: 100%;
-  margin: 30px 0 0;
+.container .contents .top .navbar .navbar-main .navbar-thumb {
+  float: right;
+  margin: 0 15px 15px 0;
 }
-.list .listitem:first-child {
-  margin-top: 0;
+.container .contents .top .navbar .navbar-main .navbar-thumb img {
+  width: 105px;
+  height: 105px;
 }
-.list .listthumb {
-  display: table-cell;
-  width: 60px;
-  height: 60px;
-  padding: 0 15px 0 0;
-  vertical-align: top;
+.container .contents .top .navbar .navbar-main .navbar-txt {
+  margin-top: -13px;
 }
-.list .listthumb a {
-  display: block;
-  width: 60px;
-  height: 60px;
-  overflow: hidden;
-}
-.list .listtxt {
-  display: table-cell;
-  vertical-align: middle;
-  table-layout: fixed;
-  width: 100%;
-  max-width: 560px;
-}
-.list .listtitle {
-  display: inline;
-  line-height: 1.1;
-  font-size: 20px;
-  font-weight: normal;
-  margin-right: 15px;
-}
-.list .listtitle a {
+.container .contents .top .navbar .navbar-main .navbar-txt .navbar-title a {
+  margin: 0 15px 0 0;
   padding: 6px 0;
   color: #000;
-}
-.list .listdesc {
-  color: #aaa;
-}
-.list .listtitle a:link,
-.list .listtitle a:visited {
   text-decoration: none;
 }
-.list .listtitle a:hover,
-.list .listtitle a:active,
-.list .listtitle a:focus {
+.container .contents .top .navbar .navbar-main .navbar-txt .navbar-title a:hover {
+  color: #000;
   text-decoration: underline;
 }
-.list .listdate,
-.list .listview {
+.container .contents .top .navbar .navbar-main .navbar-count {
+  margin: 0 0 8px 20px;
+}
+.container .contents .top .navbar .navbar-main .navbar-count .navbar-countfv {
   display: inline-block;
-}
-.main .separator1,
-.main .separator2 {
-  border-top: 1px solid #e7e7e7;
-}
-.main .separator1 hr,
-.main .separator2 hr {
-  display: none;
-}
-.main .separator1 {
-  margin: 40px 0;
-}
-.main .separator2 {
-  margin: 25px 0 40px;
-}
-.viewhead {
-  width: 100%;
-  min-width: 960px;
-  margin: 0 auto;
-  z-index: 500;
-}
-.viewhead .viewhead-inner {
-  position: relative;
-  width: 960px;
-  height: 24px;
-  line-height: 23px;
-  margin: 0 auto;
-  padding: 6px 0;
-}
-.viewhead .topicpath {
-  margin-right: 12px;
+  padding-right: 13px;
   vertical-align: top;
+  text-align: center;
 }
-.viewhead .topicpath li {
-  vertical-align: -1px;
+.container .contents .top .navbar .navbar-main .navbar-count .navbar-countfv .navbar-countnum {
+  display: block;
+  line-height: 1;
+  margin-top: -3px;
+  color: #000;
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.viewhead .topicwordlist {
+.container .contents .top .navbar .navbar-main .navbar-count .navbar-countfv .navbar-countlabel {
+  display: block;
+  margin-top: 3px;
+  line-height: 1;
+  color: #666;
+  font-size: 11px;
+}
+.container .contents .top .navbar .navbar-main .navbar-count .navbar-countpv {
   display: inline-block;
-  max-height: 24px;
-  padding: 0 0 0 0;
-  border-bottom: 0;
+  padding-left: 13px;
+  border-left: 1px solid #ebebeb;
+  text-align: center;
+  font-family: Tahoma, Geneva, sans-serif;
 }
-.widgetlist {
+.container .contents .top .navbar .navbar-main .navbar-count .navbar-countpv .navbar-countnum {
+  display: block;
+  line-height: 1;
+  margin-top: -3px;
+  color: #000;
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container .contents .top .navbar .navbar-main .navbar-count .navbar-countpv .navbar-countlabel {
+  display: block;
+  margin-top: 3px;
+  line-height: 1;
+  color: #666;
+  font-size: 11px;
+}
+.container .contents .top .navbar .navbar-sub {
+  float: left;
+  width: 220px;
+  text-align: right;
+}
+.container .contents .top .navbar .navbar-sub .navbar-user {
+  display: inline-block;
+  margin-right: 6px;
+}
+.container .contents .top .navbar .navbar-mainwiththumb .navbar-txt {
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+.container .contents .top .navbar .navbar-userthumb {
+  margin-right: 10px;
+}
+.container .contents .top .navbar .navbar-username {
+  line-height: 30px;
+  vertical-align: middle;
+}
+.container .contents .contentswrapper {
+  width: 960px;
+  margin: 0 auto;
+}
+.container .contents .contentswrapper .main {
+  float: left;
+  width: 635px;
+  padding-bottom: 40px;
+}
+.container .contents .contentswrapper .main .widgetlist {
   position: relative;
   padding-bottom: 1px;
 }
-.widget.widgettypetitle {
+.container .contents .contentswrapper .main .widgetlist .widgettypetitle {
   margin-bottom: 25px;
 }
-.widget.widgettypetitle .widgetitemtitleview {
+.container .contents .contentswrapper .main .widgetlist .widgettypetitle .widgetitemtitleview {
   line-height: 1.3;
   padding-bottom: 5px;
   border-bottom: 2px solid #eaecee;
   font-weight: bold;
   font-size: 20px;
 }
-.rellist {
+.container .contents .contentswrapper .main .pagebutton {
+  line-height: 1.2;
+  margin: 30px 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  text-align: center;
+}
+.container .contents .contentswrapper .main .pagebutton strong {
+  padding: 9px 11px;
+  color: #000;
+}
+.container .contents .contentswrapper .main .rellist {
   position: relative;
   margin: 10px 0 10px 0;
+}
+.container .contents .contentswrapper .main .rellist .separator1 {
+  margin: 40px 0;
+}
+.container .contents .contentswrapper .main .rellist .separator2 {
+  margin: 25px 0 40px;
+}
+.container .contents .contentswrapper .main .rellist .list .listitem {
+  display: table;
+  width: 100%;
+  margin: 30px 0 0;
+}
+.container .contents .contentswrapper .main .rellist .list .listitem:first-child {
+  margin-top: 0;
+}
+.container .contents .contentswrapper .main .rellist .list .listthumb {
+  display: table-cell;
+  width: 60px;
+  height: 60px;
+  padding: 0 15px 0 0;
+  vertical-align: top;
+}
+.container .contents .contentswrapper .main .rellist .list .listthumb a {
+  display: block;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+}
+.container .contents .contentswrapper .main .rellist .list .listtxt {
+  display: table-cell;
+  vertical-align: middle;
+  table-layout: fixed;
+  width: 100%;
+  max-width: 560px;
+}
+.container .contents .contentswrapper .main .rellist .list .listtitle {
+  display: inline;
+  line-height: 1.1;
+  font-size: 20px;
+  font-weight: normal;
+  margin-right: 15px;
+}
+.container .contents .contentswrapper .main .rellist .list .listtitle a {
+  padding: 6px 0;
+  color: #000;
+}
+.container .contents .contentswrapper .main .rellist .list .listdesc {
+  color: #aaa;
+}
+.container .contents .sub {
+  position: relative;
+  float: right;
+  width: 300px;
+}
+.container .contents .foot {
+  width: 100%;
+  border-top: 1px solid #e7e7e7;
+}
+.container .contents .foot .foot-inner {
+  width: 960px;
+  margin: 0 auto;
+  padding: 25px 0;
+}
+.container .contents .pagebutton a,
+.container .contents .pagebutton strong {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 8px 11px;
+  font-weight: bold;
+  vertical-align: top;
+}
+.container .contents .pagebutton a:link,
+.container .contents .pagebutton a:visited {
+  border: 1px solid #ebebeb;
+  color: #999;
+  text-decoration: none;
+}
+.container .contents .pagebutton a:hover,
+.container .contents .pagebutton a:active,
+.container .contents .pagebutton a:focus {
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #000;
+  text-decoration: none;
+}
+.container .contents .navbar .navbar-title {
+  display: inline;
+  font-size: 32px;
+  line-height: 38px;
+}
+.container .contents .navbar .navbar-username > a {
+  color: #000 !important;
+  font-weight: bold;
+}
+.navbar .navbar-username .container .contents > a:link,
+.navbar .navbar-username .container .contents > a:visited {
+  text-decoration: none;
+}
+.navbar .navbar-username .container .contents > a:hover,
+.navbar .navbar-username .container .contents > a:active,
+.navbar .navbar-username .container .contents > a:focus {
+  text-decoration: underline;
+}
+.container .contents a.topicword {
+  cursor: pointer;
+}
+.container .contents a.topicword:hover {
+  background: #f0f0f0;
+}
+.container .contents .subcontents {
+  position: fixed;
+  background-color: #fdf8f2;
+}
+.container .contents .subtitle {
+  position: relative;
+  padding: 13px 15px 0;
+  color: #000;
+  font-weight: bold;
+  font-size: 12px;
+}
+.container .contents .sublist {
+  padding: 15px 30px 9px;
+}
+.container .contents .list .listtitle a:link,
+.container .contents .list .listtitle a:visited {
+  text-decoration: none;
+}
+.container .contents .list .listtitle a:hover,
+.container .contents .list .listtitle a:active,
+.container .contents .list .listtitle a:focus {
+  text-decoration: underline;
+}
+.container .contents .list .listdate,
+.container .contents .list .listview {
+  display: inline-block;
+}
+.container .contents .main .separator1,
+.container .contents .main .separator2 {
+  border-top: 1px solid #e7e7e7;
+}
+.container .contents .main .separator1 hr,
+.container .contents .main .separator2 hr {
+  display: none;
 }
 /*# sourceMappingURL=viewarticle.css.map */
