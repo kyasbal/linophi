@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.WindowsAzure.Storage;
+﻿using System.Web.Mvc;
 using Web.Models;
+<<<<<<< HEAD
 // using Web.Storage;
+=======
+>>>>>>> 4d9b42f088d30a5a5b5120b5318b3f66a93e9570
 
 namespace Web.Controllers
 {
