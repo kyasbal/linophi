@@ -184,6 +184,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\caret-util.js" />
     <Content Include="Scripts\collections.js" />
+    <Content Include="Scripts\Edit\Edit-autoHeight.js" />
     <Content Include="Scripts\Edit\EditPage.js" />
     <Content Include="Scripts\Home\AfterLogin.js" />
     <Content Include="Content\css\Edit\header.css.map" />

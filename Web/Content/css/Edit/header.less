@@ -107,8 +107,8 @@ body {
   width:100%;
 }
 .edit-title{
-  height:10%;
-  width:80%;
+  height:15%;
+  width:70%;
   float:left;
   margin: 10% 0 0 9%;
   padding: 5px;
@@ -121,9 +121,9 @@ body {
   width:100%;
 }
 .edit-tag{
-  height:5%;
-  width:50%;
-  margin: 10px 0 0 9%;
+  height:10%;
+  width:45%;
+  margin: 1% 0 0 9%;
   padding: 5px;
   border: 1px solid #888;
   border-radius: 5px;
@@ -131,6 +131,7 @@ body {
   -moz-placeholder { color: #888; }
 }
 .edit-preview-container{
+  overflow:hidden;
   display:inline-block;
     *display: inline;	/*for IE*/
     *zoom: 1;		/*for IE*/
@@ -139,16 +140,20 @@ body {
 .edit-preview{
   height:500px;
   width:80%;
-  margin:5px 0 0 auto;
+  resize: vertical;
+  margin:0 0 0 auto;
   padding: 5px;
   float:right;
   background-color: #fff;
   border: 1px solid #888;
   border-radius: 5px;
+  word-break: break-all;
   -webkit-input-placeholder { color: #888; }
   -moz-placeholder { color: #888; }
 }
 .edit-text-container{
+  margin: 0 0 0 0;
+  overflow:hidden;
   display:inline-block;
     *display: inline;	/*for IE*/
     *zoom: 1;		/*for IE*/
@@ -157,6 +162,7 @@ body {
 .edit-text{
   height:500px;
   width:80%;
+  max-width:80%;
   margin: 2% 0 0 auto;
   padding: 5px;
   float:left;
