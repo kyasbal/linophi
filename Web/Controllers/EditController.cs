@@ -15,8 +15,6 @@ namespace Web.Controllers
         // GET: Edit
         public ActionResult Index()
         {
-            ParagraphTableManager tm=new ParagraphTableManager(new TableStorageConnection());
-            tm.AddParagraph();
 //            EditViewModel vm = new EditViewModel();
 //            vm.title = "Title";
 //            vm.parapraphs = new ParagraphViewModel[]
@@ -51,6 +49,9 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult Index(EditViewModel vm)
         {
+            ApplicationDbContext context=new ApplicationDbContext();
+            context.Articles.Add(ArticleModel.GenerateArticle(vm.Title, null));
+            context.SaveChanges();
             return null;
         }
     }

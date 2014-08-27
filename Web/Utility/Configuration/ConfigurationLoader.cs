@@ -60,7 +60,8 @@ namespace Web.Utility.Configuration
             /// <returns>System.String.</returns>
             public string GetConfiguration(string key)
             {
-                return RoleEnvironment.GetConfigurationSettingValue(key);
+                var configurationSettingValue = RoleEnvironment.GetConfigurationSettingValue(key);
+                return configurationSettingValue;
             }
         }
     }
