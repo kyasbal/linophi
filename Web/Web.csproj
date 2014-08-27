@@ -176,7 +176,9 @@
     <Content Include="Content\css\Home\StyleSheet.css.map">
       <DependentUpon>StyleSheet.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\Edit\TagMaker.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -258,6 +260,7 @@
     <TypeScriptCompile Include="Scripts\Account\externalLoginConfirmation.ts" />
     <TypeScriptCompile Include="Scripts\collections.ts" />
     <TypeScriptCompile Include="Scripts\Edit\EditPage.ts" />
+    <TypeScriptCompile Include="Scripts\Edit\TagMaker.ts" />
     <TypeScriptCompile Include="Scripts\Home\AfterLogin.ts" />
     <TypeScriptCompile Include="Scripts\Novel\IParagraph.ts" />
     <TypeScriptCompile Include="Scripts\Novel\Markups.ts" />

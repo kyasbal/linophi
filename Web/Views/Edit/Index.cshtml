@@ -24,6 +24,7 @@
     <script src="~/Scripts/Utility/AspectRatioStretcher.js"></script>
     <script src="~/Scripts/Utility/HeightStretcher.js"></script>
     <script src="~/Scripts/Novel/Markups.js"></script>
+    <script src="~/Scripts/Edit/TagMaker.js"></script>
 
 }
 <div class="edit-bg-overlay">
@@ -45,6 +46,8 @@
 
         <div class="edit-tag-container">
             @Html.TextBoxFor((m)=>m.Tag,new{id="tag",type="text",@class="edit-tag",placeholder="タグ"})
+            
+
         </div>
 
         <div class="edit-preview-container">
