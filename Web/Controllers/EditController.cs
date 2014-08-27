@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.WindowsAzure.Storage;
+﻿using System.Web.Mvc;
 using Web.Models;
 
 namespace Web.Controllers
@@ -48,6 +43,9 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult Index(EditViewModel vm)
         {
+            ApplicationDbContext context=new ApplicationDbContext();
+            context.Articles.Add(ArticleModel.GenerateArticle(vm.Title, null));
+            context.SaveChanges();
             return null;
         }
     }

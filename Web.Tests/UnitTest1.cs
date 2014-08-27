@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Web.Models;
+using Web.Utility;
 
 namespace Web.Tests
 {
@@ -10,7 +12,6 @@ namespace Web.Tests
         [TestMethod]
         public void TestMethod1()
         {
-
         }
     }
 }
