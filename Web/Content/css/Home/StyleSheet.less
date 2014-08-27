@@ -4,10 +4,7 @@
 img, fieldset {
     border: none;
 }
-input {
-    *margin: -1px 0;
-    font-size: 1.0em;
-}
+
 html {
     overflow-y: scroll;
 }
@@ -39,136 +36,70 @@ input, button {
 input[type="text"] {
     -webkit-appearance: none;
 }
-.MdCF:after {
+.set:after {
     content: "";
     display: block;
     clear: both;
 }
-.Separator {
-    display: inline-block;
-    width: 0;
-    overflow: hidden;
-    border-left-width: 1px;
-    border-left-style: solid;
-    vertical-align: -1px;
-    height: 11px;
-    margin: 0 5px;
-    border-left-color: #c9cdd0;
-}
-.LyWrap {
-    .lyWrapInner {
-        width: 100%;
-        min-width: 960px;
-    }
-}
-.LyHead {
+
+
+.head {
     z-index: 501;
     width: 100%;
     border-top: 3px solid #333;
     border-bottom: 1px solid #e7e7e7;
-    .lyHeadInner {
+    .head-inner {
         position: relative;
         width: 960px;
         height: 44px;
         margin: 0 auto;
     }
-    hgroup {
-        display: inline;
-    }
 }
-.HeadUtil {
-    position: absolute;
-    top: 11px;
-    right: 0;
-    text-align: right;
-    .HeadUtilLi {
-        display: inline-block;
-        font-size: 12px;
-        line-height: 12px;
-    }
-}
-.HeadUtil .HeadUtilLi a,.HeadUtil .HeadUtilLi a:link,.HeadUtil .HeadUtilLi a:visited {
-    display: inline-block;
-    padding: 5px 0;
-    color: #545454;
-    text-decoration: none;
-}
-.HeadUtil .HeadUtilLi a:hover,.HeadUtil .HeadUtilLi a:active {
-    color: #545454;
-    text-decoration: underline;
-}
-.HeadSeparator {
-    display: inline-block;
-    width: 0;
-    overflow: hidden;
-    border-left-width: 1px;
-    border-left-style: solid;
-    vertical-align: -1px;
-    height: 11px;
-    margin: 0 9px 0 11px;
-    border-left-color: #eaeaea;
-}
-.LyContents {
+
+
+.contents {
     padding-bottom: 25px;
-    .lyContentsWrap {
+    .contentswrapper {
         width: 960px;
         margin: 0 auto;
     }
 }
-.LyTop {
+.top {
     margin-bottom: 30px;
     border-bottom: 1px solid #f2f2f2;
     background-color: #fdf8f2;
-    .lyTopInner {
+    .top-inner {
         width: 960px;
         margin: 0 auto;
         padding-bottom: 15px;
     }
-    .TopicWordList {
+    .topicwordlist {
         padding: 10px 0 5px;
         border-bottom: 1px solid #e6e6e6;
     }
 }
-.Main {
+.main {
     float: left;
     width: 635px;
     padding-bottom: 40px;
 }
-.Sub {
+.sub {
     position: relative;
     float: right;
     width: 300px;
-    padding-bottom: 40px;
+    
 }
-.Foot {
+.foot {
     width: 100%;
     border-top: 1px solid #e7e7e7;
-    .FootInner {
+    .foot-inner {
         width: 960px;
         margin: 0 auto;
         padding: 25px 0;
     }
 }
-.Link {
-    .LinkUl {
-        float: left;
-        line-height: 1;
-    }
-    .LinkLi {
-        display: inline;
-        a {
-            color: #333;
-            font-size: 11px;
-        }
-    }
-}
-.Link .LinkLi a:link, .Link .LinkLi a:visited {
-    text-decoration: none;
-}
-.Link .Link01Li a:hover, .Link .LinkLi a:active, .Link .LinkLi a:focus {
-    text-decoration: underline;
-}
-.PageButton {
+
+.pagebutton {
     line-height: 1.2;
     margin: 30px 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -179,32 +110,32 @@ input[type="text"] {
         color: #000;
     }
 }
-.PageButton a,.PageButton strong {
+.pagebutton a,.pagebutton strong {
     display: inline-block;
     margin: 0 2px;
     padding: 8px 11px;
     font-weight: bold;
     vertical-align: top;
 }
-.PageButton a:link,.PageButton a:visited {
+.pagebutton a:link,.pagebutton a:visited {
     border: 1px solid #ebebeb;
     color: #999;
     text-decoration: none;
 }
-.PageButton a:hover,.PageButton a:active,.PageButton a:focus {
+.pagebutton a:hover,.pagebutton a:active,.pagebutton a:focus {
     cursor: pointer;
     background-color: #f0f0f0;
     color: #000;
     text-decoration: none;
 }
-.Heading {
+.navbar {
     padding-top: 15px;
     position: relative;
-    .HeadingMain {
+    .navbarmain {
         float: left;
         width: 725px;
     }
-    .HeadingThumb {
+    .navbarthumb {
         float: right;
         margin: 0 15px 15px 0;
         img {
@@ -212,16 +143,16 @@ input[type="text"] {
             height: 105px;
         }
     }
-    .HeadingTxt {
+    .navbartxt {
         margin-top: -13px;
     }
-    .HeadingMainWithThumb {
-        .HeadingTxt {
+    .navbarmainwiththumb {
+        .navbartxt {
             margin-bottom: 10px;
             font-size: 30px;
         }
     }
-    .HeadingTtl {
+    .navbartitle {
         a {
             margin: 0 15px 0 0;
             padding: 6px 0;
@@ -233,43 +164,43 @@ input[type="text"] {
             text-decoration: underline;
         }
     }
-    .HeadingUser {
+    .navbaruser {
         display: inline-block;
         margin-right: 6px;
     }
-    .HeadingUserThumb {
+    .navbaruserthumb {
         margin-right: 10px;
     }
-    .HeadingUserName {
+    .navbarusername {
         line-height: 30px;
         vertical-align: middle;
     }
-    .HeadingSub {
+    .navbarsub {
         float: left;
         width: 220px;
         text-align: right;
     }
-    .HeadingCount {
+    .navbarcount {
         margin: 0 0 8px 20px;
     }
-    .HeadingCountFV {
+    .navbarcountfv {
         display: inline-block;
         padding-right: 13px;
         vertical-align: top;
         text-align: center;
-        .HeadingCountLabel {
+        .navbarcountlabel {
             margin-top: 5px;
             font-size: 10px;
         }
     }
-    .HeadingCountPV {
+    .navbarcountpv {
         display: inline-block;
         padding-left: 13px;
         border-left: 1px solid #ebebeb;
         text-align: center;
         font-family: Tahoma, Geneva, sans-serif;
     }
-    .HeadingCountNum {
+    .navbarcountnum {
         display: block;
         line-height: 1;
         margin-top: -3px;
@@ -277,7 +208,7 @@ input[type="text"] {
         font-size: 22px;
         font-family: Arial, Helvetica, sans-serif;
     }
-    .HeadingCountLabel {
+    .navbarcountlabel {
         display: block;
         margin-top: 3px;
         line-height: 1;
@@ -285,26 +216,26 @@ input[type="text"] {
         font-size: 11px;
     }
 }
-.Heading01 {
-    .HeadingTtl {
+.navbar {
+    .navbartitle {
         display: inline;
         font-size: 32px;
         line-height: 38px;
     }
-    .HeadingUserName {
+    .navbarusername {
         & > a {
             color: #000 !important;
             font-weight: bold;
         }
     }
 }
-.Heading .HeadingUserName &>a:link, .Heading .HeadingUserName &>a:visited {
+.navbar .navbarusername &>a:link, .navbar .navbarusername &>a:visited {
     text-decoration: none;
 }
-.Heading .HeadingUserName &>a:hover, .Heading .HeadingUserName &>a:active, .Heading .HeadingUserName &>a:focus {
+.navbar .navbarusername &>a:hover, .navbar .navbarusername &>a:active, .navbar .navbarusername &>a:focus {
     text-decoration: underline;
 }
-.TopicPath {
+.topicpath {
     display: inline-block;
     li {
         display: inline;
@@ -318,18 +249,18 @@ input[type="text"] {
         padding: 0 13px 0 0;
     }
 }
-.TopicWordList {
+.topicwordlist {
     min-height: 29px;
-    .TopicWordListUl {
+    .topicwordlistul {
         display: inline;
         border:3px;
     }
-    .TopicWordListLi {
+    .topicwordlistli {
         float: left;
         margin: 0 5px 5px 0;
     }
 }
-.TopicWord {
+.topicword {
     position: relative;
     display: inline-block;
     height: 21px;
@@ -341,7 +272,7 @@ input[type="text"] {
     text-decoration: none !important;
     font-size: 11px;
     white-space: nowrap;
-    .TopicWord01Num {
+    .topicwordnum {
         position: relative;
         top: -1px;
         display: inline-block;
@@ -350,43 +281,37 @@ input[type="text"] {
         font-size: 10px;
     }
 }
-a.TopicWord {
+a.topicword {
     cursor: pointer;
 }
-a.TopicWord:hover {
+a.topicword:hover {
     background: #f0f0f0;
 }
-.ExOsMac {
-    .TopicWord {
-        .TopicWordNum {
-            margin-right: -1px;
-            margin-left: 5px;
-        }
-    }
-}
-.SubContents {
+
+.subcontents {
+    position:fixed;
     background-color: #fdf8f2;
 }
-.SubTtl {
+.subtitle {
     position: relative;
     padding: 13px 15px 0;
     color: #000;
     font-weight: bold;
     font-size: 12px;
 }
-.SubList {
+.sublist {
     padding: 15px 30px 9px;
 }
-.List {
-    .ListItem {
+.list {
+    .listitem {
         display: table;
         width: 100%;
         margin: 30px 0 0;
     }
-    .ListItem:first-child {
+    .listitem:first-child {
         margin-top: 0;
     }
-    .ListThumb {
+    .listthumb {
         display: table-cell;
         width: 60px;
         height: 60px;
@@ -399,14 +324,14 @@ a.TopicWord:hover {
             overflow: hidden;
         }
     }
-    .ListTxt {
+    .listtxt {
         display: table-cell;
         vertical-align: middle;
         table-layout: fixed;
         width: 100%;
         max-width: 560px;
     }
-    .ListTtl {
+    .listtitle {
         display: inline;
         line-height: 1.1;
         font-size: 20px;
@@ -417,39 +342,39 @@ a.TopicWord:hover {
             color: #000;
         }
     }
-    .ListDesc {
+    .listdesc {
         color: #aaa;
     }
 }
-.List .ListTtl a:link, .List .ListTtl a:visited {
+.list .listtitle a:link, .list .listtitle a:visited {
     text-decoration: none;
 }
-.List04 .ListTtl a:hover, .List .ListTtl a:active, .List .ListTtl a:focus {
+.list .listtitle a:hover, .list .listtitle a:active, .list .listtitle a:focus {
     text-decoration: underline;
 }
-.List .List04Date,.List .List04View {
+.list .listdate,.list .listview {
     display: inline-block;
 }
-.LyMain .Separator1,.LyMain .Separator2 {
+.main .separator1,.main .separator2 {
     border-top: 1px solid #e7e7e7;
 }
-.LyMain .Separator1 hr,.LyMain .Separator2 hr {
+.main .separator1 hr,.main .separator2 hr {
     display: none;
 }
-.LyMain {
-    .Separator1 {
+.main {
+    .separator1 {
         margin: 40px 0;
     }
-    .Separator2 {
+    .separator2 {
         margin: 25px 0 40px;
     }
 }
-.ViewHead {
+.viewhead {
     width: 100%;
     min-width: 960px;
     margin: 0 auto;
     z-index: 500;
-    .ViewHeadInner {
+    .viewhead-inner {
         position: relative;
         width: 960px;
         height: 24px;
@@ -457,27 +382,27 @@ a.TopicWord:hover {
         margin: 0 auto;
         padding: 6px 0;
     }
-    .TopicPath {
+    .topicpath {
         margin-right: 12px;
         vertical-align: top;
         li {
             vertical-align: -1px;
         }
     }
-    .TopicWordList {
+    .topicwordlist {
         display: inline-block;
         max-height: 24px;
         padding: 0 0 0 0;
         border-bottom: 0;
     }
 }
-.WidgetList {
+.widgetlist {
     position: relative;
     padding-bottom: 1px;
 }
-.Widget.WidgetTypeTtl {
+.widget.widgettypetitle {
     margin-bottom: 25px;
-    .WidgetItemTtlView {
+    .widgetitemtitleview {
         line-height: 1.3;
         padding-bottom: 5px;
         border-bottom: 2px solid #eaecee;
@@ -485,7 +410,7 @@ a.TopicWord:hover {
         font-size: 20px;
     }
 }
-.RelList {
+.rellist {
     position: relative;
     margin: 10px 0 10px 0;
 }
