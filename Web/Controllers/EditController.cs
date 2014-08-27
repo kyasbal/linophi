@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.WindowsAzure.Storage;
 using Web.Models;
-using Web.Storage;
+// using Web.Storage;
 
 namespace Web.Controllers
 {
