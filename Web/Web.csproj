@@ -247,9 +247,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Response\Article\ExistenceRequest.cs" />
+    <Compile Include="Api\Response\Article\ExistenceResponse.cs" />
+    <Compile Include="Api\Response\Article\VerifyTitleRequest.cs" />
+    <Compile Include="Api\Response\Article\VerifyTitleResponse.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="ArticleController.cs" />
+    <Compile Include="Api\Article\ArticleController.cs" />
     <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
