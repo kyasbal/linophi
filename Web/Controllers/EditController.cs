@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.WindowsAzure.Storage;
 using Web.Models;
+using Web.Storage;
 
 namespace Web.Controllers
 {
