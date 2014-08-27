@@ -156,3 +156,4 @@ $RECYCLE.BIN/
 .DS_Store
 Web/App_Data/Debug.mdf
 Web/App_Data/Debug_log.ldf
+/packages
