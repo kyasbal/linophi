@@ -53,9 +53,10 @@
             <div class="edit-preview-container">
                 <div class="edit-preview preview-body fixHeightChildText"></div>
             </div>
-            <div class="edit-text-container">
-                <textarea class="edit-text edit-context" placeholder="textarea"></textarea>
-            </div>
+        <div class="edit-text-container">
+            <textarea class="edit-text edit-context" placeholder="textarea"></textarea>
+        </div>
+        @Html.AntiForgeryToken()
         @Html.HiddenFor((m)=>m.Context,new{id="context"})
         <a class="edit-submit-button">投稿する</a>
         }
