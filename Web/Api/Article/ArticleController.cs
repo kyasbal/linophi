@@ -35,7 +35,7 @@ namespace Web
 
         public IHttpActionResult IsValidTitle([FromBody]VerifyTitleRequest req)
         {
-            string articleName = req.Title.Replace(" ", "").Replace("　", "");;
+            string articleName = req.Title.Replace(" ", "").Replace("　", "");
             if (articleName.Length <= 50)
             {
                 if (articleName.Length >= 5)

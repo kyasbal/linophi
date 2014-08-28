@@ -25,7 +25,6 @@
     <script src="~/Scripts/Utility/HeightStretcher.js"></script>
     <script src="~/Scripts/Novel/Markups.js"></script>
     <script src="~/Scripts/Edit/Edit-autoHeight.js"></script>
-    <script src="~/Scripts/Edit/Edit-autoMargin-left.js"></script>
     <script src="~/Scripts/Edit/TagMaker.js"></script>
 }
 <div class="edit-bg-overlay">
@@ -44,6 +43,7 @@
         <div class="edit-title-container">
             @Html.TextBoxFor((m) => m.Title, new { id = "title", type = "text",@class="edit-title",placeholder="タイトル" })
         </div>
+        <div class="edit-title-chkvalid"></div>
 
         <div class="edit-tag-container">
             @Html.TextBoxFor((m)=>m.Tag,new{id="tag",type="text",@class="edit-tag",placeholder="タグ"})
