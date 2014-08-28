@@ -168,6 +168,12 @@
     <Content Include="Content\css\Edit\footer.min.css">
       <DependentUpon>footer.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Edit\head.css">
+      <DependentUpon>head.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\head.min.css">
+      <DependentUpon>head.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Edit\header.css" />
     <Content Include="Content\css\Edit\header.min.css" />
     <Content Include="Content\css\Edit\index.css" />
@@ -225,6 +231,10 @@
     <Content Include="Content\css\Edit\footer.less" />
     <Content Include="Content\css\Edit\footer.css.map">
       <DependentUpon>footer.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\head.less" />
+    <Content Include="Content\css\Edit\head.css.map">
+      <DependentUpon>head.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
@@ -320,6 +330,7 @@
     <Content Include="Views\Shared\_BaseLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,8 +1,11 @@
 ﻿var tagCounter: number = 0;
+var tags: collections.Set<string> = new collections.Set<string>();
 
-function remove(target: string)
+function removeTag(counter,tag)
 {
-    
+    console.warn("clicked");
+    $('.edit-editted-tag-' + counter).remove();
+    tags.remove(tag);
 }
 $(() => {
 
@@ -19,24 +22,26 @@ $(() => {
             }
         });
     });
-
+    
 
     // タグをEnterで追加する機能
-    $(".edit-tag").keypress(function (e) {
-        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-            var tag: string = $(this).val();
+    $(".edit-tag").keypress((e)=>{
+        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13))
+        {
+            var $target = $(".edit-tag");
+            var tag: string = $target.val();
 
-            if (tag) {
+            if (tag&&!tags.contains(tag)) {
                 $(".edit-tag-container").append(
                     '<div class="edit-editted-tag-' + tagCounter + '">' + tag +
                     '<span class="edit-tag-delete-' + tagCounter +
-                    '" onClick="$(\'.edit-editted-tag-' + tagCounter + '\').hide();">x</span></div>'
+                    '" onClick="removeTag(\''+tagCounter+'\',\''+tag+'\')">x</span></div>'
                 );
+                tags.add(tag);
+                tagCounter++;
             }
 
-            $(this).val("");
-
-            tagCounter++;
+            $target.val("");
         }
     });
 });

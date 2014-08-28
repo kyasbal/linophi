@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Web.Models;
@@ -19,11 +20,11 @@ namespace Web.Controllers
             ParagraphTableManager pm=new ParagraphTableManager(new TableStorageConnection());
             var ps=pm.GetParagraphs(articleId, 0);
             var ps4json = new ParagraphDataModel[ps.Length];
-            for (int index = 0; index < ps.Length; index++)
+            Parallel.For(0, ps.Length, (index) =>
             {
                 var paragraphEntity = ps[index];
                 ps4json[index] = ParagraphDataModel.GetFromStorage(paragraphEntity);
-            }
+            });
             return new ViewArticleViewModel()
             {
                 Content = System.Web.Helpers.Json.Encode(new ViewArticleContentStructure()
