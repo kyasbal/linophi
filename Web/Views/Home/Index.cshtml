@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model Web.Models.ViewArticleViewModel
 
 @{
     ViewBag.Title = "title";
@@ -187,13 +187,10 @@
             </div>
         </div>
     </div>
-    <!--フッター-->
-    <footer>
-        <div class="foot">
-            <div class="foot-inner">
-
-            </div>
-        </div>
-    </footer>
-
+        @if (Model != null)
+        {
+            <script type="application/json" id="article-source">
+              @Html.Raw(Model.Content)
+            </script>
+        }
 </div>

@@ -18,5 +18,11 @@ namespace Web.Storage
         {
             _table.Execute(TableOperation.Insert(ParagraphEntity.FromDataModel(articleId, version, paragraphDataModel)));
         }
+
+        public ParagraphEntity[] GetParagraphs(string articleId, int version)
+        {
+            string partition = articleId + "@" + version;
+            return (from q in CreateQuery() where q.PartitionKey.Equals(partition) select q).ToArray();
+        }
     }
 }

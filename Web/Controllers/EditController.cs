@@ -54,7 +54,7 @@ namespace Web.Controllers
             {
                 ptm.AddParagraph(article.ArticleId,0,paragraphDataModel);
             }
-            return null;
+            return Redirect("~/"+article.ArticleId);
         }
     }
 }

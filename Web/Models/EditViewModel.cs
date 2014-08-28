@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Web.Storage;
 
 namespace Web.Models
 {
@@ -30,5 +31,17 @@ namespace Web.Models
         public string id { get; set; }
 
         public int paragraphIndex { get; set; }
+
+        public static ParagraphDataModel GetFromStorage(ParagraphEntity paragraphEntity)
+        {
+            return new ParagraphDataModel()
+            {
+                id = paragraphEntity.RowKey,
+                nextParagraph = paragraphEntity.NextParagraph,
+                prevParagraph = paragraphEntity.PrevParagraph,
+                paragraphIndex = paragraphEntity.ParagraphIndex,
+                rawText = paragraphEntity.RawText
+            };
+        }
     }
 }
