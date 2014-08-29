@@ -721,7 +721,7 @@
                     break;
                 }
             }
-            var markups: any[] = [new BoldMarkup()];
+            var markups: any[] = [new QuoteMarkup(),new BoldMarkup()];
             for (var j = 0; j < markups.length; j++)
             {
                 rawStr = markups[j].getMarkupString(rawStr);

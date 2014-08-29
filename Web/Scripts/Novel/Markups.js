@@ -25,10 +25,25 @@ var BoldMarkup = (function (_super) {
     BoldMarkup.prototype.getMarkupString = function (str) {
         var result = "";
         result = str.replace(/\\\*/g, "\u0006\u0006");
-        result = result.replace(/\*(?!\\)(.+?)\*(?!\\)/, "<span class=\"b\">$1</span>");
+        result = result.replace(/\*(.+?)\*/, "<span class=\"b\">$1</span>");
         result = result.replace(/\u0006\u0006/g, "*");
         return result;
     };
     return BoldMarkup;
+})(MarkupBase);
+
+var QuoteMarkup = (function (_super) {
+    __extends(QuoteMarkup, _super);
+    function QuoteMarkup() {
+        _super.apply(this, arguments);
+    }
+    QuoteMarkup.prototype.getMarkupString = function (str) {
+        var result = "";
+        result = str.replace(/\\"/g, "\u0006\u0006");
+        result = result.replace(/"(.+?)"/, "<blockquote>$1</blockquote>");
+        result = result.replace(/\u0006\u0006/g, "\"");
+        return result;
+    };
+    return QuoteMarkup;
 })(MarkupBase);
 //# sourceMappingURL=Markups.js.map
