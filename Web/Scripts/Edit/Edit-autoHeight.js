@@ -30,4 +30,15 @@ $(function ()
     updateSize();
 });
 
+$(function next_text(idx)
+{
+    if (window.event.keyCode == 13)
+    { // 13は0x0d(CRキー)
+        // 次のテキストボックスへ飛ばす処理をここにかく
+        document.mainFormedit[idx].focus();
+        return false;
+    }
+    return true;
+});
+
 

@@ -192,6 +192,12 @@
     <Content Include="Content\css\Home\viewarticle.min.css">
       <DependentUpon>viewarticle.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Novel\Markup.css">
+      <DependentUpon>Markup.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Novel\Markup.min.css">
+      <DependentUpon>Markup.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Novel\novel-editor.css" />
     <Content Include="Content\css\Novel\novel-editor.min.css" />
     <Content Include="Content\css\Novel\novel-viewer.css" />
@@ -245,6 +251,10 @@
     <Content Include="Content\css\Edit\head.less" />
     <Content Include="Content\css\Edit\head.css.map">
       <DependentUpon>head.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Novel\Markup.less" />
+    <Content Include="Content\css\Novel\Markup.css.map">
+      <DependentUpon>Markup.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
