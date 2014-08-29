@@ -40,10 +40,23 @@ var QuoteMarkup = (function (_super) {
     QuoteMarkup.prototype.getMarkupString = function (str) {
         var result = "";
         result = str.replace(/\\"/g, "\u0006\u0006");
-        result = result.replace(/"(.+?)"/, "<blockquote>$1</blockquote>");
+        result = result.replace(/"(.+?)"/, "<blockquote><p class=\"quote\">$1</p></blockquote>");
         result = result.replace(/\u0006\u0006/g, "\"");
         return result;
     };
     return QuoteMarkup;
+})(MarkupBase);
+
+var LinkMarkup = (function (_super) {
+    __extends(LinkMarkup, _super);
+    function LinkMarkup() {
+        _super.apply(this, arguments);
+    }
+    LinkMarkup.prototype.getMarkupString = function (result) {
+        result = result.replace(/(^https?:\/\/[\x21-\x7e]+(.jpg|.jpeg|.gif|.png)$)/g, "<Img Src=\"$1\">");
+        result = result.replace(/(^https?:\/\/[\x21-\x7e]+(?!(.jpg|.jpeg|.gif|.png))$)/g, "<a href='$1'>$1</a>");
+        return result;
+    };
+    return LinkMarkup;
 })(MarkupBase);
 //# sourceMappingURL=Markups.js.map
