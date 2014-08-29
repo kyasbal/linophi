@@ -15,6 +15,9 @@ body {
   width: 100%;
   background-color: #fff;
 }
+a img {
+  vertical-align: top;
+}
 a:link,
 a:visited {
   color: #2468ce;
@@ -25,9 +28,6 @@ a:active,
 a:focus {
   color: #2468ce;
   text-decoration: none;
-}
-a img {
-  vertical-align: top;
 }
 :focus {
   outline: none;
@@ -50,7 +50,7 @@ input[type="text"] {
   border-top: 3px solid #333;
   border-bottom: 1px solid #e7e7e7;
 }
-.container .head .head-inner {
+.container .head-inner {
   position: relative;
   width: 960px;
   height: 44px;
@@ -64,18 +64,18 @@ input[type="text"] {
   border-bottom: 1px solid #f2f2f2;
   background-color: #fdf8f2;
 }
-.container .contents .top .top-inner {
+.container .contents .top-inner {
   width: 960px;
   margin: 0 auto;
   padding-bottom: 15px;
 }
-.container .contents .top .top-inner .viewhead {
+.container .contents .top-inner .viewhead {
   width: 100%;
   min-width: 960px;
   margin: 0 auto;
   z-index: 500;
 }
-.container .contents .top .top-inner .viewhead .viewhead-inner {
+.container .contents .top-inner .viewhead-inner {
   position: relative;
   width: 960px;
   height: 24px;
@@ -83,38 +83,38 @@ input[type="text"] {
   margin: 0 auto;
   padding: 6px 0;
 }
-.container .contents .top .top-inner .viewhead .viewhead-inner .topicpath {
+.container .contents .top-inner .viewhead-inner .topicpath {
   display: inline-block;
   margin-right: 12px;
   vertical-align: top;
 }
-.container .contents .top .top-inner .viewhead .viewhead-inner .topicpath li {
+.container .contents .top-inner .viewhead-inner .topicpath li {
   display: inline;
   margin: 0 0 0 4px;
   vertical-align: -1px;
 }
-.container .contents .top .top-inner .viewhead .viewhead-inner .topicpath li a {
-  color: #4c4c4c;
-}
-.container .contents .top .top-inner .viewhead .viewhead-inner .topicpath li:first-child {
+.container .contents .top-inner .viewhead-inner .topicpath li:first-child {
   margin-left: 0;
   padding: 0 13px 0 0;
 }
-.container .contents .top .top-inner .viewhead .viewhead-inner .topicwordlist {
+.container .contents .top-inner .viewhead-inner .topicpath li a {
+  color: #4c4c4c;
+}
+.container .contents .top-inner .viewhead-inner .topicwordlist {
   display: inline-block;
   max-height: 24px;
   padding: 0 0 0 0;
   border-bottom: 0;
 }
-.container .contents .top .top-inner .viewhead .viewhead-inner .topicwordlist .topicwordlistul {
+.container .contents .top-inner .viewhead-inner .topicwordlistul {
   display: inline;
   border: 3px;
 }
-.container .contents .top .top-inner .viewhead .viewhead-inner .topicwordlist .topicwordlistli {
+.container .contents .top-inner .viewhead-inner .topicwordlistli {
   float: left;
   margin: 0 5px 5px 0;
 }
-.container .contents .top .top-inner .viewhead .viewhead-inner .topicwordlist .topicwordlistli .topicword {
+.container .contents .top-inner .viewhead-inner .topicwordlistli .topicword {
   position: relative;
   display: inline-block;
   height: 21px;
@@ -127,7 +127,7 @@ input[type="text"] {
   font-size: 11px;
   white-space: nowrap;
 }
-.container .contents .top .top-inner .viewhead .viewhead-inner .topicwordlist .topicwordlistli .topicword .topicwordnum {
+.container .contents .top-inner .viewhead-inner .topicwordlistli .topicwordnum {
   position: relative;
   top: -1px;
   display: inline-block;
@@ -139,41 +139,41 @@ input[type="text"] {
   padding-top: 15px;
   position: relative;
 }
-.container .contents .top .navbar .navbar-main {
+.container .contents .top .navbar-main {
   float: left;
   width: 725px;
 }
-.container .contents .top .navbar .navbar-main .navbar-thumb {
+.container .contents .top .navbar-main .navbar-thumb {
   float: right;
   margin: 0 15px 15px 0;
 }
-.container .contents .top .navbar .navbar-main .navbar-thumb img {
+.container .contents .top .navbar-main .navbar-thumb img {
   width: 105px;
   height: 105px;
 }
-.container .contents .top .navbar .navbar-main .navbar-txt {
+.container .contents .top .navbar-main .navbar-txt {
   margin-top: -13px;
 }
-.container .contents .top .navbar .navbar-main .navbar-txt .navbar-title a {
+.container .contents .top .navbar-main .navbar-txt .navbar-title a {
   margin: 0 15px 0 0;
   padding: 6px 0;
   color: #000;
   text-decoration: none;
 }
-.container .contents .top .navbar .navbar-main .navbar-txt .navbar-title a:hover {
+.container .contents .top .navbar-main .navbar-txt .navbar-title a:hover {
   color: #000;
   text-decoration: underline;
 }
-.container .contents .top .navbar .navbar-main .navbar-count {
+.container .contents .top .navbar-main .navbar-count {
   margin: 0 0 8px 20px;
 }
-.container .contents .top .navbar .navbar-main .navbar-count .navbar-countfv {
+.container .contents .top .navbar-main .navbar-count .navbar-countfv {
   display: inline-block;
   padding-right: 13px;
   vertical-align: top;
   text-align: center;
 }
-.container .contents .top .navbar .navbar-main .navbar-count .navbar-countfv .navbar-countnum {
+.container .contents .top .navbar-main .navbar-count .navbar-countfv .navbar-countnum {
   display: block;
   line-height: 1;
   margin-top: -3px;
@@ -181,21 +181,21 @@ input[type="text"] {
   font-size: 22px;
   font-family: Arial, Helvetica, sans-serif;
 }
-.container .contents .top .navbar .navbar-main .navbar-count .navbar-countfv .navbar-countlabel {
+.container .contents .top .navbar-main .navbar-count .navbar-countfv .navbar-countlabel {
   display: block;
   margin-top: 3px;
   line-height: 1;
   color: #666;
   font-size: 11px;
 }
-.container .contents .top .navbar .navbar-main .navbar-count .navbar-countpv {
+.container .contents .top .navbar-main .navbar-count .navbar-countpv {
   display: inline-block;
   padding-left: 13px;
   border-left: 1px solid #ebebeb;
   text-align: center;
   font-family: Tahoma, Geneva, sans-serif;
 }
-.container .contents .top .navbar .navbar-main .navbar-count .navbar-countpv .navbar-countnum {
+.container .contents .top .navbar-main .navbar-count .navbar-countpv .navbar-countnum {
   display: block;
   line-height: 1;
   margin-top: -3px;
@@ -203,7 +203,7 @@ input[type="text"] {
   font-size: 22px;
   font-family: Arial, Helvetica, sans-serif;
 }
-.container .contents .top .navbar .navbar-main .navbar-count .navbar-countpv .navbar-countlabel {
+.container .contents .top .navbar-main .navbar-count .navbar-countpv .navbar-countlabel {
   display: block;
   margin-top: 3px;
   line-height: 1;
@@ -352,12 +352,12 @@ input[type="text"] {
   color: #000;
   text-decoration: none;
 }
-.container .contents .navbar .navbar-title {
+.container .contents .navbar-title {
   display: inline;
   font-size: 32px;
   line-height: 38px;
 }
-.container .contents .navbar .navbar-username > a {
+.container .contents .navbar-username > a {
   color: #000 !important;
   font-weight: bold;
 }
