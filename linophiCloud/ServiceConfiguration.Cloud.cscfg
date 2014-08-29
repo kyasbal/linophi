@@ -4,7 +4,7 @@
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="SQL-ConnectionString" value="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\LocalDbg.mdf;Integrated Security=True;User Instance=True"/>
+      <Setting name="SQL-ConnectionString" value="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\LocalDbg.mdf;Integrated Security=True;User Instance=True" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

@@ -160,6 +160,12 @@
     <Content Include="App_Data\Debug_log.ldf">
       <DependentUpon>Debug.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\css\Account\login.css">
+      <DependentUpon>login.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Account\login.min.css">
+      <DependentUpon>login.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\Edit\footer.css">
@@ -191,6 +197,12 @@
     </Content>
     <Content Include="Content\css\Home\viewarticle.min.css">
       <DependentUpon>viewarticle.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Novel\Markup.css">
+      <DependentUpon>Markup.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Novel\Markup.min.css">
+      <DependentUpon>Markup.css</DependentUpon>
     </Content>
     <Content Include="Content\css\Novel\novel-editor.css" />
     <Content Include="Content\css\Novel\novel-editor.min.css" />
@@ -246,6 +258,14 @@
     <Content Include="Content\css\Edit\head.css.map">
       <DependentUpon>head.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Novel\Markup.less" />
+    <Content Include="Content\css\Novel\Markup.css.map">
+      <DependentUpon>Markup.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Account\login.less" />
+    <Content Include="Content\css\Account\login.css.map">
+      <DependentUpon>login.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -286,11 +306,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Api\Article\ArticleController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\EditViewModel.cs" />
@@ -343,6 +365,8 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Home\Page404.cshtml" />
+    <Content Include="Views\Account\LogIn.cshtml" />
+    <Content Include="Views\Account\SignUp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

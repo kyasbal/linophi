@@ -17,19 +17,21 @@ body {
     background-color: #fff;
 }
 
-a:link, a:visited {
-    color: #2468ce;
-    text-decoration: underline;
-}
 
-a:hover, a:active, a:focus {
-    color: #2468ce;
-    text-decoration: none;
-}
 
 a {
     img {
         vertical-align: top;
+    }
+
+    &:link, &:visited {
+        color: #2468ce;
+        text-decoration: underline;
+    }
+
+    &:hover, &:active, &:focus {
+        color: #2468ce;
+        text-decoration: none;
     }
 }
 
@@ -59,7 +61,7 @@ input[type="text"] {
         border-top: 3px solid #333;
         border-bottom: 1px solid #e7e7e7;
 
-        .head-inner {
+        &-inner {
             position: relative;
             width: 960px;
             height: 44px;
@@ -76,7 +78,7 @@ input[type="text"] {
             border-bottom: 1px solid #f2f2f2;
             background-color: #fdf8f2;
 
-            .top-inner {
+            &-inner {
                 width: 960px;
                 margin: 0 auto;
                 padding-bottom: 15px;
@@ -87,7 +89,7 @@ input[type="text"] {
                     margin: 0 auto;
                     z-index: 500;
 
-                    .viewhead-inner {
+                    &-inner {
                         position: relative;
                         width: 960px;
                         height: 24px;
@@ -105,14 +107,14 @@ input[type="text"] {
                                 margin: 0 0 0 4px;
                                 vertical-align: -1px;
 
+                                &:first-child {
+                                    margin-left: 0;
+                                    padding: 0 13px 0 0;
+                                }
+
                                 a {
                                     color: #4c4c4c;
                                 }
-                            }
-
-                            li:first-child {
-                                margin-left: 0;
-                                padding: 0 13px 0 0;
                             }
                         }
 
@@ -123,12 +125,12 @@ input[type="text"] {
                             border-bottom: 0;
 
 
-                            .topicwordlistul {
+                            &ul {
                                 display: inline;
                                 border: 3px;
                             }
 
-                            .topicwordlistli {
+                            &li {
                                 float: left;
                                 margin: 0 5px 5px 0;
 
@@ -145,7 +147,7 @@ input[type="text"] {
                                     font-size: 11px;
                                     white-space: nowrap;
 
-                                    .topicwordnum {
+                                    &num {
                                         position: relative;
                                         top: -1px;
                                         display: inline-block;
@@ -164,7 +166,7 @@ input[type="text"] {
                 padding-top: 15px;
                 position: relative;
 
-                .navbar-main {
+                &-main {
                     float: left;
                     width: 725px;
 
@@ -431,13 +433,13 @@ input[type="text"] {
         }
 
         .navbar {
-            .navbar-title {
+            &-title {
                 display: inline;
                 font-size: 32px;
                 line-height: 38px;
             }
 
-            .navbar-username {
+            &-username {
                 & > a {
                     color: #000 !important;
                     font-weight: bold;

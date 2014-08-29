@@ -11,7 +11,7 @@
     <link href="~/Content/css/Edit/header.css" rel="stylesheet" />
     <link href="~/Content/css/Edit/index.css" rel="stylesheet" />
     <link href="~/Content/css/Novel/novel-editor.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.17.2/build/cssreset/cssreset-min.css">
+    <link href="~/Content/css/Novel/Markup.css" rel="stylesheet" />
 }
 
 @section JS
@@ -28,6 +28,20 @@
     @*<script src="~/Scripts/Edit/Edit-autoMargin-left.js"></script>*@
     <script src="~/Scripts/Edit/TagMaker.js"></script>
 }
+
+@* 
+  .edit-bg-overlay
+    %header
+    .edit-title-container
+    .edit-title-chkvalid
+    .edit-tag-container
+    .edit-preview-container
+      .edit-preview.preview-body
+    .edit-text-container
+    %footer
+*@
+
+
 <div class="edit-bg-overlay">
     <header>
         <div class="edit-header">
@@ -40,32 +54,33 @@
         </div>
     </header>
 
-        @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new { @class = "edit-form editpage-main" }))
-        {
+    @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new { @class = "edit-form editpage-main" }))
+    {
         <div class="edit-title-container">
-                @Html.TextBoxFor((m) => m.Title, new { id = "title", type = "text", @class = "edit-title", placeholder = "タイトル" })
+            @Html.TextBoxFor((m) => m.Title, new { id = "title", type = "text", @class = "edit-title", placeholder = "タイトル" })
         </div>
         <div class="edit-title-chkvalid"></div>
 
-        <div class="edit-tag-container">
-                @Html.TextBoxFor((m) => m.Tag, new { id = "tag", type = "text", @class = "edit-tag", placeholder = "タグ" })
-        </div>
+        
+            @Html.TextBoxFor((m) => m.Tag, new { id = "tag", type = "text", @class = "edit-tag", placeholder = "タグ" })
+        
         
 
-            <div class="edit-preview-container">
-                <div class="edit-preview preview-body"></div>
-            </div>
-            <div class="edit-text-container">
-                <textarea class="edit-text edit-context" placeholder="textarea"></textarea>
-            </div>
+        <div class="edit-preview-container">
+            <div class="edit-preview preview-body"></div>
+        </div>
+        <div class="edit-text-container">
+            <textarea class="edit-text edit-context" placeholder="textarea"></textarea>
+        </div>
         @Html.AntiForgeryToken()
         @Html.HiddenFor((m)=>m.Context,new{id="context"})
         <a class="edit-submit-button">投稿する</a>
-        }
+        
+    }
 
 
-            <footer>
+    <footer>
                 
-            </footer>
+    </footer>
        
-    </div>
+</div>

@@ -4,7 +4,7 @@
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="SQL-ConnectionString" value="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|Debug.mdf;Integrated Security=True"/>
+      <Setting name="SQL-ConnectionString" value="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|Debug.mdf;Integrated Security=True" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
