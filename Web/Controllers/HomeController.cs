@@ -25,6 +25,8 @@ namespace Web.Controllers
                 var paragraphEntity = ps[index];
                 ps4json[index] = ParagraphDataModel.GetFromStorage(paragraphEntity);
             });
+            article.PageView++;
+            context.SaveChanges();
             return new ViewArticleViewModel()
             {
                 Content = System.Web.Helpers.Json.Encode(new ViewArticleContentStructure()
