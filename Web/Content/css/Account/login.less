@@ -1,2 +1,51 @@
-﻿body {
+﻿.login {
+  &-main {
+    margin: 0 auto;
+    width: 960px;
+
+    a {
+      color: #286bcc;
+      text-decoration: none;
+
+      &:hover {
+        color: #7ea6e0;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &-description {
+    padding: 10px 40px 0;
+
+    & + & {
+      padding-top: 8px;
+      padding-bottom: 25px;
+      margin-bottom: 40px;
+    }
+  }
+
+  &-loginbox {
+    overflow: hidden;
+    padding: 10px 23px;
+    & + & { margin-bottom: 100px; }
+    font-size: 24px;
+    &:hover {
+      background: #eee;
+    }
+
+    > a {
+      float: left;
+      &:last-child {
+        margin: 20px;
+      }
+    }
+
+  }
+}
+
+h1 {
+  box-shadow: -18px 0 #afdbcc, -28px 0 #7ac2a6;
+  font-size: 28px;
+  margin: 0 28px 60px;
+  padding: 0 20px;
 }
