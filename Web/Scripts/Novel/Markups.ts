@@ -13,21 +13,19 @@
  class BoldMarkup extends MarkupBase {
      getMarkupString(str: string): string {
          var result: string = "";
-         while (true) {
-             var strCache: string = str;
-             var s = str.replace(/\|=/g, "@@");
-             if (s.match(/^(.*?[=][^=]*?[=]).*$/) == null) {
-                 //マッチしないとき
-                 result += str;
-                 break;
-             }
-             var s1 = s.replace(/^(.*?[=][^=]*?[=]).*$/, "$1");
-             str = str.substr(s1.length, str.length - s1.length);
-             //console.warn("str:" + str);
-             var s2 = s1.replace(/^.*?[=]([^=]*)?[=].*$/, "$1");
-             var s3 = s1.replace(/^(.*)?[=][^=]*?[=].*$/, "$1");
-             result += s3 + '<span class="b">' + s2 + "</span>";
-         }
+         result = str.replace(/\\\*/g, "\u0006\u0006");
+         result = result.replace(/\*(.+?)\*/, "<span class=\"b\">$1</span>");
+         result = result.replace(/\u0006\u0006/g, "*");
          return result;
     }
- }
+}
+
+class QuoteMarkup extends MarkupBase {
+    getMarkupString(str: string): string {
+        var result: string = "";
+        result = str.replace(/\\"/g, "\u0006\u0006");
+        result = result.replace(/"(.+?)"/, "<blockquote>$1</blockquote>");
+        result = result.replace(/\u0006\u0006/g, "\"");
+        return result;
+    }
+}

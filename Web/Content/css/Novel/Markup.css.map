@@ -1,9 +1,1 @@
-{
-  "version": 3,
-  "file": "Markup.css",
-  "sources": [
-    "Markup.less"
-  ],
-  "names": [],
-  "mappings": "AAAA;EACI,mBAAA"
-}
+﻿{"version":3,"sources":["Markup.less"],"names":[],"mappings":"AAAA;EACI,mBAAA;;AAGJ,aAAc;EACV,UAAA","file":"Markup.css"}

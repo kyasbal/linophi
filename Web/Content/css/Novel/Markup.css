@@ -1,4 +1,7 @@
 ﻿.b {
   font-weight: bolder;
 }
+.edit-preview blockquote {
+  color: red;
+}
 /*# sourceMappingURL=Markup.css.map */
