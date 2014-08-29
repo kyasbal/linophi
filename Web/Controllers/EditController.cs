@@ -41,6 +41,7 @@ namespace Web.Controllers
 //            return Json(vm,JsonRequestBehavior.AllowGet);
             return View();
         }
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Index(EditViewModel vm)
         {

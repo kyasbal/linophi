@@ -25,7 +25,7 @@
     <script src="~/Scripts/Utility/HeightStretcher.js"></script>
     <script src="~/Scripts/Novel/Markups.js"></script>
     <script src="~/Scripts/Edit/Edit-autoHeight.js"></script>
-    <script src="~/Scripts/Edit/Edit-autoMargin-left.js"></script>
+    @*<script src="~/Scripts/Edit/Edit-autoMargin-left.js"></script>*@
     <script src="~/Scripts/Edit/TagMaker.js"></script>
 }
 <div class="edit-bg-overlay">
@@ -39,17 +39,18 @@
             </p>
         </div>
     </header>
-    
+
         @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new { @class = "edit-form editpage-main" }))
         {
-            <div class="edit-title-container">
+        <div class="edit-title-container">
                 @Html.TextBoxFor((m) => m.Title, new { id = "title", type = "text", @class = "edit-title", placeholder = "タイトル" })
-            </div>
+        </div>
+        <div class="edit-title-chkvalid"></div>
 
-            <div class="edit-tag-container">
+        <div class="edit-tag-container">
                 @Html.TextBoxFor((m) => m.Tag, new { id = "tag", type = "text", @class = "edit-tag", placeholder = "タグ" })
-            </div>
-
+        </div>
+        
 
             <div class="edit-preview-container">
                 <div class="edit-preview preview-body"></div>
@@ -57,11 +58,12 @@
             <div class="edit-text-container">
                 <textarea class="edit-text edit-context" placeholder="textarea"></textarea>
             </div>
-            @Html.HiddenFor((m) => m.Context, new { id = "context" })
-            <a class="edit-submit-button">投稿する</a>
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor((m)=>m.Context,new{id="context"})
+        <a class="edit-submit-button">投稿する</a>
         }
 
-        
+
             <footer>
                 
             </footer>
