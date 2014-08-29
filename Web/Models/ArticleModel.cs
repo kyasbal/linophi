@@ -24,6 +24,11 @@ namespace Web.Models
         
         public UserAccount Author { get; set; }
 
+        public int PageView
+        {
+            get; set;
+        }
+
         public DateTime CreationTime { get; set; }
 
         public DateTime UpdateTime { get; set; }
