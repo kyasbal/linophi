@@ -1,0 +1,40 @@
+@model Web.Models.EditViewModel
+@{
+    ViewBag.Title = "新規登録 | linophi";
+}
+
+@{
+    Layout = "../Shared/_BaseLayout.cshtml";
+}
+
+@section CSS{
+    <link href="~/Content/css/Account/login.min.css" rel="stylesheet" />
+}
+
+@section JS
+{
+}
+
+<div class="login-main">
+    <h1>新規登録</h1>
+
+    <div class="login-description">
+        <p>現在twitterアカウントまたはfacebookアカウントからの新規登録のみ受け付けております。</p>
+        <p>お持ちではない場合は下で作成してください。</p>
+    </div>
+    <div class="login-description">
+        <p><a href="#">&gt;　twitterアカウント作成</a></p>
+        <p><a href="#">&gt;　facebookアカウントの作成</a></p>
+    </div>
+
+    <div class="login-loginbox">
+        <a href="#"><img src="~/Content/imgs/linophi-logo.png" height="70" width="70"></a>
+        <a href="#"><p>twitterアカウントで登録</p></a>
+    </div>
+    <div class="login-loginbox">
+        <a href="#"><img src="~/Content/imgs/linophi-logo.png" height="70" width="70"></a>
+        <a href="#"><p>facebookアカウントで登録</p></a>
+    </div>
+
+
+</div>

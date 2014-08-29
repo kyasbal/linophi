@@ -35,6 +35,7 @@ namespace Web
 
         public IHttpActionResult IsValidTitle([FromBody]VerifyTitleRequest req)
         {
+            if (req.Title == null) return Json(VerifyTitleResponse.GenerateFailedResponse("タイトルは空白にできません。"));
             string articleName = req.Title.Replace(" ", "").Replace("　", "");
             if (articleName.Length <= 50)
             {
