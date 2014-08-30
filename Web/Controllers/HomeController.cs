@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity.Owin;
 using Web.Models;
 using Web.Storage;
 
@@ -14,7 +15,7 @@ namespace Web.Controllers
     {
         private ViewArticleViewModel getArticleViewModel(string articleId)
         {
-            ApplicationDbContext context = new ApplicationDbContext();
+            ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
             var article = context.Articles.FirstOrDefault(a => a.ArticleId.Equals(articleId));
             if (article == null) return null;
             ParagraphTableManager pm = new ParagraphTableManager(new TableStorageConnection());

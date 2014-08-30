@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc.Html;
+using Microsoft.AspNet.Identity.Owin;
 using Newtonsoft.Json;
 using Web.Api.Response;
 using Web.Api.Response.Article;
@@ -29,7 +31,7 @@ namespace Web
         public IHttpActionResult IsExist([FromBody]ExistenceRequest req)
         {
             string articleName = req.Title;
-            return Json(new ExistenceResponse(isTitleExist(articleName,Request.GetOwinContext().Get<ApplicationDbContext>())));
+            return Json(new ExistenceResponse(isTitleExist(articleName, HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>())));
         }
 
         public static VerifyTitleResponse IsValidTitle(string title,ApplicationDbContext context)
@@ -69,7 +71,7 @@ namespace Web
 
         public IHttpActionResult IsValidTitle([FromBody]VerifyTitleRequest req)
         {
-            return Json(IsValidTitle(req.Title));
+            return Json(IsValidTitle(req.Title, HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>()));
         }
     }
 }

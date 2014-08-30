@@ -8,7 +8,7 @@ namespace Web.Models
 {
     public class ApplicationDbContext : IdentityDbContext<UserAccount>
     {
-        public ApplicationDbContext()
+        private ApplicationDbContext()
             : base(ConfigurationLoaderFactory.GetConfigurationLoader().GetConfiguration("SQL-ConnectionString"), throwIfV1Schema: false)
         {
         }
