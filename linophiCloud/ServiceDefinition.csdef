@@ -15,6 +15,10 @@
       <Import moduleName="Diagnostics" />
     </Imports>
     <ConfigurationSettings>
+      <Setting name="Twitter-ConsumerKey"/>
+      <Setting name="Twitter-ConsumerSecret"/>
+      <Setting name="Facebook-AppID"/>
+      <Setting name="Facebook-AppSecret"/>
       <Setting name="SQL-ConnectionString" />
     </ConfigurationSettings>
   </WebRole>

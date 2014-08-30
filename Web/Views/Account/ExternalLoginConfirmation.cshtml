@@ -1,6 +1,22 @@
 ﻿@model Web.Controllers.ExternalLoginConfirmationViewModel
 
 @{
-    ViewBag.Title = "サインアップ";
+    ViewBag.Title = "ようこそ";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
+
+<h1>サインアップ</h1>
+<p>linophiに興味を持っていただきありがとうございます。ご登録はこのページのみで終わります。</p>
+@using (Html.BeginForm("ExternalLoginConfirmation","Account",FormMethod.Post))
+{
+   @Html.AntiForgeryToken()
+   @Html.LabelFor((m) => m.Email)
+   @Html.TextBoxFor((m) => m.Email)
+   @Html.LabelFor(m=>m.AcceptMail)
+   @Html.CheckBoxFor(m=>m.AcceptMail)
+    @Html.LabelFor(m=>m.AcceptTerm)
+    @Html.CheckBoxFor(m=>m.AcceptTerm)
+    <input type="submit" value="登録"></input>
+
+}
+
