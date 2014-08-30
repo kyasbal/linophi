@@ -1,19 +1,9 @@
 ﻿
-    class MarkupBase
-    {
+class MarkupBase
+{
     getMarkupString(str: string): string//マークアップ実行
-        {
+    {
         return null;
-        }
- }
-
- class BoldMarkup extends MarkupBase {
-     getMarkupString(str: string): string {
-         var result: string = "";
-         result = str.replace(/\\\*/g, "\u0006\u0006");
-         result = result.replace(/\*(.+?)\*/, "<span class=\"b\">$1</span>");
-         result = result.replace(/\u0006\u0006/g, "*");
-         return result;
     }
 }
 
@@ -37,16 +27,7 @@ class BoldMarkup extends MarkupBase //太字
     {
         var result: string = str;
         var rep: string;
-        //var callbackFlag: boolean = false;
 
-        //if (prevState != null && !prevState.isConclusion)//前の段落で閉じてなかった
-        //{
-        //    callbackFlag = true;
-        //    rep = result.replace(/^(.*?[^\\])\*/, "<span class=\"b\">$1</span>");//前半を強調
-        //    if (rep == result) //*が見つからないとき、強調せずに閉じてないことだけ通知
-        //        return result;
-        //    result = rep;
-        //}
         result = result.replace(/^\*(.*?[^\\])\*/, "<span class=\"b\">$1</span>");
         while (true)//*に挟まれてるのを強調
         {
@@ -55,24 +36,8 @@ class BoldMarkup extends MarkupBase //太字
             result = rep;
         }
 
-        //var check: string = result.replace(/[^\\]\*/, "");
-        //if (check != result) return new MarkupResult(result, false, callbackFlag);//まだ一つペアになってない*が残ってる
-        //return new MarkupResult(result, true, callbackFlag);//マークアップが閉じた
-        return result;
+        return result.replace(/\\\*/,"*");
     }
-    //markupConcludeCallback(str: string): MarkupResult//後続でマークアップが閉じた
-    //{
-    //    var rep: string = str.replace(/[^\\]\*(.*?)$/, "<span class=\"b\">$1</span>");//最後の*の後ろを太字に
-    //    if (rep == str)//*がなければ、全文が太字に
-    //        return new MarkupResult("<span class=\"b\">" + str + "</span>", false, true);
-    //    return new MarkupResult(rep, false,false);
-    //}
-    //getMarkupStateData(str: string): MarkupStateData
-    //{
-    //    var rep : string = str.replace(/[^\\]\*/, "");
-    //    if (rep != str) return new MarkupStateData(false);
-    //    return new MarkupStateData(true);
-    //}
 }
 
 //class QuoteMarkup extends MarkupBase 

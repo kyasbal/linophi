@@ -13,21 +13,6 @@ var MarkupBase = (function () {
     return MarkupBase;
 })();
 
-var BoldMarkup = (function (_super) {
-    __extends(BoldMarkup, _super);
-    function BoldMarkup() {
-        _super.apply(this, arguments);
-    }
-    BoldMarkup.prototype.getMarkupString = function (str) {
-        var result = "";
-        result = str.replace(/\\\*/g, "\u0006\u0006");
-        result = result.replace(/\*(.+?)\*/, "<span class=\"b\">$1</span>");
-        result = result.replace(/\u0006\u0006/g, "*");
-        return result;
-    };
-    return BoldMarkup;
-})(MarkupBase);
-
 var QuoteMarkup = (function (_super) {
     __extends(QuoteMarkup, _super);
     function QuoteMarkup() {
@@ -56,15 +41,6 @@ var BoldMarkup = (function (_super) {
         var result = str;
         var rep;
 
-        //var callbackFlag: boolean = false;
-        //if (prevState != null && !prevState.isConclusion)//前の段落で閉じてなかった
-        //{
-        //    callbackFlag = true;
-        //    rep = result.replace(/^(.*?[^\\])\*/, "<span class=\"b\">$1</span>");//前半を強調
-        //    if (rep == result) //*が見つからないとき、強調せずに閉じてないことだけ通知
-        //        return result;
-        //    result = rep;
-        //}
         result = result.replace(/^\*(.*?[^\\])\*/, "<span class=\"b\">$1</span>");
         while (true) {
             rep = result.replace(/([^\\])\*(.*?[^\\])\*/, "$1<span class=\"b\">$2</span>");
@@ -73,10 +49,7 @@ var BoldMarkup = (function (_super) {
             result = rep;
         }
 
-        //var check: string = result.replace(/[^\\]\*/, "");
-        //if (check != result) return new MarkupResult(result, false, callbackFlag);//まだ一つペアになってない*が残ってる
-        //return new MarkupResult(result, true, callbackFlag);//マークアップが閉じた
-        return result;
+        return result.replace(/\\\*/, "*");
     };
     return BoldMarkup;
 })(MarkupBase);

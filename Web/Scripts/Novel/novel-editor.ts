@@ -2,6 +2,7 @@
 {
     var sepalateToken: string = "\n\n";
     var markups: MarkupBase[] = [new BoldMarkup()];
+    
     export class NovelEditer
     {
         
@@ -162,46 +163,46 @@
                     if (str != parag.rawText)
                     {
                         if (changeStart == 0)
-                    {
+                        {
                             changeStart = null;
                             break;
-                    }
+                        }
                         changeStart--;
                         break;
-                }
+                    }
                     if (str.substr(0, parag.rawText.length + 1) == parag.rawText + "\n")
-                        {
+                    {
                         changeStart = parag.getParagraphIndex();
                         break;
-                        }
                     }
-                if (str.substr(0, parag.rawText.length + 1) == parag.rawText + "\n")
-                        {
-                    str = str.substr(parag.rawText.length);
+                }
+                if (str.substr(0, parag.rawText.length + 2) == parag.rawText + "\n\n")
+                {
+                    str = str.substr(parag.rawText.length+1);
                     parag = parag.nextParagraph;
                     continue;
-                        }
+                }
                 if (changeStart == 0)
                 {
                     changeStart = null;
                     break;
-                    }
+                }
                 changeStart--;
                 break;
-                }
+            }
 
             var changeEnd: number = this._paragraphManager.lastParagraphIndex;//最後の変更点の直後の位置
             str = currentText;//コピー
             parag = this._paragraphManager.getParagraphByIndex(this._paragraphManager.lastParagraphIndex);
             while (true)
-                    {
+            {
                 if (parag.isFirstParagraph)
-                    {
+                {
                     changeEnd = null;
                     break;
-                    }
+                }
                 if (str.substr(str.length - parag.rawText.length - 1) == "\n" + parag.rawText)
-                    {
+                {
                     str = str.substr(0, str.length - parag.rawText.length);
                     parag = parag.prevParagraph;
                     continue;
@@ -210,10 +211,10 @@
                 {
                     changeEnd = null;
                     break;
-            }
+                }
                 changeEnd++;
                 break;
-        }
+            }
 
             var ret: TextChangeInfo = new TextChangeInfo(changeStart, changeEnd);//帰り値
 
@@ -651,8 +652,7 @@
         //HTML再生成
         updateCacheHtml()
         {
-            //var prefixes: any[] = [new TitlePrefix(), new DividerPrefix()];
-            var prefixes: any[] = [new TitlePrefix()];
+            var prefixes: PrefixBase[] = [new TitlePrefix(), new DividerPrefix(), new QuotePrefix()];
             var tag: JQuery;
             var rawStr: string = this._rawText.replace(/\n/g, "</br>");
             rawStr.replace(" ", "&ensp;"); //半角スペースは特殊文字として置き換える
@@ -674,35 +674,11 @@
 
             if (!isPrefixed)
             {
-                //if (this._markupState == null)
-                //    this._markupState = new Array(this._markups.length);
-
-                //var prevState: MarkupStateData = null;
-            for (var j = 0; j < markups.length; j++)
-            {
-                    //if (!this.isFirstParagraph)//前の段落のマークアップ状態を取得
-                    //{
-                    //    prevState = this.prevParagraph._markupState[j];
-                    //}
-                    //var res: string = markups[j].getMarkupString(rawStr);//処理
+                for (var j = 0; j < markups.length; j++)
+                {
                     rawStr = markups[j].getMarkupString(rawStr);//処理
 
-                    //if (this._markupState[j] == null ?
-                    //    false : (this._markupState[j].isConclusion != res.concludeFlag))
-                    //{ //マークアップの閉じ開きが変化したら、後続もHTML再生成
-                    //    this._markupState[j] = new MarkupStateData(res.concludeFlag); //状態記録
-                    //    if (!this.isFinalParagraph)
-                    //        this.nextParagraph.callUpdateCacheHtml();
-                    //}
-                    //else
-                    //    this._markupState[j] = new MarkupStateData(res.concludeFlag); //状態記録
-
-                    //if (res.callBackPrevFlag)//閉じてなかったのが閉じたときの通知処理
-                    //{
-                    //    this.prevParagraph.markupConcludCallback(j, this._markupState[j].isConclusion);
-                    //}
-            }
-
+                }
 
                 tag = $("<p/>");
                 //エスケープ処理
@@ -961,7 +937,7 @@
             {
                 sLength = i;
                 if (str.charAt(i) != '#')
-        {
+                {
                     sLength = i;
                     break;
                 }
@@ -969,12 +945,29 @@
             return "<h" + sLength + ">" + str.substr(sLength) + "</h" + sLength + ">";
         }
     }
+    class QuotePrefix extends PrefixBase
+    {
+        getPrefixString(): string
+        {
+            return ">";
+        }
+
+
+
+        getFormattedHtmlImpl(str: string): string
+        {
+            str = str.replace(/\n/g, "</br>");
+            str = str.replace(/\{(.*)\}/g, "<p class=\"source\">出典：$1</p>");
+            return "<blockquote><div class=\"quote\">" + str + "</div></blockquote>";
+        }
+    }
+
 
     class DividerPrefix extends PrefixBase
     {
         getPrefixString(): string
         {
-            return "-";
+            return "---";
         }
 
         getFormattedHtmlImpl(str: string): string

@@ -8,6 +8,7 @@ var NovelEditer;
 (function (_NovelEditer) {
     var sepalateToken = "\n\n";
     var markups = [new BoldMarkup()];
+
     var NovelEditer = (function () {
         function NovelEditer(editorTarget, previewTarget, previewBounds) {
             var _this = this;
@@ -150,8 +151,8 @@ var NovelEditer;
                         break;
                     }
                 }
-                if (str.substr(0, parag.rawText.length + 1) == parag.rawText + "\n") {
-                    str = str.substr(parag.rawText.length);
+                if (str.substr(0, parag.rawText.length + 2) == parag.rawText + "\n\n") {
+                    str = str.substr(parag.rawText.length + 1);
                     parag = parag.nextParagraph;
                     continue;
                 }
@@ -597,12 +598,7 @@ var NovelEditer;
 
         //HTML再生成
         Paragraph.prototype.updateCacheHtml = function () {
-<<<<<<< HEAD
-            //var prefixes: any[] = [new TitlePrefix(), new DividerPrefix()];
-            var prefixes = [new TitlePrefix()];
-=======
             var prefixes = [new TitlePrefix(), new DividerPrefix(), new QuotePrefix()];
->>>>>>> 39ea1f64667bb0c61606eba95b14f1175d1c7313
             var tag;
             var rawStr = this._rawText.replace(/\n/g, "</br>");
             rawStr.replace(" ", "&ensp;"); //半角スペースは特殊文字として置き換える
@@ -621,25 +617,7 @@ var NovelEditer;
 
             if (!isPrefixed) {
                 for (var j = 0; j < markups.length; j++) {
-                    //if (!this.isFirstParagraph)//前の段落のマークアップ状態を取得
-                    //{
-                    //    prevState = this.prevParagraph._markupState[j];
-                    //}
-                    //var res: string = markups[j].getMarkupString(rawStr);//処理
                     rawStr = markups[j].getMarkupString(rawStr); //処理
-                    //if (this._markupState[j] == null ?
-                    //    false : (this._markupState[j].isConclusion != res.concludeFlag))
-                    //{ //マークアップの閉じ開きが変化したら、後続もHTML再生成
-                    //    this._markupState[j] = new MarkupStateData(res.concludeFlag); //状態記録
-                    //    if (!this.isFinalParagraph)
-                    //        this.nextParagraph.callUpdateCacheHtml();
-                    //}
-                    //else
-                    //    this._markupState[j] = new MarkupStateData(res.concludeFlag); //状態記録
-                    //if (res.callBackPrevFlag)//閉じてなかったのが閉じたときの通知処理
-                    //{
-                    //    this.prevParagraph.markupConcludCallback(j, this._markupState[j].isConclusion);
-                    //}
                 }
 
                 tag = $("<p/>");
@@ -890,7 +868,6 @@ var NovelEditer;
         TitlePrefix.prototype.getPrefixString = function () {
             return "#";
         };
-<<<<<<< HEAD
         TitlePrefix.prototype.getFormattedHtml = function (str) {
             var sLength = 0;
             for (var i = 1; i < str.length; i++) {
@@ -901,15 +878,9 @@ var NovelEditer;
                 }
             }
             return "<h" + sLength + ">" + str.substr(sLength) + "</h" + sLength + ">";
-=======
-
-        TitlePrefix.prototype.getFormattedHtmlImpl = function (str) {
-            return "<h1>" + str + "</h1><hr/>";
->>>>>>> 39ea1f64667bb0c61606eba95b14f1175d1c7313
         };
         return TitlePrefix;
     })(PrefixBase);
-
     var QuotePrefix = (function (_super) {
         __extends(QuotePrefix, _super);
         function QuotePrefix() {
@@ -933,7 +904,7 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         DividerPrefix.prototype.getPrefixString = function () {
-            return "-";
+            return "---";
         };
 
         DividerPrefix.prototype.getFormattedHtmlImpl = function (str) {
