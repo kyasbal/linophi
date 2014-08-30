@@ -12,34 +12,20 @@ namespace linophi.Models
         /// <summary>
         /// 初期の状態のアカウントのインスタンスを作成します。
         /// </summary>
-        /// <param name="birthDay"></param>
         /// <param name="nickname"></param>
         /// <param name="email"></param>
-        /// <param name="gender"></param>
         /// <returns></returns>
-        public static UserAccount CreateUser(DateTime? birthDay,string userName,string nickname,string email,GenderType gender)
+        public static UserAccount CreateUser(string userName,string nickname,string email)
         {
             return new UserAccount()
             {
                 UserName = userName,
                 Email = email,
-                BirthDay = birthDay,
                 NickName = nickname,
-                Gender = gender,
                 UpdateTime = DateTime.Now,
                 CreationTime = DateTime.Now
             };
         }
-
-        /// <summary>
-        /// 生年月日
-        /// </summary>
-        public DateTime? BirthDay { get; set; }
-
-        /// <summary>
-        /// URLで一意に識別するための値
-        /// </summary>
-        public string UrlId { get; set; }
 
         /// <summary>
         /// ニックネーム
@@ -51,11 +37,6 @@ namespace linophi.Models
         /// </summary>
         public string Description { get; set; }
 
-        /// <summary>
-        /// 性別
-        /// </summary>
-        public UserAccount.GenderType Gender { get; set; }
-        
         /// <summary>
         /// アカウント作成日時
         /// </summary>
@@ -72,11 +53,6 @@ namespace linophi.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // ここにカスタム ユーザー クレームを追加します
             return userIdentity;
-        }
-
-        public enum GenderType
-        {
-            Male,Female
         }
     }
 }

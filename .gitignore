@@ -158,3 +158,4 @@ Web/App_Data/Debug.mdf
 Web/App_Data/Debug_log.ldf
 /packages
 /packages
+*.diagsession
