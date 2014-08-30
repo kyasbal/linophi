@@ -40,7 +40,11 @@ var QuoteMarkup = (function (_super) {
     QuoteMarkup.prototype.getMarkupString = function (str) {
         var result = "";
         result = str.replace(/\\"/g, "\u0006\u0006");
-        result = result.replace(/"(.+?)"/, "<blockquote><p class=\"quote\">$1</p></blockquote>");
+        if (result.match(/"(.+?)(\{.*?\})"/)) {
+            result = result.replace(/"(.+?)\{(.*?)\}"/, "<blockquote><div class=\"quote\"><p class=\"quote-body\">$1</p></br><p class=\"source\">出典:$2</p></div></blockquote>");
+        } else {
+            result = result.replace(/"(.+?)"/, "<blockquote><p class=\"quote\">$1</p></blockquote>");
+        }
         result = result.replace(/\u0006\u0006/g, "\"");
         return result;
     };

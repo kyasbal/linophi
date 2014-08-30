@@ -647,7 +647,7 @@ var NovelEditer;
 
         //HTML再生成
         Paragraph.prototype.updateCacheHtml = function () {
-            var prefixes = [new TitlePrefix(), new DividerPrefix()];
+            var prefixes = [new TitlePrefix(), new DividerPrefix(), new QuotePrefix()];
             var tag;
             var rawStr = this._rawText;
             rawStr.replace(" ", "&ensp;"); //半角スペースは特殊文字として置き換える
@@ -886,6 +886,8 @@ var NovelEditer;
         PrefixBase.prototype.isPrefixOfMe = function (str) {
             if (str.charCodeAt(0) == 0x5c)
                 return false;
+            if (str.length <= this.getPrefixString().length)
+                return false;
             if (Utils.StringUtility.startWith(str, this.getPrefixString()))
                 return true;
             return false;
@@ -919,6 +921,23 @@ var NovelEditer;
             return "<h1>" + str + "</h1>";
         };
         return TitlePrefix;
+    })(PrefixBase);
+
+    var QuotePrefix = (function (_super) {
+        __extends(QuotePrefix, _super);
+        function QuotePrefix() {
+            _super.apply(this, arguments);
+        }
+        QuotePrefix.prototype.getPrefixString = function () {
+            return ">";
+        };
+
+        QuotePrefix.prototype.getFormattedHtmlImpl = function (str) {
+            str = str.replace(/\n/g, "</br>");
+            str = str.replace(/\{(.*)\}/g, "<p class=\"source\">出典：$1</p>");
+            return "<blockquote><div class=\"quote\">" + str + "</div></blockquote>";
+        };
+        return QuotePrefix;
     })(PrefixBase);
 
     var DividerPrefix = (function (_super) {

@@ -702,7 +702,7 @@
         //HTML再生成
         updateCacheHtml()
         {
-            var prefixes: any[] = [new TitlePrefix(), new DividerPrefix()];
+            var prefixes: any[] = [new TitlePrefix(), new DividerPrefix(),new QuotePrefix()];
             var tag: JQuery;
             var rawStr: string = this._rawText;
             rawStr.replace(" ", "&ensp;"); //半角スペースは特殊文字として置き換える
@@ -949,6 +949,8 @@
         isPrefixOfMe(str: string): boolean
         {
             if (str.charCodeAt(0) == 0x5c) return false; //最初が\のときエスケープする
+            if (str.length <= this.getPrefixString().length)
+                return false;
             if (Utils.StringUtility.startWith(str, this.getPrefixString())) return true;
             return false;
         }
@@ -980,6 +982,22 @@
         getFormattedHtmlImpl(str: string): string
         {
             return "<h1>" + str + "</h1>";
+        }
+    }
+
+    class QuotePrefix extends PrefixBase {
+        getPrefixString(): string
+        {
+            return ">";
+        }
+
+        
+
+        getFormattedHtmlImpl(str: string): string
+        {
+            str = str.replace(/\n/g, "</br>");
+            str = str.replace(/\{(.*)\}/g, "<p class=\"source\">出典：$1</p>");
+            return "<blockquote><div class=\"quote\">" + str + "</div></blockquote>";
         }
     }
 
