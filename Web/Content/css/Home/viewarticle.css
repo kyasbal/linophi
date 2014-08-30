@@ -52,12 +52,13 @@ input[type="text"] {
 }
 .container .head-inner {
   position: relative;
-  width: 960px;
+  width: 1080px;
   height: 44px;
   margin: 0 auto;
 }
 .container .contents {
   padding-bottom: 25px;
+  overflow: hidden;
 }
 .container .contents .top {
   margin-bottom: 30px;
@@ -316,10 +317,44 @@ input[type="text"] {
 .container .contents .contentswrapper .main .rellist .list .listdesc {
   color: #aaa;
 }
-.container .contents .sub {
-  position: relative;
-  float: right;
+.container .contents .postit {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.container .contents .postit-contents {
+  background-color: #fdf8f2;
+}
+.container .contents .postit-title {
+  padding: 13px 15px 0;
+  color: #000;
+  font-weight: bold;
+  font-size: 12px;
+}
+.container .contents .postit-list {
+  padding: 15px 30px 9px;
+}
+.container .contents .postit-list img {
+  display: block;
+  width: 130px;
+}
+.container .contents .dropbox {
+  margin-left: 20px;
+  float: left;
+  background: #F0EBCE;
   width: 300px;
+  padding-bottom: 1000000px;
+  margin-bottom: -1000000px;
+}
+.container .contents .dropbox img {
+  width: 130px;
+  float: left;
+  margin-right: -120px;
 }
 .container .contents .foot {
   width: 100%;
@@ -376,20 +411,6 @@ input[type="text"] {
 .container .contents a.topicword:hover {
   background: #f0f0f0;
 }
-.container .contents .subcontents {
-  position: fixed;
-  background-color: #fdf8f2;
-}
-.container .contents .subtitle {
-  position: relative;
-  padding: 13px 15px 0;
-  color: #000;
-  font-weight: bold;
-  font-size: 12px;
-}
-.container .contents .sublist {
-  padding: 15px 30px 9px;
-}
 .container .contents .list .listtitle a:link,
 .container .contents .list .listtitle a:visited {
   text-decoration: none;
@@ -410,5 +431,8 @@ input[type="text"] {
 .container .contents .main .separator1 hr,
 .container .contents .main .separator2 hr {
   display: none;
+}
+.droppable-hover {
+  background: #fdd;
 }
 /*# sourceMappingURL=viewarticle.css.map */
