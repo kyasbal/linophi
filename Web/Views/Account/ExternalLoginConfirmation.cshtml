@@ -5,18 +5,31 @@
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
 
-<h1>サインアップ</h1>
-<p>linophiに興味を持っていただきありがとうございます。ご登録はこのページのみで終わります。</p>
-@using (Html.BeginForm("ExternalLoginConfirmation","Account",FormMethod.Post))
+@section CSS
 {
-   @Html.AntiForgeryToken()
-   @Html.LabelFor((m) => m.Email)
-   @Html.TextBoxFor((m) => m.Email)
-   @Html.LabelFor(m=>m.AcceptMail)
-   @Html.CheckBoxFor(m=>m.AcceptMail)
-    @Html.LabelFor(m=>m.AcceptTerm)
-    @Html.CheckBoxFor(m=>m.AcceptTerm)
-    <input type="submit" value="登録">
-
+    <link href="~/Content/css/Account/ExternalLoginConfirmation.css" rel="stylesheet" />
 }
+<div class="whole-layout">
+    <div class="sign-up">&nbsp;&nbsp;サインアップ</div><br /><hr /><br />
+    <div class="form">
+        <p>
+            linophiに興味を持っていただきありがとうございます。登録はこのページで終了です。
+        </p>
+        <br />
 
+        @using (Html.BeginForm("ExternalLoginConfirmation", "Account", FormMethod.Post))
+        {
+
+            @Html.AntiForgeryToken()
+            @Html.LabelFor((m) => m.Email, new { @class = "label" })
+            @Html.TextBoxFor((m) => m.Email, new { @class = "text-box" })<br/><br/>
+            @Html.LabelFor(m => m.AcceptMail)
+            @Html.CheckBoxFor(m => m.AcceptMail)<br/><br/>
+            @Html.LabelFor(m => m.AcceptTerm)
+            @Html.CheckBoxFor(m => m.AcceptTerm)
+            <input type="submit" value="登録">
+
+
+        }
+    </div>
+</div>

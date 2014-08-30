@@ -1,0 +1,25 @@
+﻿html,
+body {
+  height: 100%;
+}
+.whole-layout {
+  margin-top: 0;
+  padding-left: 5%;
+  padding-right: 5%;
+  height: 60%;
+  background-color: #fdf8f2;
+  font-size: large;
+}
+.whole-layout .sign-up {
+  padding-top: 5%;
+  margin: 0 auto;
+  font-size: x-large;
+  font-weight: bold;
+}
+.whole-layout .form {
+  padding-left: 5%;
+}
+.foot {
+  margin-bottom: 0;
+}
+/*# sourceMappingURL=ExternalLoginConfirmation.css.map */
