@@ -268,6 +268,7 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
+    <Content Include="Scripts\Home\PostitPaster.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -276,6 +277,7 @@
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.1.js" />
     <Content Include="Scripts\jquery-ui.min-1.11.1.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.tooltipster.js" />
     <Content Include="Scripts\jquery.tooltipster.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -381,6 +383,7 @@
     <TypeScriptCompile Include="Scripts\Edit\EditPage.ts" />
     <TypeScriptCompile Include="Scripts\Edit\TagMaker.ts" />
     <TypeScriptCompile Include="Scripts\Home\AfterLogin.ts" />
+    <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />
     <TypeScriptCompile Include="Scripts\Novel\IParagraph.ts" />
     <TypeScriptCompile Include="Scripts\Novel\Markups.ts" />
     <TypeScriptCompile Include="Scripts\Novel\novel-editor.ts" />
