@@ -1,9 +1,8 @@
+using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using linophi.Models;
-using LinophiWeb;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -13,6 +12,7 @@ using Web.Utility;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private ApplicationUserManager _userManager;
@@ -23,6 +23,7 @@ namespace Web.Controllers
             private set { _userManager = value; }
         }
 
+        [AllowAnonymous]
         public ActionResult LogIn()
         {
             return View();
@@ -32,7 +33,14 @@ namespace Web.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
+        public ActionResult TestConfirmation()
+        {
+            return View("ExternalLoginConfirmation");
+        }
 
+        [AllowAnonymous]
+        [HttpPost]
         public ActionResult ExternalLogin(string provider,string returnUrl)
         {
             return new ChallengeResult(provider,Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
@@ -82,6 +90,11 @@ namespace Web.Controllers
 
     public class ExternalLoginConfirmationViewModel
     {
+        [Display(Name = "メールアドレス")]
         public string Email { get; set; }
+        [Display(Name = "利用規約に同意する")]
+        public bool AcceptTerm { get; set; }
+        [Display(Name = "linophiの通知をメールで受け取る")]
+        public bool AcceptMail { get; set; }
     }
 }
