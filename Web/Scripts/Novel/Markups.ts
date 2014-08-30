@@ -10,15 +10,6 @@
         }
  }
 
- class BoldMarkup extends MarkupBase {
-     getMarkupString(str: string): string {
-         var result: string = "";
-         result = str.replace(/\\\*/g, "\u0006\u0006");
-         result = result.replace(/\*(.+?)\*/, "<span class=\"b\">$1</span>");
-         result = result.replace(/\u0006\u0006/g, "*");
-         return result;
-    }
-}
 
 class QuoteMarkup extends MarkupBase {
     getMarkupString(str: string): string {

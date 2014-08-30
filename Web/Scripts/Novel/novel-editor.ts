@@ -981,7 +981,7 @@
 
         getFormattedHtmlImpl(str: string): string
         {
-            return "<h1>" + str + "</h1>";
+            return "<h1>" + str + "</h1><hr/>";
         }
     }
 

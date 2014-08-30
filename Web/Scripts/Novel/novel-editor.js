@@ -918,7 +918,7 @@ var NovelEditer;
         };
 
         TitlePrefix.prototype.getFormattedHtmlImpl = function (str) {
-            return "<h1>" + str + "</h1>";
+            return "<h1>" + str + "</h1><hr/>";
         };
         return TitlePrefix;
     })(PrefixBase);
