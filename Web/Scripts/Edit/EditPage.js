@@ -1,6 +1,7 @@
 ﻿/// <reference path="../typings/jquery/jquery.d.ts" />
 var editPage;
 var editorInstance;
+var isConfirmedTitle;
 $(function () {
     editPage = new EditPage();
     editorInstance = new NovelEditer.NovelEditer($(".edit-context"), $(".preview-body"), $(".preview-context"));
@@ -8,7 +9,8 @@ $(function () {
     editPage.onChanged();
     $(".edit-submit-button").click(function () {
         $("#context").val(editorInstance.toJSON());
-        $(".edit-form").submit();
+        if (isConfirmedTitle)
+            $(".edit-form").submit();
     });
 });
 
