@@ -28,12 +28,21 @@
     </div>
 
     <div class="login-loginbox">
-        <a href="#"><img src="~/Content/imgs/linophi-logo.png" height="70" width="70"></a>
-        <a href="#"><p>twitterアカウントでログイン</p></a>
+        @using (Html.BeginForm("ExternalLogin", "Account",FormMethod.Post))
+        {
+            <a href="#"><img src="~/Content/imgs/linophi-logo.png" height="70" width="70"></a>
+            @Html.Hidden("provider","twitter")
+            <input type="submit" value="Twitterでログイン"/>
+        }
+
     </div>
     <div class="login-loginbox">
-        <a href="#"><img src="~/Content/imgs/linophi-logo.png" height="70" width="70"></a>
-        <a href="#"><p>facebookアカウントでログイン</p></a>
+        @using (Html.BeginForm("ExternalLogin", "Account",FormMethod.Post))
+        {
+            <a href="#"><img src="~/Content/imgs/linophi-logo.png" height="70" width="70"></a>
+            @Html.Hidden("provider", "facebook")
+            <input type="submit" value="Facebookでログイン" />
+        }
     </div>
     
 
