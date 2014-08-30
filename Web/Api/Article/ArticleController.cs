@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc.Html;
+using Microsoft.AspNet.Identity.Owin;
 using Newtonsoft.Json;
 using Web.Api.Response;
 using Web.Api.Response.Article;
@@ -14,9 +16,8 @@ namespace Web
 {
     public class ArticleController : ApiController
     {
-        private bool isTitleExist(string title)
+        private static bool isTitleExist(string title,ApplicationDbContext context)
         {
-            ApplicationDbContext context = new ApplicationDbContext();
             if (context.Articles.Any((a) => a.Title.Equals(title)))
             {
                 return true;
@@ -30,42 +31,47 @@ namespace Web
         public IHttpActionResult IsExist([FromBody]ExistenceRequest req)
         {
             string articleName = req.Title;
-            return Json(new ExistenceResponse(isTitleExist(articleName)));
+            return Json(new ExistenceResponse(isTitleExist(articleName, HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>())));
         }
 
-        public IHttpActionResult IsValidTitle([FromBody]VerifyTitleRequest req)
+        public static VerifyTitleResponse IsValidTitle(string title,ApplicationDbContext context)
         {
-            if (req.Title == null) return Json(VerifyTitleResponse.GenerateFailedResponse("タイトルは空白にできません。"));
-            string articleName = req.Title.Replace(" ", "").Replace("　", "");
+            if (title == null) return VerifyTitleResponse.GenerateFailedResponse("タイトルは空白にできません。");
+            string articleName = title.Replace(" ", "").Replace("　", "");
             if (articleName.Length <= 50)
             {
                 if (articleName.Length >= 5)
                 {
                     if (string.IsNullOrWhiteSpace(articleName))
                     {
-                        return Json(VerifyTitleResponse.GenerateFailedResponse("タイトルは空白にできません。"));
+                        return VerifyTitleResponse.GenerateFailedResponse("タイトルは空白にできません。");
                     }
                     else
                     {
-                        if (isTitleExist(req.Title))
+                        if (isTitleExist(title,context))
                         {
-                            return Json(VerifyTitleResponse.GenerateFailedResponse("そのタイトルはすでに利用されています。"));
+                            return VerifyTitleResponse.GenerateFailedResponse("そのタイトルはすでに利用されています。");
                         }
                         else
                         {
-                            return Json(VerifyTitleResponse.GenerateSuccessResponse());
+                            return VerifyTitleResponse.GenerateSuccessResponse();
                         }
                     }
                 }
                 else
                 {
-                    return Json(VerifyTitleResponse.GenerateFailedResponse("タイトルが短すぎます。"));
+                    return VerifyTitleResponse.GenerateFailedResponse("タイトルが短すぎます。");
                 }
             }
             else
             {
-                return Json(VerifyTitleResponse.GenerateFailedResponse("タイトルが長すぎます。"));
+                return VerifyTitleResponse.GenerateFailedResponse("タイトルが長すぎます。");
             }
+        }
+
+        public IHttpActionResult IsValidTitle([FromBody]VerifyTitleRequest req)
+        {
+            return Json(IsValidTitle(req.Title, HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>()));
         }
     }
 }
