@@ -1,12 +1,46 @@
-﻿.b {
-  font-weight: bolder;
+﻿.edit-preview {
+  color: black;
 }
-.quote {
+.edit-preview .em {
+  background-color: aquamarine;
+}
+.edit-preview .em .quote {
   margin: 20px 20px;
   border-left: solid 4px #808080;
   padding: 5px;
 }
-.quote:hover {
+.edit-preview .em .quote .source {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  color: gray;
+  font-size: small;
+}
+.edit-preview .em .quote:hover {
   background-color: #f8f8f8;
+}
+.edit-preview .b {
+  font-weight: bolder;
+}
+.edit-preview > p:hover {
+  background-color: lightgoldenrodyellow;
+}
+.edit-preview > h1 {
+  font-size: x-large;
+}
+.edit-preview > h1:hover {
+  background-color: lightgoldenrodyellow;
+}
+.edit-preview > h2 {
+  font-size: larger;
+}
+.edit-preview > h2:hover {
+  background-color: lightgoldenrodyellow;
+}
+.edit-preview > h3 {
+  font-size: large;
+}
+.edit-preview > h3:hover {
+  background-color: lightgoldenrodyellow;
 }
 /*# sourceMappingURL=Markup.css.map */

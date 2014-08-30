@@ -63,7 +63,7 @@ input[type="text"] {
 
         &-inner {
             position: relative;
-            width: 960px;
+            width: 1080px;
             height: 44px;
             margin: 0 auto;
         }
@@ -72,6 +72,7 @@ input[type="text"] {
 
     .contents {
         padding-bottom: 25px;
+        overflow: hidden;
 
         .top {
             margin-bottom: 30px;
@@ -392,10 +393,49 @@ input[type="text"] {
 
 
 
-        .sub {
-            position: relative;
-            float: right;
+        .postit {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+
+            &-contents {
+                background-color: #fdf8f2;
+            }
+
+            &-title {
+                padding: 13px 15px 0;
+                color: #000;
+                font-weight: bold;
+                font-size: 12px;
+            }
+
+            &-list {
+                padding: 15px 30px 9px;
+
+                img {
+                    display: block;
+                    width: 130px;
+                }
+            }
+        }
+
+        .dropbox {
+            margin-left: 20px;
+            float: left;
+            background: #F0EBCE;
             width: 300px;
+            padding-bottom: 1000000px;
+            margin-bottom: -1000000px;
+            img {
+                width: 130px;
+                float: left;
+                margin-right: -120px;
+            }
         }
 
         .foot {
@@ -464,22 +504,6 @@ input[type="text"] {
             background: #f0f0f0;
         }
 
-        .subcontents {
-            position: fixed;
-            background-color: #fdf8f2;
-        }
-
-        .subtitle {
-            position: relative;
-            padding: 13px 15px 0;
-            color: #000;
-            font-weight: bold;
-            font-size: 12px;
-        }
-
-        .sublist {
-            padding: 15px 30px 9px;
-        }
 
 
 
@@ -503,4 +527,9 @@ input[type="text"] {
             display: none;
         }
     }
+}
+
+
+.droppable-hover {
+    background: #fdd;
 }

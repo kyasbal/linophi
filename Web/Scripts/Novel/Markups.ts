@@ -1,32 +1,34 @@
 ﻿
-class MarkupBase
-{
+    class MarkupBase
+    {
     getMarkupString(str: string): string//マークアップ実行
-    {
+        {
         return null;
+        }
+ }
+
+ class BoldMarkup extends MarkupBase {
+     getMarkupString(str: string): string {
+         var result: string = "";
+         result = str.replace(/\\\*/g, "\u0006\u0006");
+         result = result.replace(/\*(.+?)\*/, "<span class=\"b\">$1</span>");
+         result = result.replace(/\u0006\u0006/g, "*");
+         return result;
     }
 }
 
-class MarkupStateData//後続のパラグラフへの通知データ
-{
-    constructor(isCncl:boolean)
-    {
-        this.isConclusion = isCncl;
+class QuoteMarkup extends MarkupBase {
+    getMarkupString(str: string): string {
+        var result: string = "";
+        result = str.replace(/\\"/g, "\u0006\u0006");
+        if (result.match(/"(.+?)(\{.*?\})"/)) {
+            result = result.replace(/"(.+?)\{(.*?)\}"/, "<blockquote><div class=\"quote\"><p class=\"quote-body\">$1</p></br><p class=\"source\">出典:$2</p></div></blockquote>");
+        } else {
+            result = result.replace(/"(.+?)"/, "<blockquote><p class=\"quote\">$1</p></blockquote>");
+        }
+        result = result.replace(/\u0006\u0006/g, "\"");
+        return result;
     }
-    public isConclusion:boolean;
-}
-
-class MarkupResult//マークアップ結果
-{
-    constructor(str: string, conclude: boolean,callback:boolean)
-    {
-        this.resultText = str;
-        this.concludeFlag = conclude;
-        this.callBackPrevFlag = callback;
-    }
-    public resultText: string;//処理後のテキスト
-    public concludeFlag: boolean;//次の段落に影響するマークアップの有無
-    public callBackPrevFlag:boolean;//前の段落へコールバックするか
 }
 
 class BoldMarkup extends MarkupBase //太字

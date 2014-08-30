@@ -7,6 +7,10 @@
 
 @section JS
 {
+    
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/Home/PostitPaster.js"></script>
+
     <script src="~/Scripts/Novel/Markups.js"></script>
     <script src="~/Scripts/Novel/novel-editor.js"></script>
     <script src="~/Scripts/Novel/ParagraphFactory.js"></script>
@@ -24,7 +28,7 @@
 
 
 
-    <div class="container">
+<div class="container">
     
     <div class="contents set">
 
@@ -94,17 +98,18 @@
             </div>
         </div>
         <div class="contentswrapper set">
-            <div class="main" >
+            <div class="main" > @* ここのclass名を取得して、 *@
                 <div>
                     <div class="widgetlist">
                         <div class="article-container widget widgettypetitle">
-                            <div class="set">
-                                <div>
-                                    <p class="widgetitemtitleview">記事見出し</p>
-                                </div>
-                                彼は背後にひそかな足音を聞いた。それはあまり良い意味を示すものではない。
-                                誰がこんな夜更けに、しかもこんな街灯のお粗末な港街の狭い小道で彼をつけて来るというのだ。人生の航路を捻じ曲げ、その獲物と共に立ち去ろうとしている、その丁度今。 彼のこの仕事への恐れを和らげるために、数多い仲間の中に同じ考えを抱き、彼を見守り、待っている者がいるというのか。それとも背後の足音の主は、この街に無数にいる法監視役で、強靭な罰をすぐにも彼の手首にガシャンと下すというのか。彼は足音が止まったことに気が着いた。あわてて辺りを見回す。ふと狭い抜け道に目が止まる。 彼は素早く右に身を翻し、建物の間に消え去った。その時彼は、もう少しで道の真中に転がっていたごみバケツに躓き転ぶところだった。 彼は暗闇の中で道を確かめようとじっと見つめた。どうやら自分の通ってきた道以外にこの中庭からの出道はないようだ。 足音はだんだん近づき、彼には角を曲がる黒い人影が見えた。彼の目は夜の闇の中を必死にさまよい、逃げ道を探す。もうすべては終わりなのか。すべての苦労と準備は水の泡だというのか。 突然、彼の横で扉が風に揺らぎ、ほんのわずかにきしむのを聞いた時、彼は背中を壁に押し付け、追跡者に見付けられないことを願った。この扉は望みの綱として投げかけられた、彼のジレンマからの出口なのだろうか。背中を壁にぴったり押し付けたまま、ゆっくりと彼は開いている扉の方へと身を動かして行った。この扉は彼の救いとなるのだろうか。
-                            </div>
+                            <p class="p-0">テストです</p>
+                            <p class="p-1">
+                                彼は背後にひそかな足音を聞いた。
+                            </p>
+                            <h1 class="p-2">僕はだれかだよ</h1>
+                            <p class="p-3">
+                                <span class="b">これはそれですか？</span>
+                            </p>
                         </div>
                     </div>
                     <div class="pagebutton">
@@ -154,37 +159,23 @@
                 
                 <div class="separator1"><hr></div>
             </div>
-            <!--サイドバー(付箋)-->
-            <div class="sub">
-                <div class="subcontents">
-                    <h2 class="subtitle">ふせんを貼る</h2>
-                    <div class="sublist">
-                        <ul>
-                            <li>
-                                <img src="~/Content/imgs/Home/anger.png" width="160" height="60" />
-                            </li>
-                            <li>
-                                <img src="~/Content/imgs/Home/bethink.png" width="160" height="60" />
-                            </li>
-                            <li>
-                                <img src="~/Content/imgs/Home/fun.png" width="160" height="60" />
-                            </li>
-                            <li>
-                                <img src="~/Content/imgs/Home/good.png" width="160" height="60" />
-                            </li>
-                            <li>
-                                <img src="~/Content/imgs/Home/noidea.png" width="160" height="60" />
-                            </li>
-                            <li>
-                                <img src="~/Content/imgs/Home/sad.png" width="160" height="60" />
-                            </li>
-                            <li>
-                                <img src="~/Content/imgs/Home/surprized.png" width="160" height="60" />
-                            </li>
-                        </ul>
+            <div class="dropbox">
+            </div>
+            <div class="postit">
+                <div class="postit-contents">
+                    <h2 class="postit-title">ふせんを貼る</h2>
+                    <div class="postit-list">
+                        <img src="~/Content/imgs/Home/surprized.png">
+                        <img src="~/Content/imgs/Home/anger.png">
+                        <img src="~/Content/imgs/Home/fun.png">
+                        <img src="~/Content/imgs/Home/bethink.png">
+                        <img src="~/Content/imgs/Home/good.png">
+                        <img src="~/Content/imgs/Home/sad.png">
+                        <img src="~/Content/imgs/Home/noidea.png">
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
         @if (Model != null)

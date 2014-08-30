@@ -13,21 +13,39 @@ var MarkupBase = (function () {
     return MarkupBase;
 })();
 
-var MarkupStateData = (function () {
-    function MarkupStateData(isCncl) {
-        this.isConclusion = isCncl;
+var BoldMarkup = (function (_super) {
+    __extends(BoldMarkup, _super);
+    function BoldMarkup() {
+        _super.apply(this, arguments);
     }
-    return MarkupStateData;
-})();
+    BoldMarkup.prototype.getMarkupString = function (str) {
+        var result = "";
+        result = str.replace(/\\\*/g, "\u0006\u0006");
+        result = result.replace(/\*(.+?)\*/, "<span class=\"b\">$1</span>");
+        result = result.replace(/\u0006\u0006/g, "*");
+        return result;
+    };
+    return BoldMarkup;
+})(MarkupBase);
 
-var MarkupResult = (function () {
-    function MarkupResult(str, conclude, callback) {
-        this.resultText = str;
-        this.concludeFlag = conclude;
-        this.callBackPrevFlag = callback;
+var QuoteMarkup = (function (_super) {
+    __extends(QuoteMarkup, _super);
+    function QuoteMarkup() {
+        _super.apply(this, arguments);
     }
-    return MarkupResult;
-})();
+    QuoteMarkup.prototype.getMarkupString = function (str) {
+        var result = "";
+        result = str.replace(/\\"/g, "\u0006\u0006");
+        if (result.match(/"(.+?)(\{.*?\})"/)) {
+            result = result.replace(/"(.+?)\{(.*?)\}"/, "<blockquote><div class=\"quote\"><p class=\"quote-body\">$1</p></br><p class=\"source\">出典:$2</p></div></blockquote>");
+        } else {
+            result = result.replace(/"(.+?)"/, "<blockquote><p class=\"quote\">$1</p></blockquote>");
+        }
+        result = result.replace(/\u0006\u0006/g, "\"");
+        return result;
+    };
+    return QuoteMarkup;
+})(MarkupBase);
 
 var BoldMarkup = (function (_super) {
     __extends(BoldMarkup, _super);

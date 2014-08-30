@@ -99,14 +99,14 @@
             var caret: TextRegion = TextRegion.fromCaretInfo(this._editorTarget.caret());//現在のカレット取得
 
             for (var j = 0; j < this._paragraphList.size(); j++)
-            {
+                {
                 var num: number = this._paragraphList.elementAtIndex(j);
                 if (caret.begin <= num)
                 {
                     this._paragraphManager.changeCurrentParagraphByIndex(j);
                     break;
                 }
-            }
+                }
 
 
             this._lastCaret = caret;
@@ -136,18 +136,18 @@
                     index = currentText.indexOf(sepalateToken, index);
                     if (index == -1) break;
                     this._paragraphList.add(index);
-                }
+                    }
                 this._paragraphList.add(currentText.length);
                 return new TextChangeInfo(null, null);
-            }
+                    }
 
             if (currentText == "")//全削除
-            {
+                    {
                 this._lastText = "";
                 this._paragraphList.clear();
                 this._paragraphList.add(0);
                 return new TextChangeInfo(null, null);
-            }
+                    }
 
             //変更がない
             if (currentText == this._lastText) return new TextChangeInfo(0, 0);
@@ -162,46 +162,46 @@
                     if (str != parag.rawText)
                     {
                         if (changeStart == 0)
-                        {
+                    {
                             changeStart = null;
                             break;
-                        }
+                    }
                         changeStart--;
                         break;
-                    }
+                }
                     if (str.substr(0, parag.rawText.length + 1) == parag.rawText + "\n")
-                    {
+                        {
                         changeStart = parag.getParagraphIndex();
                         break;
+                        }
                     }
-                }
                 if (str.substr(0, parag.rawText.length + 1) == parag.rawText + "\n")
-                {
+                        {
                     str = str.substr(parag.rawText.length);
                     parag = parag.nextParagraph;
                     continue;
-                }
+                        }
                 if (changeStart == 0)
                 {
                     changeStart = null;
                     break;
-                }
+                    }
                 changeStart--;
                 break;
-            }
+                }
 
             var changeEnd: number = this._paragraphManager.lastParagraphIndex;//最後の変更点の直後の位置
             str = currentText;//コピー
             parag = this._paragraphManager.getParagraphByIndex(this._paragraphManager.lastParagraphIndex);
             while (true)
-            {
+                    {
                 if (parag.isFirstParagraph)
-                {
+                    {
                     changeEnd = null;
                     break;
-                }
+                    }
                 if (str.substr(str.length - parag.rawText.length - 1) == "\n" + parag.rawText)
-                {
+                    {
                     str = str.substr(0, str.length - parag.rawText.length);
                     parag = parag.prevParagraph;
                     continue;
@@ -210,7 +210,7 @@
                 {
                     changeEnd = null;
                     break;
-                }
+            }
                 changeEnd++;
                 break;
         }
@@ -222,7 +222,7 @@
             if (num == null) num = -1;
             num++;
             while (this._paragraphList.size() > num)
-            {
+        {
                 this._paragraphList.removeElementAtIndex(num);
             }
             for (var k = this.getParagraphStartIndex(num); k < currentText.length; k++)
@@ -231,11 +231,11 @@
                 {
                     this._paragraphList.add(k);
                 }
-            }
+                }
             this._paragraphList.add(currentText.length);
             this._lastText = currentText;
             return ret;
-        }
+            }
 
         //指定段落の開始インデックスを取得
         getParagraphStartIndex(paragraphIndex: number):number
@@ -410,7 +410,7 @@
             endParag.prevParagraph = startParag;
             this.refreshRegist();
         }
-
+                
         //登録を再確認
         refreshRegist()
         {
@@ -678,8 +678,8 @@
                 //    this._markupState = new Array(this._markups.length);
 
                 //var prevState: MarkupStateData = null;
-                for (var j = 0; j < markups.length; j++)
-                {
+            for (var j = 0; j < markups.length; j++)
+            {
                     //if (!this.isFirstParagraph)//前の段落のマークアップ状態を取得
                     //{
                     //    prevState = this.prevParagraph._markupState[j];
@@ -701,7 +701,7 @@
                     //{
                     //    this.prevParagraph.markupConcludCallback(j, this._markupState[j].isConclusion);
                     //}
-                }
+            }
 
 
                 tag = $("<p/>");
@@ -925,6 +925,8 @@
         isPrefixOfMe(str: string): boolean
         {
             if (str.charCodeAt(0) == 0x5c) return false; //最初が\のときエスケープする
+            if (str.length <= this.getPrefixString().length)
+                return false;
             if (Utils.StringUtility.startWith(str, this.getPrefixString())) return true;
             return false;
         }
@@ -959,7 +961,7 @@
             {
                 sLength = i;
                 if (str.charAt(i) != '#')
-                {
+        {
                     sLength = i;
                     break;
                 }

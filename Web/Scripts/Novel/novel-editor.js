@@ -597,8 +597,12 @@ var NovelEditer;
 
         //HTML再生成
         Paragraph.prototype.updateCacheHtml = function () {
+<<<<<<< HEAD
             //var prefixes: any[] = [new TitlePrefix(), new DividerPrefix()];
             var prefixes = [new TitlePrefix()];
+=======
+            var prefixes = [new TitlePrefix(), new DividerPrefix(), new QuotePrefix()];
+>>>>>>> 39ea1f64667bb0c61606eba95b14f1175d1c7313
             var tag;
             var rawStr = this._rawText.replace(/\n/g, "</br>");
             rawStr.replace(" ", "&ensp;"); //半角スペースは特殊文字として置き換える
@@ -856,6 +860,8 @@ var NovelEditer;
         PrefixBase.prototype.isPrefixOfMe = function (str) {
             if (str.charCodeAt(0) == 0x5c)
                 return false;
+            if (str.length <= this.getPrefixString().length)
+                return false;
             if (Utils.StringUtility.startWith(str, this.getPrefixString()))
                 return true;
             return false;
@@ -884,6 +890,7 @@ var NovelEditer;
         TitlePrefix.prototype.getPrefixString = function () {
             return "#";
         };
+<<<<<<< HEAD
         TitlePrefix.prototype.getFormattedHtml = function (str) {
             var sLength = 0;
             for (var i = 1; i < str.length; i++) {
@@ -894,8 +901,30 @@ var NovelEditer;
                 }
             }
             return "<h" + sLength + ">" + str.substr(sLength) + "</h" + sLength + ">";
+=======
+
+        TitlePrefix.prototype.getFormattedHtmlImpl = function (str) {
+            return "<h1>" + str + "</h1><hr/>";
+>>>>>>> 39ea1f64667bb0c61606eba95b14f1175d1c7313
         };
         return TitlePrefix;
+    })(PrefixBase);
+
+    var QuotePrefix = (function (_super) {
+        __extends(QuotePrefix, _super);
+        function QuotePrefix() {
+            _super.apply(this, arguments);
+        }
+        QuotePrefix.prototype.getPrefixString = function () {
+            return ">";
+        };
+
+        QuotePrefix.prototype.getFormattedHtmlImpl = function (str) {
+            str = str.replace(/\n/g, "</br>");
+            str = str.replace(/\{(.*)\}/g, "<p class=\"source\">出典：$1</p>");
+            return "<blockquote><div class=\"quote\">" + str + "</div></blockquote>";
+        };
+        return QuotePrefix;
     })(PrefixBase);
 
     var DividerPrefix = (function (_super) {
