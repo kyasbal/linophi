@@ -75,6 +75,42 @@ namespace Web.Controllers
                 /*フォームのデフォルト値としてメールアドレスをセットするため。*/);
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel vm)
+        {
+            if (vm == null) return View("Page403");
+            if (User.Identity.IsAuthenticated||!vm.AcceptTerm) return RedirectToAction("LogIn");
+            if (ModelState.IsValid)
+            {
+                ExternalLoginInfo info = await AuthenticationManager.GetExternalLoginInfoAsync();
+                if (info == null)
+                {
+                    return View("ExternalLoginFailure");
+                }
+                var user = UserAccount.CreateUser(info.Login.LoginProvider + info.Login.ProviderKey, vm.NickName,
+                    vm.Email,vm.AcceptMail);
+                IdentityResult result = await UserManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                    if (result.Succeeded)
+                    {
+                        await SignInAsync(user, false);
+
+                        // アカウント確認とパスワード リセットを有効にする方法の詳細については、http://go.microsoft.com/fwlink/?LinkID=320771 を参照してください
+                        // このリンクを含む電子メールを送信します
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // SendEmail(user.Email, callbackUrl, "アカウントの確認", "このリンクをクリックすることによってアカウントを確認してください");
+
+                        return RedirectToLocal(vm.ReturnUrl);
+                    }
+                }
+            }
+            return View(vm);
+        }
+
         private async Task SignInAsync(UserAccount user, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
@@ -86,10 +122,22 @@ namespace Web.Controllers
         {
             get { return HttpContext.GetOwinContext().Authentication; }
         }
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Home");
+        }
     }
 
     public class ExternalLoginConfirmationViewModel
     {
+        public string ReturnUrl { get; set; }
+        [Display(Name = "ニックネーム")]
+        public string NickName { get; set; }
         [Display(Name = "メールアドレス")]
         public string Email { get; set; }
         [Display(Name = "利用規約に同意する")]
@@ -97,4 +145,6 @@ namespace Web.Controllers
         [Display(Name = "linophiの通知をメールで受け取る")]
         public bool AcceptMail { get; set; }
     }
+
+
 }

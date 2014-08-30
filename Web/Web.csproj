@@ -321,7 +321,6 @@
     <Content Include="Scripts\Utility\AspectRatioStretcher.js" />
     <Content Include="Scripts\Utility\HeightStretcher.js" />
     <Content Include="Scripts\View\index.js" />
-    <Content Include="Views\Shared\404page.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -397,6 +396,8 @@
     <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Shared\Page403.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -10,6 +10,8 @@
 @using (Html.BeginForm("ExternalLoginConfirmation","Account",FormMethod.Post))
 {
    @Html.AntiForgeryToken()
+   @Html.LabelFor(m=>m.NickName)
+   @Html.TextBoxFor(m=>m.NickName)
    @Html.LabelFor((m) => m.Email)
    @Html.TextBoxFor((m) => m.Email)
    @Html.LabelFor(m=>m.AcceptMail)
