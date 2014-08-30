@@ -4,19 +4,19 @@
 .edit-preview .em {
   background-color: aquamarine;
 }
-.edit-preview .em .quote {
+.edit-preview .quote {
   margin: 20px 20px;
   border-left: solid 4px #808080;
   padding: 5px;
 }
-.edit-preview .em .quote .source {
+.edit-preview .quote .source {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
   color: gray;
   font-size: small;
 }
-.edit-preview .em .quote:hover {
+.edit-preview .quote:hover {
   background-color: #f8f8f8;
 }
 .edit-preview .b {
