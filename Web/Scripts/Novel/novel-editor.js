@@ -6,6 +6,9 @@
 };
 var NovelEditer;
 (function (_NovelEditer) {
+    var sepalateToken = "\n\n";
+    var markups = [new BoldMarkup()];
+
     var NovelEditer = (function () {
         function NovelEditer(editorTarget, previewTarget, previewBounds) {
             var _this = this;
@@ -20,16 +23,12 @@ var NovelEditer;
             this._editorTarget = editorTarget;
             this._previewTarget = previewTarget;
             this._editorTarget.keyup(function (event) {
-                return _this.saveInput(event);
+                return _this.saveInput();
             });
 
             //            マウスによってキャレットが移動した際は位置を保存しておく
-            this._editorTarget.mousedown(function () {
-                return _this.mouseHandler();
-            });
-            this._editorTarget.mouseup(function () {
-                return _this.mouseHandler();
-            });
+            //this._editorTarget.mousedown(() => this.mouseHandler());
+            //this._editorTarget.mouseup(() => this.mouseHandler());
             this._editorTarget.bind('input propertychange', function () {
                 return _this.textChanged();
             });
@@ -47,7 +46,7 @@ var NovelEditer;
         };
 
         //キー入力による編集文字列変化の反映処理
-        NovelEditer.prototype.saveInput = function (event) {
+        NovelEditer.prototype.saveInput = function () {
             console.info("saveInput is Called...!");
 
             var currentText = this._editorTarget.val();
@@ -95,39 +94,10 @@ var NovelEditer;
                 }
             }
 
-            //if (_.include(NovelEditer._shiftCaretKeys, event.keyCode))
-            //{//矢印キーによる移動
-            //    console.info("catch [Arrow]");
-            //    var subStr: string;
-            //    if (this._lastCaret.begin < caret.begin)
-            //    {
-            //        subStr = this._lastText.substring(this._lastCaret.begin, caret.begin);
-            //        var clf: number = this.countLf(subStr);
-            //        for (var i = 0; i < clf; i++)
-            //        {
-            //            this._paragraphManager.moveNext();
-            //        }
-            //    }
-            //    else if (this._lastCaret.begin > caret.begin)
-            //    {
-            //        subStr = this._lastText.substring(caret.begin, this._lastCaret.begin);
-            //        var clf: number = this.countLf(subStr);
-            //        for (var i = 0; i < clf; i++)
-            //        {
-            //            this._paragraphManager.movePrev();
-            //        }
-            //    }
-            //    /*直前と現在の
-            //     * カレット位置の間に挟まれる文字列を取得し、その中に現れる改行コード分だけ
-            //     * currentをずらす
-            //     */
-            //}
             this._lastCaret = caret;
             this.updateToshow();
 
             console.info("\tcurrent       =\t" + this._paragraphManager.currentParagraph.getParagraphIndex() + ":" + this._paragraphManager.currentParagraph.rawText);
-
-            //console.info("\tlastCurret:   =\t" + this._lastCaret.begin);
             var str = "";
             for (var i = 0; i < this._paragraphList.size(); i++) {
                 str += ", " + this._paragraphList.elementAtIndex(i);
@@ -141,14 +111,17 @@ var NovelEditer;
             if (this._lastText == "") {
                 this._lastText = currentText;
                 this._paragraphList.clear();
-                for (var l = 0; l < currentText.length; l++) {
-                    if (currentText.charCodeAt(l) == 0x0a) {
-                        this._paragraphList.add(l);
-                    }
+                var index = 0;
+                while (true) {
+                    index = currentText.indexOf(sepalateToken, index);
+                    if (index == -1)
+                        break;
+                    this._paragraphList.add(index);
                 }
                 this._paragraphList.add(currentText.length);
                 return new TextChangeInfo(null, null);
             }
+
             if (currentText == "") {
                 this._lastText = "";
                 this._paragraphList.clear();
@@ -178,8 +151,8 @@ var NovelEditer;
                         break;
                     }
                 }
-                if (str.substr(0, parag.rawText.length + 1) == parag.rawText + "\n") {
-                    str = str.substr(parag.rawText.length);
+                if (str.substr(0, parag.rawText.length + 2) == parag.rawText + "\n\n") {
+                    str = str.substr(parag.rawText.length + 1);
                     parag = parag.nextParagraph;
                     continue;
                 }
@@ -223,7 +196,7 @@ var NovelEditer;
                 this._paragraphList.removeElementAtIndex(num);
             }
             for (var k = this.getParagraphStartIndex(num); k < currentText.length; k++) {
-                if (currentText.charCodeAt(k) == 0x0a) {
+                if (currentText.substr(k, sepalateToken.length) == sepalateToken) {
                     this._paragraphList.add(k);
                 }
             }
@@ -236,7 +209,7 @@ var NovelEditer;
         NovelEditer.prototype.getParagraphStartIndex = function (paragraphIndex) {
             if (paragraphIndex == 0)
                 return 0;
-            return this._paragraphList.elementAtIndex(paragraphIndex - 1) + 1;
+            return this._paragraphList.elementAtIndex(paragraphIndex - 1) + sepalateToken.length;
         };
 
         NovelEditer.prototype.updateToshow = function () {
@@ -267,20 +240,6 @@ var NovelEditer;
                 cacheParagraph = cacheParagraph.nextParagraph;
             }
             return "[" + innerJSON + "]";
-        };
-
-        NovelEditer.prototype.mouseHandler = function () {
-            //console.info("mouseHandler is Called...!");
-            //var caret: TextRegion = TextRegion.fromCaretInfo(this._editorTarget.caret());
-            //this._caret = caret;
-            //this.updateFocusLine();
-            //var region = TextRegion.fromCaretInfo(this._editorTarget.caret());
-            //if (!region.isRegion())
-            //{
-            //    var lfc = this.countLf(this._lastText.substr(0, region.begin));
-            //    this.currentParagraphChanged(this._pageFirstParagraph.getParagraph(lfc));
-            //    this.updateToshow();
-            //}
         };
 
         NovelEditer.prototype.gonextPage = function () {
@@ -421,14 +380,6 @@ var NovelEditer;
             this.refreshRegist();
         };
 
-        //toJson():string[]
-        //{
-        //    this.refreshRegist();
-        //    var ret: string[] = new Array(this.lastParagraphIndex + 1);
-        //    for (var i = 0; i < ; i++)
-        //    {
-        //    }
-        //}
         //登録を再確認
         ParagraphManager.prototype.refreshRegist = function () {
             this._paragraphDictionary.clear();
@@ -476,30 +427,30 @@ var NovelEditer;
 
         //テキストを改行で分割してパラグラフに分ける。先頭を返す
         ParagraphManager.prototype.createParagraphFromText = function (str) {
-            var num = str.indexOf("\n");
+            var num = str.indexOf(sepalateToken);
             if (num == -1)
                 return new Paragraph(this, str);
 
             var parag = new Paragraph(this, str.substr(0, num));
-            if (num == str.length - 1) {
+            if (num == str.length - sepalateToken.length) {
                 parag.insertNext(new Paragraph(this, ""));
                 return parag;
             }
-            str = str.substr(num + 1, str.length - num - 1); //改行の後ろ
+            str = str.substr(num + sepalateToken.length); //改行の後ろ
 
             while (true) {
-                num = str.indexOf("\n"); //改行を探す
+                num = str.indexOf(sepalateToken); //改行を探す
                 if (num == -1) {
                     parag.insertNext(new Paragraph(this, str));
                     return parag.getFirstParagraph();
                 }
                 parag.insertNext(new Paragraph(this, str.substr(0, num)));
                 parag = parag.nextParagraph;
-                if (num == str.length - 1) {
+                if (num == str.length - sepalateToken.length) {
                     parag.insertNext(new Paragraph(this, ""));
                     return parag.getFirstParagraph();
                 }
-                str = str.substr(num + 1, str.length - num - 1); //改行の後ろ
+                str = str.substr(num + sepalateToken.length); //改行の後ろ
             }
         };
 
@@ -649,7 +600,7 @@ var NovelEditer;
         Paragraph.prototype.updateCacheHtml = function () {
             var prefixes = [new TitlePrefix(), new DividerPrefix(), new QuotePrefix()];
             var tag;
-            var rawStr = this._rawText;
+            var rawStr = this._rawText.replace(/\n/g, "</br>");
             rawStr.replace(" ", "&ensp;"); //半角スペースは特殊文字として置き換える
             if (Utils.StringUtility.isEmpty(this._rawText)) {
                 this._cacheHtml = "<br/>";
@@ -663,11 +614,12 @@ var NovelEditer;
                     break;
                 }
             }
-            var markups = [new QuoteMarkup(), new BoldMarkup(), new LinkMarkup()];
-            for (var j = 0; j < markups.length; j++) {
-                rawStr = markups[j].getMarkupString(rawStr);
-            }
+
             if (!isPrefixed) {
+                for (var j = 0; j < markups.length; j++) {
+                    rawStr = markups[j].getMarkupString(rawStr); //処理
+                }
+
                 tag = $("<p/>");
 
                 //エスケープ処理
@@ -680,7 +632,7 @@ var NovelEditer;
                 tag.html(rawStr);
             }
 
-            tag.addClass("p-" + this._paragraphIndex);
+            tag.addClass("p-" + this._iD);
             if (this.isEmphasized)
                 tag.addClass("em");
             this._cacheHtml = $("<div/>").append(tag).html();
@@ -916,13 +868,19 @@ var NovelEditer;
         TitlePrefix.prototype.getPrefixString = function () {
             return "#";
         };
-
-        TitlePrefix.prototype.getFormattedHtmlImpl = function (str) {
-            return "<h1>" + str + "</h1>";
+        TitlePrefix.prototype.getFormattedHtml = function (str) {
+            var sLength = 0;
+            for (var i = 1; i < str.length; i++) {
+                sLength = i;
+                if (str.charAt(i) != '#') {
+                    sLength = i;
+                    break;
+                }
+            }
+            return "<h" + sLength + ">" + str.substr(sLength) + "</h" + sLength + ">";
         };
         return TitlePrefix;
     })(PrefixBase);
-
     var QuotePrefix = (function (_super) {
         __extends(QuotePrefix, _super);
         function QuotePrefix() {
@@ -946,7 +904,7 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         DividerPrefix.prototype.getPrefixString = function () {
-            return "-";
+            return "---";
         };
 
         DividerPrefix.prototype.getFormattedHtmlImpl = function (str) {

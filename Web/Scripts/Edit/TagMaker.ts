@@ -19,6 +19,31 @@ $(() => {
             },
             success: (data) => {
                 $(".edit-title-chkvalid").html(data.IsOK ? "" : data.ErrorMessage);
+                isConfirmedTitle = data.IsOK;
+                if (isConfirmedTitle == false) //どう考えても無駄なことしてるから誰か書き直して。投稿できない時に投稿ボタンの色を変える。
+                {
+                    $(".edit-submit-button").css('background-color', '#696969');
+                    $(".edit-submit-button").hover(
+                        function () {
+                            $(this).css("background-color", "#696969");
+                        },
+                        function () {
+                            $(this).css("background-color", "#696969");
+                        }
+                        );
+                }
+                if (isConfirmedTitle == true)
+                {
+                    $(".edit-submit-button").css('background-color', '#7FFFD4');
+                    $(".edit-submit-button").hover(
+                        function () {
+                            $(this).css("background-color", "#3CB371");
+                        },
+                        function () {
+                            $(this).css("background-color", "#7FFFD4");
+                        }
+                        );
+                }
             }
         });
     });

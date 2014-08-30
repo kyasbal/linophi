@@ -21,7 +21,7 @@ namespace Web.Controllers
         public ActionResult Index(EditViewModel vm)
         {
             ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
-            if (ArticleController.IsValidTitle(vm.Title, context).IsOK) return RedirectToAction("Page404", "Home");
+            if (!ArticleController.IsValidTitle(vm.Title, context).IsOK) return RedirectToAction("Page404", "Home");
             var article = ArticleModel.GenerateArticle(vm.Title, null);
             context.Articles.Add(article);
             context.SaveChanges();

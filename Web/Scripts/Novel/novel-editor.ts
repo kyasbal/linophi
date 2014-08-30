@@ -1,5 +1,8 @@
 ﻿module NovelEditer
 {
+    var sepalateToken: string = "\n\n";
+    var markups: MarkupBase[] = [new BoldMarkup()];
+    
     export class NovelEditer
     {
         
@@ -31,10 +34,10 @@
             this._previewBounds = previewBounds;
             this._editorTarget = editorTarget;
             this._previewTarget = previewTarget;
-            this._editorTarget.keyup((event: JQueryKeyEventObject) => this.saveInput(event));
+            this._editorTarget.keyup((event: JQueryKeyEventObject) => this.saveInput());
 //            マウスによってキャレットが移動した際は位置を保存しておく
-            this._editorTarget.mousedown(() => this.mouseHandler());
-            this._editorTarget.mouseup(() => this.mouseHandler());
+            //this._editorTarget.mousedown(() => this.mouseHandler());
+            //this._editorTarget.mouseup(() => this.mouseHandler());
             this._editorTarget.bind('input propertychange', () => this.textChanged());
             $(".next-page").click(() => { this.gonextPage(); });
             $(".prev-page").click(() => { this.goprevPage(); });
@@ -52,7 +55,7 @@
 
 
         //キー入力による編集文字列変化の反映処理
-        saveInput(event: JQueryKeyEventObject)
+        saveInput()
         {
             console.info("saveInput is Called...!");
 
@@ -99,7 +102,7 @@
             for (var j = 0; j < this._paragraphList.size(); j++)
                 {
                 var num: number = this._paragraphList.elementAtIndex(j);
-                if (caret.begin<=num)
+                if (caret.begin <= num)
                 {
                     this._paragraphManager.changeCurrentParagraphByIndex(j);
                     break;
@@ -107,43 +110,11 @@
                 }
 
 
-
-
-            //if (_.include(NovelEditer._shiftCaretKeys, event.keyCode))
-            //{//矢印キーによる移動
-            //    console.info("catch [Arrow]");
-            //    var subStr: string;
-            //    if (this._lastCaret.begin < caret.begin)
-            //    {
-            //        subStr = this._lastText.substring(this._lastCaret.begin, caret.begin);
-            //        var clf: number = this.countLf(subStr);
-            //        for (var i = 0; i < clf; i++)
-                //        {
-            //            this._paragraphManager.moveNext();
-                //        }
-                //    }
-            //    else if (this._lastCaret.begin > caret.begin)
-                //    {
-            //        subStr = this._lastText.substring(caret.begin, this._lastCaret.begin);
-            //        var clf: number = this.countLf(subStr);
-            //        for (var i = 0; i < clf; i++)
-            //        {
-            //            this._paragraphManager.movePrev();
-            //        }
-                //    }
-            //    /*直前と現在の
-            //     * カレット位置の間に挟まれる文字列を取得し、その中に現れる改行コード分だけ
-            //     * currentをずらす
-            //     */
-                //}
-
-
             this._lastCaret = caret;
             this.updateToshow();
 
             console.info("\tcurrent       =\t" + this._paragraphManager.currentParagraph.getParagraphIndex() + ":"+
                 this._paragraphManager.currentParagraph.rawText);
-            //console.info("\tlastCurret:   =\t" + this._lastCaret.begin);
             var str: string = "";
             for (var i = 0; i < this._paragraphList.size(); i++)
             {
@@ -160,16 +131,17 @@
             {
                 this._lastText = currentText;
                 this._paragraphList.clear();
-                for (var l = 0; l < currentText.length; l++)
+                var index: number = 0;
+                while (true)
                 {
-                    if (currentText.charCodeAt(l) == 0x0a)
-                    {
-                        this._paragraphList.add(l);
+                    index = currentText.indexOf(sepalateToken, index);
+                    if (index == -1) break;
+                    this._paragraphList.add(index);
                     }
-                }
                 this._paragraphList.add(currentText.length);
-                return new TextChangeInfo(null,null);
+                return new TextChangeInfo(null, null);
                     }
+
             if (currentText == "")//全削除
                     {
                 this._lastText = "";
@@ -191,46 +163,46 @@
                     if (str != parag.rawText)
                     {
                         if (changeStart == 0)
-                    {
+                        {
                             changeStart = null;
                             break;
-                    }
+                        }
                         changeStart--;
                         break;
-                }
-                    if (str.substr(0, parag.rawText.length+1) == parag.rawText+"\n")
-                        {
+                    }
+                    if (str.substr(0, parag.rawText.length + 1) == parag.rawText + "\n")
+                    {
                         changeStart = parag.getParagraphIndex();
                         break;
-                        }
                     }
-                if (str.substr(0, parag.rawText.length+1) == parag.rawText+"\n")
-                        {
-                    str = str.substr(parag.rawText.length);
+                }
+                if (str.substr(0, parag.rawText.length + 2) == parag.rawText + "\n\n")
+                {
+                    str = str.substr(parag.rawText.length+1);
                     parag = parag.nextParagraph;
                     continue;
-                        }
+                }
                 if (changeStart == 0)
                 {
                     changeStart = null;
                     break;
-                    }
+                }
                 changeStart--;
                 break;
-                }
+            }
 
             var changeEnd: number = this._paragraphManager.lastParagraphIndex;//最後の変更点の直後の位置
             str = currentText;//コピー
             parag = this._paragraphManager.getParagraphByIndex(this._paragraphManager.lastParagraphIndex);
             while (true)
-                    {
+            {
                 if (parag.isFirstParagraph)
-                    {
+                {
                     changeEnd = null;
                     break;
-                    }
-                if (str.substr(str.length - parag.rawText.length-1) == "\n"+parag.rawText)
-                    {
+                }
+                if (str.substr(str.length - parag.rawText.length - 1) == "\n" + parag.rawText)
+                {
                     str = str.substr(0, str.length - parag.rawText.length);
                     parag = parag.prevParagraph;
                     continue;
@@ -239,12 +211,12 @@
                 {
                     changeEnd = null;
                     break;
-            }
+                }
                 changeEnd++;
                 break;
-        }
+            }
 
-            var ret: TextChangeInfo = new TextChangeInfo(changeStart,changeEnd);//帰り値
+            var ret: TextChangeInfo = new TextChangeInfo(changeStart, changeEnd);//帰り値
 
             //更新処理
             var num = ret.changeStartParagraphIndex;
@@ -256,7 +228,7 @@
             }
             for (var k = this.getParagraphStartIndex(num); k < currentText.length; k++)
             {
-                if (currentText.charCodeAt(k) == 0x0a)
+                if (currentText.substr(k,sepalateToken.length) == sepalateToken)
                 {
                     this._paragraphList.add(k);
                 }
@@ -265,15 +237,16 @@
             this._lastText = currentText;
             return ret;
             }
+
         //指定段落の開始インデックスを取得
         getParagraphStartIndex(paragraphIndex: number):number
         {
             if (paragraphIndex == 0) return 0;
-            return this._paragraphList.elementAtIndex(paragraphIndex - 1) + 1;
+            return this._paragraphList.elementAtIndex(paragraphIndex - 1) + sepalateToken.length;
         }
 
-        updateToshow() {
-
+        updateToshow()
+        {
             var ml = this._paragraphManager.headParagraph.getParagraphHtmls(this._paragraphManager.paragraphCount);
             this._previewTarget.html(ml);
         }
@@ -304,21 +277,6 @@
                 cacheParagraph = cacheParagraph.nextParagraph;
             }
             return "[" + innerJSON + "]";
-        }
-
-        mouseHandler()
-        {
-            //console.info("mouseHandler is Called...!");
-            //var caret: TextRegion = TextRegion.fromCaretInfo(this._editorTarget.caret());
-            //this._caret = caret;
-            //this.updateFocusLine();
-            //var region = TextRegion.fromCaretInfo(this._editorTarget.caret());
-            //if (!region.isRegion())
-            //{
-            //    var lfc = this.countLf(this._lastText.substr(0, region.begin));
-            //    this.currentParagraphChanged(this._pageFirstParagraph.getParagraph(lfc));
-            //    this.updateToshow();
-            //}
         }
 
         gonextPage()
@@ -453,16 +411,7 @@
             endParag.prevParagraph = startParag;
             this.refreshRegist();
         }
-        //toJson():string[]
-        //{
-        //    this.refreshRegist();
-        //    var ret: string[] = new Array(this.lastParagraphIndex + 1);
-        //    for (var i = 0; i < ; i++)
-        //    {
                 
-        //    }
-        //}
-
         //登録を再確認
         refreshRegist()
         {
@@ -511,20 +460,20 @@
         //テキストを改行で分割してパラグラフに分ける。先頭を返す
         createParagraphFromText(str: string): Paragraph
         {
-            var num: number = str.indexOf("\n");//改行を探す
+            var num: number = str.indexOf(sepalateToken);//改行を探す
             if (num == -1) return new Paragraph(this, str);//改行がなければそのまま返す
 
             var parag: Paragraph = new Paragraph(this, str.substr(0, num));//改行の手前まで
-            if (num == str.length - 1)//改行が末尾ならそれで返す
+            if (num == str.length - sepalateToken.length)//改行が末尾ならそれで返す
             {
                 parag.insertNext(new Paragraph(this, ""));
                 return parag;
             }
-            str = str.substr(num + 1, str.length - num - 1);//改行の後ろ
+            str = str.substr(num + sepalateToken.length);//改行の後ろ
 
             while (true)//後ろが""でなければ
             {
-                num = str.indexOf("\n");//改行を探す
+                num = str.indexOf(sepalateToken);//改行を探す
                 if (num == -1)//改行がなければ終了
                 {
                     parag.insertNext(new Paragraph(this, str));
@@ -532,12 +481,12 @@
                 }
                 parag.insertNext(new Paragraph(this, str.substr(0, num)));
                 parag = parag.nextParagraph;
-                if (num == str.length - 1)//改行が末尾ならそれで返す
+                if (num == str.length - sepalateToken.length)//改行が末尾ならそれで返す
                 {
                     parag.insertNext(new Paragraph(this, ""));
                     return parag.getFirstParagraph();
                 }
-                str = str.substr(num + 1, str.length - num - 1);//改行の後ろ
+                str = str.substr(num + sepalateToken.length);//改行の後ろ
             }
         }
         //指定したカレット位置を段落上のカレット位置に変換する
@@ -576,6 +525,7 @@
     export class Paragraph implements IParagraph
     {
         private static _IdString: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
         //マークアップ付の生テキスト
         private _rawText: string;
         //段落管理クラス
@@ -591,7 +541,7 @@
         //強調表示フラグ
         private _isEmphasized: boolean = false;
         //ID
-        private _iD: string="Not Implemented!";
+        private _iD: string = "Not Implemented!";
 
         constructor(manager: ParagraphManager, rawText: string)
         {
@@ -702,9 +652,9 @@
         //HTML再生成
         updateCacheHtml()
         {
-            var prefixes: any[] = [new TitlePrefix(), new DividerPrefix(),new QuotePrefix()];
+            var prefixes: PrefixBase[] = [new TitlePrefix(), new DividerPrefix(), new QuotePrefix()];
             var tag: JQuery;
-            var rawStr: string = this._rawText;
+            var rawStr: string = this._rawText.replace(/\n/g, "</br>");
             rawStr.replace(" ", "&ensp;"); //半角スペースは特殊文字として置き換える
             if (Utils.StringUtility.isEmpty(this._rawText))
             {
@@ -721,13 +671,15 @@
                     break;
                 }
             }
-            var markups: any[] = [new QuoteMarkup(),new BoldMarkup(),new LinkMarkup()];
-            for (var j = 0; j < markups.length; j++)
-            {
-                rawStr = markups[j].getMarkupString(rawStr);
-            }
+
             if (!isPrefixed)
             {
+                for (var j = 0; j < markups.length; j++)
+                {
+                    rawStr = markups[j].getMarkupString(rawStr);//処理
+
+                }
+
                 tag = $("<p/>");
                 //エスケープ処理
                 if (rawStr.charCodeAt(0) == 0x5c && rawStr.length > 1 && rawStr.charCodeAt(1) == 0x5c) rawStr = "\\" + rawStr.substr(2, rawStr.length - 2); //\\の場合は\にする
@@ -739,7 +691,7 @@
                 tag.html(rawStr);
             }
            
-            tag.addClass("p-" + this._paragraphIndex);
+            tag.addClass("p-" + this._iD);
             if (this.isEmphasized) tag.addClass("em");
             this._cacheHtml = $("<div/>").append(tag).html();
         }
@@ -978,20 +930,29 @@
         {
             return "#";
         }
-
-        getFormattedHtmlImpl(str: string): string
+        getFormattedHtml(str: string): string
         {
-            return "<h1>" + str + "</h1>";
+            var sLength: number = 0;
+            for (var i = 1; i < str.length; i++)
+            {
+                sLength = i;
+                if (str.charAt(i) != '#')
+                {
+                    sLength = i;
+                    break;
+                }
+            }
+            return "<h" + sLength + ">" + str.substr(sLength) + "</h" + sLength + ">";
         }
     }
-
-    class QuotePrefix extends PrefixBase {
+    class QuotePrefix extends PrefixBase
+    {
         getPrefixString(): string
         {
             return ">";
         }
 
-        
+
 
         getFormattedHtmlImpl(str: string): string
         {
@@ -1001,11 +962,12 @@
         }
     }
 
+
     class DividerPrefix extends PrefixBase
     {
         getPrefixString(): string
         {
-            return "-";
+            return "---";
         }
 
         getFormattedHtmlImpl(str: string): string

@@ -64,6 +64,7 @@ namespace Web.Api.Article
 
         public IHttpActionResult IsValidTitle([FromBody]VerifyTitleRequest req)
         {
+            if (req == null) return Json(VerifyTitleResponse.GenerateFailedResponse("タイトルは空白にできません。"));
             return Json(IsValidTitle(req.Title, HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>()));
         }
     }
