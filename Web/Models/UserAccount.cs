@@ -15,7 +15,7 @@ namespace Web.Models
         /// <param name="nickname"></param>
         /// <param name="email"></param>
         /// <returns></returns>
-        public static UserAccount CreateUser(string userName,string nickname,string email)
+        public static UserAccount CreateUser(string userName,string nickname,string email,bool acceptEmail)
         {
             return new UserAccount()
             {
@@ -23,7 +23,8 @@ namespace Web.Models
                 Email = email,
                 NickName = nickname,
                 UpdateTime = DateTime.Now,
-                CreationTime = DateTime.Now
+                CreationTime = DateTime.Now,
+                AcceptEmail = acceptEmail
             };
         }
 
@@ -36,6 +37,8 @@ namespace Web.Models
         /// 説明
         /// </summary>
         public string Description { get; set; }
+
+        public bool AcceptEmail { get; set; }
 
         /// <summary>
         /// アカウント作成日時

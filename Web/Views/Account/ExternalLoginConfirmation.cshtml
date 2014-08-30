@@ -7,7 +7,21 @@
 
 @section CSS
 {
+<<<<<<< HEAD
     <link href="~/Content/css/Account/ExternalLoginConfirmation.css" rel="stylesheet" />
+=======
+   @Html.AntiForgeryToken()
+   @Html.LabelFor(m=>m.NickName)
+   @Html.TextBoxFor(m=>m.NickName)
+   @Html.LabelFor((m) => m.Email)
+   @Html.TextBoxFor((m) => m.Email)
+   @Html.LabelFor(m=>m.AcceptMail)
+   @Html.CheckBoxFor(m=>m.AcceptMail)
+    @Html.LabelFor(m=>m.AcceptTerm)
+    @Html.CheckBoxFor(m=>m.AcceptTerm)
+    <input type="submit" value="登録">
+
+>>>>>>> 22093c1e8f42b04a8a48ef999d6ec81bde007598
 }
 <div class="whole-layout">
     <div class="sign-up">&nbsp;&nbsp;サインアップ</div><br /><hr /><br />
