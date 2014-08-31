@@ -3,12 +3,12 @@
   <Role name="Web">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Twitter-ConsumerKey" value="Er54xldzyeOE2IwFcqJwDtIU1"/>
-      <Setting name="Twitter-ConsumerSecret" value="aJM41biol7JA1ZmpuapH5Zy8Of6nblJRLaBm4PBuf9CL6d6TqC"/>
-      <Setting name="Facebook-AppID" value="508113655985939"/>
-      <Setting name="Facebook-AppSecret" value="d1e1e3aef66f9cf641fedb1b5fe772cd"/>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="SQL-ConnectionString" value="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\LocalDbg.mdf;Integrated Security=True;User Instance=True" />
+      <Setting name="Twitter-ConsumerKey" value="m9Msu5kn8d4SvIU1pXl0aQwOT" />
+      <Setting name="Twitter-ConsumerSecret" value="5vkZowzafQY2XRoYlPuf9omfIbDWn1COqbRYA5vSYKKBXjklak" />
+      <Setting name="Facebook-AppID" value="508113655985939" />
+      <Setting name="Facebook-AppSecret" value="d1e1e3aef66f9cf641fedb1b5fe772cd" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=linophi;AccountKey=v2SuurJ84CZmi95smIAktNaHUSGvhAuBq8T78Rr46fR9xZC7xLFWDT3/HWoYTBby8qzVbAd1Ez8p1K7mcPNfvA==" />
+      <Setting name="SQL-ConnectionString" value="Server=tcp:lf1p9izurt.database.windows.net,1433;Database=linophi;User ID=linophi.project@gmail.com@lf1p9izurt;Password=9B56D847-3DA4-4FCD-BAB9-9781681B4D42;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
