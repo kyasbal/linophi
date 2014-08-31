@@ -3,15 +3,9 @@
   /* clearfix */
   /* For IE 6/7 (trigger hasLayout) */
 }
-.header .search {
-  margin-top: 2%;
-  margin-bottom: 0;
-  margin-left: 10%;
-  float: left;
-}
 .header .menu-list {
   float: left;
-  margin-left: 70%;
+  margin-left: 60%;
 }
 .header .menu-list ul li {
   font-size: large;
@@ -27,6 +21,37 @@
 }
 .header .menu {
   overflow: hidden;
+}
+.header .menu .search {
+  position: relative;
+}
+.header .menu .search input {
+  margin-left: 10%;
+}
+.header .menu .search .search-text {
+  background-color: #fbd7a2;
+  border: 0;
+  height: 40px;
+  width: 200px;
+  padding: 5px 5px;
+  position: absolute;
+  left: 20px;
+  top: -6px;
+}
+.header .menu .search .search-text:focus {
+  background-color: rgba(251, 215, 162, 0.5);
+}
+.header .menu .search .search-button {
+  border: 0;
+  padding-left: -10px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 220px;
+  top: -6px;
+}
+.header .menu .search .search-button:hover {
+  opacity: 0.5;
 }
 .header .menu:before,
 .header .menu:after {
