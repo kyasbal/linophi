@@ -1,6 +1,5 @@
 using System.Data.Entity;
 using System.Data.Services.Client;
-using linophi.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Web.Utility.Configuration;
 

@@ -1,6 +1,49 @@
 ﻿@model Web.Controllers.ExternalLoginConfirmationViewModel
 
 @{
-    ViewBag.Title = "サインアップ";
+    ViewBag.Title = "ようこそ";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
+
+@section CSS
+{
+<<<<<<< HEAD
+    <link href="~/Content/css/Account/ExternalLoginConfirmation.css" rel="stylesheet" />
+=======
+   @Html.AntiForgeryToken()
+   @Html.LabelFor(m=>m.NickName)
+   @Html.TextBoxFor(m=>m.NickName,new{id="NickName",name="NickName"})
+   @Html.LabelFor((m) => m.Email)
+   @Html.TextBoxFor((m) => m.Email,new{id="Email",name="Email"})
+   @Html.LabelFor(m=>m.AcceptMail)
+   @Html.CheckBoxFor(m=>m.AcceptMail,new {id="AcceptMail",name="AcceptMail"})
+    @Html.LabelFor(m=>m.AcceptTerm)
+    @Html.CheckBoxFor(m=>m.AcceptTerm,new{id="AcceptTerm",name="AcceptTerm"})
+    <input type="submit" value="登録">
+
+>>>>>>> 22093c1e8f42b04a8a48ef999d6ec81bde007598
+}
+<div class="whole-layout">
+    <div class="sign-up">&nbsp;&nbsp;サインアップ</div><br /><hr /><br />
+    <div class="form">
+        <p>
+            linophiに興味を持っていただきありがとうございます。登録はこのページで終了です。
+        </p>
+        <br />
+
+        @using (Html.BeginForm("ExternalLoginConfirmation", "Account", FormMethod.Post))
+        {
+
+            @Html.AntiForgeryToken()
+            @Html.LabelFor((m) => m.Email, new { @class = "label" })
+            @Html.TextBoxFor((m) => m.Email, new { @class = "text-box" })<br/><br/>
+            @Html.LabelFor(m => m.AcceptMail)
+            @Html.CheckBoxFor(m => m.AcceptMail)<br/><br/>
+            @Html.LabelFor(m => m.AcceptTerm)
+            @Html.CheckBoxFor(m => m.AcceptTerm)
+            <input type="submit" value="登録">
+
+
+        }
+    </div>
+</div>

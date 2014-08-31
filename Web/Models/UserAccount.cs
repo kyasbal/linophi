@@ -3,8 +3,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Web.Utility;
 
-namespace linophi.Models
+namespace Web.Models
 {
     // ApplicationUser クラスにプロパティを追加することでユーザーのプロファイル データを追加できます。詳細については、http://go.microsoft.com/fwlink/?LinkID=317594 を参照してください。
     public class UserAccount : IdentityUser
@@ -15,7 +16,7 @@ namespace linophi.Models
         /// <param name="nickname"></param>
         /// <param name="email"></param>
         /// <returns></returns>
-        public static UserAccount CreateUser(string userName,string nickname,string email)
+        public static UserAccount CreateUser(string userName,string nickname,string email,bool acceptEmail)
         {
             return new UserAccount()
             {
@@ -23,9 +24,13 @@ namespace linophi.Models
                 Email = email,
                 NickName = nickname,
                 UpdateTime = DateTime.Now,
-                CreationTime = DateTime.Now
+                CreationTime = DateTime.Now,
+                AcceptEmail = acceptEmail,
+                UniqueId = IdGenerator.getId(20)
             };
         }
+
+        public string UniqueId { get; set; }
 
         /// <summary>
         /// ニックネーム
@@ -36,6 +41,8 @@ namespace linophi.Models
         /// 説明
         /// </summary>
         public string Description { get; set; }
+
+        public bool AcceptEmail { get; set; }
 
         /// <summary>
         /// アカウント作成日時

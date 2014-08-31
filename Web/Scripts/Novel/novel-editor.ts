@@ -954,7 +954,8 @@
         getFormattedHtmlImpl(str: string): string
         {
             str = str.replace(/\n/g, "</br>");
-            str = str.replace(/\{(.*)\}/g, "<p class=\"source\">出典：$1</p>");
+            str = str.replace(/\{(.*?)\}/g, "<p class=\"source\">出典：$1</p>");
+            str = str.replace(/(.*?)(出典:.*?)(.*?)/g,"$1$3$2");
             return "<blockquote><div class=\"quote\">" + str + "</div></blockquote>";
         }
     }

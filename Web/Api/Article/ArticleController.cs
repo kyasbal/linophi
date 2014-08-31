@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Web;
 using System.Web.Http;
-using System.Web.Mvc.Html;
 using Microsoft.AspNet.Identity.Owin;
-using Newtonsoft.Json;
-using Web.Api.Response;
 using Web.Api.Response.Article;
 using Web.Models;
 
-namespace Web
+namespace Web.Api.Article
 {
     public class ArticleController : ApiController
     {
