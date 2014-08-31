@@ -1,15 +1,26 @@
-﻿<header class="header">
+﻿@using Web.Utility
+<header class="header">
     <div class="menu">
         <div class="search">
             検索フォーム
         </div>
         <div class="menu-list">
             <ul>
+
                 <li>@Html.ActionLink("投稿する","index","Edit")</li>
                 |
-                <li>@Html.ActionLink("会員登録(無料)","Login","Account")</li>
-                |
-                <li><a href="http://www.yahoo.co.jp/">ログインする</a></li>
+                <li>
+                    @{
+                         if (!Request.IsAuthenticated)
+                         {
+                             @Html.ActionLink("ログイン", "Login", "Account")
+                         }
+                         else
+                         {
+                             @WebPageStatic.GetUserNickName(Request)
+                         }
+                    }
+                </li>
             </ul>
         </div>
     </div>

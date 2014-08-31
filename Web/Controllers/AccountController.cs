@@ -25,13 +25,9 @@ namespace Web.Controllers
             private set { _userManager = value; }
         }
 
+        [HttpGet]
         [AllowAnonymous]
         public ActionResult LogIn()
-        {
-            return View();
-        }
-
-        public ActionResult SignUp()
         {
             return View();
         }
@@ -39,7 +35,11 @@ namespace Web.Controllers
         [AllowAnonymous]
         public ActionResult TestConfirmation()
         {
+#if DEBUG
             return View("ExternalLoginConfirmation");
+#else
+            return null;
+#endif
         }
 
         [AllowAnonymous]

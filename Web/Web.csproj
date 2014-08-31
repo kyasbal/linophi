@@ -362,6 +362,7 @@
     <Compile Include="Utility\IdGenerator.cs" />
     <Compile Include="Utility\IGravatarLoader.cs" />
     <Compile Include="Utility\MathEx.cs" />
+    <Compile Include="Utility\WebPageStatic.cs" />
     <Compile Include="WebRole.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -395,7 +396,6 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Home\Page404.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
-    <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Shared\Page403.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
