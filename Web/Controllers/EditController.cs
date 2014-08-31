@@ -1,7 +1,10 @@
 ﻿using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataHandler.Encoder;
 using Web.Api.Article;
 using Web.Models;
@@ -36,11 +39,11 @@ namespace Web.Controllers
         [Authorize]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Index(EditViewModel vm)
+        public async Task<ActionResult> Index(EditViewModel vm)
         {
             ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
             if (!ArticleController.IsValidTitle(vm.Title, context).IsOK) return RedirectToAction("Page404", "Home");
-            var article = ArticleModel.GenerateArticle(vm.Title, null);
+            var article = ArticleModel.GenerateArticle(vm.Title,User.Identity.Name);
             context.Articles.Add(article);
             context.SaveChanges();
             var data=System.Web.Helpers.Json.Decode<ParagraphDataModel[]>(vm.Context);

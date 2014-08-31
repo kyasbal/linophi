@@ -92,7 +92,10 @@
                     </div>
                     <div class="navbar-sub">
                         <div>
-                            <p class="navbar-user"><span class="navbar-userthumb"><a href=""><img width="70" height="70" src="~/Content/imgs/Home/red.jpg"></a></span><span class="navbar-username"><a href="">xxx</a>さん</span></p>
+                            <p class="navbar-user"><span class="navbar-userthumb"><a href=""><img width="70" height="70" src="~/Content/imgs/Home/red.jpg"></a></span><span class="navbar-username"><a href="">@if (Model != null)
+                                                                                                                                                                                                               {
+                                                                                                                                                                                                                   @Model.Author
+                                                                                                                                                                                                               }</a>さん</span></p>
                         </div>
                     </div>
                 </nav>
