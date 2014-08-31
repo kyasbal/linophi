@@ -10,8 +10,9 @@ namespace Web.Models
     /// </summary>
     public class ViewArticleViewModel
     {
-
+        public string Title { get; set; }
         public string Content { get; set; }
+        public int PageView { get; set; }
     }
 
     /// <summary>

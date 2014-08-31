@@ -594,12 +594,15 @@ var NovelEditer;
             enumerable: true,
             configurable: true
         });
+        Paragraph.prototype.htmlEnc = function (s) {
+            return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/"/g, '&#34;');
+        };
 
         //HTML再生成
         Paragraph.prototype.updateCacheHtml = function () {
             var prefixes = [new TitlePrefix(), new DividerPrefix(), new QuotePrefix()];
             var tag;
-            var rawStr = this._rawText.replace(/\n/g, "</br>");
+            var rawStr = this.htmlEnc(this._rawText).replace(/\n/g, "</br>");
             rawStr = rawStr.replace(/ /g, "&ensp;"); //半角スペースは特殊文字として置き換える
             if (Utils.StringUtility.isEmpty(this._rawText)) {
                 this._cacheHtml = "<br/>";

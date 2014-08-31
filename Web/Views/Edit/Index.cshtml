@@ -62,7 +62,6 @@
         
             @Html.TextBoxFor((m) => m.Tag, new { id = "tag", type = "text", @class = "edit-tag", placeholder = "タグ" })
         
-        
 
         <div class="edit-preview-container">
             <div class="edit-preview preview-body"></div>
@@ -72,6 +71,7 @@
         </div>
         @Html.AntiForgeryToken()
         @Html.HiddenFor((m)=>m.Context,new{id="context"})
+        @Html.HiddenFor((m)=>m.Body,new{id="body"})
         <a class="edit-submit-button">投稿する</a>
         
     }

@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security.DataHandler.Encoder;
 using Web.Api.Article;
 using Web.Models;
 using Web.Storage;
@@ -43,11 +44,14 @@ namespace Web.Controllers
             context.Articles.Add(article);
             context.SaveChanges();
             var data=System.Web.Helpers.Json.Decode<ParagraphDataModel[]>(vm.Context);
-            ParagraphTableManager ptm=new ParagraphTableManager(new TableStorageConnection());
+            var connection = new TableStorageConnection();
+            ParagraphTableManager ptm=new ParagraphTableManager(connection);
             foreach (var paragraphDataModel in data)
             {
                 ptm.AddParagraph(article.ArticleId,0,paragraphDataModel);
             }
+            ArticleBodyTableManager abtm=new ArticleBodyTableManager(connection);
+            abtm.AddArticle(article.ArticleId,vm.Body);
             return Redirect("~/"+article.ArticleId);
         }
     }

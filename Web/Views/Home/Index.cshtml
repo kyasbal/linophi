@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model Web.Models.ViewArticleViewModel
 
 @{
     ViewBag.Title = "title";
@@ -7,7 +7,7 @@
 
 @section JS
 {
-    
+
     <script src="~/Scripts/jquery-ui.min.js"></script>
     <script src="~/Scripts/Home/PostitPaster.js"></script>
 
@@ -19,8 +19,8 @@
 
 @section CSS
 {
-  <link href="~/Content/css/Novel/Markup.css" rel="stylesheet" />
-  <link href="~/Content/css/Home/viewarticle.css" rel="stylesheet" />
+    <link href="~/Content/css/Novel/Markup.css" rel="stylesheet" />
+    <link href="~/Content/css/Home/viewarticle.css" rel="stylesheet" />
 }
 
 
@@ -29,7 +29,7 @@
 
 
 <div class="container">
-    
+
     <div class="contents set">
 
         <div class="top">
@@ -75,7 +75,7 @@
                         </div>
 
                         <div class="navbar-txt">
-                            <div class="article-title navbar-title"><a href="">記事のタイトル</a></div>
+                            <div class="article-title navbar-title"><a href="">@if(Model!=null){@Model.Title}</a></div>
                         </div>
 
                         <div class="navbar-count">
@@ -84,7 +84,8 @@
                                 <span class="navbar-countlabel">ふせん</span>
                             </span>
                             <span class="navbar-countpv">
-                                <span class="navbar-countnum">134720</span>
+                                <span class="navbar-countnum">@if (Model != null)
+                                {@Model.PageView}</span>
                                 <span class="navbar-countlabel">view</span>
                             </span>
                         </div>
@@ -98,18 +99,15 @@
             </div>
         </div>
         <div class="contentswrapper set">
-            <div class="main" > @* ここのclass名を取得して、 *@
+            <div class="main">
+                @* ここのclass名を取得して、 *@
                 <div>
                     <div class="widgetlist">
                         <div class="article-container widget widgettypetitle">
-                            <p class="p-0">テストです</p>
-                            <p class="p-1">
-                                彼は背後にひそかな足音を聞いた。
-                            </p>
-                            <h1 class="p-2">僕はだれかだよ</h1>
-                            <p class="p-3">
-                                <span class="b">これはそれですか？</span>
-                            </p>
+                            @if (Model != null&&Model.Content!=null)
+                            {
+                                @Html.Raw(Model.Content)
+                            }
                         </div>
                     </div>
                     <div class="pagebutton">
@@ -136,7 +134,7 @@
                         </li>
                     </ul>
                 </div>
-                <br/>
+                <br />
                 <div class="rellist">
                     <div>ふせんの推移が似ている投稿</div>
                     <div class="separator2"><hr></div>
@@ -156,7 +154,7 @@
                     </ul>
                 </div>
 
-                
+
                 <div class="separator1"><hr></div>
             </div>
             <div class="dropbox">
@@ -178,10 +176,4 @@
 
         </div>
     </div>
-        @if (Model != null)
-        {
-            <script type="application/json" id="article-source">
-              @Html.Raw(Model.Content)
-            </script>
-        }
 </div>

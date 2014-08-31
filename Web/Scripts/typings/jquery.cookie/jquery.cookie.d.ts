@@ -30,4 +30,5 @@ interface JQueryStatic {
 
     removeCookie(name: string): boolean;
     removeCookie(name: string, options: JQueryCookieOptions): boolean;
+    base64
 }

@@ -9,10 +9,12 @@ $(() => {
     editPage.onChanged();
     $(".edit-submit-button").click(() => {
         $("#context").val(editorInstance.toJSON());
-        if(isConfirmedTitle)$(".edit-form").submit();
+        $("#body").val($(".preview-body").html());
+        if (isConfirmedTitle) $(".edit-form").submit();
     });
 
 });
+
 
 function selectEditBody() {
     editPage.CurrentPage = EditPageContents.EditBody;
