@@ -11,13 +11,13 @@
 {
    @Html.AntiForgeryToken()
    @Html.LabelFor(m=>m.NickName)
-   @Html.TextBoxFor(m=>m.NickName)
+   @Html.TextBoxFor(m=>m.NickName,new{id="NickName",name="NickName"})
    @Html.LabelFor((m) => m.Email)
-   @Html.TextBoxFor((m) => m.Email)
+   @Html.TextBoxFor((m) => m.Email,new{id="Email",name="Email"})
    @Html.LabelFor(m=>m.AcceptMail)
-   @Html.CheckBoxFor(m=>m.AcceptMail)
+   @Html.CheckBoxFor(m=>m.AcceptMail,new {id="AcceptMail",name="AcceptMail"})
     @Html.LabelFor(m=>m.AcceptTerm)
-    @Html.CheckBoxFor(m=>m.AcceptTerm)
+    @Html.CheckBoxFor(m=>m.AcceptTerm,new{id="AcceptTerm",name="AcceptTerm"})
     <input type="submit" value="登録">
 
 }

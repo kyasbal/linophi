@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Web.Utility;
 
 namespace Web.Models
 {
@@ -24,9 +25,12 @@ namespace Web.Models
                 NickName = nickname,
                 UpdateTime = DateTime.Now,
                 CreationTime = DateTime.Now,
-                AcceptEmail = acceptEmail
+                AcceptEmail = acceptEmail,
+                UniqueId = IdGenerator.getId(20)
             };
         }
+
+        public string UniqueId { get; set; }
 
         /// <summary>
         /// ニックネーム
