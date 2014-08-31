@@ -410,6 +410,7 @@
     <Content Include="Views\Shared\Page403.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\Logout.cshtml" />
+    <Content Include="Views\Account\Config.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

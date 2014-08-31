@@ -14,11 +14,20 @@
                     @{
                          if (!Request.IsAuthenticated)
                          {
-                             @Html.ActionLink("ログイン", "Login", "Account")
+                             using (Html.BeginForm("Login","Account",FormMethod.Get))
+                              {
+                                 @Html.Hidden("returnUrl",Request.Url)
+                                <input type="submit" value="ログイン"/>
+                              }
                          }
                          else
                          {
+                             <!--TODO:ここをドロップダウンにしといて-->
                              @WebPageStatic.GetUserNickName(Request)
+                             <ul>
+                                 <li>@Html.ActionLink("設定","Config","Account")</li>
+                                 <li>@Html.ActionLink("ログアウト","Logout","Account")</li>
+                             </ul>
                          }
                     }
                 </li>
