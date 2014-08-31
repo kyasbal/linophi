@@ -7,7 +7,7 @@
 var NovelEditer;
 (function (_NovelEditer) {
     var sepalateToken = "\n\n";
-    var markups = [new BoldMarkup()];
+    var markups = [new BoldMarkup(), new LinkMarkup()];
 
     var NovelEditer = (function () {
         function NovelEditer(editorTarget, previewTarget, previewBounds) {
@@ -117,6 +117,7 @@ var NovelEditer;
                     if (index == -1)
                         break;
                     this._paragraphList.add(index);
+                    index += sepalateToken.length;
                 }
                 this._paragraphList.add(currentText.length);
                 return new TextChangeInfo(null, null);
@@ -138,29 +139,24 @@ var NovelEditer;
             var str = currentText;
             while (true) {
                 if (parag.isFinalParagraph) {
-                    if (str != parag.rawText) {
-                        if (changeStart == 0) {
-                            changeStart = null;
-                            break;
-                        }
-                        changeStart--;
+                    if (changeStart == 0) {
+                        changeStart = null;
                         break;
                     }
-                    if (str.substr(0, parag.rawText.length + 1) == parag.rawText + "\n") {
-                        changeStart = parag.getParagraphIndex();
-                        break;
-                    }
+                    changeStart--;
+                    break;
                 }
                 if (str.substr(0, parag.rawText.length + 2) == parag.rawText + "\n\n") {
-                    str = str.substr(parag.rawText.length + 1);
+                    str = str.substr(parag.rawText.length + 2);
                     parag = parag.nextParagraph;
+                    changeStart++;
                     continue;
                 }
                 if (changeStart == 0) {
                     changeStart = null;
                     break;
                 }
-                changeStart--;
+                changeStart--; //不一致の直前
                 break;
             }
 
@@ -353,6 +349,9 @@ var NovelEditer;
 
         //現在の段落(とその強調表示)を変更する
         ParagraphManager.prototype.changeCurrentParagraph = function (currentParagraph) {
+            if (currentParagraph == null)
+                currentParagraph = this.headParagraph;
+
             this._currentParagraph.isEmphasized = false;
             this._currentParagraph = currentParagraph;
             this._currentParagraph.isEmphasized = true;
@@ -601,7 +600,7 @@ var NovelEditer;
             var prefixes = [new TitlePrefix(), new DividerPrefix(), new QuotePrefix()];
             var tag;
             var rawStr = this._rawText.replace(/\n/g, "</br>");
-            rawStr.replace(" ", "&ensp;"); //半角スペースは特殊文字として置き換える
+            rawStr = rawStr.replace(/ /g, "&ensp;"); //半角スペースは特殊文字として置き換える
             if (Utils.StringUtility.isEmpty(this._rawText)) {
                 this._cacheHtml = "<br/>";
                 return;

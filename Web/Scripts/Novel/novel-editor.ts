@@ -1,7 +1,7 @@
 ﻿module NovelEditer
 {
     var sepalateToken: string = "\n\n";
-    var markups: MarkupBase[] = [new BoldMarkup()];
+    var markups: MarkupBase[] = [new BoldMarkup(),new LinkMarkup()];
     
     export class NovelEditer
     {
@@ -137,10 +137,11 @@
                     index = currentText.indexOf(sepalateToken, index);
                     if (index == -1) break;
                     this._paragraphList.add(index);
-                    }
+                    index += sepalateToken.length;
+                }
                 this._paragraphList.add(currentText.length);
                 return new TextChangeInfo(null, null);
-                    }
+            }
 
             if (currentText == "")//全削除
                     {
@@ -159,35 +160,28 @@
             while (true)
             {
                 if (parag.isFinalParagraph)
-                {
-                    if (str != parag.rawText)
+                {//最終段落が一致することはない
+                    if (changeStart == 0)//段落が一つしかなかったとき
                     {
-                        if (changeStart == 0)
-                        {
-                            changeStart = null;
-                            break;
-                        }
-                        changeStart--;
+                        changeStart = null;
                         break;
                     }
-                    if (str.substr(0, parag.rawText.length + 1) == parag.rawText + "\n")
-                    {
-                        changeStart = parag.getParagraphIndex();
-                        break;
-                    }
+                    changeStart--;
+                    break;
                 }
-                if (str.substr(0, parag.rawText.length + 2) == parag.rawText + "\n\n")
+                if (str.substr(0, parag.rawText.length + 2) == parag.rawText + "\n\n")//段落内容と一致
                 {
-                    str = str.substr(parag.rawText.length+1);
+                    str = str.substr(parag.rawText.length+2);
                     parag = parag.nextParagraph;
+                    changeStart++;
                     continue;
                 }
-                if (changeStart == 0)
+                if (changeStart == 0)//最初の段落で不一致
                 {
                     changeStart = null;
                     break;
                 }
-                changeStart--;
+                changeStart--;//不一致の直前
                 break;
             }
 
@@ -384,6 +378,9 @@
         //現在の段落(とその強調表示)を変更する
         changeCurrentParagraph(currentParagraph: Paragraph)
         {
+            if (currentParagraph == null)
+                currentParagraph = this.headParagraph;
+            
             this._currentParagraph.isEmphasized = false;
             this._currentParagraph = currentParagraph;
             this._currentParagraph.isEmphasized = true;
@@ -655,7 +652,7 @@
             var prefixes: PrefixBase[] = [new TitlePrefix(), new DividerPrefix(), new QuotePrefix()];
             var tag: JQuery;
             var rawStr: string = this._rawText.replace(/\n/g, "</br>");
-            rawStr.replace(" ", "&ensp;"); //半角スペースは特殊文字として置き換える
+            rawStr=rawStr.replace(/ /g, "&ensp;"); //半角スペースは特殊文字として置き換える
             if (Utils.StringUtility.isEmpty(this._rawText))
             {
                 this._cacheHtml = "<br/>";
