@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Web.Storage;
 
 namespace Web.Models
@@ -11,8 +12,11 @@ namespace Web.Models
         public string Title { get; set; }
 
         public string Tag { get; set; }
-
+        [AllowHtml]
         public string Context { get; set; }
+
+        [AllowHtml]
+        public string Body { get; set; }
     }
 
     public class ContextDataModel

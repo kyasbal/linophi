@@ -18,25 +18,14 @@ namespace Web.Controllers
             ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
             var article = context.Articles.FirstOrDefault(a => a.ArticleId.Equals(articleId));
             if (article == null) return null;
-            ParagraphTableManager pm = new ParagraphTableManager(new TableStorageConnection());
-            var ps = pm.GetParagraphs(articleId, 0);
-            var ps4json = new ParagraphDataModel[ps.Length];
-            Parallel.For(0, ps.Length, (index) =>
-            {
-                var paragraphEntity = ps[index];
-                ps4json[index] = ParagraphDataModel.GetFromStorage(paragraphEntity);
-            });
+            ArticleBodyTableManager manager=new ArticleBodyTableManager(new TableStorageConnection());
             article.PageView++;
             context.SaveChanges();
             return new ViewArticleViewModel()
             {
-                Content = System.Web.Helpers.Json.Encode(new ViewArticleContentStructure()
-                {
-                    ArticleTitle = article.Title,
-                    UpdateTime = article.UpdateTime.ToString(),
-                    Tags = article.Tags == null ? null : article.Tags.ToArray(),
-                    Paragraphs = ps4json
-                })
+                PageView=article.PageView,
+                Title = article.Title,
+                Content =manager.GetArticleBody(article.ArticleId)
             };
         }
 

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
+using Microsoft.Security.Application;
 using Microsoft.WindowsAzure.Storage.Table;
 using Web.Models;
 
@@ -32,7 +34,7 @@ namespace Web.Storage
             {
                 NextParagraph = paragraphDataModel.nextParagraph,
                 PrevParagraph = paragraphDataModel.prevParagraph,
-                RawText = paragraphDataModel.rawText,
+                RawText =Sanitizer.GetSafeHtml(paragraphDataModel.rawText),
                 ParagraphIndex = paragraphDataModel.paragraphIndex
             };
         }

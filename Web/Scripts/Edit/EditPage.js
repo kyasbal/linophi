@@ -9,6 +9,7 @@ $(function () {
     editPage.onChanged();
     $(".edit-submit-button").click(function () {
         $("#context").val(editorInstance.toJSON());
+        $("#body").val($(".preview-body").html());
         if (isConfirmedTitle)
             $(".edit-form").submit();
     });

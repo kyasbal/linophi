@@ -1,4 +1,4 @@
-@model Web.Models.EditViewModel
+@model string
 @{
     ViewBag.Title = "ログイン | linophi";
 }
@@ -31,6 +31,7 @@
         @using (Html.BeginForm("ExternalLogin", "Account",FormMethod.Post))
         {
             <a href="#"><img src="~/Content/imgs/linophi-logo.png" height="70" width="70"></a>
+            @Html.Hidden("returnUrl",Model)
             @Html.Hidden("provider","Twitter")
             <input type="submit" value="Twitterでログイン"/>
         }
@@ -40,6 +41,7 @@
         @using (Html.BeginForm("ExternalLogin", "Account",FormMethod.Post))
         {
             <a href="#"><img src="~/Content/imgs/linophi-logo.png" height="70" width="70"></a>
+            @Html.Hidden("returnUrl",(string) Model)
             @Html.Hidden("provider", "Facebook")
             <input type="submit" value="Facebookでログイン" />
         }

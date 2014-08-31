@@ -1,13 +1,4 @@
 ﻿var paragraphFactory: NovelEditer.ParagraphFactory=new NovelEditer.ParagraphFactory();
-$(() =>
-{
-    var raw = $("#article-source").text();
-    if (raw == "")return;
-    var data = JSON.parse(raw);
-    var sortedData: any = _.sortBy(data.Paragraphs, (d: any) => d.paragraphIndex);
-    $(".article-container").html(paragraphFactory.rebuildParagraphs(JSON.stringify(sortedData)).getParagraphHtmls(sortedData.length));
-    $(".article-title").html(data.ArticleTitle);
-});
 //});
 //class NovelViewer
 //{

@@ -645,13 +645,19 @@
         {
             return this.prevParagraph == null;
         }
-
+         htmlEnc(s:string) {
+        return s.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/'/g, '&#39;')
+            .replace(/"/g, '&#34;');
+    }
         //HTML再生成
         updateCacheHtml()
         {
             var prefixes: PrefixBase[] = [new TitlePrefix(), new DividerPrefix(), new QuotePrefix()];
             var tag: JQuery;
-            var rawStr: string = this._rawText.replace(/\n/g, "</br>");
+            var rawStr: string =this.htmlEnc(this._rawText).replace(/\n/g, "</br>");
             rawStr=rawStr.replace(/ /g, "&ensp;"); //半角スペースは特殊文字として置き換える
             if (Utils.StringUtility.isEmpty(this._rawText))
             {
