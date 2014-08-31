@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
 using Web.Api.Article;
@@ -7,15 +8,31 @@ using Web.Storage;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class EditController : Controller
     {
-        
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult RedirectToEdit()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return Redirect("/Account/Login?returnUrl=/RedirectToEdit");
+            }
+        }
+
+        [HttpGet]
+        [Authorize]
         // GET: Edit
         public ActionResult Index()
         {
             return View();
         }
-
+        [Authorize]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Index(EditViewModel vm)

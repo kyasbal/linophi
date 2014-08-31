@@ -28,9 +28,10 @@ namespace Web.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult LogIn()
+        public ActionResult LogIn(string returnUrl)
         {
-            return View();
+            returnUrl = returnUrl ?? "/";
+            return View((object)returnUrl);
         }
 
         [HttpGet]
