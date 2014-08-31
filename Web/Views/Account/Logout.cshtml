@@ -1,0 +1,16 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Logout";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+<h2>Logout</h2>
+<script>
+    $(function()
+    {
+        $.removeCookie(".AspNet.ApplicationCookie");
+        sessionStorage.removeItem("")
+        location.href = "/";
+    });
+</script>

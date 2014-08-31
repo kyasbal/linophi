@@ -3921,8 +3921,6 @@ interface JQuery {
      * @param callback The new function to add to the queue, with a function to call that will dequeue the next item.
      */
     queue(queueName: string, callback: Function): JQuery;
-    droppable(p: { accept: string;hoverClass: string;drop: (event, ui) => void }): any;
-    draggable(p: { helper: string }): any;
 }
 declare module "jquery" {
     export = $;

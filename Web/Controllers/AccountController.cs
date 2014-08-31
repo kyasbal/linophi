@@ -4,6 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -29,6 +30,13 @@ namespace Web.Controllers
         [AllowAnonymous]
         public ActionResult LogIn()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            AuthenticationManager.SignOut();
             return View();
         }
 
