@@ -77,12 +77,16 @@ class BoldMarkup extends MarkupBase //太字
 //    }
 //}
 
-//class LinkMarkup extends MarkupBase
-//{
-//    getMarkupString(result: string, prevState: MarkupStateData): string
-//    {
-//        result = result.replace(/(^https?:\/\/[\x21-\x7e]+(.jpg|.jpeg|.gif|.png)$)/g, "<Img Src=\"$1\">");
-//        result = result.replace(/(^https?:\/\/[\x21-\x7e]+(?!(.jpg|.jpeg|.gif|.png))$)/g, "<a href='$1'>$1</a>");
-//        return result;
-//    }
-//}
+class LinkMarkup extends MarkupBase
+{
+    getMarkupString(result: string): string
+    {
+        result = result.replace(/&ensp;/g, "\u0006");
+        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"$1\">");
+        //var m = result.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)[^\w\/:%#\$&\?\(\)~\.=\+\-](?!>)/g);
+        //var m2 = result.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)$/);
+        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)([^\w\/:%#\$&\?\(\)~\.=\+\-])(?!>)/g, "<a href='$1'>$1</a>$2");
+        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)$/, "<a href='$1'>$1</a>");
+        return result.replace(/\u0006/g, "&ensp;");
+    }
+}

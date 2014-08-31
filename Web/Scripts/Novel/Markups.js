@@ -53,6 +53,7 @@ var BoldMarkup = (function (_super) {
     };
     return BoldMarkup;
 })(MarkupBase);
+
 //class QuoteMarkup extends MarkupBase
 //{
 //    getMarkupString(str: string, prevState: MarkupStateData): MarkupResult
@@ -88,13 +89,21 @@ var BoldMarkup = (function (_super) {
 //        return new MarkupStateData(true);
 //    }
 //}
-//class LinkMarkup extends MarkupBase
-//{
-//    getMarkupString(result: string, prevState: MarkupStateData): string
-//    {
-//        result = result.replace(/(^https?:\/\/[\x21-\x7e]+(.jpg|.jpeg|.gif|.png)$)/g, "<Img Src=\"$1\">");
-//        result = result.replace(/(^https?:\/\/[\x21-\x7e]+(?!(.jpg|.jpeg|.gif|.png))$)/g, "<a href='$1'>$1</a>");
-//        return result;
-//    }
-//}
+var LinkMarkup = (function (_super) {
+    __extends(LinkMarkup, _super);
+    function LinkMarkup() {
+        _super.apply(this, arguments);
+    }
+    LinkMarkup.prototype.getMarkupString = function (result) {
+        result = result.replace(/&ensp;/g, "\u0006");
+        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"$1\">");
+
+        //var m = result.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)[^\w\/:%#\$&\?\(\)~\.=\+\-](?!>)/g);
+        //var m2 = result.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)$/);
+        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)([^\w\/:%#\$&\?\(\)~\.=\+\-])(?!>)/g, "<a href='$1'>$1</a>$2");
+        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)$/, "<a href='$1'>$1</a>");
+        return result.replace(/\u0006/g, "&ensp;");
+    };
+    return LinkMarkup;
+})(MarkupBase);
 //# sourceMappingURL=Markups.js.map
