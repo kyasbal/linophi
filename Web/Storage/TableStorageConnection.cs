@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using Microsoft.WindowsAzure.Storage;
@@ -16,8 +17,17 @@ namespace Web.Storage
 
         public TableStorageConnection()
         {
-            StorageAccount = CloudStorageAccount.DevelopmentStorageAccount;//new CloudStorageAccount(new StorageCredentials("Azure Storageのアカウント名", "Azure Storageのプライマリアクセスキー"), useHttps: false);//実際に運用するときにはuseHttpsはtrueにしたほうがいいのだろうか。
+            StorageAccount =
+                new CloudStorageAccount(new StorageCredentials("linophi", "v2SuurJ84CZmi95smIAktNaHUSGvhAuBq8T78Rr46fR9xZC7xLFWDT3/HWoYTBby8qzVbAd1Ez8p1K7mcPNfvA=="),
+                    useHttps: false); //実際に運用するときにはuseHttpsはtrueにしたほうがいいのだろうか。
+            //SetDevelopmentStorageAccount();
             TableClient = StorageAccount.CreateCloudTableClient();
+        }
+
+        [Conditional("DEBUG")]
+        private void SetDevelopmentStorageAccount()
+        {
+            StorageAccount = CloudStorageAccount.DevelopmentStorageAccount;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="linophiCloud" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2014-06.2.4">
-  <WebRole name="Web" vmsize="Large">
+  <WebRole name="Web" vmsize="Small">
     <Sites>
       <Site name="Web">
         <Bindings>
@@ -15,10 +15,10 @@
       <Import moduleName="Diagnostics" />
     </Imports>
     <ConfigurationSettings>
-      <Setting name="Twitter-ConsumerKey"/>
-      <Setting name="Twitter-ConsumerSecret"/>
-      <Setting name="Facebook-AppID"/>
-      <Setting name="Facebook-AppSecret"/>
+      <Setting name="Twitter-ConsumerKey" />
+      <Setting name="Twitter-ConsumerSecret" />
+      <Setting name="Facebook-AppID" />
+      <Setting name="Facebook-AppSecret" />
       <Setting name="SQL-ConnectionString" />
     </ConfigurationSettings>
   </WebRole>
