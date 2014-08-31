@@ -13,6 +13,8 @@ namespace Web.Models
         public string Title { get; set; }
         public string Content { get; set; }
         public int PageView { get; set; }
+        public string Author { get; set; }
+        public string Author_ID { get; set; }
     }
 
     /// <summary>

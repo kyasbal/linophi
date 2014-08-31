@@ -9,9 +9,9 @@ namespace Web.Models
 {
     public class ArticleModel
     {
-        public static ArticleModel GenerateArticle(string title,UserAccount auther)
+        public static ArticleModel GenerateArticle(string title,string auther)
         {
-            return new ArticleModel(){ArticleId = IdGenerator.getId(12),Author = auther,Title = title,CreationTime = DateTime.Now,UpdateTime = DateTime.Now};
+            return new ArticleModel(){ArticleId = IdGenerator.getId(12),AuthorID = auther,Title = title,CreationTime = DateTime.Now,UpdateTime = DateTime.Now};
         }
 
         [Key]
@@ -21,7 +21,7 @@ namespace Web.Models
 
         public ICollection<ArticleTagModel> Tags { get; set; } 
         
-        public UserAccount Author { get; set; }
+        public string AuthorID { get; set; }
 
         public int PageView
         {
