@@ -21,13 +21,13 @@
         {
             @Html.AntiForgeryToken()
             @Html.LabelFor(m => m.NickName, new { @class = "label" })
-            @Html.TextBoxFor(m => m.NickName, new { id = "NickName", name = "NickName", @class = "text-box" })
+            @Html.TextBoxFor(m => m.NickName, new { id = "NickName", name = "NickName", @class = "text-box" })<br/><br />
             @Html.LabelFor((m) => m.Email)
-            @Html.TextBoxFor((m) => m.Email, new { id = "Email", name = "Email" })
+            @Html.TextBoxFor((m) => m.Email, new { id = "Email", name = "Email" })<br /><br />
             @Html.LabelFor(m => m.AcceptMail)
-            @Html.CheckBoxFor(m => m.AcceptMail, new { id = "AcceptMail", name = "AcceptMail" })
+            @Html.CheckBoxFor(m => m.AcceptMail, new { id = "AcceptMail", name = "AcceptMail" })<br /><br />
             @Html.LabelFor(m => m.AcceptTerm)
-            @Html.CheckBoxFor(m => m.AcceptTerm, new { id = "AcceptTerm", name = "AcceptTerm" })
+            @Html.CheckBoxFor(m => m.AcceptTerm, new { id = "AcceptTerm", name = "AcceptTerm" })<br /><br />
             <input type="submit" value="登録">
         }
     </div>
