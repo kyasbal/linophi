@@ -35,8 +35,9 @@
   width: 200px;
   padding: 5px 5px;
   position: absolute;
-  left: 20px;
+  left: 10px;
   top: -6px;
+  box-sizing: content-box;
 }
 .header .menu .search .search-text:focus {
   background-color: rgba(251, 215, 162, 0.5);
@@ -51,6 +52,9 @@
   top: -6px;
 }
 .header .menu .search .search-button:hover {
+  opacity: 1;
+}
+.header .menu .search *.search-button:hover {
   opacity: 0.5;
 }
 .header .menu:before,
