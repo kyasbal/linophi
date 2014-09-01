@@ -1,5 +1,5 @@
 ﻿.header {
-  margin: 20px 150px;
+  margin: 30px 150px;
   /* clearfix */
   /* For IE 6/7 (trigger hasLayout) */
 }
@@ -15,31 +15,35 @@
   color: #000;
   text-decoration: underline;
 }
-.header align-content:hover {
-  color: #444;
+.header a:hover {
+  color: #818181;
   text-decoration: underline;
 }
 .header .menu {
   overflow: hidden;
 }
 .header .menu .search {
-  position: relative;
+  position: absolute;
 }
 .header .menu .search input {
   margin-left: 10%;
 }
 .header .menu .search .search-text {
   background-color: #fbd7a2;
-  height: 40px;
+  height: 30px;
   width: 200px;
   padding: 5px 5px;
   position: absolute;
   left: 10px;
   top: -6px;
   box-sizing: content-box;
+  border: hidden !important;
 }
 .header .menu .search .search-text:focus {
   background-color: rgba(251, 215, 162, 0.5);
+}
+.header .menu .search .search-text:hover {
+  border: 2px #a4c6fd  !important;
 }
 .header .menu .search .search-button {
   border: 0;
