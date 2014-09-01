@@ -1,5 +1,6 @@
 ﻿.edit-preview {
   color: black;
+  overflow: auto;
 }
 .edit-preview .em {
   background-color: aquamarine;

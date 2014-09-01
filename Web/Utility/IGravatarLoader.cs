@@ -2,8 +2,12 @@
 using System.Diagnostics;
 using System.Net;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Web.Models;
 
 namespace Web.Utility
@@ -33,7 +37,18 @@ namespace Web.Utility
         MvcHtmlString GetIconTag(int size);
     }
 
-    public class BasicGravatarLoader:IGravatarLoader
+    public static class GravatarRazorHelper
+    {
+        public static MvcHtmlString GravatarImg(this HtmlHelper<dynamic> helper, HttpRequestBase req,int size=128)
+        {
+            var userManager = req.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            UserAccount user = userManager.FindByName(WebPageStatic.User().Identity.Name);
+            BasicGravatarLoader loader=new BasicGravatarLoader(user.Email);
+            return loader.GetIconTag(size);
+        }
+    }
+
+     public class BasicGravatarLoader:IGravatarLoader
     {
         private const string GravatarHashAdder = "http://www.gravatar.com/avatar/{0}";
         private bool? _isExistingIcon;

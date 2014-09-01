@@ -41,7 +41,13 @@ namespace Web.Controllers
             return View();
         }
 
-        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult Config()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]//TODO:ŒöŠJ‚Ìíœ
         public ActionResult TestConfirmation()
         {
 #if DEBUG
