@@ -1,23 +1,24 @@
 ﻿using System.IO;
 using System.Reflection;
 using Microsoft.WindowsAzure.Storage.Table;
+using Web.Storage.Connection;
 
-namespace Web.Storage
+namespace Web.Storage.Manager
 {
     public abstract class AzureTableManagerBase<T> where T : ITableEntity, new()
     {
-        protected readonly TableStorageConnection _connection;
+        protected readonly TableStorageConnection Connection;
 
-        protected CloudTable _table;
+        protected readonly CloudTable Table;
 
         protected AzureTableManagerBase(TableStorageConnection connection,string suffix="")
         {
-            _connection = connection;
-            var storageAttribute = GetType().GetCustomAttribute<AzureStorageTableAttribute>();
+            Connection = connection;
+            var storageAttribute = GetType().GetCustomAttribute<TableStorageAttribute>();
             if (storageAttribute != null)
             {
-                _table = connection.TableClient.GetTableReference(storageAttribute.TableName+suffix);
-                _table.CreateIfNotExists();
+                Table = connection.TableClient.GetTableReference(storageAttribute.TableName+suffix);
+                Table.CreateIfNotExists();
             }
             else
                 throw new InvalidDataException("このクラスにはテーブル名を指定するAttributeを設置する必要があります");
@@ -25,7 +26,7 @@ namespace Web.Storage
 
         protected TableQuery<T> CreateQuery()
         {
-            return _table.CreateQuery<T>();
+            return Table.CreateQuery<T>();
         }
     }
 }

@@ -1,47 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web;
+using System.Web.UI.WebControls;
 using Microsoft.Security.Application;
+using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.Table;
+using Web.Storage.Connection;
+using Web.Storage.Manager;
 using Web.Utility;
 
 namespace Web.Storage
 {
-    public class ArticleBodyEntity:TableEntity
+
+    [BlobStorage("blob-article-body")]
+    public class ArticleBodyTableManager : AzureBlobManagerBase
     {
-        public ArticleBodyEntity(string articleKey) : base(articleKey,"constant")
-        {
-
-        }
-
-        public ArticleBodyEntity()
+        public ArticleBodyTableManager(BlobStorageConnection connection):base(connection)
         {
         }
 
-        public string Body { get; set; }
-    }
-    [AzureStorageTable("ArticleBody")]
-    public class ArticleBodyTableManager : AzureTableManagerBase<ArticleBodyEntity>
-    {
-        public ArticleBodyTableManager(TableStorageConnection connection, string suffix = "") : base(connection, suffix)
-        {
-        }
-
-        public void AddArticle(string artickleKey, string body)
+        public async Task AddArticle(string artickleKey, string body)
         {
             string safeHtml = Sanitizer.GetSafeHtmlFragment(body);
-            _table.Execute(TableOperation.InsertOrReplace(new ArticleBodyEntity(artickleKey){Body = safeHtml}));
+            ICloudBlob blob = Container.GetBlockBlobReference(artickleKey);
+            var blobArray = Encoding.Unicode.GetBytes(safeHtml);
+            await blob.UploadFromByteArrayAsync(blobArray,0,blobArray.Length);
         }
 
         public void RemoveArticle(string articleKey)
         {
-            _table.Execute(TableOperation.Delete(new ArticleBodyEntity(articleKey)));
+            ICloudBlob blob = Container.GetBlobReferenceFromServer(articleKey);
+            blob.Delete();
         }
 
-        public string GetArticleBody(string articleKey)
+        public async Task<string> GetArticleBody(string articleKey)
         {
-            return CreateQuery().Where((m) => m.PartitionKey.Equals(articleKey)).FirstOrDefault().Body;
+            ICloudBlob blob = Container.GetBlobReferenceFromServer(articleKey);
+            using (MemoryStream ms=new MemoryStream())
+            {
+                await blob.DownloadToStreamAsync(ms);
+                return Encoding.Unicode.GetString(ms.ToArray());
+            }
+
         }
     }
 }

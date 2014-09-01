@@ -20,7 +20,7 @@ namespace Web.Controllers
             ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
             var article = context.Articles.FirstOrDefault(a => a.ArticleId.Equals(articleId));
             if (article == null) return null;
-            ArticleBodyTableManager manager=new ArticleBodyTableManager(new TableStorageConnection());
+            ArticleBodyTableManager manager=new ArticleBodyTableManager(new BlobStorageConnection());
             var author=await HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByNameAsync(article.AuthorID);
             article.PageView++;
             context.SaveChanges();
@@ -30,7 +30,7 @@ namespace Web.Controllers
                 Author_ID=author.UniqueId,
                 PageView=article.PageView,
                 Title = article.Title,
-                Content =manager.GetArticleBody(article.ArticleId)
+                Content =await manager.GetArticleBody(article.ArticleId)
             };
         }
 

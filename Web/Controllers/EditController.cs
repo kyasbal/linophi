@@ -47,15 +47,9 @@ namespace Web.Controllers
             var article = ArticleModel.GenerateArticle(vm.Title,User.Identity.Name);
             context.Articles.Add(article);
             context.SaveChanges();
-            var data=System.Web.Helpers.Json.Decode<ParagraphDataModel[]>(vm.Context);
-            var connection = new TableStorageConnection();
-            ParagraphTableManager ptm=new ParagraphTableManager(connection);
-            foreach (var paragraphDataModel in data)
-            {
-                ptm.AddParagraph(article.ArticleId,0,paragraphDataModel);
-            }
+            var connection = new BlobStorageConnection();
             ArticleBodyTableManager abtm=new ArticleBodyTableManager(connection);
-            abtm.AddArticle(article.ArticleId,vm.Body);
+            await abtm.AddArticle(article.ArticleId,vm.Body);
             return Redirect("~/"+article.ArticleId);
         }
     }
