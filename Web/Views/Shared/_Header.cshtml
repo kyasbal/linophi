@@ -2,20 +2,18 @@
 <header class="header">
     @*headerのドロップダウンのためのスクリプト(のつもりだった)*@
     <script>
-        $('.menu').on({
-            click: function (e) {
-                e.preventDefault();
-
-                var cls = $(".dropdown-menu").attr("class");
-
-                if (cls.match(/open/)) {
-                    $(".dropdown-menu").removeClass("open");
-                }
-                else {
-                    $(".dropdown-menu").addClass("open");
-                }
-            }
+        $(function()
+        {
+            $('.dropdown-menu').mouseover(function()
+            {
+                $(this).addClass('.open');
+            });
+            $('.dropdown-menu').mouseout(function()
+            {
+                $(this).removeClass('.open');
+            });
         });
+            
     </script>
     <div class="menu">
         <form class="search">

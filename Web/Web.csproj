@@ -358,16 +358,11 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Storage\ArticleBodyEntity.cs" />
-    <Compile Include="Storage\Manager\AzureBlobManagerBase.cs" />
-    <Compile Include="Storage\Manager\BlobStorageAttribute.cs" />
-    <Compile Include="Storage\Manager\TableStorageAttribute.cs" />
-    <Compile Include="Storage\Manager\AzureTableManagerBase.cs" />
-    <Compile Include="Storage\Connection\BlobStorageConnection.cs" />
-    <Compile Include="Storage\Connection\StorageConnectionBase.cs" />
-    <Compile Include="Storage\LabelEntity.cs" />
+    <Compile Include="Storage\AzureStorageTableAttribute.cs" />
+    <Compile Include="Storage\AzureTableManagerBase.cs" />
     <Compile Include="Storage\ParagraphEntity.cs" />
     <Compile Include="Storage\ParagraphTableManager.cs" />
-    <Compile Include="Storage\Connection\TableStorageConnection.cs" />
+    <Compile Include="Storage\TableStorageConnection.cs" />
     <Compile Include="Utility\BirthDayInputHelper.cs" />
     <Compile Include="Utility\ChallengeResult.cs" />
     <Compile Include="Utility\Configuration\ConfigurationLoader.cs" />
@@ -430,6 +425,7 @@
     <TypeScriptCompile Include="Scripts\Account\externalLoginConfirmation.ts" />
     <TypeScriptCompile Include="Scripts\collections.ts" />
     <TypeScriptCompile Include="Scripts\Edit\EditPage.ts" />
+    <TypeScriptCompile Include="Scripts\Edit\head.ts" />
     <TypeScriptCompile Include="Scripts\Edit\TagMaker.ts" />
     <TypeScriptCompile Include="Scripts\Home\AfterLogin.ts" />
     <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />
