@@ -27,6 +27,12 @@ namespace Web.Utility.Configuration
         /// <param name="key">The key.</param>
         /// <returns>System.String.</returns>
         string GetConfiguration(string key);
+
+        /// <summary>
+        /// これがローカル用の構成かどうか
+        /// </summary>
+        /// <returns>真偽</returns>
+        bool IsLocalConfiguration();
     }
 
     /// <summary>
@@ -62,6 +68,14 @@ namespace Web.Utility.Configuration
             {
                 var configurationSettingValue = RoleEnvironment.GetConfigurationSettingValue(key);
                 return configurationSettingValue;
+            }
+            /// <summary>
+            /// これがローカル用の構成かどうか
+            /// </summary>
+            /// <returns>真偽</returns>
+            public bool IsLocalConfiguration()
+            {
+                return GetConfiguration("DefinitionType").Equals("Local");
             }
         }
     }

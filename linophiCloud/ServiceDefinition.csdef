@@ -20,6 +20,7 @@
       <Setting name="Facebook-AppID" />
       <Setting name="Facebook-AppSecret" />
       <Setting name="SQL-ConnectionString" />
+      <Setting name="DefinitionType"/>
     </ConfigurationSettings>
   </WebRole>
 </ServiceDefinition>

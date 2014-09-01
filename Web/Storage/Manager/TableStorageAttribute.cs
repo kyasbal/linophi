@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Web.Storage
+namespace Web.Storage.Manager
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class AzureStorageTableAttribute : Attribute
+    public class TableStorageAttribute : Attribute
     {
-        public AzureStorageTableAttribute(string tableName)
+        public TableStorageAttribute(string tableName)
         {
             TableName = tableName;
         }

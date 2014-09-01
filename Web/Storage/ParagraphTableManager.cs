@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using Microsoft.WindowsAzure.Storage.Table;
 using Web.Models;
+using Web.Storage.Connection;
+using Web.Storage.Manager;
 
 namespace Web.Storage
 {
-    [AzureStorageTable("Paragraphs")]
+    [TableStorage("Paragraphs")]
     public class ParagraphTableManager:AzureTableManagerBase<ParagraphEntity>
     {
         public ParagraphTableManager(TableStorageConnection connection, string suffix = "") : base(connection, suffix)
@@ -16,7 +18,7 @@ namespace Web.Storage
 
         public void AddParagraph(string articleId,int version,ParagraphDataModel paragraphDataModel)
         {
-            _table.Execute(TableOperation.Insert(ParagraphEntity.FromDataModel(articleId, version, paragraphDataModel)));
+            Table.Execute(TableOperation.Insert(ParagraphEntity.FromDataModel(articleId, version, paragraphDataModel)));
         }
 
         public ParagraphEntity[] GetParagraphs(string articleId, int version)
