@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.WindowsAzure.Storage.Table;
 using Web.Models;
+using Web.Storage.Connection;
 
 namespace Web.Storage
 {

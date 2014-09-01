@@ -9,6 +9,7 @@
       <Setting name="Facebook-AppSecret" value="d1e1e3aef66f9cf641fedb1b5fe772cd" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=linophi;AccountKey=v2SuurJ84CZmi95smIAktNaHUSGvhAuBq8T78Rr46fR9xZC7xLFWDT3/HWoYTBby8qzVbAd1Ez8p1K7mcPNfvA==" />
       <Setting name="SQL-ConnectionString" value="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|Debug.mdf;Integrated Security=True" />
+      <Setting name="DefinitionType" value="Local"/>
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
