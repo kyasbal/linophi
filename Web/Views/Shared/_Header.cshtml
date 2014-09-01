@@ -1,5 +1,22 @@
 ﻿@using Web.Utility
 <header class="header">
+    @*headerのドロップダウンのためのスクリプト(のつもりだった)*@
+    <script>
+        $('.menu').on({
+            click: function (e) {
+                e.preventDefault();
+
+                var cls = $(".dropdown-menu").attr("class");
+
+                if (cls.match(/open/)) {
+                    $(".dropdown-menu").removeClass("open");
+                }
+                else {
+                    $(".dropdown-menu").addClass("open");
+                }
+            }
+        });
+    </script>
     <div class="menu">
         <form class="search">
             <input type="search" class="search-text" >
@@ -13,24 +30,24 @@
                 |
                 <li>
                     @{
-                         if (!Request.IsAuthenticated)
-                         {
-                             using (Html.BeginForm("Login","Account",FormMethod.Get))
-                              {
-                                 @Html.Hidden("returnUrl",Request.Url)
+                        if (!Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("Login","Account",FormMethod.Get))
+                            {
+                                @Html.Hidden("returnUrl",Request.Url)
                                 <input type="submit" value="ログイン"/>
-                              }
-                         }
-                         else
-                         {
-                             @Html.GravatarImg(Request,48)
-                             <!--TODO:ここをドロップダウンにしといて-->
-                             @WebPageStatic.GetUserNickName(Request)
-                             <ul>
-                                 <li>@Html.ActionLink("設定","Config","Account")</li>
-                                 <li>@Html.ActionLink("ログアウト","Logout","Account")</li>
-                             </ul>
-                         }
+                            }
+                        }
+                        else
+                        {
+                            @Html.GravatarImg(Request,48)
+                            <!--TODO:ここをドロップダウンにしといて-->
+                            @WebPageStatic.GetUserNickName(Request)
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("設定","Config","Account")</li>
+                                <li>@Html.ActionLink("ログアウト","Logout","Account")</li>
+                            </ul>
+                        }
                     }
                 </li>
             </ul>
