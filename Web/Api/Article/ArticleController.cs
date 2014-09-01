@@ -1,6 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Results;
+using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity.Owin;
 using Web.Api.Response.Article;
 using Web.Models;
@@ -20,7 +24,7 @@ namespace Web.Api.Article
                 return false;
             }
         }
-        
+        [Authorize]
         public IHttpActionResult IsExist([FromBody]ExistenceRequest req)
         {
             string articleName = req.Title;
@@ -61,7 +65,7 @@ namespace Web.Api.Article
                 return VerifyTitleResponse.GenerateFailedResponse("タイトルが長すぎます。");
             }
         }
-
+        [Authorize]
         public IHttpActionResult IsValidTitle([FromBody]VerifyTitleRequest req)
         {
             if (req == null) return Json(VerifyTitleResponse.GenerateFailedResponse("タイトルは空白にできません。"));
