@@ -39,12 +39,12 @@ namespace Web.Controllers
         {
             if (String.IsNullOrWhiteSpace(id))
             {
-                return View();
+                return View("Top");
             }
             else
             {
                 var vm = await getArticleViewModel(id);
-                if (vm == null) return View();
+                if (vm == null || vm.Content == null) return Redirect("/");
                 return View(vm);
             }
         }

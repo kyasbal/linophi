@@ -39,13 +39,16 @@ namespace Web.Storage
 
         public async Task<string> GetArticleBody(string articleKey)
         {
-            ICloudBlob blob = Container.GetBlobReferenceFromServer(articleKey);
+            ICloudBlob blob = Container.GetBlockBlobReference(articleKey);
+            if (!blob.Exists())
+            {
+                return null;
+            }
             using (MemoryStream ms=new MemoryStream())
             {
                 await blob.DownloadToStreamAsync(ms);
                 return Encoding.Unicode.GetString(ms.ToArray());
             }
-
         }
     }
 }
