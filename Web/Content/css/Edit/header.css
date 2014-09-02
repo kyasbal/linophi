@@ -177,7 +177,7 @@ body {
   height: 40px;
   font-size: 15px;
   padding: 10px 30px;
-  background-color: #7FFFD4;
+  background-color: #696969;
   color: #888;
   display: block;
   margin: 30px auto 10% auto;
@@ -190,7 +190,7 @@ body {
   background: #6ca3fd;
 }
 .edit-submit-button:hover {
-  background-color: #3CB371;
+  background-color: #696969;
   color: #888;
 }
 .edit_footer {
