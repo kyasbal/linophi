@@ -28,6 +28,8 @@ namespace Web.Models
             get; set;
         }
 
+        public int LabelCount { get; set; }
+
         public DateTime CreationTime { get; set; }
 
         public DateTime UpdateTime { get; set; }

@@ -1,4 +1,5 @@
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Services.Client;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Web.Utility.Configuration;
