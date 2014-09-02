@@ -224,6 +224,12 @@
     <Content Include="Content\css\Home\Page404.min.css">
       <DependentUpon>Page404.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\Search.css">
+      <DependentUpon>Search.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\Search.min.css">
+      <DependentUpon>Search.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Home\viewarticle.css">
       <DependentUpon>viewarticle.less</DependentUpon>
     </Content>
@@ -297,6 +303,10 @@
     <Content Include="Content\css\Account\login.less" />
     <Content Include="Content\css\Account\login.css.map">
       <DependentUpon>login.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\Search.less" />
+    <Content Include="Content\css\Home\Search.css.map">
+      <DependentUpon>Search.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
