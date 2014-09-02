@@ -246,6 +246,12 @@
     <Content Include="Content\css\Novel\novel-editor.min.css" />
     <Content Include="Content\css\Novel\novel-viewer.css" />
     <Content Include="Content\css\Novel\novel-viewer.min.css" />
+    <Content Include="Content\css\shared.css">
+      <DependentUpon>shared.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\shared.min.css">
+      <DependentUpon>shared.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\imgs\Home\anger.png" />
     <Content Include="Content\imgs\Home\bethink.png" />
@@ -308,6 +314,10 @@
     <Content Include="Content\css\Home\Search.css.map">
       <DependentUpon>Search.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\shared.less" />
+    <Content Include="Content\css\shared.css.map">
+      <DependentUpon>shared.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
@@ -361,6 +371,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409021810434_AddLabelCount.cs" />
+    <Compile Include="Migrations\201409021810434_AddLabelCount.Designer.cs">
+      <DependentUpon>201409021810434_AddLabelCount.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -437,7 +451,11 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201409021810434_AddLabelCount.resx">
+      <DependentUpon>201409021810434_AddLabelCount.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Account\externalLoginConfirmation.ts" />
     <TypeScriptCompile Include="Scripts\collections.ts" />

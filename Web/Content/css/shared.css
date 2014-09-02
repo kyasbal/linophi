@@ -1,0 +1,11 @@
+﻿html {
+  overflow-y: scroll;
+  height: 100%;
+}
+body {
+  position: relative;
+  font: 15px/1.5 arial, sans-serif;
+  width: 100%;
+  background-color: #fff;
+}
+/*# sourceMappingURL=shared.css.map */

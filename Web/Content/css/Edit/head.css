@@ -85,7 +85,7 @@
 }
 .header #dropmenu li ul {
   float: left;
-  margin-top: 3%;
+  margin-top: 1%;
   margin-left: 74%;
   list-style-type: none;
   position: absolute;
@@ -97,7 +97,6 @@
   transition: all 0.1s;
   border-left: 1px solid #888;
   border-right: 1px solid #888;
-  border-bottom: 1px solid #888;
 }
 .header #dropmenu li ul li {
   display: block;
