@@ -54,41 +54,6 @@ var BoldMarkup = (function (_super) {
     return BoldMarkup;
 })(MarkupBase);
 
-//class QuoteMarkup extends MarkupBase
-//{
-//    getMarkupString(str: string, prevState: MarkupStateData): MarkupResult
-//    {
-//        var result: string = str;
-//        //result = str.replace(/\\"/g, "\u0006\u0006");
-//        result = result.replace(/\\"/g, "\\\\\"");//エスケープ
-//        result = "a" + result;
-//        while (true)
-//        {
-//            var rep: string = result.replace(/([^\\])"(.*?[^\\])"/, "$1<blockquote><p class=\\\"quote\\\">$2</p></blockquote>");
-//            if (rep == result) break;
-//            result = rep;
-//        }
-//        //result = result.replace(/"(.+?)"/, "<blockquote><p class=\"quote\">$1</p></blockquote>");
-//        //result = result.replace(/\u0006\u0006/g, "\"");
-//        var check: string = result.replace(/[^\\]"/, "");
-//        if (check != result) return new MarkupResult(result.replace(/\\"/g, "\"").substr(1), false, false);
-//        return new MarkupResult(result.replace(/\\"/g, "\"").substr(1), true,false);
-//    }
-//    markupConcludeCallback(str: string): MarkupResult//後続でマークアップが閉じた
-//    {
-//        str = str.replace(/<blockquote><p class="quote">/, "<blockquote><p class=\\\"quote\\\">");
-//        var rep: string = str.replace(/([^\\])"(.*?)$/, "$1<blockquote><p class=\\\"quote\\\">$2</p></blockquote>");
-//        if (rep == str) return new MarkupResult("<blockquote><p class=\"quote\">"+str.replace(/\\"/g,"\"")+"</p></blockquote>", false,false);
-//        return new MarkupResult(rep.replace(/\\"/g, "\""), true,false);
-//    }
-//    getMarkupStateData(str: string): MarkupStateData
-//    {
-//        str = str.replace(/<blockquote><p class="quote">/, "<blockquote><p class=\\\"quote\\\">");
-//        var rep: string = str.replace(/[^\\]"/, "");
-//        if (rep != str) return new MarkupStateData(false);
-//        return new MarkupStateData(true);
-//    }
-//}
 var LinkMarkup = (function (_super) {
     __extends(LinkMarkup, _super);
     function LinkMarkup() {
@@ -97,13 +62,33 @@ var LinkMarkup = (function (_super) {
     LinkMarkup.prototype.getMarkupString = function (result) {
         result = result.replace(/&ensp;/g, "\u0006");
         result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"$1\">");
-
-        //var m = result.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)[^\w\/:%#\$&\?\(\)~\.=\+\-](?!>)/g);
-        //var m2 = result.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)$/);
         result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)([^\w\/:%#\$&\?\(\)~\.=\+\-])(?!>)/g, "<a href='$1'>$1</a>$2");
         result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)$/, "<a href='$1'>$1</a>");
         return result.replace(/\u0006/g, "&ensp;");
     };
     return LinkMarkup;
+})(MarkupBase);
+
+var YoutubeMarkup = (function (_super) {
+    __extends(YoutubeMarkup, _super);
+    function YoutubeMarkup() {
+        _super.apply(this, arguments);
+    }
+    YoutubeMarkup.prototype.getMarkupString = function (result) {
+        result = result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w]+)/, "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>");
+        return result;
+    };
+    return YoutubeMarkup;
+})(MarkupBase);
+var NikonikoMarkup = (function (_super) {
+    __extends(NikonikoMarkup, _super);
+    function NikonikoMarkup() {
+        _super.apply(this, arguments);
+    }
+    NikonikoMarkup.prototype.getMarkupString = function (result) {
+        result = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<script type = \"text\/javascript\"src=\"http://ext.nicovideo.jp/thumb_watch/$1?w=490&h=307\" ></script><noscript><a href=\"http://www.nicovideo.jp/watch/$1\">同がリンク</a></noscript>");
+        return result;
+    };
+    return NikonikoMarkup;
 })(MarkupBase);
 //# sourceMappingURL=Markups.js.map
