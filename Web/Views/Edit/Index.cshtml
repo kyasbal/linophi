@@ -25,6 +25,7 @@
     <script src="~/Scripts/Utility/AspectRatioStretcher.js"></script>
     <script src="~/Scripts/Utility/HeightStretcher.js"></script>
     <script src="~/Scripts/Edit/Edit-autoHeight.js"></script>
+    <script src="~/Scripts/Edit/showdialog.js"></script>
     @*<script src="~/Scripts/Edit/Edit-autoMargin-left.js"></script>*@
     <script src="~/Scripts/Edit/TagMaker.js"></script>
 }
@@ -76,11 +77,22 @@
         @Html.HiddenFor((m) => m.Body, new {id = "body"})
         <a class="edit-submit-button">投稿する</a>
 
-    <div id="dialogframe" onmouseover="document.getElementById('layer').style.visibility = 'visible';">
-        ???
-        <div id="layer">
-            <p>testtest</p>
-            <p class="close" onclick="document.getElementById('layer').style.visibility = 'hidden';">- Close -</p>
-        </div>
+
+    <div><a href="javascript:void(0);" onclick="showDialog();">はてな？？</a></div>
+
+<div id="dialogBack"></div>
+
+<div id="dialog">
+    おこまりですか・・・<br />
+    なんてあほな方なんでしょう。<br />
+
+    <div class="dialog-button">
+        <input type="button" onclick="hideDialog();"
+               value="閉じる" />
     </div>
+</div>
+
+
+
+
     </div>

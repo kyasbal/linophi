@@ -30,23 +30,30 @@
     }
 }
 
-#dialogframe {
-  background-color: rgba(0, 0, 0, 0.4);
-  position:absolute;
-  top:50%;
-  left:50%;
-  margin-left:-160px; /*widthの半分にする*/
-  margin-top:-100px;/*heightの半分にする*/
- 
-  padding-left:8px;
-  padding-right:8px;
-  padding-top:8px;
- 
-  border:5px solid #E0E0E0;
-  width:320px;
-  height:200px;
-  z-index:2;
-}
-#layer{
+#dialogBack{
+    background-color:#000000;
+    position:absolute; 
+    left:0px; 
+    top:0px;
     visibility:hidden;
+    min-height:100%; 
+    min-width:100%; 
+    width:100%; 
+    height:100%;
+    filter:alpha(opacity=50);
+    -moz-opacity:0.5;
+    opacity:0.5;
+}
+#dialog{
+    position:absolute; 
+    visibility:hidden; 
+    text-align:center;
+    padding-top:10px;
+    margin:0 auto;
+    background-color:#FFFFFF; 
+    width:500px; 
+    height:500px;
+}
+.dialog-button{
+    bottom:0;
 }
