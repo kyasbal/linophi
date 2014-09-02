@@ -54,7 +54,7 @@ namespace Web.Controllers
             return View();
         }
 
-        public ActionResult Search(string searchText)
+        public ActionResult Search(string searchText,int skip=0)
         {
             if(searchText==null)return View(new SearchResultViewModel() {Articles = new SearchResultArticle[0]});
             string[] queries=searchText.Split(' ');
@@ -66,6 +66,8 @@ namespace Web.Controllers
                 var query = queries[index];
                 result=result.Where(f => f.Title.Contains(query));
             }
+            result = result.OrderBy(f => f.CreationTime);
+            result = result.Skip(skip);
             SearchResultViewModel vm=new SearchResultViewModel();
             List<SearchResultArticle> articles=new List<SearchResultArticle>();
             foreach (var source in result.Take(10))
