@@ -2,6 +2,7 @@
 var editPage;
 var editorInstance;
 var isConfirmedTitle;
+isConfirmedTitle = false;
 $(function () {
     editPage = new EditPage();
     editorInstance = new NovelEditer.NovelEditer($(".edit-context"), $(".preview-body"), $(".preview-context"));

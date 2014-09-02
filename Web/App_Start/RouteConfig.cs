@@ -14,6 +14,8 @@ namespace Web
     );
             routes.MapRoute("Edit", "Edit", new {controller = "Edit", action = "Index", id = UrlParameter.Optional}
                 );
+            routes.MapRoute("Search", "Search", new { controller = "Home" ,action="Search"}
+);
             routes.MapRoute("Default", "{id}", new {controller = "Home", action = "Index", id = UrlParameter.Optional}
                 );
             routes.MapRoute("Pages", "Pages/{controller}/{action}/{id}",

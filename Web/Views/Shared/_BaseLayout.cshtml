@@ -31,6 +31,18 @@
     <link href="~/Content/css/Edit/footer.css" rel="stylesheet" />
     <link href="~/Content/css/Edit/head.css" rel="stylesheet" />
     @*ここにFooterのCSSをそうにゅうすること*@
+    @*headerのドロップダウンのためのスクリプト(のつもりだった)*@
+    <script>
+        $(function () {
+            $('.dropdown-menu').mouseover(function () {
+                $(this).addClass('.open');
+            });
+            $('.dropdown-menu').mouseout(function () {
+                $(this).removeClass('.open');
+            });
+        });
+    </script>
+
     <title>@ViewBag.Title</title>
 </head>
     <body>

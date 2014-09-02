@@ -53,6 +53,9 @@
 .header .menu .search *.search-button:hover {
   opacity: 0.5;
 }
+.header .menu .search .search-button:focus {
+  outline: none;
+}
 .header .menu:before,
 .header .menu:after {
   content: "";
