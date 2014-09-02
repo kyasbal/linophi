@@ -1,5 +1,27 @@
 ﻿$(() =>
 {
+    /*
+     * ふせんをクリックされたら左側に影的なものを出して周りを暗くする
+     * 次のタイミングにクリックされたら貼り付ける
+     * 貼り付けられた（クリック領域でクリックされたら）そこに貼る
+     * それはこっちで用意した場所に追加されるが、すでに貼られていた場合は値を増やす。
+     */
+    
+
+    $('.postit-list > img').click(() =>
+    {
+        $('.fade-layer').css({
+            "visibility": "visible",
+            "opacity": 0.5
+        });
+        console.log("called");
+    });
+});
+
+
+/*
+$(() =>
+{
     $('.postit-list > img').draggable({
         helper: "clone"
     });
@@ -24,7 +46,6 @@
                 "top": pos,
                 "height": height,
                 "width": "300px",
-                // "background": "#87ceeb"
             })
             .droppable({
                 accept: ".postit-list > img",
@@ -36,3 +57,4 @@
             });
     });
 });
+*/
