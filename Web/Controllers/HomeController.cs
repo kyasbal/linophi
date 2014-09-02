@@ -15,6 +15,7 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
+
         private async Task<ViewArticleViewModel> getArticleViewModel(string articleId)
         {
             ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
