@@ -188,6 +188,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Debug.mdf" />
+    <Content Include="App_Data\Debug_log.ldf">
+      <DependentUpon>Debug.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\css\Account\login.css">
       <DependentUpon>login.less</DependentUpon>
     </Content>
@@ -414,6 +418,7 @@
     <Content Include="Views\Account\Logout.cshtml" />
     <Content Include="Views\Account\Config.cshtml" />
     <Content Include="Views\Home\Top.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -422,7 +427,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\MyPage\" />
   </ItemGroup>
   <ItemGroup>
