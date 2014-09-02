@@ -8,7 +8,9 @@
 @section JS
 {
 
+@*
     <script src="~/Scripts/jquery-ui.min.js"></script>
+*@
     <script src="~/Scripts/Home/PostitPaster.js"></script>
 
     <script src="~/Scripts/Novel/Markups.js"></script>
@@ -22,10 +24,6 @@
     <link href="~/Content/css/Novel/Markup.css" rel="stylesheet" />
     <link href="~/Content/css/Home/viewarticle.css" rel="stylesheet" />
 }
-
-
-
-
 
 
 <div class="container">
@@ -85,7 +83,7 @@
                             </span>
                             <span class="navbar-countpv">
                                 <span class="navbar-countnum">@if (Model != null)
-                                {@Model.PageView}</span>
+                                                              {@Model.PageView}</span>
                                 <span class="navbar-countlabel">view</span>
                             </span>
                         </div>
@@ -179,3 +177,5 @@
         </div>
     </div>
 </div>
+
+<div class="fade-layer"></div>
