@@ -43,6 +43,7 @@ namespace Web.Utility
         {
             var userManager = req.GetOwinContext().GetUserManager<ApplicationUserManager>();
             UserAccount user = userManager.FindByName(WebPageStatic.User().Identity.Name);
+            if(user==null)return new MvcHtmlString("");
             BasicGravatarLoader loader=new BasicGravatarLoader(user.Email);
             return loader.GetIconTag(size);
         }

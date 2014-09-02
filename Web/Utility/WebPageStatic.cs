@@ -21,6 +21,7 @@ namespace Web.Utility
         {
             var um = req.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var account=um.FindByName(User().Identity.Name);
+            if (account == null) return "NaN";
             return account.NickName;
         }
     }

@@ -224,6 +224,12 @@
     <Content Include="Content\css\Home\Page404.min.css">
       <DependentUpon>Page404.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\Search.css">
+      <DependentUpon>Search.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\Search.min.css">
+      <DependentUpon>Search.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Home\viewarticle.css">
       <DependentUpon>viewarticle.less</DependentUpon>
     </Content>
@@ -298,6 +304,10 @@
     <Content Include="Content\css\Account\login.css.map">
       <DependentUpon>login.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\Search.less" />
+    <Content Include="Content\css\Home\Search.css.map">
+      <DependentUpon>Search.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
@@ -356,6 +366,7 @@
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\EditViewModel.cs" />
+    <Compile Include="Models\SearchResultViewModel.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\ViewArticleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -426,9 +437,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\MyPage\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Account\externalLoginConfirmation.ts" />
     <TypeScriptCompile Include="Scripts\collections.ts" />

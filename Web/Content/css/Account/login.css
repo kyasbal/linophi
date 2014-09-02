@@ -1,6 +1,7 @@
 ﻿.login-main {
   margin: 0 auto;
   width: 960px;
+  padding-bottom: 130px;
 }
 .login-main a {
   color: #286bcc;
@@ -19,15 +20,30 @@
   margin-bottom: 40px;
 }
 .login-loginbox {
+  display: inline-block;
   overflow: hidden;
   padding: 10px 23px;
+  margin: 0 auto;
   font-size: 24px;
 }
 .login-loginbox + .login-loginbox {
   margin-bottom: 100px;
 }
 .login-loginbox:hover {
-  background: #eee;
+  outline-color: aquamarine;
+}
+.login-loginbox button {
+  background-color: none;
+  border: none;
+}
+.login-loginbox button:focus {
+  outline-color: aquamarine;
+}
+.login-loginbox .login-external {
+  width: 100px;
+  height: 90px;
+  display: inline-block;
+  margin: 0 auto;
 }
 .login-loginbox > a {
   float: left;

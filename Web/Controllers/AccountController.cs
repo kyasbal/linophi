@@ -30,10 +30,11 @@ namespace Web.Controllers
         [AllowAnonymous]
         public ActionResult LogIn(string returnUrl)
         {
+            if (User.Identity.IsAuthenticated) return Redirect("/");
             returnUrl = returnUrl ?? "/";
             return View((object)returnUrl);
         }
-
+        [Authorize]
         [HttpGet]
         public ActionResult Logout()
         {

@@ -277,11 +277,14 @@ input[type="text"] {
 }
 .container .contents .contentswrapper .main .rellist .list .listitem {
   display: table;
-  width: 100%;
-  margin: 30px 0 0;
+  margin: 30px 30px 30px;
+  padding: 10px;
 }
 .container .contents .contentswrapper .main .rellist .list .listitem:first-child {
   margin-top: 0;
+}
+.container .contents .contentswrapper .main .rellist .list .listitem:hover {
+  background-color: antiquewhite;
 }
 .container .contents .contentswrapper .main .rellist .list .listthumb {
   display: table-cell;
@@ -302,6 +305,7 @@ input[type="text"] {
   table-layout: fixed;
   width: 100%;
   max-width: 560px;
+  padding-left: 20px;
 }
 .container .contents .contentswrapper .main .rellist .list .listtitle {
   display: inline;
