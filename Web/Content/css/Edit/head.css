@@ -62,6 +62,7 @@
 }
 .header .menu .search .search-text:focus {
   background-color: rgba(251, 215, 162, 0.5);
+  outline: none;
 }
 .header .menu .search .search-text:hover {
   border: 2px #a4c6fd  !important;
