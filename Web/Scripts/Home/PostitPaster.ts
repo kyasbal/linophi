@@ -24,7 +24,6 @@
                 "top": pos,
                 "height": height,
                 "width": "300px",
-                // "background": "#87ceeb"
             })
             .droppable({
                 accept: ".postit-list > img",

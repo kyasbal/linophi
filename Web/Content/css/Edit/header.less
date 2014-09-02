@@ -100,23 +100,25 @@ body {
     }
 
     &-title {
-        height:15%;
         width:70%;
         float:left;
-        margin: 10% 0 0 9%;
+        margin: 50px 0 0 9%;
         padding: 5px;
         border: 1px solid #888;
         border-radius: 5px;
         ::-webkit-input-placeholder, ::-moz-placeholder, :-moz-placeholder, :-ms-input-placeholder { color: #888 }
-        &-container { width:100%; }
-        &-chkvalid { color: #f66; }
+        &-container { width: 100%; }
+        &-chkvalid { 
+            color: #f66; 
+            padding-top: 54px;
+        }
     }
 
     &-tag {
         float: left;
         height: 5%;
         width: 50%;
-        margin: 1% 0 0;
+        margin: 15px 0 0;
         padding: 5px;
         border: 1px solid #888;
         border-radius: 5px;
@@ -126,6 +128,11 @@ body {
             width: 80%;
             overflow: hidden;
             margin: 0 9%;
+        }
+
+        &-chkvalid {
+            color: #f66;
+            padding-top: 20px;
         }
     }
 
@@ -232,5 +239,10 @@ div[class^="edit-editted-tag"] {
 
     &:first-child {
         margin-left: 0;
+    }
+
+    > span {
+        margin-left: 10px;
+        color: #333;
     }
 }
