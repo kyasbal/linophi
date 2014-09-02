@@ -2,6 +2,7 @@
   &-main {
     margin: 0 auto;
     width: 960px;
+    padding-bottom:130px;
 
     a {
       color: #286bcc;
@@ -25,13 +26,29 @@
   }
 
   &-loginbox {
+    display:inline-block;
     overflow: hidden;
     padding: 10px 23px;
+    margin: 0 auto;
     & + & { margin-bottom: 100px; }
     font-size: 24px;
     &:hover {
-      background: #eee;
+      outline-color:aquamarine;
     }
+    button{
+        background-color:none;
+        border:none;
+        &:focus{
+        outline-color:aquamarine;
+        }
+    }
+    .login-external{
+        width:100px;
+        height:90px;
+        display:inline-block;
+        margin: 0 auto;
+    }
+    
 
     > a {
       float: left;
