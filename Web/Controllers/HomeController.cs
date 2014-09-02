@@ -56,6 +56,7 @@ namespace Web.Controllers
 
         public ActionResult Search(string searchText)
         {
+            if(searchText==null)return View(new SearchResultViewModel() {Articles = new SearchResultArticle[0]});
             string[] queries=searchText.Split(' ');
             var context = Request.GetOwinContext().Get<ApplicationDbContext>();
             string first = queries[0];
@@ -65,7 +66,20 @@ namespace Web.Controllers
                 var query = queries[index];
                 result=result.Where(f => f.Title.Contains(query));
             }
-            return Json(result.ToArray(),JsonRequestBehavior.AllowGet);
+            SearchResultViewModel vm=new SearchResultViewModel();
+            List<SearchResultArticle> articles=new List<SearchResultArticle>();
+            foreach (var source in result.Take(10))
+            {
+                articles.Add(new SearchResultArticle()
+                {
+                    ArticleId = source.ArticleId,
+                    LabelCount = 0,
+                    PageView = source.PageView,
+                    Title = source.Title
+                });
+            }
+            vm.Articles = articles.ToArray();
+            return View(vm);
         }
     }
 }
