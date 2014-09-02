@@ -50,14 +50,22 @@ $(() => {
     
 
     // タグをEnterで追加する機能
-    $(".edit-tag").keypress((e)=>{
+    $(".edit-tag").keypress((e) =>
+    {
         if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13))
         {
-            var $target = $(".edit-tag");
+            var $target: JQuery = $(".edit-tag");
             var tag: string = $target.val();
 
-            if (tag&&!tags.contains(tag)) {
-                $(".edit-tag-container").append(
+            if (tagCounter >= 8)
+            {
+                $(".edit-tag-chkvalid").html(
+                    '<div class="edit-alert">タグは８個までしか登録できません</div>'
+                );
+            }
+            else if (tag && !tags.contains(tag))
+            {
+                $(".edit-editted-box").append(
                     '<div class="edit-editted-tag-' + tagCounter + '">' + tag +
                     '<span class="edit-tag-delete-' + tagCounter +
                     '" onClick="removeTag(\''+tagCounter+'\',\''+tag+'\')">x</span></div>'
@@ -69,4 +77,5 @@ $(() => {
             $target.val("");
         }
     });
+
 });

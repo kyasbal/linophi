@@ -44,8 +44,10 @@ $(function () {
             var $target = $(".edit-tag");
             var tag = $target.val();
 
-            if (tag && !tags.contains(tag)) {
-                $(".edit-tag-container").append('<div class="edit-editted-tag-' + tagCounter + '">' + tag + '<span class="edit-tag-delete-' + tagCounter + '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>');
+            if (tagCounter >= 8) {
+                $(".edit-tag-chkvalid").html('<div class="edit-alert">タグは８個までしか登録できません</div>');
+            } else if (tag && !tags.contains(tag)) {
+                $(".edit-editted-box").append('<div class="edit-editted-tag-' + tagCounter + '">' + tag + '<span class="edit-tag-delete-' + tagCounter + '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>');
                 tags.add(tag);
                 tagCounter++;
             }

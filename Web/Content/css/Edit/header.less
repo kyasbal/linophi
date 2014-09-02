@@ -116,7 +116,7 @@ body {
         float: left;
         height: 5%;
         width: 50%;
-        margin: 1% 0 0 9%;
+        margin: 1% 0 0;
         padding: 5px;
         border: 1px solid #888;
         border-radius: 5px;
@@ -127,6 +127,13 @@ body {
             overflow: hidden;
             margin: 0 9%;
         }
+    }
+
+    &-editted-box {
+        width: 82%;
+        margin: 0 9%;
+        padding-top: 3px;
+        height: 60px;
     }
 
     &-preview {
@@ -155,7 +162,7 @@ body {
         height:500px;
         width:80%;
         max-width:80%;
-        margin: 2% 0 0 auto;
+        margin: 0 0 0 auto;
         padding: 5px;
         float:left;
         border: 1px solid #888;
@@ -222,4 +229,8 @@ div[class^="edit-editted-tag"] {
     border: 1px solid #ccc;
     background: #eee;
     border-radius: 4px;
+
+    &:first-child {
+        margin-left: 0;
+    }
 }
