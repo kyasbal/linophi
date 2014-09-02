@@ -246,6 +246,12 @@
     <Content Include="Content\css\Novel\novel-editor.min.css" />
     <Content Include="Content\css\Novel\novel-viewer.css" />
     <Content Include="Content\css\Novel\novel-viewer.min.css" />
+    <Content Include="Content\css\shared.css">
+      <DependentUpon>shared.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\shared.min.css">
+      <DependentUpon>shared.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\imgs\Home\anger.png" />
     <Content Include="Content\imgs\Home\bethink.png" />
@@ -307,6 +313,10 @@
     <Content Include="Content\css\Home\Search.less" />
     <Content Include="Content\css\Home\Search.css.map">
       <DependentUpon>Search.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\shared.less" />
+    <Content Include="Content\css\shared.css.map">
+      <DependentUpon>shared.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />

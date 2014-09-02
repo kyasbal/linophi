@@ -2,8 +2,9 @@
   height: 250px;
   width: 100%;
   background: #F5B273;
-  position: absolute;
-  bottom: 0px;
+  margin-top: 100px;
+  bottom: 0;
+  position: relative;
 }
 .foot .linophi {
   font-size: larger;
