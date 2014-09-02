@@ -1,19 +1,24 @@
 ﻿$(() =>
 {
-    $('.article-container [class^="p-"]').each((i) =>
+    $('.postit-list > img').draggable({
+        helper: "clone"
+    });
+
+    $('.article-container > *').each((i) =>
     {
-        var $ele = $('.article-container .p-' + i);
+        var $ele: JQuery = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
 
-        var height = $ele.outerHeight(),
-            pos = $ele.offset().top;
+        var className = $ele.attr("class");
 
-        $('.dropbox').append('<div class="p-' + i + '"></div>');
+        // alert(className);
 
-        $('.postit-list > img').draggable({
-            helper: "clone"
-        });
+        var height: number = $ele.outerHeight(),
+            pos: number = $ele.offset().top;
 
-        $('.dropbox > .p-' + i)
+
+        $('.dropbox').append('<div class="' + className + '"></div>');
+
+        $('.dropbox > .' + className)
             .css({
                 "position": "absolute",
                 "top": pos,
@@ -26,7 +31,7 @@
                 hoverClass: "droppable-hover",
                 drop: (event, ui) =>
                 {
-                    ui.draggable.clone().appendTo('.dropbox > .p-' + i);
+                    ui.draggable.clone().appendTo('.dropbox > .' + className);
                 }
             });
     });
