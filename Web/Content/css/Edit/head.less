@@ -84,6 +84,7 @@
 	            width: 150px;
 	            padding-top: 10px;
 	            font-size: 14px;
+                color:black;
             }
             ul{
                 float:left;
@@ -96,9 +97,16 @@
 	            left:0;
 	            overflow: hidden;
 	            height: 0;
-	            transition: all 0.5s;
+                transition: all 0.1s;
+                border-left:1px solid #888;
+                border-right:1px solid #888;
+                border-bottom:1px solid #888;
                 li{
                     display:block;
+                    padding:10px;
+                    &:hover{
+                        background-color:gray;
+                    }
                 }
             }
             &:hover{
