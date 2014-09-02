@@ -1,10 +1,11 @@
 ﻿@using Web.Utility
 <header class="header">
     <div class="menu">
-        <form class="search">
-            <input type="search" class="search-text" >
+        @using(Html.BeginForm("Search","Home",FormMethod.Get,new{@class="search"}))
+        {
+            <input type="search" class="search-text" name="seachText">
             <input type="button" class="search-button" value="検索">
-        </form>
+        }
         <div class="menu-list">
             <ul>
                 <li>@Html.ActionLink("トップへ", "Index", "Home")</li>
@@ -18,15 +19,15 @@
                             using (Html.BeginForm("Login","Account",FormMethod.Get))
                             {
                                 @Html.Hidden("returnUrl",Request.Url)
-                                <input type="submit" value="ログイン"/>
+                                <input type="submit" value="ログイン" />
                             }
                         }
                         else
                         {
                             @Html.GravatarImg(Request,48)
-                            <!--TODO:ここをドロップダウンにしといて-->
+                        
                             @WebPageStatic.GetUserNickName(Request)
-                            <ul class="dropdown-menu">
+                            <ul>
                                 <li>@Html.ActionLink("設定","Config","Account")</li>
                                 <li>@Html.ActionLink("ログアウト","Logout","Account")</li>
                             </ul>
