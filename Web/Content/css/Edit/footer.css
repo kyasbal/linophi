@@ -4,8 +4,7 @@
   background: #F5B273;
   margin-top: 100px;
   bottom: 0;
-  position: fixed;
-  z-index: 0;
+  position: relative;
 }
 .foot .linophi {
   font-size: larger;
