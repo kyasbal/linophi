@@ -119,8 +119,9 @@ body {
   color: #888888;
 }
 .edit-tag-container {
-  width: 100%;
+  width: 80%;
   overflow: hidden;
+  margin: 0 9%;
 }
 .edit-preview {
   height: 500px;
@@ -211,7 +212,7 @@ body {
 }
 div[class^="edit-editted-tag"] {
   float: left;
-  margin: 10px 0.5em;
+  margin: 0.7em 0.5em 0;
   padding: 5px;
   border: 1px solid #ccc;
   background: #eee;

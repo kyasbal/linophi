@@ -58,11 +58,8 @@
             @Html.TextBoxFor((m) => m.Title, new { id = "title", type = "text", @class = "edit-title", placeholder = "タイトル" })
         </div>
         <div class="edit-title-chkvalid"></div>
-
-        
             @Html.TextBoxFor((m) => m.Tag, new { id = "tag", type = "text", @class = "edit-tag", placeholder = "タグ" })
-        
-
+        <div class="edit-tag-container"></div>
         <div class="edit-preview-container">
             <div class="edit-preview preview-body"></div>
         </div>
