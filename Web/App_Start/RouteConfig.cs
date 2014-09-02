@@ -10,12 +10,12 @@ namespace Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute("Account", "Account/{action}", new { controller = "Account" }
     );
-            routes.MapRoute("Search", "Search", new { controller = "Home" }
-);
             routes.MapRoute("RedirectToEdit", "RedirectToEdit", new { controller = "Edit", action = "RedirectToEdit", id = UrlParameter.Optional }
     );
             routes.MapRoute("Edit", "Edit", new {controller = "Edit", action = "Index", id = UrlParameter.Optional}
                 );
+            routes.MapRoute("Search", "Search", new { controller = "Home" ,action="Search"}
+);
             routes.MapRoute("Default", "{id}", new {controller = "Home", action = "Index", id = UrlParameter.Optional}
                 );
             routes.MapRoute("Pages", "Pages/{controller}/{action}/{id}",
