@@ -53,5 +53,19 @@ namespace Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Search(string searchText)
+        {
+            string[] queries=searchText.Split(' ');
+            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            string first = queries[0];
+            var result=context.Articles.Where((f) => f.Title.Contains(first));
+            for (int index = 1; index < Math.Min(4,queries.Length); index++)
+            {
+                var query = queries[index];
+                result=result.Where(f => f.Title.Contains(query));
+            }
+            return Json(result.ToArray(),JsonRequestBehavior.AllowGet);
+        }
     }
 }
