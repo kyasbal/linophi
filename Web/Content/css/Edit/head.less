@@ -3,35 +3,6 @@
     .search {
         
     }
-    .menu-list{
-        float:left;
-        margin-left:60%;
-    }
-    .menu-list ul li{
-        font-size:large;
-        display:inline;
-        .dropdown-menu{
-            -webkit-transition-duration:1s;
-            background:#000;
-            padding:0;
-            max-height:0;
-            overflow:hidden;
-            .open{
-                padding:5px 0;
-                max-height:30em;
-            }
-            li{
-                line-height:3em;
-                list-style:none;
-                a{
-                    display:block;
-                    width:100%;
-                    height:100%;
-                    color:#fff;
-                }
-            }
-        }
-    }
     a{
         color:#000;
         text-decoration:underline;
@@ -40,7 +11,6 @@
         color:#818181;
         text-decoration:underline;
     }
-
     .menu {
 	    overflow: hidden;
         .search{
@@ -100,5 +70,42 @@
     .menu {
         zoom: 1;
     }
-
+    #dropmenu {
+	    float:left;
+        margin-left:60%;
+        li{
+            display:inline-block;
+            a{
+	            display: block; 
+	            text-align: center;
+	            height: 20px;
+	            width: 150px;
+	            padding-top: 10px;
+	            font-size: 14px;
+            }
+            ul{
+                float:left;
+                margin-top:3%;
+                margin-left:74%;
+	            list-style-type: none;
+	            position: absolute;
+                display: block;
+	            top:32px;
+	            left:0px;
+	            overflow: hidden;
+	            height: 0px;
+	            transition: all 0.5s;
+                li{
+                    display:block;
+                }
+            }
+            &:hover{
+                ul{
+                    height: 100px;
+                    display: block;
+                }
+            }
+        }
+    }
+ 
 }

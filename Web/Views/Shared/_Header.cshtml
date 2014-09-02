@@ -1,26 +1,12 @@
 ﻿@using Web.Utility
 <header class="header">
-    @*headerのドロップダウンのためのスクリプト(のつもりだった)*@
-    <script>
-        $(function()
-        {
-            $('.dropdown-menu').mouseover(function()
-            {
-                $(this).addClass('.open');
-            });
-            $('.dropdown-menu').mouseout(function()
-            {
-                $(this).removeClass('.open');
-            });
-        });
-            
-    </script>
+    
     <div class="menu">
         <form class="search">
             <input type="search" class="search-text" >
             <input type="button" class="search-button" value="検索">
         </form>
-        <div class="menu-list">
+        <div id="dropmenu">
             <ul>
                 <li>@Html.ActionLink("トップへ", "Index", "Home")</li>
                 |
@@ -39,9 +25,9 @@
                         else
                         {
                             @Html.GravatarImg(Request,48)
-                            <!--TODO:ここをドロップダウンにしといて-->
+                        
                             @WebPageStatic.GetUserNickName(Request)
-                            <ul class="dropdown-menu">
+                            <ul>
                                 <li>@Html.ActionLink("設定","Config","Account")</li>
                                 <li>@Html.ActionLink("ログアウト","Logout","Account")</li>
                             </ul>
