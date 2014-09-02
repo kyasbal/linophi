@@ -17,17 +17,4 @@ namespace Web.Models
         public string Author_ID { get; set; }
     }
 
-    /// <summary>
-    /// ViewArticleViewModelのContentのJsonの構造
-    /// </summary>
-    public class ViewArticleContentStructure
-    {
-        public string ArticleTitle { get; set; }
-
-        public ArticleTagModel[] Tags { get; set; }
-
-        public ParagraphDataModel[] Paragraphs { get; set; }
-
-        public string UpdateTime { get; set; }
-    }
 }

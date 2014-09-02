@@ -12,40 +12,11 @@ namespace Web.Models
         public string Title { get; set; }
 
         public string Tag { get; set; }
+
         [AllowHtml]
         public string Context { get; set; }
 
         [AllowHtml]
         public string Body { get; set; }
-    }
-
-    public class ContextDataModel
-    {
-        public ICollection<ParagraphDataModel> Paragraphs { get; set; }
-    }
-
-    public class ParagraphDataModel
-    {
-        public string prevParagraph { get; set; }
-
-        public string nextParagraph { get; set; }
-
-        public string rawText { get; set; }
-
-        public string id { get; set; }
-
-        public int paragraphIndex { get; set; }
-
-        public static ParagraphDataModel GetFromStorage(ParagraphEntity paragraphEntity)
-        {
-            return new ParagraphDataModel()
-            {
-                id = paragraphEntity.RowKey,
-                nextParagraph = paragraphEntity.NextParagraph,
-                prevParagraph = paragraphEntity.PrevParagraph,
-                paragraphIndex = paragraphEntity.ParagraphIndex,
-                rawText = paragraphEntity.RawText
-            };
-        }
     }
 }
