@@ -2,9 +2,14 @@
 var tags = new collections.Set();
 
 function removeTag(counter, tag) {
-    console.warn("clicked");
+    console.warn(tagCounter);
     $('.edit-editted-tag-' + counter).remove();
     tags.remove(tag);
+    tagCounter--;
+
+    if (tagCounter < 5) {
+        $(".edit-tag-chkvalid").html("");
+    }
 }
 $(function () {
     // タイトルが正当かどうかを判定してダメならエラーを返す機能
@@ -16,7 +21,7 @@ $(function () {
                 Title: $(".edit-title").val()
             },
             success: function (data) {
-                $(".edit-title-chkvalid").html(data.IsOK ? "" : data.ErrorMessage);
+                $(".edit-title-chkvalid").html(data.IsOK ? "" : "　　" + data.ErrorMessage);
                 isConfirmedTitle = data.IsOK;
                 if (isConfirmedTitle == false) {
                     $(".edit-submit-button").css('background-color', '#696969');
@@ -44,8 +49,10 @@ $(function () {
             var $target = $(".edit-tag");
             var tag = $target.val();
 
-            if (tag && !tags.contains(tag)) {
-                $(".edit-tag-container").append('<div class="edit-editted-tag-' + tagCounter + '">' + tag + '<span class="edit-tag-delete-' + tagCounter + '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>');
+            if (tagCounter >= 5) {
+                $(".edit-tag-chkvalid").html('<div class="edit-alert">　　タグは５個までしか登録できません。</div>');
+            } else if (tag && !tags.contains(tag)) {
+                $(".edit-editted-box").append('<div class="edit-editted-tag-' + tagCounter + '">' + tag + '<span class="edit-tag-delete-' + tagCounter + '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>');
                 tags.add(tag);
                 tagCounter++;
             }

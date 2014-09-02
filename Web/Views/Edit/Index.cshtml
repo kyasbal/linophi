@@ -19,7 +19,7 @@
     <script src="~/Scripts/collections.js"></script>
     <script src="~/Scripts/caret-util.js"></script>
     <script src="~/Scripts/underscore.js"></script>
-<script src="~/Scripts/Novel/Markups.js"></script>
+    <script src="~/Scripts/Novel/Markups.js"></script>
     <script src="~/Scripts/Edit/EditPage.js"></script>
     <script src="~/Scripts/Novel/novel-editor.js"></script>
     <script src="~/Scripts/Utility/AspectRatioStretcher.js"></script>
@@ -29,40 +29,42 @@
     <script src="~/Scripts/Edit/TagMaker.js"></script>
 }
 
-@* 
-  .edit-bg-overlay
-    %header
-    .edit-title-container
-    .edit-title-chkvalid
-    .edit-tag-container
-    .edit-preview-container
-      .edit-preview.preview-body
-    .edit-text-container
-    %footer
+@*
+    .edit-bg-overlay
+      %header
+      .edit-title-container
+      .edit-title-chkvalid
+      .edit-tag-container
+      .edit-preview-container
+        .edit-preview.preview-body
+      .edit-text-container
+      %footer
 *@
 
 
 <div class="edit-bg-overlay">
     <header>
         <div class="edit-header">
-                linophi > 新規投稿画面
-                <div class="edit-header-profile">
-                    <img src="/Content/imgs/profile.png" />
-                </div>
+            linophi > 新規投稿画面
+            <div class="edit-header-profile">
+                <img src="/Content/imgs/profile.png" />
+            </div>
         </div>
     </header>
 
-    @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new { @class = "edit-form editpage-main" }))
+    @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new {@class = "edit-form editpage-main"}))
     {
         <div class="edit-title-container">
-            @Html.TextBoxFor((m) => m.Title, new { id = "title", type = "text", @class = "edit-title", placeholder = "タイトル" })
+            @Html.TextBoxFor((m) => m.Title, new {id = "title", type = "text", @class = "edit-title", placeholder = "タイトル"})
         </div>
         <div class="edit-title-chkvalid"></div>
 
-        
-            @Html.TextBoxFor((m) => m.Tag, new { id = "tag", type = "text", @class = "edit-tag", placeholder = "タグ" })
-        
-
+        <div class="edit-tag-container">
+            @Html.TextBoxFor((m) => m.Tag, new {id = "tag", type = "text", @class = "edit-tag", placeholder = "タグ"})
+            <div class="edit-tag-chkvalid"></div>
+        </div>
+        <div class="edit-editted-box"></div>
+    }
         <div class="edit-preview-container">
             <div class="edit-preview preview-body"></div>
         </div>
@@ -70,15 +72,15 @@
             <textarea class="edit-text edit-context" placeholder="textarea"></textarea>
         </div>
         @Html.AntiForgeryToken()
-        @Html.HiddenFor((m)=>m.Context,new{id="context"})
-        @Html.HiddenFor((m)=>m.Body,new{id="body"})
+        @Html.HiddenFor((m) => m.Context, new {id = "context"})
+        @Html.HiddenFor((m) => m.Body, new {id = "body"})
         <a class="edit-submit-button">投稿する</a>
-        
-    }
 
-
-    <footer>
-                
-    </footer>
-       
-</div>
+    <div id="dialogframe" onmouseover="document.getElementById('layer').style.visibility = 'visible';">
+        ???
+        <div id="layer">
+            <p>testtest</p>
+            <p class="close" onclick="document.getElementById('layer').style.visibility = 'hidden';">- Close -</p>
+        </div>
+    </div>
+    </div>

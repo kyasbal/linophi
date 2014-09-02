@@ -3,9 +3,15 @@ var tags: collections.Set<string> = new collections.Set<string>();
 
 function removeTag(counter,tag)
 {
-    console.warn("clicked");
+    console.warn(tagCounter);
     $('.edit-editted-tag-' + counter).remove();
     tags.remove(tag);
+    tagCounter--;
+
+    if (tagCounter < 5)
+    {
+        $(".edit-tag-chkvalid").html("");
+    }
 }
 $(() => {
 
@@ -18,7 +24,7 @@ $(() => {
                 Title: $(".edit-title").val()
             },
             success: (data) => {
-                $(".edit-title-chkvalid").html(data.IsOK ? "" : data.ErrorMessage);
+                $(".edit-title-chkvalid").html(data.IsOK ? "" : "　　" + data.ErrorMessage);
                 isConfirmedTitle = data.IsOK;
                 if (isConfirmedTitle == false) //どう考えても無駄なことしてるから誰か書き直して。投稿できない時に投稿ボタンの色を変える。
                 {
@@ -50,14 +56,22 @@ $(() => {
     
 
     // タグをEnterで追加する機能
-    $(".edit-tag").keypress((e)=>{
+    $(".edit-tag").keypress((e) =>
+    {
         if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13))
         {
-            var $target = $(".edit-tag");
+            var $target: JQuery = $(".edit-tag");
             var tag: string = $target.val();
 
-            if (tag&&!tags.contains(tag)) {
-                $(".edit-tag-container").append(
+            if (tagCounter >= 5)
+            {
+                $(".edit-tag-chkvalid").html(
+                    '<div class="edit-alert">　　タグは５個までしか登録できません。</div>'
+                );
+            }
+            else if (tag && !tags.contains(tag))
+            {
+                $(".edit-editted-box").append(
                     '<div class="edit-editted-tag-' + tagCounter + '">' + tag +
                     '<span class="edit-tag-delete-' + tagCounter +
                     '" onClick="removeTag(\''+tagCounter+'\',\''+tag+'\')">x</span></div>'
@@ -69,4 +83,5 @@ $(() => {
             $target.val("");
         }
     });
+
 });

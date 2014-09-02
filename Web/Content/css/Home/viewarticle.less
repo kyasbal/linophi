@@ -8,12 +8,14 @@ img, fieldset {
 
 html {
     overflow-y: scroll;
+    height:100%;
 }
 
 body {
     *position: relative;
     font: 15px/1.5 arial,sans-serif;
     width: 100%;
+    height:100%;
     background-color: #fff;
 }
 
@@ -73,7 +75,6 @@ input[type="text"] {
     .contents {
         padding-bottom: 25px;
         overflow: hidden;
-
         .top {
             margin-bottom: 30px;
             border-bottom: 1px solid #f2f2f2;
@@ -538,4 +539,24 @@ input[type="text"] {
 
 .droppable-hover {
     background: #fdd;
+}
+
+.fade-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    -moz-transition-property: opacity;
+    -o-transition-property: opacity;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+    -moz-transition-duration: 1000ms;
+    -o-transition-duration: 1000ms;
+    -webkit-transition-duration: 1000ms;
+    transition-duration: 1000ms;
 }

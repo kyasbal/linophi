@@ -83,10 +83,9 @@ body {
   background: rgba(107, 107, 107, 0.4);
 }
 .edit-title {
-  height: 15%;
   width: 70%;
   float: left;
-  margin: 10% 0 0 9%;
+  margin: 50px 0 0 9%;
   padding: 5px;
   border: 1px solid #888;
   border-radius: 5px;
@@ -102,12 +101,13 @@ body {
 }
 .edit-title-chkvalid {
   color: #f66;
+  padding-top: 54px;
 }
 .edit-tag {
   float: left;
   height: 5%;
   width: 50%;
-  margin: 1% 0 0 9%;
+  margin: 15px 0 0;
   padding: 5px;
   border: 1px solid #888;
   border-radius: 5px;
@@ -119,8 +119,19 @@ body {
   color: #888888;
 }
 .edit-tag-container {
-  width: 100%;
+  width: 80%;
   overflow: hidden;
+  margin: 0 9%;
+}
+.edit-tag-chkvalid {
+  color: #f66;
+  padding-top: 20px;
+}
+.edit-editted-box {
+  width: 82%;
+  margin: 0 9%;
+  padding-top: 3px;
+  height: 60px;
 }
 .edit-preview {
   height: 500px;
@@ -151,7 +162,7 @@ body {
   height: 500px;
   width: 80%;
   max-width: 80%;
-  margin: 2% 0 0 auto;
+  margin: 0 0 0 auto;
   padding: 5px;
   float: left;
   border: 1px solid #888;
@@ -211,10 +222,17 @@ body {
 }
 div[class^="edit-editted-tag"] {
   float: left;
-  margin: 10px 0.5em;
+  margin: 0.7em 0.5em 0;
   padding: 5px;
   border: 1px solid #ccc;
   background: #eee;
   border-radius: 4px;
+}
+div[class^="edit-editted-tag"]:first-child {
+  margin-left: 0;
+}
+div[class^="edit-editted-tag"] > span {
+  margin-left: 10px;
+  color: #333;
 }
 /*# sourceMappingURL=header.css.map */

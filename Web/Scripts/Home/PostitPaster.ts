@@ -1,33 +1,60 @@
 ﻿$(() =>
 {
-    $('.article-container [class^="p-"]').each((i) =>
+    /*
+     * ふせんをクリックされたら左側に影的なものを出して周りを暗くする
+     * 次のタイミングにクリックされたら貼り付ける
+     * 貼り付けられた（クリック領域でクリックされたら）そこに貼る
+     * それはこっちで用意した場所に追加されるが、すでに貼られていた場合は値を増やす。
+     */
+    
+
+    $('.postit-list > img').click(() =>
     {
-        var $ele = $('.article-container .p-' + i);
-
-        var height = $ele.outerHeight(),
-            pos = $ele.offset().top;
-
-        $('.dropbox').append('<div class="p-' + i + '"></div>');
-
-        $('.postit-list > img').draggable({
-            helper: "clone"
+        $('.fade-layer').css({
+            "visibility": "visible",
+            "opacity": 0.5
         });
+        console.log("called");
+    });
+});
 
-        $('.dropbox > .p-' + i)
+
+/*
+$(() =>
+{
+    $('.postit-list > img').draggable({
+        helper: "clone"
+    });
+
+    $('.article-container > *').each((i) =>
+    {
+        var $ele: JQuery = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
+
+        var className = $ele.attr("class");
+
+        // alert(className);
+
+        var height: number = $ele.outerHeight(),
+            pos: number = $ele.offset().top;
+
+
+        $('.dropbox').append('<div class="' + className + '"></div>');
+
+        $('.dropbox > .' + className)
             .css({
                 "position": "absolute",
                 "top": pos,
                 "height": height,
                 "width": "300px",
-                // "background": "#87ceeb"
             })
             .droppable({
                 accept: ".postit-list > img",
                 hoverClass: "droppable-hover",
                 drop: (event, ui) =>
                 {
-                    ui.draggable.clone().appendTo('.dropbox > .p-' + i);
+                    ui.draggable.clone().appendTo('.dropbox > .' + className);
                 }
             });
     });
 });
+*/

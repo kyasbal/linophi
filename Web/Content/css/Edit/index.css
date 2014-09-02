@@ -26,4 +26,24 @@
   margin: 3px 0 0 0;
   font-size: x-large;
 }
+#dialogframe {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -160px;
+  /*widthの半分にする*/
+  margin-top: -100px;
+  /*heightの半分にする*/
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 8px;
+  border: 5px solid #E0E0E0;
+  width: 320px;
+  height: 200px;
+  z-index: 2;
+}
+#layer {
+  visibility: hidden;
+}
 /*# sourceMappingURL=index.css.map */
