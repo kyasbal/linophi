@@ -5,29 +5,39 @@
 }
 @section CSS
 {
-    
+    <link href="~/Content/css/Home/Search.css" rel="stylesheet" />
 }
 
 @section JS{
     
 }
-<ul class="search-result">
-    @if (Model.Articles.Length == 0)
-    {
-        <h1>該当する記事は見つかりませんでした。</h1>
-    }
-    else
-    {
-        foreach (var article in Model.Articles)
-        {
-            <li class="listitem">
-                <div class="listtxt">
-                    <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><span class="listdesc">200ふせん<span class="separator">|</span>@article.PageView view</span>
-                </div>
-                <p class="listthumb"><a href=""><img width="60" height="60" src="/Content/imgs/Home/red.jpg"></a></p>
-            </li>
+<div class="contents">
+    <div class="wrapper">
+        <div class="main">
+            <ul class="search-result">
+                @if (Model.Articles.Length == 0)
+                {
+                    <h1>該当する記事は見つかりませんでした。</h1>
+                }
+                else
+                {
 
-        }
-    }
+                    foreach (var article in Model.Articles)
+                    {
+                        <li class="listitem">
+                            <p class="listthumb"><a href=""><img width="60" height="60" src="/Content/imgs/Home/red.jpg"></a></p>
+                            <div class="listtxt">
+                                <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><span class="listdesc">200ふせん<span class="separator">|</span>@article.PageView view</span>
+                            </div>
+                        </li>
 
-</ul>
+                    }
+                }
+            </ul>
+        </div>
+
+        <div class="dropbox">
+
+        </div>
+    </div>
+</div>
