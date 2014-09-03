@@ -102,7 +102,7 @@ namespace Web.Utility
         public MvcHtmlString GetIconTag(int size)
         {
             size = MathEx.Clamp(1, 2048, size);//Gravatarの仕様上1px～2048px
-            return GenerateTag(String.Format("s={0}", size));
+            return GenerateTag(String.Format("s={0}&d=identicon", size));
         }
     }
 }

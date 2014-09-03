@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Web.Models;
 using Web.Storage;
 using Web.Storage.Connection;
+using Web.Utility;
 
 namespace Web.Controllers
 {
@@ -29,15 +30,18 @@ namespace Web.Controllers
             var author=await HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByNameAsync(article.AuthorID);
             article.PageView++;
             context.SaveChanges();
+            IGravatarLoader gLoader=new BasicGravatarLoader(author.Email);
             return new ViewArticleViewModel()
             {
                 Author=author.NickName,
                 Author_ID=author.UniqueId,
+                Author_IconTag=gLoader.GetIconTag(64),
                 PageView=article.PageView,
                 Title = article.Title,
                 Content =await manager.GetArticleBody(article.ArticleModelId),
                 LabelInfo=ltm.GetLabelsJson(articleId),
-                Tags = getArticleTagModels(article)
+                Tags = getArticleTagModels(article),
+                LabelCount = article.LabelCount
             };
         }
 
@@ -73,7 +77,7 @@ namespace Web.Controllers
             return View();
         }
 
-        public ActionResult Search(string searchText,int skip=0)
+        public ActionResult Search(string searchText,int skip=0,int order=0)
         {
             if(searchText==null)return View(new SearchResultViewModel() {Articles = new SearchResultArticle[0]});
             string[] queries=searchText.Split(' ');
@@ -85,7 +89,19 @@ namespace Web.Controllers
                 var query = queries[index];
                 result=result.Where(f => f.Title.Contains(query));
             }
-            result = result.OrderBy(f => f.CreationTime);
+            switch (order)
+            {
+                case 2:
+                    result = result.OrderByDescending(f => f.LabelCount);
+                    break;
+                case 1:
+                    result = result.OrderByDescending(f => f.PageView);
+                    break;
+                case 0:
+                default:
+                    result = result.OrderByDescending(f => f.CreationTime);
+                    break;
+            }
             result = result.Skip(skip);
             SearchResultViewModel vm=new SearchResultViewModel();
             List<SearchResultArticle> articles=new List<SearchResultArticle>();
@@ -101,6 +117,43 @@ namespace Web.Controllers
             }
             vm.Articles = articles.ToArray();
             return View(vm);
+        }
+
+        public ActionResult Tag(string tag, int skip = 0, int order = 0)
+        {
+            if (tag == null) return View("Search",new SearchResultViewModel() { Articles = new SearchResultArticle[0] });
+            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            ArticleTagModel tagModel = context.Tags.Where(f => f.TagName.Equals(tag)).FirstOrDefault();
+            context.Entry(tagModel).Collection(f=>f.Articles).Load();
+            SearchResultViewModel vm = new SearchResultViewModel();
+            List<SearchResultArticle> articles = new List<SearchResultArticle>();
+            var query = context.Articles.AsQueryable();
+            switch (order)
+            {
+                case 2:
+                    query = query.OrderByDescending(f => f.LabelCount);
+                    break;
+                case 1:
+                    query = query.OrderByDescending(f => f.PageView);
+                    break;
+                case 0:
+                default:
+                    query = query.OrderByDescending(f => f.CreationTime);
+                    break;
+            }
+            query=query.Skip(skip);
+            foreach (var source in query.Take(10))
+            {
+                articles.Add(new SearchResultArticle()
+                {
+                    ArticleId = source.ArticleModelId,
+                    LabelCount = 0,
+                    PageView = source.PageView,
+                    Title = source.Title
+                });
+            }
+            vm.Articles = articles.ToArray();
+            return View("Search", vm);
         }
     }
 }
