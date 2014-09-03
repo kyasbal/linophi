@@ -42,21 +42,14 @@
 
                         <div class="topicwordlist set">
                             <ul class="topicwordlistul">
-                                <li class="topicwordlistli">
-                                    <a href="" class="topicword">
-                                        aaa <span class="topicwordnum">(1000)</span>
-                                    </a>
-                                </li>
-                                <li class="topicwordlistli">
-                                    <a href="" class="topicword">
-                                        bbb <span class="topicwordnum">(1000)</span>
-                                    </a>
-                                </li>
-                                <li class="topicwordlistli">
-                                    <a href="" class="topicword">
-                                        ccc <span class="topicwordnum">(1000)</span>
-                                    </a>
-                                </li>
+                                @foreach (var tag in Model.Tags)
+                                {
+                                    <li class="topicwordlistli">
+                                        <a href="" class="topicword">
+                                            @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                        </a>
+                                    </li>
+                                }
                             </ul>
                         </div>
                     </div>

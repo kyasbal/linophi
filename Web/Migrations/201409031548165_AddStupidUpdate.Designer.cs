@@ -7,13 +7,13 @@ namespace Web.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class AddLabelCount : IMigrationMetadata
+    public sealed partial class AddStupidUpdate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddLabelCount));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddStupidUpdate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201409021810434_AddLabelCount"; }
+            get { return "201409031548165_AddStupidUpdate"; }
         }
         
         string IMigrationMetadata.Source

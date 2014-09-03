@@ -8,6 +8,28 @@ $(() =>
 class FrameManager
 {
     private targetContainer: JQuery = $(".preview-iframes");
+    private calledIds:collections.Set<string>=new collections.Set<string>();
+
+    public NicoMove(id:string): void
+    {
+        
+        var target: JQuery = $(".iframe-" + id);
+        if (target.length != 0)
+        {
+            if (this.calledIds.contains(id))
+            {
+                var href: string = target.attr("data-link");
+                var movieId: string = target.attr("data-movie-id");
+                window.open(href);
+                var iframe = document.getElementById("nico-" + id);
+                iframe.src = "/Content/Nico?id=" + movieId;
+                this.calledIds.remove(id);
+            } else
+            {
+                this.calledIds.add(id);
+            }
+        }
+    }
 
     public updatePosition(): void
     {
@@ -141,10 +163,11 @@ class NikonikoMarkup extends MarkupBase
     getMarkupString(result: string, id: string): string
     {
         if (result.match(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/))
-        {
-            var tag = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<iframe src=\"/Content/Nico?id=$1\" scrolling=\"no\" frameborder=\"0\"></iframe>");
-            var hash = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "niko-$1");
-            frameManager.addIframe(id, hash, $(tag));
+        {//ニコ動はiframeだと、動画クリック時に変移する先のページを表示できない為、いろいろややこしい。
+            var src = result.replace(/(http:\/\/www\.nicovideo\.jp\/\watch\/ [\w]+)/, "$1");
+            var hash = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "$1");
+            var tag = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<iframe id=\"nico-" + id + "\" onload=\"frameManager.NicoMove('" + id + "');\" data-link=\"" + src + "\" data-movie-id=\""+hash+"\"   width=\"560px\" height=\"315px\" src=\"/Content/Nico?id=$1\" scrolling=\"no\" frameborder=\"0\"></iframe>");
+            frameManager.addIframe(id, "nico-"+hash, $(tag));
             result = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<div class=\"niko-box iframe-box-" + id + "\"></div>");
         }
         return result;

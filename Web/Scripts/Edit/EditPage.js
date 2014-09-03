@@ -9,7 +9,12 @@ $(function () {
     editorInstance.updateToshow();
     editPage.onChanged();
     $(".edit-submit-button").click(function () {
-        $("#context").val(editorInstance.toJSON());
+        var tagList = new Array();
+        tags.forEach(function (item) {
+            tagList.push(item);
+            return true;
+        });
+        $("#tag").val(JSON.stringify(tagList));
         $("#body").val($(".preview-body").html());
         if (isConfirmedTitle)
             $(".edit-form").submit();

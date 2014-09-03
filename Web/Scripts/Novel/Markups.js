@@ -12,7 +12,24 @@ $(function () {
 var FrameManager = (function () {
     function FrameManager() {
         this.targetContainer = $(".preview-iframes");
+        this.calledIds = new collections.Set();
     }
+    FrameManager.prototype.NicoMove = function (id) {
+        var target = $(".iframe-" + id);
+        if (target.length != 0) {
+            if (this.calledIds.contains(id)) {
+                var href = target.attr("data-link");
+                var movieId = target.attr("data-movie-id");
+                window.open(href);
+                var iframe = document.getElementById("nico-" + id);
+                iframe.src = "/Content/Nico?id=" + movieId;
+                this.calledIds.remove(id);
+            } else {
+                this.calledIds.add(id);
+            }
+        }
+    };
+
     FrameManager.prototype.updatePosition = function () {
         var removeList = new collections.Set();
         var moveList = new collections.Set();
@@ -146,9 +163,10 @@ var NikonikoMarkup = (function (_super) {
     }
     NikonikoMarkup.prototype.getMarkupString = function (result, id) {
         if (result.match(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/)) {
-            var tag = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<iframe src=\"/Content/Nico?id=$1\" scrolling=\"no\" frameborder=\"0\"></iframe>");
-            var hash = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "niko-$1");
-            frameManager.addIframe(id, hash, $(tag));
+            var src = result.replace(/(http:\/\/www\.nicovideo\.jp\/\watch\/ [\w]+)/, "$1");
+            var hash = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "$1");
+            var tag = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<iframe id=\"nico-" + id + "\" onload=\"frameManager.NicoMove('" + id + "');\" data-link=\"" + src + "\" data-movie-id=\"" + hash + "\"   width=\"560px\" height=\"315px\" src=\"/Content/Nico?id=$1\" scrolling=\"no\" frameborder=\"0\"></iframe>");
+            frameManager.addIframe(id, "nico-" + hash, $(tag));
             result = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<div class=\"niko-box iframe-box-" + id + "\"></div>");
         }
         return result;
