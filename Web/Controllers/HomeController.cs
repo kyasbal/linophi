@@ -15,12 +15,14 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
+
         private async Task<ViewArticleViewModel> getArticleViewModel(string articleId)
         {
             ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
             var article = context.Articles.FirstOrDefault(a => a.ArticleId.Equals(articleId));
             if (article == null) return null;
             ArticleBodyTableManager manager=new ArticleBodyTableManager(new BlobStorageConnection());
+            LabelTableManager ltm=new LabelTableManager(new TableStorageConnection());
             var author=await HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByNameAsync(article.AuthorID);
             article.PageView++;
             context.SaveChanges();
@@ -30,7 +32,8 @@ namespace Web.Controllers
                 Author_ID=author.UniqueId,
                 PageView=article.PageView,
                 Title = article.Title,
-                Content =await manager.GetArticleBody(article.ArticleId)
+                Content =await manager.GetArticleBody(article.ArticleId),
+                LabelInfo=ltm.GetLabelsJson(articleId)
             };
         }
 

@@ -15,6 +15,7 @@ namespace Web.Models
         public int PageView { get; set; }
         public string Author { get; set; }
         public string Author_ID { get; set; }
+        public string LabelInfo { get; set; }
     }
 
 }

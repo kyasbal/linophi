@@ -115,6 +115,9 @@
             $('.dropbox > [class^="x_p-"]').each(function (i) {
                 var $target = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
                 var pHeight = $target.outerHeight();
+
+                var counter = $('[src="' + src + '"]').length;
+
                 if (pHeights <= posY && posY <= pHeights + pHeight) {
                     // $target.append('<img src="' + src + '">');
                     $target.append('<div style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;"></div>');

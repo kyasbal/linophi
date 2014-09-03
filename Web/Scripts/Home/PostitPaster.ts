@@ -135,6 +135,9 @@
             {
                 var $target: JQuery = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
                 var pHeight: number = $target.outerHeight();
+
+                var counter: number = $('[src="' + src + '"]').length;
+
                 if (pHeights <= posY && posY <= pHeights + pHeight)
                 {
                     // $target.append('<img src="' + src + '">');

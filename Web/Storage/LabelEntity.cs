@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
+using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using Web.Storage.Connection;
 using Web.Storage.Manager;
@@ -12,20 +18,37 @@ namespace Web.Storage
 {
     public class LabelEntity:TableEntity
     {
-        public static string getRowKey(string paragraphId,string labelType)
-        {
-            return paragraphId + "@" + labelType;
-        }
 
         public LabelEntity()
         {
         }
 
-        public LabelEntity(string articleId,string paragraphId,string labelType) : base(articleId,getRowKey(paragraphId,labelType))
+        public LabelEntity(string articleId,string paragraphId) : base(articleId,paragraphId)
         {
+            LabelCountData = "";
+            SaveData(new Dictionary<string, int>(),new List<string>());
         }
 
-        public int Count { get; set; }
+        public string LabelCountData { get; set; }
+
+        public string LabelHostAddress { get; set; }
+
+        public IDictionary<string, int> GetData()
+        {
+            return Json.Decode<IDictionary<string, int>>(LabelCountData);
+        }
+
+        public List<string> GetAddresses()
+        {
+            return Json.Decode<List<string>>(LabelHostAddress);
+        }
+
+        public void SaveData(IDictionary<string, int> data,IList<string> addresses)
+        {
+            this.LabelCountData = Json.Encode(data);
+            this.LabelHostAddress = Json.Encode(addresses);
+
+        }
     }
 
     [TableStorage("Labels")]
@@ -35,21 +58,32 @@ namespace Web.Storage
         {
         }
 
-        public void IncrementLabel(string articleId, string paragraphId, string emotion)
+        public bool IncrementLabel(string articleId,string paragraphId,string address,string labelName)
         {
-            LabelEntity entity=null;
-            var queried=from label in CreateQuery() where label.PartitionKey.Equals(articleId)&&label.RowKey.Equals(LabelEntity.getRowKey(paragraphId,emotion)) select label;
-            if (queried.Any())
+            var ent = CreateQuery()
+                .Where(f => f.PartitionKey.Equals(articleId) && f.RowKey.Equals(paragraphId)).FirstOrDefault();
+            if (ent == null)
             {
-                entity = queried.First();
+                ent=new LabelEntity(articleId,paragraphId);
             }
-            else
+            IList<string> addresses = ent.GetAddresses();
+            if (addresses.Contains(address)) return false;
+            addresses.Add(address);
+            IDictionary<string, int> dict = ent.GetData();
+            if (!dict.ContainsKey(labelName))
             {
-                entity=new LabelEntity(articleId,paragraphId,emotion);
+                dict.Add(labelName,0);
             }
-            entity.Count++;
-            Table.Execute(TableOperation.InsertOrReplace(entity));
+            dict[labelName]++;
+            ent.SaveData(dict,addresses);
+            Table.Execute(TableOperation.InsertOrReplace(ent));
+            return true;
         }
-        
+
+        public string GetLabelsJson(string articleId)
+        {
+            var ent = CreateQuery().Where(f => f.PartitionKey.Equals(articleId)).Select(f => new{ParagraphId=f.RowKey,Data=f.LabelCountData }).ToArray();
+            return Json.Encode(ent);
+        }
     }
 }
