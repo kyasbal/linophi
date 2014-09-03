@@ -1,4 +1,6 @@
 ﻿.header {
+  margin: 0 150px 30px;
+  padding-top: 30px;
   /* clearfix */
   /* For IE 6/7 (trigger hasLayout) */
 }
