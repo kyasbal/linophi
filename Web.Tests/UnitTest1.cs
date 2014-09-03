@@ -11,8 +11,7 @@ namespace Web.Tests
         [TestMethod]
         public void TestMethod1()
         {
-            LabelTableManager manager=new LabelTableManager(new TableStorageConnection());
-            manager.Test();
+        
         }
     }
 }

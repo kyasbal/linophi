@@ -35,41 +35,19 @@ namespace Web.Storage
 
         public IDictionary<string, int> GetData()
         {
-            var serializer = new DataContractJsonSerializer(typeof (IDictionary<string, int>));
-            using (MemoryStream ms=new MemoryStream(Encoding.UTF8.GetBytes(LabelCountData)))
-            {
-                return (IDictionary<string, int>) serializer.ReadObject(ms);
-            }
+            return Json.Decode<IDictionary<string, int>>(LabelCountData);
         }
 
         public List<string> GetAddresses()
         {
-            var serializer = new DataContractJsonSerializer(typeof(List<string>));
-            using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(LabelHostAddress)))
-            {
-                return (List<string>) serializer.ReadObject(ms);
-            }
+            return Json.Decode<List<string>>(LabelHostAddress);
         }
 
         public void SaveData(IDictionary<string, int> data,IList<string> addresses)
         {
-            var serializer = new DataContractJsonSerializer(typeof(IDictionary<string, int>));
-            using (MemoryStream ms = new MemoryStream())
-            using (StreamReader reader=new StreamReader(ms))
-            {
-                serializer.WriteObject(ms,data);
-                ms.Seek(0, SeekOrigin.Begin);
-                this.LabelCountData = reader.ReadToEnd();
-            }
-            serializer = new DataContractJsonSerializer(typeof(IList<string>));
-            using (MemoryStream ms = new MemoryStream())
-            using (StreamReader reader = new StreamReader(ms))
-            {
-                serializer.WriteObject(ms, addresses);
-                ms.Seek(0, SeekOrigin.Begin);
-                this.LabelHostAddress = reader.ReadToEnd();
-            }
-            
+            this.LabelCountData = Json.Encode(data);
+            this.LabelHostAddress = Json.Encode(addresses);
+
         }
     }
 
@@ -104,7 +82,7 @@ namespace Web.Storage
 
         public string GetLabelsJson(string articleId)
         {
-            var ent = CreateQuery().Where(f => f.PartitionKey.Equals(articleId)).Select(f => new{f.RowKey,f.LabelCountData }).ToArray();
+            var ent = CreateQuery().Where(f => f.PartitionKey.Equals(articleId)).Select(f => new{ParagraphId=f.RowKey,Data=f.LabelCountData }).ToArray();
             return Json.Encode(ent);
         }
     }
