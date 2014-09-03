@@ -232,7 +232,8 @@ div[class^="edit-editted-tag"]:first-child {
   margin-left: 0;
 }
 div[class^="edit-editted-tag"] > span {
-  margin-left: 10px;
+  padding-left: 10px;
   color: #333;
+  cursor: pointer;
 }
 /*# sourceMappingURL=header.css.map */

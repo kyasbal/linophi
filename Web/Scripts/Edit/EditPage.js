@@ -9,6 +9,7 @@ $(function () {
     editorInstance.updateToshow();
     editPage.onChanged();
     $(".edit-submit-button").click(function () {
+        $('.edit-preview > *').removeClass("em");
         $("#context").val(editorInstance.toJSON());
         $("#body").val($(".preview-body").html());
         if (isConfirmedTitle)
