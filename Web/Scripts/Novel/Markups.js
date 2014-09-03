@@ -86,7 +86,7 @@ var NikonikoMarkup = (function (_super) {
         _super.apply(this, arguments);
     }
     NikonikoMarkup.prototype.getMarkupString = function (result) {
-        result = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<script type = \"text\/javascript\"src=\"http://ext.nicovideo.jp/thumb_watch/$1?w=490&h=307\" ></script><noscript><a href=\"http://www.nicovideo.jp/watch/$1\">同がリンク</a></noscript>");
+        result = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<iframe src=\"/Content/Nico?id=$1\" scrolling=\"no\" frameborder=\"0\"></iframe>");
         return result;
     };
     return NikonikoMarkup;
