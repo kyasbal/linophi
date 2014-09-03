@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace Web.Controllers
         {
             ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
             var article = context.Articles.FirstOrDefault(a => a.ArticleModelId.Equals(articleId));
+            context.Entry(article).Collection(c=>c.Tags).Load();
             if (article == null) return null;
             ArticleBodyTableManager manager=new ArticleBodyTableManager(new BlobStorageConnection());
             LabelTableManager ltm=new LabelTableManager(new TableStorageConnection());

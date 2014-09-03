@@ -21,5 +21,18 @@ namespace Web.Models
         public DbSet<ArticleModel> Articles { get; set; } 
 
         public DbSet<ArticleTagModel>  Tags { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+//            modelBuilder.Entity<ArticleModel>()
+//                .HasMany(c => c.Tags).WithMany()
+//                .Map(x =>
+//                {
+//                    x.MapLeftKey("ArticleModelId");
+//                    x.MapRightKey("ArticleTagModelId");
+//                    x.ToTable("TagArticleMapping");
+//                });
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
