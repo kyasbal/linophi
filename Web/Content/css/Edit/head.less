@@ -1,5 +1,5 @@
 ﻿.header{
-    margin:30px 150px;
+    
     .search {
         
     }
@@ -12,11 +12,14 @@
         text-decoration:underline;
     }
     .menu {
+        margin:0 auto;
 	    overflow: hidden;
+        width:80%;
+        padding-top:2%;
         .search{
             position:absolute;
             input{
-                margin-left:10%;
+                padding-left:10%;
             }
             .search-text{
                 background-color:#fbd7a2;
@@ -73,45 +76,48 @@
         zoom: 1;
     }
     #dropmenu {
-	    float:left;
-        margin-left:60%;
-        li{
-            display:inline-block;
-            a{
-	            display: block; 
-	            text-align: center;
-	            height: 20px;
-	            width: 150px;
-	            padding-top: 10px;
-	            font-size: 14px;
-                color:black;
-            }
-            ul{
-                float:left;
-                margin-top:1%;
-                margin-left:74%;
-	            list-style-type: none;
-	            position: absolute;
-                display: block;
-	            top:34px;
-	            left:0;
-	            overflow: hidden;
-	            height: 0;
-                transition: all 0.1s;
-                border-left:1px solid #888;
-                border-right:1px solid #888;
-                li{
-                    display:block;
-                    padding:10px;
-                    &:hover{
-                        background-color:gray;
+        margin-right:10%;
+        ul{
+            width:450px;
+            float:right;
+            li{
+                display:inline-block;
+                a{
+	                display: block; 
+	                text-align: center;
+	                height: 20px;
+	                width:150px;
+	                padding-top: 10px;
+	                font-size: 14px;
+                    color:black;
+                }
+                ul{
+                    float:left;
+                    margin-top:3%;
+                    margin-left:75%;
+	                list-style-type: none;
+	                position: absolute;
+                    display: block;
+	                top:36px;
+	                left:2px;
+	                overflow: hidden;
+	                height: 0;
+                    transition: all 0.1s;
+                    border-left:1px solid #888;
+                    border-right:1px solid #888;
+                    width:150px;
+                    li{
+                        display:block;
+                        &:hover{
+                            background-color:gray;
+                        }
                     }
                 }
-            }
-            &:hover{
-                ul{
-                    height: 100px;
-                    display: block;
+                &:hover{
+                    ul{
+                        height: 100px;
+                        display: block;
+                    }
                 }
             }
         }

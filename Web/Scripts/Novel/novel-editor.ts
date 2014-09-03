@@ -1,7 +1,7 @@
 ﻿module NovelEditer
 {
     var sepalateToken: string = "\n\n";
-    var markups: MarkupBase[] = [new BoldMarkup(),new LinkMarkup()];
+    var markups: MarkupBase[] = [new BoldMarkup(),new LinkMarkup(),new YoutubeMarkup(),new NikonikoMarkup()];
     
     export class NovelEditer
     {
@@ -904,7 +904,7 @@
         isPrefixOfMe(str: string): boolean
         {
             if (str.charCodeAt(0) == 0x5c) return false; //最初が\のときエスケープする
-            if (str.length <= this.getPrefixString().length)
+            if (str.length < this.getPrefixString().length)
                 return false;
             if (Utils.StringUtility.startWith(str, this.getPrefixString())) return true;
             return false;
