@@ -1,8 +1,6 @@
 ﻿.header{
-    margin: 0 150px 30px;
-    padding-top: 30px;
-    .search {
-        
+    .search-container {
+        margin:7.5px 0 7.5px 0;
     }
     a{
         color:#000;
@@ -16,15 +14,16 @@
         margin:0 auto;
 	    overflow: hidden;
         width:80%;
-        padding-top:2%;
         .search{
+            margin:5px 0 5px 0;
             position:absolute;
             input{
                 padding-left:10%;
             }
             .search-text{
+                margin:7.5px 0 7.5px 0;
                 background-color:#fbd7a2;
-                height:30px;
+                height:20px;
                 width:200px;
                 padding:5px 5px;
                 position:absolute;
@@ -41,10 +40,11 @@
                 border:2px #a4c6fd  !important;
             }
             .search-button{
+                margin:7.5px 0 7.5px 0;
                 border:0;
                 padding-left:-10px;
                 width:40px;
-                height:40px;
+                height:30px;
                 position:absolute;
                 left:220px;
                 top:-6px;
@@ -60,69 +60,32 @@
             }
         }
     }
-
-    /* clearfix */
-    .menu:before,
-    .menu:after {
-        content: "";
-        display: table;
-    }
- 
-    .menu:after {
-        clear: both;
-    }
- 
-    /* For IE 6/7 (trigger hasLayout) */
-    .menu {
-        zoom: 1;
-    }
-    #dropmenu {
-        margin-right:10%;
-        ul{
-            width:450px;
-            float:right;
-        li{
-            display:inline-block;
-            a{
-	            display: block; 
-	            text-align: center;
-	            height: 20px;
-	                width:150px;
-	            padding-top: 10px;
-	            font-size: 14px;
-                color:black;
-            }
-            ul{
-                float:left;
-                    margin-top:3%;
-                    margin-left:75%;
-	            list-style-type: none;
-	            position: absolute;
-                display: block;
-	                top:36px;
-	                left:2px;
-	            overflow: hidden;
-	            height: 0;
-                transition: all 0.1s;
-                border-left:1px solid #888;
-                border-right:1px solid #888;
-                    width:150px;
-                li{
-                    display:block;
-                    &:hover{
-                        background-color:gray;
-                    }
-                }
-            }
-            &:hover{
-                ul{
-                    height: 100px;
-                    display: block;
-                }
-            }
-        }
-    }
-    }
-
- 
 }
+
+
+
+ header{
+     height:40px;
+     border-bottom:thin solid black;
+     .search{
+         float:left;
+     }
+     #dropmenu{
+         float:right;
+         li{
+             line-height:40px;
+             vertical-align:middle;
+             display:inline
+         }
+         .gravatar-img{
+             vertical-align:middle;
+         }
+     }
+ }
+
+ #login{
+     display:inline;
+ }
+ .login-form{
+     float:right;
+ }

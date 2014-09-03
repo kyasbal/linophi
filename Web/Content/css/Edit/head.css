@@ -1,8 +1,5 @@
-﻿.header {
-  margin: 0 150px 30px;
-  padding-top: 30px;
-  /* clearfix */
-  /* For IE 6/7 (trigger hasLayout) */
+﻿.header .search-container {
+  margin: 7.5px 0 7.5px 0;
 }
 .header a {
   color: #000;
@@ -16,17 +13,18 @@
   margin: 0 auto;
   overflow: hidden;
   width: 80%;
-  padding-top: 2%;
 }
 .header .menu .search {
+  margin: 5px 0 5px 0;
   position: absolute;
 }
 .header .menu .search input {
   padding-left: 10%;
 }
 .header .menu .search .search-text {
+  margin: 7.5px 0 7.5px 0;
   background-color: #fbd7a2;
-  height: 30px;
+  height: 20px;
   width: 200px;
   padding: 5px 5px;
   position: absolute;
@@ -43,10 +41,11 @@
   border: 2px #a4c6fd  !important;
 }
 .header .menu .search .search-button {
+  margin: 7.5px 0 7.5px 0;
   border: 0;
   padding-left: -10px;
   width: 40px;
-  height: 40px;
+  height: 30px;
   position: absolute;
   left: 220px;
   top: -6px;
@@ -60,60 +59,28 @@
 .header .menu .search .search-button:focus {
   outline: none;
 }
-.header .menu:before,
-.header .menu:after {
-  content: "";
-  display: table;
+header {
+  height: 40px;
+  border-bottom: thin solid black;
 }
-.header .menu:after {
-  clear: both;
+header .search {
+  float: left;
 }
-.header .menu {
-  zoom: 1;
-}
-.header #dropmenu {
-  margin-right: 10%;
-}
-.header #dropmenu ul {
-  width: 450px;
+header #dropmenu {
   float: right;
 }
-.header #dropmenu ul li {
-  display: inline-block;
+header #dropmenu li {
+  line-height: 40px;
+  vertical-align: middle;
+  display: inline;
 }
-.header #dropmenu ul li a {
-  display: block;
-  text-align: center;
-  height: 20px;
-  width: 150px;
-  padding-top: 10px;
-  font-size: 14px;
-  color: black;
+header #dropmenu .gravatar-img {
+  vertical-align: middle;
 }
-.header #dropmenu ul li ul {
-  float: left;
-  margin-top: 3%;
-  margin-left: 75%;
-  list-style-type: none;
-  position: absolute;
-  display: block;
-  top: 36px;
-  left: 2px;
-  overflow: hidden;
-  height: 0;
-  transition: all 0.1s;
-  border-left: 1px solid #888;
-  border-right: 1px solid #888;
-  width: 150px;
+#login {
+  display: inline;
 }
-.header #dropmenu ul li ul li {
-  display: block;
-}
-.header #dropmenu ul li ul li:hover {
-  background-color: gray;
-}
-.header #dropmenu ul li:hover ul {
-  height: 100px;
-  display: block;
+.login-form {
+  float: right;
 }
 /*# sourceMappingURL=head.css.map */

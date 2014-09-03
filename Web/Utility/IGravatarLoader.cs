@@ -91,7 +91,7 @@ namespace Web.Utility
         private MvcHtmlString GenerateTag(string param)
         {
             if(!param.IsNullOrEmpty())param = "?"+param;
-            return MvcHtmlString.Create(String.Format("<img src=\""+GravatarHashAdder+"{1}\" />", _hashString,param));
+            return MvcHtmlString.Create(String.Format("<img class=\"gravatar-img\" src=\""+GravatarHashAdder+"{1}\" />", _hashString,param));
         }
 
         public MvcHtmlString GetIconTag()

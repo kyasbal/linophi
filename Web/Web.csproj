@@ -259,6 +259,7 @@
     <Content Include="Content\imgs\Home\sad.png" />
     <Content Include="Content\imgs\Home\surprized.png" />
     <Content Include="Content\imgs\linophi-logo.png" />
+    <Content Include="Content\imgs\login.png" />
     <Content Include="Content\imgs\logo2.png" />
     <Content Include="Content\imgs\profile.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
