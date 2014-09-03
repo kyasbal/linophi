@@ -1,7 +1,15 @@
 ﻿.header{
-    
+    margin:30px 150px;
     .search {
         
+    }
+    .menu-list{
+        float:left;
+        margin-left:60%;
+    }
+    .menu-list ul li{
+        font-size:large;
+        display:inline;
     }
     a{
         color:#000;
@@ -11,15 +19,13 @@
         color:#818181;
         text-decoration:underline;
     }
+
     .menu {
-        margin:0 auto;
 	    overflow: hidden;
-        width:80%;
-        padding-top:2%;
         .search{
             position:absolute;
             input{
-                padding-left:10%;
+                margin-left:10%;
             }
             .search-text{
                 background-color:#fbd7a2;
@@ -34,8 +40,8 @@
             }
             .search-text:focus{
                 background-color:rgba(251,215,162,0.5);
-                outline:none;
             }
+            //検索ボタンの挙動がページごとに異なるの直さなきゃなぁ・・・。
             .search-text:hover{
                 border:2px #a4c6fd  !important;
             }
@@ -53,9 +59,6 @@
             }
             *.search-button:hover{
                 opacity:0.5;
-            }
-            .search-button:focus{
-                outline:none;
             }
         }
     }
@@ -75,53 +78,5 @@
     .menu {
         zoom: 1;
     }
-    #dropmenu {
-        margin-right:10%;
-        ul{
-            width:450px;
-            float:right;
-            li{
-                display:inline-block;
-                a{
-	                display: block; 
-	                text-align: center;
-	                height: 20px;
-	                width:150px;
-	                padding-top: 10px;
-	                font-size: 14px;
-                    color:black;
-                }
-                ul{
-                    float:left;
-                    margin-top:3%;
-                    margin-left:75%;
-	                list-style-type: none;
-	                position: absolute;
-                    display: block;
-	                top:36px;
-	                left:2px;
-	                overflow: hidden;
-	                height: 0;
-                    transition: all 0.1s;
-                    border-left:1px solid #888;
-                    border-right:1px solid #888;
-                    width:150px;
-                    li{
-                        display:block;
-                        &:hover{
-                            background-color:gray;
-                        }
-                    }
-                }
-                &:hover{
-                    ul{
-                        height: 100px;
-                        display: block;
-                    }
-                }
-            }
-        }
-    }
 
- 
 }

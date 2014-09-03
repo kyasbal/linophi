@@ -6,12 +6,10 @@
             <input type="search" class="search-text" name="searchText">
             <input type="submit" class="search-button" value="検索">
         }
-        <div id="dropmenu">
+        <div id="menu-list">
             <ul>
                 <li>@Html.ActionLink("トップへ", "Index", "Home")</li>
-                |
                 <li>@Html.ActionLink("投稿する","RedirectToEdit","Edit")</li>
-                |
                 <li>
                     @{
                         if (!Request.IsAuthenticated)
