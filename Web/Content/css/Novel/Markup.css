@@ -1,6 +1,9 @@
-﻿.edit-preview {
+﻿.edit-preview-container-inner {
+  position: relative;
+  height: auto;
+}
+.edit-preview {
   color: black;
-  overflow: auto;
 }
 .edit-preview .em {
   background-color: aquamarine;
@@ -17,11 +20,31 @@
   color: gray;
   font-size: small;
 }
-.edit-preview .quote:hover {
-  background-color: #f8f8f8;
+.edit-preview div:hover,
+.edit-preview p:hover,
+.edit-preview h1:hover,
+.edit-preview h2:hover,
+.edit-preview h3:hover,
+.edit-preview h4:hover,
+.edit-preview h5:hover,
+.edit-preview h6:hover {
+  background-color: cornsilk;
 }
 .edit-preview .b {
   font-weight: bolder;
+}
+.edit-preview .youtube-box,
+.edit-preview .niko-box {
+  width: 560px;
+  height: 315px;
+}
+.edit-preview-container {
+  overflow: auto;
+  border: 1px solid #888;
+  border-radius: 5px;
+}
+.preview-iframes {
+  max-height: 0;
 }
 .edit-preview > p:hover {
   background-color: lightgoldenrodyellow;

@@ -4,10 +4,65 @@
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+var frameManager;
+$(function () {
+    frameManager = new FrameManager();
+});
+
+var FrameManager = (function () {
+    function FrameManager() {
+        this.targetContainer = $(".preview-iframes");
+    }
+    FrameManager.prototype.updatePosition = function () {
+        var removeList = new collections.Set();
+        var moveList = new collections.Set();
+        var container = $(".preview-iframes iframe");
+        container.each(function (i, e) {
+            var group = e.getAttribute("group");
+            var jq = $(".preview-body .iframe-box-" + group);
+            if (jq.length == 0) {
+                removeList.add(group);
+            } else {
+                moveList.add(group);
+            }
+        });
+        removeList.forEach(function (st) {
+            $(".preview-iframes .iframe-" + st).remove();
+            return true;
+        });
+        moveList.forEach(function (st) {
+            var offset = $(".preview-body .iframe-box-" + st).offset();
+            var top = offset.top - $(".preview-body").offset().top;
+            $(".preview-iframes .iframe-" + st).css({
+                "position": "absolute",
+                "top": top,
+                "left": offset.left
+            });
+            return true;
+        });
+    };
+
+    FrameManager.prototype.addIframe = function (id, hash, tag) {
+        var targetIframe = $(".preview-iframes .iframe-" + id);
+        if (targetIframe.length == 0) {
+        } else {
+            if (targetIframe.attr("hash") != hash)
+                targetIframe.remove();
+            else {
+                return;
+            }
+        }
+        tag.addClass("iframe-" + id);
+        tag.attr("group", id);
+        tag.attr("hash", hash);
+        $(".preview-iframes").append(tag);
+    };
+    return FrameManager;
+})();
 var MarkupBase = (function () {
     function MarkupBase() {
     }
-    MarkupBase.prototype.getMarkupString = function (str) {
+    MarkupBase.prototype.getMarkupString = function (str, id) {
         return null;
     };
     return MarkupBase;
@@ -18,7 +73,7 @@ var QuoteMarkup = (function (_super) {
     function QuoteMarkup() {
         _super.apply(this, arguments);
     }
-    QuoteMarkup.prototype.getMarkupString = function (str) {
+    QuoteMarkup.prototype.getMarkupString = function (str, id) {
         var result = "";
         result = str.replace(/\\"/g, "\u0006\u0006");
         if (result.match(/"(.+?)(\{.*?\})"/)) {
@@ -37,7 +92,7 @@ var BoldMarkup = (function (_super) {
     function BoldMarkup() {
         _super.apply(this, arguments);
     }
-    BoldMarkup.prototype.getMarkupString = function (str) {
+    BoldMarkup.prototype.getMarkupString = function (str, id) {
         var result = str;
         var rep;
 
@@ -59,7 +114,7 @@ var LinkMarkup = (function (_super) {
     function LinkMarkup() {
         _super.apply(this, arguments);
     }
-    LinkMarkup.prototype.getMarkupString = function (result) {
+    LinkMarkup.prototype.getMarkupString = function (result, id) {
         console.warn("link");
         result = result.replace(/&ensp;/g, "\u0006");
         result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"$1\">");
@@ -75,8 +130,11 @@ var YoutubeMarkup = (function (_super) {
     function YoutubeMarkup() {
         _super.apply(this, arguments);
     }
-    YoutubeMarkup.prototype.getMarkupString = function (result) {
-        result = result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w]+)/, "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>");
+    YoutubeMarkup.prototype.getMarkupString = function (result, id) {
+        if (result.match(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/)) {
+            frameManager.addIframe(id, result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/, "youtube-$1"), $(result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/, "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>")));
+            result = result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/, "<div class=\"youtube-box iframe-box-" + id + "\"></div>");
+        }
         return result;
     };
     return YoutubeMarkup;
@@ -86,8 +144,13 @@ var NikonikoMarkup = (function (_super) {
     function NikonikoMarkup() {
         _super.apply(this, arguments);
     }
-    NikonikoMarkup.prototype.getMarkupString = function (result) {
-        result = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<iframe src=\"/Content/Nico?id=$1\" scrolling=\"no\" frameborder=\"0\"></iframe>");
+    NikonikoMarkup.prototype.getMarkupString = function (result, id) {
+        if (result.match(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/)) {
+            var tag = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<iframe src=\"/Content/Nico?id=$1\" scrolling=\"no\" frameborder=\"0\"></iframe>");
+            var hash = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "niko-$1");
+            frameManager.addIframe(id, hash, $(tag));
+            result = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<div class=\"niko-box iframe-box-" + id + "\"></div>");
+        }
         return result;
     };
     return NikonikoMarkup;

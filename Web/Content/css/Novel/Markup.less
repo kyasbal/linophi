@@ -1,6 +1,9 @@
-﻿.edit-preview {
+﻿.edit-preview-container-inner{
+    position:relative;
+    height:auto;
+}
+.edit-preview {
     color: black;
-    overflow:auto;
     .em {
         background-color: aquamarine;
     }
@@ -19,15 +22,28 @@
         }
     }
 
-    .quote:hover {
-        background-color: #f8f8f8;
+    div,p,h1,h2,h3,h4,h5,h6 {
+        &:hover{
+        background-color: cornsilk;
+        }
     }
 
     .b {
         font-weight: bolder;
     }
+    .youtube-box,.niko-box{
+        width:560px;
+        height:315px;
+    }
 }
-
+.edit-preview-container{
+    overflow:auto;
+    border: 1px solid #888;
+    border-radius: 5px;
+}
+.preview-iframes{
+    max-height:0;
+}
 
 
 

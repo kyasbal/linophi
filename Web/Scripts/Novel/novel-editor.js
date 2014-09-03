@@ -7,7 +7,7 @@
 var NovelEditer;
 (function (_NovelEditer) {
     var sepalateToken = "\n\n";
-    var markups = [new BoldMarkup(), new LinkMarkup(), new YoutubeMarkup(), new NikonikoMarkup()];
+    var markups = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup()];
 
     var NovelEditer = (function () {
         function NovelEditer(editorTarget, previewTarget, previewBounds) {
@@ -211,6 +211,7 @@ var NovelEditer;
         NovelEditer.prototype.updateToshow = function () {
             var ml = this._paragraphManager.headParagraph.getParagraphHtmls(this._paragraphManager.paragraphCount);
             this._previewTarget.html(ml);
+            frameManager.updatePosition();
         };
 
         //改行の数をカウントする
@@ -619,7 +620,7 @@ var NovelEditer;
 
             if (!isPrefixed) {
                 for (var j = 0; j < markups.length; j++) {
-                    rawStr = markups[j].getMarkupString(rawStr); //処理
+                    rawStr = markups[j].getMarkupString(rawStr, this._iD); //処理
                 }
 
                 tag = $("<p/>");
