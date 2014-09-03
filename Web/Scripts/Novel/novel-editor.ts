@@ -1,7 +1,7 @@
 ﻿module NovelEditer
 {
     var sepalateToken: string = "\n\n";
-    var markups: MarkupBase[] = [new BoldMarkup(),new LinkMarkup(),new YoutubeMarkup(),new NikonikoMarkup()];
+    var markups: MarkupBase[] = [new BoldMarkup(),/*new LinkMarkup(),*/new YoutubeMarkup(),new NikonikoMarkup()];
     
     export class NovelEditer
     {
@@ -243,6 +243,7 @@
         {
             var ml = this._paragraphManager.headParagraph.getParagraphHtmls(this._paragraphManager.paragraphCount);
             this._previewTarget.html(ml);
+            frameManager.updatePosition();
         }
 
         //改行の数をカウントする
@@ -679,7 +680,7 @@
             {
                 for (var j = 0; j < markups.length; j++)
                 {
-                    rawStr = markups[j].getMarkupString(rawStr);//処理
+                    rawStr = markups[j].getMarkupString(rawStr,this._iD);//処理
 
                 }
 

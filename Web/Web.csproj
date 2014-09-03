@@ -189,10 +189,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Debug.mdf" />
-    <Content Include="App_Data\Debug_log.ldf">
-      <DependentUpon>Debug.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\css\Account\login.css">
       <DependentUpon>login.less</DependentUpon>
     </Content>
@@ -274,7 +270,6 @@
     <Content Include="Scripts\collections.js" />
     <Content Include="Scripts\Edit\Edit-autoHeight.js" />
     <Content Include="Scripts\Edit\EditPage.js" />
-    <Content Include="Scripts\Edit\showdialog.js" />
     <Content Include="Scripts\Home\AfterLogin.js" />
     <Content Include="Content\css\Edit\header.css.map" />
     <Content Include="Content\css\Edit\header.less" />
@@ -376,9 +371,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201409021810434_AddLabelCount.cs" />
-    <Compile Include="Migrations\201409021810434_AddLabelCount.Designer.cs">
-      <DependentUpon>201409021810434_AddLabelCount.cs</DependentUpon>
+    <Compile Include="Migrations\201409031548165_AddStupidUpdate.cs" />
+    <Compile Include="Migrations\201409031548165_AddStupidUpdate.Designer.cs">
+      <DependentUpon>201409031548165_AddStupidUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -448,17 +443,13 @@
     <Content Include="Views\Account\Config.cshtml" />
     <Content Include="Views\Home\Top.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Content\Nico.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201409021810434_AddLabelCount.resx">
-      <DependentUpon>201409021810434_AddLabelCount.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Account\externalLoginConfirmation.ts" />
@@ -484,7 +475,12 @@
     <TypeScriptCompile Include="Scripts\View\index.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Content\" />
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201409031548165_AddStupidUpdate.resx">
+      <DependentUpon>201409031548165_AddStupidUpdate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

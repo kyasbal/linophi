@@ -141,8 +141,6 @@ body {
   padding: 5px;
   float: right;
   background-color: #fff;
-  border: 1px solid #888;
-  border-radius: 5px;
   word-break: break-all;
 }
 .edit-preview ::-webkit-input-placeholder,

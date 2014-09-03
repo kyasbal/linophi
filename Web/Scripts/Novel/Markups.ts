@@ -1,7 +1,96 @@
-﻿
+﻿var frameManager: FrameManager;
+$(() =>
+{
+    frameManager = new FrameManager();
+
+});
+
+class FrameManager
+{
+    private targetContainer: JQuery = $(".preview-iframes");
+    private calledIds:collections.Set<string>=new collections.Set<string>();
+
+    public NicoMove(id:string): void
+    {
+        
+        var target: JQuery = $(".iframe-" + id);
+        if (target.length != 0)
+        {
+            if (this.calledIds.contains(id))
+            {
+                var href: string = target.attr("data-link");
+                var movieId: string = target.attr("data-movie-id");
+                window.open(href);
+                var iframe = document.getElementById("nico-" + id);
+                iframe.src = "/Content/Nico?id=" + movieId;
+                this.calledIds.remove(id);
+            } else
+            {
+                this.calledIds.add(id);
+            }
+        }
+    }
+
+    public updatePosition(): void
+    {
+        var removeList: collections.Set<string> = new collections.Set<string>();
+        var moveList: collections.Set<string> = new collections.Set<string>();
+        var container = $(".preview-iframes iframe");
+        container.each((i, e:Element) =>
+        {
+            var group: string = e.getAttribute("group");
+            var jq: JQuery = $(".preview-body .iframe-box-" + group);
+            if (jq.length == 0)
+            {
+                removeList.add(group);
+            } else
+            {
+                moveList.add(group);
+            }
+        });
+        removeList.forEach((st) =>
+        {
+            $(".preview-iframes .iframe-" + st).remove();
+            return true;
+        });
+        moveList.forEach((st) =>
+        {
+            var offset = $(".preview-body .iframe-box-" + st).offset();
+            var top =offset.top-$(".preview-body").offset().top;
+            $(".preview-iframes .iframe-" + st).css({
+                "position": "absolute",
+                "top": top ,
+                "left":offset.left
+            });
+            return true;
+        });
+    }
+
+    public addIframe(id:string,hash:string,tag:JQuery):void
+    {
+        var targetIframe: JQuery = $(".preview-iframes .iframe-" + id);
+        if (targetIframe.length == 0)
+        {
+            
+        } else
+        {
+            if(targetIframe.attr("hash")!=hash)
+                targetIframe.remove();
+            else
+            {
+                return;
+            }
+        }
+        tag.addClass("iframe-" + id);
+        tag.attr("group", id);
+        tag.attr("hash", hash);
+        $(".preview-iframes").append(tag);
+    }
+
+}
 class MarkupBase
 {
-    getMarkupString(str: string): string//マークアップ実行
+    getMarkupString(str: string,id:string): string//マークアップ実行
     {
         return null;
     }
@@ -9,7 +98,7 @@ class MarkupBase
 
 class QuoteMarkup extends MarkupBase
 {
-    getMarkupString(str: string): string
+    getMarkupString(str: string, id: string): string
     {
         var result: string = "";
         result = str.replace(/\\"/g, "\u0006\u0006");
@@ -27,7 +116,7 @@ class QuoteMarkup extends MarkupBase
 
 class BoldMarkup extends MarkupBase //太字
 {
-    getMarkupString(str: string): string
+    getMarkupString(str: string, id: string): string
     {
         var result: string = str;
         var rep: string;
@@ -46,7 +135,7 @@ class BoldMarkup extends MarkupBase //太字
 
 class LinkMarkup extends MarkupBase//URL
 {
-    getMarkupString(result: string): string
+    getMarkupString(result: string, id: string): string
     {
         console.warn("link");
         result = result.replace(/&ensp;/g, "\u0006");
@@ -59,19 +148,28 @@ class LinkMarkup extends MarkupBase//URL
 
 class YoutubeMarkup extends MarkupBase//ようつべ
 {
-    getMarkupString(result: string): string
+    getMarkupString(result: string, id: string): string
     {
-        result = result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w]+)/,
-            "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>");
+        if (result.match(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/))
+        {
+            frameManager.addIframe(id, result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/,"youtube-$1"), $(result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/, "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>")));
+            result = result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/, "<div class=\"youtube-box iframe-box-" + id + "\"></div>");
+        }
         return result;
     }
 }
 class NikonikoMarkup extends MarkupBase
 {
-    getMarkupString(result: string): string
+    getMarkupString(result: string, id: string): string
     {
-        result = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/,
-            "<iframe src=\"/Content/Nico?id=$1\" scrolling=\"no\" frameborder=\"0\"></iframe>");
+        if (result.match(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/))
+        {//ニコ動はiframeだと、動画クリック時に変移する先のページを表示できない為、いろいろややこしい。
+            var src = result.replace(/(http:\/\/www\.nicovideo\.jp\/\watch\/ [\w]+)/, "$1");
+            var hash = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "$1");
+            var tag = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<iframe id=\"nico-" + id + "\" onload=\"frameManager.NicoMove('" + id + "');\" data-link=\"" + src + "\" data-movie-id=\""+hash+"\"   width=\"560px\" height=\"315px\" src=\"/Content/Nico?id=$1\" scrolling=\"no\" frameborder=\"0\"></iframe>");
+            frameManager.addIframe(id, "nico-"+hash, $(tag));
+            result = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<div class=\"niko-box iframe-box-" + id + "\"></div>");
+        }
         return result;
     }
 }

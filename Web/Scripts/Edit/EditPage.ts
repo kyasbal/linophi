@@ -9,8 +9,14 @@ $(() => {
         editorInstance.updateToshow();
     editPage.onChanged();
     $(".edit-submit-button").click(() => {
+        var tagList: string[] = new Array();
+        tags.forEach((item) =>
+        {
+            tagList.push(item);
+            return true;
+        });
+        $("#tag").val(JSON.stringify(tagList));
         $('.edit-preview > *').removeClass("em");
-        $("#context").val(editorInstance.toJSON());
         $("#body").val($(".preview-body").html());
         if (isConfirmedTitle) $(".edit-form").submit();
     });

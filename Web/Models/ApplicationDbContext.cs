@@ -19,5 +19,7 @@ namespace Web.Models
         }
 
         public DbSet<ArticleModel> Articles { get; set; } 
+
+        public DbSet<ArticleTagModel>  Tags { get; set; }
     }
 }

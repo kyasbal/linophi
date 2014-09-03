@@ -16,6 +16,17 @@ namespace Web.Models
         public string Author { get; set; }
         public string Author_ID { get; set; }
         public string LabelInfo { get; set; }
+
+        public IEnumerable<TagViewModel> Tags { get; set; }
+    }
+
+    public class TagViewModel
+    {
+        public string TagId { get; set; }
+
+        public string TagName { get; set; }
+
+        public int ArticleCount { get; set; }
     }
 
 }

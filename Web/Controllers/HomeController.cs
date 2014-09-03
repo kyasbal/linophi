@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -19,7 +20,7 @@ namespace Web.Controllers
         private async Task<ViewArticleViewModel> getArticleViewModel(string articleId)
         {
             ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
-            var article = context.Articles.FirstOrDefault(a => a.ArticleId.Equals(articleId));
+            var article = context.Articles.FirstOrDefault(a => a.ArticleModelId.Equals(articleId));
             if (article == null) return null;
             ArticleBodyTableManager manager=new ArticleBodyTableManager(new BlobStorageConnection());
             LabelTableManager ltm=new LabelTableManager(new TableStorageConnection());
@@ -32,9 +33,18 @@ namespace Web.Controllers
                 Author_ID=author.UniqueId,
                 PageView=article.PageView,
                 Title = article.Title,
-                Content =await manager.GetArticleBody(article.ArticleId),
-                LabelInfo=ltm.GetLabelsJson(articleId)
+                Content =await manager.GetArticleBody(article.ArticleModelId),
+                LabelInfo=ltm.GetLabelsJson(articleId),
+                Tags = getArticleTagModels(article)
             };
+        }
+
+        private IEnumerable<TagViewModel> getArticleTagModels(ArticleModel article)
+        {
+            foreach (var tagRef in article.Tags)
+            {
+                yield return new TagViewModel(){ArticleCount = tagRef.Articles.Count,TagId = tagRef.ArticleTagModelId,TagName = tagRef.TagName};
+            }
         }
 
         // GET: Home
@@ -77,7 +87,7 @@ namespace Web.Controllers
             {
                 articles.Add(new SearchResultArticle()
                 {
-                    ArticleId = source.ArticleId,
+                    ArticleId = source.ArticleModelId,
                     LabelCount = 0,
                     PageView = source.PageView,
                     Title = source.Title
