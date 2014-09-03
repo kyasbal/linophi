@@ -43,8 +43,12 @@ namespace Web.Controllers
 
         private IEnumerable<TagViewModel> getArticleTagModels(ArticleModel article)
         {
+            ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+
             foreach (var tagRef in article.Tags)
+            
             {
+                context.Entry(tagRef).Collection(c=>c.Articles).Load();
                 yield return new TagViewModel(){ArticleCount = tagRef.Articles.Count,TagId = tagRef.ArticleTagModelId,TagName = tagRef.TagName};
             }
         }
