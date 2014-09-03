@@ -1,5 +1,5 @@
 ﻿.login-main {
-  margin: 0 auto;
+  margin: 30px auto;
   width: 960px;
   padding-bottom: 130px;
 }
@@ -20,6 +20,7 @@
   margin-bottom: 40px;
 }
 .login-loginbox {
+  width: 100%;
   display: inline-block;
   overflow: hidden;
   padding: 10px 23px;
@@ -39,17 +40,49 @@
 .login-loginbox button:focus {
   outline-color: aquamarine;
 }
-.login-loginbox .login-external {
-  width: 100px;
-  height: 90px;
-  display: inline-block;
-  margin: 0 auto;
-}
 .login-loginbox > a {
   float: left;
 }
 .login-loginbox > a:last-child {
   margin: 20px;
+}
+.external-login-container {
+  text-align: center;
+  margin: 20px 10px;
+}
+.external-login-container a {
+  border-radius: 4px;
+  width: 80%;
+  color: white;
+  padding: 3px 100px;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.external-login-container a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+.twitter-external a {
+  background-color: #55acee;
+}
+.twitter-external a:hover {
+  background-color: #5fc0f9;
+  color: white;
+}
+.facebook-external a {
+  background-color: #3b5998;
+}
+.facebook-external a:hover {
+  background-color: #4563a2;
+  color: white;
+}
+.linophi-chara {
+  right: 100px;
+  position: absolute;
+  width: 300px;
+  height: auto;
 }
 h1 {
   box-shadow: -18px 0 #afdbcc, -28px 0 #7ac2a6;

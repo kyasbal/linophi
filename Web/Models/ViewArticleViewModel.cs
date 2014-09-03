@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Web.Models
 {
@@ -16,6 +17,19 @@ namespace Web.Models
         public string Author { get; set; }
         public string Author_ID { get; set; }
         public string LabelInfo { get; set; }
+
+        public IEnumerable<TagViewModel> Tags { get; set; }
+        public MvcHtmlString Author_IconTag { get; set; }
+        public int LabelCount { get; set; }
+    }
+
+    public class TagViewModel
+    {
+        public string TagId { get; set; }
+
+        public string TagName { get; set; }
+
+        public int ArticleCount { get; set; }
     }
 
 }

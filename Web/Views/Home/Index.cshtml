@@ -35,28 +35,17 @@
 
                 <div class="viewhead">
                     <div class="viewhead-inner">
-                        <ol class="topicpath">
-                            <li><a href="">まとめトップ</a></li>
-                            <li><a href="">ニュース</a></li>
-                        </ol>
 
                         <div class="topicwordlist set">
                             <ul class="topicwordlistul">
-                                <li class="topicwordlistli">
-                                    <a href="" class="topicword">
-                                        aaa <span class="topicwordnum">(1000)</span>
-                                    </a>
-                                </li>
-                                <li class="topicwordlistli">
-                                    <a href="" class="topicword">
-                                        bbb <span class="topicwordnum">(1000)</span>
-                                    </a>
-                                </li>
-                                <li class="topicwordlistli">
-                                    <a href="" class="topicword">
-                                        ccc <span class="topicwordnum">(1000)</span>
-                                    </a>
-                                </li>
+                                @foreach (var tag in Model.Tags)
+                                {
+                                    <li class="topicwordlistli">
+                                        <a href="" class="topicword">
+                                            @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                        </a>
+                                    </li>
+                                }
                             </ul>
                         </div>
                     </div>
@@ -78,7 +67,7 @@
 
                         <div class="navbar-count">
                             <span class="navbar-countfv">
-                                <span class="navbar-countnum">70</span>
+                                <span class="navbar-countnum">@Model.LabelCount</span>
                                 <span class="navbar-countlabel">ふせん</span>
                             </span>
                             <span class="navbar-countpv">
@@ -90,7 +79,7 @@
                     </div>
                     <div class="navbar-sub">
                         <div>
-                            <p class="navbar-user"><span class="navbar-userthumb"><a href=""><img width="70" height="70" src="~/Content/imgs/Home/red.jpg"></a></span><span class="navbar-username"><a href="">@if (Model != null)
+                            <p class="navbar-user"><span class="navbar-userthumb">@Model.Author_IconTag</span><span class="navbar-username"><a href="">@if (Model != null)
                                                                                                                                                                                                                {
                                                                                                                                                                                                                    @Model.Author
                                                                                                                                                                                                                }</a>さん</span></p>
@@ -154,6 +143,7 @@
                 <div class="separator1"><hr></div>
             </div>
             <div class="dropbox">
+                <div class="postit-pasting"></div>
             </div>
             <div class="postit">
                 <div class="postit-contents">
