@@ -7,7 +7,7 @@
 var NovelEditer;
 (function (_NovelEditer) {
     var sepalateToken = "\n\n";
-    var markups = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup()];
+    var markups = [new BoldMarkup(), new LinkMarkup(), new YoutubeMarkup(), new NikonikoMarkup()];
 
     var NovelEditer = (function () {
         function NovelEditer(editorTarget, previewTarget, previewBounds) {

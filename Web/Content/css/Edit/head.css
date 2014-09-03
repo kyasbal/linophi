@@ -1,5 +1,4 @@
 ﻿.header {
-  margin: 30px 150px;
   /* clearfix */
   /* For IE 6/7 (trigger hasLayout) */
 }
@@ -12,13 +11,16 @@
   text-decoration: underline;
 }
 .header .menu {
+  margin: 0 auto;
   overflow: hidden;
+  width: 80%;
+  padding-top: 2%;
 }
 .header .menu .search {
   position: absolute;
 }
 .header .menu .search input {
-  margin-left: 10%;
+  padding-left: 10%;
 }
 .header .menu .search .search-text {
   background-color: #fbd7a2;
@@ -68,13 +70,16 @@
   zoom: 1;
 }
 .header #dropmenu {
-  float: left;
-  margin-left: 60%;
+  margin-right: 10%;
 }
-.header #dropmenu li {
+.header #dropmenu ul {
+  width: 450px;
+  float: right;
+}
+.header #dropmenu ul li {
   display: inline-block;
 }
-.header #dropmenu li a {
+.header #dropmenu ul li a {
   display: block;
   text-align: center;
   height: 20px;
@@ -83,29 +88,29 @@
   font-size: 14px;
   color: black;
 }
-.header #dropmenu li ul {
+.header #dropmenu ul li ul {
   float: left;
-  margin-top: 1%;
-  margin-left: 74%;
+  margin-top: 3%;
+  margin-left: 75%;
   list-style-type: none;
   position: absolute;
   display: block;
-  top: 34px;
-  left: 0;
+  top: 36px;
+  left: 2px;
   overflow: hidden;
   height: 0;
   transition: all 0.1s;
   border-left: 1px solid #888;
   border-right: 1px solid #888;
+  width: 150px;
 }
-.header #dropmenu li ul li {
+.header #dropmenu ul li ul li {
   display: block;
-  padding: 10px;
 }
-.header #dropmenu li ul li:hover {
+.header #dropmenu ul li ul li:hover {
   background-color: gray;
 }
-.header #dropmenu li:hover ul {
+.header #dropmenu ul li:hover ul {
   height: 100px;
   display: block;
 }

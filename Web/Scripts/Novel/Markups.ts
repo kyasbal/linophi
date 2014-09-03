@@ -48,10 +48,11 @@ class LinkMarkup extends MarkupBase//URL
 {
     getMarkupString(result: string): string
     {
+        console.warn("link");
         result = result.replace(/&ensp;/g, "\u0006");
-        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"$1\">");
-        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)([^\w\/:%#\$&\?\(\)~\.=\+\-])(?!>)/g, "<a href='$1'>$1</a>$2");
-        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)$/, "<a href='$1'>$1</a>");
+        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"$1\">");
+        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)([^\w\/:%#\$&\?\(\)~\.=\+\-])(?!>)/g, "<a href='$1'>$1</a>$2");
+        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)$/, "<a href='$1'>$1</a>");
         return result.replace(/\u0006/g, "&ensp;");
     }
 }
