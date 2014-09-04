@@ -35,9 +35,23 @@ namespace Web.Controllers
         [HttpGet]
         [Authorize]
         // GET: Edit
-        public ActionResult Index()
+        public async Task<ActionResult> Index(string articleId)
         {
+            if(articleId==null||string.IsNullOrWhiteSpace(articleId))
             return View();
+            //記事IDがある場合
+            ArticleEditViewModel vm=new ArticleEditViewModel();
+            //対象の記事の取得
+            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            ArticleModel articleModel = await context.Articles.FindAsync(articleId);
+            if (!articleModel.AuthorID.Equals(User.Identity.Name))
+            {
+                return View("Page403");
+            }
+            ArticleMarkupTableManager amtm = new ArticleMarkupTableManager(new BlobStorageConnection());
+            string markup = await amtm.GetArticleBodyAsync(articleId);
+            vm.MarkupString = markup;
+            return View(vm);
         }
 
         [Authorize]

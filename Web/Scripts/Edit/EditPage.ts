@@ -5,7 +5,9 @@ var isConfirmedTitle: boolean;
 isConfirmedTitle = false;
 $(() => {
     editPage = new EditPage();
-        editorInstance = new NovelEditer.NovelEditer($(".edit-context"), $(".preview-body"), $(".preview-context"));
+    editorInstance = new NovelEditer.NovelEditer($(".edit-context"), $(".preview-body"), $(".preview-context"));
+    editorInstance.saveInput();
+
         editorInstance.updateToshow();
     editPage.onChanged();
     $(".edit-submit-button").click(() => {

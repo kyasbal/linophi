@@ -23,8 +23,8 @@ namespace Web.Controllers
         {
             ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
             var article = context.Articles.FirstOrDefault(a => a.ArticleModelId.Equals(articleId));
-            context.Entry(article).Collection(c=>c.Tags).Load();
             if (article == null) return null;
+            context.Entry(article).Collection(c=>c.Tags).Load();
             ArticleBodyTableManager manager=new ArticleBodyTableManager(new BlobStorageConnection());
             LabelTableManager ltm=new LabelTableManager(new TableStorageConnection());
             var author=await HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByNameAsync(article.AuthorID);
@@ -203,6 +203,8 @@ namespace Web.Controllers
             var context = Request.GetOwinContext().Get<ApplicationDbContext>();
             ArticleModel article = await context.Articles.FindAsync(articleId);
             if (article==null||!article.AuthorID.Equals(User.Identity.Name)) return View("Page403");
+            context.Entry(article).Collection(a => a.Tags);
+            article.Tags.Clear();
             BlobStorageConnection connection=new BlobStorageConnection();
             ArticleBodyTableManager abtm=new ArticleBodyTableManager(connection);
             ArticleMarkupTableManager amtm=new ArticleMarkupTableManager(connection);
