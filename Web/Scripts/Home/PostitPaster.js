@@ -43,7 +43,7 @@
             if (postitJson[j]["ParagraphId"] == className.substr(4)) {
                 var data = JSON.parse(postitJson[j]["Data"]);
                 data = _.sortBy(data, function (d) {
-                    return d.Value;
+                    return (Object)(d).Value;
                 }).reverse();
 
                 for (var i = 0; i < data.length; i++) {

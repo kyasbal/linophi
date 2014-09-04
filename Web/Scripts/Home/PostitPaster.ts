@@ -56,7 +56,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             if (postitJson[j]["ParagraphId"] == className.substr(4))
             {
                 var data = JSON.parse(postitJson[j]["Data"]);
-                data=_.sortBy(data, d => d.Value).reverse();
+                data=_.sortBy(data, d => (Object)(d).Value).reverse();
                 /*
                     ここでdataがソートされたと仮定
                     例えば、
