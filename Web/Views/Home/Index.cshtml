@@ -38,14 +38,14 @@
 
                         <div class="topicwordlist set">
                             <ul class="topicwordlistul">
-                                @foreach (var tag in Model.Tags)
+@*                                @foreach (var tag in Model.Tags)
                                 {
                                     <li class="topicwordlistli">
                                         <a href="" class="topicword">
                                             @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
                                         </a>
                                     </li>
-                                }
+                                }*@
                             </ul>
                         </div>
                     </div>
@@ -148,13 +148,13 @@
                 <div class="postit-contents">
                     <h2 class="postit-title">ふせんを貼る</h2>
                     <div class="postit-list">
-                        <img src="~/Content/imgs/Home/surprized.png">
-                        <img src="~/Content/imgs/Home/anger.png">
-                        <img src="~/Content/imgs/Home/fun.png">
-                        <img src="~/Content/imgs/Home/bethink.png">
-                        <img src="~/Content/imgs/Home/good.png">
-                        <img src="~/Content/imgs/Home/sad.png">
-                        <img src="~/Content/imgs/Home/noidea.png">
+                        <img src="~/Content/imgs/Home/surprized.png" class="surprized">
+                        <img src="~/Content/imgs/Home/anger.png" class="anger">
+                        <img src="~/Content/imgs/Home/fun.png" class="fun">
+                        <img src="~/Content/imgs/Home/bethink.png" class="bethink">
+                        <img src="~/Content/imgs/Home/good.png" class="good">
+                        <img src="~/Content/imgs/Home/sad.png" class="sad">
+                        <img src="~/Content/imgs/Home/noidea.png" class="noidea">
                     </div>
                 </div>
             </div>
