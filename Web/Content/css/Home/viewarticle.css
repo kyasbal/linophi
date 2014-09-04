@@ -262,6 +262,9 @@ input[type="text"] {
   font-weight: bold;
   font-size: 20px;
 }
+.container .contents .contentswrapper .main .article-container p:hover {
+  background-color: ghostwhite;
+}
 .container .contents .contentswrapper .main .rellist {
   position: relative;
   margin: 10px 0 10px 0;
