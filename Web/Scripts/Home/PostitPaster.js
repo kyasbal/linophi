@@ -5,6 +5,38 @@
         "height": htmlHeight + "px"
     });
 
+    var postitJson = JSON.parse($('__browserLink_initializationData').text());
+    console.log(postitJson);
+
+    /*
+    [
+    
+    {
+    "ParagraphId":"BD2QTbUFf9",
+    "Data":
+    "[
+    {\"Key\":\"angry\",\"Value\":1},
+    {\"Key\":\"sad\",\"Value\":1}
+    ]"
+    },
+    {
+    "ParagraphId":"MDyXAnGiln",
+    "Data":
+    "[
+    {\"Key\":\"sad\",\"Value\":1}
+    ]"
+    },
+    {
+    "ParagraphId":"MDyXAnGils",
+    "Data":"{\"sad\":1}"
+    },
+    {
+    "ParagraphId":"lCnRY4AfQ6",
+    "Data":"{\"sadness\":1}"
+    }
+    
+    ]
+    */
     /*
     * ふせんをクリックされたら左側に影的なものを出して周りを暗くする
     * 次のタイミングにクリックされたら貼り付ける
@@ -15,7 +47,7 @@
 
     var $fadeLayer = $('.fade-layer');
 
-    var src;
+    var labelType, src;
     var dropboxPos = $('.contentswrapper').offset().top, dropboxHeight = $('.contentswrapper').outerHeight();
 
     var posY = dropboxPos + 10;
@@ -47,9 +79,9 @@
             "opacity": 1
         });
 
+        labelType = event.currentTarget.class; //className?
         src = event.currentTarget.src; // なぜかVSで赤線がでるけどちゃんと動きます
 
-        // $fadeLayer.html('<img src="' + src + '">');
         $('.fade-layer, .dropbox').mousemove(function (e) {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight) {
                 posY = e.pageY - 20;
@@ -76,9 +108,8 @@
                 var $target = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
                 var pHeight = $target.outerHeight();
                 var bg = "none";
-                if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode) {
+                if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode)
                     bg = "#fcc";
-                }
 
                 $target.css({
                     "background": bg
@@ -116,11 +147,20 @@
                 var $target = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
                 var pHeight = $target.outerHeight();
 
-                var counter = $('[src="' + src + '"]').length;
+                var postitExistence = $('.dropbox [src="' + src + '"]').length;
+
+                console.log(postitExistence);
 
                 if (pHeights <= posY && posY <= pHeights + pHeight) {
-                    // $target.append('<img src="' + src + '">');
-                    $target.append('<div style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;"></div>');
+                    if (postitExistence) {
+                        var msg = "";
+                        for (var j = 0, len = postitJson.length; j < len; j++) {
+                            msg += postitJson[j] || "";
+                        }
+                        //$('.' + labelType).html(postitJson[]);
+                    } else {
+                        $target.append('<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;">1</div>');
+                    }
                 }
 
                 pHeights += pHeight;

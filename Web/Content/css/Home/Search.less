@@ -22,6 +22,30 @@ body {
             padding-bottom: 40px;
 
             .search-result {
+                .search-header{
+                    background-color:blanchedalmond;
+                    width:90%;
+                    margin:30px 50px;
+                    margin-left:0;
+                    padding:30px;
+                    padding-bottom:50px;
+                    h1{
+                        float:left;
+                    }
+                    form{
+                        float:left;
+                        margin-left:30%;
+                        select{
+                            border:none;
+                        }
+                        select:focus{
+                            outline:none;
+                        }
+                    }
+                }
+                .search-header:focus{
+                    outline:none;
+                }
                 .listitem {
                     display: table;
                     margin: 30px 30px 30px;
@@ -76,6 +100,7 @@ body {
         }
 
         .dropbox {
+            margin-top:30px;
             margin-left: 20px;
             float: left;
             background: #F0EBCE;

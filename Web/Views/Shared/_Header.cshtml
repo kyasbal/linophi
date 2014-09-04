@@ -1,14 +1,13 @@
 ﻿@using Web.Utility
-
 <header class="header">
     <div class="menu">
-    @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "search" }))
-    {
-        <div class="search-container">
-            <input type="search" class="search-text" name="searchText">
-            <input type="submit" class="search-button" value="検索">
-        </div>
-    }
+        @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "search" }))
+        {
+            <div class="search-container">
+                <input type="search" class="search-text" name="searchText">
+                <input type="submit" class="search-button" value="検索">
+            </div>
+        }
         <div id="dropmenu">
             <ul>
                 <li>@Html.ActionLink("トップへ", "Index", "Home")</li>
@@ -19,7 +18,7 @@
                     @{
                         if (!Request.IsAuthenticated)
                         {
-                            using (Html.BeginForm("Login", "Account", FormMethod.Get,new{@class="login-form"}))
+                            using (Html.BeginForm("Login", "Account", FormMethod.Get, new { @class = "login-form" }))
                             {
                                 @Html.Hidden("returnUrl", Request.Url)
                                 <a onclick="$('.login-form').submit();">ログイン</a>
@@ -30,10 +29,10 @@
                             @Html.GravatarImg(Request, 24)
 
                             @WebPageStatic.GetUserNickName(Request)
-@*                            <ul>*@
-@*                                <li>@Html.ActionLink("設定", "Config", "Account")</li>*@
-@*                                <li>@Html.ActionLink("ログアウト", "Logout", "Account")</li>*@
-@*                            </ul>*@
+                            @*                            <ul>*@
+                            @*                                <li>@Html.ActionLink("設定", "Config", "Account")</li>*@
+                            @*                                <li>@Html.ActionLink("ログアウト", "Logout", "Account")</li>*@
+                            @*                            </ul>*@
                         }
                     }
                 </li>

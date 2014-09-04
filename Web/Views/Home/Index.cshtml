@@ -39,14 +39,14 @@
 
                         <div class="topicwordlist set">
                             <ul class="topicwordlistul">
-                                @foreach (var tag in Model.Tags)
+@*                                @foreach (var tag in Model.Tags)
                                 {
                                     <li class="topicwordlistli">
                                         <a href="" class="topicword">
                                             @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
                                         </a>
                                     </li>
-                                }
+                                }*@
                             </ul>
                         </div>
                     </div>
@@ -65,7 +65,6 @@
                         <div class="navbar-txt">
                             <div class="article-title navbar-title"><a href="">@if(Model!=null){@Model.Title}</a></div>
                         </div>
-
                         <div class="navbar-count">
                             <span class="navbar-countfv">
                                 <span class="navbar-countnum">@Model.LabelCount</span>
@@ -109,13 +108,13 @@
                         <li class="listitem">
                             <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
                             <div class="listtxt">
-                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxx</a></h3><span class="listdesc">200ふせん<span class="separator">|</span>140157 view</span>
+                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxx</a></h3><br/><span class="listdesc">200ふせん<span class="separator">|</span>140157 view</span>
                             </div>
                         </li>
                         <li class="listitem">
                             <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
                             <div class="listtxt">
-                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxxx</a></h3><span class="listdesc">200ふせん<span class="separator">|</span>101551 view</span>
+                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxxx</a></h3><br/><span class="listdesc">200ふせん<span class="separator">|</span>101551 view</span>
                             </div>
                         </li>
                     </ul>
@@ -128,13 +127,13 @@
                         <li class="listitem">
                             <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
                             <div class="listtxt">
-                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxx</a></h3><span class="listdesc">200ふせん<span class="separator">|</span>140157 view</span>
+                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxx</a></h3><br/><span class="listdesc">200ふせん<span class="separator">|</span>140157 view</span>
                             </div>
                         </li>
                         <li class="listitem">
                             <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
                             <div class="listtxt">
-                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxxx</a></h3><span class="listdesc">200ふせん<span class="separator">|</span>101551 view</span>
+                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxxx</a></h3><br/><span class="listdesc">200ふせん<span class="separator">|</span>101551 view</span>
                             </div>
                         </li>
                     </ul>
@@ -150,13 +149,13 @@
                 <div class="postit-contents">
                     <h2 class="postit-title">ふせんを貼る</h2>
                     <div class="postit-list">
-                        <img src="~/Content/imgs/Home/surprized.png">
-                        <img src="~/Content/imgs/Home/anger.png">
-                        <img src="~/Content/imgs/Home/fun.png">
-                        <img src="~/Content/imgs/Home/bethink.png">
-                        <img src="~/Content/imgs/Home/good.png">
-                        <img src="~/Content/imgs/Home/sad.png">
-                        <img src="~/Content/imgs/Home/noidea.png">
+                        <img src="~/Content/imgs/Home/surprized.png" class="surprized">
+                        <img src="~/Content/imgs/Home/anger.png" class="anger">
+                        <img src="~/Content/imgs/Home/fun.png" class="fun">
+                        <img src="~/Content/imgs/Home/bethink.png" class="bethink">
+                        <img src="~/Content/imgs/Home/good.png" class="good">
+                        <img src="~/Content/imgs/Home/sad.png" class="sad">
+                        <img src="~/Content/imgs/Home/noidea.png" class="noidea">
                     </div>
                 </div>
             </div>
