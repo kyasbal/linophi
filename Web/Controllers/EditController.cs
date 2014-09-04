@@ -103,6 +103,7 @@ namespace Web.Controllers
                 return Redirect("~/" + article.ArticleModelId);
             }else if (vm.Mode.Equals("edit"))
             {
+                LabelTableManager lm=new LabelTableManager(new TableStorageConnection());
                 ArticleModel articleModel = await context.Articles.FindAsync(vm.Id);
                 if (!articleModel.AuthorID.Equals(User.Identity.Name)) return View("Page403");
                 await context.Entry(articleModel).Collection(a => a.Tags).LoadAsync();
@@ -125,9 +126,11 @@ namespace Web.Controllers
                     tagModel.Articles.Add(articleModel);
                     articleModel.Tags.Add(tagModel);
                 }
+                articleModel.LabelCount = 0;
                 await context.SaveChangesAsync();
                 await abtm.AddArticle(articleModel.ArticleModelId, vm.Body);
                 await amtm.AddMarkupAsync(articleModel.ArticleModelId, vm.Markup);
+                await lm.RemoveArticleLabelAsync(vm.Id);
                 return Redirect("~/" + vm.Id);
             }
             else

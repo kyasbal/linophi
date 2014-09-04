@@ -85,5 +85,14 @@ namespace Web.Storage
             var ent = CreateQuery().Where(f => f.PartitionKey.Equals(articleId)).Select(f => new{ParagraphId=f.RowKey,Data=f.LabelCountData }).ToArray();
             return Json.Encode(ent);
         }
+
+        public async Task RemoveArticleLabelAsync(string articleId)
+        {
+            var ent = CreateQuery().Where(f => f.PartitionKey.Equals(articleId));
+            foreach (var labelEntity in ent)
+            {
+                await Table.ExecuteAsync(TableOperation.Delete(labelEntity));
+            }
+        }
     }
 }
