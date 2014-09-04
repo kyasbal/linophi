@@ -51,14 +51,12 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             "height": eleHeight + "px",
             "width": "300px",
         });
-
         for (var j = 0, len = postitJson.length; j < len; j++)
         {
             if (postitJson[j]["ParagraphId"] == className.substr(4))
             {
                 var data = JSON.parse(postitJson[j]["Data"]);
-                console.log(data);
-
+                data=_.sortBy(data, d => d.Value).reverse();
                 /*
                     ここでdataがソートされたと仮定
                     例えば、
@@ -74,14 +72,14 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
                         "fun": 5,
                         "bethink": 2,
                         "anger": 1                        
-                    }
+                   }
                     にしたい
                 */
 
-                for (var key in data) {
+                for (var i=0;i<data.length;i++) {
                     $('.dropbox > .' + className).append(
-                        '<div class="' + key + '" style="background-image:url(\'http://localhost:4737/Content/imgs/Home/' + key + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' +
-                            data[key] +
+                        '<div class="' + data[i].Key + '" style="background-image:url(\'http://localhost:4737/Content/imgs/Home/' + data[i].Key+ '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' +
+                        data[i].Value +
                         '</span></div>'
                     );
                 }
