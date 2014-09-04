@@ -319,6 +319,9 @@ input[type="text"] {
   font-weight: bold;
   font-size: 20px;
 }
+.container .contents .contentswrapper .main .widgetlist .widgettypetitle p {
+  word-wrap: break-word;
+}
 .container .contents .contentswrapper .main .article-container p:hover {
   background-color: ghostwhite;
 }
