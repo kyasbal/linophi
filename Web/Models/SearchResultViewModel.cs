@@ -9,6 +9,8 @@ namespace Web.Models
     {
         public SearchResultArticle[] Articles { get; set; }
         public string SearchResultText { get; set; }
+
+        public string SearchText { get; set; }
     }
 
     public class SearchResultArticle
@@ -20,5 +22,7 @@ namespace Web.Models
         public int LabelCount { get; set; }
 
         public string ArticleId { get; set; }
+
+        public string Article_UpDate { get; set; }
     }
 }

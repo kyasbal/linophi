@@ -14,7 +14,7 @@ namespace Web.Models
         public string Tag { get; set; }
 
         [AllowHtml]
-        public string Context { get; set; }
+        public string Markup { get; set; }
 
         [AllowHtml]
         public string Body { get; set; }

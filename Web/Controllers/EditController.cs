@@ -72,7 +72,9 @@ namespace Web.Controllers
             context.SaveChanges();
             var connection = new BlobStorageConnection();
             ArticleBodyTableManager abtm=new ArticleBodyTableManager(connection);
+            ArticleMarkupTableManager amtm=new ArticleMarkupTableManager(connection);
             await abtm.AddArticle(article.ArticleModelId,vm.Body);
+            await amtm.AddMarkupAsync(article.ArticleModelId, vm.Markup);
             return Redirect("~/"+article.ArticleModelId);
         }
     }

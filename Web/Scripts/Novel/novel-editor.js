@@ -601,7 +601,7 @@ var NovelEditer;
 
         //HTML再生成
         Paragraph.prototype.updateCacheHtml = function () {
-            var prefixes = [new TitlePrefix(), new DividerPrefix(), new QuotePrefix()];
+            var prefixes = [new QuotePrefix(), new TitlePrefix(), new DividerPrefix()];
             var tag;
             var rawStr = this.htmlEnc(this._rawText).replace(/\n/g, "</br>");
             rawStr = rawStr.replace(/ /g, "&ensp;"); //半角スペースは特殊文字として置き換える
@@ -890,10 +890,18 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         QuotePrefix.prototype.getPrefixString = function () {
-            return ">";
+            return "&gt;";
         };
 
         QuotePrefix.prototype.getFormattedHtmlImpl = function (str) {
+            console.warn("link");
+            str = str.replace(/&ensp;/g, "\u0006");
+            if (str.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g)) {
+                str = str.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"/Pages/ContentUpload/UploadFromExternal?url=$1\">");
+            }
+            str = str.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)([^\w\/:%#\$&\?\(\)~\.=\+\-])(?![>"])/g, "<a href='$1'>$1</a>$2");
+            str = str.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)$/, "<a href='$1'>$1</a>");
+            str = str.replace(/\u0006/g, "&ensp;");
             str = str.replace(/\n/g, "</br>");
             str = str.replace(/\{(.*?)\}/g, "<p class=\"source\">出典：$1</p>");
             str = str.replace(/(.*?)(出典:.*?)(.*?)/g, "$1$3$2");

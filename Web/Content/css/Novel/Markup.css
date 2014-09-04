@@ -1,4 +1,23 @@
-﻿.edit-preview-container {
+﻿.edit-title-container {
+  margin-left: 1.9%;
+  width: 90%;
+}
+.edit-title:focus {
+  outline: none;
+}
+.edit-tag-container {
+  margin-left: 10%;
+}
+.edit-tag:focus {
+  outline: none;
+}
+.edit-editted-box {
+  margin-left: 10%;
+}
+.edit-editted-box .tag-layout:hover {
+  background-color: AppWorkspace;
+}
+.edit-preview-container {
   margin-left: 10%;
   width: 40%;
 }
@@ -76,5 +95,8 @@ embed#external_nico_0 {
 }
 .edit-preview > h3:hover {
   background-color: lightgoldenrodyellow;
+}
+.edit-text {
+  outline: none;
 }
 /*# sourceMappingURL=Markup.css.map */

@@ -52,7 +52,6 @@
             @Html.TextBoxFor((m) => m.Title, new {id = "title", type = "text", @class = "edit-title", placeholder = "タイトル"})
         </div>
         <div class="edit-title-chkvalid"></div>
-
         <div class="edit-tag-container">
             @Html.TextBoxFor((m) => m.Tag, new {id = "tag", type = "text", @class = "edit-tag", placeholder = "タグ"})
             <div class="edit-tag-chkvalid"></div>
@@ -71,9 +70,9 @@
             <textarea class="edit-text edit-context" placeholder="textarea"></textarea>
         </div>
         @Html.AntiForgeryToken()
-        @Html.HiddenFor((m) => m.Tag, new {id = "tag"})
-        @Html.HiddenFor((m) => m.Body, new {id = "body"})
-
+        @Html.HiddenFor((m) => m.Tag, new {id = "hidden-tag"})
+        @Html.HiddenFor((m) => m.Body, new {id = "hidden-body"})
+        @Html.HiddenFor((m)=>m.Markup,new{id="hidden-markup"})
         <a class="edit-submit-button">投稿する</a>
     }
     </div>

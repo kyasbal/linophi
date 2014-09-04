@@ -99,6 +99,7 @@ class MarkupBase
     }
 }
 
+/*
 class QuoteMarkup extends MarkupBase
 {
     getMarkupString(str: string, id: string): string
@@ -116,6 +117,7 @@ class QuoteMarkup extends MarkupBase
         return result;
     }
 }
+*/
 
 class BoldMarkup extends MarkupBase //太字
 {

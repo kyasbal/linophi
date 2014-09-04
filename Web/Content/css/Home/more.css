@@ -20,7 +20,7 @@ body {
   width: 635px;
   padding-bottom: 40px;
 }
-.contents .wrapper .main .search-result .search-header {
+.contents .wrapper .main .read-more-result .read-more-header {
   background-color: blanchedalmond;
   width: 90%;
   margin-top: 30px;
@@ -28,61 +28,59 @@ body {
   padding: 20px 30px;
   padding-bottom: 20px;
 }
-.contents .wrapper .main .search-result .search-header form {
+.contents .wrapper .main .read-more-result .read-more-header form {
   margin-top: 10px;
-  margin-left: 10px;
 }
-.contents .wrapper .main .search-result .search-header form select {
+.contents .wrapper .main .read-more-result .read-more-header form select {
   border: none;
 }
-.contents .wrapper .main .search-result .search-header form select:focus {
+.contents .wrapper .main .read-more-result .read-more-header form select:focus {
   outline: none;
 }
-.contents .wrapper .main .search-result .search-header:focus {
+.contents .wrapper .main .read-more-result .search-header:focus {
   outline: none;
 }
-.contents .wrapper .main .search-result .listitem {
+.contents .wrapper .main .read-more-result .listitem {
   display: table;
   margin: 30px 30px 30px;
   padding: 10px;
 }
-.contents .wrapper .main .search-result .listitem .listthum {
+.contents .wrapper .main .read-more-result .listitem .listthum {
   display: table-cell;
   width: 60px;
   height: 60px;
   padding: 0 15px 0 0;
   vertical-align: top;
 }
-.contents .wrapper .main .search-result .listitem .listthum a {
+.contents .wrapper .main .read-more-result .listitem .listthum a {
   display: block;
   width: 60px;
   height: 60px;
   overflow: hidden;
 }
-.contents .wrapper .main .search-result .listitem .listtxt {
+.contents .wrapper .main .read-more-result .listitem .listtxt {
   display: table-cell;
   vertical-align: middle;
   table-layout: fixed;
   width: 100%;
-  max-width: 400px;
+  max-width: 560px;
   padding-left: 20px;
 }
-.contents .wrapper .main .search-result .listitem .listtxt .listtitle {
+.contents .wrapper .main .read-more-result .listitem .listtxt .listtitle {
   display: inline;
   line-height: 1.1;
   font-size: 20px;
   font-weight: normal;
   margin-right: 15px;
 }
-.contents .wrapper .main .search-result .listitem .listtxt .listtitle a {
-  word-wrap: break-word;
+.contents .wrapper .main .read-more-result .listitem .listtxt .listtitle a {
   padding: 6px 0;
   color: #000;
 }
-.contents .wrapper .main .search-result .listitem .listtxt .listdesc {
+.contents .wrapper .main .read-more-result .listitem .listtxt .listdesc {
   color: #aaa;
 }
-.contents .wrapper .main .search-result .listitem:hover {
+.contents .wrapper .main .read-more-result .listitem:hover {
   background-color: antiquewhite;
 }
 .contents .wrapper .dropbox {
@@ -94,4 +92,4 @@ body {
   padding-bottom: 1000000px;
   margin-bottom: -1000000px;
 }
-/*# sourceMappingURL=Search.css.map */
+/*# sourceMappingURL=more.css.map */

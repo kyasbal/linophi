@@ -14,9 +14,10 @@ $(function () {
             tagList.push(item);
             return true;
         });
-        $("#tag").val(JSON.stringify(tagList));
+        $("#hidden-tag").val(JSON.stringify(tagList));
         $('.edit-preview > *').removeClass("em");
-        $("#body").val($(".preview-body").html());
+        $("#hidden-body").val($(".preview-body").html());
+        $("#hidden-markup").val($(".edit-context").val());
         if (isConfirmedTitle)
             $(".edit-form").submit();
     });

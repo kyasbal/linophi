@@ -8,22 +8,53 @@ img, fieldset {
 
 html {
     overflow-y: scroll;
-    height:100%;
+    height: 100%;
 }
 
 body {
     *position: relative;
     font: 15px/1.5 arial,sans-serif;
     width: 100%;
-    height:100%;
+    height: 100%;
     background-color: #fff;
 }
 
-h1 {
-  box-shadow: -18px 0 #afdbcc, -28px 0 #7ac2a6;
-  font-size: 28px;
-  margin: 0 28px 60px;
-  padding: 0 20px;
+.article-container {
+    h1 {
+        box-shadow: -18px 0 #afdbcc, -28px 0 #7ac2a6;
+        font-size: xx-large;
+        margin: 1em 0 1em 0;
+        padding: 0 20px;
+        background-color:ghostwhite; 
+    }
+
+    h2 {
+        box-shadow: -18px 0 aliceblue, -28px 0 skyblue;
+        font-size: x-large;
+        margin: 1em 0 1em 0;
+        padding: 0 20px;
+                background-color:ghostwhite; 
+    }
+        h3 {
+        border-bottom:1px solid rgba(0,0,0,0.3);
+        font-size: large;
+        margin: 1em 0 1em 0;
+        padding: 0 20px 5px 20px;
+                background-color:ghostwhite; 
+    }
+       h4 {
+        font-weight:bold;
+        font-size: larger;
+        margin: 1em 0 1em 0;
+        padding: 0 20px;
+                background-color:ghostwhite; 
+    }
+    .x_b{
+        font-weight:bold;
+    }
+    p{
+        margin:1em 0 1em 0;
+    }
 }
 
 
@@ -184,6 +215,7 @@ input[type="text"] {
                         float: right;
                         margin: 0 15px 15px 0;
 
+
                         img {
                             width: 105px;
                             height: 105px;
@@ -191,10 +223,14 @@ input[type="text"] {
                     }
 
                     .navbar-txt {
+                        width:80%;
                         margin-top: -13px;
+                        padding-bottom:10px;
 
                         .navbar-title {
+                            display:inline;
                             a {
+                                word-wrap: break-word;
                                 margin: 0 15px 0 0;
                                 padding: 6px 0;
                                 color: #000;
@@ -238,7 +274,9 @@ input[type="text"] {
                         .navbar-countpv {
                             display: inline-block;
                             padding-left: 13px;
+                            padding-right:10px;
                             border-left: 1px solid #ebebeb;
+                            border-right:1px solid #ebebeb;
                             text-align: center;
                             font-family: Tahoma, Geneva, sans-serif;
 
@@ -258,6 +296,52 @@ input[type="text"] {
                                 color: #666;
                                 font-size: 11px;
                             }
+                        }
+                        .navbar-date{
+                            display:inline-block;
+                            padding-left:8px;
+                            margin-right:2px;
+                            text-align:center;
+                            font-family:Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
+                            .date{
+                                display:block;
+                                line-height:1;
+                                margin-top:-3px;
+                                color:#000;
+                                font-size:18px;
+                                font-family:Arial,Arial, Helvetica, sans-serif,sans-serif;
+                            }
+                            .date-txt{
+                                display:block;
+                                margin-top:3px;
+                                line-height:1;
+                                color:#666;
+                                font-size:7px;
+                            }
+
+                        }
+                        .navbar-Update{
+                            display:inline-block;
+                            padding-left:8px;
+                            text-align:center;
+                            font-family:Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
+                            border-left:1px solid #ebebeb;
+                            .Update{
+                                display:block;
+                                line-height:1;
+                                margin-top:-3px;
+                                color:#000;
+                                font-size:18px;
+                                font-family:Arial,Arial, Helvetica, sans-serif,sans-serif;
+                            }
+                            .Update-txt{
+                                display:block;
+                                margin-top:3px;
+                                line-height:1;
+                                color:#666;
+                                font-size:7px;
+                            }
+
                         }
                     }
                 }
@@ -317,7 +401,14 @@ input[type="text"] {
                             font-weight: bold;
                             font-size: 20px;
                         }
+                        p{
+                            word-wrap:break-word;
+                        }
                     }
+                }
+
+                .article-container p:hover{
+                    background-color:ghostwhite;
                 }
 
                 .rellist {
@@ -386,6 +477,17 @@ input[type="text"] {
 
                         .listdesc {
                             color: #aaa;
+                        }
+                    }
+                    .more-read{
+                        margin-left:60%;
+                        a{
+                            color:black;
+                            text-decoration:underline;
+                        }
+                        a:hover{
+                            color:#818181;
+                            text-decoration:underline;
                         }
                     }
                 }
