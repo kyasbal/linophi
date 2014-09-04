@@ -31,10 +31,11 @@ namespace Web.Storage
             await blob.UploadFromByteArrayAsync(blobArray,0,blobArray.Length);
         }
 
-        public void RemoveArticle(string articleKey)
+        public async Task RemoveArticle(string articleKey)
         {
-            ICloudBlob blob = Container.GetBlobReferenceFromServer(articleKey);
-            blob.Delete();
+            ICloudBlob blob = Container.GetBlockBlobReference(articleKey);
+            if (!blob.Exists()) return;
+            await blob.DeleteAsync();
         }
 
         public async Task<string> GetArticleBody(string articleKey)

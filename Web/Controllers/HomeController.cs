@@ -175,12 +175,10 @@ namespace Web.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult> MyPage(int order=0,int skip=0)
+        public  ActionResult MyPage(int order=0,int skip=0)
         {
-            var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            UserAccount user = await userManager.FindByNameAsync(User.Identity.Name);
             var context = Request.GetOwinContext().Get<ApplicationDbContext>();
-            IQueryable<ArticleModel> query= context.Articles.Where(f => f.AuthorID.Equals(user.UniqueId));
+            IQueryable<ArticleModel> query= context.Articles.Where(f => f.AuthorID.Equals(User.Identity.Name));
             query=ChangeOrder(order,query);
             query =query.Skip(skip);
             List<SearchResultArticle> articles = new List<SearchResultArticle>();
@@ -195,6 +193,24 @@ namespace Web.Controllers
                 });
             }
             return View(new MyPageViewModel() {articles = articles.ToArray()});
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteArticle(string articleId)
+        {
+            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            ArticleModel article = await context.Articles.FindAsync(articleId);
+            if (article==null||!article.AuthorID.Equals(User.Identity.Name)) return View("Page403");
+            BlobStorageConnection connection=new BlobStorageConnection();
+            ArticleBodyTableManager abtm=new ArticleBodyTableManager(connection);
+            ArticleMarkupTableManager amtm=new ArticleMarkupTableManager(connection);
+            await abtm.RemoveArticle(articleId);
+            await amtm.RemoveArticle(articleId);
+            context.Articles.Remove(article);
+            await context.SaveChangesAsync();
+            return RedirectToAction("MyPage");
         }
     }
 }

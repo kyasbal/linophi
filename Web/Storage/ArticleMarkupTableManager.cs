@@ -35,5 +35,12 @@ namespace Web.Storage
                 return Encoding.Unicode.GetString(ms.ToArray());
             }
         }
+
+        public async Task RemoveArticle(string articleId)
+        {
+            ICloudBlob blob = Container.GetBlockBlobReference(articleId);
+            if (!blob.Exists()) return;
+            await blob.DeleteAsync();
+        }
     }
 }

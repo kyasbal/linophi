@@ -221,6 +221,12 @@
     <Content Include="Content\css\Home\more.min.css">
       <DependentUpon>more.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\MyPage.css">
+      <DependentUpon>MyPage.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\MyPage.min.css">
+      <DependentUpon>MyPage.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Home\Page404.css">
       <DependentUpon>Page404.less</DependentUpon>
     </Content>
@@ -325,6 +331,10 @@
     <Content Include="Content\css\Home\more.less" />
     <Content Include="Content\css\Home\more.css.map">
       <DependentUpon>more.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\MyPage.less" />
+    <Content Include="Content\css\Home\MyPage.css.map">
+      <DependentUpon>MyPage.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
@@ -476,6 +486,7 @@
     <TypeScriptCompile Include="Scripts\Edit\TagMaker.ts" />
     <TypeScriptCompile Include="Scripts\Home\AfterLogin.ts" />
     <TypeScriptCompile Include="Scripts\Home\MovieFixation.ts" />
+    <TypeScriptCompile Include="Scripts\Home\MyPage.ts" />
     <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />
     <TypeScriptCompile Include="Scripts\Home\Search.ts" />
     <TypeScriptCompile Include="Scripts\Home\viewarticle.ts" />
