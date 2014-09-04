@@ -33,7 +33,7 @@ body {
 }
 .contents .wrapper .main .search-result .search-header form {
   float: left;
-  margin-left: 30%;
+  margin-left: 20%;
 }
 .contents .wrapper .main .search-result .search-header form select {
   border: none;
