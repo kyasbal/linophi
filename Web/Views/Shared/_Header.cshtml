@@ -1,34 +1,47 @@
 ﻿@using Web.Utility
+
 <header class="header">
     <div class="menu">
-        @using(Html.BeginForm("Search","Home",FormMethod.Get,new{@class="search"}))
-        {
+    @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "search" }))
+    {
+        <div class="search-container">
             <input type="search" class="search-text" name="searchText">
             <input type="submit" class="search-button" value="検索">
+<<<<<<< HEAD
         }
         <div id="menu-list">
             <ul>
                 <li>@Html.ActionLink("トップへ", "Index", "Home")</li>
                 <li>@Html.ActionLink("投稿する","RedirectToEdit","Edit")</li>
+=======
+        </div>
+    }
+        <div id="dropmenu">
+            <ul>
+                <li>@Html.ActionLink("トップへ", "Index", "Home")</li>
+                |
+                <li>@Html.ActionLink("投稿する", "RedirectToEdit", "Edit")</li>
+                |
+>>>>>>> 37ed81679ca353a1aa54324c8a6592231f7dfd97
                 <li>
                     @{
                         if (!Request.IsAuthenticated)
                         {
-                            using (Html.BeginForm("Login","Account",FormMethod.Get))
+                            using (Html.BeginForm("Login", "Account", FormMethod.Get,new{@class="login-form"}))
                             {
-                                @Html.Hidden("returnUrl",Request.Url)
-                                <input type="submit" value="ログイン" />
+                                @Html.Hidden("returnUrl", Request.Url)
+                                <a onclick="$('.login-form').submit();">ログイン</a>
                             }
                         }
                         else
                         {
-                            @Html.GravatarImg(Request,48)
-                        
+                            @Html.GravatarImg(Request, 24)
+
                             @WebPageStatic.GetUserNickName(Request)
-                            <ul>
-                                <li>@Html.ActionLink("設定","Config","Account")</li>
-                                <li>@Html.ActionLink("ログアウト","Logout","Account")</li>
-                            </ul>
+@*                            <ul>*@
+@*                                <li>@Html.ActionLink("設定", "Config", "Account")</li>*@
+@*                                <li>@Html.ActionLink("ログアウト", "Logout", "Account")</li>*@
+@*                            </ul>*@
                         }
                     }
                 </li>
