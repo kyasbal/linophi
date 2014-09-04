@@ -656,7 +656,7 @@
         //HTML再生成
         updateCacheHtml()
         {
-            var prefixes: PrefixBase[] = [new TitlePrefix(), new DividerPrefix(), new QuotePrefix()];
+            var prefixes: PrefixBase[] = [new QuotePrefix(),new TitlePrefix(), new DividerPrefix()];
             var tag: JQuery;
             var rawStr: string =this.htmlEnc(this._rawText).replace(/\n/g, "</br>");
             rawStr=rawStr.replace(/ /g, "&ensp;"); //半角スペースは特殊文字として置き換える
@@ -953,7 +953,7 @@
     {
         getPrefixString(): string
         {
-            return ">";
+          return "&gt;";
         }
 
 

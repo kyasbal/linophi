@@ -601,7 +601,7 @@ var NovelEditer;
 
         //HTML再生成
         Paragraph.prototype.updateCacheHtml = function () {
-            var prefixes = [new TitlePrefix(), new DividerPrefix(), new QuotePrefix()];
+            var prefixes = [new QuotePrefix(), new TitlePrefix(), new DividerPrefix()];
             var tag;
             var rawStr = this.htmlEnc(this._rawText).replace(/\n/g, "</br>");
             rawStr = rawStr.replace(/ /g, "&ensp;"); //半角スペースは特殊文字として置き換える
@@ -890,7 +890,7 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         QuotePrefix.prototype.getPrefixString = function () {
-            return ">";
+            return "&gt;";
         };
 
         QuotePrefix.prototype.getFormattedHtmlImpl = function (str) {

@@ -17,11 +17,39 @@ body {
   height: 100%;
   background-color: #fff;
 }
-h1 {
+.article-container h1 {
   box-shadow: -18px 0 #afdbcc, -28px 0 #7ac2a6;
-  font-size: 28px;
-  margin: 0 28px 60px;
+  font-size: xx-large;
+  margin: 1em 0 1em 0;
   padding: 0 20px;
+  background-color: ghostwhite;
+}
+.article-container h2 {
+  box-shadow: -18px 0 #f0f8ff, -28px 0 #87ceeb;
+  font-size: x-large;
+  margin: 1em 0 1em 0;
+  padding: 0 20px;
+  background-color: ghostwhite;
+}
+.article-container h3 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: large;
+  margin: 1em 0 1em 0;
+  padding: 0 20px 5px 20px;
+  background-color: ghostwhite;
+}
+.article-container h4 {
+  font-weight: bold;
+  font-size: larger;
+  margin: 1em 0 1em 0;
+  padding: 0 20px;
+  background-color: ghostwhite;
+}
+.article-container .x_b {
+  font-weight: bold;
+}
+.article-container p {
+  margin: 1em 0 1em 0;
 }
 a img {
   vertical-align: top;
