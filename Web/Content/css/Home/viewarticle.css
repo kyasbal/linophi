@@ -369,10 +369,19 @@ input[type="text"] {
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms;
 }
-.container .contents .dropbox img {
-  width: 130px;
-  float: left;
-  margin-right: -120px;
+.container .contents .dropbox > * > * {
+  padding: 10px 15px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.container .contents .dropbox > * > * > span {
+  padding: 3px 9px;
+  background: #fff;
+  color: #555;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 200px;
 }
 .container .contents .foot {
   width: 100%;
