@@ -19,6 +19,7 @@
   box-shadow: -10px 0 0 0 #f58971;
 }
 .foot .boxcontainer {
+  padding-left: 30%;
   padding-top: 20px;
   margin-left: -5%;
   overflow: hidden;
@@ -27,14 +28,15 @@
 .foot .boxcontainer .vertex {
   float: left;
   margin-top: 20px;
-  margin-left: 15%;
+  margin-left: 0;
   width: 0;
   height: 120px;
   border: solid 1px #e5e5e5;
 }
 .foot .boxcontainer .box {
   float: left;
-  padding-left: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 .foot .boxcontainer .box .ulist {
   font-weight: 900;

@@ -8,6 +8,7 @@
 }
 
 @section CSS{
+    <meta http-equiv="X-FRAME-OPTIONS" content="SAMEORIGIN" />  
     <link href="~/Content/css/Edit/header.css" rel="stylesheet" />
     <link href="~/Content/css/Edit/index.css" rel="stylesheet" />
     <link href="~/Content/css/Novel/novel-editor.css" rel="stylesheet" />
@@ -57,12 +58,15 @@
             <div class="edit-tag-chkvalid"></div>
         </div>
         <div class="edit-editted-box"></div>
+        
+        //リアルタイムプレビュー
         <div class="edit-preview-container">
             <div class="edit-preview-container-inner">
                 <div class="edit-preview preview-body"></div>
                 <div class="preview-iframes"></div>
             </div>
         </div>
+        
         <div class="edit-text-container">
             <textarea class="edit-text edit-context" placeholder="textarea"></textarea>
         </div>
