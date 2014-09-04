@@ -30,7 +30,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
     var labelType: string, src: string;
     var dropboxPos: number = $('.contentswrapper').offset().top,
-        dropboxHeight: number = $('.contentswrapper').outerHeight();
+        dropboxHeight: number = $('.contentswrapper').outerHeight(true);
 
     var posY: number = dropboxPos + 10;
 
@@ -41,7 +41,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
         // alert(className);
 
-        var eleHeight: number = $ele.outerHeight(),
+        var eleHeight: number = $ele.outerHeight(true),
             elePos: number = $ele.offset().top;
 
         $('.dropbox').append('<div class="' + className + '"></div>');
@@ -86,7 +86,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight)
             {
-                posY = e.pageY - 20;
+                posY = e.pageY;
             }
 
             if (pasteMode)
@@ -108,8 +108,8 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             var pHeights: number = dropboxPos;
 
             $('.dropbox > [class^="x_p-"]').each((i) => {
-                var $target: JQuery = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
-                var pHeight: number = $target.outerHeight();
+                var $target: JQuery = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 2) + ')'); // i == 0のとき１つ目のふせんを表している
+                var pHeight: number = $target.outerHeight(true);
                 var bg = "none";
                 if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode)
                     bg = "#fcc";
@@ -120,7 +120,6 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
                 pHeights += pHeight;
 
-                //console.log($target.attr("class"), pHeight, pHeights, posY, src);
             });
         });
 
@@ -155,7 +154,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             $('.dropbox > [class^="x_p-"]').each((i) =>
             {
                 var $target: JQuery = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
-                var pHeight: number = $target.outerHeight();
+                var pHeight: number = $target.outerHeight(true);
 
                 var thisClass: string = $target.attr("class");
 
@@ -208,6 +207,9 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         }
     });
 
+
+    // 貼り付けないで戻る
+
     $('.fade-layer').click(() =>
     {
         $('.fade-layer').css("opacity", 0);
@@ -228,5 +230,4 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         pasteMode = false;
     });
 
-    // 貼り付けないで戻る
 });

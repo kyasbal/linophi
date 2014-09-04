@@ -19,7 +19,7 @@
     var pasteMode = false;
 
     var labelType, src;
-    var dropboxPos = $('.contentswrapper').offset().top, dropboxHeight = $('.contentswrapper').outerHeight();
+    var dropboxPos = $('.contentswrapper').offset().top, dropboxHeight = $('.contentswrapper').outerHeight(true);
 
     var posY = dropboxPos + 10;
 
@@ -29,7 +29,7 @@
         var className = $ele.attr("class");
 
         // alert(className);
-        var eleHeight = $ele.outerHeight(), elePos = $ele.offset().top;
+        var eleHeight = $ele.outerHeight(true), elePos = $ele.offset().top;
 
         $('.dropbox').append('<div class="' + className + '"></div>');
 
@@ -64,7 +64,7 @@
 
         $('.fade-layer, .dropbox').mousemove(function (e) {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight) {
-                posY = e.pageY - 20;
+                posY = e.pageY;
             }
 
             if (pasteMode) {
@@ -85,8 +85,8 @@
             var pHeights = dropboxPos;
 
             $('.dropbox > [class^="x_p-"]').each(function (i) {
-                var $target = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
-                var pHeight = $target.outerHeight();
+                var $target = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 2) + ')');
+                var pHeight = $target.outerHeight(true);
                 var bg = "none";
                 if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode)
                     bg = "#fcc";
@@ -96,7 +96,6 @@
                 });
 
                 pHeights += pHeight;
-                //console.log($target.attr("class"), pHeight, pHeights, posY, src);
             });
         });
 
@@ -125,7 +124,7 @@
 
             $('.dropbox > [class^="x_p-"]').each(function (i) {
                 var $target = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
-                var pHeight = $target.outerHeight();
+                var pHeight = $target.outerHeight(true);
 
                 var thisClass = $target.attr("class");
 
@@ -166,6 +165,7 @@
         }
     });
 
+    // 貼り付けないで戻る
     $('.fade-layer').click(function () {
         $('.fade-layer').css("opacity", 0);
         setTimeout(function () {
@@ -184,6 +184,5 @@
 
         pasteMode = false;
     });
-    // 貼り付けないで戻る
 });
 //# sourceMappingURL=PostitPaster.js.map
