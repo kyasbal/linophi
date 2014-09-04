@@ -457,6 +457,9 @@ input[type="text"] {
 .container .contents .postit-list img {
   width: 130px;
 }
+.container .contents .postit-list > * {
+  cursor: pointer;
+}
 .container .contents .postit-pasting {
   z-index: -100;
   height: 43px;

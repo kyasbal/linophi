@@ -53,7 +53,7 @@
     });
 
     // 貼り付けモードへ
-    $('.postit-list img').click(function (event) {
+    $('.postit-list [class]').click(function (event) {
         pasteMode = true;
 
         $('.fade-layer').css({

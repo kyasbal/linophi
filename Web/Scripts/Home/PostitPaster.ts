@@ -91,7 +91,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     });
 
     // 貼り付けモードへ
-    $('.postit-list img').click((event) =>
+    $('.postit-list [class]').click((event) =>
     {
         pasteMode = true;
 
