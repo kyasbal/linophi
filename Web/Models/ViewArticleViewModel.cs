@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Web.Models
 {
@@ -18,6 +19,8 @@ namespace Web.Models
         public string LabelInfo { get; set; }
 
         public IEnumerable<TagViewModel> Tags { get; set; }
+        public MvcHtmlString Author_IconTag { get; set; }
+        public int LabelCount { get; set; }
     }
 
     public class TagViewModel

@@ -56,10 +56,13 @@ namespace Web.Controllers
                 ArticleTagModel tagModel = context.Tags.Where(f => f.TagName.Equals(tag)).SingleOrDefault();
                 bool needToAdd = tagModel == null;
                 tagModel = tagModel ?? ArticleTagModel.GenerateTag(tag);
-                tagModel.Articles = tagModel.Articles ?? new List<ArticleModel>();
                 if (needToAdd)
                 {
                     context.Tags.Add(tagModel);
+                }
+                else
+                {
+                    context.Entry(tagModel).Collection(c=>c.Articles).Load();
                 }
                 tagModel.Articles.Add(article);
                 article.Tags.Add(tagModel);

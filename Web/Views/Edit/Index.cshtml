@@ -8,7 +8,6 @@
 }
 
 @section CSS{
-    <meta http-equiv="X-FRAME-OPTIONS" content="SAMEORIGIN" />  
     <link href="~/Content/css/Edit/header.css" rel="stylesheet" />
     <link href="~/Content/css/Edit/index.css" rel="stylesheet" />
     <link href="~/Content/css/Novel/novel-editor.css" rel="stylesheet" />
@@ -46,31 +45,39 @@
 
 <div class="edit-bg-overlay">
 
-    @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new {@class = "edit-form editpage-main"}))
+    @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new { @class = "edit-form editpage-main" }))
     {
         <div class="edit-title-container">
-            @Html.TextBoxFor((m) => m.Title, new {id = "title", type = "text", @class = "edit-title", placeholder = "タイトル"})
+            @Html.TextBoxFor((m) => m.Title, new { id = "title", type = "text", @class = "edit-title", placeholder = "タイトル" })
         </div>
         <div class="edit-title-chkvalid"></div>
 
         <div class="edit-tag-container">
-            @Html.TextBoxFor((m) => m.Tag, new {id = "tag", type = "text", @class = "edit-tag", placeholder = "タグ"})
+            @Html.TextBoxFor((m) => m.Tag, new { id = "tag", type = "text", @class = "edit-tag", placeholder = "タグ" })
             <div class="edit-tag-chkvalid"></div>
         </div>
         <div class="edit-editted-box"></div>
+    }
         <div class="edit-preview-container">
-            <div class="edit-preview-container-inner">
-                <div class="edit-preview preview-body"></div>
-                <div class="preview-iframes"></div>
-            </div>
+            <div class="edit-preview preview-body"></div>
         </div>
         <div class="edit-text-container">
             <textarea class="edit-text edit-context" placeholder="textarea"></textarea>
         </div>
         @Html.AntiForgeryToken()
-        @Html.HiddenFor((m) => m.Tag, new {id = "tag"})
-        @Html.HiddenFor((m) => m.Body, new {id = "body"})
-
+    @Html.HiddenFor((m) => m.Context, new { id = "context" })
+    @Html.HiddenFor((m) => m.Body, new { id = "body" })
         <a class="edit-submit-button">投稿する</a>
-    }
+    
+    @*マークダウンの記法*@
+    <div id="dialogframe" onmouseover="document.getElementById('layer').style.visibility = 'visible';">
+        ???
+        <div id="layer">
+            <p>testtest</p>
+            <p class="close" onclick="document.getElementById('layer').style.visibility = 'hidden';">- Close -</p>
+        </div>
+    </div>
+
+
+
     </div>

@@ -10,6 +10,10 @@ namespace Web.Models
 {
     public class ArticleModel
     {
+        public ArticleModel()
+        {
+            Tags=new HashSet<ArticleTagModel>();
+        }
         public static ArticleModel GenerateArticle(string title,string auther)
         {
             return new ArticleModel(){ArticleModelId = IdGenerator.getId(12),AuthorID = auther,Title = title,CreationTime = DateTime.Now,UpdateTime = DateTime.Now,Tags= new Collection<ArticleTagModel>()};
@@ -38,6 +42,10 @@ namespace Web.Models
 
     public class ArticleTagModel
     {
+        public ArticleTagModel()
+        {
+            Articles=new HashSet<ArticleModel>();
+        }
         public static ArticleTagModel GenerateTag(string tagName)
         {
             return new ArticleTagModel() {ArticleTagModelId =  IdGenerator.getId(12), TagName = tagName};

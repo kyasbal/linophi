@@ -1,8 +1,15 @@
 ﻿.header {
-  margin: 0 150px 30px;
-  padding-top: 30px;
+  margin: 30px 150px;
   /* clearfix */
   /* For IE 6/7 (trigger hasLayout) */
+}
+.header .menu-list {
+  float: left;
+  margin-left: 60%;
+}
+.header .menu-list ul li {
+  font-size: large;
+  display: inline;
 }
 .header a {
   color: #000;
@@ -13,16 +20,13 @@
   text-decoration: underline;
 }
 .header .menu {
-  margin: 0 auto;
   overflow: hidden;
-  width: 80%;
-  padding-top: 2%;
 }
 .header .menu .search {
   position: absolute;
 }
 .header .menu .search input {
-  padding-left: 10%;
+  margin-left: 10%;
 }
 .header .menu .search .search-text {
   background-color: #fbd7a2;
@@ -37,7 +41,6 @@
 }
 .header .menu .search .search-text:focus {
   background-color: rgba(251, 215, 162, 0.5);
-  outline: none;
 }
 .header .menu .search .search-text:hover {
   border: 2px #a4c6fd  !important;
@@ -57,9 +60,6 @@
 .header .menu .search *.search-button:hover {
   opacity: 0.5;
 }
-.header .menu .search .search-button:focus {
-  outline: none;
-}
 .header .menu:before,
 .header .menu:after {
   content: "";
@@ -70,50 +70,5 @@
 }
 .header .menu {
   zoom: 1;
-}
-.header #dropmenu {
-  margin-right: 10%;
-}
-.header #dropmenu ul {
-  width: 450px;
-  float: right;
-}
-.header #dropmenu ul li {
-  display: inline-block;
-}
-.header #dropmenu ul li a {
-  display: block;
-  text-align: center;
-  height: 20px;
-  width: 150px;
-  padding-top: 10px;
-  font-size: 14px;
-  color: black;
-}
-.header #dropmenu ul li ul {
-  float: left;
-  margin-top: 3%;
-  margin-left: 75%;
-  list-style-type: none;
-  position: absolute;
-  display: block;
-  top: 36px;
-  left: 2px;
-  overflow: hidden;
-  height: 0;
-  transition: all 0.1s;
-  border-left: 1px solid #888;
-  border-right: 1px solid #888;
-  width: 150px;
-}
-.header #dropmenu ul li ul li {
-  display: block;
-}
-.header #dropmenu ul li ul li:hover {
-  background-color: gray;
-}
-.header #dropmenu ul li:hover ul {
-  height: 100px;
-  display: block;
 }
 /*# sourceMappingURL=head.css.map */

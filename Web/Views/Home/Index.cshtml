@@ -35,10 +35,6 @@
 
                 <div class="viewhead">
                     <div class="viewhead-inner">
-                        <ol class="topicpath">
-                            <li><a href="">まとめトップ</a></li>
-                            <li><a href="">ニュース</a></li>
-                        </ol>
 
                         <div class="topicwordlist set">
                             <ul class="topicwordlistul">
@@ -71,7 +67,7 @@
 
                         <div class="navbar-count">
                             <span class="navbar-countfv">
-                                <span class="navbar-countnum">70</span>
+                                <span class="navbar-countnum">@Model.LabelCount</span>
                                 <span class="navbar-countlabel">ふせん</span>
                             </span>
                             <span class="navbar-countpv">
@@ -83,7 +79,7 @@
                     </div>
                     <div class="navbar-sub">
                         <div>
-                            <p class="navbar-user"><span class="navbar-userthumb"><a href=""><img width="70" height="70" src="~/Content/imgs/Home/red.jpg"></a></span><span class="navbar-username"><a href="">@if (Model != null)
+                            <p class="navbar-user"><span class="navbar-userthumb">@Model.Author_IconTag</span><span class="navbar-username"><a href="">@if (Model != null)
                                                                                                                                                                                                                {
                                                                                                                                                                                                                    @Model.Author
                                                                                                                                                                                                                }</a>さん</span></p>

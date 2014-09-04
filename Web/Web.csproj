@@ -259,6 +259,7 @@
     <Content Include="Content\imgs\Home\sad.png" />
     <Content Include="Content\imgs\Home\surprized.png" />
     <Content Include="Content\imgs\linophi-logo.png" />
+    <Content Include="Content\imgs\login.png" />
     <Content Include="Content\imgs\logo2.png" />
     <Content Include="Content\imgs\profile.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -354,6 +355,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Content\ContentUploadController.cs" />
     <Compile Include="Api\Label\LabelController.cs" />
     <Compile Include="Api\Response\Article\ExistenceRequest.cs" />
     <Compile Include="Api\Response\Article\ExistenceResponse.cs" />
@@ -389,6 +391,7 @@
     <Compile Include="Storage\Connection\BlobStorageConnection.cs" />
     <Compile Include="Storage\Connection\StorageConnectionBase.cs" />
     <Compile Include="Storage\Connection\TableStorageConnection.cs" />
+    <Compile Include="Storage\ImageUploaderManager.cs" />
     <Compile Include="Storage\LabelEntity.cs" />
     <Compile Include="Storage\Manager\AzureBlobManagerBase.cs" />
     <Compile Include="Storage\Manager\AzureTableManagerBase.cs" />
@@ -401,6 +404,7 @@
     <Compile Include="Utility\GenderInputHelper.cs" />
     <Compile Include="Utility\IdGenerator.cs" />
     <Compile Include="Utility\IGravatarLoader.cs" />
+    <Compile Include="Utility\ImageResult.cs" />
     <Compile Include="Utility\MathEx.cs" />
     <Compile Include="Utility\WebPageStatic.cs" />
     <Compile Include="WebRole.cs" />

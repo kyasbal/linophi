@@ -1,6 +1,11 @@
-﻿.login {
+﻿@twitter-brand-color:rgb(85, 172, 238);
+@twitter-brand-color-h:rgb(95,192,249);
+@facebook-brand-color:rgb(59, 89, 152);
+@facebook-brand-color-h:rgb(69,99,162);
+
+.login {
   &-main {
-    margin: 0 auto;
+    margin: 30px auto;
     width: 960px;
     padding-bottom:130px;
 
@@ -26,6 +31,7 @@
   }
 
   &-loginbox {
+      width:100%;
     display:inline-block;
     overflow: hidden;
     padding: 10px 23px;
@@ -42,14 +48,6 @@
         outline-color:aquamarine;
         }
     }
-    .login-external{
-        width:100px;
-        height:90px;
-        display:inline-block;
-        margin: 0 auto;
-    }
-    
-
     > a {
       float: left;
       &:last-child {
@@ -59,7 +57,47 @@
 
   }
 }
+.external-login-container{
+    text-align:center;
+    margin:20px 10px;
+}
+.external-login-container a {
+    border-radius: 4px;
+    width: 80%;
+    color: white;
+    padding: 3px 100px;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 
+    &:hover {
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+.twitter-external a{
+    background-color:@twitter-brand-color;
+    &:hover{
+        background-color:@twitter-brand-color-h;
+        color:white;
+    }
+}
+.facebook-external a{
+    background-color:@facebook-brand-color;
+        &:hover{
+        background-color:@facebook-brand-color-h;
+        color:white;
+    }
+}
+
+.linophi-chara{
+    right:100px;
+    position:absolute;
+    width:300px;
+    height:auto;
+}
 h1 {
   box-shadow: -18px 0 #afdbcc, -28px 0 #7ac2a6;
   font-size: 28px;
