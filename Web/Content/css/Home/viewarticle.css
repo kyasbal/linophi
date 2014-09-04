@@ -189,6 +189,7 @@ input[type="text"] {
   height: 105px;
 }
 .container .contents .top .navbar-main .navbar-txt {
+  width: 80%;
   margin-top: -13px;
   padding-bottom: 10px;
 }
@@ -196,6 +197,7 @@ input[type="text"] {
   display: inline;
 }
 .container .contents .top .navbar-main .navbar-txt .navbar-title a {
+  word-wrap: break-word;
   margin: 0 15px 0 0;
   padding: 6px 0;
   color: #000;
