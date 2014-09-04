@@ -21,7 +21,7 @@
                             using (Html.BeginForm("Login", "Account", FormMethod.Get, new { @class = "login-form" }))
                             {
                                 @Html.Hidden("returnUrl", Request.Url)
-                                <a onclick="$('.login-form').submit();">ログイン</a>
+                                <a  onclick="$('.login-form').submit();">ログイン</a>
                             }
                         }
                         else
