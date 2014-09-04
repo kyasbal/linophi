@@ -93,6 +93,15 @@ namespace Web.Controllers
             }
             switch (order)
             {
+                case 5:
+                    result = result.OrderBy(f => f.LabelCount);
+                    break;
+                case 4:
+                    result = result.OrderBy(f => f.PageView);
+                    break;
+                case 3:
+                    result = result.OrderBy(f => f.CreationTime);
+                    break;
                 case 2:
                     result = result.OrderByDescending(f => f.LabelCount);
                     break;
@@ -128,6 +137,7 @@ namespace Web.Controllers
             {
                 vm.SearchResultText = string.Format("「{0}」に関する検索結果:{1}件中{2}～{3}件", searchText,count,skip+1,Math.Min(skip+11,count));
             }
+            vm.SearchText = searchText;
             return View(vm);
         }
 
@@ -165,6 +175,7 @@ namespace Web.Controllers
                 });
             }
             vm.Articles = articles.ToArray();
+            vm.SearchText = tag;
             return View("Search", vm);
         }
     }

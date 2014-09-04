@@ -9,6 +9,8 @@ namespace Web.Models
     {
         public SearchResultArticle[] Articles { get; set; }
         public string SearchResultText { get; set; }
+
+        public string SearchText { get; set; }
     }
 
     public class SearchResultArticle

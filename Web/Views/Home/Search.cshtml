@@ -9,8 +9,9 @@
 }
 
 @section JS{
-    
+    <script src="~/Scripts/Home/Search.js"></script>
 }
+@Html.HiddenFor(m=>m.SearchText,new{id="searchedText"})
 <div class="contents">
     <div class="wrapper">
         <div class="main">
@@ -28,13 +29,13 @@
                     <div class="search-header">
                         <h1>@Model.SearchResultText</h1>
                         <form>
-                            <select name="検索方式の選択">
-                                <option value="1" selected>投稿が新しい順</option>
-                                <option value="2">投稿が古い順</option>
-                                <option value="3">閲覧数が多い順</option>
+                            <select class="search-menu" onchange="inputValue()">
+                                <option value="0" selected>投稿が新しい順</option>
+                                <option value="3">投稿が古い順</option>
+                                <option value="1">閲覧数が多い順</option>
                                 <option value="4">閲覧数が少ない順</option>
-                                <option value="5">ふせんが多い順</option>
-                                <option value="6">ふせんが少ない順</option>
+                                <option value="2">ふせんが多い順</option>
+                                <option value="5">ふせんが少ない順</option>
                             </select>
                         </form>
                     </div>
