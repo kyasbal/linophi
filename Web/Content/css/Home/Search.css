@@ -34,7 +34,6 @@ body {
 .contents .wrapper .main .search-result .search-header form {
   float: left;
   margin-left: 30%;
-  background-color: floralwhite;
 }
 .contents .wrapper .main .search-result .search-header form select {
   border: none;
