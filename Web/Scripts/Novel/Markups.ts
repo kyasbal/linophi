@@ -63,7 +63,7 @@ class FrameManager
             $(".preview-iframes .iframe-" + st).css({
                 "position": "absolute",
                 "top": top ,
-                "left":offset.left
+                "left": offset.left
             });
             return true;
         });
@@ -142,7 +142,11 @@ class LinkMarkup extends MarkupBase//URL
     {
         console.warn("link");
         result = result.replace(/&ensp;/g, "\u0006");
-        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"$1\">");
+        if (result.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g))
+        {
+            result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"/Pages/ContentUpload/UploadFromExternal?url=$1\">");
+
+        }
         result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)([^\w\/:%#\$&\?\(\)~\.=\+\-])(?![>"])/g, "<a href='$1'>$1</a>$2");
         result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)$/, "<a href='$1'>$1</a>");
         return result.replace(/\u0006/g, "&ensp;");
@@ -157,7 +161,7 @@ class YoutubeMarkup extends MarkupBase//ようつべ
         {
             var movieId = result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/, "$1");
             frameManager.addIframe(id,"youtube-"+movieId , $("<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/"+movieId+"\" frameborder=\"0\" allowfullscreen></iframe>"));
-            result = result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/, "<div class=\"youtube-box iframe-box-" + id + " movie-id-"+movieId+"\" data-movie-id=\""+movieId+"\"></div>");
+            result = result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/, "<div class=\"d-"+id+" youtube-box iframe-box-" + id + " movie-id-"+movieId+"\" data-movie-id=\""+movieId+"\"></div>");
         }
         return result;
     }
@@ -166,13 +170,13 @@ class NikonikoMarkup extends MarkupBase
 {
     getMarkupString(result: string, id: string): string
     {
-        if (result.match(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/))
+        if (result.match(/^http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/))
         {//ニコ動はiframeだと、動画クリック時に変移する先のページを表示できない為、いろいろややこしい。
             var src = result.replace(/(http:\/\/www\.nicovideo\.jp\/\watch\/ [\w]+)/, "$1");
             var hash = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "$1");
             var tag = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<iframe id=\"nico-" + id + "\" onload=\"frameManager.NicoMove('" + id + "');\" data-link=\"" + src + "\" data-movie-id=\""+hash+"\"   width=\"560px\" height=\"315px\" src=\"/Content/Nico?id=$1\" scrolling=\"no\" frameborder=\"0\"></iframe>");
             frameManager.addIframe(id, "nico-"+hash, $(tag));
-            result = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<div class=\"niko-box iframe-box-" + id + " movie-id-"+hash+"\"></div>");
+            result = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<div class=\"d-"+id+" niko-box iframe-box-" + id + " movie-id-"+hash+"\"></div>");
         }
         return result;
     }

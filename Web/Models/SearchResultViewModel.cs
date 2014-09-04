@@ -8,6 +8,7 @@ namespace Web.Models
     public class SearchResultViewModel
     {
         public SearchResultArticle[] Articles { get; set; }
+        public string SearchResultText { get; set; }
     }
 
     public class SearchResultArticle

@@ -447,7 +447,6 @@
     <Content Include="Views\Account\Config.cshtml" />
     <Content Include="Views\Home\Top.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
-    <Content Include="Views\Content\Nico.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

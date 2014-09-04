@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Mvc;
 using Web.Storage;
@@ -14,12 +15,11 @@ namespace Web.Api.Content
 {
     public class ContentUploadController : Controller
     {
-        public ActionResult UploadFromExternal(string url)
+        public async Task<ActionResult> UploadFromExternal(string url)
         {
             ImageUploaderManager manager=new ImageUploaderManager(new BlobStorageConnection());
-            string contentType = "";
-            var st=manager.AddUrlResource(url,out contentType);
-            return new ImageResult(st, contentType);
+            var st=await manager.AddUrlResourceAsync(url);
+            return new ImageResult(st.Item1, st.Item2);
         }
 
         public ActionResult FromServerCache(string url)

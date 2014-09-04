@@ -105,6 +105,7 @@ namespace Web.Controllers
             result = result.Skip(skip);
             SearchResultViewModel vm=new SearchResultViewModel();
             List<SearchResultArticle> articles=new List<SearchResultArticle>();
+            int count = result.Count();
             foreach (var source in result.Take(10))
             {
                 articles.Add(new SearchResultArticle()
@@ -116,6 +117,14 @@ namespace Web.Controllers
                 });
             }
             vm.Articles = articles.ToArray();
+            if (vm.Articles.Length == 0)
+            {
+                vm.SearchResultText = string.Format("「{0}」に関する検索結果は見つかりませんでした。", searchText);
+            }
+            else
+            {
+                vm.SearchResultText = string.Format("「{0}」に関する検索結果:{1}件中{2}～{3}件", searchText,count,skip+1,Math.Min(skip+11,count));
+            }
             return View(vm);
         }
 

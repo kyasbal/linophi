@@ -1,8 +1,14 @@
-﻿.edit-preview-container-inner {
+﻿.edit-preview-container {
+  margin-left: 10%;
+  width: 40%;
+}
+.edit-preview-container-inner {
+  margin-left: -22.5%;
   position: relative;
   height: auto;
 }
 .edit-preview {
+  margin-left: 10%;
   color: black;
 }
 .edit-preview .em {
