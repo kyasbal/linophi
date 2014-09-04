@@ -58,6 +58,27 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             if (postitJson[j]["ParagraphId"] == className.substr(4))
             {
                 var data = JSON.parse(postitJson[j]["Data"]);
+                console.log(data);
+
+                /*
+                    ここでdataがソートされたと仮定
+                    例えば、
+                    data = {
+                        "surprised": 21, 
+                        "anger": 1,
+                        "bethink": 2,
+                        "fun": 5
+                    }
+                    を
+                    data = {
+                        "surprised": 21, 
+                        "fun": 5,
+                        "bethink": 2,
+                        "anger": 1                        
+                    }
+                    にしたい
+                */
+
                 for (var key in data) {
                     $('.dropbox > .' + className).append(
                         '<div class="' + key + '" style="background-image:url(\'http://localhost:4737/Content/imgs/Home/' + key + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' +
