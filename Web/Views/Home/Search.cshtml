@@ -15,17 +15,18 @@
     <div class="wrapper">
         <div class="main">
             <ul class="search-result">
+                
                 @if (Model.Articles.Length == 0)
                 {
                     <div class="search-header">
-                        <h1>～～～に該当する記事は見つかりませんでした。</h1>
+                        <h1>@Model.SearchResultText</h1>
                         <img src="~/Content/imgs/login.png" class="linophi-chara" />
                     </div>
                 }
                 else
                 {
                     <div class="search-header">
-                        <h1>～～～に対する検索結果:～～件</h1>
+                        <h1>@Model.SearchResultText</h1>
                         <form>
                             <select name="検索方式の選択">
                                 <option value="1" selected>投稿が新しい順</option>
@@ -37,18 +38,18 @@
                             </select>
                         </form>
                     </div>
-                        foreach (var article in Model.Articles)
-                        {
+                    foreach (var article in Model.Articles)
+                    {
                         <li class="listitem">
                             <p class="listthumb"><a href=""><img width="60" height="60" src="/Content/imgs/Home/red.jpg"></a></p>
                             <div class="listtxt">
-                                <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br/><span class="listdesc">200ふせん<span class="separator">|</span>@article.PageView view</span>
+                                <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br/><span class="listdesc">@article.LabelCount ふせん<span class="separator">|</span>@article.PageView view</span>
                             </div>
                         </li>
 
-                        }
-                        }
-</ul>
+                    }
+                }
+            </ul>
         </div>
 
         <div class="dropbox">
