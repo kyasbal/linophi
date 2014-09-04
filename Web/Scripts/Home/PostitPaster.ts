@@ -1,4 +1,8 @@
-﻿$(() =>
+﻿
+interface EventTarget {
+    src: string;
+}
+$(() =>
 {
 
     var htmlHeight = $('.foot').offset().top + $('.foot').outerHeight();
@@ -76,7 +80,6 @@
             "width": "300px",
         });
     });
-
 
 
     // 貼り付けモードへ

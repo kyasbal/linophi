@@ -39,6 +39,18 @@ namespace Web.Storage
             return ms;
         }
 
+        public Stream DownloadUrlResource(string url, out string contentType)
+        {
+            var hash = ComputeMD5(url);
+            CloudBlockBlob blobRef = Container.GetBlockBlobReference(hash);
+            contentType = blobRef.Properties.ContentType;
+            MemoryStream ms=new MemoryStream();
+            blobRef.DownloadToStream(ms);
+            ms.Flush();
+            ms.Seek(0, SeekOrigin.Begin);
+            return ms;
+        }
+
         private string ComputeMD5(string source)
         {
             //文字列をbyte型配列に変換する

@@ -21,5 +21,13 @@ namespace Web.Api.Content
             var st=manager.AddUrlResource(url,out contentType);
             return new ImageResult(st, contentType);
         }
+
+        public ActionResult FromServerCache(string url)
+        {
+            ImageUploaderManager manager = new ImageUploaderManager(new BlobStorageConnection());
+            string contentType = "";
+            var st = manager.DownloadUrlResource(url, out contentType);
+            return new ImageResult(st, contentType);
+        }
     }
 }
