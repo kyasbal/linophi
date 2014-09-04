@@ -15,6 +15,7 @@ $(function () {
             return true;
         });
         $("#tag").val(JSON.stringify(tagList));
+        $('.edit-preview > *').removeClass("em");
         $("#body").val($(".preview-body").html());
         if (isConfirmedTitle)
             $(".edit-form").submit();

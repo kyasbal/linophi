@@ -47,7 +47,7 @@
 
     var $fadeLayer = $('.fade-layer');
 
-    var postitClass, src;
+    var labelType, src;
     var dropboxPos = $('.contentswrapper').offset().top, dropboxHeight = $('.contentswrapper').outerHeight();
 
     var posY = dropboxPos + 10;
@@ -79,7 +79,7 @@
             "opacity": 1
         });
 
-        postitClass = event.currentTarget.class; //className?
+        labelType = event.currentTarget.class; //className?
         src = event.currentTarget.src; // なぜかVSで赤線がでるけどちゃんと動きます
 
         $('.fade-layer, .dropbox').mousemove(function (e) {
@@ -147,15 +147,19 @@
                 var $target = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
                 var pHeight = $target.outerHeight();
 
-                var postitExistence = $('[src="' + src + '"]').length;
+                var postitExistence = $('.dropbox [src="' + src + '"]').length;
 
                 console.log(postitExistence);
 
                 if (pHeights <= posY && posY <= pHeights + pHeight) {
                     if (postitExistence) {
-                        $('.' + src).html("testest");
+                        var msg = "";
+                        for (var j = 0, len = postitJson.length; j < len; j++) {
+                            msg += postitJson[j] || "";
+                        }
+                        //$('.' + labelType).html(postitJson[]);
                     } else {
-                        $target.append('<div class="' + src + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;">1</div>');
+                        $target.append('<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;">1</div>');
                     }
                 }
 

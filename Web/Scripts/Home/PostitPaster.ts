@@ -181,7 +181,7 @@
                             msg += postitJson[j] || "";
                         }
 
-                        $('.' + labelType).html(postitJson[]);
+                        //$('.' + labelType).html(postitJson[]);
                     } else
                     {
                         $target.append(

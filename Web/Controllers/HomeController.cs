@@ -41,10 +41,13 @@ namespace Web.Controllers
 
         private IEnumerable<TagViewModel> getArticleTagModels(ArticleModel article)
         {
-            foreach (var tagRef in article.Tags)
+            return null;
+            
+
+/*            foreach (var tagRef in article.Tags)
             {
                 yield return new TagViewModel(){ArticleCount = tagRef.Articles.Count,TagId = tagRef.ArticleTagModelId,TagName = tagRef.TagName};
-            }
+            }*/
         }
 
         // GET: Home
