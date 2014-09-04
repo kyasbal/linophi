@@ -1,0 +1,39 @@
+﻿@model Web.Models.SearchResultViewModel
+
+@{
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+@section CSS
+{
+    <link href="~/Content/css/Home/more.css" rel="stylesheet" />
+}
+
+@section JS{
+
+}
+<div class="contents">
+    <div class="wrapper">
+        <div class="main">
+            <ul class="read-more-result">
+                    <div class="read-more-header">
+                        <h1>～に関連した投稿/～とふせんの傾向が似ている投稿</h1>
+                    </div>
+                    foreach (var article in Model.Articles)
+                    {
+                        <li class="listitem">
+                            <p class="listthumb"><a href=""><img width="60" height="60" src="/Content/imgs/Home/red.jpg"></a></p>
+                            <div class="listtxt">
+                                <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br /><span class="listdesc">@article.LabelCount ふせん|@article.PageView view|2014/09/04 posted</span>
+                            </div>
+                        </li>
+
+                    }
+                
+            </ul>
+        </div>
+
+        <div class="dropbox">
+            @*おすすめ投稿書いてみたり広告入れてみたり自由に使うスペースってことで*@
+        </div>
+    </div>
+</div>
