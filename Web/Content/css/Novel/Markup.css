@@ -3,6 +3,7 @@
   width: 40%;
 }
 .edit-preview-container-inner {
+  margin-left: -22.5%;
   position: relative;
   height: auto;
 }
