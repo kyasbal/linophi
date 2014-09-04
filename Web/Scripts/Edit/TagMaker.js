@@ -52,7 +52,7 @@ $(function () {
             if (tagCounter >= 5) {
                 $(".edit-tag-chkvalid").html('<div class="edit-alert">　　タグは５個までしか登録できません。</div>');
             } else if (tag && !tags.contains(tag)) {
-                $(".edit-editted-box").append('<div class="edit-editted-tag-' + tagCounter + ' tag-layout">' + tag + '<span class="edit-tag-delete-' + tagCounter + '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>');
+                $(".edit-editted-box").append('<div class="edit-editted-tag-' + tagCounter + '">' + tag + '<span class="edit-tag-delete-' + tagCounter + '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>');
                 tags.add(tag);
                 tagCounter++;
             }
