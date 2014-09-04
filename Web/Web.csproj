@@ -391,6 +391,7 @@
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\EditViewModel.cs" />
+    <Compile Include="Models\MyPageViewModel.cs" />
     <Compile Include="Models\SearchResultViewModel.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\ViewArticleViewModel.cs" />
@@ -459,6 +460,7 @@
     <Content Include="Views\Home\Top.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\more.cshtml" />
+    <Content Include="Views\Home\MyPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

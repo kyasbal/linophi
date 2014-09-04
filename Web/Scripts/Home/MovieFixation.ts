@@ -19,18 +19,23 @@
     }    
 }
 
+interface Element
+{
+    innerHTML:string;
+}
+
 var nicoMover: NikoScreenMover=new NikoScreenMover();
 $(() =>
 {
     $(".x_youtube-box").each((i, e) =>
     {
-        var classNames = e.className;
+        var classNames = ((Object)(e)).className;
         var movieId = classNames.replace(/.*x_movie-id-(\w+).*/, "$1");
         e.innerHTML = "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/" + movieId + "\" frameborder=\"0\" allowfullscreen></iframe>";
     });
     $(".x_niko-box").each((i, e) =>
     {
-        var classNames = e.className;
+        var classNames = ((Object)(e)).className;
         var movieId = classNames.replace(/.*x_movie-id-(\w+).*/, "$1");
         updateInner(e, movieId);
     });

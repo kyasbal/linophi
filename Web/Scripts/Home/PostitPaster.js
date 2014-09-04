@@ -61,7 +61,7 @@
             "opacity": 1
         });
 
-        labelType = event.currentTarget.className;
+        labelType = ((Object)(event.currentTarget)).className;
         src = event.currentTarget.src; // なぜかVSで赤線がでるけどちゃんと動きます
 
         $('.fade-layer, .dropbox').mousemove(function (e) {

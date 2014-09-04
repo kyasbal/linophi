@@ -2,7 +2,6 @@
 interface EventTarget
 {
     src: string;
-    className: string
 }
 
 $(window).load(() => // 後読みじゃないとまともにポジションとれない
@@ -100,7 +99,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             "opacity": 1
         });
 
-        labelType = event.currentTarget.className;
+        labelType = ((Object)(event.currentTarget)).className;
         src = event.currentTarget.src; // なぜかVSで赤線がでるけどちゃんと動きます
 
         $('.fade-layer, .dropbox').mousemove((e) =>
