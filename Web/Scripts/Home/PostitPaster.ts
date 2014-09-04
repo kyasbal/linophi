@@ -5,7 +5,7 @@ interface EventTarget
     className: string
 }
 
-$(() =>
+$(window).load(() => // 後読みじゃないとまともにポジションとれない
 {
 
     var htmlHeight = $('.foot').offset().top + $('.foot').outerHeight();
@@ -17,6 +17,8 @@ $(() =>
     var postitJson = JSON.parse( $('#label-info').text() );
     console.log(postitJson);
 
+    var articleId = location.pathname.substr(1);
+
     /*
      * ふせんをクリックされたら左側に影的なものを出して周りを暗くする
      * 次のタイミングにクリックされたら貼り付ける
@@ -26,11 +28,9 @@ $(() =>
 
     var pasteMode: boolean = false;
 
-    var $fadeLayer: JQuery = $('.fade-layer');
-
     var labelType: string, src: string;
     var dropboxPos: number = $('.contentswrapper').offset().top,
-        dropboxHeight: number = $('.contentswrapper').outerHeight();
+        dropboxHeight: number = $('.contentswrapper').outerHeight(true);
 
     var posY: number = dropboxPos + 10;
 
@@ -41,9 +41,8 @@ $(() =>
 
         // alert(className);
 
-        var eleHeight: number = $ele.outerHeight(),
+        var eleHeight: number = $ele.outerHeight(true),
             elePos: number = $ele.offset().top;
-
 
         $('.dropbox').append('<div class="' + className + '"></div>');
 
@@ -53,15 +52,50 @@ $(() =>
             "height": eleHeight + "px",
             "width": "300px",
         });
-    });
 
+        for (var j = 0, len = postitJson.length; j < len; j++)
+        {
+            if (postitJson[j]["ParagraphId"] == className.substr(4))
+            {
+                var data = JSON.parse(postitJson[j]["Data"]);
+                console.log(data);
+
+                /*
+                    ここでdataがソートされたと仮定
+                    例えば、
+                    data = {
+                        "surprised": 21, 
+                        "anger": 1,
+                        "bethink": 2,
+                        "fun": 5
+                    }
+                    を
+                    data = {
+                        "surprised": 21, 
+                        "fun": 5,
+                        "bethink": 2,
+                        "anger": 1                        
+                    }
+                    にしたい
+                */
+
+                for (var key in data) {
+                    $('.dropbox > .' + className).append(
+                        '<div class="' + key + '" style="background-image:url(\'http://localhost:4737/Content/imgs/Home/' + key + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' +
+                            data[key] +
+                        '</span></div>'
+                    );
+                }
+            }
+        }
+    });
 
     // 貼り付けモードへ
     $('.postit-list > img').click((event) =>
     {
         pasteMode = true;
 
-        $fadeLayer.css({
+        $('.fade-layer').css({
             "visibility": "visible",
             "opacity": 1
         });
@@ -73,7 +107,7 @@ $(() =>
         {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight)
             {
-                posY = e.pageY - 20;
+                posY = e.pageY;
             }
 
             if (pasteMode)
@@ -95,8 +129,8 @@ $(() =>
             var pHeights: number = dropboxPos;
 
             $('.dropbox > [class^="x_p-"]').each((i) => {
-                var $target: JQuery = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
-                var pHeight: number = $target.outerHeight();
+                var $target: JQuery = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 2) + ')'); // i == 0のとき１つ目のふせんを表している
+                var pHeight: number = $target.outerHeight(true);
                 var bg = "none";
                 if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode)
                     bg = "#fcc";
@@ -107,7 +141,6 @@ $(() =>
 
                 pHeights += pHeight;
 
-                //console.log($target.attr("class"), pHeight, pHeights, posY, src);
             });
         });
 
@@ -118,9 +151,9 @@ $(() =>
     // 貼り付けて戻る
     $('.dropbox').click(() =>
     {
-        $fadeLayer.css("opacity", 0);
+        $('.fade-layer').css("opacity", 0);
         setTimeout(() => {
-            $fadeLayer.css("visibility", "hidden");
+            $('.fade-layer').css("visibility", "hidden");
         }, 500);
 
         $('.dropbox').css("opacity", 1);
@@ -142,39 +175,48 @@ $(() =>
             $('.dropbox > [class^="x_p-"]').each((i) =>
             {
                 var $target: JQuery = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
-                var pHeight: number = $target.outerHeight();
+                var pHeight: number = $target.outerHeight(true);
 
                 var thisClass: string = $target.attr("class");
 
                 var postitExistence: number =
                     $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ') > .' + labelType).length;
 
-                console.log(postitExistence);
-
-                if (pHeights <= posY && posY <= pHeights + pHeight) // 「対象のｐ要素で」
+                if (pHeights <= posY && posY <= pHeights + pHeight) // 対象のｐ要素で貼り付けた時の処理
                 {
                     if (postitExistence)
                     {
-                        var msg: string = "";
                         for (var j = 0, len = postitJson.length; j < len; j++)
                         {
-                            console.info(postitJson[j]["ParagraphId"], thisClass.substr(4));
-
-                            if (postitJson[j]["ParagraphId"] == thisClass.substr(0, 3)) // classがp-で始まる場合
+                            if (postitJson[j]["ParagraphId"] == thisClass.substr(4)) // classがx_p-で始まる場合は４
                             {
-
-                                $('.dropbox > postit-pasting > .' + labelType).html(
-                                    JSON.parse(postitJson[j]["data"])[labelType]
-                                );
+                                $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(
+                                    Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1
+                                ));
+                                console.info(JSON.parse(postitJson[j]["Data"])[labelType]);
                             }
                         }
                     } else
                     {
                         $target.append(
-                            '<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;">1</div>'
+                            '<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;"><span>1</span></div>'
                         );
                     }
 
+                    $.ajax({
+                        type: "post",
+                        url: "api/Label/AttachLabel",
+                        data: {
+                            "ArticleId": articleId,
+                            "ParagraphId": thisClass.substr(4),
+                            "LabelType": labelType,
+                            "DebugMode": true
+                        },
+                        success: (data) =>
+                        {
+                            console.log(data);
+                        }
+                    });
                 }
 
                 pHeights += pHeight;
@@ -184,6 +226,29 @@ $(() =>
 
             pasteMode = false;
         }
+    });
+
+
+    // 貼り付けないで戻る
+
+    $('.fade-layer').click(() =>
+    {
+        $('.fade-layer').css("opacity", 0);
+        setTimeout(() => {
+            $('.fade-layer').css("visibility", "hidden");
+        }, 500);
+
+        $('.dropbox').css("opacity", 1);
+        setTimeout(() => {
+            $('.dropbox').css("z-index", 0);
+        }, 500);
+
+        $('.dropbox > .postit-pasting').css({
+            "z-index": -100,
+            "visibility": "hidden"
+        });
+
+        pasteMode = false;
     });
 
 });

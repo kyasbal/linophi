@@ -567,10 +567,20 @@ input[type="text"] {
             -webkit-transition-duration: 500ms;
             transition-duration: 500ms;
 
-            img {
-                width: 130px;
-                float: left;
-                margin-right: -120px;
+            > * > * {
+                padding: 10px 15px; // spanにmarginかけてもmarginの相殺という現象のせいで消えてしまうから
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box; 
+
+                > span {
+                    padding: 3px 9px;
+                    background: #fff;
+                    color: #555;
+                    font-size: 12px;
+                    font-weight: bold;
+                    border-radius: 200px;
+                }
             }
         }
 
