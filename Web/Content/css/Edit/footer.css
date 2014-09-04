@@ -1,7 +1,7 @@
 ﻿.foot {
   height: 200px;
   width: 100%;
-  background: #F5B273;
+  background: aliceblue;
   margin-top: 100px;
   bottom: 0;
   position: relative;
@@ -16,7 +16,7 @@
   margin-left: 50%;
   color: black;
   font-weight: bold;
-  box-shadow: -10px 0 0 0 #f58971;
+  box-shadow: -10px 0 0 0 #f0f8ff;
 }
 .foot .boxcontainer {
   padding-left: 30%;
