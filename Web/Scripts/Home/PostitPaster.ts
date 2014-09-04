@@ -1,4 +1,11 @@
-﻿$(() =>
+﻿
+interface EventTarget
+{
+    src: string;
+    className: string
+}
+
+$(() =>
 {
 
     var htmlHeight = $('.foot').offset().top + $('.foot').outerHeight();
@@ -7,37 +14,8 @@
         "height": htmlHeight + "px"
     });
 
-    var postitJson = JSON.parse( $('__browserLink_initializationData').text() );
+    var postitJson = JSON.parse( $('#label-info').text() );
     console.log(postitJson);
-    /*
-        [
-
-            {
-	            "ParagraphId":"BD2QTbUFf9",
-	            "Data":
-		            "[
-			            {\"Key\":\"angry\",\"Value\":1},
-			            {\"Key\":\"sad\",\"Value\":1}
-		            ]"
-            },
-            {
-	            "ParagraphId":"MDyXAnGiln",
-	            "Data":
-		            "[
-			            {\"Key\":\"sad\",\"Value\":1}
-		            ]"
-            },
-            {
-	            "ParagraphId":"MDyXAnGils",
-	            "Data":"{\"sad\":1}"
-            },
-            {
-	            "ParagraphId":"lCnRY4AfQ6",
-	            "Data":"{\"sadness\":1}"
-            }
-
-        ]
-    */
 
     /*
      * ふせんをクリックされたら左側に影的なものを出して周りを暗くする
@@ -89,7 +67,7 @@
             "opacity": 1
         });
 
-        labelType = event.currentTarget.class; //className?
+        labelType = event.currentTarget.className;
         src = event.currentTarget.src; // なぜかVSで赤線がでるけどちゃんと動きます
 
         $('.fade-layer, .dropbox').mousemove((e) =>
@@ -134,7 +112,7 @@
             });
         });
 
-        console.log("called");
+        console.log("called", labelType);
     });
 
 
@@ -167,21 +145,30 @@
                 var $target: JQuery = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
                 var pHeight: number = $target.outerHeight();
 
-                var postitExistence: number = $('.dropbox [src="' + src + '"]').length;
+                var thisClass: string = $target.attr("class");
+
+                var postitExistence: number =
+                    $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ') > .' + labelType).length;
 
                 console.log(postitExistence);
 
-                if (pHeights <= posY && posY <= pHeights + pHeight)
+                if (pHeights <= posY && posY <= pHeights + pHeight) // 「対象のｐ要素で」
                 {
                     if (postitExistence)
                     {
                         var msg: string = "";
                         for (var j = 0, len = postitJson.length; j < len; j++)
                         {
-                            msg += postitJson[j] || "";
-                        }
+                            console.info(postitJson[j]["ParagraphId"], thisClass.substr(4));
 
-                        //$('.' + labelType).html(postitJson[]);
+                            if (postitJson[j]["ParagraphId"] == thisClass.substr(0, 3)) // classがp-で始まる場合
+                            {
+
+                                $('.dropbox > postit-pasting > .' + labelType).html(
+                                    JSON.parse(postitJson[j]["data"])[labelType]
+                                );
+                            }
+                        }
                     } else
                     {
                         $target.append(
@@ -193,7 +180,7 @@
 
                 pHeights += pHeight;
 
-                console.log($target.attr("class"), pHeight, pHeights, posY, src);
+                // console.log($target.attr("class"), pHeight, pHeights, posY, src);
             });
 
             pasteMode = false;
