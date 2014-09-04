@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 using System.Web;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -22,21 +23,32 @@ namespace Web.Storage
         {
         }
 
-        public Stream AddUrlResource(string url, out string contentType)
+        public async Task<Tuple<Stream,string>> AddUrlResourceAsync(string url)
         {
-            WebClient wc = new WebClient();
-            Stream stream = wc.OpenRead(url);
+            string contentType;
             var hash = ComputeMD5(url);
             CloudBlockBlob blobRef = Container.GetBlockBlobReference(hash);
+            if (blobRef.Exists())
+            {
+                MemoryStream ms2=new MemoryStream();
+                await blobRef.DownloadToStreamAsync(ms2);
+                ms2.Flush();
+                ms2.Seek(0, SeekOrigin.Begin);
+                contentType = blobRef.Properties.ContentType;
+                return new Tuple<Stream, string>(ms2, contentType);
+            }
+
+            WebClient wc = new WebClient();
+            Stream stream = wc.OpenRead(url);
             contentType=blobRef.Properties.ContentType = wc.ResponseHeaders["Content-Type"];
             if (!whiteMIMEList.Contains(contentType.ToLower())) return null;//これ以外で実行形式などがアップロードされないようにホワイトリスト
-            blobRef.UploadFromStream(stream);
-            ICloudBlob dlBlob = Container.GetBlobReferenceFromServer(hash);
+            await blobRef.UploadFromStreamAsync(stream);
+            ICloudBlob dlBlob =await Container.GetBlobReferenceFromServerAsync(hash);
             MemoryStream ms=new MemoryStream();
-            dlBlob.DownloadToStream(ms);
+            await dlBlob.DownloadToStreamAsync(ms);
             ms.Flush();
             ms.Seek(0, SeekOrigin.Begin);
-            return ms;
+            return new Tuple<Stream, string>(ms, contentType);
         }
 
         public Stream DownloadUrlResource(string url, out string contentType)
