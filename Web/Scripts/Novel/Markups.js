@@ -53,7 +53,7 @@ var FrameManager = (function () {
             $(".preview-iframes .iframe-" + st).css({
                 "position": "absolute",
                 "top": top,
-                "left": offset.left - $(".preview-body").offset().left
+                "left": offset.left
             });
             return true;
         });
@@ -165,7 +165,7 @@ var NikonikoMarkup = (function (_super) {
         _super.apply(this, arguments);
     }
     NikonikoMarkup.prototype.getMarkupString = function (result, id) {
-        if (result.match(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/)) {
+        if (result.match(/^http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/)) {
             var src = result.replace(/(http:\/\/www\.nicovideo\.jp\/\watch\/ [\w]+)/, "$1");
             var hash = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "$1");
             var tag = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "<iframe id=\"nico-" + id + "\" onload=\"frameManager.NicoMove('" + id + "');\" data-link=\"" + src + "\" data-movie-id=\"" + hash + "\"   width=\"560px\" height=\"315px\" src=\"/Content/Nico?id=$1\" scrolling=\"no\" frameborder=\"0\"></iframe>");

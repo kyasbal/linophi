@@ -58,7 +58,7 @@ namespace Web.Storage
         {
         }
 
-        public bool IncrementLabel(string articleId,string paragraphId,string address,string labelName)
+        public bool IncrementLabel(string articleId, string paragraphId, string address, string labelName, bool debugMode)
         {
             var ent = CreateQuery()
                 .Where(f => f.PartitionKey.Equals(articleId) && f.RowKey.Equals(paragraphId)).FirstOrDefault();
@@ -67,8 +67,8 @@ namespace Web.Storage
                 ent=new LabelEntity(articleId,paragraphId);
             }
             IList<string> addresses = ent.GetAddresses();
-            if (addresses.Contains(address)) return false;
-            addresses.Add(address);
+            if (!debugMode&&addresses.Contains(address)) return false;
+            if(!debugMode)addresses.Add(address);
             IDictionary<string, int> dict = ent.GetData();
             if (!dict.ContainsKey(labelName))
             {

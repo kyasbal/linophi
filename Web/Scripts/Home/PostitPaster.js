@@ -5,38 +5,9 @@
         "height": htmlHeight + "px"
     });
 
-    var postitJson = JSON.parse($('__browserLink_initializationData').text());
+    var postitJson = JSON.parse($('#label-info').text());
     console.log(postitJson);
 
-    /*
-    [
-    
-    {
-    "ParagraphId":"BD2QTbUFf9",
-    "Data":
-    "[
-    {\"Key\":\"angry\",\"Value\":1},
-    {\"Key\":\"sad\",\"Value\":1}
-    ]"
-    },
-    {
-    "ParagraphId":"MDyXAnGiln",
-    "Data":
-    "[
-    {\"Key\":\"sad\",\"Value\":1}
-    ]"
-    },
-    {
-    "ParagraphId":"MDyXAnGils",
-    "Data":"{\"sad\":1}"
-    },
-    {
-    "ParagraphId":"lCnRY4AfQ6",
-    "Data":"{\"sadness\":1}"
-    }
-    
-    ]
-    */
     /*
     * ふせんをクリックされたら左側に影的なものを出して周りを暗くする
     * 次のタイミングにクリックされたら貼り付ける
@@ -79,7 +50,7 @@
             "opacity": 1
         });
 
-        labelType = event.currentTarget.class; //className?
+        labelType = event.currentTarget.className;
         src = event.currentTarget.src; // なぜかVSで赤線がでるけどちゃんと動きます
 
         $('.fade-layer, .dropbox').mousemove(function (e) {
@@ -120,7 +91,7 @@
             });
         });
 
-        console.log("called");
+        console.log("called", labelType);
     });
 
     // 貼り付けて戻る
@@ -147,7 +118,9 @@
                 var $target = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
                 var pHeight = $target.outerHeight();
 
-                var postitExistence = $('.dropbox [src="' + src + '"]').length;
+                var thisClass = $target.attr("class");
+
+                var postitExistence = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ') > .' + labelType).length;
 
                 console.log(postitExistence);
 
@@ -155,17 +128,19 @@
                     if (postitExistence) {
                         var msg = "";
                         for (var j = 0, len = postitJson.length; j < len; j++) {
-                            msg += postitJson[j] || "";
+                            console.info(postitJson[j]["ParagraphId"], thisClass.substr(4));
+
+                            if (postitJson[j]["ParagraphId"] == thisClass.substr(0, 3)) {
+                                $('.dropbox > postit-pasting > .' + labelType).html(JSON.parse(postitJson[j]["data"])[labelType]);
+                            }
                         }
-                        //$('.' + labelType).html(postitJson[]);
                     } else {
                         $target.append('<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;">1</div>');
                     }
                 }
 
                 pHeights += pHeight;
-
-                console.log($target.attr("class"), pHeight, pHeights, posY, src);
+                // console.log($target.attr("class"), pHeight, pHeights, posY, src);
             });
 
             pasteMode = false;
