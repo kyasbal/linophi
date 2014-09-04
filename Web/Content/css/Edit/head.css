@@ -1,4 +1,7 @@
-﻿.header .search-container {
+﻿.header {
+  background-color: aliceblue;
+}
+.header .search-container {
   margin: 7.5px 0 7.5px 0;
 }
 .header a {
@@ -60,8 +63,7 @@
   outline: none;
 }
 header {
-  height: 40px;
-  border-bottom: thin solid black;
+  height: 50px;
 }
 header .search {
   float: left;
