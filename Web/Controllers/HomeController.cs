@@ -41,7 +41,9 @@ namespace Web.Controllers
                 Content =await manager.GetArticleBody(article.ArticleModelId),
                 LabelInfo=ltm.GetLabelsJson(articleId),
                 Tags = getArticleTagModels(article),
-                LabelCount = article.LabelCount
+                LabelCount = article.LabelCount,
+                Article_Date = article.CreationTime.ToShortDateString(),
+                Article_UpDate = article.UpdateTime.ToShortDateString()
             };
         }
 
@@ -113,7 +115,8 @@ namespace Web.Controllers
                     ArticleId = source.ArticleModelId,
                     LabelCount = 0,
                     PageView = source.PageView,
-                    Title = source.Title
+                    Title = source.Title,
+                    Article_UpDate = source.UpdateTime.ToShortDateString()
                 });
             }
             vm.Articles = articles.ToArray();

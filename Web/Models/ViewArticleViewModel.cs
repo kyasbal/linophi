@@ -18,6 +18,9 @@ namespace Web.Models
         public string Author_ID { get; set; }
         public string LabelInfo { get; set; }
 
+        public string Article_Date{get; set;}
+        public string Article_UpDate { get; set; }
+
         public IEnumerable<TagViewModel> Tags { get; set; }
         public MvcHtmlString Author_IconTag { get; set; }
         public int LabelCount { get; set; }

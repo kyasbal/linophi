@@ -20,5 +20,7 @@ namespace Web.Models
         public int LabelCount { get; set; }
 
         public string ArticleId { get; set; }
+
+        public string Article_UpDate { get; set; }
     }
 }
