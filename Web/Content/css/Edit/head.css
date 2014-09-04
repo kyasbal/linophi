@@ -1,5 +1,6 @@
 ﻿.header {
   background-color: aliceblue;
+  border-bottom: 1px solid #f2f2f2;
 }
 .header .search-container {
   margin: 7.5px 0 7.5px 0;
