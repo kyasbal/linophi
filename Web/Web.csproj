@@ -215,6 +215,12 @@
     <Content Include="Content\css\Edit\index.min.css" />
     <Content Include="Content\css\Edit\ObiEdit.css" />
     <Content Include="Content\css\Edit\ObiEdit.min.css" />
+    <Content Include="Content\css\Home\more.css">
+      <DependentUpon>more.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\more.min.css">
+      <DependentUpon>more.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Home\Page404.css">
       <DependentUpon>Page404.less</DependentUpon>
     </Content>
@@ -315,6 +321,10 @@
     <Content Include="Content\css\shared.less" />
     <Content Include="Content\css\shared.css.map">
       <DependentUpon>shared.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\more.less" />
+    <Content Include="Content\css\Home\more.css.map">
+      <DependentUpon>more.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
@@ -447,6 +457,7 @@
     <Content Include="Views\Account\Config.cshtml" />
     <Content Include="Views\Home\Top.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\more.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -463,6 +474,7 @@
     <TypeScriptCompile Include="Scripts\Home\AfterLogin.ts" />
     <TypeScriptCompile Include="Scripts\Home\MovieFixation.ts" />
     <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />
+    <TypeScriptCompile Include="Scripts\Home\viewarticle.ts" />
     <TypeScriptCompile Include="Scripts\Novel\IParagraph.ts" />
     <TypeScriptCompile Include="Scripts\Novel\Markups.ts" />
     <TypeScriptCompile Include="Scripts\Novel\novel-editor.ts" />

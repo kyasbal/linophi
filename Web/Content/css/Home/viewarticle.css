@@ -182,7 +182,7 @@ input[type="text"] {
 }
 .container .contents .top .navbar-main .navbar-thumb {
   float: right;
-  margin: 0 15px 100px 0;
+  margin: 0 15px 15px 0;
 }
 .container .contents .top .navbar-main .navbar-thumb img {
   width: 105px;
