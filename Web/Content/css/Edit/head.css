@@ -1,20 +1,5 @@
-<<<<<<< HEAD
-﻿.header {
-  margin: 30px 150px;
-  /* clearfix */
-  /* For IE 6/7 (trigger hasLayout) */
-=======
 ﻿.header .search-container {
   margin: 7.5px 0 7.5px 0;
->>>>>>> 37ed81679ca353a1aa54324c8a6592231f7dfd97
-}
-.header .menu-list {
-  float: left;
-  margin-left: 60%;
-}
-.header .menu-list ul li {
-  font-size: large;
-  display: inline;
 }
 .header a {
   color: #000;
@@ -25,18 +10,16 @@
   text-decoration: underline;
 }
 .header .menu {
+  margin: 0 auto;
   overflow: hidden;
-<<<<<<< HEAD
-=======
   width: 80%;
->>>>>>> 37ed81679ca353a1aa54324c8a6592231f7dfd97
 }
 .header .menu .search {
   margin: 5px 0 5px 0;
   position: absolute;
 }
 .header .menu .search input {
-  margin-left: 10%;
+  padding-left: 10%;
 }
 .header .menu .search .search-text {
   margin: 7.5px 0 7.5px 0;
@@ -52,6 +35,7 @@
 }
 .header .menu .search .search-text:focus {
   background-color: rgba(251, 215, 162, 0.5);
+  outline: none;
 }
 .header .menu .search .search-text:hover {
   border: 2px #a4c6fd  !important;
@@ -72,19 +56,6 @@
 .header .menu .search *.search-button:hover {
   opacity: 0.5;
 }
-<<<<<<< HEAD
-.header .menu:before,
-.header .menu:after {
-  content: "";
-  display: table;
-}
-.header .menu:after {
-  clear: both;
-}
-.header .menu {
-  zoom: 1;
-}
-=======
 .header .menu .search .search-button:focus {
   outline: none;
 }
@@ -112,5 +83,4 @@ header #dropmenu .gravatar-img {
 .login-form {
   float: right;
 }
->>>>>>> 37ed81679ca353a1aa54324c8a6592231f7dfd97
 /*# sourceMappingURL=head.css.map */

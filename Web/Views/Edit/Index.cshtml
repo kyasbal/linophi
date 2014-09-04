@@ -68,25 +68,8 @@
             <textarea class="edit-text edit-context" placeholder="textarea"></textarea>
         </div>
         @Html.AntiForgeryToken()
-<<<<<<< HEAD
-    @Html.HiddenFor((m) => m.Context, new { id = "context" })
-    @Html.HiddenFor((m) => m.Body, new { id = "body" })
-        <a class="edit-submit-button">投稿する</a>
-    
-    @*マークダウンの記法*@
-    <div id="dialogframe" onmouseover="document.getElementById('layer').style.visibility = 'visible';">
-        ???
-        <div id="layer">
-            <p>testtest</p>
-            <p class="close" onclick="document.getElementById('layer').style.visibility = 'hidden';">- Close -</p>
-        </div>
-    </div>
-
-
-=======
         @Html.HiddenFor((m) => m.Tag, new {id = "tag"})
         @Html.HiddenFor((m) => m.Body, new {id = "body"})
->>>>>>> 37ed81679ca353a1aa54324c8a6592231f7dfd97
 
         <a class="edit-submit-button">投稿する</a>
     }

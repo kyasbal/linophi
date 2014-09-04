@@ -17,27 +17,41 @@
             <ul class="search-result">
                 @if (Model.Articles.Length == 0)
                 {
-                    <h1>該当する記事は見つかりませんでした。</h1>
+                    <div class="search-header">
+                        <h1>該当する記事は見つかりませんでした。</h1>
+                    </div>
                 }
                 else
                 {
-
-                    foreach (var article in Model.Articles)
-                    {
+                    <div class="search-header">
+                        <h1>～～～に対する検索結果:～～件</h1>
+                        <form>
+                            <select name="検索方式の選択">
+                                <option value="1" selected>投稿が新しい順</option>
+                                <option value="2">投稿が古い順</option>
+                                <option value="3">閲覧数が多い順</option>
+                                <option value="4">閲覧数が少ない順</option>
+                                <option value="5">ふせんが多い順</option>
+                                <option value="6">ふせんが少ない順</option>
+                            </select>
+                        </form>
+                    </div>
+                        foreach (var article in Model.Articles)
+                        {
                         <li class="listitem">
                             <p class="listthumb"><a href=""><img width="60" height="60" src="/Content/imgs/Home/red.jpg"></a></p>
                             <div class="listtxt">
-                                <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><span class="listdesc">200ふせん<span class="separator">|</span>@article.PageView view</span>
+                                <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br/><span class="listdesc">200ふせん<span class="separator">|</span>@article.PageView view</span>
                             </div>
                         </li>
 
-                    }
-                }
-            </ul>
+                        }
+                        }
+</ul>
         </div>
 
         <div class="dropbox">
-
+            @*おすすめ投稿書いてみたり広告入れてみたり自由に使うスペースってことで*@
         </div>
     </div>
 </div>
