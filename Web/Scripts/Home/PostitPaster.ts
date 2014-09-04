@@ -91,7 +91,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     });
 
     // 貼り付けモードへ
-    $('.postit-list > img').click((event) =>
+    $('.postit-list img').click((event) =>
     {
         pasteMode = true;
 
@@ -251,4 +251,16 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         pasteMode = false;
     });
 
+
+
+    // ふせんを貼る部分をhoverした時の処理
+    $('.postit-list [class]').hover((event) =>
+    {
+        var thisClass: string = ((Object)(event.currentTarget)).className;
+        $('.postit-list div.' + thisClass).css("visibility", "visible");
+    }, (event) =>
+    {
+        var thisClass: string = ((Object)(event.currentTarget)).className;
+        $('.postit-list div.' + thisClass).css("visibility", "hidden");
+    });
 });

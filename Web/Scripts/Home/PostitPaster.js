@@ -53,7 +53,7 @@
     });
 
     // 貼り付けモードへ
-    $('.postit-list > img').click(function (event) {
+    $('.postit-list img').click(function (event) {
         pasteMode = true;
 
         $('.fade-layer').css({
@@ -185,6 +185,15 @@
         });
 
         pasteMode = false;
+    });
+
+    // ふせんを貼る部分をhoverした時の処理
+    $('.postit-list [class]').hover(function (event) {
+        var thisClass = ((Object)(event.currentTarget)).className;
+        $('.postit-list div.' + thisClass).css("visibility", "visible");
+    }, function (event) {
+        var thisClass = ((Object)(event.currentTarget)).className;
+        $('.postit-list div.' + thisClass).css("visibility", "hidden");
     });
 });
 //# sourceMappingURL=PostitPaster.js.map
