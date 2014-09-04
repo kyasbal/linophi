@@ -53,7 +53,7 @@ var FrameManager = (function () {
             $(".preview-iframes .iframe-" + st).css({
                 "position": "absolute",
                 "top": top,
-                "left": offset.left
+                "left": offset.left - $(".preview-body").offset().left
             });
             return true;
         });
