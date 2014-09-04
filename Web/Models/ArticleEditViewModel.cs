@@ -10,5 +10,8 @@ namespace Web.Models
     public class ArticleEditViewModel
     {
         public string MarkupString { get; set; }
+        public string Title { get; set; }
+        public string Tags { get; set; }
+        public string ArticleId { get; set; }
     }
 }

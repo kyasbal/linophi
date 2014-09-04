@@ -18,5 +18,9 @@ namespace Web.Models
 
         [AllowHtml]
         public string Body { get; set; }
+
+        public string Mode { get; set; }
+
+        public string Id { get; set; }
     }
 }
