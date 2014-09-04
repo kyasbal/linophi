@@ -85,32 +85,25 @@ var MarkupBase = (function () {
     return MarkupBase;
 })();
 
-var QuoteMarkup = (function (_super) {
-    __extends(QuoteMarkup, _super);
-    function QuoteMarkup() {
-        _super.apply(this, arguments);
-    }
-    QuoteMarkup.prototype.getMarkupString = function (str, id) {
-        var result = "";
-        result = str.replace(/\\"/g, "\u0006\u0006");
-        if (result.match(/"(.+?)(\{.*?\})"/)) {
-            result = result.replace(/"(.+?)\{(.*?)\}"/, "<blockquote><div class=\"quote\"><p class=\"quote-body\">$1</p></br><p class=\"source\">出典:$2</p></div></blockquote>");
-        } else {
-            result = result.replace(/"(.+?)"/, "<blockquote><p class=\"quote\">$1</p></blockquote>");
-        }
-        result = result.replace(/\u0006\u0006/g, "\"");
-        console.warn("link");
-        result = result.replace(/&ensp;/g, "\u0006");
-        if (result.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g)) {
-            result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"/Pages/ContentUpload/UploadFromExternal?url=$1\">");
-        }
-        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)([^\w\/:%#\$&\?\(\)~\.=\+\-])(?![>"])/g, "<a href='$1'>$1</a>$2");
-        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)$/, "<a href='$1'>$1</a>");
-        return result.replace(/\u0006/g, "&ensp;");
-    };
-    return QuoteMarkup;
-})(MarkupBase);
-
+/*
+class QuoteMarkup extends MarkupBase
+{
+getMarkupString(str: string, id: string): string
+{
+var result: string = "";
+result = str.replace(/\\"/g, "\u0006\u0006");
+if (result.match(/"(.+?)(\{.*?\})"/))
+{
+result = result.replace(/"(.+?)\{(.*?)\}"/, "<blockquote><div class=\"quote\"><p class=\"quote-body\">$1</p></br><p class=\"source\">出典:$2</p></div></blockquote>");
+} else
+{
+result = result.replace(/"(.+?)"/, "<blockquote><p class=\"quote\">$1</p></blockquote>");
+}
+result = result.replace(/\u0006\u0006/g, "\"");
+return result;
+}
+}
+*/
 var BoldMarkup = (function (_super) {
     __extends(BoldMarkup, _super);
     function BoldMarkup() {

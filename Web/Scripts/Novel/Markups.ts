@@ -99,6 +99,7 @@ class MarkupBase
     }
 }
 
+/*
 class QuoteMarkup extends MarkupBase
 {
     getMarkupString(str: string, id: string): string
@@ -113,17 +114,10 @@ class QuoteMarkup extends MarkupBase
             result = result.replace(/"(.+?)"/, "<blockquote><p class=\"quote\">$1</p></blockquote>");
         }
         result = result.replace(/\u0006\u0006/g, "\"");
-        console.warn("link");
-        result = result.replace(/&ensp;/g, "\u0006");
-        if (result.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g)) {
-            result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"/Pages/ContentUpload/UploadFromExternal?url=$1\">");
-
-        }
-        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)([^\w\/:%#\$&\?\(\)~\.=\+\-])(?![>"])/g, "<a href='$1'>$1</a>$2");
-        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)$/, "<a href='$1'>$1</a>");
-        return result.replace(/\u0006/g, "&ensp;");
+        return result;
     }
 }
+*/
 
 class BoldMarkup extends MarkupBase //太字
 {

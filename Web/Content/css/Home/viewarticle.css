@@ -191,6 +191,9 @@ input[type="text"] {
 .container .contents .top .navbar-main .navbar-txt {
   margin-top: -13px;
 }
+.container .contents .top .navbar-main .navbar-txt .navbar-title {
+  display: inline;
+}
 .container .contents .top .navbar-main .navbar-txt .navbar-title a {
   margin: 0 15px 0 0;
   padding: 6px 0;
@@ -228,7 +231,9 @@ input[type="text"] {
 .container .contents .top .navbar-main .navbar-count .navbar-countpv {
   display: inline-block;
   padding-left: 13px;
+  padding-right: 10px;
   border-left: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
   text-align: center;
   font-family: Tahoma, Geneva, sans-serif;
 }
@@ -250,7 +255,6 @@ input[type="text"] {
 .container .contents .top .navbar-main .navbar-count .navbar-date {
   display: inline-block;
   padding-left: 13px;
-  border-left: 1px solid #ebebeb;
   text-align: center;
   font-family: Tahoma, Verdana, Geneva, Tahoma, sans-serif, sans-serif;
 }
