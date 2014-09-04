@@ -63,7 +63,7 @@ class FrameManager
             $(".preview-iframes .iframe-" + st).css({
                 "position": "absolute",
                 "top": top ,
-                "left": offset.left - $(".preview-body").offset().left
+                "left": offset.left
             });
             return true;
         });

@@ -17,7 +17,7 @@ namespace Web.Api.Label
         public IHttpActionResult AttachLabel(AttachLabelRequestModel req)
         {
             LabelTableManager ltb=new LabelTableManager(new TableStorageConnection());
-            bool isSucceed=ltb.IncrementLabel(req.ArticleId, req.ParagraphId, HttpContext.Current.Request.UserHostAddress,req.LabelType);
+            bool isSucceed=ltb.IncrementLabel(req.ArticleId, req.ParagraphId, HttpContext.Current.Request.UserHostAddress,req.LabelType,req.DebugMode);
             if (isSucceed)
             {
                 var context = Request.GetOwinContext().Get<ApplicationDbContext>();
@@ -36,5 +36,7 @@ namespace Web.Api.Label
         public string ParagraphId { get; set; }
 
         public string LabelType { get; set; }
+
+        public bool DebugMode { get; set; }
     }
 }
