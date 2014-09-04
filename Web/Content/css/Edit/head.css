@@ -1,15 +1,8 @@
 ﻿.header {
-  margin: 30px 150px;
-  /* clearfix */
-  /* For IE 6/7 (trigger hasLayout) */
+  background-color: aliceblue;
 }
-.header .menu-list {
-  float: left;
-  margin-left: 60%;
-}
-.header .menu-list ul li {
-  font-size: large;
-  display: inline;
+.header .search-container {
+  margin: 7.5px 0 7.5px 0;
 }
 .header a {
   color: #000;
@@ -20,17 +13,21 @@
   text-decoration: underline;
 }
 .header .menu {
+  margin: 0 auto;
   overflow: hidden;
+  width: 80%;
 }
 .header .menu .search {
+  margin: 5px 0 5px 0;
   position: absolute;
 }
 .header .menu .search input {
-  margin-left: 10%;
+  padding-left: 10%;
 }
 .header .menu .search .search-text {
+  margin: 7.5px 0 7.5px 0;
   background-color: #fbd7a2;
-  height: 30px;
+  height: 20px;
   width: 200px;
   padding: 5px 5px;
   position: absolute;
@@ -41,15 +38,17 @@
 }
 .header .menu .search .search-text:focus {
   background-color: rgba(251, 215, 162, 0.5);
+  outline: none;
 }
 .header .menu .search .search-text:hover {
   border: 2px #a4c6fd  !important;
 }
 .header .menu .search .search-button {
+  margin: 7.5px 0 7.5px 0;
   border: 0;
   padding-left: -10px;
   width: 40px;
-  height: 40px;
+  height: 30px;
   position: absolute;
   left: 220px;
   top: -6px;
@@ -60,15 +59,30 @@
 .header .menu .search *.search-button:hover {
   opacity: 0.5;
 }
-.header .menu:before,
-.header .menu:after {
-  content: "";
-  display: table;
+.header .menu .search .search-button:focus {
+  outline: none;
 }
-.header .menu:after {
-  clear: both;
+header {
+  height: 50px;
 }
-.header .menu {
-  zoom: 1;
+header .search {
+  float: left;
+}
+header #dropmenu {
+  float: right;
+}
+header #dropmenu li {
+  line-height: 40px;
+  vertical-align: middle;
+  display: inline;
+}
+header #dropmenu .gravatar-img {
+  vertical-align: middle;
+}
+#login {
+  display: inline;
+}
+.login-form {
+  float: right;
 }
 /*# sourceMappingURL=head.css.map */

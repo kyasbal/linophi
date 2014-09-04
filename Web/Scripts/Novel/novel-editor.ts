@@ -1,7 +1,7 @@
 ﻿module NovelEditer
 {
     var sepalateToken: string = "\n\n";
-    var markups: MarkupBase[] = [new BoldMarkup(),/*new LinkMarkup(),*/new YoutubeMarkup(),new NikonikoMarkup()];
+    var markups: MarkupBase[] = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup(), new LinkMarkup()];
     
     export class NovelEditer
     {

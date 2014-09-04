@@ -8,6 +8,8 @@
     var postitJson = JSON.parse($('#label-info').text());
     console.log(postitJson);
 
+    var articleId = location.pathname.substr(1);
+
     /*
     * ふせんをクリックされたら左側に影的なものを出して周りを暗くする
     * 次のタイミングにクリックされたら貼り付ける
@@ -126,17 +128,28 @@
 
                 if (pHeights <= posY && posY <= pHeights + pHeight) {
                     if (postitExistence) {
-                        var msg = "";
                         for (var j = 0, len = postitJson.length; j < len; j++) {
-                            console.info(postitJson[j]["ParagraphId"], thisClass.substr(4));
-
-                            if (postitJson[j]["ParagraphId"] == thisClass.substr(0, 3)) {
-                                $('.dropbox > postit-pasting > .' + labelType).html(JSON.parse(postitJson[j]["data"])[labelType]);
+                            if (postitJson[j]["ParagraphId"] == thisClass.substr(4)) {
+                                $('.dropbox > .' + thisClass + ' > .' + labelType).html(JSON.parse(postitJson[j]["Data"])[labelType] + 1);
                             }
                         }
                     } else {
                         $target.append('<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;">1</div>');
                     }
+
+                    $.ajax({
+                        type: "post",
+                        url: "api/Label/AttachLabel",
+                        data: {
+                            "ArticleId": articleId,
+                            "ParagraphId": thisClass.substr(4),
+                            "LabelType": labelType,
+                            "DebugMode": true
+                        },
+                        success: function (json) {
+                            console.log(json);
+                        }
+                    });
                 }
 
                 pHeights += pHeight;

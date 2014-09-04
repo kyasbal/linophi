@@ -141,8 +141,6 @@ body {
   padding: 5px;
   float: right;
   background-color: #fff;
-  border: 1px solid #888;
-  border-radius: 5px;
   word-break: break-all;
 }
 .edit-preview ::-webkit-input-placeholder,
@@ -232,7 +230,8 @@ div[class^="edit-editted-tag"]:first-child {
   margin-left: 0;
 }
 div[class^="edit-editted-tag"] > span {
-  margin-left: 10px;
+  padding-left: 10px;
   color: #333;
+  cursor: pointer;
 }
 /*# sourceMappingURL=header.css.map */

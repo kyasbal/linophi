@@ -56,7 +56,6 @@ $(() =>
     });
 
 
-
     // 貼り付けモードへ
     $('.postit-list > img').click((event) =>
     {
