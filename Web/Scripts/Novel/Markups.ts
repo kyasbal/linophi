@@ -170,7 +170,7 @@ class NikonikoMarkup extends MarkupBase
 {
     getMarkupString(result: string, id: string): string
     {
-        if (result.match(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/))
+        if (result.match(/^http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/))
         {//ニコ動はiframeだと、動画クリック時に変移する先のページを表示できない為、いろいろややこしい。
             var src = result.replace(/(http:\/\/www\.nicovideo\.jp\/\watch\/ [\w]+)/, "$1");
             var hash = result.replace(/http:\/\/www\.nicovideo\.jp\/\watch\/([\w]+)/, "$1");
