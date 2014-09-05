@@ -16,10 +16,9 @@ $(function () {
             tagList.push(item);
             return true;
         });
-        $("#hidden-tag").val(JSON.stringify(tagList));
+        $("#tag").val(JSON.stringify(tagList));
         $('.edit-preview > *').removeClass("em");
-        $("#hidden-body").val($(".preview-body").html());
-        $("#hidden-markup").val($(".edit-context").val());
+        $("#body").val($(".preview-body").html());
         if (isConfirmedTitle)
             $(".edit-form").submit();
     });

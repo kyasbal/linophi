@@ -6,6 +6,9 @@ img,
 fieldset {
   border: none;
 }
+img {
+  vertical-align: bottom;
+}
 html {
   overflow-y: scroll;
   height: 100%;
@@ -452,9 +455,25 @@ input[type="text"] {
 .container .contents .postit-list {
   padding: 15px 30px 9px;
 }
+.container .contents .postit-list > div {
+  position: relative;
+}
+.container .contents .postit-list > div > div {
+  position: absolute;
+  visibility: hidden;
+  top: 10px;
+  left: 10px;
+  padding: 3px 9px;
+  border-radius: 200px;
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: bold;
+}
 .container .contents .postit-list img {
-  display: block;
   width: 130px;
+}
+.container .contents .postit-list > * {
+  cursor: pointer;
 }
 .container .contents .postit-pasting {
   z-index: -100;
