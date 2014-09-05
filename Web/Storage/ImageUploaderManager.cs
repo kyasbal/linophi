@@ -39,7 +39,7 @@ namespace Web.Storage
             return new Tuple<double, double>(w,h);
         }
 
-        public async Task<Tuple<Stream,string>> AddUrlResourceAsync(string url)
+        public async Task<Tuple<Stream,string>> AddUrlResourceAsync(string url,bool needBig)
         {
             string contentType;
             var hash = ComputeMD5(url);
@@ -47,7 +47,15 @@ namespace Web.Storage
             if (blobRef.Exists())
             {
                 MemoryStream ms2=new MemoryStream();
-                await quantizedManager.DownloadToStream(ms2, hash);
+                if(needBig)
+                {
+                    await blobRef.DownloadToStreamAsync(ms2);
+                }
+                else
+                {
+                    await quantizedManager.DownloadToStream(ms2, hash);
+                }
+                
                 ms2.Seek(0, SeekOrigin.Begin);
                 contentType = blobRef.Properties.ContentType;
                 return new Tuple<Stream, string>(ms2, contentType);

@@ -13,7 +13,7 @@
     <AzureHostedServiceName>linophi</AzureHostedServiceName>
     <AzureEnableIntelliTrace>False</AzureEnableIntelliTrace>
     <AzureEnableProfiling>True</AzureEnableProfiling>
-    <AzureServiceConfiguration>Cloud</AzureServiceConfiguration>
+    <AzureServiceConfiguration>Local</AzureServiceConfiguration>
     <AzureSolutionConfiguration>Debug</AzureSolutionConfiguration>
     <AzureStorageAccountLabel>linophi</AzureStorageAccountLabel>
     <AzureStorageAccountName>linophi</AzureStorageAccountName>
