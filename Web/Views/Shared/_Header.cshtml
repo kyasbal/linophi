@@ -21,14 +21,14 @@
                             using (Html.BeginForm("Login", "Account", FormMethod.Get, new { @class = "login-form" }))
                             {
                                 @Html.Hidden("returnUrl", Request.Url)
-                                <a onclick="$('.login-form').submit();">ログイン</a>
+                                <a  onclick="$('.login-form').submit();">ログイン</a>
                             }
                         }
                         else
                         {
                             @Html.GravatarImg(Request, 24)
 
-                            @WebPageStatic.GetUserNickName(Request)
+                            <a href="/MyPage">@WebPageStatic.GetUserNickName(Request)</a>
                             @*                            <ul>*@
                             @*                                <li>@Html.ActionLink("設定", "Config", "Account")</li>*@
                             @*                                <li>@Html.ActionLink("ログアウト", "Logout", "Account")</li>*@

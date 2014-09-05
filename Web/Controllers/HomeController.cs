@@ -23,8 +23,8 @@ namespace Web.Controllers
         {
             ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
             var article = context.Articles.FirstOrDefault(a => a.ArticleModelId.Equals(articleId));
-            context.Entry(article).Collection(c=>c.Tags).Load();
             if (article == null) return null;
+            context.Entry(article).Collection(c=>c.Tags).Load();
             ArticleBodyTableManager manager=new ArticleBodyTableManager(new BlobStorageConnection());
             LabelTableManager ltm=new LabelTableManager(new TableStorageConnection());
             var author=await HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByNameAsync(article.AuthorID);
@@ -91,6 +91,37 @@ namespace Web.Controllers
                 var query = queries[index];
                 result=result.Where(f => f.Title.Contains(query));
             }
+            result = ChangeOrder(order, result);
+            result = result.Skip(skip);
+            SearchResultViewModel vm=new SearchResultViewModel();
+            List<SearchResultArticle> articles=new List<SearchResultArticle>();
+            int count = result.Count();
+            foreach (var source in result.Take(20))
+            {
+                articles.Add(new SearchResultArticle()
+                {
+                    ArticleId = source.ArticleModelId,
+                    LabelCount = source.LabelCount,
+                    PageView = source.PageView,
+                    Title = source.Title,
+                    Article_UpDate = source.UpdateTime.ToShortDateString()
+                });
+            }
+            vm.Articles = articles.ToArray();
+            if (vm.Articles.Length == 0)
+            {
+                vm.SearchResultText = string.Format("「{0}」に関する検索結果は見つかりませんでした。", searchText);
+            }
+            else
+            {
+                vm.SearchResultText = string.Format("「{0}」に関する検索結果:{1}件中{2}～{3}件", searchText,count,skip+1,Math.Min(skip+21,count));
+            }
+            vm.SearchText = searchText;
+            return View(vm);
+        }
+
+        private static IQueryable<ArticleModel> ChangeOrder(int order, IQueryable<ArticleModel> result)
+        {
             switch (order)
             {
                 case 5:
@@ -113,32 +144,7 @@ namespace Web.Controllers
                     result = result.OrderByDescending(f => f.CreationTime);
                     break;
             }
-            result = result.Skip(skip);
-            SearchResultViewModel vm=new SearchResultViewModel();
-            List<SearchResultArticle> articles=new List<SearchResultArticle>();
-            int count = result.Count();
-            foreach (var source in result.Take(20))
-            {
-                articles.Add(new SearchResultArticle()
-                {
-                    ArticleId = source.ArticleModelId,
-                    LabelCount = 0,
-                    PageView = source.PageView,
-                    Title = source.Title,
-                    Article_UpDate = source.UpdateTime.ToShortDateString()
-                });
-            }
-            vm.Articles = articles.ToArray();
-            if (vm.Articles.Length == 0)
-            {
-                vm.SearchResultText = string.Format("「{0}」に関する検索結果は見つかりませんでした。", searchText);
-            }
-            else
-            {
-                vm.SearchResultText = string.Format("「{0}」に関する検索結果:{1}件中{2}～{3}件", searchText,count,skip+1,Math.Min(skip+21,count));
-            }
-            vm.SearchText = searchText;
-            return View(vm);
+            return result;
         }
 
         public ActionResult Tag(string tag, int skip = 0, int order = 0)
@@ -150,26 +156,14 @@ namespace Web.Controllers
             SearchResultViewModel vm = new SearchResultViewModel();
             List<SearchResultArticle> articles = new List<SearchResultArticle>();
             var query = context.Articles.AsQueryable();
-            switch (order)
-            {
-                case 2:
-                    query = query.OrderByDescending(f => f.LabelCount);
-                    break;
-                case 1:
-                    query = query.OrderByDescending(f => f.PageView);
-                    break;
-                case 0:
-                default:
-                    query = query.OrderByDescending(f => f.CreationTime);
-                    break;
-            }
+            ChangeOrder(order, query);
             query=query.Skip(skip);
             foreach (var source in query.Take(10))
             {
                 articles.Add(new SearchResultArticle()
                 {
                     ArticleId = source.ArticleModelId,
-                    LabelCount = 0,
+                    LabelCount = source.LabelCount,
                     PageView = source.PageView,
                     Title = source.Title
                 });
@@ -177,6 +171,48 @@ namespace Web.Controllers
             vm.Articles = articles.ToArray();
             vm.SearchText = tag;
             return View("Search", vm);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public  ActionResult MyPage(int order=0,int skip=0)
+        {
+            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            IQueryable<ArticleModel> query= context.Articles.Where(f => f.AuthorID.Equals(User.Identity.Name));
+            query=ChangeOrder(order,query);
+            query =query.Skip(skip);
+            List<SearchResultArticle> articles = new List<SearchResultArticle>();
+            foreach (var source in query.Take(10))
+            {
+                articles.Add(new SearchResultArticle()
+                {
+                    ArticleId = source.ArticleModelId,
+                    LabelCount = source.LabelCount,
+                    PageView = source.PageView,
+                    Title = source.Title
+                });
+            }
+            return View(new MyPageViewModel() {articles = articles.ToArray()});
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteArticle(string articleId)
+        {
+            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            ArticleModel article = await context.Articles.FindAsync(articleId);
+            if (article==null||!article.AuthorID.Equals(User.Identity.Name)) return View("Page403");
+            context.Entry(article).Collection(a => a.Tags);
+            article.Tags.Clear();
+            BlobStorageConnection connection=new BlobStorageConnection();
+            ArticleBodyTableManager abtm=new ArticleBodyTableManager(connection);
+            ArticleMarkupTableManager amtm=new ArticleMarkupTableManager(connection);
+            await abtm.RemoveArticle(articleId);
+            await amtm.RemoveArticle(articleId);
+            context.Articles.Remove(article);
+            await context.SaveChangesAsync();
+            return RedirectToAction("MyPage");
         }
     }
 }

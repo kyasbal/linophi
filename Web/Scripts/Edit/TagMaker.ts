@@ -13,8 +13,37 @@ function removeTag(counter,tag)
         $(".edit-tag-chkvalid").html("");
     }
 }
-$(() => {
+$(() =>
+{
+    // タグをEnterで追加する機能
+    $(".edit-tag").keypress((e) => {
+        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+            var $target: JQuery = $(".edit-tag");
+            var tag: string = $target.val();
 
+            if (tagCounter >= 5) {
+                $(".edit-tag-chkvalid").html(
+                    '<div class="edit-alert">　　タグは５個までしか登録できません。</div>'
+                    );
+            }
+            else if (tag && !tags.contains(tag)) {
+                $(".edit-editted-box").append(
+                    '<div class="edit-editted-tag-' + tagCounter + '">' + tag +
+                    '<span class="edit-tag-delete-' + tagCounter +
+                    '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>'
+                    );
+                tags.add(tag);
+                tagCounter++;
+            }
+
+            $target.val("");
+        }
+    });
+    if ($("#hidden-mode").val() == "edit")
+    {
+        isConfirmedTitle = true;
+        return;
+    }
     // タイトルが正当かどうかを判定してダメならエラーを返す機能
     $(".edit-title").focusout(() => {
         $.ajax({
@@ -55,33 +84,6 @@ $(() => {
     });
     
 
-    // タグをEnterで追加する機能
-    $(".edit-tag").keypress((e) =>
-    {
-        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13))
-        {
-            var $target: JQuery = $(".edit-tag");
-            var tag: string = $target.val();
 
-            if (tagCounter >= 5)
-            {
-                $(".edit-tag-chkvalid").html(
-                    '<div class="edit-alert">　　タグは５個までしか登録できません。</div>'
-                );
-            }
-            else if (tag && !tags.contains(tag))
-            {
-                $(".edit-editted-box").append(
-                    '<div class="edit-editted-tag-' + tagCounter + '">' + tag +
-                    '<span class="edit-tag-delete-' + tagCounter +
-                    '" onClick="removeTag(\''+tagCounter+'\',\''+tag+'\')">x</span></div>'
-                );
-                tags.add(tag);
-                tagCounter++;
-            }
-
-            $target.val("");
-        }
-    });
 
 });

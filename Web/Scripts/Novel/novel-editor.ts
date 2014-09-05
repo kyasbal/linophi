@@ -43,6 +43,7 @@
             $(".prev-page").click(() => { this.goprevPage(); });
             this._paragraphManager = new ParagraphManager();
             this._paragraphList.add(0);
+            this._lastText = "";
         }
 
         textChanged()

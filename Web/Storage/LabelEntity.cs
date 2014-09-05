@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
+using System.Web.UI.WebControls;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using Web.Storage.Connection;
@@ -16,6 +17,13 @@ using Web.Storage.Manager;
 
 namespace Web.Storage
 {
+    public class LabelKeyValuePair
+    {
+        public string Key { get; set; }
+
+        public int Value { get; set; }
+    }
+
     public class LabelEntity:TableEntity
     {
 
@@ -33,9 +41,15 @@ namespace Web.Storage
 
         public string LabelHostAddress { get; set; }
 
-        public IDictionary<string, int> GetData()
+        public IDictionary<string,int> GetData()
         {
-            return Json.Decode<IDictionary<string, int>>(LabelCountData);
+            LabelKeyValuePair[] values=Json.Decode<LabelKeyValuePair[]>(LabelCountData);
+            Dictionary<string,int> dict=new Dictionary<string, int>(); 
+            foreach (var labelKeyValuePair in values)
+            {
+               dict.Add(labelKeyValuePair.Key,labelKeyValuePair.Value);
+            }
+            return dict;
         }
 
         public List<string> GetAddresses()
@@ -45,7 +59,7 @@ namespace Web.Storage
 
         public void SaveData(IDictionary<string, int> data,IList<string> addresses)
         {
-            this.LabelCountData = Json.Encode(data);
+            this.LabelCountData = Json.Encode(data.OrderBy(f=>f.Value).Select(f=>new LabelKeyValuePair(){Key=f.Key,Value=f.Value}).ToArray());
             this.LabelHostAddress = Json.Encode(addresses);
 
         }
@@ -75,6 +89,7 @@ namespace Web.Storage
                 dict.Add(labelName,0);
             }
             dict[labelName]++;
+            
             ent.SaveData(dict,addresses);
             Table.Execute(TableOperation.InsertOrReplace(ent));
             return true;
@@ -84,6 +99,15 @@ namespace Web.Storage
         {
             var ent = CreateQuery().Where(f => f.PartitionKey.Equals(articleId)).Select(f => new{ParagraphId=f.RowKey,Data=f.LabelCountData }).ToArray();
             return Json.Encode(ent);
+        }
+
+        public async Task RemoveArticleLabelAsync(string articleId)
+        {
+            var ent = CreateQuery().Where(f => f.PartitionKey.Equals(articleId));
+            foreach (var labelEntity in ent)
+            {
+                await Table.ExecuteAsync(TableOperation.Delete(labelEntity));
+            }
         }
     }
 }

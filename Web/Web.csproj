@@ -221,6 +221,12 @@
     <Content Include="Content\css\Home\more.min.css">
       <DependentUpon>more.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\MyPage.css">
+      <DependentUpon>MyPage.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\MyPage.min.css">
+      <DependentUpon>MyPage.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Home\Page404.css">
       <DependentUpon>Page404.less</DependentUpon>
     </Content>
@@ -326,6 +332,10 @@
     <Content Include="Content\css\Home\more.css.map">
       <DependentUpon>more.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\MyPage.less" />
+    <Content Include="Content\css\Home\MyPage.css.map">
+      <DependentUpon>MyPage.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
@@ -389,8 +399,10 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\ArticleEditViewModel.cs" />
     <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\EditViewModel.cs" />
+    <Compile Include="Models\MyPageViewModel.cs" />
     <Compile Include="Models\SearchResultViewModel.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\ViewArticleViewModel.cs" />
@@ -459,6 +471,7 @@
     <Content Include="Views\Home\Top.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\more.cshtml" />
+    <Content Include="Views\Home\MyPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -474,6 +487,7 @@
     <TypeScriptCompile Include="Scripts\Edit\TagMaker.ts" />
     <TypeScriptCompile Include="Scripts\Home\AfterLogin.ts" />
     <TypeScriptCompile Include="Scripts\Home\MovieFixation.ts" />
+    <TypeScriptCompile Include="Scripts\Home\MyPage.ts" />
     <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />
     <TypeScriptCompile Include="Scripts\Home\Search.ts" />
     <TypeScriptCompile Include="Scripts\Home\viewarticle.ts" />

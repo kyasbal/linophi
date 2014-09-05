@@ -5,7 +5,9 @@ var isConfirmedTitle: boolean;
 isConfirmedTitle = false;
 $(() => {
     editPage = new EditPage();
-        editorInstance = new NovelEditer.NovelEditer($(".edit-context"), $(".preview-body"), $(".preview-context"));
+    editorInstance = new NovelEditer.NovelEditer($(".edit-context"), $(".preview-body"), $(".preview-context"));
+    editorInstance.saveInput();
+
         editorInstance.updateToshow();
     editPage.onChanged();
     $(".edit-submit-button").click(() => {
@@ -15,9 +17,10 @@ $(() => {
             tagList.push(item);
             return true;
         });
-        $("#tag").val(JSON.stringify(tagList));
+        $("#hidden-tag").val(JSON.stringify(tagList));
         $('.edit-preview > *').removeClass("em");
-        $("#body").val($(".preview-body").html());
+        $("#hidden-body").val($(".preview-body").html());
+        $("#hidden-markup").val($(".edit-context").val());
         if (isConfirmedTitle) $(".edit-form").submit();
     });
 

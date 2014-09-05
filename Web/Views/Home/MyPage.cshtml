@@ -1,0 +1,66 @@
+﻿@model Web.Models.MyPageViewModel
+
+@{
+    ViewBag.Title = "マイページ";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+@section JS{
+    <script src="~/Scripts/Home/MyPage.js"></script>
+}
+
+@section CSS
+{
+    <link href="~/Content/css/Home/Search.css" rel="stylesheet" />
+    <link href="~/Content/css/Home/MyPage.css" rel="stylesheet" />
+}
+
+<div class="contents">
+    <div class="wrapper">
+        <div class="main">
+            <ul class="search-result">
+                    <div class="search-header">
+                        <h1>今までに書いた記事</h1>
+                        <form>
+                            <select class="search-menu" onchange="inputValue()">
+                                <option value="0" selected>投稿が新しい順</option>
+                                <option value="3">投稿が古い順</option>
+                                <option value="1">閲覧数が多い順</option>
+                                <option value="4">閲覧数が少ない順</option>
+                                <option value="2">ふせんが多い順</option>
+                                <option value="5">ふせんが少ない順</option>
+                            </select>
+                        </form>
+                    </div>
+                    @foreach (var article in Model.articles)
+                    {
+                        <li class="listitem">
+                            <p class="listthumb"><a href=""><img width="60" height="60" src="/Content/imgs/Home/red.jpg"></a></p>
+                            <div class="listtxt">
+                                <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br /><span class="listdesc">@article.PageView view|@article.LabelCount ふせん|@article.Article_UpDate last updated</span>
+                                <div class="edit-buttons">
+                                    @using (Html.BeginForm("DeleteArticle","Home",FormMethod.Post,new{id="remove-article-"+article.ArticleId}))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.Hidden("articleId",article.ArticleId)
+                                        <a onclick="deleteArticle('@article.ArticleId')">削除</a>
+                                    }
+                                    @using (Html.BeginForm("Index", "Edit", FormMethod.Get, new { id = "edit-article-" + article.ArticleId }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.Hidden("articleId", article.ArticleId)
+                                        <a onclick="editArticle('@article.ArticleId')">編集</a>
+                                    }
+                                </div>
+                            </div>
+                        </li>
+                        
+
+                    }
+            </ul>
+        </div>
+
+        <div class="dropbox">
+            @*おすすめ投稿書いてみたり広告入れてみたり自由に使うスペースってことで*@
+        </div>
+    </div>
+</div>

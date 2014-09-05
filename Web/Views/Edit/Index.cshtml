@@ -1,6 +1,6 @@
-﻿@model Web.Models.EditViewModel
+﻿@model Web.Models.ArticleEditViewModel
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "記事を編集";
 }
 
 @{
@@ -8,7 +8,7 @@
 }
 
 @section CSS{
-    <meta http-equiv="X-FRAME-OPTIONS" content="SAMEORIGIN" />  
+    <meta http-equiv="X-FRAME-OPTIONS" content="SAMEORIGIN" />
     <link href="~/Content/css/Edit/header.css" rel="stylesheet" />
     <link href="~/Content/css/Edit/index.css" rel="stylesheet" />
     <link href="~/Content/css/Novel/novel-editor.css" rel="stylesheet" />
@@ -46,18 +46,18 @@
 
 <div class="edit-bg-overlay">
 
-    @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new {@class = "edit-form editpage-main"}))
+    @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new { @class = "edit-form editpage-main" }))
     {
         <div class="edit-title-container">
-            @Html.TextBoxFor((m) => m.Title, new {id = "title", type = "text", @class = "edit-title", placeholder = "タイトル"})
+            <input type="text" name="Title" value="@(Model == null ? " " : Model.Title)" id="title" class="edit-title" placeholder="タイトル" @(Model!=null?"readonly":"") />
         </div>
         <div class="edit-title-chkvalid"></div>
         <div class="edit-tag-container">
-            @Html.TextBoxFor((m) => m.Tag, new {id = "tag", type = "text", @class = "edit-tag", placeholder = "タグ"})
+            <input type="text" id="tag" class="edit-tag" placeholder="タグ" value="@(Model==null?"":Model.Tags)">
             <div class="edit-tag-chkvalid"></div>
         </div>
         <div class="edit-editted-box"></div>
-        
+
         //リアルタイムプレビュー
         <div class="edit-preview-container">
             <div class="edit-preview-container-inner">
@@ -65,14 +65,25 @@
                 <div class="preview-iframes"></div>
             </div>
         </div>
-        
+
         <div class="edit-text-container">
-            <textarea class="edit-text edit-context" placeholder="textarea"></textarea>
+            <textarea class="edit-text edit-context" placeholder="textarea">
+                @if (Model != null)
+                {
+                    @Html.Raw(Model.MarkupString)
+                }
+            </textarea>
         </div>
         @Html.AntiForgeryToken()
-        @Html.HiddenFor((m) => m.Tag, new {id = "hidden-tag"})
-        @Html.HiddenFor((m) => m.Body, new {id = "hidden-body"})
-        @Html.HiddenFor((m)=>m.Markup,new{id="hidden-markup"})
+        @Html.Hidden("Tag","", new { id = "hidden-tag" })
+        @Html.Hidden("Body","", new { id = "hidden-body" })
+        @Html.Hidden("Markup","", new { id = "hidden-markup" })
+        @Html.Hidden("Mode", Model == null ? "new" : "edit",new{id="hidden-mode"})
+
+        if (Model != null)
+        {
+            @Html.Hidden("Id", Model.ArticleId)
+        }
         <a class="edit-submit-button">投稿する</a>
     }
-    </div>
+</div>

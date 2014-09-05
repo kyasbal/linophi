@@ -40,6 +40,7 @@ var NovelEditer;
             });
             this._paragraphManager = new ParagraphManager();
             this._paragraphList.add(0);
+            this._lastText = "";
         }
         NovelEditer.prototype.textChanged = function () {
             //console.info("textChanged is Called...!:\t"+this._editorTarget.val());

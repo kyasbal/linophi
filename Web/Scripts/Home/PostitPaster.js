@@ -39,14 +39,15 @@
             "height": eleHeight + "px",
             "width": "300px"
         });
-
         for (var j = 0, len = postitJson.length; j < len; j++) {
             if (postitJson[j]["ParagraphId"] == className.substr(4)) {
                 var data = JSON.parse(postitJson[j]["Data"]);
-                console.log(data);
+                data = _.sortBy(data, function (d) {
+                    return (Object)(d).Value;
+                }).reverse();
 
-                for (var key in data) {
-                    $('.dropbox > .' + className).append('<div class="' + key + '" style="background-image:url(\'http://localhost:4737/Content/imgs/Home/' + key + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' + data[key] + '</span></div>');
+                for (var i = 0; i < data.length; i++) {
+                    $('.dropbox > .' + className).append('<div class="' + data[i].Key + '" style="background-image:url(\'http://localhost:4737/Content/imgs/Home/' + data[i].Key + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' + data[i].Value + '</span></div>');
                 }
             }
         }
@@ -61,7 +62,7 @@
             "opacity": 1
         });
 
-        labelType = event.currentTarget.className;
+        labelType = ((Object)(event.currentTarget)).className;
         src = event.currentTarget.src; // なぜかVSで赤線がでるけどちゃんと動きます
 
         $('.fade-layer, .dropbox').mousemove(function (e) {

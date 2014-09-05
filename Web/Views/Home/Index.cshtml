@@ -1,4 +1,5 @@
-﻿@model Web.Models.ViewArticleViewModel
+﻿@using Web.Models
+@model ViewArticleViewModel
 @{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
@@ -30,14 +31,14 @@
                     <div class="viewhead-inner">
                         <div class="topicwordlist set">
                             <ul class="topicwordlistul">
-                                @*                                @foreach (var tag in Model.Tags)
+                                @foreach (TagViewModel tag in Model.Tags)
                                     {
                                         <li class="topicwordlistli">
                                             <a href="" class="topicword">
                                                 @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
                                             </a>
                                         </li>
-                                    }*@
+                                }
                             </ul>
                         </div>
                     </div>
@@ -51,7 +52,8 @@
                         </div>
                         <div class="navbar-txt">
                             <div class="article-title navbar-title"><a href="">@if (Model != null)
-                            {@Model.Title}</a></div>
+                                                                               {@Model.Title
+                                                                               }</a></div>
                         </div>
                         <div class="navbar-count">
                             <span class="navbar-countfv">
@@ -61,7 +63,8 @@
                             <span class="navbar-countpv">
                                 <span class="navbar-countnum">
                                     @if (Model != null)
-                                    {@Model.PageView}
+                                    {@Model.PageView
+                                    }
                             </span>
                             <span class="navbar-countlabel">view</span>
                         </span>
@@ -149,7 +152,19 @@
         <div class="separator1"><hr></div>
         <br />
         <a href="https://twitter.com/share" class="twitter-share-button" data-via="twitterapi" data-lang="en">Tweet</a>
-        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+                <script>
+                    !function(d, s, id)
+                    {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (!d.getElementById(id))
+                        {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "https://platform.twitter.com/widgets.js";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, "script", "twitter-wjs");
+                </script>
     </div>
     <div class="dropbox">
         <div class="postit-pasting"></div>
@@ -159,31 +174,31 @@
             <h2 class="postit-title">ふせんを貼る</h2>
             <div class="postit-list">
                 <div>
-                    <img src="~/Content/imgs/Home/surprized.png" class="surprized">
+                <img src="~/Content/imgs/Home/surprized.png" class="surprized">
                     <div class="surprized">ビックリ</div>
                 </div>
                 <div>
-                    <img src="~/Content/imgs/Home/anger.png" class="anger">
+                <img src="~/Content/imgs/Home/anger.png" class="anger">
                     <div class="anger">怒る</div>
                 </div>
                 <div>
-                    <img src="~/Content/imgs/Home/fun.png" class="fun">
+                <img src="~/Content/imgs/Home/fun.png" class="fun">
                     <div class="fun">面白い</div>
                 </div>
                 <div>
-                    <img src="~/Content/imgs/Home/bethink.png" class="bethink">
+                <img src="~/Content/imgs/Home/bethink.png" class="bethink">
                     <div class="bethink">なるほど</div>
                 </div>
                 <div>
-                    <img src="~/Content/imgs/Home/good.png" class="good">
+                <img src="~/Content/imgs/Home/good.png" class="good">
                     <div class="good">いいね</div>
                 </div>
                 <div>
-                    <img src="~/Content/imgs/Home/sad.png" class="sad">
+                <img src="~/Content/imgs/Home/sad.png" class="sad">
                     <div class="sad">悲しい</div>
                 </div>
                 <div>
-                    <img src="~/Content/imgs/Home/noidea.png" class="noidea">
+                <img src="~/Content/imgs/Home/noidea.png" class="noidea">
                     <div class="noidea">わからない</div>
                 </div>
 
