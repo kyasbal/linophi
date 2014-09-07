@@ -8,6 +8,9 @@ var frameManager;
 $(function () {
     frameManager = new FrameManager();
 });
+window.load = function () {
+    frameManager.updatePosition();
+};
 
 var FrameManager = (function () {
     function FrameManager() {
@@ -49,11 +52,12 @@ var FrameManager = (function () {
         });
         moveList.forEach(function (st) {
             var offset = $(".preview-body .iframe-box-" + st).offset();
-            var top = offset.top - $(".preview-body").offset().top;
+            var container = $(".preview-body").offset();
+            var top = offset.top - container.top;
             $(".preview-iframes .iframe-" + st).css({
                 "position": "absolute",
                 "top": top,
-                "left": offset.left
+                "left": offset.left - container.left
             });
             return true;
         });

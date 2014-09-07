@@ -4,6 +4,10 @@ $(() =>
     frameManager = new FrameManager();
 
 });
+window.load = function()
+{
+    frameManager.updatePosition();
+}
 interface HTMLElement
 {
     src:string;
@@ -59,12 +63,13 @@ class FrameManager
         moveList.forEach((st) =>
         {
             var offset = $(".preview-body .iframe-box-" + st).offset();
-            var top =offset.top-$(".preview-body").offset().top;
+            var container = $(".preview-body").offset();
+            var top = offset.top - container.top;
             $(".preview-iframes .iframe-" + st).css({
                 "position": "absolute",
-                "top": top ,
-                "left": offset.left
-            });
+                "top": top,
+                "left": offset.left - container.left
+        });
             return true;
         });
     }
