@@ -4,28 +4,28 @@
 .article-container h1 {
   box-shadow: -18px 0 #afdbcc, -28px 0 #7ac2a6;
   font-size: xx-large;
-  margin: 1em 0 1em 0;
+  margin-bottom: 1em;
   padding: 0 20px;
   background-color: ghostwhite;
 }
 .article-container h2 {
   box-shadow: -18px 0 #f0f8ff, -28px 0 #87ceeb;
   font-size: x-large;
-  margin: 1em 0 1em 0;
+  margin-bottom: 1em;
   padding: 0 20px;
   background-color: ghostwhite;
 }
 .article-container h3 {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   font-size: large;
-  margin: 1em 0 1em 0;
+  margin-bottom: 1em;
   padding: 0 20px 5px 20px;
   background-color: ghostwhite;
 }
 .article-container h4 {
   font-weight: bold;
   font-size: larger;
-  margin: 1em 0 1em 0;
+  margin-bottom: 1em;
   padding: 0 20px;
   background-color: ghostwhite;
 }
@@ -34,11 +34,11 @@
   font-weight: bold;
 }
 .article-container p {
-  margin: 1em 0 1em 0;
+  margin-bottom: 1em;
 }
 .article-container .x_quote,
 .article-container .quote {
-  margin: 20px 20px;
+  margin: 0 20px 20px;
   border-left: solid 4px #808080;
   padding: 5px;
 }
@@ -46,7 +46,6 @@
 .article-container .quote .x_source,
 .article-container .x_quote .source,
 .article-container .quote .source {
-  margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
   color: gray;

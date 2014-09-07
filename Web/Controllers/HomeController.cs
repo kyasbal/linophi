@@ -269,5 +269,15 @@ namespace Web.Controllers
             }
             return View("MyPage",new MyPageViewModel() { articles = articles.ToArray() });
         }
+
+        public ActionResult PrivacyPolicy()
+        {
+            return View();
+        }
+
+        public ActionResult TermsOfService()
+        {
+            return View();
+        }
     }
 }

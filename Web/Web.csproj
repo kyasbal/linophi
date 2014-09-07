@@ -189,6 +189,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\jquery.alertwindow.js" />
     <Content Include="Content\css\Account\login.css">
       <DependentUpon>login.less</DependentUpon>
     </Content>
@@ -197,6 +198,12 @@
     </Content>
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\Home\PrivacyPolicy_TermsOfService.css">
+      <DependentUpon>PrivacyPolicy_TermsOfService.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\PrivacyPolicy_TermsOfService.min.css">
+      <DependentUpon>PrivacyPolicy_TermsOfService.css</DependentUpon>
+    </Content>
     <Content Include="Scripts\Chart.js" />
     <Content Include="Content\css\Edit\footer.css">
       <DependentUpon>footer.less</DependentUpon>
@@ -347,6 +354,10 @@
     <Content Include="Content\css\Markup.css.map">
       <DependentUpon>Markup.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\PrivacyPolicy_TermsOfService.less" />
+    <Content Include="Content\css\Home\PrivacyPolicy_TermsOfService.css.map">
+      <DependentUpon>PrivacyPolicy_TermsOfService.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
@@ -494,6 +505,8 @@
     <Content Include="Startup\Startup.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Home\TermsOfService.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -519,6 +532,7 @@
     <TypeScriptCompile Include="Scripts\Novel\novel-viewer.ts" />
     <TypeScriptCompile Include="Scripts\Novel\Paragraph.ts" />
     <TypeScriptCompile Include="Scripts\Novel\ParagraphFactory.ts" />
+    <TypeScriptCompile Include="Scripts\Shared\Header.ts" />
     <TypeScriptCompile Include="Scripts\typings\caret-util\caret-util.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery.cookie\jquery.cookie.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery.tooltipster\jquery.tooltipster.d.ts" />

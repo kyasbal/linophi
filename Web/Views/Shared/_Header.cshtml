@@ -1,4 +1,6 @@
 ﻿@using Web.Utility
+
+
 <header class="header">
     <div class="menu">
         @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "search" }))
@@ -10,32 +12,33 @@
         }
         <div id="dropmenu">
             <ul>
-                <li>@Html.ActionLink("トップへ", "Index", "Home")</li>
-                |
-                <li>@Html.ActionLink("投稿する", "RedirectToEdit", "Edit")</li>
-                |
-                <li>
-                    @{
-                        if (!Request.IsAuthenticated)
-                        {
-                            using (Html.BeginForm("Login", "Account", FormMethod.Get, new { @class = "login-form" }))
-                            {
-                                @Html.Hidden("returnUrl", Request.Url)
-                                <a  onclick="$('.login-form').submit();">ログイン</a>
-                            }
-                        }
-                        else
-                        {
-                            @Html.GravatarImg(Request, 24)
+                <li><span class="head-button">@Html.ActionLink("トップへ", "Index", "Home")</span></li>
+                
+                <li><span class="head-button">@Html.ActionLink("投稿する", "RedirectToEdit", "Edit")</span></li>
+                
+                <li><span class="head-button">
+    @{
+        if (!Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("Login", "Account", FormMethod.Get, new { @class = "login-form" }))
+            {
+                @Html.Hidden("returnUrl", Request.Url)
+                <a onclick="$('.login-form').submit();">ログイン</a>
+            }
+        }
+        else
+        {
+            @Html.GravatarImg(Request, 24)
 
-                            <a href="/MyPage">@WebPageStatic.GetUserNickName(Request)</a>
-                            @*                            <ul>*@
-                            @*                                <li>@Html.ActionLink("設定", "Config", "Account")</li>*@
-                            @*                                <li>@Html.ActionLink("ログアウト", "Logout", "Account")</li>*@
-                            @*                            </ul>*@
-                        }
-                    }
-                </li>
+            <a href="/MyPage">@WebPageStatic.GetUserNickName(Request)</a>
+            @*                            <ul>*@
+            @*                                <li>@Html.ActionLink("設定", "Config", "Account")</li>*@
+            @*                                <li>@Html.ActionLink("ログアウト", "Logout", "Account")</li>*@
+            @*                            </ul>*@
+        }
+    }
+</span>
+</li>
             </ul>
         </div>
     </div>
