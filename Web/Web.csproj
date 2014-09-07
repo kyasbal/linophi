@@ -245,6 +245,12 @@
     <Content Include="Content\css\Home\viewarticle.min.css">
       <DependentUpon>viewarticle.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Markup.css">
+      <DependentUpon>Markup.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Markup.min.css">
+      <DependentUpon>Markup.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Novel\Markup.css">
       <DependentUpon>Markup.less</DependentUpon>
     </Content>
@@ -336,6 +342,10 @@
     <Content Include="Content\css\Home\MyPage.css.map">
       <DependentUpon>MyPage.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Markup.less" />
+    <Content Include="Content\css\Markup.css.map">
+      <DependentUpon>Markup.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
@@ -396,6 +406,10 @@
     <Compile Include="Migrations\201409031548165_AddStupidUpdate.cs" />
     <Compile Include="Migrations\201409031548165_AddStupidUpdate.Designer.cs">
       <DependentUpon>201409031548165_AddStupidUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409070206073_AddIsDraft.cs" />
+    <Compile Include="Migrations\201409070206073_AddIsDraft.Designer.cs">
+      <DependentUpon>201409070206073_AddIsDraft.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -472,6 +486,9 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\more.cshtml" />
     <Content Include="Views\Home\MyPage.cshtml" />
+    <Content Include="Startup\Startup.cmd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -512,6 +529,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201409031548165_AddStupidUpdate.resx">
       <DependentUpon>201409031548165_AddStupidUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409070206073_AddIsDraft.resx">
+      <DependentUpon>201409070206073_AddIsDraft.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

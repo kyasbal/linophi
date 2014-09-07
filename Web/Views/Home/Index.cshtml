@@ -1,7 +1,7 @@
 ﻿@using Web.Models
 @model ViewArticleViewModel
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = Model.Title;
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
 @section JS
@@ -21,6 +21,7 @@
 {
     <link href="~/Content/css/Novel/Markup.css" rel="stylesheet" />
     <link href="~/Content/css/Home/viewarticle.css" rel="stylesheet" />
+    <link href="~/Content/css/Markup.css" rel="stylesheet" />
 }
 
 <div class="container">
@@ -96,7 +97,7 @@
             </div>
         </div>
         <div class="contentswrapper set">
-            <div class="main">
+            <article class="main">
                 <div>
                     <div class="widgetlist">
                         <div class="article-container widget widgettypetitle">
@@ -152,25 +153,11 @@
                 <br />
                 <div class="separator1"><hr></div>
                 <br />
-                <a href="https://twitter.com/share" class="twitter-share-button" data-via="twitterapi" data-lang="en">Tweet</a>
-                <script>
-                    !function(d, s, id)
-                    {
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        if (!d.getElementById(id))
-                        {
-                            js = d.createElement(s);
-                            js.id = id;
-                            js.src = "https://platform.twitter.com/widgets.js";
-                            fjs.parentNode.insertBefore(js, fjs);
-                        }
-                    }(document, "script", "twitter-wjs");
-                </script>
-            </div>
+            </article>
             <div class="dropbox">
                 <div class="postit-pasting"></div>
             </div>
-            <div class="postit">
+            <nav class="postit">
                 <div class="postit-contents">
                     <h2 class="postit-title">ふせんを貼る</h2>
                     <div class="postit-list">
@@ -205,7 +192,7 @@
 
                     </div>
                 </div>
-            </div>
+            </nav>
         </div>
     </div>
 </div>

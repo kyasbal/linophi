@@ -13,6 +13,7 @@
     <link href="~/Content/css/Edit/index.css" rel="stylesheet" />
     <link href="~/Content/css/Novel/novel-editor.css" rel="stylesheet" />
     <link href="~/Content/css/Novel/Markup.css" rel="stylesheet" />
+    <link href="~/Content/css/Markup.css" rel="stylesheet" />
 }
 
 @section JS
@@ -60,13 +61,15 @@
 
         //リアルタイムプレビュー
         <div class="edit-preview-container">
-            <div class="edit-preview-container-inner">
+            <h1>プレビュー</h1>
+            <div class="edit-preview-container-inner article-container">
                 <div class="edit-preview preview-body"></div>
                 <div class="preview-iframes"></div>
             </div>
         </div>
 
         <div class="edit-text-container">
+            <h1>編集</h1>
             <textarea class="edit-text edit-context" placeholder="textarea">
                 @if (Model != null)
                 {

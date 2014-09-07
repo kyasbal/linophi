@@ -38,6 +38,8 @@ namespace Web.Models
         public DateTime CreationTime { get; set; }
 
         public DateTime UpdateTime { get; set; }
+
+        public bool IsDraft { get; set; }
     }
 
     public class ArticleTagModel
