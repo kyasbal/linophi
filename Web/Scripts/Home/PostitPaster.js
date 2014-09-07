@@ -77,6 +77,33 @@ var labelSourceParser;
 $(function () {
     labelSourceParser = new LabelSourceParser();
 });
+
+function labelBoxController(speciesOfLabel, boxClass) {
+    var boxSelector = ".dropbox ." + boxClass;
+    if (43 * speciesOfLabel >= $(boxSelector).height()) {
+        var sortArray = [];
+        $(boxSelector + ' > [class]').each(function (i, element) {
+            sortArray[sortArray.length] = element;
+        });
+        sortArray.reverse();
+
+        $(boxSelector + ' > *').css({
+            "margin-right": "-53px",
+            "float": "left"
+        });
+        $(boxSelector + ':after').css({
+            "content": "''",
+            "display": "block",
+            "clear": "both"
+        });
+        $(boxSelector).html("");
+
+        for (var i = 0, len = sortArray.length; i < len; i++) {
+            $(boxSelector).append(sortArray[i]);
+        }
+    }
+}
+
 $(window).load(function () {
     var htmlHeight = $('.foot').offset().top + $('.foot').outerHeight();
 
@@ -117,6 +144,8 @@ $(window).load(function () {
         labelSourceParser.eachByParagraph(className.substr(4), function (emotion, count, itr) {
             $('.dropbox > .' + className).append('<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' + count + '</span></div>');
         });
+
+        labelBoxController($('.dropbox > .' + className + ' > *').length, className);
     });
 
     // 貼り付けモードへ
@@ -200,25 +229,26 @@ $(window).load(function () {
                 var postitExistence = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ') > .' + labelType).length;
 
                 if (pHeights <= posY && posY <= pHeights + pHeight) {
-                    if (postitExistence) {
-                        labelSourceParser.callByParagraph(thisClass.substr(4), function () {
-                            $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1));
-                        });
-                    } else {
-                        $target.append('<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;"><span>1</span></div>');
-                    }
-
                     $.ajax({
                         type: "post",
                         url: "api/Label/AttachLabel",
                         data: {
                             "ArticleId": articleId,
                             "ParagraphId": thisClass.substr(4),
-                            "LabelType": labelType,
-                            "DebugMode": true
+                            "LabelType": labelType
                         },
                         success: function (data) {
-                            console.log(data);
+                            if (data.isSucceed) {
+                                if (postitExistence) {
+                                    labelSourceParser.callByParagraph(thisClass.substr(4), function () {
+                                        $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1));
+                                    });
+                                } else {
+                                    $target.append('<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;"><span>1</span></div>');
+                                }
+                            } else {
+                                $().alertwindow("１つの段落に２つ以上のふせんをつける事はできません", "ok"); // jquery.alertwindow.js
+                            }
                         }
                     });
                 }

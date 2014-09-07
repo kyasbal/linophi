@@ -189,6 +189,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\jquery.alertwindow.js" />
     <Content Include="Content\css\Account\login.css">
       <DependentUpon>login.less</DependentUpon>
     </Content>
@@ -397,6 +398,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\AttachCommentRequest.cs" />
+    <Compile Include="Api\CommentController.cs" />
     <Compile Include="Api\Content\ContentUploadController.cs" />
     <Compile Include="Api\Label\LabelController.cs" />
     <Compile Include="Api\Response\Article\ExistenceRequest.cs" />
@@ -436,6 +439,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Storage\ArticleBodyTableManager.cs" />
+    <Compile Include="Storage\ArticleCommentTableManager.cs" />
     <Compile Include="Storage\ArticleMarkupTableManager.cs" />
     <Compile Include="Storage\ArticleThumbnailManager.cs" />
     <Compile Include="Storage\Connection\BlobStorageConnection.cs" />

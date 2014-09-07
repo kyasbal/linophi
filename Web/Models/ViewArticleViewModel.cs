@@ -26,6 +26,7 @@ namespace Web.Models
         public int LabelCount { get; set; }
         public bool UseThumbnail { get; set; }
         public string ArticleId { get; set; }
+        public string CommentInfo { get; set; }
     }
 
     public class TagViewModel

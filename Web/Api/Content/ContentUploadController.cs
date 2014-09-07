@@ -30,7 +30,7 @@ namespace Web.Api.Content
         }
 
         [System.Web.Mvc.HttpGet]
-        public async Task<ActionResult> Thubnail(string articleId)
+        public async Task<ActionResult> Thumbnail(string articleId)
         {
             ArticleThumbnailManager manager=new ArticleThumbnailManager(new BlobStorageConnection());
             return new ImageResult(await manager.DownloadThumbnail(articleId), "image/jpeg");
