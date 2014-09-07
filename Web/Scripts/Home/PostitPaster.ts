@@ -1,4 +1,4 @@
-﻿
+﻿//感情のリスト[surprised,anger,fun,bethink,good,sad,noidea]
 interface EventTarget
 {
     src: string;
@@ -13,13 +13,27 @@ interface ParagraphCallHandler
     ():void;
 }
 
+class  CountWholeEmotionsResult
+{
+    surprised: number=0;
+    anger: number=0;
+    fun: number=0;
+    bethink: number=0;
+    good: number=0;
+    sad: number=0;
+    noidea: number=0;
+    sum:number=0;
+}
+
 interface ILabelSourceParser
 {
     getLabelCount(paragraphId: string, emotion: string): number;
 
     eachByParagraph(paragraphId: string, hander: ParagraphEachHandler): void;
 
-    callByParagraph(paragraphId:string,handler:ParagraphCallHandler):void;
+    callByParagraph(paragraphId: string, handler: ParagraphCallHandler): void;
+
+    countWholeEmotions():CountWholeEmotionsResult;
 }
 
 class LabelSourceParser implements ILabelSourceParser
@@ -37,7 +51,6 @@ class LabelSourceParser implements ILabelSourceParser
             if (this.jsonSource[i]["ParagraphId"]==paragraphId)
             {
                 var data = JSON.parse(this.jsonSource[i]["Data"]);
-                data = _.sortBy(data, d => (Object)(d).Value).reverse();
                 for (var j = 0; j < data.length; j++)
                 {
                     if (data[j].Key == emotion)
@@ -77,6 +90,20 @@ class LabelSourceParser implements ILabelSourceParser
             }
         }
         return null;
+    }
+
+    countWholeEmotions(): CountWholeEmotionsResult
+    {
+        var result: CountWholeEmotionsResult = new CountWholeEmotionsResult();
+        for (var i = 0; i < this.jsonSource.length; i++) {
+                var data = JSON.parse(this.jsonSource[i]["Data"]);
+            for (var j = 0; j < data.length; j++)
+            {
+                result[data[j].Key] += data[j].Value;
+                result["sum"] += data[j].Value;
+            }
+        }
+        return result;
     }
 }
 

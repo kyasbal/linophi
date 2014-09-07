@@ -9,12 +9,14 @@
     @*
         <script src="~/Scripts/jquery-ui.min.js"></script>
     *@
+<script src="~/Scripts/Chart.js"></script>
     <script src="~/Scripts/Home/PostitPaster.js"></script>
     <script src="~/Scripts/Novel/Markups.js"></script>
     <script src="~/Scripts/Novel/novel-editor.js"></script>
     <script src="~/Scripts/Novel/ParagraphFactory.js"></script>
     <script src="~/Scripts/Novel/novel-viewer.js"></script>
     <script src="~/Scripts/Home/MovieFixation.js"></script>
+    <script src="~/Scripts/Home/viewarticle.js"></script>
 
 }
 @section CSS
@@ -49,7 +51,7 @@
                 <nav class="navbar set">
                     <div class="navbar-main navbar-mainwiththumb">
                         <div class="navbar-thumb">
-                            <img src="~/Content/imgs/Home/red.jpg" alt="">
+                            <canvas id="article-graph" width="250" height="250"></canvas>
                         </div>
                         <div class="navbar-txt">
                             <div class="article-title navbar-title"><a href="">@if (Model != null)
