@@ -63,6 +63,11 @@ namespace Web.Controllers
             return View(vm);
         }
 
+        /// <summary>
+        /// アップロード時のアクションメソッド
+        /// </summary>
+        /// <param name="vm"></param>
+        /// <returns></returns>
         [Authorize]
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -72,6 +77,7 @@ namespace Web.Controllers
             var connection = new BlobStorageConnection();
             ArticleBodyTableManager abtm = new ArticleBodyTableManager(connection);
             ArticleMarkupTableManager amtm = new ArticleMarkupTableManager(connection);
+            ArticleThumbnailManager atm=new ArticleThumbnailManager(connection);
             if (vm.Mode.Equals("new"))
             {
                 if (!ArticleController.IsValidTitle(vm.Title, context).IsOK) return RedirectToAction("Page404", "Home");
@@ -97,9 +103,10 @@ namespace Web.Controllers
                 }
                 //記事の追加
                 context.Articles.Add(article);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
                 await abtm.AddArticle(article.ArticleModelId, vm.Body);
                 await amtm.AddMarkupAsync(article.ArticleModelId, vm.Markup);
+                await atm.UploadThumbnail(article.ArticleModelId, vm.Thumbnail);
                 return Redirect("~/" + article.ArticleModelId);
             }else if (vm.Mode.Equals("edit"))
             {
@@ -130,6 +137,7 @@ namespace Web.Controllers
                 await context.SaveChangesAsync();
                 await abtm.AddArticle(articleModel.ArticleModelId, vm.Body);
                 await amtm.AddMarkupAsync(articleModel.ArticleModelId, vm.Markup);
+                await atm.UploadThumbnail(articleModel.ArticleModelId, vm.Thumbnail);
                 await lm.RemoveArticleLabelAsync(vm.Id);
                 return Redirect("~/" + vm.Id);
             }

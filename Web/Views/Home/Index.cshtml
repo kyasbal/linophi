@@ -52,6 +52,10 @@
                     <div class="navbar-main navbar-mainwiththumb">
                         <div class="navbar-thumb">
                             <canvas id="article-graph" width="250" height="250"></canvas>
+                            @if(Model.UseThumbnail)
+                            {
+                                <img src="@("/Pages/ContentUpload/Thubnail?articleId="+Model.ArticleId)"/>
+                            }
                         </div>
                         <div class="navbar-txt">
                             <div class="article-title navbar-title"><a href="">@if (Model != null)

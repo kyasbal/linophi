@@ -28,5 +28,12 @@ namespace Web.Api.Content
             var st = await manager.AddUrlResourceAsync(url,true);
             return new ImageResult(st.Item1, st.Item2);
         }
+
+        [System.Web.Mvc.HttpGet]
+        public async Task<ActionResult> Thubnail(string articleId)
+        {
+            ArticleThumbnailManager manager=new ArticleThumbnailManager(new BlobStorageConnection());
+            return new ImageResult(await manager.DownloadThumbnail(articleId), "image/jpeg");
+        }
     }
 }

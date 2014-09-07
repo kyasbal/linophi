@@ -24,6 +24,8 @@ namespace Web.Models
         public IEnumerable<TagViewModel> Tags { get; set; }
         public MvcHtmlString Author_IconTag { get; set; }
         public int LabelCount { get; set; }
+        public bool UseThumbnail { get; set; }
+        public string ArticleId { get; set; }
     }
 
     public class TagViewModel
