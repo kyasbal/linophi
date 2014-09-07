@@ -18,18 +18,33 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-
+        /// <summary>
+        /// 記事表示用のVMを生成するメソッド
+        /// </summary>
+        /// <param name="articleId"></param>
+        /// <returns></returns>
         private async Task<ViewArticleViewModel> getArticleViewModel(string articleId)
         {
             ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
-            var article = context.Articles.FirstOrDefault(a => a.ArticleModelId.Equals(articleId));
+            var article =  await context.Articles.FindAsync(articleId);
             if (article == null) return null;
-            context.Entry(article).Collection(c=>c.Tags).Load();
+            await context.Entry(article).Collection(c=>c.Tags).LoadAsync();
             ArticleBodyTableManager manager=new ArticleBodyTableManager(new BlobStorageConnection());
             LabelTableManager ltm=new LabelTableManager(new TableStorageConnection());
-            var author=await HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByNameAsync(article.AuthorID);
-            article.PageView++;
-            context.SaveChanges();
+            var author =
+                await
+                    HttpContext.GetOwinContext()
+                        .GetUserManager<ApplicationUserManager>()
+                        .FindByNameAsync(article.AuthorID);
+            if (article.IsDraft)
+            {
+                if (article.AuthorID != User.Identity.Name) return null;
+            }
+            else
+            {
+                article.PageView++;
+            }
+            await context.SaveChangesAsync();
             IGravatarLoader gLoader=new BasicGravatarLoader(author.Email);
             return new ViewArticleViewModel()
             {
@@ -40,23 +55,31 @@ namespace Web.Controllers
                 Title = article.Title,
                 Content =await manager.GetArticleBody(article.ArticleModelId),
                 LabelInfo=ltm.GetLabelsJson(articleId),
-                Tags = getArticleTagModels(article),
+                Tags =await getArticleTagModels(article),
                 LabelCount = article.LabelCount,
                 Article_Date = article.CreationTime.ToShortDateString(),
                 Article_UpDate = article.UpdateTime.ToShortDateString()
             };
         }
 
-        private IEnumerable<TagViewModel> getArticleTagModels(ArticleModel article)
+        private async Task<IEnumerable<TagViewModel>> getArticleTagModels(ArticleModel article)
         {
             ApplicationDbContext context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
-
+            int tagCount = article.Tags.Count;
+            var tagVms = new TagViewModel[tagCount];
+            int count = 0;
             foreach (var tagRef in article.Tags)
-            
             {
-                context.Entry(tagRef).Collection(c=>c.Articles).Load();
-                yield return new TagViewModel(){ArticleCount = tagRef.Articles.Count,TagId = tagRef.ArticleTagModelId,TagName = tagRef.TagName};
+                await context.Entry(tagRef).Collection(c => c.Articles).LoadAsync();
+                tagVms[count] = new TagViewModel()
+                {
+                    ArticleCount = tagRef.Articles.Count,
+                    TagId = tagRef.ArticleTagModelId,
+                    TagName = tagRef.TagName
+                };
+                count++;
             }
+            return tagVms;
         }
 
         // GET: Home
@@ -70,6 +93,7 @@ namespace Web.Controllers
             {
                 var vm = await getArticleViewModel(id);
                 if (vm == null || vm.Content == null) return Redirect("/");
+                
                 return View(vm);
             }
         }
@@ -85,7 +109,7 @@ namespace Web.Controllers
             string[] queries=searchText.Split(' ');
             var context = Request.GetOwinContext().Get<ApplicationDbContext>();
             string first = queries[0];
-            var result=context.Articles.Where((f) => f.Title.Contains(first));
+            var result=context.Articles.Where((f) => f.Title.Contains(first)&&!f.IsDraft);
             for (int index = 1; index < Math.Min(4,queries.Length); index++)
             {
                 var query = queries[index];

@@ -14,11 +14,11 @@
     <AzureEnableIntelliTrace>False</AzureEnableIntelliTrace>
     <AzureEnableProfiling>True</AzureEnableProfiling>
     <AzureServiceConfiguration>Local</AzureServiceConfiguration>
-    <AzureSolutionConfiguration>Debug</AzureSolutionConfiguration>
+    <AzureSolutionConfiguration>Release</AzureSolutionConfiguration>
     <AzureStorageAccountLabel>linophi</AzureStorageAccountLabel>
     <AzureStorageAccountName>linophi</AzureStorageAccountName>
     <AzureAppendTimestampToDeploymentLabel>True</AzureAppendTimestampToDeploymentLabel>
-    <EnableRemoteDebugger>True</EnableRemoteDebugger>
+    <EnableRemoteDebugger>False</EnableRemoteDebugger>
     <RemoteDebuggerConnectorCertificateThumbprint>AE17680172051D1552263CC71726DD255B0F28D4</RemoteDebuggerConnectorCertificateThumbprint>
   </PropertyGroup>
 </Project>
