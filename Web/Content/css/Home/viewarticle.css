@@ -114,7 +114,7 @@ input[type="text"] {
 .container .contents .top {
   margin-bottom: 30px;
   border-bottom: 1px solid #f2f2f2;
-  background-color: #fdf8f2;
+  background-color: #f0fff0;
 }
 .container .contents .top-inner {
   width: 960px;
@@ -335,12 +335,15 @@ input[type="text"] {
   vertical-align: middle;
 }
 .container .contents .contentswrapper {
-  width: 960px;
+  width: 1020px;
   margin: 0 auto;
 }
 .container .contents .contentswrapper .main {
+  background-color: aliceblue;
   float: left;
-  width: 635px;
+  width: 605px;
+  padding-left: 40px;
+  padding-right: 40px;
   padding-bottom: 40px;
 }
 .container .contents .contentswrapper .main .widgetlist {
@@ -480,9 +483,8 @@ input[type="text"] {
 }
 .container .contents .dropbox {
   position: relative;
-  margin-left: 20px;
+  background-color: white;
   float: left;
-  background: #F0EBCE;
   width: 300px;
   padding-bottom: 1000000px;
   margin-bottom: -1000000px;
@@ -498,6 +500,7 @@ input[type="text"] {
   transition-duration: 500ms;
 }
 .container .contents .dropbox > * > * {
+  margin-left: -20px;
   padding: 10px 15px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;

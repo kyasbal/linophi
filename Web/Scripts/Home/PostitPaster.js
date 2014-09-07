@@ -47,7 +47,7 @@
                 }).reverse();
 
                 for (var i = 0; i < data.length; i++) {
-                    $('.dropbox > .' + className).append('<div class="' + data[i].Key + '" style="background-image:url(\'http://localhost:4737/Content/imgs/Home/' + data[i].Key + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' + data[i].Value + '</span></div>');
+                    $('.dropbox > .' + className).append('<div class="' + data[i].Key + '" style="background-image:url(\'/Content/imgs/Home/' + data[i].Key + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' + data[i].Value + '</span></div>');
                 }
             }
         }

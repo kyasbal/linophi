@@ -15,19 +15,18 @@ namespace Web.Api.Content
 {
     public class ContentUploadController : Controller
     {
-        public async Task<ActionResult> UploadFromExternal(string url)
+        public async Task<ActionResult> ServerCache(string url)
         {
             ImageUploaderManager manager=new ImageUploaderManager(new BlobStorageConnection());
-            var st=await manager.AddUrlResourceAsync(url);
+            var st=await manager.AddUrlResourceAsync(url,false);
             return new ImageResult(st.Item1, st.Item2);
         }
 
-        public ActionResult FromServerCache(string url)
+        public async Task<ActionResult> LargeServerCache(string url)
         {
             ImageUploaderManager manager = new ImageUploaderManager(new BlobStorageConnection());
-            string contentType = "";
-            var st = manager.DownloadUrlResource(url, out contentType);
-            return new ImageResult(st, contentType);
+            var st = await manager.AddUrlResourceAsync(url,true);
+            return new ImageResult(st.Item1, st.Item2);
         }
     }
 }

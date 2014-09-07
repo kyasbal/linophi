@@ -57,28 +57,10 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             {
                 var data = JSON.parse(postitJson[j]["Data"]);
                 data=_.sortBy(data, d => (Object)(d).Value).reverse();
-                /*
-                    ここでdataがソートされたと仮定
-                    例えば、
-                    data = {
-                        "surprised": 21, 
-                        "anger": 1,
-                        "bethink": 2,
-                        "fun": 5
-                    }
-                    を
-                    data = {
-                        "surprised": 21, 
-                        "fun": 5,
-                        "bethink": 2,
-                        "anger": 1                        
-                   }
-                    にしたい
-                */
 
                 for (var i=0;i<data.length;i++) {
                     $('.dropbox > .' + className).append(
-                        '<div class="' + data[i].Key + '" style="background-image:url(\'http://localhost:4737/Content/imgs/Home/' + data[i].Key+ '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' +
+                        '<div class="' + data[i].Key + '" style="background-image:url(\'/Content/imgs/Home/' + data[i].Key+ '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' +
                         data[i].Value +
                         '</span></div>'
                     );
