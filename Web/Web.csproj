@@ -197,6 +197,7 @@
     </Content>
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\imgs\loupe.svg" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Content\css\Edit\footer.css">
       <DependentUpon>footer.less</DependentUpon>
