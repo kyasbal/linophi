@@ -22,5 +22,7 @@ namespace Web.Models
         public string Mode { get; set; }
 
         public string Id { get; set; }
+
+        public HttpPostedFileBase Thumbnail { get; set; }
     }
 }

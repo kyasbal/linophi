@@ -105,6 +105,8 @@ namespace Web.Storage
             return result;
         }
 
+        
+
         public Stream DownloadUrlResource(string url, out string contentType)
         {
             var hash = ComputeMD5(url);

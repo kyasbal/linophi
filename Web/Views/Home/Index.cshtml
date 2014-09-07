@@ -9,6 +9,7 @@
     @*
         <script src="~/Scripts/jquery-ui.min.js"></script>
     *@
+<script src="~/Scripts/Chart.js"></script>
 <script src="~/Scripts/jquery.alertwindow.js"></script>
     <script src="~/Scripts/Home/PostitPaster.js"></script>
     <script src="~/Scripts/Novel/Markups.js"></script>
@@ -16,6 +17,7 @@
     <script src="~/Scripts/Novel/ParagraphFactory.js"></script>
     <script src="~/Scripts/Novel/novel-viewer.js"></script>
     <script src="~/Scripts/Home/MovieFixation.js"></script>
+    <script src="~/Scripts/Home/viewarticle.js"></script>
 
 }
 @section CSS
@@ -50,7 +52,11 @@
                 <nav class="navbar set">
                     <div class="navbar-main navbar-mainwiththumb">
                         <div class="navbar-thumb">
-                            <img src="~/Content/imgs/Home/red.jpg" alt="">
+                            <canvas id="article-graph" width="250" height="250"></canvas>
+                            @if(Model.UseThumbnail)
+                            {
+                                <img src="@("/Pages/ContentUpload/Thubnail?articleId="+Model.ArticleId)"/>
+                            }
                         </div>
                         <div class="navbar-txt">
                             <div class="article-title navbar-title"><a href="">@if (Model != null)
@@ -162,34 +168,34 @@
                 <div class="postit-contents">
                     <h2 class="postit-title">ふせんを貼る</h2>
                     <div class="postit-list">
-                        <div>
-                            <img src="~/Content/imgs/Home/surprised.png" class="surprised">
-                            <div class="surprised">ビックリ</div>
-                        </div>
-                        <div>
-                            <img src="~/Content/imgs/Home/anger.png" class="anger">
-                            <div class="anger">怒る</div>
-                        </div>
-                        <div>
-                            <img src="~/Content/imgs/Home/fun.png" class="fun">
-                            <div class="fun">面白い</div>
-                        </div>
-                        <div>
-                            <img src="~/Content/imgs/Home/bethink.png" class="bethink">
-                            <div class="bethink">なるほど</div>
-                        </div>
-                        <div>
-                            <img src="~/Content/imgs/Home/good.png" class="good">
-                            <div class="good">いいね</div>
-                        </div>
-                        <div>
-                            <img src="~/Content/imgs/Home/sad.png" class="sad">
-                            <div class="sad">悲しい</div>
-                        </div>
-                        <div>
-                            <img src="~/Content/imgs/Home/noidea.png" class="noidea">
-                            <div class="noidea">わからない</div>
-                        </div>
+                    <div>
+                        <img src="~/Content/imgs/Home/surprised.png" class="surprised">
+                        <div class="surprised">ビックリ</div>
+                    </div>
+                    <div>
+                        <img src="~/Content/imgs/Home/anger.png" class="anger">
+                        <div class="anger">怒る</div>
+                    </div>
+                    <div>
+                        <img src="~/Content/imgs/Home/fun.png" class="fun">
+                        <div class="fun">面白い</div>
+                    </div>
+                    <div>
+                        <img src="~/Content/imgs/Home/bethink.png" class="bethink">
+                        <div class="bethink">なるほど</div>
+                    </div>
+                    <div>
+                        <img src="~/Content/imgs/Home/good.png" class="good">
+                        <div class="good">いいね</div>
+                    </div>
+                    <div>
+                        <img src="~/Content/imgs/Home/sad.png" class="sad">
+                        <div class="sad">悲しい</div>
+                    </div>
+                    <div>
+                        <img src="~/Content/imgs/Home/noidea.png" class="noidea">
+                        <div class="noidea">わからない</div>
+                    </div>
 
                     </div>
                 </div>

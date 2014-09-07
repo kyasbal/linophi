@@ -29,7 +29,9 @@ namespace Web.Controllers
             var article =  await context.Articles.FindAsync(articleId);
             if (article == null) return null;
             await context.Entry(article).Collection(c=>c.Tags).LoadAsync();
-            ArticleBodyTableManager manager=new ArticleBodyTableManager(new BlobStorageConnection());
+            BlobStorageConnection bConnection = new BlobStorageConnection();
+            ArticleBodyTableManager manager=new ArticleBodyTableManager(bConnection);
+            ArticleThumbnailManager thumbnail=new ArticleThumbnailManager(bConnection);
             LabelTableManager ltm=new LabelTableManager(new TableStorageConnection());
             var author =
                 await
@@ -48,6 +50,7 @@ namespace Web.Controllers
             IGravatarLoader gLoader=new BasicGravatarLoader(author.Email);
             return new ViewArticleViewModel()
             {
+                ArticleId = articleId,
                 Author=author.NickName,
                 Author_ID=author.UniqueId,
                 Author_IconTag=gLoader.GetIconTag(64),
@@ -58,7 +61,8 @@ namespace Web.Controllers
                 Tags =await getArticleTagModels(article),
                 LabelCount = article.LabelCount,
                 Article_Date = article.CreationTime.ToShortDateString(),
-                Article_UpDate = article.UpdateTime.ToShortDateString()
+                Article_UpDate = article.UpdateTime.ToShortDateString(),
+                UseThumbnail= thumbnail.CheckThumbnailExist(articleId)
             };
         }
 
@@ -237,6 +241,16 @@ namespace Web.Controllers
             context.Articles.Remove(article);
             await context.SaveChangesAsync();
             return RedirectToAction("MyPage");
+        }
+
+        public ActionResult PrivacyPolicy()
+        {
+            return View();
+        }
+
+        public ActionResult TermsOfService()
+        {
+            return View();
         }
     }
 }

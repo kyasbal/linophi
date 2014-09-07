@@ -47,7 +47,7 @@
 
 <div class="edit-bg-overlay">
 
-    @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new { @class = "edit-form editpage-main" }))
+    @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new { @class = "edit-form editpage-main", enctype = "multipart/form-data" }))
     {
         <div class="edit-title-container">
             <input type="text" name="Title" value="@(Model == null ? " " : Model.Title)" id="title" class="edit-title" placeholder="タイトル" @(Model!=null?"readonly":"") />
@@ -82,7 +82,7 @@
         @Html.Hidden("Body","", new { id = "hidden-body" })
         @Html.Hidden("Markup","", new { id = "hidden-markup" })
         @Html.Hidden("Mode", Model == null ? "new" : "edit",new{id="hidden-mode"})
-
+        <input type="file" name="Thumbnail"/>
         if (Model != null)
         {
             @Html.Hidden("Id", Model.ArticleId)

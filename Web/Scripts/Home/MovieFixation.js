@@ -20,7 +20,7 @@ var nicoMover = new NikoScreenMover();
 $(function () {
     $(".x_youtube-box").each(function (i, e) {
         var classNames = ((Object)(e)).className;
-        var movieId = classNames.replace(/.*x_movie-id-(\w+).*/, "$1");
+        var movieId = classNames.replace(/.*x_movie-id-([\w-]+).*/, "$1");
         e.innerHTML = "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/" + movieId + "\" frameborder=\"0\" allowfullscreen></iframe>";
     });
     $(".x_niko-box").each(function (i, e) {

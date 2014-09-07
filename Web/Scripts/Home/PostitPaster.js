@@ -1,4 +1,19 @@
-﻿var LabelSourceParser = (function () {
+﻿
+var CountWholeEmotionsResult = (function () {
+    function CountWholeEmotionsResult() {
+        this.surprised = 0;
+        this.anger = 0;
+        this.fun = 0;
+        this.bethink = 0;
+        this.good = 0;
+        this.sad = 0;
+        this.noidea = 0;
+        this.sum = 0;
+    }
+    return CountWholeEmotionsResult;
+})();
+
+var LabelSourceParser = (function () {
     function LabelSourceParser() {
         this.jsonSource = JSON.parse($("#label-info").text());
     }
@@ -6,9 +21,6 @@
         for (var i = 0; i < this.jsonSource.length; i++) {
             if (this.jsonSource[i]["ParagraphId"] == paragraphId) {
                 var data = JSON.parse(this.jsonSource[i]["Data"]);
-                data = _.sortBy(data, function (d) {
-                    return (Object)(d).Value;
-                }).reverse();
                 for (var j = 0; j < data.length; j++) {
                     if (data[j].Key == emotion) {
                         return data[j].Value;
@@ -44,6 +56,18 @@
             }
         }
         return null;
+    };
+
+    LabelSourceParser.prototype.countWholeEmotions = function () {
+        var result = new CountWholeEmotionsResult();
+        for (var i = 0; i < this.jsonSource.length; i++) {
+            var data = JSON.parse(this.jsonSource[i]["Data"]);
+            for (var j = 0; j < data.length; j++) {
+                result[data[j].Key] += data[j].Value;
+                result["sum"] += data[j].Value;
+            }
+        }
+        return result;
     };
     return LabelSourceParser;
 })();
