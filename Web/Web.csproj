@@ -222,8 +222,6 @@
     <Content Include="Content\css\Edit\header.min.css" />
     <Content Include="Content\css\Edit\index.css" />
     <Content Include="Content\css\Edit\index.min.css" />
-    <Content Include="Content\css\Edit\ObiEdit.css" />
-    <Content Include="Content\css\Edit\ObiEdit.min.css" />
     <Content Include="Content\css\Home\more.css">
       <DependentUpon>more.less</DependentUpon>
     </Content>
@@ -303,8 +301,6 @@
     <Content Include="Content\css\Edit\header.less" />
     <Content Include="Content\css\Edit\index.css.map" />
     <Content Include="Content\css\Edit\index.less" />
-    <Content Include="Content\css\Edit\ObiEdit.css.map" />
-    <Content Include="Content\css\Edit\ObiEdit.less" />
     <Content Include="Content\css\Novel\novel-editor.css.map" />
     <Content Include="Content\css\Novel\novel-editor.less" />
     <Content Include="Content\css\Novel\novel-viewer.css.map" />
