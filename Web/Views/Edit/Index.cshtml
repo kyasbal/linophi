@@ -69,12 +69,13 @@
 
         <div class="edit-text-container">
             <h1>編集</h1>
+            @*textareaはいじるな*@
             <textarea class="edit-text edit-context" placeholder="textarea">
                 @if (Model != null)
                 {
                     @Html.Raw(Model.MarkupString)
                 }
-            </textarea>
+</textarea>
         </div>
         @Html.AntiForgeryToken()
         @Html.Hidden("Tag","", new { id = "hidden-tag" })
