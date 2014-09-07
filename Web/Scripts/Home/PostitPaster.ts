@@ -86,6 +86,8 @@ $(() =>
 {
     labelSourceParser = new LabelSourceParser();
 });
+
+
 $(window).load(() => // 後読みじゃないとまともにポジションとれない
 {
 
@@ -132,7 +134,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         labelSourceParser.eachByParagraph(className.substr(4), (emotion: string, count: number, itr: number) =>
         {
             $('.dropbox > .' + className).append(
-                '<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' +
+                '<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '.png\');background-size:130px 43px;height:43px;width:130px;z-index:10000;position:relative;"><span>' +
                 count +
                 '</span></div>'
                 );
@@ -239,7 +241,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
                         {
                             $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(
                                 Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1
-                                ));
+                            ));
                         });
                     } else
                     {
