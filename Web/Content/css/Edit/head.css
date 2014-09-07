@@ -7,12 +7,19 @@
   margin: 7.5px 0 7.5px 0;
 }
 .header a {
+  display: inline-block;
+  width: 100px;
   color: #000;
-  text-decoration: underline;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  box-sizing: border-box;
 }
 .header a:hover {
   color: #818181;
-  text-decoration: underline;
+  text-decoration: none;
+  font-weight: bolder;
+  border-bottom: 5px solid;
 }
 .header .menu {
   margin: 0 auto;
@@ -74,12 +81,15 @@ header .search {
 header #dropmenu {
   float: right;
 }
-header #dropmenu li {
+header #dropmenu ul li {
+  overflow: hidden;
+  float: left;
+  height: 50px;
   line-height: 40px;
   vertical-align: middle;
-  display: inline;
+  display: inline-block;
 }
-header #dropmenu .gravatar-img {
+header #dropmenu ul .gravatar-img {
   vertical-align: middle;
 }
 #login {
