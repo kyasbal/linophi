@@ -525,6 +525,7 @@
     <TypeScriptCompile Include="Scripts\Novel\novel-viewer.ts" />
     <TypeScriptCompile Include="Scripts\Novel\Paragraph.ts" />
     <TypeScriptCompile Include="Scripts\Novel\ParagraphFactory.ts" />
+    <TypeScriptCompile Include="Scripts\Novel\sizing.ts" />
     <TypeScriptCompile Include="Scripts\Shared\Header.ts" />
     <TypeScriptCompile Include="Scripts\typings\caret-util\caret-util.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery.cookie\jquery.cookie.d.ts" />
