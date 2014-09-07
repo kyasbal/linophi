@@ -1,5 +1,5 @@
-﻿; (function ($) {
-    $.fn.alertwindow = function (msg, buttonOption) {
+﻿;(function ($) {
+    $.fn.alertwindow = function (msg, buttonOption, onOKFunc) {
         var buttonHtml;
         switch (buttonOption) {
             case "y/n":
@@ -110,6 +110,7 @@
         $('.alert-button-ok').css({
             "border-color": "#AFEC21"
         });
+
         $('.alert-contents button').hover(function (e) {
             var thisClass = e.currentTarget.className;
             $('.' + thisClass).css({
@@ -129,7 +130,7 @@
             "opacity": 1
         });
 
-        $('.alert-layer, .alert-contents button').on("click", function () {
+        $('.alert-layer, .alert-contents button').on("click", function (e) {
             if (alertMode) {
                 $('.alert-layer, .alert-box').css("opacity", 0);
                 setTimeout(function () {
@@ -138,6 +139,7 @@
 
                 alertMode = false;
             }
+            onOKFunc(e.currentTarget.className.substr(13));
         });
     }
 })(jQuery);

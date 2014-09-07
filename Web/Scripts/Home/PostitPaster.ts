@@ -90,9 +90,9 @@ $(() =>
 
 function labelBoxController(speciesOfLabel: number, boxClass: string)
 {
-    if ( 43 * speciesOfLabel >= $(boxClass).height() )
+    var boxSelector: string = ".dropbox ." + boxClass;
+    if ( 43 * speciesOfLabel >= $(boxSelector).height() )
     {
-        var boxSelector: string = ".dropbox ." + boxClass;
         var sortArray: Element[] = [];
         $(boxSelector + ' > [class]').each((i, element) =>
         {

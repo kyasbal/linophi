@@ -55,8 +55,8 @@ $(function () {
 });
 
 function labelBoxController(speciesOfLabel, boxClass) {
-    if (43 * speciesOfLabel >= $(boxClass).height()) {
-        var boxSelector = ".dropbox ." + boxClass;
+    var boxSelector = ".dropbox ." + boxClass;
+    if (43 * speciesOfLabel >= $(boxSelector).height()) {
         var sortArray = [];
         $(boxSelector + ' > [class]').each(function (i, element) {
             sortArray[sortArray.length] = element;
