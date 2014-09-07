@@ -1,13 +1,64 @@
-﻿$(window).load(function () {
+﻿var LabelSourceParser = (function () {
+    function LabelSourceParser() {
+        this.jsonSource = JSON.parse($("#label-info").text());
+    }
+    LabelSourceParser.prototype.getLabelCount = function (paragraphId, emotion) {
+        for (var i = 0; i < this.jsonSource.length; i++) {
+            if (this.jsonSource[i]["ParagraphId"] == paragraphId) {
+                var data = JSON.parse(this.jsonSource[i]["Data"]);
+                data = _.sortBy(data, function (d) {
+                    return (Object)(d).Value;
+                }).reverse();
+                for (var j = 0; j < data.length; j++) {
+                    if (data[j].Key == emotion) {
+                        return data[j].Value;
+                    }
+                }
+                return 0;
+            }
+        }
+        return 0;
+    };
+
+    LabelSourceParser.prototype.eachByParagraph = function (paragraphId, handler) {
+        for (var i = 0; i < this.jsonSource.length; i++) {
+            if (this.jsonSource[i].ParagraphId == paragraphId) {
+                var data = JSON.parse(this.jsonSource[i]["Data"]);
+                data = _.sortBy(data, function (d) {
+                    return (Object)(d).Value;
+                }).reverse();
+                for (var j = 0; j < data.length; j++) {
+                    handler(data[j].Key, data[j].Value, j);
+                }
+                return null;
+            }
+        }
+        return null;
+    };
+
+    LabelSourceParser.prototype.callByParagraph = function (paragraphId, handler) {
+        for (var i = 0; i < this.jsonSource.length; i++) {
+            if (this.jsonSource[i]["ParagraphId"] == paragraphId) {
+                handler();
+                return null;
+            }
+        }
+        return null;
+    };
+    return LabelSourceParser;
+})();
+
+var labelSourceParser;
+
+$(function () {
+    labelSourceParser = new LabelSourceParser();
+});
+$(window).load(function () {
     var htmlHeight = $('.foot').offset().top + $('.foot').outerHeight();
 
     $('html').css({
         "height": htmlHeight + "px"
     });
-
-    var postitJson = JSON.parse($('#label-info').text());
-    console.log(postitJson);
-
     var articleId = location.pathname.substr(1);
 
     /*
@@ -39,18 +90,9 @@
             "height": eleHeight + "px",
             "width": "300px"
         });
-        for (var j = 0, len = postitJson.length; j < len; j++) {
-            if (postitJson[j]["ParagraphId"] == className.substr(4)) {
-                var data = JSON.parse(postitJson[j]["Data"]);
-                data = _.sortBy(data, function (d) {
-                    return (Object)(d).Value;
-                }).reverse();
-
-                for (var i = 0; i < data.length; i++) {
-                    $('.dropbox > .' + className).append('<div class="' + data[i].Key + '" style="background-image:url(\'/Content/imgs/Home/' + data[i].Key + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' + data[i].Value + '</span></div>');
-                }
-            }
-        }
+        labelSourceParser.eachByParagraph(className.substr(4), function (emotion, count, itr) {
+            $('.dropbox > .' + className).append('<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' + count + '</span></div>');
+        });
     });
 
     // 貼り付けモードへ
@@ -63,8 +105,8 @@
         });
 
         labelType = ((Object)(event.currentTarget)).className;
-        src = event.currentTarget.src; // なぜかVSで赤線がでるけどちゃんと動きます
-
+        src = event.currentTarget.src;
+        console.log(event, src);
         $('.fade-layer, .dropbox').mousemove(function (e) {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight) {
                 posY = e.pageY;
@@ -135,12 +177,9 @@
 
                 if (pHeights <= posY && posY <= pHeights + pHeight) {
                     if (postitExistence) {
-                        for (var j = 0, len = postitJson.length; j < len; j++) {
-                            if (postitJson[j]["ParagraphId"] == thisClass.substr(4)) {
-                                $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1));
-                                console.info(JSON.parse(postitJson[j]["Data"])[labelType]);
-                            }
-                        }
+                        labelSourceParser.callByParagraph(thisClass.substr(4), function () {
+                            $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1));
+                        });
                     } else {
                         $target.append('<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;"><span>1</span></div>');
                     }
