@@ -81,7 +81,7 @@
         @Html.Hidden("Body","", new { id = "hidden-body" })
         @Html.Hidden("Markup","", new { id = "hidden-markup" })
         @Html.Hidden("Mode", Model == null ? "new" : "edit",new{id="hidden-mode"})
-        <input type="file" name="Thumbnail"/>
+        <div class="select-thumbnail">サムネイルの選択<input type="file" name="Thumbnail" class="thumbnail"/></div>
         if (Model != null)
         {
             @Html.Hidden("Id", Model.ArticleId)
