@@ -55,7 +55,7 @@
                             <canvas id="article-graph" width="250" height="250"></canvas>
                             @if(Model.UseThumbnail)
                             {
-                                <img src="@("/Pages/ContentUpload/Thubnail?articleId="+Model.ArticleId)"/>
+                                <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)"/>
                             }
                         </div>
                         <div class="navbar-txt">
@@ -90,7 +90,7 @@
                         <div>
                             <p class="navbar-user">
                                 <span class="navbar-userthumb">@Model.Author_IconTag</span><span class="navbar-username">
-                                                                                               <a href="">
+                                                                                               <a href="@("/UserPage?articleId="+Model.ArticleId)">
                                                                                                    @if (Model != null)
                                                                                                    {
                                                                                                        @Model.Author
@@ -168,34 +168,34 @@
                 <div class="postit-contents">
                     <h2 class="postit-title">ふせんを貼る</h2>
                     <div class="postit-list">
-                    <div>
-                        <img src="~/Content/imgs/Home/surprised.png" class="surprised">
-                        <div class="surprised">ビックリ</div>
-                    </div>
-                    <div>
-                        <img src="~/Content/imgs/Home/anger.png" class="anger">
-                        <div class="anger">怒る</div>
-                    </div>
-                    <div>
-                        <img src="~/Content/imgs/Home/fun.png" class="fun">
-                        <div class="fun">面白い</div>
-                    </div>
-                    <div>
-                        <img src="~/Content/imgs/Home/bethink.png" class="bethink">
-                        <div class="bethink">なるほど</div>
-                    </div>
-                    <div>
-                        <img src="~/Content/imgs/Home/good.png" class="good">
-                        <div class="good">いいね</div>
-                    </div>
-                    <div>
-                        <img src="~/Content/imgs/Home/sad.png" class="sad">
-                        <div class="sad">悲しい</div>
-                    </div>
-                    <div>
-                        <img src="~/Content/imgs/Home/noidea.png" class="noidea">
-                        <div class="noidea">わからない</div>
-                    </div>
+                        <div>
+                            <img src="~/Content/imgs/Home/surprised.png" class="surprised">
+                            <div class="surprised">ビックリ</div>
+                        </div>
+                        <div>
+                            <img src="~/Content/imgs/Home/anger.png" class="anger">
+                            <div class="anger">怒る</div>
+                        </div>
+                        <div>
+                            <img src="~/Content/imgs/Home/fun.png" class="fun">
+                            <div class="fun">面白い</div>
+                        </div>
+                        <div>
+                            <img src="~/Content/imgs/Home/bethink.png" class="bethink">
+                            <div class="bethink">なるほど</div>
+                        </div>
+                        <div>
+                            <img src="~/Content/imgs/Home/good.png" class="good">
+                            <div class="good">いいね</div>
+                        </div>
+                        <div>
+                            <img src="~/Content/imgs/Home/sad.png" class="sad">
+                            <div class="sad">悲しい</div>
+                        </div>
+                        <div>
+                            <img src="~/Content/imgs/Home/noidea.png" class="noidea">
+                            <div class="noidea">わからない</div>
+                        </div>
 
                     </div>
                 </div>
@@ -206,4 +206,7 @@
 <div class="fade-layer"></div>
 <script type="application/json" id="label-info">
     @Html.Raw(Model.LabelInfo)
+</script>
+<script type="application/json" id="comment-info">
+    @Html.Raw(Model.CommentInfo)
 </script>

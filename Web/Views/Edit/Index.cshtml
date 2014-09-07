@@ -47,10 +47,10 @@
 
 <div class="edit-bg-overlay">
 
-    @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new { @class = "edit-form editpage-main", enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new { @class = "edit-form editpage-main",enctype = "multipart/form-data" }))
     {
         <div class="edit-title-container">
-            <input type="text" name="Title" value="@(Model == null ? " " : Model.Title)" id="title" class="edit-title" placeholder="タイトル" @(Model!=null?"readonly":"") />
+            <input type="text" name="Title" value="@(Model == null ? "" : Model.Title)" id="title" class="edit-title" placeholder="タイトル" @(Model!=null?"readonly":"") />
         </div>
         <div class="edit-title-chkvalid"></div>
         <div class="edit-tag-container">

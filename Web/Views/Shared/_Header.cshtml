@@ -7,7 +7,7 @@
         {
             <div class="search-container">
                 <input type="search" class="search-text" name="searchText">
-                <input type="submit" class="search-button" value="検索">
+                <input type="image" class="search-button" src="~/Content/imgs/loupe.svg">
             </div>
         }
         <div id="dropmenu">
@@ -15,7 +15,7 @@
                 <li><span class="head-button">@Html.ActionLink("トップへ", "Index", "Home")</span></li>
                 
                 <li><span class="head-button">@Html.ActionLink("投稿する", "RedirectToEdit", "Edit")</span></li>
-                
+
                 <li><span class="head-button">
     @{
         if (!Request.IsAuthenticated)

@@ -40,12 +40,13 @@
   background-color: #DFECE6;
   height: 20px;
   width: 200px;
-  padding: 5px 5px;
+  padding: 5px 10px;
   position: absolute;
   left: 10px;
   top: -6px;
   box-sizing: content-box;
   border: hidden !important;
+  border-radius: 100px;
 }
 .header .menu .search .search-text:focus {
   color: white;
@@ -56,20 +57,12 @@
   border: 2px #a4c6fd  !important;
 }
 .header .menu .search .search-button {
-  margin: 7.5px 0 7.5px 0;
   border: 0;
-  padding-left: -10px;
-  width: 40px;
-  height: 30px;
-  position: absolute;
-  left: 220px;
+  width: 20px;
+  height: 25px;
+  position: relative;
+  left: 200px;
   top: -6px;
-}
-.header .menu .search .search-button:hover {
-  opacity: 1;
-}
-.header .menu .search *.search-button:hover {
-  opacity: 0.5;
 }
 .header .menu .search .search-button:focus {
   outline: none;
