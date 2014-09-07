@@ -73,36 +73,73 @@ var LabelSourceParser = (function () {
 })();
 
 var labelSourceParser;
-
 $(function () {
     labelSourceParser = new LabelSourceParser();
 });
 
-function labelBoxController(speciesOfLabel, boxClass) {
-    var boxSelector = ".dropbox ." + boxClass;
-    if (43 * speciesOfLabel >= $(boxSelector).height()) {
-        var sortArray = [];
-        $(boxSelector + ' > [class]').each(function (i, element) {
-            sortArray[sortArray.length] = element;
-        });
-        sortArray.reverse();
-
-        $(boxSelector + ' > *').css({
-            "margin-right": "-53px",
-            "float": "left"
-        });
-        $(boxSelector + ':after').css({
-            "content": "''",
-            "display": "block",
-            "clear": "both"
-        });
-        $(boxSelector).html("");
-
-        for (var i = 0, len = sortArray.length; i < len; i++) {
-            $(boxSelector).append(sortArray[i]);
-        }
+var LabelBoxController = (function () {
+    function LabelBoxController() {
     }
-}
+    LabelBoxController.prototype.labelPosition = function (speciesOfLabel, boxClass) {
+        var boxSelector = ".dropbox ." + boxClass;
+        if (43 * speciesOfLabel >= $(boxSelector).height()) {
+            var sortArray = [];
+            $(boxSelector + ' > [class]').each(function (i, element) {
+                sortArray[sortArray.length] = element;
+            });
+            sortArray.reverse();
+
+            $(boxSelector + ' > *').css({
+                "margin-right": "-53px",
+                "float": "left"
+            });
+            $(boxSelector + ':after').css({
+                "content": "''",
+                "display": "block",
+                "clear": "both"
+            });
+            $(boxSelector).html("");
+
+            for (var i = 0, len = sortArray.length; i < len; i++) {
+                $(boxSelector).append(sortArray[i]);
+            }
+        }
+    };
+    return LabelBoxController;
+})();
+var labelBoxController = new LabelBoxController();
+
+var AjaxManager = (function () {
+    function AjaxManager() {
+    }
+    AjaxManager.prototype.sendPostitNumber = function (articleId, thisClass, labelType, postitExistence, $target, src) {
+        $.ajax({
+            type: "post",
+            url: "api/Label/AttachLabel",
+            data: {
+                "ArticleId": articleId,
+                "ParagraphId": thisClass.substr(4),
+                "LabelType": labelType
+            },
+            success: function (data) {
+                if (data.isSucceed) {
+                    if (postitExistence) {
+                        labelSourceParser.callByParagraph(thisClass.substr(4), function () {
+                            $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1));
+                        });
+                    } else {
+                        $target.append('<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;"><span>1</span></div>');
+                    }
+                } else {
+                    $().alertwindow("１つの段落に２つ以上のふせんをつける事はできません", "ok"); // jquery.alertwindow.js
+                }
+            }
+        });
+    };
+    return AjaxManager;
+})();
+
+var ajaxManager = new AjaxManager();
 
 $(window).load(function () {
     var htmlHeight = $('.foot').offset().top + $('.foot').outerHeight();
@@ -141,11 +178,12 @@ $(window).load(function () {
             "height": eleHeight + "px",
             "width": "300px"
         });
+
         labelSourceParser.eachByParagraph(className.substr(4), function (emotion, count, itr) {
             $('.dropbox > .' + className).append('<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' + count + '</span></div>');
         });
 
-        labelBoxController($('.dropbox > .' + className + ' > *').length, className);
+        labelBoxController.labelPosition($('.dropbox > .' + className + ' > *').length, className);
     });
 
     // 貼り付けモードへ
@@ -159,7 +197,7 @@ $(window).load(function () {
 
         labelType = ((Object)(event.currentTarget)).className;
         src = '/Content/imgs/Home/' + labelType + '.png';
-        console.log(event);
+
         $('.fade-layer, .dropbox').mousemove(function (e) {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight) {
                 posY = e.pageY;
@@ -229,28 +267,7 @@ $(window).load(function () {
                 var postitExistence = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ') > .' + labelType).length;
 
                 if (pHeights <= posY && posY <= pHeights + pHeight) {
-                    $.ajax({
-                        type: "post",
-                        url: "api/Label/AttachLabel",
-                        data: {
-                            "ArticleId": articleId,
-                            "ParagraphId": thisClass.substr(4),
-                            "LabelType": labelType
-                        },
-                        success: function (data) {
-                            if (data.isSucceed) {
-                                if (postitExistence) {
-                                    labelSourceParser.callByParagraph(thisClass.substr(4), function () {
-                                        $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1));
-                                    });
-                                } else {
-                                    $target.append('<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;"><span>1</span></div>');
-                                }
-                            } else {
-                                $().alertwindow("１つの段落に２つ以上のふせんをつける事はできません", "ok"); // jquery.alertwindow.js
-                            }
-                        }
-                    });
+                    ajaxManager.sendPostitNumber(articleId, thisClass, labelType, postitExistence, $target, src);
                 }
 
                 pHeights += pHeight;
