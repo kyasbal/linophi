@@ -197,6 +197,12 @@
     </Content>
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\Home\PrivacyPolicy.css">
+      <DependentUpon>PrivacyPolicy.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\PrivacyPolicy.min.css">
+      <DependentUpon>PrivacyPolicy.css</DependentUpon>
+    </Content>
     <Content Include="Scripts\Chart.js" />
     <Content Include="Content\css\Edit\footer.css">
       <DependentUpon>footer.less</DependentUpon>
@@ -347,6 +353,10 @@
     <Content Include="Content\css\Markup.css.map">
       <DependentUpon>Markup.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\PrivacyPolicy.less" />
+    <Content Include="Content\css\Home\PrivacyPolicy.css.map">
+      <DependentUpon>PrivacyPolicy.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
@@ -491,6 +501,8 @@
     <Content Include="Startup\Startup.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Home\TermsOfService.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

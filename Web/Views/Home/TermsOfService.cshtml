@@ -1,19 +1,17 @@
-﻿@model string
+﻿@model Web.Models.MyPageViewModel
 @{
     ViewBag.Title = "利用規約";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+@section JS{
+
 }
 
-@{
-    Layout = "../Shared/_BaseLayout.cshtml";
-}
-
-@section CSS{
-    <link href="~/Content/css/Account/login.css" rel="stylesheet" />
-}
-
-@section JS
+@section CSS
 {
+
 }
+
 
 <div class="">
     <h1>利用規約</h1>
