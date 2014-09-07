@@ -1,5 +1,9 @@
 ﻿var top_height;
 
+$(() =>
+{
+    //記事全体の感情状態の表示
+});
 $(function ()
  {
      top_height = $('.top').height();
