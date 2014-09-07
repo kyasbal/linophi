@@ -21,7 +21,7 @@ $(function () {
         },
         {
             value: wholeCount.bethink,
-            color: "#A1E73E",
+            color: "#E9EC00",
             label: "なるほど"
         },
         {

@@ -144,6 +144,7 @@ input[type="text"] {
 .container .contents .top .navbar {
   padding-top: 15px;
   position: relative;
+  margin: 0 -100px;
 }
 .container .contents .top .navbar-main {
   float: left;
@@ -151,7 +152,7 @@ input[type="text"] {
 }
 .container .contents .top .navbar-main .navbar-thumb {
   float: right;
-  margin: 0 15px 15px 0;
+  margin: 0 15px 15px -30px;
 }
 .container .contents .top .navbar-main .navbar-thumb img {
   width: 105px;
@@ -270,12 +271,15 @@ input[type="text"] {
 }
 .container .contents .top .navbar .navbar-sub {
   float: left;
-  width: 220px;
+  width: 40%px;
   text-align: right;
+  padding-left: 20px;
 }
 .container .contents .top .navbar .navbar-sub .navbar-user {
   display: inline-block;
-  margin-right: 6px;
+  width: 200px;
+  margin-right: -50px;
+  margin-left: 40%;
 }
 .container .contents .top .navbar .navbar-mainwiththumb .navbar-txt {
   margin-bottom: 10px;
