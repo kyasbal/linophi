@@ -177,8 +177,8 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         });
 
         labelType = ((Object)(event.currentTarget)).className;
-        src = event.currentTarget.src;
-        console.log(event, src);
+        src = '/Content/imgs/Home/' + labelType + '.png';
+        console.log(event);
         $('.fade-layer, .dropbox').mousemove((e) =>
         {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight)
