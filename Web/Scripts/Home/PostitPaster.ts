@@ -88,6 +88,36 @@ $(() =>
 });
 
 
+function labelBoxController(speciesOfLabel: number, boxClass: string)
+{
+    if ( 43 * speciesOfLabel >= $(boxClass).height() )
+    {
+        var boxSelector: string = ".dropbox ." + boxClass;
+        var sortArray: Element[] = [];
+        $(boxSelector + ' > [class]').each((i, element) =>
+        {
+            sortArray[sortArray.length] = element;
+        });
+        sortArray.reverse();
+
+        $(boxSelector + ' > *').css({
+            "margin-right": "-53px",
+            "float": "left"
+        });
+        $(boxSelector + ':after').css({
+            "content": "''",
+            "display": "block",
+            "clear": "both"
+        });
+        $(boxSelector).html("");
+
+        for (var i: number = 0, len: number = sortArray.length; i < len; i++)
+        {
+            $(boxSelector).append(sortArray[i]);
+        }
+    }
+}
+
 $(window).load(() => // 後読みじゃないとまともにポジションとれない
 {
 
@@ -134,11 +164,13 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         labelSourceParser.eachByParagraph(className.substr(4), (emotion: string, count: number, itr: number) =>
         {
             $('.dropbox > .' + className).append(
-                '<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '.png\');background-size:130px 43px;height:43px;width:130px;z-index:10000;position:relative;"><span>' +
-                count +
+                '<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' +
+                    count +
                 '</span></div>'
-                );
+            );
         });
+
+        labelBoxController( $('.dropbox > .' + className + ' > *').length, className );
     });
 
     // 貼り付けモードへ
@@ -235,35 +267,35 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
                 if (pHeights <= posY && posY <= pHeights + pHeight) // 対象のｐ要素で貼り付けた時の処理
                 {
-                    if (postitExistence)
-                    {
-                        labelSourceParser.callByParagraph(thisClass.substr(4), () =>
-                        {
-                            $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(
-                                Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1
-                            ));
-                        });
-                    } else
-                    {
-                        $target.append(
-                            '<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;"><span>1</span></div>'
-                        );
-                    }
-
                     $.ajax({
                         type: "post",
                         url: "api/Label/AttachLabel",
                         data: {
                             "ArticleId": articleId,
                             "ParagraphId": thisClass.substr(4),
-                            "LabelType": labelType,
-                            "DebugMode": true
+                            "LabelType": labelType
                         },
-                        success: (data) =>
-                        {
-                            console.log(data);
+                        success: (data) => {
+                            if (data.isSucceed) {
+                                if (postitExistence) {
+                                    labelSourceParser.callByParagraph(thisClass.substr(4), () => {
+                                        $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(
+                                            Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1
+                                        ));
+                                    });
+                                } else {
+                                    $target.append(
+                                        '<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;"><span>1</span></div>'
+                                    );
+                                }
+                            } else {
+                                $().alertwindow("１つの段落に２つ以上のふせんをつける事はできません", "ok"); // jquery.alertwindow.js
+                            }
                         }
                     });
+
+
+
                 }
 
                 pHeights += pHeight;

@@ -189,6 +189,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\jquery.alertwindow.js" />
     <Content Include="Content\css\Account\login.css">
       <DependentUpon>login.less</DependentUpon>
     </Content>
