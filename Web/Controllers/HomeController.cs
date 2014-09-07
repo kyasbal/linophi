@@ -242,5 +242,15 @@ namespace Web.Controllers
             await context.SaveChangesAsync();
             return RedirectToAction("MyPage");
         }
+
+        public ActionResult PrivacyPolicy()
+        {
+            return View();
+        }
+
+        public ActionResult TermsOfService()
+        {
+            return View();
+        }
     }
 }
