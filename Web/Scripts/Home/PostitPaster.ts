@@ -3,7 +3,89 @@ interface EventTarget
 {
     src: string;
 }
+interface ParagraphEachHandler
+{
+    (emotion:string,count:number,itr:number):void;
+}
 
+interface ParagraphCallHandler
+{
+    ():void;
+}
+
+interface ILabelSourceParser
+{
+    getLabelCount(paragraphId: string, emotion: string): number;
+
+    eachByParagraph(paragraphId: string, hander: ParagraphEachHandler): void;
+
+    callByParagraph(paragraphId:string,handler:ParagraphCallHandler):void;
+}
+
+class LabelSourceParser implements ILabelSourceParser
+{
+    private jsonSource:any;
+    constructor()
+    {
+        this.jsonSource = JSON.parse($("#label-info").text());
+    }
+
+    getLabelCount(paragraphId: string, emotion: string): number
+    {
+        for (var i = 0; i < this.jsonSource.length; i++)
+        {
+            if (this.jsonSource[i]["ParagraphId"]==paragraphId)
+            {
+                var data = JSON.parse(this.jsonSource[i]["Data"]);
+                data = _.sortBy(data, d => (Object)(d).Value).reverse();
+                for (var j = 0; j < data.length; j++)
+                {
+                    if (data[j].Key == emotion)
+                    {
+                        return data[j].Value;
+                    }
+                }
+                return 0;
+            }
+        }
+        return 0;
+    }
+
+    eachByParagraph(paragraphId: string, handler: ParagraphEachHandler): void
+    {
+        for (var i = 0; i < this.jsonSource.length; i++) {
+            if (this.jsonSource[i].ParagraphId == paragraphId) {
+                var data = JSON.parse(this.jsonSource[i]["Data"]);
+                data = _.sortBy(data, d => (Object)(d).Value).reverse();
+                for (var j = 0; j < data.length; j++)
+                {
+                    handler(data[j].Key, data[j].Value, j);
+                }
+                return null;
+            }
+        }
+        return null;
+    }
+
+    callByParagraph(paragraphId: string, handler: ParagraphCallHandler): void
+    {
+        for (var i = 0; i < this.jsonSource.length; i++) {
+            if (this.jsonSource[i]["ParagraphId"] == paragraphId)
+            {
+                handler();
+                return null;
+            }
+        }
+        return null;
+    }
+}
+
+var labelSourceParser: ILabelSourceParser;
+
+$(() =>
+{
+    labelSourceParser = new LabelSourceParser();
+});
 $(window).load(() => // 後読みじゃないとまともにポジションとれない
 {
 
@@ -12,10 +94,6 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     $('html').css({
         "height": htmlHeight + "px"
     });
-
-    var postitJson = JSON.parse( $('#label-info').text() );
-    console.log(postitJson);
-
     var articleId = location.pathname.substr(1);
 
     /*
@@ -51,22 +129,14 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             "height": eleHeight + "px",
             "width": "300px",
         });
-        for (var j = 0, len = postitJson.length; j < len; j++)
+        labelSourceParser.eachByParagraph(className.substr(4), (emotion: string, count: number, itr: number) =>
         {
-            if (postitJson[j]["ParagraphId"] == className.substr(4))
-            {
-                var data = JSON.parse(postitJson[j]["Data"]);
-                data=_.sortBy(data, d => (Object)(d).Value).reverse();
-
-                for (var i=0;i<data.length;i++) {
-                    $('.dropbox > .' + className).append(
-                        '<div class="' + data[i].Key + '" style="background-image:url(\'/Content/imgs/Home/' + data[i].Key+ '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' +
-                        data[i].Value +
-                        '</span></div>'
-                    );
-                }
-            }
-        }
+            $('.dropbox > .' + className).append(
+                '<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' +
+                count +
+                '</span></div>'
+                );
+        });
     });
 
     // 貼り付けモードへ
@@ -80,8 +150,8 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         });
 
         labelType = ((Object)(event.currentTarget)).className;
-        src = event.currentTarget.src; // なぜかVSで赤線がでるけどちゃんと動きます
-
+        src = event.currentTarget.src;
+        console.log(event, src);
         $('.fade-layer, .dropbox').mousemove((e) =>
         {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight)
@@ -165,16 +235,12 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
                 {
                     if (postitExistence)
                     {
-                        for (var j = 0, len = postitJson.length; j < len; j++)
+                        labelSourceParser.callByParagraph(thisClass.substr(4), () =>
                         {
-                            if (postitJson[j]["ParagraphId"] == thisClass.substr(4)) // classがx_p-で始まる場合は４
-                            {
-                                $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(
-                                    Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1
+                            $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(
+                                Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1
                                 ));
-                                console.info(JSON.parse(postitJson[j]["Data"])[labelType]);
-                            }
-                        }
+                        });
                     } else
                     {
                         $target.append(
