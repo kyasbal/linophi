@@ -197,11 +197,11 @@
     </Content>
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
-    <Content Include="Content\css\Home\PrivacyPolicy.css">
-      <DependentUpon>PrivacyPolicy.less</DependentUpon>
+    <Content Include="Content\css\Home\PrivacyPolicy_TermsOfService.css">
+      <DependentUpon>PrivacyPolicy_TermsOfService.less</DependentUpon>
     </Content>
-    <Content Include="Content\css\Home\PrivacyPolicy.min.css">
-      <DependentUpon>PrivacyPolicy.css</DependentUpon>
+    <Content Include="Content\css\Home\PrivacyPolicy_TermsOfService.min.css">
+      <DependentUpon>PrivacyPolicy_TermsOfService.css</DependentUpon>
     </Content>
     <Content Include="Scripts\Chart.js" />
     <Content Include="Content\css\Edit\footer.css">
@@ -353,9 +353,9 @@
     <Content Include="Content\css\Markup.css.map">
       <DependentUpon>Markup.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Home\PrivacyPolicy.less" />
-    <Content Include="Content\css\Home\PrivacyPolicy.css.map">
-      <DependentUpon>PrivacyPolicy.css</DependentUpon>
+    <Content Include="Content\css\Home\PrivacyPolicy_TermsOfService.less" />
+    <Content Include="Content\css\Home\PrivacyPolicy_TermsOfService.css.map">
+      <DependentUpon>PrivacyPolicy_TermsOfService.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
