@@ -26,8 +26,6 @@ class CommentSourceParser implements ICommentSourceParser
 
 $(() =>
 {
-    var commentJson = JSON.parse($("#comment-info").text());
-
     var commentSourceParser = new CommentSourceParser();
 
     $('.article-container > *').each((i) =>
@@ -35,23 +33,21 @@ $(() =>
         var $ele: JQuery = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
         var className: string = $ele.attr("class");
 
-        var thisHtml: string = "";
+        $('.widget .' + className).append('<div class="' + className + '-comments"></div>');
 
         commentSourceParser.eachDoInComments(className.substr(4), (name, time, id, comment) =>
         {
-            thisHtml +=
+            $('.widget .' + className + '-comments').append(
                 '<div class="response">' +
                     '<p class="res-title"> counter <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' +
                     '<p class="res-text">' +
                         comment +
                     '</p>' +
-                '</div>';
+                '</div>'
+            );
         });
-
-        if (thisHtml) // デッドコードじゃないです！
-        {
-            $('.widget .' + className).append('<div class="' + className + '-comments">' + thisHtml + '</div>');
-        }
-
+        $('.widget .' + className + '-comments').append(
+            '<button class="' + className + '">コメントを残す</button>'
+        );
     });
 });

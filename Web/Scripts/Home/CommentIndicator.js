@@ -13,23 +13,18 @@
 })();
 
 $(function () {
-    var commentJson = JSON.parse($("#comment-info").text());
-
     var commentSourceParser = new CommentSourceParser();
 
     $('.article-container > *').each(function (i) {
         var $ele = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
         var className = $ele.attr("class");
 
-        var thisHtml = "";
+        $('.widget .' + className).append('<div class="' + className + '-comments"></div>');
 
         commentSourceParser.eachDoInComments(className.substr(4), function (name, time, id, comment) {
-            thisHtml += '<div class="response">' + '<p class="res-title"> counter <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' + '<p class="res-text">' + comment + '</p>' + '</div>';
+            $('.widget .' + className + '-comments').append('<div class="response">' + '<p class="res-title"> counter <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' + '<p class="res-text">' + comment + '</p>' + '</div>');
         });
-
-        if (thisHtml) {
-            $('.widget .' + className).append('<div class="' + className + '-comments">' + thisHtml + '</div>');
-        }
+        $('.widget .' + className + '-comments').append('<button class="' + className + '">コメントを残す</button>');
     });
 });
 //# sourceMappingURL=CommentIndicator.js.map

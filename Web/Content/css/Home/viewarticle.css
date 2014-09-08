@@ -435,6 +435,21 @@ input[type="text"] {
 .container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .response p:hover {
   background: none;
 }
+.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] button {
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 50%;
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  padding: 0.62em 1.2em;
+  background: #fff;
+  border: none;
+  border-radius: 0.3em;
+}
 .container .contents .contentswrapper .main .article-container p:hover {
   background-color: ghostwhite;
 }
@@ -535,6 +550,7 @@ input[type="text"] {
   box-sizing: border-box;
 }
 .container .contents .contentswrapper .dropbox > * > * > span {
+  cursor: default;
   padding: 3px 9px;
   background: #fff;
   color: #555;
