@@ -163,6 +163,7 @@ var YoutubeMarkup = (function (_super) {
     };
     return YoutubeMarkup;
 })(MarkupBase);
+
 var NikonikoMarkup = (function (_super) {
     __extends(NikonikoMarkup, _super);
     function NikonikoMarkup() {
@@ -180,4 +181,7 @@ var NikonikoMarkup = (function (_super) {
     };
     return NikonikoMarkup;
 })(MarkupBase);
+/*
+class HrMarkUp extends
+*/
 //# sourceMappingURL=Markups.js.map
