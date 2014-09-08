@@ -80,6 +80,13 @@ namespace Web.Controllers
         }
 
         [AllowAnonymous]
+        public ActionResult SendTest()
+        {
+
+            return null;
+        }
+
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult ExternalLogin(string provider,string returnUrl)
         {

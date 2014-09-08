@@ -57,7 +57,6 @@ input[type="text"] {
 }
 
 .container {
-
     .head {
         z-index: 501;
         width: 100%;
@@ -71,7 +70,6 @@ input[type="text"] {
             margin: 0 auto;
         }
     }
-
 
     .contents {
         padding-bottom: 25px;
@@ -127,7 +125,6 @@ input[type="text"] {
                             max-height: 24px;
                             padding: 0 0 0 0;
                             border-bottom: 0;
-
 
                             &ul {
                                 display: inline;
@@ -189,17 +186,17 @@ input[type="text"] {
                             margin-left: 65px;
                             display: block;
                             background-color: white;
-                            border-radius: 60px;
-                            -moz-border-radius: 60px;
-                            -webkit-border-radius: 60px;
+                            border-radius: 60px; 
+                            -moz-border-radius: 60px;    
+                            -webkit-border-radius: 60px; 
                             padding: 25px 10px 0 10px;
                             text-align: center;
                             width: 100px;
                             height: 95px;
                             background-color: white;
-                            border-radius: 60px;
-                            -moz-border-radius: 60px;
-                            -webkit-border-radius: 60px;
+                            border-radius: 60px; 
+                            -moz-border-radius: 60px;    
+                            -webkit-border-radius: 60px; 
                             box-shadow: 0px 0px 3px 0px #666 inset;
                             -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
                             -moz-box-shadow: 0px 0px 3px 0px #666 inset;
@@ -211,9 +208,14 @@ input[type="text"] {
                         margin-top: -13px;
                         padding-bottom: 10px;
 
-                        .navbar-title {
-                            display: inline;
+                        img{
+                            width:100px;
+                            height:100px;
+                        }
 
+                        .navbar-title {
+                            margin-bottom:20px;
+                            font-size:45px;
                             a {
                                 word-wrap: break-word;
                                 margin: 0 15px 0 0;
@@ -229,7 +231,21 @@ input[type="text"] {
                     }
 
                     .navbar-count {
-                        margin: 0 0 8px 20px;
+                        margin: 20px 10px 40px 10px;
+                        font-size:20px;
+                        div{
+                            display:inline;
+                            span{
+                                margin-left:20px;
+                            }
+                        }
+
+                        .navbar-countcomment{
+                                margin-top: 3px;
+                                line-height: 1;
+                                color: #666;
+                                font-size: 11px;
+                            }
 
                         .navbar-countfv {
                             display: inline-block;
@@ -240,61 +256,25 @@ input[type="text"] {
                             width: 55px;
                             height: 50px;
                             background-color: white;
-                            border-radius: 60px;
-                            -moz-border-radius: 60px;
-                            -webkit-border-radius: 60px;
+                            border-radius: 60px; 
+                            -moz-border-radius: 60px;    
+                            -webkit-border-radius: 60px; 
                             padding: 20px 10px 5px 10px;
                             vertical-align: top;
                             text-align: center;
                             width: 55px;
                             height: 50px;
                             background-color: white;
-                            border-radius: 60px;
-                            -moz-border-radius: 60px;
-                            -webkit-border-radius: 60px;
+                            border-radius: 60px; 
+                            -moz-border-radius: 60px;    
+                            -webkit-border-radius: 60px; 
                             box-shadow: 0px 0px 3px 0px #666 inset;
                             -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
                             -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-                        }
+                            }
 
                         .navbar-countnum {
-                            font-size: 40px;
-                            display: block;
-                            line-height: 1;
-                            margin-top: -3px;
-                            color: #000;
-                            font-size: 22px;
-                            font-family: Arial, Helvetica, sans-serif;
-                        }
-
-                        .navbar-countlabel {
-                            display: block;
-                            margin-top: 3px;
-                            line-height: 1;
-                            color: #666;
-                            font-size: 11px;
-                        }
-
-
-                        .navbar-countpv {
-                            display: inline-block;
-                            margin: 0 auto;
-                            padding: 20px 10px 5px 10px;
-                            vertical-align: top;
-                            text-align: center;
-                            width: 55px;
-                            height: 50px;
-                            background-color: white;
-                            border-radius: 60px;
-                            -moz-border-radius: 60px;
-                            -webkit-border-radius: 60px;
-                            box-shadow: 0px 0px 3px 0px #666 inset;
-                            -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-                            -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-                            font-family: Tahoma, Geneva, sans-serif;
-
-                            .navbar-countnum {
-                                display: block;
+                                font-size: 40px;
                                 line-height: 1;
                                 margin-top: -3px;
                                 color: #000;
@@ -302,15 +282,13 @@ input[type="text"] {
                                 font-family: Arial, Helvetica, sans-serif;
                             }
 
-                            .navbar-countlabel {
-                                display: block;
+                            .navbar-countlabel{
                                 margin-top: 3px;
                                 line-height: 1;
                                 color: #666;
                                 font-size: 11px;
                             }
-                        }
-
+                        
                         .navbar-date {
                             display: inline-block;
                             margin: 0 auto;
@@ -320,9 +298,9 @@ input[type="text"] {
                             width: 100px;
                             height: 50px;
                             background-color: white;
-                            border-radius: 60px;
-                            -moz-border-radius: 60px;
-                            -webkit-border-radius: 60px;
+                            border-radius: 60px; 
+                            -moz-border-radius: 60px;    
+                            -webkit-border-radius: 60px; 
                             box-shadow: 0px 0px 3px 0px #666 inset;
                             -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
                             -moz-box-shadow: 0px 0px 3px 0px #666 inset;
@@ -363,9 +341,9 @@ input[type="text"] {
                             width: 100px;
                             height: 50px;
                             background-color: white;
-                            border-radius: 60px;
-                            -moz-border-radius: 60px;
-                            -webkit-border-radius: 60px;
+                            border-radius: 60px; 
+                            -moz-border-radius: 60px;    
+                            -webkit-border-radius: 60px; 
                             box-shadow: 0px 0px 3px 0px #666 inset;
                             -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
                             -moz-box-shadow: 0px 0px 3px 0px #666 inset;
@@ -396,7 +374,7 @@ input[type="text"] {
                             }
                         }
                     }
-                }
+                } 
 
                 .navbar-sub {
                     float: left;
@@ -412,7 +390,6 @@ input[type="text"] {
                     }
                 }
 
-
                 .navbar-mainwiththumb {
                     .navbar-txt {
                         margin-bottom: 10px;
@@ -420,15 +397,12 @@ input[type="text"] {
                     }
                 }
 
-
                 .navbar-userthumb {
                     margin-right: 10px;
                 }
 
                 .user-img {
-                    font-weight: bold;
-                    display: block;
-                    text-align: left;
+                   font-size:11px;
                 }
 
                 .navbar-username {
@@ -437,7 +411,6 @@ input[type="text"] {
                 }
             }
         }
-
 
         .contentswrapper {
             width: 1040px;
@@ -764,7 +737,6 @@ input[type="text"] {
             text-decoration: underline;
         }
 
-
         a.topicword {
             cursor: pointer;
         }
@@ -772,9 +744,6 @@ input[type="text"] {
         a.topicword:hover {
             background: #f0f0f0;
         }
-
-
-
 
         .list .listtitle a:link, .list .listtitle a:visited {
             text-decoration: none;
@@ -801,7 +770,6 @@ input[type="text"] {
         font-size: 25px;
     }
 }
-
 
 .droppable-hover {
     background: #fdd;

@@ -42,6 +42,10 @@
   border-left: solid 4px #808080;
   padding: 5px;
 }
+.article-container .x_quote a,
+.article-container .quote a {
+  color: #808080;
+}
 .article-container .x_quote .x_source,
 .article-container .quote .x_source,
 .article-container .x_quote .source,

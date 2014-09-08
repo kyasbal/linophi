@@ -92,7 +92,7 @@ class TopPage extends PageBase
            this.graphCanvas = $("#top-graph");
            this.articleFetcher = new RandomArticleFetcher();
            $(window).resize(() => { this.adjustContentHeight(); });
-           this.canvasContext = document.getElementById("top-graph").getContext("2d");
+           //this.canvasContext = document.getElementById("top-graph").getContext("2d");
        }
 
     public container: JQuery;

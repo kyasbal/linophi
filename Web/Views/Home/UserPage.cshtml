@@ -1,12 +1,12 @@
-﻿@model Web.Models.MyPageViewModel
+﻿@model Web.Models.UserPageViewModel
 
 @{
-    ViewBag.Title = "マイページ";
+    ViewBag.Title = Model.UserNickName;
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
 @section JS{
     <script src="~/Scripts/Utility/SearchOrderOptionBox.js"></script>
-    <script src="~/Scripts/Home/MyPage.js"></script>
+<script src="~/Scripts/Home/UserPage.js"></script>
     <script src="~/Scripts/jquery.alertwindow.js"></script>
 }
 
@@ -15,9 +15,8 @@
     <link href="~/Content/css/Home/Search.css" rel="stylesheet" />
     <link href="~/Content/css/Home/MyPage.css" rel="stylesheet" />
 }
-@Html.HiddenFor(m=>m.Order,new{id="order"})
+@Html.HiddenFor(m => m.Order, new { id = "order" })
 @Html.HiddenFor(m => m.Skip, new { id = "skip" })
-
 
 <div class="contents">
     <div class="wrapper">
@@ -26,7 +25,7 @@
                 <div class="search-header">
                     <h1>今までに書いた記事</h1>
                     <form>
-                        <select class="search-menu" onchange="MyPageSearchOptionBoxManager.onOptionChange()">
+                        <select class="search-menu" onchange="UserPageSearchOptionBoxManager.onOptionChange()">
                             <option selected>検索方法の選択</option>
                             <option value="0">投稿が新しい順</option>
                             <option value="3">投稿が古い順</option>

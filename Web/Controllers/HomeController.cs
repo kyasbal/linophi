@@ -49,13 +49,15 @@ namespace Web.Controllers
                 article.PageView++;
             }
             await context.SaveChangesAsync();
-            IGravatarLoader gLoader=new BasicGravatarLoader(author.Email);
+            IGravatarLoader gLoader = new BasicGravatarLoader(author.Email);
+            int commentCount = 0;
+            string commentsAsJson = actm.GetCommentsAsJson(articleId, out commentCount);
             return new ViewArticleViewModel()
             {
                 ArticleId = articleId,
                 Author=author.NickName,
                 Author_ID=author.UniqueId,
-                Author_IconTag=gLoader.GetIconTag(64),
+                Author_IconTag=gLoader.GetIconTag(50),
                 PageView=article.PageView,
                 Title = article.Title,
                 Content =await manager.GetArticleBody(article.ArticleModelId),
@@ -65,7 +67,9 @@ namespace Web.Controllers
                 Article_Date = article.CreationTime.ToShortDateString(),
                 Article_UpDate = article.UpdateTime.ToShortDateString(),
                 UseThumbnail= thumbnail.CheckThumbnailExist(articleId),
-                CommentInfo=actm.GetCommentsAsJson(articleId)
+                CommentInfo=commentsAsJson,
+                CommentCount=commentCount,
+                AuthorsArticles=getUserArticles(0,0,article.AuthorID,3)
             };
         }
 
@@ -112,7 +116,7 @@ namespace Web.Controllers
 
         public async Task<ActionResult> Search(string searchText,int skip=0,int order=0)
         {
-            if(searchText==null)return View(new SearchResultViewModel() {Articles = new SearchResultArticle[0]});
+            if(searchText==null)return View(new SearchResultViewModel() {Articles = new SearchResultArticle[0],Order = order,Skip = skip});
             string[] queries=searchText.Split(' ');
             var context = Request.GetOwinContext().Get<ApplicationDbContext>();
             string first = queries[0];
@@ -125,6 +129,7 @@ namespace Web.Controllers
             result = ChangeOrder(order, result);
             result = result.Skip(skip);
             SearchResultViewModel vm=new SearchResultViewModel();
+            ArticleThumbnailManager thumbnailManager=new ArticleThumbnailManager(new BlobStorageConnection());
             List<SearchResultArticle> articles=new List<SearchResultArticle>();
             int count = await result.CountAsync();
             foreach (var source in result.Take(20))
@@ -135,7 +140,8 @@ namespace Web.Controllers
                     LabelCount = source.LabelCount,
                     PageView = source.PageView,
                     Title = source.Title,
-                    Article_UpDate = source.UpdateTime.ToShortDateString()
+                    Article_UpDate = source.UpdateTime.ToShortDateString(),
+                    ThumbnailTag = thumbnailManager.GenerateThumnailTag(source.ArticleModelId)
                 });
             }
             vm.Articles = articles.ToArray();
@@ -148,6 +154,8 @@ namespace Web.Controllers
                 vm.SearchResultText = string.Format("「{0}」に関する検索結果:{1}件中{2}～{3}件", searchText,count,skip+1,Math.Min(skip+21,count));
             }
             vm.SearchText = searchText;
+            vm.Order = order;
+            vm.Skip = skip;
             return View(vm);
         }
 
@@ -178,17 +186,18 @@ namespace Web.Controllers
             return result;
         }
 
-        public ActionResult Tag(string tag, int skip = 0, int order = 0)
+        public async Task<ActionResult> Tag(string tag, int skip = 0, int order = 0)
         {
-            if (tag == null) return View("Search",new SearchResultViewModel() { Articles = new SearchResultArticle[0] });
+            if (tag == null) return View("Search",new SearchResultViewModel() { Articles = new SearchResultArticle[0],Order = order,Skip = skip});
             var context = Request.GetOwinContext().Get<ApplicationDbContext>();
             ArticleTagModel tagModel = context.Tags.Where(f => f.TagName.Equals(tag)).FirstOrDefault();
-            context.Entry(tagModel).Collection(f=>f.Articles).Load();
+            await context.Entry(tagModel).Collection(f=>f.Articles).LoadAsync();
             SearchResultViewModel vm = new SearchResultViewModel();
             List<SearchResultArticle> articles = new List<SearchResultArticle>();
-            var query = context.Articles.AsQueryable();
-            ChangeOrder(order, query);
+            var query = tagModel.Articles.AsQueryable();
+            query=ChangeOrder(order, query);
             query=query.Skip(skip);
+            var count =query.Count();
             foreach (var source in query.Take(10))
             {
                 articles.Add(new SearchResultArticle()
@@ -201,6 +210,16 @@ namespace Web.Controllers
             }
             vm.Articles = articles.ToArray();
             vm.SearchText = tag;
+            vm.Order = order;
+            vm.Skip = skip;
+            if (vm.Articles.Length == 0)
+            {
+                vm.SearchResultText = string.Format("「{0}」タグがついている記事は見つかりませんでした。", tag);
+            }
+            else
+            {
+                vm.SearchResultText = string.Format("「{0}」タグのついている記事、検索結果{1}件中{2}～{3}件", tag, count, skip + 1, Math.Min(skip + 21, count));
+            }
             return View("Search", vm);
         }
 
@@ -208,22 +227,8 @@ namespace Web.Controllers
         [Authorize]
         public  ActionResult MyPage(int order=0,int skip=0)
         {
-            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
-            IQueryable<ArticleModel> query= context.Articles.Where(f => f.AuthorID.Equals(User.Identity.Name));
-            query=ChangeOrder(order,query);
-            query =query.Skip(skip);
-            List<SearchResultArticle> articles = new List<SearchResultArticle>();
-            foreach (var source in query.Take(10))
-            {
-                articles.Add(new SearchResultArticle()
-                {
-                    ArticleId = source.ArticleModelId,
-                    LabelCount = source.LabelCount,
-                    PageView = source.PageView,
-                    Title = source.Title
-                });
-            }
-            return View(new MyPageViewModel() {articles = articles.ToArray(),IsMyPage = true});
+            var articles = getUserArticles(order, skip, User.Identity.Name, 10);
+            return View(new MyPageViewModel() { Skip=skip,Order = order,articles = articles.ToArray(),IsMyPage = true});
         }
 
         [HttpPost]
@@ -249,25 +254,36 @@ namespace Web.Controllers
         [HttpGet]
         public async Task<ActionResult> UserPage(string articleId,int order=0,int skip=0)
         {
-            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            ApplicationDbContext context = Request.GetOwinContext().Get<ApplicationDbContext>();
             ArticleModel articleModel = await context.Articles.FindAsync(articleId);
             string userId = articleModel.AuthorID;
             if (User.Identity.Name.Equals(userId)) return Redirect("MyPage");
+            var articles = getUserArticles(order, skip, userId);
+            var user =await Request.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByNameAsync(articleModel.AuthorID);
+            return View("MyPage",new UserPageViewModel() { Skip=skip,Order = order,UserNickName =user.NickName ,articles = articles.ToArray(),IsMyPage=false });
+        }
+
+        private List<SearchResultArticle> getUserArticles(int order, int skip, string userId,int takeCount=10)
+        {
+            ApplicationDbContext context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            ArticleThumbnailManager thumbnailManager=new ArticleThumbnailManager(new BlobStorageConnection());
             IQueryable<ArticleModel> query = context.Articles.Where(f => f.AuthorID.Equals(userId));
             query = ChangeOrder(order, query);
             query = query.Skip(skip);
             List<SearchResultArticle> articles = new List<SearchResultArticle>();
-            foreach (var source in query.Take(10))
+            foreach (var source in query.Take(takeCount))
             {
                 articles.Add(new SearchResultArticle()
                 {
                     ArticleId = source.ArticleModelId,
                     LabelCount = source.LabelCount,
                     PageView = source.PageView,
-                    Title = source.Title
+                    Title = source.Title,
+                    Article_UpDate = source.UpdateTime.ToShortDateString(),
+                    ThumbnailTag=thumbnailManager.GenerateThumnailTag(source.ArticleModelId)
                 });
             }
-            return View("MyPage",new MyPageViewModel() { articles = articles.ToArray(),IsMyPage=false });
+            return articles;
         }
 
         public ActionResult PrivacyPolicy()

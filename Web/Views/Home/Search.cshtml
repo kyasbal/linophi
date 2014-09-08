@@ -9,9 +9,12 @@
 }
 
 @section JS{
+<script src="~/Scripts/Utility/SearchOrderOptionBox.js"></script>
     <script src="~/Scripts/Home/Search.js"></script>
 }
 @Html.HiddenFor(m=>m.SearchText,new{id="searchedText"})
+@Html.HiddenFor(m => m.Order, new { id = "order" })
+@Html.HiddenFor(m => m.Skip, new { id = "skip" })
 <div class="contents">
     <div class="wrapper">
         <div class="main">
@@ -29,7 +32,7 @@
                     <div class="search-header">
                         <h1>@Model.SearchResultText</h1>
                         <form>
-                            <select class="search-menu" onchange="inputValue()">
+                            <select class="search-menu" onchange="searchPageOrderOptionBox.onOptionChange()">
                                 <option selected>検索方法の選択</option>
                                 <option value="0">投稿が新しい順</option>
                                 <option value="3">投稿が古い順</option>
@@ -44,7 +47,7 @@
         @foreach (var article in Model.Articles)
         {
             <li class="listitem">
-                <p class="listthumb"><a href=""><img width="60" height="60" src="/Content/imgs/Home/red.jpg"></a></p>
+                <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
                 <div class="listtxt">
                     <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br /><span class="listdesc">@article.PageView view|@article.LabelCount ふせん|@article.Article_UpDate last updated</span>
                 </div>
@@ -57,8 +60,8 @@
             </ul>
         </div>
 
-        <div class="dropbox">
-            @*おすすめ投稿書いてみたり広告入れてみたり自由に使うスペースってことで*@
-        </div>
+@*        <div class="dropbox">*@
+@*            $1$おすすめ投稿書いてみたり広告入れてみたり自由に使うスペースってことで#1#*@
+@*        </div>*@
     </div>
 </div>

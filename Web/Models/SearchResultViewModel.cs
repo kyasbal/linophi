@@ -11,6 +11,10 @@ namespace Web.Models
         public string SearchResultText { get; set; }
 
         public string SearchText { get; set; }
+
+        public int Order { get; set; }
+
+        public int Skip { get; set; }
     }
 
     public class SearchResultArticle
@@ -24,5 +28,6 @@ namespace Web.Models
         public string ArticleId { get; set; }
 
         public string Article_UpDate { get; set; }
+        public string ThumbnailTag { get; set; }
     }
 }

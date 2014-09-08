@@ -657,7 +657,7 @@
         //HTML再生成
         updateCacheHtml()
         {
-            var prefixes: PrefixBase[] = [new QuotePrefix(),new TitlePrefix(), new DividerPrefix()];
+            var prefixes: PrefixBase[] = [new QuotePrefix(),new TitlePrefix()/*, new DividerPrefix()*/];
             var tag: JQuery;
             var rawStr: string =this.htmlEnc(this._rawText).replace(/\n/g, "</br>");
             rawStr=rawStr.replace(/ /g, "&ensp;"); //半角スペースは特殊文字として置き換える
@@ -962,22 +962,26 @@
         getFormattedHtmlImpl(str: string): string
         {
             console.warn("link");
-            str = str.replace(/&ensp;/g, "\u0006");
+            str = str.replace(/&ensp;/g, "\u0006a");
+            str = str.replace(/\\{/g, "\u0006b");
+            str = str.replace(/\\}/g, "\u0006c");
             if (str.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g)) {
                 str = str.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"/Pages/ContentUpload/UploadFromExternal?url=$1\">");
             }
             str = str.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)([^\w\/:%#\$&\?\(\)~\.=\+\-])(?![>"])/g, "<a href='$1'>$1</a>$2");
             str = str.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)$/, "<a href='$1'>$1</a>");
-            str = str.replace(/\u0006/g, "&ensp;");
+            str = str.replace(/\u0006a/g, "&ensp;");
             str = str.replace(/\n/g, "</br>");
-            str = str.replace(/\{(.*?)\}/g, "<p class=\"source\">出典：$1</p>");
-            str = str.replace(/(.*?)(出典:.*?)(.*?)/g,"$1$3$2");
+            str = str.replace(/(.*)({.*})(.*)/g, "$1$3$2");
+            str = str.replace(/{(.*?)}/g, "<p class=\"source\">出典：$1</p>");
+            str = str.replace(/\u0006b/g, "{");
+            str = str.replace(/\u0006c/g, "}");
             return "<blockquote><div class=\"quote\">" + str + "</div></blockquote>";
         }
     }
 
 
-    class DividerPrefix extends PrefixBase
+    /*class DividerPrefix extends PrefixBase
     {
         getPrefixString(): string
         {
@@ -988,7 +992,7 @@
         {
             return "<hr/>";
         }
-    }
+    }*/
     //段落上でのカレット位置をあらわすクラス
     export class CaretPosition
     {

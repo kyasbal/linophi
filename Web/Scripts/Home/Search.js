@@ -1,7 +1,6 @@
-﻿function inputValue2() {
-    var add = location.href;
-    var val = $('.search-menu').val();
-    var searchedText = $("#searchedText").val();
-    window.location.href = "Search?searchText=" + searchedText + "&order=" + val;
-}
+﻿var searchPageOrderOptionBox;
+$(function () {
+    searchPageOrderOptionBox = new SearchOrderOptionBox($(".search-menu"), "Search", "searchText");
+    searchPageOrderOptionBox.initBoxSelected();
+});
 //# sourceMappingURL=Search.js.map
