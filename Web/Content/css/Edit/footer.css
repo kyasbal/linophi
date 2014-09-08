@@ -3,7 +3,7 @@
   width: 100%;
   background: aliceblue;
   bottom: 0;
-  position: absolute;
+  position: relative;
 }
 .foot img {
   height: 160px;
