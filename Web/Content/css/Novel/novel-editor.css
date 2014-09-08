@@ -17,6 +17,9 @@
 .edit-editted-box .tag-layout:hover {
   background-color: AppWorkspace;
 }
+.edit-text:focus {
+  outline: none;
+}
 .edit-preview-container {
   margin-left: 10%;
   width: 40%;
@@ -43,5 +46,22 @@
 }
 .preview-iframes {
   max-height: 0;
+}
+.prev-switch {
+  height: 40px;
+  width: 120px;
+  margin-left: 25%;
+  padding-top: 15px;
+  padding-left: 30px;
+  display: inline-block;
+  color: black;
+  background-color: aquamarine;
+  font-weight: bold;
+  border-radius: 300px;
+  cursor: pointer;
+}
+.prev-switch:hover {
+  color: gray;
+  background-color: cyan;
 }
 /*# sourceMappingURL=novel-editor.css.map */

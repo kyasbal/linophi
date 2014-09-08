@@ -172,14 +172,12 @@
         });
 
         $('.alert-layer, .alert-contents button').on("click", function (e) {
-            if (alertMode) {
                 $('.alert-layer, .alert-box').css("opacity", 0);
                 setTimeout(function () {
                     $('.alert-layer, .alert-box').css("visibility", "hidden");
                 }, 200);
 
                 alertMode = false;
-            }
             onOKFunc(e.currentTarget.className.substr(13));
         });
     }

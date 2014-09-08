@@ -3,23 +3,40 @@ body {
   height: 100%;
 }
 .whole-layout {
-  margin-top: 0;
-  padding-left: 5%;
-  padding-right: 5%;
-  height: 60%;
-  background-color: #fdf8f2;
+  margin-top: 60px;
+  margin-left: 5%;
+  margin-bottom: -40px;
+  padding-bottom: 40px;
+  width: 90%;
+  background-color: antiquewhite;
   font-size: large;
 }
+.whole-layout .sign-up-space {
+  padding-top: 40px;
+  padding-right: 25%;
+  padding-left: 25%;
+}
 .whole-layout .sign-up {
-  padding-top: 5%;
-  margin: 0 auto;
-  font-size: x-large;
-  font-weight: bold;
+  box-shadow: -18px 0 #afdbcc, -28px 0 #7ac2a6;
+  font-size: 28px;
 }
 .whole-layout .form {
   padding-left: 5%;
 }
+.whole-layout .form #regi {
+  opacity: 1;
+}
+.whole-layout .name-box:focus,
+.whole-layout .email-box:focus {
+  outline: none;
+}
 .foot {
   margin-bottom: 0;
+}
+.warn1,
+.warn2,
+.warn3 {
+  color: red;
+  display: none;
 }
 /*# sourceMappingURL=ExternalLoginConfirmation.css.map */
