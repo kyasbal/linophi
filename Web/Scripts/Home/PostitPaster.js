@@ -190,7 +190,7 @@ $(window).load(function () {
         });
 
         labelType = ((Object)(event.currentTarget)).className;
-        src = '/Content/imgs/Home/' + labelType + '.png';
+        src = '/Content/imgs/Home/' + labelType + '-d.svg';
 
         $('.fade-layer, .dropbox').mousemove(function (e) {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight) {

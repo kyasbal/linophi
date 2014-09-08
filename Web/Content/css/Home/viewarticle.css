@@ -582,6 +582,7 @@ input[type="text"] {
 }
 .container .contents .postit-list img {
   width: 130px;
+  height: 43px;
 }
 .container .contents .postit-list > * {
   cursor: pointer;

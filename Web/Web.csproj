@@ -212,8 +212,8 @@
     </Content>
     <Content Include="Content\imgs\Home\anger-d.svg" />
     <Content Include="Content\imgs\Home\anger-l.svg" />
-    <Content Include="Content\imgs\Home\betthink-d.svg" />
-    <Content Include="Content\imgs\Home\betthink-l.svg" />
+    <Content Include="Content\imgs\Home\bethink-d.svg" />
+    <Content Include="Content\imgs\Home\bethink-l.svg" />
     <Content Include="Content\imgs\Home\fun-d.svg" />
     <Content Include="Content\imgs\Home\fun-l.svg" />
     <Content Include="Content\imgs\Home\good-d.svg" />
@@ -222,8 +222,8 @@
     <Content Include="Content\imgs\Home\noidea-l.svg" />
     <Content Include="Content\imgs\Home\sad-d.svg" />
     <Content Include="Content\imgs\Home\sad-l.svg" />
-    <Content Include="Content\imgs\Home\surpised-d.svg" />
-    <Content Include="Content\imgs\Home\surpised-l.svg" />
+    <Content Include="Content\imgs\Home\surprised-d.svg" />
+    <Content Include="Content\imgs\Home\surprised-l.svg" />
     <Content Include="Scripts\Home\CommentIndicator.js" />
     <Content Include="Content\imgs\tnm.png" />
     <Content Include="Content\imgs\logo.png" />

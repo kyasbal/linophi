@@ -244,7 +244,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         });
 
         labelType = ((Object)(event.currentTarget)).className;
-        src = '/Content/imgs/Home/' + labelType + '.png';
+        src = '/Content/imgs/Home/' + labelType + '-d.svg';
 
         $('.fade-layer, .dropbox').mousemove((e) =>
         {
