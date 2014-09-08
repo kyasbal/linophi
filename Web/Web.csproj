@@ -198,15 +198,13 @@
     <Content Include="Content\css\Account\ExternalLoginConfirmation.min.css">
       <DependentUpon>ExternalLoginConfirmation.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Home\tnm.png" />
     <Content Include="Content\css\Home\Top.css">
       <DependentUpon>Top.less</DependentUpon>
     </Content>
     <Content Include="Content\css\Home\Top.min.css">
       <DependentUpon>Top.css</DependentUpon>
     </Content>
-    <Content Include="Scripts\Home\CommentIndicator.js" />
-    <Content Include="Content\imgs\tnm.png" />
+    <Content Include="Content\imgs\logo.png" />
     <Content Include="Scripts\jquery.alertwindow.js" />
     <Content Include="Content\css\Account\login.css">
       <DependentUpon>login.less</DependentUpon>
@@ -456,6 +454,7 @@
     <Compile Include="Models\MyPageViewModel.cs" />
     <Compile Include="Models\SearchResultViewModel.cs" />
     <Compile Include="Models\UserAccount.cs" />
+    <Compile Include="Models\UserPageViewModel.cs" />
     <Compile Include="Models\ViewArticleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -529,6 +528,7 @@
     </Content>
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
     <Content Include="Views\Home\TermsOfService.cshtml" />
+    <Content Include="Views\Home\UserPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -545,12 +545,12 @@
     <TypeScriptCompile Include="Scripts\Edit\head.ts" />
     <TypeScriptCompile Include="Scripts\Edit\TagMaker.ts" />
     <TypeScriptCompile Include="Scripts\Home\AfterLogin.ts" />
-    <TypeScriptCompile Include="Scripts\Home\CommentIndicator.ts" />
     <TypeScriptCompile Include="Scripts\Home\MovieFixation.ts" />
     <TypeScriptCompile Include="Scripts\Home\MyPage.ts" />
     <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />
     <TypeScriptCompile Include="Scripts\Home\Search.ts" />
     <TypeScriptCompile Include="Scripts\Home\Top.ts" />
+    <TypeScriptCompile Include="Scripts\Home\UserPage.ts" />
     <TypeScriptCompile Include="Scripts\Home\viewarticle.ts" />
     <TypeScriptCompile Include="Scripts\Novel\IParagraph.ts" />
     <TypeScriptCompile Include="Scripts\Novel\Markups.ts" />
@@ -569,9 +569,11 @@
     <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
     <TypeScriptCompile Include="Scripts\Utility\AspectRatioStretcher.ts" />
     <TypeScriptCompile Include="Scripts\Utility\HeightStretcher.ts" />
+    <TypeScriptCompile Include="Scripts\Utility\SearchOrderOptionBox.ts" />
     <TypeScriptCompile Include="Scripts\View\index.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Api\Admin\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>

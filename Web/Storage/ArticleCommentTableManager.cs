@@ -85,7 +85,7 @@ namespace Web.Storage
                     AutoId = comment.AutoID,
                     Comment = comment.Comment,
                     Name = comment.UserName,
-                    PostTime = comment.CreationTime.ToShortDateString()
+                    PostTime = comment.CreationTime.ToShortDateString(),
                 });
             }
             count = comments.Count;

@@ -28,6 +28,7 @@ namespace Web.Models
         public string ArticleId { get; set; }
         public string CommentInfo { get; set; }
         public int CommentCount { get; set; }
+        public List<SearchResultArticle> AuthorsArticles { get; set; }
     }
 
     public class TagViewModel
