@@ -118,6 +118,9 @@
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.4.1\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -426,6 +429,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Api\Article\ArticleController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -565,6 +569,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201409031548165_AddStupidUpdate.resx">
