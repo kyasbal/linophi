@@ -228,7 +228,7 @@ namespace Web.Controllers
         public  ActionResult MyPage(int order=0,int skip=0)
         {
             var articles = getUserArticles(order, skip, User.Identity.Name, 10);
-            return View(new MyPageViewModel() {articles = articles.ToArray(),IsMyPage = true});
+            return View(new MyPageViewModel() { Skip=skip,Order = order,articles = articles.ToArray(),IsMyPage = true});
         }
 
         [HttpPost]
@@ -259,7 +259,8 @@ namespace Web.Controllers
             string userId = articleModel.AuthorID;
             if (User.Identity.Name.Equals(userId)) return Redirect("MyPage");
             var articles = getUserArticles(order, skip, userId);
-            return View("MyPage",new MyPageViewModel() { articles = articles.ToArray(),IsMyPage=false });
+            var user =await Request.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByNameAsync(User.Identity.Name);
+            return View("MyPage",new UserPageViewModel() { Skip=skip,Order = order,UserNickName =user.NickName ,articles = articles.ToArray(),IsMyPage=false });
         }
 
         private List<SearchResultArticle> getUserArticles(int order, int skip, string userId,int takeCount=10)
@@ -285,7 +286,7 @@ namespace Web.Controllers
             return articles;
         }
 
-        public ActionResult PrivacyPolicy()
+        public ActionResult rivacyPolicy()
         {
             return View();
         }

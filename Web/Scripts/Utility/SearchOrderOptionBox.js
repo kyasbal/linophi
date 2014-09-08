@@ -1,11 +1,18 @@
 ﻿var SearchOrderOptionBox = (function () {
-    function SearchOrderOptionBox(targetoptioncontrol, targetPath, searchedAttribute) {
+    function SearchOrderOptionBox(targetoptioncontrol, targetPath, searchedAttribute, needSearchText) {
+        if (typeof needSearchText === "undefined") { needSearchText = true; }
         this.targetElement = targetoptioncontrol;
         this.targetPath = targetPath;
         this.searchedAttribute = searchedAttribute;
+        this.needSearchText = needSearchText;
     }
     SearchOrderOptionBox.prototype.onOptionChange = function () {
-        window.location.href = "/" + this.targetPath + "?" + this.searchedAttribute + "=" + $("#searchedText").val() + "&order=" + this.targetElement.val() + "&skip=" + $("#skip").val();
+        var addr = "/" + this.targetPath + "?";
+        if (this.needSearchText) {
+            addr += this.searchedAttribute + "=" + $("#searchedText").val() + "&";
+        }
+        addr += "order=" + this.targetElement.val() + "&skip=" + $("#skip").val();
+        window.location.href = addr;
     };
 
     SearchOrderOptionBox.prototype.initBoxSelected = function () {
