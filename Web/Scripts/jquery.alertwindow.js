@@ -3,7 +3,7 @@
         /* 本来の引数はmsg, buttonOption, titleMsg, mainColor, onOKFunc
          * 
          * msg: 警告文として表示したい文字列またはhtml
-         * buttonOption: 表示するボタンの種類。y/n, ok, またはボタン内に表示したい任意の文字列
+         * buttonOption: 表示するボタンの種類。y/n, ok, none, またはボタン内に表示したい任意の文字列
          * titleMsg: ダイアログに表示されるタイトル。デフォルトは"警告"　省略可
          * mainColor: cssで使えるカラーコード等。省略可
          * onOKFunc: コールバック関数。引数が２つのときのみ省略可。
@@ -52,6 +52,12 @@
             case "OK":
                 buttonHtml = '<button class="alert-button-ok">OK</button>';
                 mainColor = mainColor || "#FC8D49";
+                break;
+            case "none":
+            case "None":
+            case "NONE":
+                buttonHtml = '';
+                mainColor = mainColor || "#49D7FC";
                 break;
             default:
                 buttonHtml = '<button class="alert-button-plain">' + buttonOption + '</button>';

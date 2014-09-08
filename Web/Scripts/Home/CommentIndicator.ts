@@ -28,6 +28,7 @@ $(() =>
 {
     var commentSourceParser = new CommentSourceParser();
 
+    // コメントの表示に関する
     $('.article-container > *').each((i) =>
     {
         var $ele: JQuery = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
@@ -49,5 +50,20 @@ $(() =>
         $('.widget .' + className + '-comments').append(
             '<button class="' + className + '">コメントを残す</button>'
         );
+    });
+
+    $('.widget button').on("click", () =>
+    {
+        var formHtml =
+            '<form id="the-form" action="/echo/json" method="POST">' +
+                '<input type="text" name="name" value="" placeholder="Name" />' +
+                '<textarea name="message" placeholder="Messages"></textarea>' +
+                '<button>送信！</button>' +
+            '</form>';
+
+        $().alertwindow(formHtml, "none", "コメントを残す", () =>
+        {
+            
+        });
     });
 });
