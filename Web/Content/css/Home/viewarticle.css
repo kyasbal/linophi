@@ -189,12 +189,12 @@ input[type="text"] {
   width: 55px;
   height: 50px;
   background-color: white;
-  border-radius: 60px;
   -moz-border-radius: 60px;
   -webkit-border-radius: 60px;
-  box-shadow: inset 0px 1px 2px 0px #666;
+  border-radius: 60px;
   -webkit-box-shadow: inset 0px 1px 2px 0px #666;
   -moz-box-shadow: inset 0px 1px 2px 0px #666;
+  box-shadow: inset 0px 1px 2px 0px #666;
 }
 .container .contents .top .navbar-main .navbar-count .navbar-countfv .navbar-countnum {
   display: block;
@@ -258,7 +258,7 @@ input[type="text"] {
   box-shadow: inset 0px 1px 2px 0px #666;
   -webkit-box-shadow: inset 0px 1px 2px 0px #666;
   -moz-box-shadow: inset 0px 1px 2px 0px #666;
-  font-family: Tahoma, Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+  font-family: Tahoma, Verdana, Geneva, sans-serif;
 }
 .container .contents .top .navbar-main .navbar-count .navbar-date .date {
   display: block;
@@ -284,12 +284,12 @@ input[type="text"] {
   width: 100px;
   height: 50px;
   background-color: white;
-  border-radius: 60px;
   -moz-border-radius: 60px;
   -webkit-border-radius: 60px;
-  box-shadow: inset 0px 1px 2px 0px #666;
+  border-radius: 60px;
   -webkit-box-shadow: inset 0px 1px 2px 0px #666;
   -moz-box-shadow: inset 0px 1px 2px 0px #666;
+  box-shadow: inset 0px 1px 2px 0px #666;
   font-family: Tahoma, Verdana, Geneva, Tahoma, sans-serif, sans-serif;
 }
 .container .contents .top .navbar-main .navbar-count .navbar-Update .Update {
@@ -309,7 +309,7 @@ input[type="text"] {
 }
 .container .contents .top .navbar .navbar-sub {
   float: left;
-  width: 40%px;
+  width: 40%;
   text-align: right;
   padding-left: 20px;
 }
@@ -336,7 +336,7 @@ input[type="text"] {
   vertical-align: middle;
 }
 .container .contents .contentswrapper {
-  width: 1020px;
+  width: 1040px;
   margin: 0 auto;
 }
 .container .contents .contentswrapper .main {
@@ -365,6 +365,41 @@ input[type="text"] {
 }
 .container .contents .contentswrapper .main .widgetlist .widgettypetitle p {
   word-wrap: break-word;
+}
+.container .contents .contentswrapper .main .widget > *[class*="p-"] {
+  position: relative;
+}
+.container .contents .contentswrapper .main .widget > *[class*="p-"]:hover {
+  background: #deb3ba;
+}
+.container .contents .contentswrapper .main .widget > *[class*="p-"]:hover > *[class*="-tooltip"] {
+  display: block;
+}
+.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-tooltip"] {
+  font-size: 10px;
+  width: 200px;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 110%;
+  z-index: 9999;
+  padding: 6px 10px;
+  color: #FFFFFF;
+  background: #c72439;
+  border-radius: 0.5em;
+}
+.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-tooltip"]:after {
+  width: 0;
+  height: 0;
+  content: "";
+  display: block;
+  position: absolute;
+  right: -20px;
+  top: 25px;
+  border-top: 7px solid #c72439;
+  border-left: 14px solid #c72439;
+  border-right: 14px solid transparent;
+  border-bottom: 7px solid transparent;
 }
 .container .contents .contentswrapper .main .article-container p:hover {
   background-color: ghostwhite;
@@ -436,6 +471,43 @@ input[type="text"] {
   color: #818181;
   text-decoration: underline;
 }
+.container .contents .contentswrapper .dropbox {
+  position: relative;
+  background-color: white;
+  float: left;
+  width: 180px;
+  padding-bottom: 1000000px;
+  margin-bottom: -1000000px;
+  z-index: 0;
+  opacity: 1;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 500ms;
+  -o-transition-duration: 500ms;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.container .contents .contentswrapper .dropbox > * > * {
+  margin-left: -20px;
+  padding: 10px 15px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.container .contents .contentswrapper .dropbox > * > * > span {
+  padding: 3px 9px;
+  background: #fff;
+  color: #555;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 200px;
+}
 .container .contents .postit {
   position: fixed;
   right: 0;
@@ -445,6 +517,10 @@ input[type="text"] {
   -o-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .container .contents .postit-contents {
   background-color: #fdf8f2;
@@ -483,39 +559,6 @@ input[type="text"] {
   height: 43px;
   width: 130px;
   visibility: hidden;
-}
-.container .contents .dropbox {
-  position: relative;
-  background-color: white;
-  float: left;
-  width: 300px;
-  padding-bottom: 1000000px;
-  margin-bottom: -1000000px;
-  z-index: 0;
-  opacity: 1;
-  -moz-transition-property: opacity;
-  -o-transition-property: opacity;
-  -webkit-transition-property: opacity;
-  transition-property: opacity;
-  -moz-transition-duration: 500ms;
-  -o-transition-duration: 500ms;
-  -webkit-transition-duration: 500ms;
-  transition-duration: 500ms;
-}
-.container .contents .dropbox > * > * {
-  margin-left: -20px;
-  padding: 10px 15px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.container .contents .dropbox > * > * > span {
-  padding: 3px 9px;
-  background: #fff;
-  color: #555;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 200px;
 }
 .container .contents .foot {
   width: 100%;
