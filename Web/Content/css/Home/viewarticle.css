@@ -343,7 +343,6 @@ input[type="text"] {
   background-color: aliceblue;
   float: left;
   width: 800px;
-  margin-left: -100px;
   padding-left: 20px;
   padding-right: 40px;
   padding-bottom: 40px;
@@ -377,29 +376,32 @@ input[type="text"] {
 }
 .container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-tooltip"] {
   font-size: 10px;
-  width: 200px;
+  width: 300px;
   display: none;
   position: absolute;
   top: 0;
-  right: 110%;
+  left: 102%;
   z-index: 9999;
   padding: 6px 10px;
   color: #FFFFFF;
   background: #c72439;
   border-radius: 0.5em;
+  -moz-transform: translateY(-30%);
+  -ms-transform: translateY(-30%);
+  -o-transform: translateY(-30%);
+  -webkit-transform: translateY(-30%);
+  transform: translateY(-30%);
 }
 .container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-tooltip"]:after {
   width: 0;
-  height: 0;
+  height: 70%;
   content: "";
   display: block;
   position: absolute;
-  right: -20px;
-  top: 25px;
-  border-top: 7px solid #c72439;
-  border-left: 14px solid #c72439;
-  border-right: 14px solid transparent;
-  border-bottom: 7px solid transparent;
+  left: -20px;
+  top: 31.5%;
+  border-top: 10px solid #c72439;
+  border-left: 20px solid transparent;
 }
 .container .contents .contentswrapper .main .article-container p:hover {
   background-color: ghostwhite;

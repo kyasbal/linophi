@@ -14,7 +14,7 @@ namespace Web.Api
     public class CommentController : ApiController
     {
         [HttpPost]
-        public async Task<IHttpActionResult> AttachComment(AttachCommentRequest req)
+        public async Task<IHttpActionResult> AttachComment([FromBody]AttachCommentRequest req)
         {
             ArticleCommentTableManager commentTableManager=new ArticleCommentTableManager(new TableStorageConnection());
             await commentTableManager.AddComment(new ArticleComment(req.ArticleId, req.ParagraphId, req.UserName,
