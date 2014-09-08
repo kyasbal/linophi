@@ -101,8 +101,6 @@ class TopPage extends PageBase
 
     public canvasContext: any;
 
-    public currentRadar: Radar;
-
     public graphCanvas:JQuery;
 
     adjustContentHeight()
