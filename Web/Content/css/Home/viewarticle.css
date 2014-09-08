@@ -67,7 +67,6 @@ input[type="text"] {
 }
 .container .contents .top {
   margin-bottom: 30px;
-  border-top: 1px solid #f0fff0;
   background-color: #f0fff0;
   height: 350px;
 }
