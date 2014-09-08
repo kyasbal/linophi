@@ -141,13 +141,13 @@
             <br />
             <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
             <div class="rellist">
-                <div>この著者の他の記事</div>
+                <h2>この著者の他の記事</h2>
                 <div class="separator2"><hr></div>
                 <ul class="list">
                     @foreach (var article in Model.AuthorsArticles)
                     {
                         <li class="listitem">
-                            <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
+                            <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
                             <div class="listtxt">
                                 <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br />
                                 <span class="listdesc">

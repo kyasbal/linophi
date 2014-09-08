@@ -259,6 +259,7 @@ namespace Web.Controllers
         private List<SearchResultArticle> getUserArticles(int order, int skip, string userId,int takeCount=10)
         {
             ApplicationDbContext context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            ArticleThumbnailManager thumbnailManager=new ArticleThumbnailManager(new BlobStorageConnection());
             IQueryable<ArticleModel> query = context.Articles.Where(f => f.AuthorID.Equals(userId));
             query = ChangeOrder(order, query);
             query = query.Skip(skip);
@@ -271,7 +272,8 @@ namespace Web.Controllers
                     LabelCount = source.LabelCount,
                     PageView = source.PageView,
                     Title = source.Title,
-                    Article_UpDate = source.UpdateTime.ToShortDateString()
+                    Article_UpDate = source.UpdateTime.ToShortDateString(),
+                    ThumbnailTag=thumbnailManager.GenerateThumnailTag(source.ArticleModelId)
                 });
             }
             return articles;

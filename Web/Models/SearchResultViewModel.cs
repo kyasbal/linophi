@@ -24,5 +24,6 @@ namespace Web.Models
         public string ArticleId { get; set; }
 
         public string Article_UpDate { get; set; }
+        public string ThumbnailTag { get; set; }
     }
 }

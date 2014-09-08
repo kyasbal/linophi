@@ -43,6 +43,19 @@ namespace Web.Storage
             return blobRef.Exists();
         }
 
+        public string GenerateThumnailTag(string articleId)
+        {
+            CloudBlockBlob blobRef = Container.GetBlockBlobReference(articleId);
+            if (!blobRef.Exists())
+            {
+                return "";
+            }
+            else
+            {
+                return String.Format("<img src='/Pages/ContentUpload/Thumbnail?articleId={0}' class='thumbnail'/>",articleId);
+            }
+        }
+
         public async Task<Stream> DownloadThumbnail(string articleId)
         {
             MemoryStream ms=new MemoryStream();
