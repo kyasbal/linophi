@@ -39,7 +39,7 @@
                                 @foreach (TagViewModel tag in Model.Tags)
                                 {
                                     <li class="topicwordlistli">
-                                        <a href="" class="topicword">
+                                        <a href="@("/Tag?tag="+tag.TagName)" class="topicword">
                                             @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
                                         </a>
                                     </li>
@@ -71,10 +71,6 @@
                                                                                }</a></div>
                         </div>
                         <div class="navbar-count">
-                            <span class="navbar-countfv">
-                                <span class="navbar-countnum">@Model.LabelCount</span>
-                                <span class="navbar-countlabel">ふせん</span>
-                            </span>
                             <span class="navbar-countpv">
                                 <span class="navbar-countnum">
                                     @if (Model != null)

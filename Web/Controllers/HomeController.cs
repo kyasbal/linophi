@@ -55,7 +55,7 @@ namespace Web.Controllers
                 ArticleId = articleId,
                 Author=author.NickName,
                 Author_ID=author.UniqueId,
-                Author_IconTag=gLoader.GetIconTag(64),
+                Author_IconTag=gLoader.GetIconTag(50),
                 PageView=article.PageView,
                 Title = article.Title,
                 Content =await manager.GetArticleBody(article.ArticleModelId),
@@ -178,17 +178,18 @@ namespace Web.Controllers
             return result;
         }
 
-        public ActionResult Tag(string tag, int skip = 0, int order = 0)
+        public async Task<ActionResult> Tag(string tag, int skip = 0, int order = 0)
         {
             if (tag == null) return View("Search",new SearchResultViewModel() { Articles = new SearchResultArticle[0] });
             var context = Request.GetOwinContext().Get<ApplicationDbContext>();
             ArticleTagModel tagModel = context.Tags.Where(f => f.TagName.Equals(tag)).FirstOrDefault();
-            context.Entry(tagModel).Collection(f=>f.Articles).Load();
+            await context.Entry(tagModel).Collection(f=>f.Articles).LoadAsync();
             SearchResultViewModel vm = new SearchResultViewModel();
             List<SearchResultArticle> articles = new List<SearchResultArticle>();
-            var query = context.Articles.AsQueryable();
-            ChangeOrder(order, query);
+            var query = tagModel.Articles.AsQueryable();
+            query=ChangeOrder(order, query);
             query=query.Skip(skip);
+            var count =query.Count();
             foreach (var source in query.Take(10))
             {
                 articles.Add(new SearchResultArticle()
@@ -201,6 +202,14 @@ namespace Web.Controllers
             }
             vm.Articles = articles.ToArray();
             vm.SearchText = tag;
+            if (vm.Articles.Length == 0)
+            {
+                vm.SearchResultText = string.Format("「{0}」タグがついている記事は見つかりませんでした。", tag);
+            }
+            else
+            {
+                vm.SearchResultText = string.Format("「{0}」タグのついている記事、検索結果{1}件中{2}～{3}件", tag, count, skip + 1, Math.Min(skip + 21, count));
+            }
             return View("Search", vm);
         }
 

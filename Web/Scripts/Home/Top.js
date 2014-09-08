@@ -72,7 +72,7 @@ var TopPage = (function (_super) {
         $(window).resize(function () {
             _this.adjustContentHeight();
         });
-        this.canvasContext = document.getElementById("top-graph").getContext("2d");
+        //this.canvasContext = document.getElementById("top-graph").getContext("2d");
     }
     TopPage.prototype.adjustContentHeight = function () {
         var containerHeight = window.innerHeight - this.header.height() - this.footer.height();
