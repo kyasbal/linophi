@@ -1,7 +1,16 @@
 ﻿;(function ($) {
-    $.fn.alertwindow = function () { // 本来の引数はmsg, buttonOption, mainColor, onOKFuncで、buttonOption, conditionは省略可
+    $.fn.alertwindow = function () { 
+        /* 本来の引数はmsg, buttonOption, titleMsg, mainColor, onOKFunc
+         * 
+         * msg: 警告文として表示したい文字列またはhtml
+         * buttonOption: 表示するボタンの種類。y/n, ok, またはボタン内に表示したい任意の文字列
+         * titleMsg: ダイアログに表示されるタイトル。デフォルトは"警告"　省略可
+         * mainColor: cssで使えるカラーコード等。省略可
+         * onOKFunc: コールバック関数。引数が２つのときのみ省略可。
+         */
 
-        var msg, buttonOption, mainColor, onOKFunc;
+
+        var msg, buttonOption, titleMsg, mainColor, onOKFunc;
         switch (arguments.length) {
             case 2:
                 msg = arguments[0];
@@ -16,8 +25,15 @@
             case 4:
                 msg = arguments[0];
                 buttonOption = arguments[1];
-                mainColor = arguments[2];
+                titleMsg = arguments[2];
                 onOKFunc = arguments[3];
+                break;
+            case 5:
+                msg = arguments[0];
+                buttonOption = arguments[1];
+                titleMsg = arguments[2];
+                mainColor = arguments[3];
+                onOKFunc = arguments[4];
                 break;
             default:
                 console.error(".alertwindow()の引数の数が不正です");

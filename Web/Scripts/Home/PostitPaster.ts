@@ -218,7 +218,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             "position": "absolute",
             "top": elePos - dropboxPos + "px",
             "height": eleHeight + "px",
-            "width": "300px",
+            "width": "160px",
         });
 
         labelSourceParser.eachByParagraph(className.substr(4), (emotion: string, count: number, itr: number) =>

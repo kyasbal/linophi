@@ -447,6 +447,10 @@ input[type="text"] {
 }
 .container .contents .postit-list {
   padding: 15px 30px 9px;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .container .contents .postit-list > div {
   position: relative;
@@ -461,6 +465,9 @@ input[type="text"] {
   background: rgba(255, 255, 255, 0.7);
   font-size: 12px;
   font-weight: bold;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
 }
 .container .contents .postit-list img {
   width: 130px;
@@ -491,6 +498,10 @@ input[type="text"] {
   -o-transition-duration: 500ms;
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .container .contents .dropbox > * > * {
   margin-left: -20px;

@@ -170,7 +170,7 @@ $(window).load(function () {
             "position": "absolute",
             "top": elePos - dropboxPos + "px",
             "height": eleHeight + "px",
-            "width": "300px"
+            "width": "160px"
         });
 
         labelSourceParser.eachByParagraph(className.substr(4), function (emotion, count, itr) {
