@@ -23,6 +23,9 @@ body {
 .whole-layout .form {
   padding-left: 5%;
 }
+.whole-layout .form #regi {
+  opacity: 1;
+}
 .whole-layout .name-box:focus,
 .whole-layout .email-box:focus {
   outline: none;
