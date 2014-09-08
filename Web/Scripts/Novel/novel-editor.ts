@@ -964,6 +964,7 @@
             console.warn("link");
             str = str.replace(/&ensp;/g, "\u0006a");
             str = str.replace(/\\{/g, "\u0006b");
+            str = str.replace(/\\}/g, "\u0006c");
             if (str.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g)) {
                 str = str.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"/Pages/ContentUpload/UploadFromExternal?url=$1\">");
             }
@@ -972,8 +973,9 @@
             str = str.replace(/\u0006a/g, "&ensp;");
             str = str.replace(/\n/g, "</br>");
             str = str.replace(/(.*)({.*})(.*)/g, "$1$3$2");
-            str = str.replace(/\{(.*?)\}/g, "<p class=\"source\">出典：$1</p>");
+            str = str.replace(/{(.*?)}/g, "<p class=\"source\">出典：$1</p>");
             str = str.replace(/\u0006b/g, "{");
+            str = str.replace(/\u0006c/g, "}");
             return "<blockquote><div class=\"quote\">" + str + "</div></blockquote>";
         }
     }
