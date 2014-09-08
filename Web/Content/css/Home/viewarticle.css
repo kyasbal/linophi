@@ -398,7 +398,7 @@ input[type="text"] {
   position: relative;
 }
 .container .contents .contentswrapper .main .widget > *[class*="p-"]:hover {
-  background: #deb3ba;
+  background: #ddd;
 }
 .container .contents .contentswrapper .main .widget > *[class*="p-"]:hover > *[class*="-comments"] {
   display: block;
@@ -413,7 +413,7 @@ input[type="text"] {
   z-index: 9999;
   padding: 6px 10px;
   color: #FFFFFF;
-  background: #c72439;
+  background: #666;
   border-radius: 0.5em;
   -moz-transform: translateY(-30%);
   -ms-transform: translateY(-30%);
@@ -429,7 +429,7 @@ input[type="text"] {
   position: absolute;
   left: -20px;
   top: 31.5%;
-  border-top: 10px solid #c72439;
+  border-top: 10px solid #666;
   border-left: 20px solid transparent;
 }
 .container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .response p:hover {
