@@ -1,4 +1,4 @@
-﻿function inputValue() {
+﻿function inputValue2() {
     var add = location.href;
     var val = $('.search-menu').val();
     var searchedText = $("#searchedText").val();
