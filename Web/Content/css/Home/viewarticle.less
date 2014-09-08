@@ -50,6 +50,7 @@ input[type="text"] {
 }
 
 .set:after {
+
     content: "";
     display: block;
     clear: both;
@@ -78,19 +79,20 @@ input[type="text"] {
 
         .top {
             margin-bottom: 30px;
-            border-bottom: 1px solid #f2f2f2;
+            /*border-bottom: 1px solid #f2f2f2;*/
+            border-top:1px solid rgba(240,255,240,1);
+
             background-color:rgba(240,255,240,1);
 
             &-inner {
                 width: 960px;
-                margin: 0 auto;
+                margin: 0 auto 0 15%;
                 padding-bottom: 15px;
 
                 .viewhead {
                     width: 100%;
                     min-width: 960px;
-                    padding-top:20px;
-                    margin-left:-20%;
+                    margin: 0 auto;
                     z-index: 500;
 
                     &-inner {
@@ -168,19 +170,15 @@ input[type="text"] {
 
             .navbar {
                 padding-top: 15px;
-                position: relative;
-                margin:0 -100px;
-
+                margin:0 0 0 20px;
+                width:120%;
                 &-main {
-                    padding-left:200px;
                     float: left;
-                    width: 725px;
+                    width: 85%;
 
                     .navbar-thumb {
                         float: right;
-                        margin: 0 15px 30px 0;
-                        padding-left:30px;
-
+                        margin: 0 15px 15px -50px;
                         img {
                             width: 105px;
                             height: 105px;
@@ -188,17 +186,15 @@ input[type="text"] {
                     }
 
                     .navbar-txt {
-                        width:120%;
-                        margin-left:-300px;
+                        width:90%;
                         margin-top: -13px;
                         padding-bottom:10px;
 
                         .navbar-title {
                             display:inline;
                             a {
-                                word-wrap:break-word;
+                                word-wrap: break-word;
                                 margin: 0 15px 0 0;
-                                padding: 6px 0;
                                 color: #000;
                                 text-decoration: none;
                             }
@@ -376,8 +372,13 @@ input[type="text"] {
 
                 .navbar-userthumb {
                     margin-right: 10px;
+                    
                 }
-
+                .user-img{
+                    font-weight:bold;
+                    display:block;
+                    text-align:left;
+                }
                 .navbar-username {
                     line-height: 30px;
                     vertical-align: middle;
