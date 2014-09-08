@@ -286,7 +286,7 @@ namespace Web.Controllers
             return articles;
         }
 
-        public ActionResult rivacyPolicy()
+        public ActionResult PrivacyPolicy()
         {
             return View();
         }

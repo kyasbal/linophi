@@ -23,7 +23,4 @@ function editArticle(articleId) {
             $("#edit-article-" + articleId).submit();
     });
 }
-
-function inputValue() {
-}
 //# sourceMappingURL=MyPage.js.map
