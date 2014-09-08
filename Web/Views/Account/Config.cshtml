@@ -1,6 +1,15 @@
-﻿@model dynamic
-
+﻿@model Web.Models.AccountConfigViewModel
 @{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+@using(Html.BeginForm("Config","Account",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <h1>ユーザー名の変更</h1>
+    @Html.TextBoxFor(m=>m.NickName)
+    <h1>メールの受信可否の変更</h1>
+    @Html.CheckBoxFor(m=>m.MailMagazine)
+    <input type="submit"/>
 }

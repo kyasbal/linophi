@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Net;
@@ -42,10 +43,30 @@ namespace Web.Controllers
             return View();
         }
 
+        
+        [Authorize]
         [HttpGet]
-        public ActionResult Config()
+        public async Task<ActionResult> Config()
         {
-            return View();
+            UserAccount user =await UserManager.FindByNameAsync(User.Identity.Name);
+            return View(new AccountConfigViewModel()
+            {
+                MailMagazine = user.AcceptEmail,
+                NickName = user.NickName,
+            });
+        }
+
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        [HttpPost]
+        public async Task<ActionResult> Config(AccountConfigViewModel vm)
+        {
+            UserAccount user = await UserManager.FindByNameAsync(User.Identity.Name);
+            user.NickName = vm.NickName;
+            user.AcceptEmail = vm.MailMagazine;
+            user.UpdateTime=DateTime.Now;
+            await UserManager.UpdateAsync(user);
+            return RedirectToAction("Config");
         }
 
         [AllowAnonymous]//TODO:åˆäJéûÇÃçÌèú

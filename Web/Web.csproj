@@ -431,6 +431,7 @@
       <DependentUpon>201409070206073_AddIsDraft.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountConfigViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ArticleEditViewModel.cs" />
     <Compile Include="Models\ArticleModel.cs" />
