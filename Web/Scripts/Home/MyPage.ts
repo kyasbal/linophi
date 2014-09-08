@@ -1,4 +1,16 @@
-﻿function deleteArticle(articleId:string)
+﻿$(function()
+{
+    $(".listitem").hover(function()
+    {
+        $(this).find(".edit-buttons").css("visibility", "visible");
+    },function()
+        {
+            $(this).find(".edit-buttons").css("visibility", "hidden");
+        }
+    );
+});
+
+function deleteArticle(articleId: string)
 {
     $().alertwindow("この記事を削除しますか？", "y/n", (response) =>
     {

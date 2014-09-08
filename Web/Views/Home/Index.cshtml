@@ -76,10 +76,10 @@
                                 </span>
                                 <span class="navbar-countlabel">view</span>
                             </span>
-                            <span class="navbar-date">
+                            @*<span class="navbar-date">
                                 <span class="date">@Model.Article_Date</span>
                                 <span class="date-txt">posted</span>
-                            </span>
+                            </span>*@
                             <span class="navbar-Update">
                                 <span class="Update">@Model.Article_UpDate</span>
                                 <span class="Update-txt">last updated</span>
@@ -89,7 +89,7 @@
                     <div class="navbar-sub">
                         <div>
                             <p class="navbar-user">
-                                <span class="navbar-userthumb">@Model.Author_IconTag</span><span class="navbar-username">
+                                <span class="user-img">投稿者</span><span class="navbar-userthumb">@Model.Author_IconTag</span><span class="navbar-username">
                                                                                                <a href="@("/UserPage?articleId="+Model.ArticleId)">
                                                                                                    @if (Model != null)
                                                                                                    {

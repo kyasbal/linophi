@@ -100,4 +100,14 @@ var EditPageContents;
     EditPageContents[EditPageContents["Configure"] = 1] = "Configure";
     EditPageContents[EditPageContents["EditBelt"] = 2] = "EditBelt";
 })(EditPageContents || (EditPageContents = {}));
+
+var editmode = $('#hidden-mode[name="Mode"]').val();
+if (editmode == "edit") {
+    $(".edit-submit-button").css('background-color', '#7FFFD4');
+    $(".edit-submit-button").hover(function () {
+        $(this).css("background-color", "#3CB371");
+    }, function () {
+        $(this).css("background-color", "#7FFFD4");
+    });
+}
 //# sourceMappingURL=EditPage.js.map

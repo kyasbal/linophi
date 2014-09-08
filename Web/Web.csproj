@@ -228,8 +228,6 @@
     <Content Include="Content\css\Edit\header.min.css" />
     <Content Include="Content\css\Edit\index.css" />
     <Content Include="Content\css\Edit\index.min.css" />
-    <Content Include="Content\css\Edit\ObiEdit.css" />
-    <Content Include="Content\css\Edit\ObiEdit.min.css" />
     <Content Include="Content\css\Home\more.css">
       <DependentUpon>more.less</DependentUpon>
     </Content>
@@ -309,8 +307,6 @@
     <Content Include="Content\css\Edit\header.less" />
     <Content Include="Content\css\Edit\index.css.map" />
     <Content Include="Content\css\Edit\index.less" />
-    <Content Include="Content\css\Edit\ObiEdit.css.map" />
-    <Content Include="Content\css\Edit\ObiEdit.less" />
     <Content Include="Content\css\Novel\novel-editor.css.map" />
     <Content Include="Content\css\Novel\novel-editor.less" />
     <Content Include="Content\css\Novel\novel-viewer.css.map" />
@@ -376,9 +372,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
-    <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.4.js" />
-    <Content Include="Scripts\jquery-1.4.4.min.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.1.js" />
@@ -498,7 +491,6 @@
     <Content Include="Scripts\Utility\AspectRatioStretcher.js.map" />
     <Content Include="Scripts\Utility\HeightStretcher.js.map" />
     <Content Include="Scripts\View\index.js.map" />
-    <Content Include="Views\Edit\EditBody.cshtml" />
     <Content Include="Views\Shared\_BaseLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
@@ -527,7 +519,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\Account\dropdown.ts" />
     <TypeScriptCompile Include="Scripts\Account\externalLoginConfirmation.ts" />
+    <TypeScriptCompile Include="Scripts\Account\signup.ts" />
     <TypeScriptCompile Include="Scripts\collections.ts" />
     <TypeScriptCompile Include="Scripts\Edit\EditPage.ts" />
     <TypeScriptCompile Include="Scripts\Edit\head.ts" />
@@ -545,6 +539,7 @@
     <TypeScriptCompile Include="Scripts\Novel\novel-viewer.ts" />
     <TypeScriptCompile Include="Scripts\Novel\Paragraph.ts" />
     <TypeScriptCompile Include="Scripts\Novel\ParagraphFactory.ts" />
+    <TypeScriptCompile Include="Scripts\Novel\sizing.ts" />
     <TypeScriptCompile Include="Scripts\Shared\Header.ts" />
     <TypeScriptCompile Include="Scripts\typings\caret-util\caret-util.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\chartjs\chartjs.d.ts" />
@@ -562,9 +557,11 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201409031548165_AddStupidUpdate.resx">
       <DependentUpon>201409031548165_AddStupidUpdate.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409070206073_AddIsDraft.resx">
       <DependentUpon>201409070206073_AddIsDraft.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

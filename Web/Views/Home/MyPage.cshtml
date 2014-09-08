@@ -19,19 +19,21 @@
     <div class="wrapper">
         <div class="main">
             <ul class="search-result">
-                    <div class="search-header">
-                        <h1>今までに書いた記事</h1>
-                        <form>
-                            <select class="search-menu" onchange="inputValue()">
-                                <option value="0" selected>投稿が新しい順</option>
-                                <option value="3">投稿が古い順</option>
-                                <option value="1">閲覧数が多い順</option>
-                                <option value="4">閲覧数が少ない順</option>
-                                <option value="2">ふせんが多い順</option>
-                                <option value="5">ふせんが少ない順</option>
-                            </select>
-                        </form>
-                    </div>
+                <div class="search-header">
+                    <h1>今までに書いた記事</h1>
+                    <form>
+                        <select class="search-menu" onchange="inputValue()">
+                            <option selected>検索方法の選択</option>
+                            <option value="0">投稿が新しい順</option>
+                            <option value="3">投稿が古い順</option>
+                            <option value="1">閲覧数が多い順</option>
+                            <option value="4">閲覧数が少ない順</option>
+                            <option value="2">ふせんが多い順</option>
+                            <option value="5">ふせんが少ない順</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="my-editted"><div class="adjust">
                     @foreach (var article in Model.articles)
                     {
                         <li class="listitem">
@@ -57,6 +59,7 @@
                         
 
                     }
+               </div></div>
             </ul>
         </div>
 
