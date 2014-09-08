@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json.Schema;
 
 namespace Web.Utility
 {
@@ -14,6 +15,11 @@ namespace Web.Utility
         public static int Clamp(int min, int max, int value)
         {
             return Math.Max(min, Math.Min(max, value));
+        }
+
+        public static bool IsRange(int value, int max, int min)
+        {
+            return value >= min && value <= max;
         }
 
         /// <summary>

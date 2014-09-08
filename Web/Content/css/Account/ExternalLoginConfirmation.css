@@ -3,12 +3,10 @@ body {
   height: 100%;
 }
 .whole-layout {
-  margin-top: 60px;
+  padding-top: 60px;
   margin-left: 5%;
-  margin-bottom: -40px;
   padding-bottom: 40px;
   width: 90%;
-  background-color: antiquewhite;
   font-size: large;
 }
 .whole-layout .sign-up-space {
@@ -38,5 +36,28 @@ body {
 .warn3 {
   color: red;
   display: none;
+}
+#regi {
+  background-color: dimgray;
+  color: white;
+  padding: 3px 40px;
+  cursor: default;
+}
+#regi.submit-enabled {
+  background-color: #469b7a;
+  cursor: pointer;
+}
+.submit-container {
+  text-align: center;
+}
+.linophi-chara {
+  width: 300px;
+  height: auto;
+  position: absolute;
+  right: 80px;
+  bottom: -50px;
+}
+.container {
+  position: relative;
 }
 /*# sourceMappingURL=ExternalLoginConfirmation.css.map */

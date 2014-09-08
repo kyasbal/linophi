@@ -223,7 +223,7 @@ namespace Web.Controllers
                     Title = source.Title
                 });
             }
-            return View(new MyPageViewModel() {articles = articles.ToArray()});
+            return View(new MyPageViewModel() {articles = articles.ToArray(),IsMyPage = true});
         }
 
         [HttpPost]
@@ -267,7 +267,7 @@ namespace Web.Controllers
                     Title = source.Title
                 });
             }
-            return View("MyPage",new MyPageViewModel() { articles = articles.ToArray() });
+            return View("MyPage",new MyPageViewModel() { articles = articles.ToArray(),IsMyPage=false });
         }
 
         public ActionResult PrivacyPolicy()

@@ -53,6 +53,7 @@ namespace Web.Storage
         public string AutoId { get; set; }
 
         public string Name { get; set; }
+        public string ParagraphId { get; set; }
     }
 
     [TableStorage("Comments")]
@@ -80,6 +81,7 @@ namespace Web.Storage
             {
                 comments.Add(new ArticleCommentViewModel()
                 {
+                    ParagraphId=comment.ParagraphId,
                     AutoId = comment.AutoID,
                     Comment = comment.Comment,
                     Name = comment.UserName,

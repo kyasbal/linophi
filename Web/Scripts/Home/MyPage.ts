@@ -27,3 +27,8 @@ function editArticle(articleId: string)
             $("#edit-article-" + articleId).submit();
     });
 }
+
+function inputValue()
+{
+    
+}

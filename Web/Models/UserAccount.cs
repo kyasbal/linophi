@@ -61,5 +61,10 @@ namespace Web.Models
             // ここにカスタム ユーザー クレームを追加します
             return userIdentity;
         }
+
+        public static bool ValidateNickName(string str)
+        {
+            return MathEx.IsRange(str.Length, 15, 0);
+        }
     }
 }
