@@ -78,7 +78,8 @@ input[type="text"] {
 .container .contents .top-inner .viewhead {
   width: 100%;
   min-width: 960px;
-  margin: 0 auto;
+  padding-top: 20px;
+  margin-left: -20%;
   z-index: 500;
 }
 .container .contents .top-inner .viewhead-inner {
@@ -147,19 +148,22 @@ input[type="text"] {
   margin: 0 -100px;
 }
 .container .contents .top .navbar-main {
+  padding-left: 200px;
   float: left;
   width: 725px;
 }
 .container .contents .top .navbar-main .navbar-thumb {
   float: right;
-  margin: 0 15px 15px -30px;
+  margin: 0 15px 30px 0;
+  padding-left: 30px;
 }
 .container .contents .top .navbar-main .navbar-thumb img {
   width: 105px;
   height: 105px;
 }
 .container .contents .top .navbar-main .navbar-txt {
-  width: 80%;
+  width: 120%;
+  margin-left: -300px;
   margin-top: -13px;
   padding-bottom: 10px;
 }
