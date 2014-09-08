@@ -195,6 +195,7 @@
     <Content Include="Content\css\Account\ExternalLoginConfirmation.min.css">
       <DependentUpon>ExternalLoginConfirmation.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\tnm.png" />
     <Content Include="Content\css\Home\Top.css">
       <DependentUpon>Top.less</DependentUpon>
     </Content>
@@ -202,6 +203,7 @@
       <DependentUpon>Top.css</DependentUpon>
     </Content>
     <Content Include="Scripts\Home\CommentIndicator.js" />
+    <Content Include="Content\imgs\tnm.png" />
     <Content Include="Scripts\jquery.alertwindow.js" />
     <Content Include="Content\css\Account\login.css">
       <DependentUpon>login.less</DependentUpon>

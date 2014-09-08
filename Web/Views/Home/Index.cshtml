@@ -54,6 +54,12 @@
                     <div class="navbar-main navbar-mainwiththumb">
                         <div class="navbar-thumb">
                             <canvas id="article-graph" width="250" height="250"></canvas>
+                            <div class="postit-in-circle">
+                                <span class="navbar-countfv">
+                                    <span class="navbar-countnum font-size-25">@Model.LabelCount</span><br />
+                                    <span class="navbar-countlabel">ふせん</span>
+                                </span>
+                            </div>
                             @if(Model.UseThumbnail)
                             {
                                 <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)"/>

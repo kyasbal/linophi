@@ -31,6 +31,14 @@ var AccountConfirmation = (function () {
         needMargin = Math.max(0, needMargin);
         $(".container").css({ "margin-bottom": needMargin });
     };
+
+    AccountConfirmation.prototype.changeSubmitStyle = function (isEnable) {
+        if (isEnable) {
+            $('#regi').removeAttr('disabled').addClass("submit-enabled");
+        } else {
+            $('#regi').attr('disabled', 'disabled').removeClass("submit-enabled");
+        }
+    };
     return AccountConfirmation;
 })();
 
@@ -56,14 +64,14 @@ $(function () {
 });
 
 $(function () {
-    $("#regi").attr('disabled', 'disabled').css('cursor', 'default');
+    accountConfirmationPage.changeSubmitStyle(false);
 
     $('#AcceptTerm').click(function () {
         if ($(this).prop('checked') == false) {
-            $('#regi').attr('disabled', 'disabled').css('cursor', 'default');
+            accountConfirmationPage.changeSubmitStyle(false);
         } else {
             if (isTooShortNickName == isTooLongNickName == isInvalidEmailAddr == true) {
-                $('#regi').removeAttr('disabled').css('cursor', 'pointer');
+                accountConfirmationPage.changeSubmitStyle(true);
             }
         }
     });

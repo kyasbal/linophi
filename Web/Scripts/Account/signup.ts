@@ -40,6 +40,17 @@ class AccountConfirmation
         var needMargin = sumHeight - $("header").height() - $(".foot").height() - $(".container").height()-5;//-20;
         needMargin=Math.max(0, needMargin);
         $(".container").css({ "margin-bottom": needMargin });
+    }
+    
+    changeSubmitStyle(isEnable: boolean)
+    {
+        if (isEnable)
+        {
+            $('#regi').removeAttr('disabled').addClass("submit-enabled");
+        } else
+        {
+            $('#regi').attr('disabled', 'disabled').removeClass("submit-enabled");
+        }
     }    
 }
 
@@ -69,19 +80,19 @@ $(() =>
 
 $(()=>
 {
-    $("#regi").attr('disabled', 'disabled').css('cursor', 'default');
+    accountConfirmationPage.changeSubmitStyle(false);
 
     $('#AcceptTerm').click(function()
     {
         if ($(this).prop('checked') == false)
         {
-            $('#regi').attr('disabled', 'disabled').css('cursor', 'default');
+            accountConfirmationPage.changeSubmitStyle(false);
         }
         else
         {
             if (isTooShortNickName == isTooLongNickName == isInvalidEmailAddr == true)
             {
-                $('#regi').removeAttr('disabled').css('cursor', 'pointer');
+                accountConfirmationPage.changeSubmitStyle(true);
             }
         }
     });
