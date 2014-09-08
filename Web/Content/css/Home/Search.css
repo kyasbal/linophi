@@ -7,6 +7,10 @@ body {
   width: 100%;
   background-color: #fff;
 }
+.thumbnail {
+  width: 100px;
+  height: auto;
+}
 .contents {
   padding-bottom: 25px;
   overflow: hidden;

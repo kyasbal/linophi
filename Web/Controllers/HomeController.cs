@@ -129,6 +129,7 @@ namespace Web.Controllers
             result = ChangeOrder(order, result);
             result = result.Skip(skip);
             SearchResultViewModel vm=new SearchResultViewModel();
+            ArticleThumbnailManager thumbnailManager=new ArticleThumbnailManager(new BlobStorageConnection());
             List<SearchResultArticle> articles=new List<SearchResultArticle>();
             int count = await result.CountAsync();
             foreach (var source in result.Take(20))
@@ -139,7 +140,8 @@ namespace Web.Controllers
                     LabelCount = source.LabelCount,
                     PageView = source.PageView,
                     Title = source.Title,
-                    Article_UpDate = source.UpdateTime.ToShortDateString()
+                    Article_UpDate = source.UpdateTime.ToShortDateString(),
+                    ThumbnailTag = thumbnailManager.GenerateThumnailTag(source.ArticleModelId)
                 });
             }
             vm.Articles = articles.ToArray();

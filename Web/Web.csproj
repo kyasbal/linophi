@@ -204,6 +204,7 @@
     <Content Include="Content\css\Home\Top.min.css">
       <DependentUpon>Top.css</DependentUpon>
     </Content>
+    <Content Include="Content\imgs\logo.png" />
     <Content Include="Scripts\jquery.alertwindow.js" />
     <Content Include="Content\css\Account\login.css">
       <DependentUpon>login.less</DependentUpon>
