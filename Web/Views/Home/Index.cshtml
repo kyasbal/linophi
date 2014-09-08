@@ -27,6 +27,16 @@
     <link href="~/Content/css/Home/viewarticle.css" rel="stylesheet" />
     <link href="~/Content/css/Markup.css" rel="stylesheet" />
 }
+@*facebookボタン用*@
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=146218925555159&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
 <div class="container">
     <div class="contents set">
@@ -60,16 +70,20 @@
                                     <span class="navbar-countlabel">ふせん</span>
                                 </span>
                             </div>
-                            @if(Model.UseThumbnail)
+                            @if (Model.UseThumbnail)
                             {
-                                <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)"/>
+                                <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)" />
                             }
                         </div>
                         <div class="navbar-txt">
-                            <div class="article-title navbar-title"><a href="">@if (Model != null)
-                                                                               {@Model.Title
-                                                                               }</a></div>
+                            <div class="article-title navbar-title">
+                                <a href="">
+                                    @if (Model != null)
+                                    {@Model.Title
+                                    }
+                            </a>
                         </div>
+                    </div>
                         <div class="navbar-count">
                             <span class="navbar-countpv">
                                 <span class="navbar-countnum">
@@ -88,123 +102,128 @@
                                 <span class="Update-txt">last updated</span>
                             </span>
                         </div>
-                    </div>
-                    <div class="navbar-sub">
-                        <div>
-                            <p class="navbar-user">
-                                <span class="user-img">投稿者</span><span class="navbar-userthumb">@Model.Author_IconTag</span><span class="navbar-username">
-                                                                                               <a href="@("/UserPage?articleId="+Model.ArticleId)">
-                                                                                                   @if (Model != null)
-                                                                                                   {
-                                                                                                       @Model.Author
-                                                                                                   }
-                                                                                               </a>さん
-                                                                                           </span>
-                            </p>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <div class="contentswrapper set">
-            <article class="main">
-                <div>
-                    <div class="widgetlist">
-                        <div class="article-container widget widgettypetitle">
-                            @if (Model != null && Model.Content != null)
-                            {
-                                @Html.Raw(Model.Content)
-                            }
-                        </div>
-                    </div>
-                </div>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
-                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
-                <br />
-                <div class="rellist">
-                    <div>関連する投稿</div>
-                    <div class="separator2"><hr></div>
-                    <ul class="list">
-                        <li class="listitem">
-                            <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
-                            <div class="listtxt">
-                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん|140157 view|2014/09/04 posted</span>
-                            </div>
-                        </li>
-                        <li class="listitem">
-                            <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
-                            <div class="listtxt">
-                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん|101551 view|2014/09/04 posted</span>
-                            </div>
-                        </li>
-                    </ul>
-                    <span class="more-read"><a href="more.cshtml">もっとみる</a></span>
-                </div>
-                <br />
-                <div class="rellist">
-                    <div>ふせんの傾向が似ている投稿</div>
-                    <div class="separator2"><hr></div>
-                    <ul class="list">
-                        <li class="listitem">
-                            <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
-                            <div class="listtxt">
-                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん<span class="separator">|</span>140157 view<span class="separator">|</span>2014/09/04 posted</span>
-                            </div>
-                        </li>
-                        <li class="listitem">
-                            <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
-                            <div class="listtxt">
-                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん<span class="separator">|</span>101551 view<span class="separator">|</span>2014/09/04 posted</span>
-                            </div>
-                        </li>
-                    </ul>
-                    <span class="more-read">@Html.ActionLink("もっとみる", "more", "Home")</span>
-                </div>
-                <br />
-                <div class="separator1"><hr></div>
-                <br />
-            </article>
-            <div class="dropbox">
-                <div class="postit-pasting"></div>
-            </div>
-            <nav class="postit">
-                <div class="postit-contents">
-                    <h2 class="postit-title">ふせんを貼る</h2>
-                    <div class="postit-list">
-                        <div>
-                            <img src="~/Content/imgs/Home/surprised.png" class="surprised">
-                            <div class="surprised">ビックリ</div>
-                        </div>
-                        <div>
-                            <img src="~/Content/imgs/Home/anger.png" class="anger">
-                            <div class="anger">怒る</div>
-                        </div>
-                        <div>
-                            <img src="~/Content/imgs/Home/fun.png" class="fun">
-                            <div class="fun">面白い</div>
-                        </div>
-                        <div>
-                            <img src="~/Content/imgs/Home/bethink.png" class="bethink">
-                            <div class="bethink">なるほど</div>
-                        </div>
-                        <div>
-                            <img src="~/Content/imgs/Home/good.png" class="good">
-                            <div class="good">いいね</div>
-                        </div>
-                        <div>
-                            <img src="~/Content/imgs/Home/sad.png" class="sad">
-                            <div class="sad">悲しい</div>
-                        </div>
-                        <div>
-                            <img src="~/Content/imgs/Home/noidea.png" class="noidea">
-                            <div class="noidea">わからない</div>
-                        </div>
 
+                    <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
+                        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+                </div>
+                <div class="navbar-sub">
+                    <div>
+                        <p class="navbar-user">
+                            <span class="user-img">投稿者</span><span class="navbar-userthumb">@Model.Author_IconTag</span><span class="navbar-username">
+                                <a href="@("/UserPage?articleId="+Model.ArticleId)">
+                                    @if (Model != null)
+                                    {
+                                        @Model.Author
+                                    }
+                                </a>さん
+                            </span>
+                        </p>
                     </div>
                 </div>
             </nav>
         </div>
     </div>
+    <div class="contentswrapper set">
+        <article class="main">
+            <div>
+                <div class="widgetlist">
+                    <div class="article-container widget widgettypetitle">
+                        @if (Model != null && Model.Content != null)
+                        {
+                            @Html.Raw(Model.Content)
+                        }
+                    </div>
+                </div>
+            </div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
+            <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+            <br />
+            <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+            <div class="rellist">
+                <div>関連する投稿</div>
+                <div class="separator2"><hr></div>
+                <ul class="list">
+                    <li class="listitem">
+                        <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
+                        <div class="listtxt">
+                            <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん|140157 view|2014/09/04 posted</span>
+                        </div>
+                    </li>
+                    <li class="listitem">
+                        <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
+                        <div class="listtxt">
+                            <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん|101551 view|2014/09/04 posted</span>
+                        </div>
+                    </li>
+                </ul>
+                <span class="more-read"><a href="more.cshtml">もっとみる</a></span>
+            </div>
+            <br />
+            <div class="rellist">
+                <div>ふせんの傾向が似ている投稿</div>
+                <div class="separator2"><hr></div>
+                <ul class="list">
+                    <li class="listitem">
+                        <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
+                        <div class="listtxt">
+                            <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん<span class="separator">|</span>140157 view<span class="separator">|</span>2014/09/04 posted</span>
+                        </div>
+                    </li>
+                    <li class="listitem">
+                        <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
+                        <div class="listtxt">
+                            <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん<span class="separator">|</span>101551 view<span class="separator">|</span>2014/09/04 posted</span>
+                        </div>
+                    </li>
+                </ul>
+                <span class="more-read">@Html.ActionLink("もっとみる", "more", "Home")</span>
+            </div>
+            <br />
+            <div class="separator1"><hr></div>
+            <br />
+        </article>
+        <div class="dropbox">
+            <div class="postit-pasting"></div>
+        </div>
+        <nav class="postit">
+            <div class="postit-contents">
+                <h2 class="postit-title">ふせんを貼る</h2>
+                <div class="postit-list">
+                    <div>
+                        <img src="~/Content/imgs/Home/surprised.png" class="surprised">
+                        <div class="surprised">ビックリ</div>
+                    </div>
+                    <div>
+                        <img src="~/Content/imgs/Home/anger.png" class="anger">
+                        <div class="anger">怒る</div>
+                    </div>
+                    <div>
+                        <img src="~/Content/imgs/Home/fun.png" class="fun">
+                        <div class="fun">面白い</div>
+                    </div>
+                    <div>
+                        <img src="~/Content/imgs/Home/bethink.png" class="bethink">
+                        <div class="bethink">なるほど</div>
+                    </div>
+                    <div>
+                        <img src="~/Content/imgs/Home/good.png" class="good">
+                        <div class="good">いいね</div>
+                    </div>
+                    <div>
+                        <img src="~/Content/imgs/Home/sad.png" class="sad">
+                        <div class="sad">悲しい</div>
+                    </div>
+                    <div>
+                        <img src="~/Content/imgs/Home/noidea.png" class="noidea">
+                        <div class="noidea">わからない</div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
 </div>
 <div class="fade-layer"></div>
 <script type="application/json" id="label-info">
