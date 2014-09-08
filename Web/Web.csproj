@@ -402,6 +402,7 @@
     <Compile Include="Api\CommentController.cs" />
     <Compile Include="Api\Content\ContentUploadController.cs" />
     <Compile Include="Api\Label\LabelController.cs" />
+    <Compile Include="Api\Response\Article\ArticleSummaryResponse.cs" />
     <Compile Include="Api\Response\Article\ExistenceRequest.cs" />
     <Compile Include="Api\Response\Article\ExistenceResponse.cs" />
     <Compile Include="Api\Response\Article\VerifyTitleRequest.cs" />
@@ -526,6 +527,7 @@
     <TypeScriptCompile Include="Scripts\Home\MyPage.ts" />
     <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />
     <TypeScriptCompile Include="Scripts\Home\Search.ts" />
+    <TypeScriptCompile Include="Scripts\Home\Top.ts" />
     <TypeScriptCompile Include="Scripts\Home\viewarticle.ts" />
     <TypeScriptCompile Include="Scripts\Novel\IParagraph.ts" />
     <TypeScriptCompile Include="Scripts\Novel\Markups.ts" />
