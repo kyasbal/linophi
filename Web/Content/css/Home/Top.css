@@ -1,5 +1,23 @@
-﻿#top-graph {
+﻿html {
+  height: 100%;
+}
+#view-title-container {
+  width: 70%;
+  height: 10%;
   margin: 0 auto;
+}
+#top-graph-container {
+  width: 49%;
+  height: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+#top-graph {
+  /*display:inline-block;*/
+  float: left;
+  width: 80%;
+  height: 100%;
+  border: 1px solid black;
 }
 .container {
   width: 100%;
@@ -8,8 +26,27 @@
 body {
   height: 100%;
 }
-.container-inner {
+.view-title {
+  height: 25px;
+  margin: 0 0 5% 10%;
+  display: block;
+}
+.view-title h1 {
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 30px;
+}
+.view-little-container {
+  width: 49%;
+  height: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.view-little {
+  /*display:inline-block;*/
+  float: right;
+  width: 80%;
   height: 100%;
-  width: 100%;
+  border: 1px solid black;
 }
 /*# sourceMappingURL=Top.css.map */
