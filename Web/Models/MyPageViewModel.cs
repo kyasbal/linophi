@@ -8,5 +8,6 @@ namespace Web.Models
     public class MyPageViewModel
     {
         public SearchResultArticle[] articles;
+        public bool IsMyPage { get; set; }
     }
 }

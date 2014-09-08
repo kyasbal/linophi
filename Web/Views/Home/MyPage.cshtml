@@ -40,20 +40,23 @@
                             <p class="listthumb"><a href=""><img width="60" height="60" src="/Content/imgs/Home/red.jpg"></a></p>
                             <div class="listtxt">
                                 <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br /><span class="listdesc">@article.PageView view|@article.LabelCount ふせん|@article.Article_UpDate last updated</span>
-                                <div class="edit-buttons">
-                                    @using (Html.BeginForm("DeleteArticle","Home",FormMethod.Post,new{id="remove-article-"+article.ArticleId}))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        @Html.Hidden("articleId",article.ArticleId)
-                                        <a onclick="deleteArticle('@article.ArticleId')">削除</a>
-                                    }
-                                    @using (Html.BeginForm("Index", "Edit", FormMethod.Get, new { id = "edit-article-" + article.ArticleId }))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        @Html.Hidden("articleId", article.ArticleId)
-                                        <a onclick="editArticle('@article.ArticleId')">編集</a>
-                                    }
-                                </div>
+                                @if (Model.IsMyPage)
+                                {
+                                    <div class="edit-buttons">
+                                        @using (Html.BeginForm("DeleteArticle","Home",FormMethod.Post,new{id="remove-article-"+article.ArticleId}))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.Hidden("articleId",article.ArticleId)
+                                            <a onclick="deleteArticle('@article.ArticleId')">削除</a>
+                                        }
+                                        @using (Html.BeginForm("Index", "Edit", FormMethod.Get, new { id = "edit-article-" + article.ArticleId }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.Hidden("articleId", article.ArticleId)
+                                            <a onclick="editArticle('@article.ArticleId')">編集</a>
+                                        }
+                                    </div>
+                                }
                             </div>
                         </li>
                         
