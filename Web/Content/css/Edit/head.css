@@ -60,9 +60,9 @@
   border: 0;
   width: 20px;
   height: 25px;
-  position: relative;
+  position: absolute;
   left: 200px;
-  top: -6px;
+  top: 5px;
 }
 .header .menu .search .search-button:focus {
   outline: none;
