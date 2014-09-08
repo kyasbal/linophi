@@ -9,9 +9,12 @@
 }
 
 @section JS{
+<script src="~/Scripts/Utility/SearchOrderOptionBox.js"></script>
     <script src="~/Scripts/Home/Search.js"></script>
 }
 @Html.HiddenFor(m=>m.SearchText,new{id="searchedText"})
+@Html.HiddenFor(m => m.Order, new { id = "order" })
+@Html.HiddenFor(m => m.Skip, new { id = "skip" })
 <div class="contents">
     <div class="wrapper">
         <div class="main">
@@ -29,7 +32,7 @@
                     <div class="search-header">
                         <h1>@Model.SearchResultText</h1>
                         <form>
-                            <select class="search-menu" onchange="inputValue()">
+                            <select class="search-menu" onchange="searchPageOrderOptionBox.onOptionChange()">
                                 <option selected>検索方法の選択</option>
                                 <option value="0">投稿が新しい順</option>
                                 <option value="3">投稿が古い順</option>

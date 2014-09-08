@@ -116,7 +116,7 @@ namespace Web.Controllers
 
         public async Task<ActionResult> Search(string searchText,int skip=0,int order=0)
         {
-            if(searchText==null)return View(new SearchResultViewModel() {Articles = new SearchResultArticle[0]});
+            if(searchText==null)return View(new SearchResultViewModel() {Articles = new SearchResultArticle[0],Order = order,Skip = skip});
             string[] queries=searchText.Split(' ');
             var context = Request.GetOwinContext().Get<ApplicationDbContext>();
             string first = queries[0];
@@ -154,6 +154,8 @@ namespace Web.Controllers
                 vm.SearchResultText = string.Format("「{0}」に関する検索結果:{1}件中{2}～{3}件", searchText,count,skip+1,Math.Min(skip+21,count));
             }
             vm.SearchText = searchText;
+            vm.Order = order;
+            vm.Skip = skip;
             return View(vm);
         }
 
@@ -186,7 +188,7 @@ namespace Web.Controllers
 
         public async Task<ActionResult> Tag(string tag, int skip = 0, int order = 0)
         {
-            if (tag == null) return View("Search",new SearchResultViewModel() { Articles = new SearchResultArticle[0] });
+            if (tag == null) return View("Search",new SearchResultViewModel() { Articles = new SearchResultArticle[0],Order = order,Skip = skip});
             var context = Request.GetOwinContext().Get<ApplicationDbContext>();
             ArticleTagModel tagModel = context.Tags.Where(f => f.TagName.Equals(tag)).FirstOrDefault();
             await context.Entry(tagModel).Collection(f=>f.Articles).LoadAsync();
@@ -208,6 +210,8 @@ namespace Web.Controllers
             }
             vm.Articles = articles.ToArray();
             vm.SearchText = tag;
+            vm.Order = order;
+            vm.Skip = skip;
             if (vm.Articles.Length == 0)
             {
                 vm.SearchResultText = string.Format("「{0}」タグがついている記事は見つかりませんでした。", tag);

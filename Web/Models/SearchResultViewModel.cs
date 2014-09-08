@@ -11,6 +11,10 @@ namespace Web.Models
         public string SearchResultText { get; set; }
 
         public string SearchText { get; set; }
+
+        public int Order { get; set; }
+
+        public int Skip { get; set; }
     }
 
     public class SearchResultArticle
