@@ -508,6 +508,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\Account\dropdown.ts" />
     <TypeScriptCompile Include="Scripts\Account\externalLoginConfirmation.ts" />
     <TypeScriptCompile Include="Scripts\collections.ts" />
     <TypeScriptCompile Include="Scripts\Edit\EditPage.ts" />
@@ -542,9 +543,11 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201409031548165_AddStupidUpdate.resx">
       <DependentUpon>201409031548165_AddStupidUpdate.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409070206073_AddIsDraft.resx">
       <DependentUpon>201409070206073_AddIsDraft.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

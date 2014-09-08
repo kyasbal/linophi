@@ -38,17 +38,20 @@
                                 <option value="5">ふせんが少ない順</option>
                             </select>
                         </form>
-                    </div>
-                    foreach (var article in Model.Articles)
-                    {
-                        <li class="listitem">
-                            <p class="listthumb"><a href=""><img width="60" height="60" src="/Content/imgs/Home/red.jpg"></a></p>
-                            <div class="listtxt">
-                                <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br/><span class="listdesc">@article.PageView view|@article.LabelCount ふせん|@article.Article_UpDate last updated</span>
-                            </div>
-                        </li>
+                    </div><div class="search-editted">
+    <div class="adjust">
+        @foreach (var article in Model.Articles)
+        {
+            <li class="listitem">
+                <p class="listthumb"><a href=""><img width="60" height="60" src="/Content/imgs/Home/red.jpg"></a></p>
+                <div class="listtxt">
+                    <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br /><span class="listdesc">@article.PageView view|@article.LabelCount ふせん|@article.Article_UpDate last updated</span>
+                </div>
+            </li>
 
-                    }
+        }
+    </div>
+</div>
                 }
             </ul>
         </div>

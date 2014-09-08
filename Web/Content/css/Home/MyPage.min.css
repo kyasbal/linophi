@@ -1,1 +1,1 @@
-﻿.edit-buttons{clear:both;display:block;text-align:right}.edit-buttons a:hover{text-decoration:underline;cursor:pointer}
+﻿.edit-buttons{clear:both;display:block;text-align:right;visibility:hidden;margin-top:-30px}.edit-buttons a{font-weight:bold;height:10px}.edit-buttons a:hover{color:#818181;text-decoration:none;cursor:pointer}
