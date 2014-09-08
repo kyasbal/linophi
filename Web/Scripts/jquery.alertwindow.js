@@ -65,20 +65,18 @@
                 break;
         }
 
-        if (!$('.alert-layer').length) {
-            $('body').append(
-                '<div class="alert-layer"></div>' +
-                '<div class="alert-box">' +
-                    '<div class="alert-title">' + (titleMsg || "確認") + '</div>' +
-                    '<div class="alert-contents">' +
-                        '<p>' + msg + '</p>' +
-                        '<p>' +
-                            buttonHtml +
-                        '</p>' +
-                    '</div>' +
-                '</div>'
-            );
-        }
+        $('body').append(
+            '<div class="alert-layer"></div>' +
+            '<div class="alert-box">' +
+                '<div class="alert-title">' + (titleMsg || "確認") + '</div>' +
+                '<div class="alert-contents">' +
+                    '<p>' + msg + '</p>' +
+                    '<p>' +
+                        buttonHtml +
+                    '</p>' +
+                '</div>' +
+            '</div>'
+        );
         /*
         .alert-layer
           .alert-box
@@ -144,7 +142,7 @@
             "background": "#444",
             "font-size": "16px",
             "color": "#fff",
-            "border": "3px solid",
+            "border": "3px solid #AFEC21",
             "border-radius": "5px",
             "margin": "20px 20px 0"
         });
@@ -154,9 +152,7 @@
         $('.alert-button-no').css({
             "border-color": "#D86060"
         });
-        $('.alert-button-ok').css({
-            "border-color": "#AFEC21"
-        });
+
 
         $('.alert-contents button').hover(function (e) {
             var thisClass = e.currentTarget.className;
@@ -178,13 +174,18 @@
         });
 
         $('.alert-layer, .alert-contents button').on("click", function (e) {
-                $('.alert-layer, .alert-box').css("opacity", 0);
-                setTimeout(function () {
-                    $('.alert-layer, .alert-box').css("visibility", "hidden");
-                }, 200);
+            $('.alert-layer, .alert-box').css("opacity", 0);
+            setTimeout(function () {
+                $('.alert-layer, .alert-box').css("visibility", "hidden");
+            }, 200);
 
-                alertMode = false;
-            onOKFunc(e.currentTarget.className.substr(13));
+            if (alertMode)
+            {
+                $('.alert-layer, .alert-box').remove();
+                onOKFunc(e.currentTarget.className.substr(13));
+            }
+
+            alertMode = false;
         });
     }
 })(jQuery);
