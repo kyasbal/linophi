@@ -3,12 +3,10 @@ body {
   height: 100%;
 }
 .whole-layout {
-  margin-top: 60px;
+  padding-top: 60px;
   margin-left: 5%;
-  margin-bottom: -40px;
   padding-bottom: 40px;
   width: 90%;
-  background-color: antiquewhite;
   font-size: large;
 }
 .whole-layout .sign-up-space {
@@ -38,5 +36,10 @@ body {
 .warn3 {
   color: red;
   display: none;
+}
+#regi {
+  background-color: #7AC2A6;
+  color: white;
+  padding: 3px 40px;
 }
 /*# sourceMappingURL=ExternalLoginConfirmation.css.map */

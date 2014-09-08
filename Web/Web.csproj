@@ -189,6 +189,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\Account\ExternalLoginConfirmation.css">
+      <DependentUpon>ExternalLoginConfirmation.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Account\ExternalLoginConfirmation.min.css">
+      <DependentUpon>ExternalLoginConfirmation.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Home\Top.css">
       <DependentUpon>Top.less</DependentUpon>
     </Content>
@@ -365,6 +371,10 @@
     <Content Include="Content\css\Home\Top.css.map">
       <DependentUpon>Top.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Account\ExternalLoginConfirmation.less" />
+    <Content Include="Content\css\Account\ExternalLoginConfirmation.css.map">
+      <DependentUpon>ExternalLoginConfirmation.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
@@ -431,6 +441,7 @@
       <DependentUpon>201409070206073_AddIsDraft.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountConfigViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ArticleEditViewModel.cs" />
     <Compile Include="Models\ArticleModel.cs" />
