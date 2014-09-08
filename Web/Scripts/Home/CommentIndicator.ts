@@ -48,22 +48,56 @@ $(() =>
             );
         });
         $('.widget .' + className + '-comments').append(
-            '<button class="' + className + '">コメントを残す</button>'
+            '<button class="' + className + '">コメントする</button>'
         );
     });
 
-    $('.widget button').on("click", () =>
+    $('.widget button').on("click", (e) =>
     {
         var formHtml =
-            '<form id="the-form" action="/echo/json" method="POST">' +
+            '<form id="the-form">' +
                 '<input type="text" name="name" value="" placeholder="Name" />' +
                 '<textarea name="message" placeholder="Messages"></textarea>' +
-                '<button>送信！</button>' +
+                '<button>送信</button>' +
             '</form>';
 
-        $().alertwindow(formHtml, "none", "コメントを残す", () =>
+        $().alertwindow(formHtml, "none", "コメントする", () =>
         {
-            
+            $('#the-form').submit(function (event) {
+                event.preventDefault();
+                var $form = $(this);
+                var $button = $form.find('button');
+                console.info(location.pathname.substr(1), $form.find("input").val(), ((Object)(e.currentTarget)).className.substr(4), $form.find("textarea").val());
+                $.ajax({
+                    url: "/api/Comment/AttachComment",
+                    type: "post",
+                    data: {
+                        "ArticleId": location.pathname.substr(1),
+                        "UserName": $form.find("input").val(),
+                        "ParagraphId": ((Object)(e.currentTarget)).className.substr(4),
+                        "Comment": $form.find("textarea").val()
+                    },
+                    timeout: 10000,
+
+                    beforeSend: () =>
+                    {
+                        $button.attr('disabled', 'true');
+                    },
+                    complete: () =>
+                    {
+                        $button.attr('disabled', 'false');
+                    },
+
+                    success: () =>
+                    {
+                        $form.find("input, textarea").val("");
+                    },
+                    error: () =>
+                    {
+                        alert("送信失敗しました");
+                    }
+                });
+            });
         });
     });
 });

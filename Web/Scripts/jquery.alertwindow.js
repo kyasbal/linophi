@@ -69,7 +69,7 @@
             $('body').append(
                 '<div class="alert-layer"></div>' +
                 '<div class="alert-box">' +
-                    '<div class="alert-title">確認</div>' +
+                    '<div class="alert-title">' + titleMsg + '</div>' +
                     '<div class="alert-contents">' +
                         '<p>' + msg + '</p>' +
                         '<p>' +

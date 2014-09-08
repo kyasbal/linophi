@@ -25,13 +25,42 @@ $(function () {
         commentSourceParser.eachDoInComments(className.substr(4), function (name, time, id, comment) {
             $('.widget .' + className + '-comments').append('<div class="response">' + '<p class="res-title"> counter <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' + '<p class="res-text">' + comment + '</p>' + '</div>');
         });
-        $('.widget .' + className + '-comments').append('<button class="' + className + '">コメントを残す</button>');
+        $('.widget .' + className + '-comments').append('<button class="' + className + '">コメントする</button>');
     });
 
-    $('.widget button').on("click", function () {
-        var formHtml = '<form id="the-form" action="/echo/json" method="POST">' + '<input type="text" name="name" value="" placeholder="Name" />' + '<textarea name="message" placeholder="Messages"></textarea>' + '<button>送信！</button>' + '</form>';
+    $('.widget button').on("click", function (e) {
+        var formHtml = '<form id="the-form">' + '<input type="text" name="name" value="" placeholder="Name" />' + '<textarea name="message" placeholder="Messages"></textarea>' + '<button>送信</button>' + '</form>';
 
-        $().alertwindow(formHtml, "none", "コメントを残す", function () {
+        $().alertwindow(formHtml, "none", "コメントする", function () {
+            $('#the-form').submit(function (event) {
+                event.preventDefault();
+                var $form = $(this);
+                var $button = $form.find('button');
+                console.info(location.pathname.substr(1), $form.find("input").val(), ((Object)(e.currentTarget)).className.substr(4), $form.find("textarea").val());
+                $.ajax({
+                    url: "/api/Comment/AttachComment",
+                    type: "post",
+                    data: {
+                        "ArticleId": location.pathname.substr(1),
+                        "UserName": $form.find("input").val(),
+                        "ParagraphId": ((Object)(e.currentTarget)).className.substr(4),
+                        "Comment": $form.find("textarea").val()
+                    },
+                    timeout: 10000,
+                    beforeSend: function () {
+                        $button.attr('disabled', 'true');
+                    },
+                    complete: function () {
+                        $button.attr('disabled', 'false');
+                    },
+                    success: function () {
+                        $form.find("input, textarea").val("");
+                    },
+                    error: function () {
+                        alert("送信失敗しました");
+                    }
+                });
+            });
         });
     });
 });
