@@ -373,6 +373,42 @@ input[type="text"] {
                             word-wrap:break-word;
                         }
                     }
+
+                    .widget > *[class*="p-"] {
+                        position: relative;
+                        &:hover {
+                            background: #deb3ba;
+                            > *[class*="-tooltip"] {
+                                display: block;
+                            }
+                        }
+                        > *[class*="-tooltip"] {
+                            font-size: 10px;
+                            width: 200px;
+                            display: none;
+                            position: absolute;
+                            top: 0;
+                            right: 110%;
+                            z-index: 9999;
+                            padding: 6px 10px;
+                            color: #FFFFFF;
+                            background: #c72439;
+                            border-radius: 0.5em;
+                            &:after {
+                                width: 0;
+                                height: 0;
+                                content: "";
+                                display: block;
+                                position: absolute;
+                                right: -20px;
+                                top: 25px;
+                                border-top: 7px solid #c72439;
+                                border-left: 14px solid #c72439;
+                                border-right: 14px solid transparent;
+                                border-bottom: 7px solid transparent;
+                            }
+                        }
+                    }
                 }
 
                 .article-container p:hover{

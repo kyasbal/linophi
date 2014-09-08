@@ -1,19 +1,45 @@
 ﻿;(function ($) {
-    $.fn.alertwindow = function (msg, buttonOption, onOKFunc) {
+    $.fn.alertwindow = function () { // 本来の引数はmsg, buttonOption, mainColor, onOKFuncで、buttonOption, conditionは省略可
+
+        var msg, buttonOption, mainColor, onOKFunc;
+        switch (arguments.length) {
+            case 2:
+                msg = arguments[0];
+                buttonOption = arguments[1];
+                onOKFunc = function(){};
+                break;
+            case 3:
+                msg = arguments[0];
+                buttonOption = arguments[1];
+                onOKFunc = arguments[2];
+                break;
+            case 4:
+                msg = arguments[0];
+                buttonOption = arguments[1];
+                mainColor = arguments[2];
+                onOKFunc = arguments[3];
+                break;
+            default:
+                console.error(".alertwindow()の引数の数が不正です");
+                break;
+        }
         var buttonHtml;
         switch (buttonOption) {
             case "y/n":
             case "y/N":
             case "Y/N":
                 buttonHtml = '<button class="alert-button-yes">Yes</button><button class="alert-button-no">No</button>';
+                mainColor = mainColor || "#FC8D49";
                 break;
             case "ok":
             case "Ok":
             case "OK":
                 buttonHtml = '<button class="alert-button-ok">OK</button>';
+                mainColor = mainColor || "#FC8D49";
                 break;
             default:
-                buttonHtml = 'buttonOptionが設定されていません';
+                buttonHtml = '<button class="alert-button-plain">' + buttonOption + '</button>';
+                mainColor = mainColor || "#49D7FC";
                 break;
         }
 
@@ -42,7 +68,6 @@
                 %button.alert-button-no No
 
         */
-        var mainColor = "#FC8D49";
 
         $('.alert-layer').css({
             "position": "fixed",

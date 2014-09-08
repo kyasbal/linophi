@@ -112,7 +112,12 @@ $(() => {
     labelSourceParser = new LabelSourceParser();
 });
 
-class LabelBoxController {
+interface ILabelBoxController
+{
+    labelPosition(speciesOfLabel: number, boxClass: string): void;
+}
+
+class LabelBoxController implements ILabelBoxController {
     labelPosition(speciesOfLabel: number, boxClass: string) {
         var boxSelector: string = ".dropbox ." + boxClass;
         if (43 * speciesOfLabel >= $(boxSelector).height()) {
@@ -138,15 +143,9 @@ class LabelBoxController {
             }
         }
     }
+
 }
 var labelBoxController = new LabelBoxController();
-
-
-
-interface IAjaxManager
-{
-    sendPostitNumber(articleId: string, thisClass: string, labelType: string, postitExistence: any, $target: JQuery, src: string): void;
-}
 
 class AjaxManager
 {
@@ -180,6 +179,8 @@ class AjaxManager
     }
 }
 
+
+
 var ajaxManager = new AjaxManager();
 
 
@@ -192,13 +193,6 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         "height": htmlHeight + "px"
     });
     var articleId = location.pathname.substr(1);
-
-    /*
-     * ふせんをクリックされたら左側に影的なものを出して周りを暗くする
-     * 次のタイミングにクリックされたら貼り付ける
-     * 貼り付けられた（クリック領域でクリックされたら）そこに貼る
-     * それはこっちで用意した場所に追加されるが、すでに貼られていた場合は値を増やす。
-     */
 
     var pasteMode: boolean = false;
 
@@ -236,7 +230,10 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             );
         });
 
-        labelBoxController.labelPosition( $('.dropbox > .' + className + ' > *').length, className );
+        labelBoxController.labelPosition($('.dropbox > .' + className + ' > *').length, className);
+
+
+        $('.widget .' + className).append('<div class="' + className + '-tooltip">76　　　雅　[2014/06/15(日) 19:31:34]<br />個人的には大学かもだけどぶっちゃけどっちも <br / >おもんないｗｗｗｗ <br / >77　　　さち　[2014 / 07 / 10(木) 01:03:45]<br />高校生の頃に戻りたい。 <br />まぢピーターパン症候群。 <br / >大学って楽しいトコだと <br / >思ってたけど <br />大きい大学行かなかった私は負け組。 <br />あ、行かなかったんじゃない。 <br />いけなかったんだ。<br / >78　　　あゆ　[2014 / 08 / 20(水) 11:28:41]<br />断然、高校の方が良かった <br / >79　　　りん　[2014 / 09 / 02(火) 10:02:50]<br />断然、高校！大学の友達は常識ないのばかりだし、性格も悪い。高校に戻りたい。</div>');
     });
 
     // 貼り付けモードへ
