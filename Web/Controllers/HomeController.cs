@@ -259,7 +259,7 @@ namespace Web.Controllers
             string userId = articleModel.AuthorID;
             if (User.Identity.Name.Equals(userId)) return Redirect("MyPage");
             var articles = getUserArticles(order, skip, userId);
-            var user =await Request.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByNameAsync(User.Identity.Name);
+            var user =await Request.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByNameAsync(articleModel.AuthorID);
             return View("MyPage",new UserPageViewModel() { Skip=skip,Order = order,UserNickName =user.NickName ,articles = articles.ToArray(),IsMyPage=false });
         }
 
