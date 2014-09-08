@@ -27,6 +27,7 @@ namespace Web.Models
         public bool UseThumbnail { get; set; }
         public string ArticleId { get; set; }
         public string CommentInfo { get; set; }
+        public int CommentCount { get; set; }
     }
 
     public class TagViewModel

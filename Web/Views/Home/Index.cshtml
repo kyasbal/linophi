@@ -65,15 +65,18 @@
                         <div class="navbar-thumb">
                             <canvas id="article-graph" width="250" height="250"></canvas>
                             <div class="postit-in-circle">
+                                
                                 <span class="navbar-countfv">
                                     <span class="navbar-countnum font-size-25">@Model.LabelCount</span><br />
                                     <span class="navbar-countlabel">ふせん</span>
+                                    <span class="navbar-countnum">
+                                        @if (Model != null)
+                                        {@Model.PageView
+                                        }
+                                    </span>
+                                    <span class="navbar-countlabel">view</span>
                                 </span>
                             </div>
-                            @if (Model.UseThumbnail)
-                            {
-                                <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)" />
-                            }
                         </div>
                         <div class="navbar-txt">
                             <div class="article-title navbar-title">
@@ -81,44 +84,41 @@
                                     @if (Model != null)
                                     {@Model.Title
                                     }
-                            </a>
+                                </a>
+                            </div>
                         </div>
-                    </div>
                         <div class="navbar-count">
-                            <span class="navbar-countpv">
-                                <span class="navbar-countnum">
-                                    @if (Model != null)
-                                    {@Model.PageView
-                                    }
+                            @if (Model.UseThumbnail)
+                            {
+                                <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)" />
+                            }
+                            <p class="navbar-user">
+                                <span class="user-img">投稿者</span><span class="navbar-userthumb">@Model.Author_IconTag</span><span class="navbar-username">
+                                    <a href="@("/UserPage?articleId="+Model.ArticleId)">
+                                        @if (Model != null)
+                                        {
+                                            @Model.Author
+                                        }
+                                    </a>さん
                                 </span>
-                                <span class="navbar-countlabel">view</span>
-                            </span>
+                            </p>
                             @*<span class="navbar-date">
                                 <span class="date">@Model.Article_Date</span>
                                 <span class="date-txt">posted</span>
                             </span>*@
-                            <span class="navbar-Update">
-                                <span class="Update">@Model.Article_UpDate</span>
-                                <span class="Update-txt">last updated</span>
-                            </span>
+@*                            <span class="navbar-Update">*@
+@*                                <span class="Update"></span>*@
+@*                                <span class="Update-txt">last updated</span>*@
+@*                            </span>*@
                         </div>
 
-                    <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+                        <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
                         <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
                         <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
-                </div>
+                    </div>
+                    @Model.Article_UpDate last update
                 <div class="navbar-sub">
                     <div>
-                        <p class="navbar-user">
-                            <span class="user-img">投稿者</span><span class="navbar-userthumb">@Model.Author_IconTag</span><span class="navbar-username">
-                                <a href="@("/UserPage?articleId="+Model.ArticleId)">
-                                    @if (Model != null)
-                                    {
-                                        @Model.Author
-                                    }
-                                </a>さん
-                            </span>
-                        </p>
                     </div>
                 </div>
             </nav>

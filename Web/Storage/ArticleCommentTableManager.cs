@@ -74,7 +74,7 @@ namespace Web.Storage
             return CreateQuery().Where(f => f.PartitionKey.Equals(articleId));
         }
 
-        public string GetCommentsAsJson(string articleId)
+        public string GetCommentsAsJson(string articleId,out int count)
         {
             List<ArticleCommentViewModel> comments=new List<ArticleCommentViewModel>();
             foreach (var comment in GetComments(articleId))
@@ -88,6 +88,7 @@ namespace Web.Storage
                     PostTime = comment.CreationTime.ToShortDateString()
                 });
             }
+            count = comments.Count;
             return Json.Encode(comments.ToArray());
         }
     }

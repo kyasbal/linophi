@@ -49,7 +49,9 @@ namespace Web.Controllers
                 article.PageView++;
             }
             await context.SaveChangesAsync();
-            IGravatarLoader gLoader=new BasicGravatarLoader(author.Email);
+            IGravatarLoader gLoader = new BasicGravatarLoader(author.Email);
+            int commentCount = 0;
+            string commentsAsJson = actm.GetCommentsAsJson(articleId, out commentCount);
             return new ViewArticleViewModel()
             {
                 ArticleId = articleId,
@@ -65,7 +67,8 @@ namespace Web.Controllers
                 Article_Date = article.CreationTime.ToShortDateString(),
                 Article_UpDate = article.UpdateTime.ToShortDateString(),
                 UseThumbnail= thumbnail.CheckThumbnailExist(articleId),
-                CommentInfo=actm.GetCommentsAsJson(articleId)
+                CommentInfo=commentsAsJson,
+                CommentCount=commentCount
             };
         }
 
