@@ -371,10 +371,10 @@ input[type="text"] {
 .container .contents .contentswrapper .main .widget > *[class*="p-"]:hover {
   background: #deb3ba;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"]:hover > *[class*="-tooltip"] {
+.container .contents .contentswrapper .main .widget > *[class*="p-"]:hover > *[class*="-comments"] {
   display: block;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-tooltip"] {
+.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] {
   font-size: 10px;
   width: 300px;
   display: none;
@@ -392,7 +392,7 @@ input[type="text"] {
   -webkit-transform: translateY(-30%);
   transform: translateY(-30%);
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-tooltip"]:after {
+.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"]:after {
   width: 0;
   height: 70%;
   content: "";
@@ -402,6 +402,9 @@ input[type="text"] {
   top: 31.5%;
   border-top: 10px solid #c72439;
   border-left: 20px solid transparent;
+}
+.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .response p:hover {
+  background: none;
 }
 .container .contents .contentswrapper .main .article-container p:hover {
   background-color: ghostwhite;

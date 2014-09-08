@@ -434,12 +434,12 @@ input[type="text"] {
                     &:hover {
                         background: #deb3ba;
 
-                        > *[class*="-tooltip"] {
+                        > *[class*="-comments"] {
                             display: block;
                         }
                     }
 
-                    > *[class*="-tooltip"] {
+                    > *[class*="-comments"] {
                         font-size: 10px;
                         width: 300px;
                         display: none;
@@ -456,7 +456,6 @@ input[type="text"] {
                         -o-transform: translateY(-30%);
                         -webkit-transform: translateY(-30%);
                         transform: translateY(-30%);
-
                         &:after {
                             width: 0;
                             height: 70%;
@@ -467,7 +466,10 @@ input[type="text"] {
                             top: 31.5%;
                             border-top: 10px solid #c72439;
                             border-left: 20px solid transparent;
+                        }
 
+                        .response {
+                            p:hover { background: none; }
                         }
                     }
                 }

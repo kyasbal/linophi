@@ -201,6 +201,7 @@
     <Content Include="Content\css\Home\Top.min.css">
       <DependentUpon>Top.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\Home\CommentIndicator.js" />
     <Content Include="Scripts\jquery.alertwindow.js" />
     <Content Include="Content\css\Account\login.css">
       <DependentUpon>login.less</DependentUpon>
@@ -538,6 +539,7 @@
     <TypeScriptCompile Include="Scripts\Edit\head.ts" />
     <TypeScriptCompile Include="Scripts\Edit\TagMaker.ts" />
     <TypeScriptCompile Include="Scripts\Home\AfterLogin.ts" />
+    <TypeScriptCompile Include="Scripts\Home\CommentIndicator.ts" />
     <TypeScriptCompile Include="Scripts\Home\MovieFixation.ts" />
     <TypeScriptCompile Include="Scripts\Home\MyPage.ts" />
     <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />
