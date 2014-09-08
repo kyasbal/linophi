@@ -58,7 +58,7 @@ input[type="text"] {
 .container .head-inner {
   position: relative;
   width: 1080px;
-  height: 44px;
+  height: 200px;
   margin: 0 auto;
 }
 .container .contents {
@@ -67,9 +67,9 @@ input[type="text"] {
 }
 .container .contents .top {
   margin-bottom: 30px;
-  /*border-bottom: 1px solid #f2f2f2;*/
   border-top: 1px solid #f0fff0;
   background-color: #f0fff0;
+  height: 350px;
 }
 .container .contents .top-inner {
   width: 960px;
@@ -159,6 +159,22 @@ input[type="text"] {
   width: 105px;
   height: 105px;
 }
+.container .contents .top .navbar-main .navbar-thumb .postit-in-circle {
+  margin-top: -190px;
+  margin-left: 65px;
+  display: block;
+  padding: 25px 10px 0 10px;
+  text-align: center;
+  width: 100px;
+  height: 95px;
+  background-color: white;
+  border-radius: 60px;
+  -moz-border-radius: 60px;
+  -webkit-border-radius: 60px;
+  box-shadow: 0px 0px 3px 0px #666 inset;
+  -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+  -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+}
 .container .contents .top .navbar-main .navbar-txt {
   width: 90%;
   margin-top: -13px;
@@ -189,14 +205,15 @@ input[type="text"] {
   width: 55px;
   height: 50px;
   background-color: white;
+  border-radius: 60px;
   -moz-border-radius: 60px;
   -webkit-border-radius: 60px;
-  border-radius: 60px;
-  -webkit-box-shadow: inset 0px 1px 2px 0px #666;
-  -moz-box-shadow: inset 0px 1px 2px 0px #666;
-  box-shadow: inset 0px 1px 2px 0px #666;
+  box-shadow: 0px 0px 3px 0px #666 inset;
+  -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+  -moz-box-shadow: 0px 0px 3px 0px #666 inset;
 }
-.container .contents .top .navbar-main .navbar-count .navbar-countfv .navbar-countnum {
+.container .contents .top .navbar-main .navbar-count .navbar-countnum {
+  font-size: 40px;
   display: block;
   line-height: 1;
   margin-top: -3px;
@@ -204,7 +221,7 @@ input[type="text"] {
   font-size: 22px;
   font-family: Arial, Helvetica, sans-serif;
 }
-.container .contents .top .navbar-main .navbar-count .navbar-countfv .navbar-countlabel {
+.container .contents .top .navbar-main .navbar-count .navbar-countlabel {
   display: block;
   margin-top: 3px;
   line-height: 1;
@@ -223,9 +240,9 @@ input[type="text"] {
   border-radius: 60px;
   -moz-border-radius: 60px;
   -webkit-border-radius: 60px;
-  box-shadow: inset 0px 1px 2px 0px #666;
-  -webkit-box-shadow: inset 0px 1px 2px 0px #666;
-  -moz-box-shadow: inset 0px 1px 2px 0px #666;
+  box-shadow: 0px 0px 3px 0px #666 inset;
+  -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+  -moz-box-shadow: 0px 0px 3px 0px #666 inset;
   font-family: Tahoma, Geneva, sans-serif;
 }
 .container .contents .top .navbar-main .navbar-count .navbar-countpv .navbar-countnum {
@@ -255,10 +272,10 @@ input[type="text"] {
   border-radius: 60px;
   -moz-border-radius: 60px;
   -webkit-border-radius: 60px;
-  box-shadow: inset 0px 1px 2px 0px #666;
-  -webkit-box-shadow: inset 0px 1px 2px 0px #666;
-  -moz-box-shadow: inset 0px 1px 2px 0px #666;
-  font-family: Tahoma, Verdana, Geneva, sans-serif;
+  box-shadow: 0px 0px 3px 0px #666 inset;
+  -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+  -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+  font-family: Tahoma, Verdana, Geneva, Tahoma, sans-serif, sans-serif;
 }
 .container .contents .top .navbar-main .navbar-count .navbar-date .date {
   display: block;
@@ -267,6 +284,13 @@ input[type="text"] {
   color: #000;
   font-size: 18px;
   font-family: Arial, Arial, Helvetica, sans-serif, sans-serif;
+}
+.container .contents .top .navbar-main .navbar-count .navbar-date .date-txt {
+  display: block;
+  margin-top: 3px;
+  line-height: 1;
+  color: #666;
+  font-size: 7px;
 }
 .container .contents .top .navbar-main .navbar-count .navbar-date .date-txt {
   display: block;
@@ -284,12 +308,12 @@ input[type="text"] {
   width: 100px;
   height: 50px;
   background-color: white;
+  border-radius: 60px;
   -moz-border-radius: 60px;
   -webkit-border-radius: 60px;
-  border-radius: 60px;
-  -webkit-box-shadow: inset 0px 1px 2px 0px #666;
-  -moz-box-shadow: inset 0px 1px 2px 0px #666;
-  box-shadow: inset 0px 1px 2px 0px #666;
+  box-shadow: 0px 0px 3px 0px #666 inset;
+  -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+  -moz-box-shadow: 0px 0px 3px 0px #666 inset;
   font-family: Tahoma, Verdana, Geneva, Tahoma, sans-serif, sans-serif;
 }
 .container .contents .top .navbar-main .navbar-count .navbar-Update .Update {
@@ -299,6 +323,12 @@ input[type="text"] {
   color: #000;
   font-size: 18px;
   font-family: Arial, Arial, Helvetica, sans-serif, sans-serif;
+}
+.container .contents .top .navbar-main .navbar-count .navbar-Update .Update-txt {
+  display: block;
+  margin-top: 3px;
+  line-height: 1;
+  color: #666;
 }
 .container .contents .top .navbar-main .navbar-count .navbar-Update .Update-txt {
   display: block;
@@ -615,6 +645,9 @@ input[type="text"] {
 .container .contents .main .separator1 hr,
 .container .contents .main .separator2 hr {
   display: none;
+}
+.container .font-size-25 {
+  font-size: 25px;
 }
 .droppable-hover {
   background: #fdd;
