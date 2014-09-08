@@ -85,6 +85,16 @@ body {
 .contents .wrapper .main .search-result .listitem:hover {
   background-color: antiquewhite;
 }
+.contents .wrapper .main .search-result .my-editted,
+.contents .wrapper .main .search-result .search-editted {
+  margin-top: 30px;
+  background-color: #f0fff0;
+}
+.contents .wrapper .main .search-result .my-editted .adjust,
+.contents .wrapper .main .search-result .search-editted .adjust {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
 .contents .wrapper .dropbox {
   margin-top: 30px;
   margin-left: 20px;

@@ -508,6 +508,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\Account\dropdown.ts" />
     <TypeScriptCompile Include="Scripts\Account\externalLoginConfirmation.ts" />
     <TypeScriptCompile Include="Scripts\collections.ts" />
     <TypeScriptCompile Include="Scripts\Edit\EditPage.ts" />
@@ -525,6 +526,7 @@
     <TypeScriptCompile Include="Scripts\Novel\novel-viewer.ts" />
     <TypeScriptCompile Include="Scripts\Novel\Paragraph.ts" />
     <TypeScriptCompile Include="Scripts\Novel\ParagraphFactory.ts" />
+    <TypeScriptCompile Include="Scripts\Novel\sizing.ts" />
     <TypeScriptCompile Include="Scripts\Shared\Header.ts" />
     <TypeScriptCompile Include="Scripts\typings\caret-util\caret-util.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery.cookie\jquery.cookie.d.ts" />
@@ -541,9 +543,11 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201409031548165_AddStupidUpdate.resx">
       <DependentUpon>201409031548165_AddStupidUpdate.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409070206073_AddIsDraft.resx">
       <DependentUpon>201409070206073_AddIsDraft.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

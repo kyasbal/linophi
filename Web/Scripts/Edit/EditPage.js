@@ -102,7 +102,7 @@ var EditPageContents;
 })(EditPageContents || (EditPageContents = {}));
 
 var editmode = $('#hidden-mode[name="Mode"]').val();
-if ("edit" == editmode) {
+if (editmode == "edit") {
     $(".edit-submit-button").css('background-color', '#7FFFD4');
     $(".edit-submit-button").hover(function () {
         $(this).css("background-color", "#3CB371");

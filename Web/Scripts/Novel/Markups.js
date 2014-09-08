@@ -138,11 +138,11 @@ var LinkMarkup = (function (_super) {
     LinkMarkup.prototype.getMarkupString = function (result, id) {
         console.warn("link");
         result = result.replace(/&ensp;/g, "\u0006");
-        if (result.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g)) {
-            result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"/Pages/ContentUpload/ServerCache?url=$1\">");
+        if (result.match(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g)) {
+            result = result.replace(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"/Pages/ContentUpload/ServerCache?url=$1\">");
         }
-        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)([^\w\/:%#\$&\?\(\)~\.=\+\-])(?![>"])/g, "<a href='$1'>$1</a>$2");
-        result = result.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)$/, "<a href='$1'>$1</a>");
+        result = result.replace(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_]+)([^\w\/:%#\$&\?\(\)~\.=\+\-@])(?![>"])/g, "<a href='$1'>$1</a>$2");
+        result = result.replace(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_]+)$/, "<a href='$1'>$1</a>");
         return result.replace(/\u0006/g, "&ensp;");
     };
     return LinkMarkup;

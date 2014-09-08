@@ -29,6 +29,7 @@
     <script src="~/Scripts/Edit/Edit-autoHeight.js"></script>
     @*<script src="~/Scripts/Edit/Edit-autoMargin-left.js"></script>*@
     <script src="~/Scripts/Edit/TagMaker.js"></script>
+    <script src="~/Scripts/Novel/sizing.js"></script>
 }
 
 @*
@@ -59,28 +60,32 @@
         <div class="edit-editted-box"></div>
 
         //リアルタイムプレビュー
-        <div class="edit-preview-container">
-            <h1>プレビュー</h1>
-            <div class="edit-preview-container-inner article-container">
-                <div class="edit-preview preview-body"></div>
-                <div class="preview-iframes"></div>
+        <div class="wrapper">
+            <div class="edit-preview-container">
+                <div>プレビュー</div>
+                <div class="edit-preview-container-inner article-container">
+                    <div class="edit-preview preview-body"></div>
+                    <div class="preview-iframes"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="edit-text-container">
-            <h1>編集</h1>
-            <textarea class="edit-text edit-context" placeholder="textarea">
-                @if (Model != null)
-                {
-                    @Html.Raw(Model.MarkupString)
-                }
-            </textarea>
+
+            <div class="edit-text-container">
+                <h1>編集</h1>
+                <textarea class="edit-text edit-context" placeholder="textarea">
+                    @if (Model != null)
+                    {
+                        @Html.Raw(Model.MarkupString)
+                    }
+</textarea>@*この行にはスペースを作らないこと*@
+            </div>
         </div>
         @Html.AntiForgeryToken()
         @Html.Hidden("Tag","", new { id = "hidden-tag" })
         @Html.Hidden("Body","", new { id = "hidden-body" })
         @Html.Hidden("Markup","", new { id = "hidden-markup" })
         @Html.Hidden("Mode", Model == null ? "new" : "edit",new{id="hidden-mode"})
+        <span class="prev-switch">大きくする→</span>
         <div class="select-thumbnail">サムネイルの選択<input type="file" name="Thumbnail" class="thumbnail"/></div>
         if (Model != null)
         {

@@ -98,12 +98,11 @@ enum EditPageContents {
 }
 
 var editmode: string = $('#hidden-mode[name="Mode"]').val();
-if ("edit"==editmode)
-{
+if (editmode=="edit") {
     $(".edit-submit-button").css('background-color', '#7FFFD4');
     $(".edit-submit-button").hover(function () {
         $(this).css("background-color", "#3CB371");
     }, function () {
-            $(this).css("background-color", "#7FFFD4");
-        });
+        $(this).css("background-color", "#7FFFD4");
+    });
 }
