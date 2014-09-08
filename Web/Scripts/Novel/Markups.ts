@@ -1,21 +1,4 @@
-﻿interface IWindowLoadDelegate
-{
-    ():void;
-}
-interface Window
-{
-    load:IWindowLoadDelegate;
-}
-interface IAlertWindowResponseDelegate
-{
-    (response:string): void;
-}
-interface JQuery
-{
-    alertwindow(message?:string,buttonOption?:string,onResponse?:IAlertWindowResponseDelegate):void;
-}
-
-var frameManager: FrameManager;
+﻿var frameManager: FrameManager;
 $(() =>
 {
     frameManager = new FrameManager();
