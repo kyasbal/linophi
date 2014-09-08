@@ -1,4 +1,6 @@
-﻿$(function()
+﻿var MyPageSearchOptionBoxManager: SearchOrderOptionBox;
+
+$(function ()
 {
     $(".listitem").hover(function()
     {
@@ -7,7 +9,9 @@
         {
             $(this).find(".edit-buttons").css("visibility", "hidden");
         }
-    );
+        );
+    MyPageSearchOptionBoxManager = new SearchOrderOptionBox($(".search-menu"), "MyPage", "", false);
+    MyPageSearchOptionBoxManager.initBoxSelected();
 });
 
 function deleteArticle(articleId: string)

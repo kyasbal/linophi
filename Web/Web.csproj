@@ -454,6 +454,7 @@
     <Compile Include="Models\MyPageViewModel.cs" />
     <Compile Include="Models\SearchResultViewModel.cs" />
     <Compile Include="Models\UserAccount.cs" />
+    <Compile Include="Models\UserPageViewModel.cs" />
     <Compile Include="Models\ViewArticleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -527,6 +528,7 @@
     </Content>
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
     <Content Include="Views\Home\TermsOfService.cshtml" />
+    <Content Include="Views\Home\UserPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -548,6 +550,7 @@
     <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />
     <TypeScriptCompile Include="Scripts\Home\Search.ts" />
     <TypeScriptCompile Include="Scripts\Home\Top.ts" />
+    <TypeScriptCompile Include="Scripts\Home\UserPage.ts" />
     <TypeScriptCompile Include="Scripts\Home\viewarticle.ts" />
     <TypeScriptCompile Include="Scripts\Novel\IParagraph.ts" />
     <TypeScriptCompile Include="Scripts\Novel\Markups.ts" />
