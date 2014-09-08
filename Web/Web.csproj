@@ -198,15 +198,12 @@
     <Content Include="Content\css\Account\ExternalLoginConfirmation.min.css">
       <DependentUpon>ExternalLoginConfirmation.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Home\tnm.png" />
     <Content Include="Content\css\Home\Top.css">
       <DependentUpon>Top.less</DependentUpon>
     </Content>
     <Content Include="Content\css\Home\Top.min.css">
       <DependentUpon>Top.css</DependentUpon>
     </Content>
-    <Content Include="Scripts\Home\CommentIndicator.js" />
-    <Content Include="Content\imgs\tnm.png" />
     <Content Include="Scripts\jquery.alertwindow.js" />
     <Content Include="Content\css\Account\login.css">
       <DependentUpon>login.less</DependentUpon>
@@ -545,7 +542,6 @@
     <TypeScriptCompile Include="Scripts\Edit\head.ts" />
     <TypeScriptCompile Include="Scripts\Edit\TagMaker.ts" />
     <TypeScriptCompile Include="Scripts\Home\AfterLogin.ts" />
-    <TypeScriptCompile Include="Scripts\Home\CommentIndicator.ts" />
     <TypeScriptCompile Include="Scripts\Home\MovieFixation.ts" />
     <TypeScriptCompile Include="Scripts\Home\MyPage.ts" />
     <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />
@@ -572,6 +568,7 @@
     <TypeScriptCompile Include="Scripts\View\index.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Api\Admin\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>

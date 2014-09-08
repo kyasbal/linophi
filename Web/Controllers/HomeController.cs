@@ -68,7 +68,8 @@ namespace Web.Controllers
                 Article_UpDate = article.UpdateTime.ToShortDateString(),
                 UseThumbnail= thumbnail.CheckThumbnailExist(articleId),
                 CommentInfo=commentsAsJson,
-                CommentCount=commentCount
+                CommentCount=commentCount,
+                AuthorsArticles=getUserArticles(0,0,article.AuthorID,3)
             };
         }
 
@@ -220,21 +221,7 @@ namespace Web.Controllers
         [Authorize]
         public  ActionResult MyPage(int order=0,int skip=0)
         {
-            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
-            IQueryable<ArticleModel> query= context.Articles.Where(f => f.AuthorID.Equals(User.Identity.Name));
-            query=ChangeOrder(order,query);
-            query =query.Skip(skip);
-            List<SearchResultArticle> articles = new List<SearchResultArticle>();
-            foreach (var source in query.Take(10))
-            {
-                articles.Add(new SearchResultArticle()
-                {
-                    ArticleId = source.ArticleModelId,
-                    LabelCount = source.LabelCount,
-                    PageView = source.PageView,
-                    Title = source.Title
-                });
-            }
+            var articles = getUserArticles(order, skip, User.Identity.Name, 10);
             return View(new MyPageViewModel() {articles = articles.ToArray(),IsMyPage = true});
         }
 
@@ -261,25 +248,33 @@ namespace Web.Controllers
         [HttpGet]
         public async Task<ActionResult> UserPage(string articleId,int order=0,int skip=0)
         {
-            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            ApplicationDbContext context = Request.GetOwinContext().Get<ApplicationDbContext>();
             ArticleModel articleModel = await context.Articles.FindAsync(articleId);
             string userId = articleModel.AuthorID;
             if (User.Identity.Name.Equals(userId)) return Redirect("MyPage");
+            var articles = getUserArticles(order, skip, userId);
+            return View("MyPage",new MyPageViewModel() { articles = articles.ToArray(),IsMyPage=false });
+        }
+
+        private List<SearchResultArticle> getUserArticles(int order, int skip, string userId,int takeCount=10)
+        {
+            ApplicationDbContext context = Request.GetOwinContext().Get<ApplicationDbContext>();
             IQueryable<ArticleModel> query = context.Articles.Where(f => f.AuthorID.Equals(userId));
             query = ChangeOrder(order, query);
             query = query.Skip(skip);
             List<SearchResultArticle> articles = new List<SearchResultArticle>();
-            foreach (var source in query.Take(10))
+            foreach (var source in query.Take(takeCount))
             {
                 articles.Add(new SearchResultArticle()
                 {
                     ArticleId = source.ArticleModelId,
                     LabelCount = source.LabelCount,
                     PageView = source.PageView,
-                    Title = source.Title
+                    Title = source.Title,
+                    Article_UpDate = source.UpdateTime.ToShortDateString()
                 });
             }
-            return View("MyPage",new MyPageViewModel() { articles = articles.ToArray(),IsMyPage=false });
+            return articles;
         }
 
         public ActionResult PrivacyPolicy()

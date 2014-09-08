@@ -141,23 +141,23 @@
             <br />
             <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
             <div class="rellist">
-                <div>関連する投稿</div>
+                <div>この著者の他の記事</div>
                 <div class="separator2"><hr></div>
                 <ul class="list">
-                    <li class="listitem">
-                        <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
-                        <div class="listtxt">
-                            <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん|140157 view|2014/09/04 posted</span>
-                        </div>
-                    </li>
-                    <li class="listitem">
-                        <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
-                        <div class="listtxt">
-                            <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん|101551 view|2014/09/04 posted</span>
-                        </div>
-                    </li>
+                    @foreach (var article in Model.AuthorsArticles)
+                    {
+                        <li class="listitem">
+                            <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
+                            <div class="listtxt">
+                                <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br />
+                                <span class="listdesc">
+                                    @(string.Format("{0}ふせん|{1}view|{2} last updated",article.LabelCount,article.PageView,article.Article_UpDate))
+                                </span>
+                            </div>
+                        </li>
+                    }
                 </ul>
-                <span class="more-read"><a href="more.cshtml">もっとみる</a></span>
+                <span class="more-read"><a href="@("/UserPage?articleId="+Model.ArticleId)">もっとみる</a></span>
             </div>
             <br />
             <div class="rellist">
