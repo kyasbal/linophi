@@ -546,6 +546,7 @@
     <TypeScriptCompile Include="Scripts\typings\jquery.cookie\jquery.cookie.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery.tooltipster\jquery.tooltipster.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\other\other.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
     <TypeScriptCompile Include="Scripts\Utility\AspectRatioStretcher.ts" />
     <TypeScriptCompile Include="Scripts\Utility\HeightStretcher.ts" />
