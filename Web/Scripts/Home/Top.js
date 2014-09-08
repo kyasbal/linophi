@@ -67,22 +67,27 @@ var TopPage = (function (_super) {
         var _this = this;
         _super.call(this);
         this.container = $(".container");
+        this.graphCanvas = $("#top-graph");
         this.articleFetcher = new RandomArticleFetcher();
         $(window).resize(function () {
             _this.adjustContentHeight();
         });
         this.canvasContext = document.getElementById("top-graph").getContext("2d");
-        this.articleFetcher.getNext(function (c) {
-            _this.onRadorUpdate(c);
-        });
     }
     TopPage.prototype.adjustContentHeight = function () {
         var containerHeight = window.innerHeight - this.header.height() - this.footer.height();
         this.container.height(containerHeight);
-        console.warn(containerHeight);
     };
 
-    TopPage.prototype.onRadorUpdate = function (count) {
+    TopPage.prototype.onRadorUpdate = function (count, context) {
+    };
+
+    TopPage.prototype.UpdateRadar = function () {
+        var _this = this;
+        var nextCanvasContext = this.canvasContext;
+        this.articleFetcher.getNext(function (c) {
+            _this.onRadorUpdate(c, nextCanvasContext);
+        });
     };
     return TopPage;
 })(PageBase);
@@ -90,5 +95,6 @@ var TopPage = (function (_super) {
 var topPageManager = new TopPage();
 $(window).load(function () {
     topPageManager.adjustContentHeight();
+    topPageManager.UpdateRadar();
 });
 //# sourceMappingURL=Top.js.map

@@ -3,12 +3,16 @@
 }
 
 @section JS{
-    <script src="~/Scripts/Home/Top.js"></script>
     <script src="~/Scripts/Chart.js"></script>
+    <script src="~/Scripts/Home/Top.js"></script>
+}
+
+@section CSS{
+    <link href="~/Content/css/Home/Top.css" rel="stylesheet" />
 }
 
 <div class="container">
-    <canvas id="top-graph">
-        
-    </canvas>
+    <div class="container-inner">
+        <canvas id="top-graph"></canvas>
+    </div>
 </div>

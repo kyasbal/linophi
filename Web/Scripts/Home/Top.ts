@@ -89,29 +89,40 @@ class TopPage extends PageBase
        {
            super();
            this.container = $(".container");
+           this.graphCanvas = $("#top-graph");
            this.articleFetcher = new RandomArticleFetcher();
            $(window).resize(() => { this.adjustContentHeight(); });
            this.canvasContext = document.getElementById("top-graph").getContext("2d");
-           this.articleFetcher.getNext((c) => { this.onRadorUpdate(c); });
        }
 
     public container: JQuery;
 
     public articleFetcher: RandomArticleFetcher;
 
-    public canvasContext:any;
+    public canvasContext: any;
+
+    public currentRadar: Radar;
+
+    public graphCanvas:JQuery;
 
     adjustContentHeight()
     {
         var containerHeight = window.innerHeight - this.header.height() - this.footer.height();
         this.container.height(containerHeight);
-        console.warn(containerHeight);
+    }
+
+    onRadorUpdate(count:ArticleLabelCount,context:any)
+    {
 
     }
 
-    onRadorUpdate(count:ArticleLabelCount)
+    UpdateRadar()
     {
-        
+        var nextCanvasContext: any=this.canvasContext;
+        this.articleFetcher.getNext((c) =>
+        {
+            this.onRadorUpdate(c,nextCanvasContext);
+        });
     }
 }
 
@@ -119,4 +130,5 @@ var topPageManager: TopPage = new TopPage();
 $(window).load(() =>
 {
     topPageManager.adjustContentHeight();
+    topPageManager.UpdateRadar();
 });
