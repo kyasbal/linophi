@@ -1,8 +1,5 @@
 ﻿var top_height;
-interface Chart
-{
-    
-}
+
 $(() =>
 {
     //記事全体の感情状態の表示

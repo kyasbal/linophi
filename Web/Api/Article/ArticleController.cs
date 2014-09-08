@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Results;
@@ -8,6 +12,8 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity.Owin;
 using Web.Api.Response.Article;
 using Web.Models;
+using Web.Storage;
+using Web.Storage.Connection;
 
 namespace Web.Api.Article
 {
@@ -70,6 +76,20 @@ namespace Web.Api.Article
         {
             if (req == null) return Json(VerifyTitleResponse.GenerateFailedResponse("タイトルは空白にできません。"));
             return Json(IsValidTitle(req.Title, HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>()));
+        }
+
+        [HttpPost]
+        public async Task<IHttpActionResult> GetRandomArticle()
+        {
+            const int minimumLabelCount = 10;
+            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            IQueryable<ArticleModel> articleModels = context.Articles.Where(f => !f.IsDraft && f.LabelCount > minimumLabelCount);
+            LabelTableManager ltm = new LabelTableManager(new TableStorageConnection());
+            int count = await articleModels.CountAsync();
+            Random r=new Random();
+            int index = r.Next(count);
+            articleModels = articleModels.OrderBy(f => f.LabelCount).Skip(index).Take(1);
+            return Json(new ArticleSummaryResponse(await articleModels.FirstOrDefaultAsync(), ltm));
         }
     }
 }

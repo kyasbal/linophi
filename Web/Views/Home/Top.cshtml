@@ -2,6 +2,17 @@
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
 
+@section JS{
+    <script src="~/Scripts/Chart.js"></script>
+    <script src="~/Scripts/Home/Top.js"></script>
+}
+
+@section CSS{
+    <link href="~/Content/css/Home/Top.css" rel="stylesheet" />
+}
+
 <div class="container">
-    <h1>TopPage</h1>
+    <div class="container-inner">
+        <canvas id="top-graph"></canvas>
+    </div>
 </div>

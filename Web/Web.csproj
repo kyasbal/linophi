@@ -189,6 +189,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\Home\Top.css">
+      <DependentUpon>Top.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\Top.min.css">
+      <DependentUpon>Top.css</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery.alertwindow.js" />
     <Content Include="Content\css\Account\login.css">
       <DependentUpon>login.less</DependentUpon>
@@ -355,6 +361,10 @@
     <Content Include="Content\css\Home\PrivacyPolicy_TermsOfService.css.map">
       <DependentUpon>PrivacyPolicy_TermsOfService.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\Top.less" />
+    <Content Include="Content\css\Home\Top.css.map">
+      <DependentUpon>Top.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
@@ -395,6 +405,7 @@
     <Compile Include="Api\CommentController.cs" />
     <Compile Include="Api\Content\ContentUploadController.cs" />
     <Compile Include="Api\Label\LabelController.cs" />
+    <Compile Include="Api\Response\Article\ArticleSummaryResponse.cs" />
     <Compile Include="Api\Response\Article\ExistenceRequest.cs" />
     <Compile Include="Api\Response\Article\ExistenceResponse.cs" />
     <Compile Include="Api\Response\Article\VerifyTitleRequest.cs" />
@@ -520,6 +531,7 @@
     <TypeScriptCompile Include="Scripts\Home\MyPage.ts" />
     <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />
     <TypeScriptCompile Include="Scripts\Home\Search.ts" />
+    <TypeScriptCompile Include="Scripts\Home\Top.ts" />
     <TypeScriptCompile Include="Scripts\Home\viewarticle.ts" />
     <TypeScriptCompile Include="Scripts\Novel\IParagraph.ts" />
     <TypeScriptCompile Include="Scripts\Novel\Markups.ts" />
@@ -530,6 +542,7 @@
     <TypeScriptCompile Include="Scripts\Novel\sizing.ts" />
     <TypeScriptCompile Include="Scripts\Shared\Header.ts" />
     <TypeScriptCompile Include="Scripts\typings\caret-util\caret-util.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\chartjs\chartjs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery.cookie\jquery.cookie.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery.tooltipster\jquery.tooltipster.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
