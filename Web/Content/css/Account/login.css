@@ -1,7 +1,18 @@
-﻿.login-main {
-  margin: 30px auto;
+﻿.layout {
+  background-color: antiquewhite;
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: -40px;
+}
+.layout .center {
+  margin-top: 60px;
+  padding-top: 30px;
+  padding-bottom: 120px;
+}
+.login-main {
   width: 960px;
   padding-bottom: 130px;
+  margin: 0 auto;
 }
 .login-main a {
   color: #286bcc;

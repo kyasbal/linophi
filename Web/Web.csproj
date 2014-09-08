@@ -510,6 +510,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Account\dropdown.ts" />
     <TypeScriptCompile Include="Scripts\Account\externalLoginConfirmation.ts" />
+    <TypeScriptCompile Include="Scripts\Account\signup.ts" />
     <TypeScriptCompile Include="Scripts\collections.ts" />
     <TypeScriptCompile Include="Scripts\Edit\EditPage.ts" />
     <TypeScriptCompile Include="Scripts\Edit\head.ts" />
