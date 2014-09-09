@@ -23,7 +23,7 @@ $(function () {
         if (className) {
             $('.widget .' + className).append('<div class="' + className + '-comments"></div>');
 
-            commentSourceParser.eachDoInComments(className.substr(4), function (name, time, id, comment) {
+            commentSourceParser.eachDoInComments(getParagraphId(className), function (name, time, id, comment) {
                 $('.widget .' + className + '-comments').append('<div class="response">' + '<p class="res-title"> <span></span> <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' + '<p class="res-text">' + comment + '</p>' + '</div>');
             });
             $('.widget .' + className + '-comments .res-title > span').each(function (j) {
@@ -49,9 +49,9 @@ $(function () {
                         type: "post",
                         data: {
                             "ArticleId": location.pathname.substr(1),
-                            "UserName": $form.find("input").val() || "no name",
+                            "UserName": s($form.find("input").val()) || "no name",
                             "ParagraphId": ((Object)(e.currentTarget)).className.substr(4),
-                            "Comment": $form.find("textarea").val() || "no message"
+                            "Comment": s($form.find("textarea").val()) || "no message"
                         },
                         timeout: 10000,
                         beforeSend: function () {

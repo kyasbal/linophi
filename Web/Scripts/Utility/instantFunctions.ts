@@ -18,3 +18,8 @@
             .replace(quot, strquot)
             .replace(gt, strgt);
 }
+
+var getParagraphId = (seedClass: string): string =>
+{
+    return seedClass.replace(/x_/, '');
+}
