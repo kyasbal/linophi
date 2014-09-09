@@ -144,16 +144,18 @@
             "color": "#fff",
             "border": "3px solid #AFEC21",
             "border-radius": "5px",
-            "margin": "20px 20px 0"
+            "margin": "20px auto 0"
         });
         $('.alert-contents button:hover').css({
             "background": "#888"
         });
         $('.alert-button-yes').css({
-            "border-color": "#3ED4DB"
+            "border-color": "#3ED4DB",
+            "margin-right": "20px"
         });
         $('.alert-button-no').css({
-            "border-color": "#D86060"
+            "border-color": "#D86060",
+            "margin-left": "20px"
         });
 
 /*
@@ -186,8 +188,9 @@
 
             if (alertMode)
             {
-                $('.alert-layer, .alert-box').remove();
                 onOKFunc(e.currentTarget.className.substr(13));
+                $('.alert-layer, .alert-box').remove();
+
             }
 
             alertMode = false;
