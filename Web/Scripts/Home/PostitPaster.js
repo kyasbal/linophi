@@ -98,6 +98,7 @@ var LabelBoxController = (function () {
                 "display": "block",
                 "clear": "both"
             });
+            $(boxSelector).html("");
 
             for (var i = 0, len = sortArray.length; i < len; i++) {
                 $(boxSelector).append(sortArray[i]);
@@ -122,6 +123,10 @@ var AjaxManager = (function () {
             },
             success: function (data) {
                 if (data.isSucceed) {
+                    wholeCount[labelType]++; //ドーナツ用のデータの更新
+                    updateArticleDounught(false); //更新したデータの適用
+                    var updatedCount = $(".label-count").text();
+                    $(".label-count").text(parseInt(updatedCount) + 1);
                     if (postitExistence) {
                         labelSourceParser.callByParagraph(thisClass.substr(4), function () {
                             $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1));
@@ -155,11 +160,12 @@ $(window).load(function () {
 
     var posY = dropboxPos + 10;
 
-    $('.article-container > [class^="x_"]').each(function (i) {
-        var $ele = $('[class^="x_"]:nth-child(' + (i + 1) + ')');
+    $('.article-container > *').each(function (i) {
+        var $ele = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
 
         var className = $ele.attr("class");
 
+        // alert(className);
         var eleHeight = $ele.outerHeight(true), elePos = $ele.offset().top;
 
         $('.dropbox').append('<div class="' + className + '"></div>');

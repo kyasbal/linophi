@@ -1,8 +1,14 @@
 ﻿var top_height;
-
+var wholeCount;
+var articleDoughnut;
 $(function () {
     //記事全体の感情状態の表示
-    var wholeCount = labelSourceParser.countWholeEmotions();
+    wholeCount = labelSourceParser.countWholeEmotions();
+    updateArticleDounught(true);
+});
+
+function updateArticleDounught(isCreation) {
+    if (typeof isCreation === "undefined") { isCreation = false; }
     var doughnutData = [
         {
             value: wholeCount.surprised,
@@ -40,10 +46,17 @@ $(function () {
             label: "わからない"
         }
     ];
-    var doughnut = new Chart(document.getElementById("article-graph").getContext("2d")).Doughnut(doughnutData, {
-        animateScale: true
-    });
-});
+    if (isCreation)
+        articleDoughnut = new Chart(document.getElementById("article-graph").getContext("2d")).Doughnut(doughnutData, {
+            animateScale: true
+        });
+    else {
+        for (var i = 0; i < doughnutData.length; i++) {
+            articleDoughnut.segments[i].value = doughnutData[i].value;
+        }
+        articleDoughnut.update();
+    }
+}
 $(function () {
     top_height = $('.top').height();
 });

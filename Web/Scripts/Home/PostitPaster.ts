@@ -136,6 +136,7 @@ class LabelBoxController implements ILabelBoxController {
                 "display": "block",
                 "clear": "both"
             });
+            $(boxSelector).html("");
 
             for (var i: number = 0, len: number = sortArray.length; i < len; i++) {
                 $(boxSelector).append(sortArray[i]);
@@ -158,12 +159,17 @@ class AjaxManager
                 "LabelType": labelType
             },
             success: (data) => {
-                if (data.isSucceed) {
+                if (data.isSucceed)
+                {
+                    wholeCount[labelType]++;//ドーナツ用のデータの更新
+                    updateArticleDounught(false);//更新したデータの適用
+                    var updatedCount: any = $(".label-count").text();
+                    $(".label-count").text(parseInt(updatedCount)+1);
                     if (postitExistence) {
                         labelSourceParser.callByParagraph(thisClass.substr(4), () => {
                             $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(
                                 Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1
-                            ));
+                                ));
                         });
                     } else {
                         $target.append(
@@ -200,10 +206,12 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
     var posY: number = dropboxPos + 10;
 
-    $('.article-container > [class^="x_"]').each((i) => {
-        var $ele: JQuery = $('[class^="x_"]:nth-child(' + (i + 1) + ')');
+    $('.article-container > *').each((i) => {
+        var $ele: JQuery = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
 
         var className = $ele.attr("class");
+
+        // alert(className);
 
         var eleHeight: number = $ele.outerHeight(true),
             elePos: number = $ele.offset().top;
