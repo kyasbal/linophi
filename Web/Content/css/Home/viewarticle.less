@@ -6,7 +6,9 @@ img, fieldset {
     border: none;
 }
 
-img { vertical-align: bottom; }
+img {
+    vertical-align: bottom;
+}
 
 html {
     overflow-y: scroll;
@@ -50,7 +52,6 @@ input[type="text"] {
 }
 
 .set:after {
-
     content: "";
     display: block;
     clear: both;
@@ -170,7 +171,7 @@ input[type="text"] {
 
                 &-main {
                     float: left;
-                    width: 85%;
+                    width: 80%;
 
                     .navbar-thumb {
                         float: right;
@@ -203,19 +204,37 @@ input[type="text"] {
                         }
                     }
 
+                    .navbar-bottom {
+                        margin-left: 20px;
+
+                        .main_sns li {
+                            float: left;
+                            margin: 0 15px 0 0;
+                        }
+
+                        .main_sns li:first-child {
+                        }
+
+                        .main_sns li iframe {
+                            margin: 0;
+                            padding: 0;
+                        }
+                    }
+
                     .navbar-txt {
-                        width: 90%;
+                        width: 70%;
                         margin-top: -13px;
                         padding-bottom: 10px;
 
-                        img{
-                            width:100px;
-                            height:100px;
+                        img {
+                            width: 100px;
+                            height: 100px;
                         }
 
                         .navbar-title {
-                            margin-bottom:20px;
-                            font-size:45px;
+                            margin-bottom: 20px;
+                            font-size: 45px;
+
                             a {
                                 word-wrap: break-word;
                                 margin: 0 15px 0 0;
@@ -231,16 +250,18 @@ input[type="text"] {
                     }
 
                     .navbar-count {
-                        margin: 20px 10px 40px 10px;
-                        font-size:20px;
-                        div{
-                            display:inline;
-                            span{
-                                margin-left:20px;
+                        margin: 20px 10px 25px 10px;
+                        font-size: 20px;
+
+                        div {
+                            display: inline;
+
+                            span {
+                                margin-left: 20px;
                             }
                         }
 
-                        .navbar-countcomment{
+                        .navbar-countcomment {
                                 margin-top: 3px;
                                 line-height: 1;
                                 color: #666;
@@ -282,7 +303,7 @@ input[type="text"] {
                                 font-family: Arial, Helvetica, sans-serif;
                             }
 
-                            .navbar-countlabel{
+                        .navbar-countlabel {
                                 margin-top: 3px;
                                 line-height: 1;
                                 color: #666;
@@ -322,14 +343,6 @@ input[type="text"] {
                                 color: #666;
                                 font-size: 7px;
                             }
-
-                            .date-txt {
-                                display: block;
-                                margin-top: 3px;
-                                line-height: 1;
-                                color: #666;
-                                font-size: 7px;
-                            }
                         }
 
                         .navbar-Update {
@@ -348,30 +361,6 @@ input[type="text"] {
                             -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
                             -moz-box-shadow: 0px 0px 3px 0px #666 inset;
                             font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
-
-                            .Update {
-                                display: block;
-                                line-height: 1;
-                                margin-top: -3px;
-                                color: #000;
-                                font-size: 18px;
-                                font-family: Arial,Arial, Helvetica, sans-serif,sans-serif;
-                            }
-
-                            .Update-txt {
-                                display: block;
-                                margin-top: 3px;
-                                line-height: 1;
-                                color: #666;
-                            }
-
-                            .Update-txt {
-                                display: block;
-                                margin-top: 3px;
-                                line-height: 1;
-                                color: #666;
-                                font-size: 7px;
-                            }
                         }
                     }
                 } 
@@ -402,7 +391,7 @@ input[type="text"] {
                 }
 
                 .user-img {
-                   font-size:11px;
+                    font-size: 11px;
                 }
 
                 .navbar-username {
@@ -516,7 +505,7 @@ input[type="text"] {
                 }
 
                 .rellist {
-                    padding-top:50px;
+                    padding-top: 50px;
                     position: relative;
                     margin: 10px 0 10px 0;
 
@@ -804,23 +793,23 @@ input[type="text"] {
 
 .alert-contents {
     > * > * {
-        margin-top: 0;
-        margin-bottom: 20px;
-        display: block;
-    }
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: block;
+        }
         
     input, textarea {
-        border: 1px solid #ccc;
-        border-radius: 2px;
-        width: 600px;
-        padding: 0.4em 0.8em;
-        color: #444;
-        margin-right: 30px;
-        margin-left: 30px;
-    }
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            width: 600px;
+            padding: 0.4em 0.8em;
+            color: #444;
+            margin-right: 30px;
+            margin-left: 30px;
+        }
 
     textarea {
-        height: 250px;
-    }
-    
+            height: 250px;
+        }
+
 }

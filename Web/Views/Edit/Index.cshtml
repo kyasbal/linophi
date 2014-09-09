@@ -47,10 +47,8 @@
 
 
 <div class="edit-bg-overlay">
-    @using (Html.BeginForm("Preview", "Edit", FormMethod.Post, new { @class = "edit-form-preview editpage-main", enctype = "multipart/form-data",target="_blank" }))
+        @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new {@class = "edit-form editpage-main", enctype = "multipart/form-data"}))
     {
-        using (Html.BeginForm("Index", "Edit", FormMethod.Post, new {@class = "edit-form editpage-main", enctype = "multipart/form-data"}))
-         {
              <div class="edit-title-container">
                  <input type="text" name="Title" value="@(Model == null ? "" : Model.Title)" id="title" class="edit-title" placeholder="タイトル" @(Model != null ? "readonly" : "") />
              </div>
@@ -71,7 +69,6 @@
                      </div>
                  </div>
 
-
                  <div class="edit-text-container">
                      <h1>編集</h1>
                      <textarea class="edit-text edit-context" placeholder="textarea">
@@ -86,9 +83,9 @@
              @Html.Hidden("Tag", "", new {id = "hidden-tag"})
              @Html.Hidden("Body", "", new {id = "hidden-body"})
              @Html.Hidden("Markup", "", new {id = "hidden-markup"})
-             @Html.Hidden("Mode", Model == null ? "new" : "edit", new {id = "hidden-mode"})
+             @Html.Hidden("Mode", Model == null ? "new" :Model.EditMode, new {id = "hidden-mode"})
              <span class="prev-switch">大きくする→</span>
-             <div class="select-thumbnail">サムネイルの選択<input type="file" name="Thumbnail" class="thumbnail"/></div>
+        <div class="select-thumbnail">サムネイルの選択<input type="file" name="Thumbnail" class="thumbnail" /></div>
              if (Model != null)
              {
                  @Html.Hidden("Id", Model.ArticleId)
@@ -97,6 +94,6 @@
                  <a class="preview-button">プレビュー表示</a>
                  <a class="edit-submit-button">投稿する</a>
              </div>
-         }
+         
     }
 </div>
