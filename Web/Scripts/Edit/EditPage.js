@@ -12,14 +12,18 @@ $(function () {
     editPage.onChanged();
     $(".edit-submit-button").click(function () {
         prepareSubmit();
+        $(".edit-form").attr("target", "_self");
+        $(".edit-form").attr("action", "/Edit");
         if (isConfirmedTitle)
             $(".edit-form").submit();
     });
     $(".preview-button").click(function () {
         console.warn("preview");
         prepareSubmit();
+        $(".edit-form").attr("target", "_blank");
+        $(".edit-form").attr("action", "/Preview");
         if (isConfirmedTitle)
-            $(".edit-form-preview").submit();
+            $(".edit-form").submit();
     });
 });
 
