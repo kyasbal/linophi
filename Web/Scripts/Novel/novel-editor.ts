@@ -1,7 +1,7 @@
 ﻿module NovelEditer
 {
     var sepalateToken: string = "\n\n";
-    var markups: MarkupBase[] = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup(), new LinkMarkup(),new HrMarkUp()];
+    var markups: MarkupBase[] = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup(), new HrMarkUp(), new ColorMarkup(), new SizeMarkup(), new SizeColorMarkup(), new UrlMarkup(), new LinkMarkup()];
     
     export class NovelEditer
     {
@@ -684,7 +684,7 @@
                     rawStr = markups[j].getMarkupString(rawStr,this._iD);//処理
 
                 }
-
+                rawStr = rawStr.replace(/\u0006e/g, "http");
                 tag = $("<p/>");
                 //エスケープ処理
                 if (rawStr.charCodeAt(0) == 0x5c && rawStr.length > 1 && rawStr.charCodeAt(1) == 0x5c) rawStr = "\\" + rawStr.substr(2, rawStr.length - 2); //\\の場合は\にする

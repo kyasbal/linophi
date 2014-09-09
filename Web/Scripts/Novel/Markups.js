@@ -137,13 +137,13 @@ var LinkMarkup = (function (_super) {
     }
     LinkMarkup.prototype.getMarkupString = function (result, id) {
         console.warn("link");
-        result = result.replace(/&ensp;/g, "\u0006");
+        result = result.replace(/&ensp;/g, "\u0006h");
         if (result.match(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g)) {
             result = result.replace(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"/Pages/ContentUpload/ServerCache?url=$1\">");
         }
-        result = result.replace(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_\;]+)([^\w\/:%#\$&\?\(\)~\.=\+\-@\;])(?![>"])/g, "<a href='$1'>$1</a>$2");
+        result = result.replace(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_\;]+)([^\w\/:%#\$&\?\(\)~\.=\+\-@\;])(?![>"'])/g, "<a href='$1'>$1</a>$2");
         result = result.replace(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_\;]+)$/, "<a href='$1'>$1</a>");
-        return result.replace(/\u0006/g, "&ensp;");
+        return result.replace(/\u0006h/g, "&ensp;");
     };
     return LinkMarkup;
 })(MarkupBase);
@@ -193,6 +193,67 @@ var HrMarkUp = (function (_super) {
         return result;
     };
     return HrMarkUp;
+})(MarkupBase);
+
+//アドレス
+var UrlMarkup = (function (_super) {
+    __extends(UrlMarkup, _super);
+    function UrlMarkup() {
+        _super.apply(this, arguments);
+    }
+    UrlMarkup.prototype.getMarkupString = function (result) {
+        if (result.match(/\$\([^)]+\)\{[^}]+}/g)) {
+            var url = result.replace(/\$\(([^)]+)\)\{([^}]+)}/g, "$1");
+            url = url.replace(/http/g, "\u0006e");
+            result = result.replace(/\$\(([^)]+)\)\{([^}]+)}/g, "<a href='" + url + "'>$2</a>");
+        } else {
+            var url = result.replace(/\$\(([^)]+)\).*/g, "$1");
+            url = url.replace(/http/g, "\u0006e");
+            result = result.replace(/\$\(([^)]+)\)/g, "<a href=\"" + url + "\">" + url + "</a>");
+        }
+        result = result.replace(/<a[^>]+><\/a>/g, "");
+        console.warn(result);
+        return result;
+    };
+    return UrlMarkup;
+})(MarkupBase);
+
+//色変え
+var ColorMarkup = (function (_super) {
+    __extends(ColorMarkup, _super);
+    function ColorMarkup() {
+        _super.apply(this, arguments);
+    }
+    ColorMarkup.prototype.getMarkupString = function (result) {
+        result = result.replace(/\$color\(([^)]+)\)\{([^}]+)}/g, "<span class=\"$1\">$2</span>");
+        return result;
+    };
+    return ColorMarkup;
+})(MarkupBase);
+
+var SizeMarkup = (function (_super) {
+    __extends(SizeMarkup, _super);
+    function SizeMarkup() {
+        _super.apply(this, arguments);
+    }
+    SizeMarkup.prototype.getMarkupString = function (result) {
+        result = result.replace(/\$size\(([^)]+)\)\{([^}]+)}/g, "<span class=\"$1\">$2</span>");
+        result = result.replace(/<\div>\n<br>/g, "");
+        return result;
+    };
+    return SizeMarkup;
+})(MarkupBase);
+
+var SizeColorMarkup = (function (_super) {
+    __extends(SizeColorMarkup, _super);
+    function SizeColorMarkup() {
+        _super.apply(this, arguments);
+    }
+    SizeColorMarkup.prototype.getMarkupString = function (result) {
+        result = result.replace(/\$sizecolor\(([^),]+),([^)]+)\)\{([^}]+)}/g, "<span class=\"$1 $2\">$3</span>");
+        return result;
+    };
+    return SizeColorMarkup;
 })(MarkupBase);
 /*
 class BgcMarkup extends MarkupBase
