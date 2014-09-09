@@ -56,7 +56,7 @@ $(() =>
                     break;
 
                 }   
-            }           if (isMatched&&className)
+            }            if (isMatched&&className)
             {
                 $('.article-container .' + className).append('<div class="' + className + '-comments"></div>');
 
@@ -121,7 +121,6 @@ $(() =>
 
                     success: () =>
                     {
-                        alert("success!");
                         $form.find("input, textarea").val("");
                     },
                     error: () =>
