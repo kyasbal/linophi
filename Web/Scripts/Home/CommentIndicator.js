@@ -13,23 +13,63 @@
 })();
 
 $(function () {
-    var commentJson = JSON.parse($("#comment-info").text());
-
     var commentSourceParser = new CommentSourceParser();
 
+    // コメントの表示に関する
     $('.article-container > *').each(function (i) {
         var $ele = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
         var className = $ele.attr("class");
 
-        var thisHtml = "";
+        $('.widget .' + className).append('<div class="' + className + '-comments"></div>');
 
         commentSourceParser.eachDoInComments(className.substr(4), function (name, time, id, comment) {
-            thisHtml += '<div class="response">' + '<p class="res-title"> counter <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' + '<p class="res-text">' + comment + '</p>' + '</div>';
+            $('.widget .' + className + '-comments').append('<div class="response">' + '<p class="res-title"> <span></span> <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' + '<p class="res-text">' + comment + '</p>' + '</div>');
+        });
+        $('.widget .' + className + '-comments .res-title > span').each(function (j) {
+            $('.' + className + '-comments .response:nth-child(' + (j + 1) + ') span').html((j + 1) + "");
         });
 
-        if (thisHtml) {
-            $('.widget .' + className).append('<div class="' + className + '-comments">' + thisHtml + '</div>');
-        }
+        $('.widget .' + className + '-comments').append('<button class="' + className + '">コメントする</button>');
+    });
+
+    $('.widget button').on("click", function (e) {
+        var formHtml = '<form id="the-form">' + '<input type="text" name="name" value="" placeholder="Name" />' + '<textarea name="message" placeholder="Messages"></textarea>' + '<button>送信</button>' + '</form>';
+
+        $().alertwindow(formHtml, "none", "コメントする", function () {
+            $('#the-form').submit(function (event) {
+                event.preventDefault();
+                var $form = $(this);
+                if ($form.find("textarea").val()) {
+                    var $button = $form.find('button');
+                    console.info(location.pathname.substr(1), $form.find("input").val(), ((Object)(e.currentTarget)).className.substr(4), $form.find("textarea").val());
+                    $.ajax({
+                        url: "/api/Comment/AttachComment",
+                        type: "post",
+                        data: {
+                            "ArticleId": location.pathname.substr(1),
+                            "UserName": $form.find("input").val() || "no name",
+                            "ParagraphId": ((Object)(e.currentTarget)).className.substr(4),
+                            "Comment": $form.find("textarea").val() || "no message"
+                        },
+                        timeout: 10000,
+                        beforeSend: function () {
+                            $button.attr('disabled', 'true');
+                        },
+                        complete: function () {
+                            $button.attr('disabled', 'false');
+                        },
+                        success: function () {
+                            $form.find("input, textarea").val("");
+                        },
+                        error: function () {
+                            alert("送信失敗しました");
+                        }
+                    });
+                } else {
+                    alert("空欄を埋めてください");
+                }
+            });
+        });
     });
 });
 //# sourceMappingURL=CommentIndicator.js.map

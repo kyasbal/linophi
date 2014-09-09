@@ -380,7 +380,7 @@ input[type="text"] {
   position: relative;
 }
 .container .contents .contentswrapper .main .widget > *[class*="p-"]:hover {
-  background: #deb3ba;
+  background: #ddd;
 }
 .container .contents .contentswrapper .main .widget > *[class*="p-"]:hover > *[class*="-comments"] {
   display: block;
@@ -395,7 +395,7 @@ input[type="text"] {
   z-index: 9999;
   padding: 6px 10px;
   color: #FFFFFF;
-  background: #c72439;
+  background: #666;
   border-radius: 0.5em;
   -moz-transform: translateY(-30%);
   -ms-transform: translateY(-30%);
@@ -411,11 +411,26 @@ input[type="text"] {
   position: absolute;
   left: -20px;
   top: 31.5%;
-  border-top: 10px solid #c72439;
+  border-top: 10px solid #666;
   border-left: 20px solid transparent;
 }
 .container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .response p:hover {
   background: none;
+}
+.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] button {
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 50%;
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  padding: 0.62em 1.2em;
+  background: #fff;
+  border: none;
+  border-radius: 0.3em;
 }
 .container .contents .contentswrapper .main .article-container p:hover {
   background-color: ghostwhite;
@@ -517,6 +532,7 @@ input[type="text"] {
   box-sizing: border-box;
 }
 .container .contents .contentswrapper .dropbox > * > * > span {
+  cursor: default;
   padding: 3px 9px;
   background: #fff;
   color: #555;
@@ -566,6 +582,7 @@ input[type="text"] {
 }
 .container .contents .postit-list img {
   width: 130px;
+  height: 43px;
 }
 .container .contents .postit-list > * {
   cursor: pointer;
@@ -657,5 +674,27 @@ input[type="text"] {
 }
 .fade-layer > img {
   width: 130px;
+}
+.alert-box form > * {
+  margin-top: 0;
+  margin-bottom: 20px;
+  display: block;
+}
+.alert-box form > input,
+.alert-box form > textarea {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: 600px;
+  padding: 0.4em 0.8em;
+  color: #444;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+.alert-box form > textarea {
+  height: 250px;
+}
+.alert-box form > button {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 /*# sourceMappingURL=viewarticle.css.map */

@@ -26,32 +26,89 @@ class CommentSourceParser implements ICommentSourceParser
 
 $(() =>
 {
-    var commentJson = JSON.parse($("#comment-info").text());
-
     var commentSourceParser = new CommentSourceParser();
 
+    // コメントの表示に関する
     $('.article-container > *').each((i) =>
     {
         var $ele: JQuery = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
         var className: string = $ele.attr("class");
 
-        var thisHtml: string = "";
+        $('.widget .' + className).append('<div class="' + className + '-comments"></div>');
 
         commentSourceParser.eachDoInComments(className.substr(4), (name, time, id, comment) =>
         {
-            thisHtml +=
+            $('.widget .' + className + '-comments').append(
                 '<div class="response">' +
-                    '<p class="res-title"> counter <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' +
+                    '<p class="res-title"> <span></span> <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' +
                     '<p class="res-text">' +
                         comment +
                     '</p>' +
-                '</div>';
+                '</div>'
+            );
+        });
+        $('.widget .' + className + '-comments .res-title > span').each((j) =>
+        {
+            $('.' + className + '-comments .response:nth-child(' + (j + 1) +') span').html((j+1)+"");
         });
 
-        if (thisHtml) // デッドコードじゃないです！
-        {
-            $('.widget .' + className).append('<div class="' + className + '-comments">' + thisHtml + '</div>');
-        }
+        $('.widget .' + className + '-comments').append(
+            '<button class="' + className + '">コメントする</button>'
+        );
+    });
 
+    $('.widget button').on("click", (e) =>
+    {
+        var formHtml =
+            '<form id="the-form">' +
+                '<input type="text" name="name" value="" placeholder="Name" />' +
+                '<textarea name="message" placeholder="Messages"></textarea>' +
+                '<button>送信</button>' +
+            '</form>';
+
+        $().alertwindow(formHtml, "none", "コメントする", () =>
+        {
+            $('#the-form').submit(function (event) {
+                event.preventDefault();
+                var $form = $(this);
+                if ($form.find("textarea").val())
+                {
+                    var $button = $form.find('button');
+                    console.info(location.pathname.substr(1), $form.find("input").val(), ((Object)(e.currentTarget)).className.substr(4), $form.find("textarea").val());
+                    $.ajax({
+                        url: "/api/Comment/AttachComment",
+                        type: "post",
+                        data: {
+                            "ArticleId": location.pathname.substr(1),
+                            "UserName": $form.find("input").val() || "no name",
+                            "ParagraphId": ((Object)(e.currentTarget)).className.substr(4),
+                            "Comment": $form.find("textarea").val() || "no message"
+                        },
+                        timeout: 10000,
+
+                        beforeSend: () =>
+                        {
+                            $button.attr('disabled', 'true');
+                        },
+                        complete: () =>
+                        {
+                            $button.attr('disabled', 'false');
+                        },
+
+                        success: () =>
+                        {
+                            $form.find("input, textarea").val("");
+                        },
+                        error: () =>
+                        {
+                            alert("送信失敗しました");
+                        }
+                    });
+                } else
+                {
+                    alert("空欄を埋めてください");
+                }
+            });
+        });
     });
 });
