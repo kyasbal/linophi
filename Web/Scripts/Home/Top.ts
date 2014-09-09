@@ -105,8 +105,8 @@ class TopPage extends PageBase
 
     adjustContentHeight()
     {
-        var containerHeight = window.innerHeight - this.header.height() - this.footer.height();
-        this.container.height(containerHeight);
+        //var containerHeight = window.innerHeight - this.header.height() - this.footer.height();
+        //this.container.height(containerHeight);
     }
 
     onRadorUpdate(count:ArticleLabelCount,context:any)

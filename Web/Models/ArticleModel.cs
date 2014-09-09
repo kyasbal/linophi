@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using Web.Utility;
@@ -21,9 +22,7 @@ namespace Web.Models
 
         [Key]
         public string ArticleModelId { get; set; }
-
         public string Title { get; set; }
-        
         public string AuthorID { get; set; }
 
         public int PageView

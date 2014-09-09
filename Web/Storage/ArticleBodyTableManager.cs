@@ -23,9 +23,9 @@ namespace Web.Storage
         {
         }
 
-        public async Task AddArticle(string artickleKey, string body)
+        public async Task AddArticle(string artickleKey, string body,bool useSantizer=true)
         {
-            string safeHtml = Sanitizer.GetSafeHtmlFragment(body);
+            string safeHtml =useSantizer? Sanitizer.GetSafeHtmlFragment(body):body;
             ICloudBlob blob = Container.GetBlockBlobReference(artickleKey);
             var blobArray = Encoding.Unicode.GetBytes(safeHtml);
             await blob.UploadFromByteArrayAsync(blobArray,0,blobArray.Length);
@@ -50,6 +50,12 @@ namespace Web.Storage
                 await blob.DownloadToStreamAsync(ms);
                 return Encoding.Unicode.GetString(ms.ToArray());
             }
+        }
+
+        public async Task AppendArticle(string articleModelId, string body)
+        {
+            string lastBody = await GetArticleBody(articleModelId);
+            await AddArticle(articleModelId, lastBody + Sanitizer.GetSafeHtmlFragment(body));
         }
     }
 }

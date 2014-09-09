@@ -42,5 +42,11 @@ namespace Web.Storage
             if (!blob.Exists()) return;
             await blob.DeleteAsync();
         }
+
+        public async Task AppendMarkupAsync(string articleModelId, string markup)
+        {
+            string lastMarkup = await GetArticleBodyAsync(articleModelId);
+            await AddMarkupAsync(articleModelId, lastMarkup +"\n"+ markup);
+        }
     }
 }

@@ -23,4 +23,8 @@ function editArticle(articleId) {
             $("#edit-article-" + articleId).submit();
     });
 }
+
+function appendArticle(articleId) {
+    $("#append-article-" + articleId).submit();
+}
 //# sourceMappingURL=MyPage.js.map
