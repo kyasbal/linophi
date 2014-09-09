@@ -86,6 +86,12 @@
   outline: none;
   border-radius: 300px;
 }
+.x_listn {
+  list-style-type: decimal;
+}
+.x_listd {
+  list-style-type: disc;
+}
 .bgcprim,
 .x_bgcprim {
   padding: 0 10px;

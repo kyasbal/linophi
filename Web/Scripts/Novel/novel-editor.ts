@@ -988,7 +988,7 @@
         }
         getFormattedHtmlImpl(str: string): string
         {
-            str = str.replace(/(.*)/g, "<ol style=\"list-style-type:decimal\"><li>$1</li></ol><br>");
+            str = str.replace(/(.*)/g, "<ol class=\"listn\"><li>$1</li></ol><br>");
             str = str.replace(/<\/br>/g, "</li><li>");
             str = str.replace(/<li><\/li>/g, "");
             str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
@@ -1001,10 +1001,10 @@
     {
         getPrefixString(): string
         {
-            return "$listd";
+            return "$listd"; 
         }
         getFormattedHtmlImpl(str: string): string {
-            str = str.replace(/(.*)/g, "<ul style=\"list-style-type:disc\"><li>$1</li></ul><br>");
+            str = str.replace(/(.*)/g, "<ul class=\"listd\"><li>$1</li></ul><br>");
             str = str.replace(/<\/br>/g, "</li><li>");
             str = str.replace(/<li><\/li>/g, "");
             str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
