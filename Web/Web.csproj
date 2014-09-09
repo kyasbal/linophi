@@ -219,7 +219,6 @@
     <Content Include="Content\imgs\Home\surprised-d.svg" />
     <Content Include="Content\imgs\Home\surprised-l.svg" />
     <Content Include="Scripts\Home\CommentIndicator.js" />
-    <Content Include="Content\imgs\tnm.png" />
     <Content Include="Content\imgs\logo.png" />
     <Content Include="Content\imgs\test-top.PNG" />
     <Content Include="Scripts\jquery.alertwindow.js" />
@@ -462,6 +461,14 @@
     <Compile Include="Migrations\201409070206073_AddIsDraft.Designer.cs">
       <DependentUpon>201409070206073_AddIsDraft.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409090516420_AddIndex.cs" />
+    <Compile Include="Migrations\201409090516420_AddIndex.Designer.cs">
+      <DependentUpon>201409090516420_AddIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409090525483_AddIndex2.cs" />
+    <Compile Include="Migrations\201409090525483_AddIndex2.Designer.cs">
+      <DependentUpon>201409090525483_AddIndex2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountConfigViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -604,6 +611,12 @@
     <EmbeddedResource Include="Migrations\201409070206073_AddIsDraft.resx">
       <DependentUpon>201409070206073_AddIsDraft.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409090516420_AddIndex.resx">
+      <DependentUpon>201409090516420_AddIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409090525483_AddIndex2.resx">
+      <DependentUpon>201409090525483_AddIndex2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

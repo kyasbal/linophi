@@ -98,7 +98,9 @@ enum EditPageContents {
 }
 
 var editmode: string = $('#hidden-mode[name="Mode"]').val();
-if (editmode=="edit") {
+if (editmode == "edit" || editmode == "append")
+{
+    isConfirmedTitle = true;
     $(".edit-submit-button").css('background-color', '#7FFFD4');
     $(".edit-submit-button").hover(function () {
         $(this).css("background-color", "#3CB371");

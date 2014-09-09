@@ -205,8 +205,6 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
         var className = $ele.attr("class");
 
-        // alert(className);
-
         var eleHeight: number = $ele.outerHeight(true),
             elePos: number = $ele.offset().top;
 

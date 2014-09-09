@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -35,7 +36,7 @@ namespace Web.Controllers
         [HttpGet]
         [Authorize]
         // GET: Edit
-        public async Task<ActionResult> Index(string articleId)
+        public async Task<ActionResult> Index(string articleId,string EditMode)
         {
             if(articleId==null||string.IsNullOrWhiteSpace(articleId))
             return View();
@@ -49,9 +50,16 @@ namespace Web.Controllers
                 return View("Page403");
             }
             await context.Entry(articleModel).Collection(a=>a.Tags).LoadAsync();
-            ArticleMarkupTableManager amtm = new ArticleMarkupTableManager(new BlobStorageConnection());
-            string markup = await amtm.GetArticleBodyAsync(articleId);
-            vm.MarkupString = markup;
+            if (EditMode.Equals("edit"))
+            {
+                ArticleMarkupTableManager amtm = new ArticleMarkupTableManager(new BlobStorageConnection());
+                string markup = await amtm.GetArticleBodyAsync(articleId);
+                vm.MarkupString = markup;
+            }
+            else
+            {
+                vm.MarkupString = string.Format("---\n\n##{0}追記分\n\n",DateTime.Now);
+            }
             vm.Title = articleModel.Title;
             string tagsStr = "";
             foreach (var tag in articleModel.Tags)
@@ -60,6 +68,7 @@ namespace Web.Controllers
             }
             vm.Tags = tagsStr;
             vm.ArticleId = articleId;
+            vm.EditMode = EditMode;
             return View(vm);
         }
 
@@ -110,6 +119,7 @@ namespace Web.Controllers
                 return Redirect("~/" + article.ArticleModelId);
             }else if (vm.Mode.Equals("edit"))
             {
+                if (!User.IsInRole("Administrator")) return RedirectToAction("Page404", "Home");
                 LabelTableManager lm=new LabelTableManager(new TableStorageConnection());
                 ArticleModel articleModel = await context.Articles.FindAsync(vm.Id);
                 if (!articleModel.AuthorID.Equals(User.Identity.Name)) return View("Page403");
@@ -139,6 +149,37 @@ namespace Web.Controllers
                 await amtm.AddMarkupAsync(articleModel.ArticleModelId, vm.Markup);
                 await atm.UploadThumbnail(articleModel.ArticleModelId, vm.Thumbnail);
                 await lm.RemoveArticleLabelAsync(vm.Id);
+                return Redirect("~/" + vm.Id);
+            }else if (vm.Mode.Equals("append"))
+            {
+                LabelTableManager lm = new LabelTableManager(new TableStorageConnection());
+                ArticleModel articleModel = await context.Articles.FindAsync(vm.Id);
+                if (!articleModel.AuthorID.Equals(User.Identity.Name)) return View("Page403");
+                await context.Entry(articleModel).Collection(a => a.Tags).LoadAsync();
+                articleModel.Tags.Clear();
+                var tags = System.Web.Helpers.Json.Decode<string[]>(vm.Tag);
+                if (tags.Length > 5) return RedirectToAction("Page404", "Home");
+                foreach (var tag in tags)
+                {
+                    ArticleTagModel tagModel = context.Tags.Where(f => f.TagName.Equals(tag)).SingleOrDefault();
+                    bool needToAdd = tagModel == null;
+                    tagModel = tagModel ?? ArticleTagModel.GenerateTag(tag);
+                    if (needToAdd)
+                    {
+                        context.Tags.Add(tagModel);
+                    }
+                    else
+                    {
+                        await context.Entry(tagModel).Collection(c => c.Articles).LoadAsync();
+                    }
+                    tagModel.Articles.Add(articleModel);
+                    articleModel.Tags.Add(tagModel);
+                }
+                articleModel.LabelCount = 0;
+                await context.SaveChangesAsync();
+                await abtm.AppendArticle(articleModel.ArticleModelId, vm.Body);
+                await amtm.AppendMarkupAsync(articleModel.ArticleModelId, vm.Markup);
+                await atm.UploadThumbnail(articleModel.ArticleModelId, vm.Thumbnail);
                 return Redirect("~/" + vm.Id);
             }
             else
