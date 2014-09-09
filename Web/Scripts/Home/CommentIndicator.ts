@@ -41,7 +41,7 @@ $(() =>
     // コメントの表示に関する
     $('.article-container > *').each((i) =>
     {
-        var $ele: JQuery = $('[class^="x_p"]:nth-child(' + (i + 1) + ')');
+        var $ele: JQuery = $('[class*="p-"]:nth-child(' + (i + 1) + ')');
         var className: string = $ele.attr("class");
         if (className)
         {

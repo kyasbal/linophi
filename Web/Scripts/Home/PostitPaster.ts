@@ -207,7 +207,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     var posY: number = dropboxPos + 10;
 
     $('.article-container > *').each((i) => {
-        var $ele: JQuery = $('[class^="x_p-"]:nth-child(' + (i + 1) + '), [class^="p-"]:nth-child(' + (i + 1) + ')'); // p-から始まるのはプレビュー用
+        var $ele: JQuery = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
 
         var className = $ele.attr("class");
 
@@ -283,8 +283,8 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
             var pHeights: number = dropboxPos;
 
-            $('.dropbox > [class^="x_p-"]').each((i) => {
-                var $target: JQuery = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 2) + ')'); // i == 0のとき１つ目のふせんを表している
+            $('.dropbox > [class*="p-"]').each((i) => {
+                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')'); // i == 0のとき１つ目のふせんを表している
                 var pHeight: number = $target.outerHeight(true);
                 var bg = "none";
                 if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode)
@@ -327,15 +327,15 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         {
             var pHeights: number = dropboxPos;
 
-            $('.dropbox > [class^="x_p-"]').each((i) =>
+            $('.dropbox > [class*="p-"]').each((i) =>
             {
-                var $target: JQuery = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
+                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')');
                 var pHeight: number = $target.outerHeight(true);
 
                 var thisClass: string = $target.attr("class");
 
                 var postitExistence: number =
-                    $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ') > .' + labelType).length;
+                    $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ') > .' + labelType).length;
 
                 if (pHeights <= posY && posY <= pHeights + pHeight) // 対象のｐ要素で貼り付けた時の処理
                 {
