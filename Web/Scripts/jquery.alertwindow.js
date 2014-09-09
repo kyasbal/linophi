@@ -3,7 +3,7 @@
         /* 本来の引数はmsg, buttonOption, titleMsg, mainColor, onOKFunc
          * 
          * msg: 警告文として表示したい文字列またはhtml
-         * buttonOption: 表示するボタンの種類。y/n, ok, またはボタン内に表示したい任意の文字列
+         * buttonOption: 表示するボタンの種類。y/n, ok, none, またはボタン内に表示したい任意の文字列
          * titleMsg: ダイアログに表示されるタイトル。デフォルトは"警告"　省略可
          * mainColor: cssで使えるカラーコード等。省略可
          * onOKFunc: コールバック関数。引数が２つのときのみ省略可。
@@ -53,26 +53,30 @@
                 buttonHtml = '<button class="alert-button-ok">OK</button>';
                 mainColor = mainColor || "#FC8D49";
                 break;
+            case "none":
+            case "None":
+            case "NONE":
+                buttonHtml = '';
+                mainColor = mainColor || "#49D7FC";
+                break;
             default:
                 buttonHtml = '<button class="alert-button-plain">' + buttonOption + '</button>';
                 mainColor = mainColor || "#49D7FC";
                 break;
         }
 
-        if (!$('.alert-layer').length) {
-            $('body').append(
-                '<div class="alert-layer"></div>' +
-                '<div class="alert-box">' +
-                    '<div class="alert-title">確認</div>' +
-                    '<div class="alert-contents">' +
-                        '<p>' + msg + '</p>' +
-                        '<p>' +
-                            buttonHtml +
-                        '</p>' +
-                    '</div>' +
-                '</div>'
-            );
-        }
+        $('body').append(
+            '<div class="alert-layer"></div>' +
+            '<div class="alert-box">' +
+                '<div class="alert-title">' + (titleMsg || "確認") + '</div>' +
+                '<div class="alert-contents">' +
+                    '<p>' + msg + '</p>' +
+                    '<p>' +
+                        buttonHtml +
+                    '</p>' +
+                '</div>' +
+            '</div>'
+        );
         /*
         .alert-layer
           .alert-box
@@ -138,7 +142,7 @@
             "background": "#444",
             "font-size": "16px",
             "color": "#fff",
-            "border": "3px solid",
+            "border": "3px solid #AFEC21",
             "border-radius": "5px",
             "margin": "20px 20px 0"
         });
@@ -148,9 +152,7 @@
         $('.alert-button-no').css({
             "border-color": "#D86060"
         });
-        $('.alert-button-ok').css({
-            "border-color": "#AFEC21"
-        });
+
 
         $('.alert-contents button').hover(function (e) {
             var thisClass = e.currentTarget.className;
@@ -172,13 +174,18 @@
         });
 
         $('.alert-layer, .alert-contents button').on("click", function (e) {
-                $('.alert-layer, .alert-box').css("opacity", 0);
-                setTimeout(function () {
-                    $('.alert-layer, .alert-box').css("visibility", "hidden");
-                }, 200);
+            $('.alert-layer, .alert-box').css("opacity", 0);
+            setTimeout(function () {
+                $('.alert-layer, .alert-box').css("visibility", "hidden");
+            }, 200);
 
-                alertMode = false;
-            onOKFunc(e.currentTarget.className.substr(13));
+            if (alertMode)
+            {
+                $('.alert-layer, .alert-box').remove();
+                onOKFunc(e.currentTarget.className.substr(13));
+            }
+
+            alertMode = false;
         });
     }
 })(jQuery);

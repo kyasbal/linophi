@@ -136,7 +136,6 @@ class LabelBoxController implements ILabelBoxController {
                 "display": "block",
                 "clear": "both"
             });
-            $(boxSelector).html("");
 
             for (var i: number = 0, len: number = sortArray.length; i < len; i++) {
                 $(boxSelector).append(sortArray[i]);
@@ -164,7 +163,7 @@ class AjaxManager
                         labelSourceParser.callByParagraph(thisClass.substr(4), () => {
                             $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(
                                 Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1
-                                ));
+                            ));
                         });
                     } else {
                         $target.append(
@@ -223,7 +222,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         labelSourceParser.eachByParagraph(className.substr(4), (emotion: string, count: number, itr: number) =>
         {
             $('.dropbox > .' + className).append(
-                '<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' +
+                '<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '-d.svg\');background-size:130px 43px;height:43px;width:130px;"><span>' +
                     count +
                 '</span></div>'
             );
@@ -244,7 +243,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         });
 
         labelType = ((Object)(event.currentTarget)).className;
-        src = '/Content/imgs/Home/' + labelType + '.png';
+        src = '/Content/imgs/Home/' + labelType + '-d.svg';
 
         $('.fade-layer, .dropbox').mousemove((e) =>
         {

@@ -204,6 +204,22 @@
     <Content Include="Content\css\Home\Top.min.css">
       <DependentUpon>Top.css</DependentUpon>
     </Content>
+    <Content Include="Content\imgs\Home\anger-d.svg" />
+    <Content Include="Content\imgs\Home\anger-l.svg" />
+    <Content Include="Content\imgs\Home\bethink-d.svg" />
+    <Content Include="Content\imgs\Home\bethink-l.svg" />
+    <Content Include="Content\imgs\Home\fun-d.svg" />
+    <Content Include="Content\imgs\Home\fun-l.svg" />
+    <Content Include="Content\imgs\Home\good-d.svg" />
+    <Content Include="Content\imgs\Home\good-l.svg" />
+    <Content Include="Content\imgs\Home\noidea-d.svg" />
+    <Content Include="Content\imgs\Home\noidea-l.svg" />
+    <Content Include="Content\imgs\Home\sad-d.svg" />
+    <Content Include="Content\imgs\Home\sad-l.svg" />
+    <Content Include="Content\imgs\Home\surprised-d.svg" />
+    <Content Include="Content\imgs\Home\surprised-l.svg" />
+    <Content Include="Scripts\Home\CommentIndicator.js" />
+    <Content Include="Content\imgs\tnm.png" />
     <Content Include="Content\imgs\logo.png" />
     <Content Include="Content\imgs\test-top.PNG" />
     <Content Include="Scripts\jquery.alertwindow.js" />
@@ -546,6 +562,7 @@
     <TypeScriptCompile Include="Scripts\Edit\head.ts" />
     <TypeScriptCompile Include="Scripts\Edit\TagMaker.ts" />
     <TypeScriptCompile Include="Scripts\Home\AfterLogin.ts" />
+    <TypeScriptCompile Include="Scripts\Home\CommentIndicator.ts" />
     <TypeScriptCompile Include="Scripts\Home\MovieFixation.ts" />
     <TypeScriptCompile Include="Scripts\Home\MyPage.ts" />
     <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />
@@ -570,6 +587,7 @@
     <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
     <TypeScriptCompile Include="Scripts\Utility\AspectRatioStretcher.ts" />
     <TypeScriptCompile Include="Scripts\Utility\HeightStretcher.ts" />
+    <TypeScriptCompile Include="Scripts\Utility\htmlSpecialCharacters.ts" />
     <TypeScriptCompile Include="Scripts\Utility\SearchOrderOptionBox.ts" />
     <TypeScriptCompile Include="Scripts\View\index.ts" />
   </ItemGroup>

@@ -98,7 +98,6 @@ var LabelBoxController = (function () {
                 "display": "block",
                 "clear": "both"
             });
-            $(boxSelector).html("");
 
             for (var i = 0, len = sortArray.length; i < len; i++) {
                 $(boxSelector).append(sortArray[i]);
@@ -174,7 +173,7 @@ $(window).load(function () {
         });
 
         labelSourceParser.eachByParagraph(className.substr(4), function (emotion, count, itr) {
-            $('.dropbox > .' + className).append('<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '.png\');background-size:130px 43px;height:43px;width:130px;"><span>' + count + '</span></div>');
+            $('.dropbox > .' + className).append('<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '-d.svg\');background-size:130px 43px;height:43px;width:130px;"><span>' + count + '</span></div>');
         });
 
         labelBoxController.labelPosition($('.dropbox > .' + className + ' > *').length, className);
@@ -190,7 +189,7 @@ $(window).load(function () {
         });
 
         labelType = ((Object)(event.currentTarget)).className;
-        src = '/Content/imgs/Home/' + labelType + '.png';
+        src = '/Content/imgs/Home/' + labelType + '-d.svg';
 
         $('.fade-layer, .dropbox').mousemove(function (e) {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight) {
