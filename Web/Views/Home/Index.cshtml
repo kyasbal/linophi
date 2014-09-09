@@ -114,7 +114,14 @@
                                     </a>さん
                                 </span>
                             </div>
-
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <form method="POST" action="/api/Article/RemoveAllLabel">
+                                    @Html.AntiForgeryToken()
+                                    @Html.HiddenFor(m=>m.ArticleId)
+                                    <input type="submit" value="ラベル全削除"/>
+                                </form>
+                            }
                             
 
                             @*<span class="navbar-date">
