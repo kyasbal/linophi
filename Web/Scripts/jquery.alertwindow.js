@@ -146,6 +146,9 @@
             "border-radius": "5px",
             "margin": "20px 20px 0"
         });
+        $('.alert-contents button:hover').css({
+            "background": "#888"
+        });
         $('.alert-button-yes').css({
             "border-color": "#3ED4DB"
         });
@@ -153,18 +156,20 @@
             "border-color": "#D86060"
         });
 
+/*
 
         $('.alert-contents button').hover(function (e) {
-            var thisClass = e.currentTarget.className;
-            $('.' + thisClass).css({
+            var $target = e.currentTarget.className ? $("." + e.currentTarget.className) : $('.alert-contents button');
+            $target.css({
                 "background": "#888"
             });
         }, function (e) {
-            var thisClass = e.currentTarget.className;
-            $('.' + thisClass).css({
+            var $target = e.currentTarget.className ? $("." + e.currentTarget.className) : $('.alert-contents button');
+            $target.css({
                 "background": "#444"
             });
         });
+*/
 
         var alertMode = true;
 

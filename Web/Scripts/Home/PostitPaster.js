@@ -160,7 +160,6 @@ $(window).load(function () {
 
         var className = $ele.attr("class");
 
-        // alert(className);
         var eleHeight = $ele.outerHeight(true), elePos = $ele.offset().top;
 
         $('.dropbox').append('<div class="' + className + '"></div>');
