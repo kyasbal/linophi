@@ -1,7 +1,7 @@
 ﻿module NovelEditer
 {
     var sepalateToken: string = "\n\n";
-    var markups: MarkupBase[] = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup(), new LinkMarkup(),new HrMarkUp(),new BgcMarkup(),new ListMarkup()];
+    var markups: MarkupBase[] = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup(), new LinkMarkup(),new HrMarkUp()];
     
     export class NovelEditer
     {
@@ -657,7 +657,7 @@
         //HTML再生成
         updateCacheHtml()
         {
-            var prefixes: PrefixBase[] = [new QuotePrefix(),new TitlePrefix()/*, new DividerPrefix()*/];
+            var prefixes: PrefixBase[] = [new QuotePrefix(),new TitlePrefix(),new ListnPrefix(),new ListdPrefix(),new BgcPrimPrefix(),new BgcSuccPrefix(),new BgcInfoPrefix(),new BgcWarnPrefix(),new BgcDangPrefix()/*, new DividerPrefix()*/];
             var tag: JQuery;
             var rawStr: string =this.htmlEnc(this._rawText).replace(/\n/g, "</br>");
             rawStr=rawStr.replace(/ /g, "&ensp;"); //半角スペースは特殊文字として置き換える
@@ -979,8 +979,143 @@
             return "<blockquote><div class=\"quote\">" + str + "</div></blockquote>";
         }
     }
+    
+    class ListnPrefix extends PrefixBase
+    {
+        getPrefixString(): string
+        {
+            return "$listn";
+        }
+        getFormattedHtmlImpl(str: string): string
+        {
+            str = str.replace(/(.*)/g, "<ol style=\"list-style-type:decimal\"><li>$1</li></ol><br>");
+            str = str.replace(/<\/br>/g, "</li><li>");
+            str = str.replace(/<li><\/li>/g, "");
+            str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
+            str = str.replace(/<ol[^>]+><\/ol>/g, "");
+            str = str.replace(/<\/ol>/g, "</ol><br>");
+            return str;
+        }
+    }
 
+    class ListdPrefix extends PrefixBase
+    {
+        getPrefixString(): string
+        {
+            return "$listd";
+        }
+        getFormattedHtmlImpl(str: string): string {
+            str = str.replace(/(.*)/g, "<ul style=\"list-style-type:disc\"><li>$1</li></ul>");
+            str = str.replace(/<\/br>/g, "</li><li>");
+            str = str.replace(/<li><\/li>/g, "");
+            str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
+            str = str.replace(/<ul[^>]+><\/ul>/g, "");
+            str = str.replace(/<\/ul>/g, "</ul><br>");
+            return str;
+        }
+    }
 
+    class BgcPrimPrefix extends PrefixBase
+    {
+        getPrefixString(): string {
+            return "$section(prim)";
+        }
+
+        getFormattedHtmlImpl(str: string): string
+        {
+            str = str.replace(/(.*)/g, "<div class=\"bgcprim\"><span>$1</span></div>");
+            str = str.replace(/<\/br>/g, "</span><br><span>");
+            str = str.replace(/<span><\/span>/g, "");
+            str = str.replace(/<\/span><br><span>/g, "\u0006");
+            str = str.replace(/<br>/g, "");
+            str = str.replace(/\u0006/g, "<\/span><br><span>");
+            str = str.replace(/<div class="[^"]*"><\/div>/g, "");
+            str = str.replace(/<div class=\"[\d\s]+\">< \/ div>/g, "");
+            str = str.replace(/<\/div>/g, "</div><br>");
+            return str;
+        }
+    }
+
+    class BgcSuccPrefix extends PrefixBase {
+        getPrefixString(): string {
+            return "$section(succ)";
+        }
+
+        getFormattedHtmlImpl(str: string): string
+        {
+            str = str.replace(/(.*)/g, "<div class=\"bgcsucc\"><span>$1</span></div>");
+            str = str.replace(/<\/br>/g, "</span><br><span>");
+            str = str.replace(/<span><\/span>/g, "");
+            str = str.replace(/<\/span><br><span>/g, "\u0006");
+            str = str.replace(/<br>/g, "");
+            str = str.replace(/\u0006/g, "<\/span><br><span>");
+            str = str.replace(/<div class="[^"]*"><\/div>/g, "");
+            str = str.replace(/<div class=\"[\d\s]+\">< \/ div>/g, "");
+            str = str.replace(/<\/div>/g, "</div><br>");
+            return str;
+        }
+    }
+
+    class BgcInfoPrefix extends PrefixBase {
+        getPrefixString(): string {
+            return "$section(info)";
+        }
+
+        getFormattedHtmlImpl(str: string): string
+        {
+            str = str.replace(/(.*)/g, "<div class=\"bgcinfo\"><span>$1</span></div>");
+            str = str.replace(/<\/br>/g, "</span><br><span>");
+            str = str.replace(/<span><\/span>/g, "");
+            str = str.replace(/<\/span><br><span>/g, "\u0006");
+            str = str.replace(/<br>/g, "");
+            str = str.replace(/\u0006/g, "<\/span><br><span>");
+            str = str.replace(/<div class="[^"]*"><\/div>/g, "");
+            str = str.replace(/<div class=\"[\d\s]+\">< \/ div>/g, "");
+            str = str.replace(/<\/div>/g, "</div><br>");
+            return str;
+        }
+    }
+
+    class BgcWarnPrefix extends PrefixBase {
+        getPrefixString(): string {
+            return "$section(warn)";
+        }
+
+        getFormattedHtmlImpl(str: string): string
+        {
+            str = str.replace(/(.*)/g, "<div class=\"bgcwarn\"><span>$1</span></div>");
+            str = str.replace(/<\/br>/g, "</span><br><span>");
+            str = str.replace(/<span><\/span>/g, "");
+            str = str.replace(/<\/span><br><span>/g, "\u0006");
+            str = str.replace(/<br>/g, "");
+            str = str.replace(/\u0006/g, "<\/span><br><span>");
+            str = str.replace(/<div class="[^"]*"><\/div>/g, "");
+            str = str.replace(/<div class=\"[\d\s]+\">< \/ div>/g,"");
+            str = str.replace(/<\/div>/g, "</div><br>");
+            return str;
+        }
+    }
+
+    class BgcDangPrefix extends PrefixBase {
+        getPrefixString(): string {
+            return "$section(dang)";
+        }
+
+        getFormattedHtmlImpl(str: string): string
+        {
+            str = str.replace(/(.*)/g, "<div class=\"bgcdang\"><span>$1</span></div>");
+            str = str.replace(/<\/br>/g, "</span><br><span>");
+            str = str.replace(/<span><\/span>/g, "");
+            str = str.replace(/<\/span><br><span>/g, "\u0006");
+            str = str.replace(/<br>/g, "");
+            str = str.replace(/\u0006/g, "<\/span><br><span>");
+            str = str.replace(/<div class="[^"]*"><\/div>/g, "");
+            str = str.replace(/<div class=\"[\d\s]+\">< \/ div>/g, "");
+            str = str.replace(/<\/div>/g, "</div><br>");
+            return str;
+        }
+    }
+    
     /*class DividerPrefix extends PrefixBase
     {
         getPrefixString(): string

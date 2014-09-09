@@ -86,10 +86,19 @@
   outline: none;
   border-radius: 300px;
 }
-.bgcg {
-  background-color: whitesmoke;
+.bgcprim {
+  background-color: #428bca;
 }
-.bgcs {
-  background-color: bisque;
+.bgcsucc {
+  background-color: #dff0d8;
+}
+.bgcinfo {
+  background-color: #d9edf7;
+}
+.bgcwarn {
+  background-color: #fcf8e3;
+}
+.bgcdang {
+  background-color: #f2dede;
 }
 /*# sourceMappingURL=index.css.map */

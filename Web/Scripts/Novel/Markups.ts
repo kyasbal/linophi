@@ -199,6 +199,7 @@ class HrMarkUp extends MarkupBase
     }
 }
 
+/*
 class BgcMarkup extends MarkupBase
 {
     getMarkupString(result: string): string
@@ -208,7 +209,9 @@ class BgcMarkup extends MarkupBase
         return result;
     }
 }
+*/
 
+/*
 class ListMarkup extends MarkupBase
 {
     getMarkupString(result: string): string
@@ -228,3 +231,4 @@ class ListMarkup extends MarkupBase
         return result;
     }
 }
+*/
