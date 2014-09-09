@@ -51,5 +51,11 @@ namespace Web.Storage
                 return Encoding.Unicode.GetString(ms.ToArray());
             }
         }
+
+        public async Task AppendArticle(string articleModelId, string body)
+        {
+            string lastBody = await GetArticleBody(articleModelId);
+            await AddArticle(articleModelId, lastBody + body);
+        }
     }
 }

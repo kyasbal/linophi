@@ -13,5 +13,6 @@ namespace Web.Models
         public string Title { get; set; }
         public string Tags { get; set; }
         public string ArticleId { get; set; }
+        public string EditMode { get; set; }
     }
 }
