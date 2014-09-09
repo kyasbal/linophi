@@ -98,7 +98,6 @@ var LabelBoxController = (function () {
                 "display": "block",
                 "clear": "both"
             });
-            $(boxSelector).html("");
 
             for (var i = 0, len = sortArray.length; i < len; i++) {
                 $(boxSelector).append(sortArray[i]);
