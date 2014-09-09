@@ -136,7 +136,6 @@ class LabelBoxController implements ILabelBoxController {
                 "display": "block",
                 "clear": "both"
             });
-            $(boxSelector).html("");
 
             for (var i: number = 0, len: number = sortArray.length; i < len; i++) {
                 $(boxSelector).append(sortArray[i]);
@@ -164,7 +163,7 @@ class AjaxManager
                         labelSourceParser.callByParagraph(thisClass.substr(4), () => {
                             $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(
                                 Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1
-                                ));
+                            ));
                         });
                     } else {
                         $target.append(
