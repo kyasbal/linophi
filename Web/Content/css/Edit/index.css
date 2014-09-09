@@ -87,18 +87,23 @@
   border-radius: 300px;
 }
 .bgcprim {
+  padding: 0 10px;
   background-color: #428bca;
 }
 .bgcsucc {
+  padding: 0 10px;
   background-color: #dff0d8;
 }
 .bgcinfo {
+  padding: 0 10px;
   background-color: #d9edf7;
 }
 .bgcwarn {
+  padding: 0 10px;
   background-color: #fcf8e3;
 }
 .bgcdang {
+  padding: 0 10px;
   background-color: #f2dede;
 }
 /*# sourceMappingURL=index.css.map */

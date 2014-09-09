@@ -432,7 +432,7 @@ input[type="text"] {
   border: none;
   border-radius: 0.3em;
 }
-.container .contents .contentswrapper .main .article-container p:hover {
+.container .contents .contentswrapper .main .article-container p:hover edit-preview p:hover{
   background-color: ghostwhite;
 }
 .container .contents .contentswrapper .main .rellist {
