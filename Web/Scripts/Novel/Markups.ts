@@ -189,8 +189,40 @@ class NikonikoMarkup extends MarkupBase
     }
 }
 
+//横棒のやつ
+class HrMarkUp extends MarkupBase
+{
+    getMarkupString(result: string): string
+    {
+        result = result.replace(/-----/, "<hr>");
+        return result;
+    }
+}
 
+class BgcMarkup extends MarkupBase
+{
+    getMarkupString(result: string): string
+    {
+        result = result.replace(/bgc{(.*?)}g/, "<div class=\"bgcg\">$1</div>");
+        result = result.replace(/bgc{(.*?)}s/, "<div class=\"bgcs\">$1</div>");
+        return result;
+    }
+}
 
-/*
-class HrMarkUp extends
-*/
+class ListMarkup extends MarkupBase
+{
+    getMarkupString(result: string): string
+    {
+        if (result.match("listn{.*}"))
+        {
+            result = result.replace(/listn{(.+)}/g, "<ol><li>$1</li></ol>");
+            result = result.replace(/<\/br>/g, "</li><li>");
+        }
+        if (result.match("listd{.*}"))
+        {
+            result = result.replace(/listd{(.+)}/g, "<ul><li>$1</li></ul>");
+            result = result.replace(/<\/br>/g, "</li><li>");
+        }
+        return result;
+    }
+}
