@@ -215,13 +215,15 @@ var ListMarkup = (function (_super) {
     }
     ListMarkup.prototype.getMarkupString = function (result) {
         if (result.match("listn{.*}")) {
-            result = result.replace(/listn{(.+)}/g, "<ol><li>$1</li></ol>");
+            result = result.replace(/listn{(.+)}/g, "<ol style=\"list-style-type:decimal\"><li>$1</li></ol>");
             result = result.replace(/<\/br>/g, "</li><li>");
         }
         if (result.match("listd{.*}")) {
-            result = result.replace(/listd{(.+)}/g, "<ul><li>$1</li></ul>");
+            result = result.replace(/listd{(.+)}/g, "<ul style=\"list-style-type:disc\"><li>$1</li></ul>");
             result = result.replace(/<\/br>/g, "</li><li>");
         }
+        result = result.replace(/<li><\/li>/g, "");
+        result = result.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
         return result;
     };
     return ListMarkup;
