@@ -53,11 +53,22 @@
                                             @Html.Hidden("articleId",article.ArticleId)
                                             <a onclick="deleteArticle('@article.ArticleId')">削除</a>
                                         }
-                                        @using (Html.BeginForm("Index", "Edit", FormMethod.Get, new { id = "edit-article-" + article.ArticleId }))
+                                        @using (Html.BeginForm("Index", "Edit", FormMethod.Get, new {id = "append-article-" + article.ArticleId}))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.Hidden("EditMode","append")
+                                                @Html.Hidden("articleId", article.ArticleId)
+                                                <a onclick="appendArticle('@article.ArticleId') ">追記</a>
+                                            }
+                                        @if (User.IsInRole("Administrator"))
                                         {
-                                            @Html.AntiForgeryToken()
-                                            @Html.Hidden("articleId", article.ArticleId)
-                                            <a onclick="editArticle('@article.ArticleId')">編集</a>
+                                            using (Html.BeginForm("Index", "Edit", FormMethod.Get, new {id = "edit-article-" + article.ArticleId}))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.Hidden("EditMode", "edit")
+                                                @Html.Hidden("articleId", article.ArticleId)
+                                                <a onclick="editArticle('@article.ArticleId') ">編集</a>
+                                            }
                                         }
                                     </div>
                                 }

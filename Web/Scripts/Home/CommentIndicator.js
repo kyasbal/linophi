@@ -17,19 +17,21 @@ $(function () {
 
     // コメントの表示に関する
     $('.article-container > *').each(function (i) {
-        var $ele = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
+        var $ele = $('[class^="x_"]:nth-child(' + (i + 1) + ')');
         var className = $ele.attr("class");
 
-        $('.widget .' + className).append('<div class="' + className + '-comments"></div>');
+        if (className) {
+            $('.widget .' + className).append('<div class="' + className + '-comments"></div>');
 
-        commentSourceParser.eachDoInComments(className.substr(4), function (name, time, id, comment) {
-            $('.widget .' + className + '-comments').append('<div class="response">' + '<p class="res-title"> <span></span> <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' + '<p class="res-text">' + comment + '</p>' + '</div>');
-        });
-        $('.widget .' + className + '-comments .res-title > span').each(function (j) {
-            $('.' + className + '-comments .response:nth-child(' + (j + 1) + ') span').html((j + 1) + "");
-        });
+            commentSourceParser.eachDoInComments(className.substr(4), function (name, time, id, comment) {
+                $('.widget .' + className + '-comments').append('<div class="response">' + '<p class="res-title"> <span></span> <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' + '<p class="res-text">' + comment + '</p>' + '</div>');
+            });
+            $('.widget .' + className + '-comments .res-title > span').each(function (j) {
+                $('.' + className + '-comments .response:nth-child(' + (j + 1) + ') span').html((j + 1) + "");
+            });
 
-        $('.widget .' + className + '-comments').append('<button class="' + className + '">コメントする</button>');
+            $('.widget .' + className + '-comments').append('<button class="' + className + '">コメントする</button>');
+        }
     });
 
     $('.widget button').on("click", function (e) {

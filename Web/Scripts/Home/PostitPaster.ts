@@ -136,7 +136,6 @@ class LabelBoxController implements ILabelBoxController {
                 "display": "block",
                 "clear": "both"
             });
-            $(boxSelector).html("");
 
             for (var i: number = 0, len: number = sortArray.length; i < len; i++) {
                 $(boxSelector).append(sortArray[i]);
@@ -164,7 +163,7 @@ class AjaxManager
                         labelSourceParser.callByParagraph(thisClass.substr(4), () => {
                             $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(
                                 Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1
-                                ));
+                            ));
                         });
                     } else {
                         $target.append(
@@ -201,12 +200,10 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
     var posY: number = dropboxPos + 10;
 
-    $('.article-container > *').each((i) => {
-        var $ele: JQuery = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
+    $('.article-container > [class^="x_"]').each((i) => {
+        var $ele: JQuery = $('[class^="x_"]:nth-child(' + (i + 1) + ')');
 
         var className = $ele.attr("class");
-
-        // alert(className);
 
         var eleHeight: number = $ele.outerHeight(true),
             elePos: number = $ele.offset().top;

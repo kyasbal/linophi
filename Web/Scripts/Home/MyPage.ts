@@ -31,3 +31,8 @@ function editArticle(articleId: string)
             $("#edit-article-" + articleId).submit();
     });
 }
+
+function appendArticle(articleId:string)
+{
+    $("#append-article-" + articleId).submit();
+}
