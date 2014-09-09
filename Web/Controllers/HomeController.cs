@@ -163,22 +163,22 @@ namespace Web.Controllers
         {
             switch (order)
             {
-                case 5:
+                case 6:
                     result = result.OrderBy(f => f.LabelCount);
                     break;
-                case 4:
+                case 5:
                     result = result.OrderBy(f => f.PageView);
                     break;
-                case 3:
+                case 4:
                     result = result.OrderBy(f => f.CreationTime);
                     break;
-                case 2:
+                case 3:
                     result = result.OrderByDescending(f => f.LabelCount);
                     break;
-                case 1:
+                case 2:
                     result = result.OrderByDescending(f => f.PageView);
                     break;
-                case 0:
+                case 1:
                 default:
                     result = result.OrderByDescending(f => f.CreationTime);
                     break;

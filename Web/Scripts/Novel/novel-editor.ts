@@ -992,8 +992,7 @@
             str = str.replace(/<\/br>/g, "</li><li>");
             str = str.replace(/<li><\/li>/g, "");
             str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
-            str = str.replace(/<ol[^>]+><\/ol>/g, "");
-            str = str.replace(/<\/ol>/g, "</ol><br>");
+            str = str.replace(/<ol[^>]+><\/ol><br>/g, "");
             return str;
         }
     }
@@ -1005,12 +1004,11 @@
             return "$listd";
         }
         getFormattedHtmlImpl(str: string): string {
-            str = str.replace(/(.*)/g, "<ul style=\"list-style-type:disc\"><li>$1</li></ul>");
+            str = str.replace(/(.*)/g, "<ul style=\"list-style-type:disc\"><li>$1</li></ul><br>");
             str = str.replace(/<\/br>/g, "</li><li>");
             str = str.replace(/<li><\/li>/g, "");
             str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
-            str = str.replace(/<ul[^>]+><\/ul>/g, "");
-            str = str.replace(/<\/ul>/g, "</ul><br>");
+            str = str.replace(/<ul[^>]+><\/ul><br>/g, "");
             return str;
         }
     }
