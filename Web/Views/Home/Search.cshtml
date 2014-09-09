@@ -19,8 +19,8 @@
 <div class="contents">
     <div class="wrapper">
         <div class="main">
-            <ul class="search-result">
-                
+            <div class="search-result">
+
                 @if (Model.Articles.Length == 0)
                 {
                     <div class="search-header">
@@ -43,22 +43,27 @@
                                 <option value="6">ふせんが少ない順</option>
                             </select>
                         </form>
-                    </div><div class="search-editted">
-    <div class="adjust">
-        @foreach (var article in Model.Articles)
-        {
-            <li class="listitem">
-                <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
-                <div class="listtxt">
-                    <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br /><span class="listdesc">@article.PageView view|@article.LabelCount ふせん|@article.Article_UpDate last updated</span>
-                </div>
-            </li>
-
-        }
-    </div>
-</div>
+                    </div>
+                    <div class="search-editted">
+                        <div class="adjust">
+                            @foreach (var article in Model.Articles)
+                            {
+                                <span class="listitem">
+                                    <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
+                                    <span class="listtxt">
+                                        <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br /><span class="listdesc">@article.PageView view|@article.LabelCount ふせん|@article.Article_UpDate last updated</span>
+                                    </span>
+                                </span>
+                            }
+                        </div>
+                    </div>
                 }
-            </ul>
+            </div>
+            <div class="page-control">
+                <span class="page-before"><a >前に戻る</a></span>
+                <span class="page-after"><a >先に進む</a></span>
+            </div>
+            
         </div>
 
 @*        <div class="dropbox">*@

@@ -19,7 +19,7 @@ class CommentSourceParser implements ICommentSourceParser
     eachDoInComments(paragraphId: string, handler:EachDoInCommentDelegate): void
     {
         for (var k: number = 0, len: number = this.commentJson.length; k < len; k++) {
-            if (this.commentJson[k]["ParagraphId"] == paragraphId)  // とりあえず
+            if (this.commentJson[k]["ParagraphId"] == paragraphId)
             {
                 handler(this.commentJson[k]["Name"], this.commentJson[k]["PostTime"], this.commentJson[k]["AutoId"], this.commentJson[k]["Comment"]);
             }
@@ -41,7 +41,7 @@ $(() =>
     // コメントの表示に関する
     $('.article-container > *').each((i) =>
     {
-        var $ele: JQuery = $('[class^="x_p"]:nth-child(' + (i + 1) + ')');
+        var $ele: JQuery = $('[class*="p-"]:nth-child(' + (i + 1) + ')');
         var className: string = $ele.attr("class");
         if (className)
         {

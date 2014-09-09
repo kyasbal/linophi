@@ -51,12 +51,12 @@
                                 {
                                     foreach (TagViewModel tag in Model.Tags)
                                      {
-                                         <li class="topicwordlistli">
+                                    <li class="topicwordlistli">
                                              <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
-                                                 @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
-                                             </a>
-                                         </li>
-                                     }
+                                            @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                        </a>
+                                    </li>
+                                }
                                 }
                             </ul>
                         </div>
@@ -131,21 +131,18 @@
                                 </form>
                             }
 
-
-                            @*<span class="navbar-date">
-                                    <span class="date">@Model.Article_Date</span>
-                                    <span class="date-txt">posted</span>
-                                </span>
-                                <span class="navbar-Update">
-                                    <span class="Update"></span>
-                                    <span class="Update-txt">last updated</span>
-                                </span>*@
                         </div>
+                        <div class="navbar-bottom">
+                            <ul class="main_sns">
+                                <li><span class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span></li>
+                                <li><a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
+<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script></li>
+                                <li>更新日時 @Model.Article_UpDate</li>
+                            </ul>
+                            
 
-                        <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
-                        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
-                        更新日時 @Model.Article_UpDate
+                            
+                        </div>
                     </div>
                     <div class="navbar-sub">
                         <div>
@@ -166,10 +163,11 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
             <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
-            <br />
-            <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
             <div class="rellist">
                 <h2>この著者の他の記事</h2>
                 <div class="separator2"><hr></div>
@@ -181,7 +179,7 @@
                             <div class="listtxt">
                                 <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br />
                                 <span class="listdesc">
-                                    @(string.Format("{0}ふせん|{1}view|{2} last updated",article.LabelCount,article.PageView,article.Article_UpDate))
+                                        @(string.Format("{0}ふせん|{1}view|{2} last updated", article.LabelCount, article.PageView, article.Article_UpDate))
                                 </span>
                             </div>
                         </li>
