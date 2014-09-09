@@ -77,7 +77,6 @@ $(function () {
                         $button.attr('disabled', 'false');
                     },
                     success: function () {
-                        alert("success!");
                         $form.find("input, textarea").val("");
                     },
                     error: function () {

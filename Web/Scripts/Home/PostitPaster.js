@@ -187,7 +187,10 @@ $(window).load(function () {
     // 貼り付けモードへ
     $('.postit-list [class]').click(function (event) {
         pasteMode = true;
-
+        console.log($('input[type="hidden"]').val());
+        if (!$('input[type="hidden"]').val()) {
+            return false;
+        }
         $('.fade-layer').css({
             "visibility": "visible",
             "opacity": 1

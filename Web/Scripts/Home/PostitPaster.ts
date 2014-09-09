@@ -242,7 +242,11 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     $('.postit-list [class]').click((event) =>
     {
         pasteMode = true;
-
+        console.log($('input[type="hidden"]').val());
+        if (!$('input[type="hidden"]').val())
+        {
+            return false;
+        }
         $('.fade-layer').css({
             "visibility": "visible",
             "opacity": 1
