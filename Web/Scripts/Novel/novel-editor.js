@@ -7,7 +7,7 @@
 var NovelEditer;
 (function (_NovelEditer) {
     var sepalateToken = "\n\n";
-    var markups = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup(), new LinkMarkup(), new HrMarkUp()];
+    var markups = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup(), new HrMarkUp(), new ColorMarkup(), new SizeMarkup(), new SizeColorMarkup(), new UrlMarkup(), new LinkMarkup()];
 
     var NovelEditer = (function () {
         function NovelEditer(editorTarget, previewTarget, previewBounds) {
@@ -623,7 +623,7 @@ var NovelEditer;
                 for (var j = 0; j < markups.length; j++) {
                     rawStr = markups[j].getMarkupString(rawStr, this._iD); //処理
                 }
-
+                rawStr = rawStr.replace(/\u0006e/g, "http");
                 tag = $("<p/>");
 
                 //エスケープ処理
