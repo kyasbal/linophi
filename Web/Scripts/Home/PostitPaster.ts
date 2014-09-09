@@ -259,21 +259,26 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             "opacity": 0.7,
             "z-index": 1100
         });
-        $(".dropbox > .postit-pasting").css({
-            "position": "absolute",
-            "top": posY - dropboxPos + "px",
-            "left": "20px",
-            "z-index": 1100,
-            "visibility": "visible",
-            "background-image": "url(" + src + ")",
-            "background-size": "130px 43px"
-        });
+
 
         $('.fade-layer, .dropbox').mousemove((e) =>
         {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight)
             {
                 posY = e.pageY;
+            }
+
+            if (pasteMode)
+            {
+                $(".dropbox > .postit-pasting").css({
+                    "position": "absolute",
+                    "top": posY - dropboxPos + "px",
+                    "left": "20px",
+                    "z-index": 1100,
+                    "visibility": "visible",
+                    "background-image": "url(" + src + ")",
+                    "background-size": "130px 43px"
+                });
             }
 
             var pHeights: number = dropboxPos;
