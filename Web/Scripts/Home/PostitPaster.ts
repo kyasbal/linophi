@@ -200,8 +200,8 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
     var posY: number = dropboxPos + 10;
 
-    $('.article-container > *').each((i) => {
-        var $ele: JQuery = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
+    $('.article-container > [class^="x_"]').each((i) => {
+        var $ele: JQuery = $('[class^="x_"]:nth-child(' + (i + 1) + ')');
 
         var className = $ele.attr("class");
 

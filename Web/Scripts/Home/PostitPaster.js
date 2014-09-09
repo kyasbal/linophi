@@ -155,8 +155,8 @@ $(window).load(function () {
 
     var posY = dropboxPos + 10;
 
-    $('.article-container > *').each(function (i) {
-        var $ele = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
+    $('.article-container > [class^="x_"]').each(function (i) {
+        var $ele = $('[class^="x_"]:nth-child(' + (i + 1) + ')');
 
         var className = $ele.attr("class");
 
