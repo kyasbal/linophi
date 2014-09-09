@@ -2,14 +2,88 @@
 	<head>
 		<style type="text/css">
 		.main{
-			font: 20px/1.5 arial,sans-serif;
+			font-size: 16px;
+			font-family: Verdana, Roboto, "Droid Sans", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
 			height:800px;
 			width:700px;
 			margin:0 auto;
 			padding:20px;
 			background-color:aliceblue;
+			border:1px solid rgb(204, 204, 204);
+			box-shadow: #cccccc 0px 0px 3px 3px;
+			-webkit-box-shadow: #cccccc 0px 0px 3px 3px;
+			-moz-box-shadow: #cccccc 0px 0px 3px 3px;
+		}
+		h1{
+			font-size:22px;
+			font-weight:bold;
+			text-align:center;
+			-webkit-margin-before: 0;
+			-webkit-margin-after: 0;
+			-webkit-margin-start: 0px;
+-			webkit-margin-end: 0px;
+			border:1px solid #ccc;
+			border-radius:50px;
+			padding:0;
+			width:200px;
+			margin:0 auto;
+		}
+		h2{
+			font-size:20px;
+			margin:20px 0 25px 60px;
+		}
+		h3{
+			font-size:18px;
+			font-weight:bold;
+			box-shadow: -10px 0 aliceblue, -20px 0 lightblue;
+			margin: 0 0 10px 50px;
 		}
 		.txt1{
+			font-size:14px;
+			margin:20px;
+		}
+		.txt2{
+			margin:40px 0 20px 45px;
+		}
+		.txt3{
+			font-size:13px;
+			text-align:right;
+			margin-right:40px;
+		}
+		.logo{
+			display:inline-block;
+			margin:0 0 0 50px;
+		}
+		.signup{
+			margin:30px auto 30px auto;
+			padding-bottom:20px;
+			width: 600px;
+			border-top:3px solid #fff;
+			border-bottom:3px solid #fff;
+
+		}
+		.signup img{
+			display:inline-block;
+			margin:20px 0 20px 40px;
+			width:100px;
+			height:100px;
+		}
+		.signup ul{
+			display:inline-block;
+			list-style-type: disc;
+			margin-left:60px;
+			-webkit-margin-before: 0em;
+			-webkit-margin-after: 0em;
+		}
+		.signup ul li{
+			margin:10px;.signup ul{
+			display:inline-block;
+			list-style-type: disc;
+			-webkit-margin-before: 0;
+			-webkit-margin-after: 0em;
+			-webkit-margin-start: 0px;
+			-webkit-margin-end: 0px;
+			-webkit-padding-start: 40px;
 		}
 		</style>
 	</head>
@@ -17,38 +91,37 @@
 	<body>
 	<br />
 	<div class="main">
+		<h1>登録完了通知</h1>
 		<div class="txt1">
-			ご登録ありがとうございます。<br />
-			下記の内容でご登録いたしましたのでお知らせ致します。。<br />
+			登録が完了しました。登録内容は以下の通りになります。<br />
 		</div>
-		登録情報<br />
+		<div class="signup">
+			<h2>登録情報</h2>
+			<img src="http://www.wanpagu.sakura.ne.jp/summer/summer_i89.png">
+			<ul>
+				<li>ニックネーム : [user_name] </li>
+				<li>メールアドレス：[mail_address]</li>
+				<li>アカウントタイプ : [facebook or twitter]</li>
+				<li>メルマガ：[受信 or 受信しない]</li>
+			</ul>
+		</div>
+
+		<h3>登録内容の変更 および メール配信の停止</h3>
+		<div class="txt2">
+		 <a href="http://linophi.com/Account/Config">http://linophi.com/Account/Config</a><br />
+		<p>（あなたが登録したE-mailアドレスとパスワードが必要です。）</p>
+		</div>
 		<br />
-		 ニックネーム : [user_name] 様<br />
-		 メールアドレス：[mail_address]<br />
-		 アカウントタイプ : [facebook or twitter]<br />
-		<br />
-		<br />
-		■登録内容の変更<br />
-		 http://linophi.com/Account/Config<br />
-		（あなたが登録したE-mailアドレスとパスワードが必要です。）<br />
-		<br />
-		■メール配信の停止<br />
-		 http://linophi.com/Account/Config<br />
-		(メール受信可否の変更にチェックで変更されます。)<br />
-		<br />
-		<br />
-		■「linophi」についてのお問い合わせ<br />
-		 Mail:info@linophi.com<br />
-		<br />
-		<br />
-		今後とも「linophi」をよろしくお願いいたします。<br />
-		<br />
-		============================================================<br />
-		　運営グループ   : 東京理科大学beep<br />
-		　U R L          : http://beep-project.com<br />
-		　サポートデスク : info@beep-project.com<br />
-		============================================================<br />
-	<br />
+	
+		<h3>「linophi」についてのお問い合わせ</h3>
+		<div class="txt2">
+		 <a href="http://linophi.com/Contact">http://linophi.com/Contact</a><br />
+		<p>（お問い合わせフォームからお願い致します。）</p>
+		</div>
+		<div class="logo"><img src="http://921d1eb7b61b4939b4434f7887b6589e.cloudapp.net/Content/imgs/logo.png" width="120" height="120"></div>
+		<div class="txt3">
+		　運営：<a href="http://beep-project.com">東京理科大学beep</a>
+		</div>
 	</div>
 	</body>
 </html>
