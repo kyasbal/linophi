@@ -31,30 +31,34 @@ $(() =>
     // コメントの表示に関する
     $('.article-container > *').each((i) =>
     {
-        var $ele: JQuery = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
+        var $ele: JQuery = $('[class^="x_"]:nth-child(' + (i + 1) + ')');
         var className: string = $ele.attr("class");
 
-        $('.widget .' + className).append('<div class="' + className + '-comments"></div>');
-
-        commentSourceParser.eachDoInComments(className.substr(4), (name, time, id, comment) =>
+        if (className)
         {
-            $('.widget .' + className + '-comments').append(
-                '<div class="response">' +
+            $('.widget .' + className).append('<div class="' + className + '-comments"></div>');
+
+            commentSourceParser.eachDoInComments(className.substr(4), (name, time, id, comment) =>
+            {
+                $('.widget .' + className + '-comments').append(
+                    '<div class="response">' +
                     '<p class="res-title"> <span></span> <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' +
                     '<p class="res-text">' +
-                        comment +
+                    comment +
                     '</p>' +
-                '</div>'
-            );
-        });
-        $('.widget .' + className + '-comments .res-title > span').each((j) =>
-        {
-            $('.' + className + '-comments .response:nth-child(' + (j + 1) +') span').html((j+1)+"");
-        });
+                    '</div>'
+                );
+            });
+            $('.widget .' + className + '-comments .res-title > span').each((j) =>
+            {
+                $('.' + className + '-comments .response:nth-child(' + (j + 1) + ') span').html((j + 1) + "");
+            });
 
-        $('.widget .' + className + '-comments').append(
-            '<button class="' + className + '">コメントする</button>'
-        );
+            $('.widget .' + className + '-comments').append(
+                '<button class="' + className + '">コメントする</button>'
+            );
+        }
+
     });
 
     $('.widget button').on("click", (e) =>
