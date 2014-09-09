@@ -123,6 +123,10 @@ var AjaxManager = (function () {
             },
             success: function (data) {
                 if (data.isSucceed) {
+                    wholeCount[labelType]++; //ドーナツ用のデータの更新
+                    updateArticleDounught(false); //更新したデータの適用
+                    var updatedCount = $(".label-count").text();
+                    $(".label-count").text(parseInt(updatedCount) + 1);
                     if (postitExistence) {
                         labelSourceParser.callByParagraph(thisClass.substr(4), function () {
                             $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1));

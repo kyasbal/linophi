@@ -159,7 +159,12 @@ class AjaxManager
                 "LabelType": labelType
             },
             success: (data) => {
-                if (data.isSucceed) {
+                if (data.isSucceed)
+                {
+                    wholeCount[labelType]++;//ドーナツ用のデータの更新
+                    updateArticleDounught(false);//更新したデータの適用
+                    var updatedCount: any = $(".label-count").text();
+                    $(".label-count").text(parseInt(updatedCount)+1);
                     if (postitExistence) {
                         labelSourceParser.callByParagraph(thisClass.substr(4), () => {
                             $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(
