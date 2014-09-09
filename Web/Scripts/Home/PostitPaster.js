@@ -162,8 +162,10 @@ $(window).load(function () {
 
     $('.article-container > *').each(function (i) {
         var $ele = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
-
+        var elementName = $ele[0].tagName;
         var className = $ele.attr("class");
+        if (elementName == "hr")
+            return true;
 
         // alert(className);
         var eleHeight = $ele.outerHeight(true), elePos = $ele.offset().top;
@@ -188,9 +190,7 @@ $(window).load(function () {
     $('.postit-list [class]').click(function (event) {
         pasteMode = true;
         console.log($('input[type="hidden"]').val());
-        if (!$('input[type="hidden"]').val()) {
-            return false;
-        }
+
         $('.fade-layer').css({
             "visibility": "visible",
             "opacity": 1
@@ -263,6 +263,10 @@ $(window).load(function () {
 
             $('.dropbox > [class*="p-"]').each(function (i) {
                 var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')');
+                var elementName = $target[0].tagName;
+                if (elementName == "hr")
+                    return true;
+
                 var pHeight = $target.outerHeight(true);
 
                 var thisClass = $target.attr("class");

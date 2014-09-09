@@ -49,7 +49,7 @@ $(() =>
             var isMatched: boolean = false;
             for (var j = 0; j < splitted.length; j++)
             {
-                if (splitted[j].match(/x_[pd]-[a-zA-Z0-9]{10}$/))
+                if (splitted[j].match(/(x_)?[pd]-[a-zA-Z0-9]{10}$/))
                 {
                     isMatched = true;
                     className = splitted[j];
