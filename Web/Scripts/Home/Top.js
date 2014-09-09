@@ -75,8 +75,8 @@ var TopPage = (function (_super) {
         //this.canvasContext = document.getElementById("top-graph").getContext("2d");
     }
     TopPage.prototype.adjustContentHeight = function () {
-        var containerHeight = window.innerHeight - this.header.height() - this.footer.height();
-        this.container.height(containerHeight);
+        //var containerHeight = window.innerHeight - this.header.height() - this.footer.height();
+        //this.container.height(containerHeight);
     };
 
     TopPage.prototype.onRadorUpdate = function (count, context) {
