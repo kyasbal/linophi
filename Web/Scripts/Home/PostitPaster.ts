@@ -207,7 +207,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     var posY: number = dropboxPos + 10;
 
     $('.article-container > *').each((i) => {
-        var $ele: JQuery = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
+        var $ele: JQuery = $('[class^="x_p-"]:nth-child(' + (i + 1) + '), [class^="p-"]:nth-child(' + (i + 1) + ')'); // p-から始まるのはプレビュー用
 
         var className = $ele.attr("class");
 
@@ -255,6 +255,20 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         labelType = ((Object)(event.currentTarget)).className;
         src = '/Content/imgs/Home/' + labelType + '-d.svg';
 
+        $('.dropbox').css({
+            "opacity": 0.7,
+            "z-index": 1100
+        });
+        $(".dropbox > .postit-pasting").css({
+            "position": "absolute",
+            "top": posY - dropboxPos + "px",
+            "left": "20px",
+            "z-index": 1100,
+            "visibility": "visible",
+            "background-image": "url(" + src + ")",
+            "background-size": "130px 43px"
+        });
+
         $('.fade-layer, .dropbox').mousemove((e) =>
         {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight)
@@ -262,22 +276,6 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
                 posY = e.pageY;
             }
 
-            if (pasteMode)
-            {
-                $('.dropbox').css({
-                    "opacity": 0.7, 
-                    "z-index": 1100
-                });
-                $(".dropbox > .postit-pasting").css({
-                    "position": "absolute",
-                    "top": posY - dropboxPos + "px",
-                    "left": "20px",
-                    "z-index": 1100,
-                    "visibility": "visible",
-                    "background-image": "url(" + src + ")",
-                    "background-size": "130px 43px"
-                });
-            }
             var pHeights: number = dropboxPos;
 
             $('.dropbox > [class^="x_p-"]').each((i) => {

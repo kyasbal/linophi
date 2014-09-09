@@ -161,7 +161,7 @@ $(window).load(function () {
     var posY = dropboxPos + 10;
 
     $('.article-container > *').each(function (i) {
-        var $ele = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
+        var $ele = $('[class^="x_p-"]:nth-child(' + (i + 1) + '), [class^="p-"]:nth-child(' + (i + 1) + ')');
 
         var className = $ele.attr("class");
 
@@ -199,26 +199,25 @@ $(window).load(function () {
         labelType = ((Object)(event.currentTarget)).className;
         src = '/Content/imgs/Home/' + labelType + '-d.svg';
 
+        $('.dropbox').css({
+            "opacity": 0.7,
+            "z-index": 1100
+        });
+        $(".dropbox > .postit-pasting").css({
+            "position": "absolute",
+            "top": posY - dropboxPos + "px",
+            "left": "20px",
+            "z-index": 1100,
+            "visibility": "visible",
+            "background-image": "url(" + src + ")",
+            "background-size": "130px 43px"
+        });
+
         $('.fade-layer, .dropbox').mousemove(function (e) {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight) {
                 posY = e.pageY;
             }
 
-            if (pasteMode) {
-                $('.dropbox').css({
-                    "opacity": 0.7,
-                    "z-index": 1100
-                });
-                $(".dropbox > .postit-pasting").css({
-                    "position": "absolute",
-                    "top": posY - dropboxPos + "px",
-                    "left": "20px",
-                    "z-index": 1100,
-                    "visibility": "visible",
-                    "background-image": "url(" + src + ")",
-                    "background-size": "130px 43px"
-                });
-            }
             var pHeights = dropboxPos;
 
             $('.dropbox > [class^="x_p-"]').each(function (i) {

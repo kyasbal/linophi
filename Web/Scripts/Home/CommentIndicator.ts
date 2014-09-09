@@ -19,7 +19,7 @@ class CommentSourceParser implements ICommentSourceParser
     eachDoInComments(paragraphId: string, handler:EachDoInCommentDelegate): void
     {
         for (var k: number = 0, len: number = this.commentJson.length; k < len; k++) {
-            if (this.commentJson[k]["ParagraphId"] == paragraphId)  // とりあえず
+            if (this.commentJson[k]["ParagraphId"] == paragraphId)
             {
                 handler(this.commentJson[k]["Name"], this.commentJson[k]["PostTime"], this.commentJson[k]["AutoId"], this.commentJson[k]["Comment"]);
             }
