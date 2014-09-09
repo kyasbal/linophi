@@ -127,12 +127,12 @@ namespace Web.Controllers
                 var query = queries[index];
                 result=result.Where(f => f.Title.Contains(query));
             }
+            int count = await result.CountAsync();
             result = ChangeOrder(order, result);
             result = result.Skip(skip);
             SearchResultViewModel vm=new SearchResultViewModel();
             ArticleThumbnailManager thumbnailManager=new ArticleThumbnailManager(new BlobStorageConnection());
             List<SearchResultArticle> articles=new List<SearchResultArticle>();
-            int count = await result.CountAsync();
             foreach (var source in result.Take(20))
             {
                 articles.Add(new SearchResultArticle()
@@ -157,6 +157,7 @@ namespace Web.Controllers
             vm.SearchText = searchText;
             vm.Order = order;
             vm.Skip = skip;
+            vm.Count = count;
             return View(vm);
         }
 
@@ -196,9 +197,9 @@ namespace Web.Controllers
             SearchResultViewModel vm = new SearchResultViewModel();
             List<SearchResultArticle> articles = new List<SearchResultArticle>();
             var query = tagModel.Articles.AsQueryable();
+            var count = await query.CountAsync();
             query=ChangeOrder(order, query);
             query=query.Skip(skip);
-            var count =query.Count();
             foreach (var source in query.Take(10))
             {
                 articles.Add(new SearchResultArticle()
@@ -213,6 +214,7 @@ namespace Web.Controllers
             vm.SearchText = tag;
             vm.Order = order;
             vm.Skip = skip;
+            vm.Count = count;
             if (vm.Articles.Length == 0)
             {
                 vm.SearchResultText = string.Format("「{0}」タグがついている記事は見つかりませんでした。", tag);
