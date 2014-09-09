@@ -469,6 +469,10 @@
     <Compile Include="Migrations\201409090525483_AddIndex2.Designer.cs">
       <DependentUpon>201409090525483_AddIndex2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409090548512_AdjustDatabase.cs" />
+    <Compile Include="Migrations\201409090548512_AdjustDatabase.Designer.cs">
+      <DependentUpon>201409090548512_AdjustDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountConfigViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -617,6 +621,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409090525483_AddIndex2.resx">
       <DependentUpon>201409090525483_AddIndex2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409090548512_AdjustDatabase.resx">
+      <DependentUpon>201409090548512_AdjustDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
