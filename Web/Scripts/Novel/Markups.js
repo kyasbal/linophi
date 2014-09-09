@@ -181,7 +181,51 @@ var NikonikoMarkup = (function (_super) {
     };
     return NikonikoMarkup;
 })(MarkupBase);
-/*
-class HrMarkUp extends
-*/
+
+//横棒のやつ
+var HrMarkUp = (function (_super) {
+    __extends(HrMarkUp, _super);
+    function HrMarkUp() {
+        _super.apply(this, arguments);
+    }
+    HrMarkUp.prototype.getMarkupString = function (result) {
+        result = result.replace(/-----/, "<hr>");
+        return result;
+    };
+    return HrMarkUp;
+})(MarkupBase);
+
+var BgcMarkup = (function (_super) {
+    __extends(BgcMarkup, _super);
+    function BgcMarkup() {
+        _super.apply(this, arguments);
+    }
+    BgcMarkup.prototype.getMarkupString = function (result) {
+        result = result.replace(/bgc{(.*?)}g/, "<div class=\"bgcg\">$1</div>");
+        result = result.replace(/bgc{(.*?)}s/, "<div class=\"bgcs\">$1</div>");
+        return result;
+    };
+    return BgcMarkup;
+})(MarkupBase);
+
+var ListMarkup = (function (_super) {
+    __extends(ListMarkup, _super);
+    function ListMarkup() {
+        _super.apply(this, arguments);
+    }
+    ListMarkup.prototype.getMarkupString = function (result) {
+        if (result.match("listn{.*}")) {
+            result = result.replace(/listn{(.+)}/g, "<ol style=\"list-style-type:decimal\"><li>$1</li></ol>");
+            result = result.replace(/<\/br>/g, "</li><li>");
+        }
+        if (result.match("listd{.*}")) {
+            result = result.replace(/listd{(.+)}/g, "<ul style=\"list-style-type:disc\"><li>$1</li></ul>");
+            result = result.replace(/<\/br>/g, "</li><li>");
+        }
+        result = result.replace(/<li><\/li>/g, "");
+        result = result.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
+        return result;
+    };
+    return ListMarkup;
+})(MarkupBase);
 //# sourceMappingURL=Markups.js.map
