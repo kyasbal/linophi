@@ -38,7 +38,7 @@ $(() =>
         {
             $('.widget .' + className).append('<div class="' + className + '-comments"></div>');
 
-            commentSourceParser.eachDoInComments(className.substr(4), (name, time, id, comment) =>
+            commentSourceParser.eachDoInComments(getParagraphId(className), (name, time, id, comment) =>
             {
                 $('.widget .' + className + '-comments').append(
                     '<div class="response">' +
@@ -84,9 +84,9 @@ $(() =>
                         type: "post",
                         data: {
                             "ArticleId": location.pathname.substr(1),
-                            "UserName": $form.find("input").val() || "no name",
+                            "UserName": s( $form.find("input").val() ) || "no name",
                             "ParagraphId": ((Object)(e.currentTarget)).className.substr(4),
-                            "Comment": $form.find("textarea").val() || "no message"
+                            "Comment": s( $form.find("textarea").val() ) || "no message"
                         },
                         timeout: 10000,
 
