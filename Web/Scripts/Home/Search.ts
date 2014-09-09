@@ -1,6 +1,7 @@
 ﻿var searchPageOrderOptionBox: SearchOrderOptionBox;
 $(() =>
 {
+    var changepage: number = 3;//前後に何ページ移動するか
     searchPageOrderOptionBox = new SearchOrderOptionBox($(".search-menu"), "Search", "searchText");
     searchPageOrderOptionBox.initBoxSelected();
     $(".page-before").click(() =>
@@ -8,9 +9,9 @@ $(() =>
         var searchText: string = $("#searchedText").val();
         var order: number = $("#order").val();
         var skip: number = parseInt($("#skip").val());
-        if (skip - 20 >= 0)
+        if (skip - changepage >= 0)
         {
-            skip = skip - 20;
+            skip = skip - changepage;
         }
         else
         {
@@ -24,8 +25,22 @@ $(() =>
         var searchText: string = $("#searchedText").val();
         var order: number = $("#order").val();
         var skip: number = parseInt($("#skip").val());
-        skip = skip + 20;
+        skip = skip + changepage;
         window.location.href = "/Search?searchText=" + searchText + "&order=" + order + "&skip=" + skip;
+    });
+
+    $(".main").ready(() =>
+    {
+        var count: number = parseInt($("#count").val());//全体の数
+        var skip: number = parseInt($("#skip").val());//現在の一番上の記事
+        if (skip<changepage)
+        {
+            $(".page-before").hide();
+        }
+        if (skip+changepage>count)
+        {
+            $(".page-after").hide();
+        }
     });
 });
 

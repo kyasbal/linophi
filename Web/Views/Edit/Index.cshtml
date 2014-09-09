@@ -47,55 +47,53 @@
 
 
 <div class="edit-bg-overlay">
-    @using (Html.BeginForm("Preview", "Edit", FormMethod.Post, new { @class = "edit-form-preview editpage-main", enctype = "multipart/form-data",target="_blank" }))
+        @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new {@class = "edit-form editpage-main", enctype = "multipart/form-data"}))
     {
-        using (Html.BeginForm("Index", "Edit", FormMethod.Post, new {@class = "edit-form editpage-main", enctype = "multipart/form-data"}))
-         {
-        <div class="edit-title-container">
+             <div class="edit-title-container">
                  <input type="text" name="Title" value="@(Model == null ? "" : Model.Title)" id="title" class="edit-title" placeholder="タイトル" @(Model != null ? "readonly" : "") />
-        </div>
-        <div class="edit-title-chkvalid"></div>
-        <div class="edit-tag-container">
+             </div>
+             <div class="edit-title-chkvalid"></div>
+             <div class="edit-tag-container">
                  <input type="text" id="tag" class="edit-tag" placeholder="タグ" value="@(Model == null ? "" : Model.Tags)">
-            <div class="edit-tag-chkvalid"></div>
-        </div>
-        <div class="edit-editted-box"></div>
+                 <div class="edit-tag-chkvalid"></div>
+             </div>
+             <div class="edit-editted-box"></div>
 
-        //リアルタイムプレビュー
-        <div class="wrapper">
-            <div class="edit-preview-container">
-                <div>プレビュー</div>
-                <div class="edit-preview-container-inner article-container">
-                    <div class="edit-preview preview-body"></div>
-                    <div class="preview-iframes"></div>
-                </div>
-            </div>
+             //リアルタイムプレビュー
+             <div class="wrapper">
+                 <div class="edit-preview-container">
+                     <div>プレビュー</div>
+                     <div class="edit-preview-container-inner article-container">
+                         <div class="edit-preview preview-body"></div>
+                         <div class="preview-iframes"></div>
+                     </div>
+                 </div>
 
-            <div class="edit-text-container">
-                <h1>編集</h1>
-                <textarea class="edit-text edit-context" placeholder="textarea">
+                 <div class="edit-text-container">
+                     <h1>編集</h1>
+                     <textarea class="edit-text edit-context" placeholder="textarea">
                     @if (Model != null)
                     {
                         @Html.Raw(Model.MarkupString)
                     }
 </textarea>@*この行にはスペースを作らないこと*@
-            </div>
-        </div>
-        @Html.AntiForgeryToken()
-        @Html.Hidden("Tag", "", new { id = "hidden-tag" })
-        @Html.Hidden("Body", "", new { id = "hidden-body" })
-        @Html.Hidden("Markup", "", new { id = "hidden-markup" })
-        @Html.Hidden("Mode", Model == null ? "new" : @Model.EditMode, new { id = "hidden-mode" })
-        <span class="prev-switch">大きくする→</span>
+                 </div>
+             </div>
+             @Html.AntiForgeryToken()
+             @Html.Hidden("Tag", "", new {id = "hidden-tag"})
+             @Html.Hidden("Body", "", new {id = "hidden-body"})
+             @Html.Hidden("Markup", "", new {id = "hidden-markup"})
+             @Html.Hidden("Mode", Model == null ? "new" :Model.EditMode, new {id = "hidden-mode"})
+             <span class="prev-switch">大きくする→</span>
         <div class="select-thumbnail">サムネイルの選択<input type="file" name="Thumbnail" class="thumbnail" /></div>
-        if (Model != null)
-        {
-            @Html.Hidden("Id", Model.ArticleId)
-        }
+             if (Model != null)
+             {
+                 @Html.Hidden("Id", Model.ArticleId)
+             }
              <div class="edit-button-container">
                  <a class="preview-button">プレビュー表示</a>
-        <a class="edit-submit-button">投稿する</a>
+                 <a class="edit-submit-button">投稿する</a>
              </div>
-         }
+         
     }
 </div>
