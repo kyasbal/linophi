@@ -34,8 +34,7 @@ namespace Web.Storage
         public async Task RemoveArticle(string articleKey)
         {
             ICloudBlob blob = Container.GetBlockBlobReference(articleKey);
-            if (!blob.Exists()) return;
-            await blob.DeleteAsync();
+            await blob.DeleteIfExistsAsync();
         }
 
         public async Task<string> GetArticleBody(string articleKey)

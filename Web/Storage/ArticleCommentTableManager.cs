@@ -91,5 +91,14 @@ namespace Web.Storage
             count = comments.Count;
             return Json.Encode(comments.ToArray());
         }
+
+        public async Task RemoveCommentsAsync(string articleId)
+        {
+            var ent = CreateQuery().Where(f => f.PartitionKey.Equals(articleId));
+            foreach (var labelEntity in ent)
+            {
+                await Table.ExecuteAsync(TableOperation.Delete(labelEntity));
+            }
+        }
     }
 }

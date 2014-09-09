@@ -38,7 +38,7 @@
         js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=146218925555159&version=v2.0";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-
+@Html.HiddenFor(m=>m.IsPreview)
 <div class="container">
     <div class="contents set">
         <div class="top">
@@ -47,13 +47,16 @@
                     <div class="viewhead-inner">
                         <div class="topicwordlist set">
                             <ul class="topicwordlistul">
-                                @foreach (TagViewModel tag in Model.Tags)
+                                @if (Model.Tags != null)
                                 {
-                                    <li class="topicwordlistli">
-                                        <a href="@("/Tag?tag="+tag.TagName)" class="topicword">
-                                            @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
-                                        </a>
-                                    </li>
+                                    foreach (TagViewModel tag in Model.Tags)
+                                     {
+                                         <li class="topicwordlistli">
+                                             <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
+                                                 @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                             </a>
+                                         </li>
+                                     }
                                 }
                             </ul>
                         </div>
@@ -121,8 +124,13 @@
                                     @Html.HiddenFor(m=>m.ArticleId)
                                     <input type="submit" value="ラベル全削除"/>
                                 </form>
+                                <form method="POST" action="/api/Article/RemoveArticle">
+                                    @Html.AntiForgeryToken()
+                                    @Html.HiddenFor(m => m.ArticleId)
+                                    <input type="submit" value="この記事を削除" />
+                                </form>
                             }
-                            
+
 
                             @*<span class="navbar-date">
                                     <span class="date">@Model.Article_Date</span>
@@ -199,7 +207,6 @@
                         </div>
                     </li>
                 </ul>
-                    <span class="more-read">@Html.ActionLink("もっとみる", "more", "Home")</span>
                 </div>
                 <br />
                 <div class="separator1"><hr></div>

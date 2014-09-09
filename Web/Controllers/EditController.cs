@@ -13,6 +13,7 @@ using Web.Api.Article;
 using Web.Models;
 using Web.Storage;
 using Web.Storage.Connection;
+using Web.Utility;
 
 namespace Web.Controllers
 {
@@ -186,6 +187,37 @@ namespace Web.Controllers
             {
                 return View("Page403");
             }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<ActionResult> Preview(EditViewModel vm)
+        {
+            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            UserAccount userAccount = await userManager.FindByNameAsync(User.Identity.Name);
+            IGravatarLoader gLoader = BasicGravatarLoader.GetBasicGravatarLoader(userAccount);
+            return View("~/Views/Home/Index.cshtml",new ViewArticleViewModel()
+            {
+                ArticleId = "Preview",
+                Author = userAccount.NickName,
+                Author_ID = userAccount.UniqueId,
+                Author_IconTag = gLoader.GetIconTag(50),
+                PageView = 0,
+                Title =vm.Title,
+                Content = vm.Body,
+                LabelInfo = "",
+                Tags = null,
+                LabelCount = 0,
+                Article_Date = DateTime.Now.ToShortDateString(),
+                Article_UpDate = DateTime.Now.ToShortDateString(),
+                UseThumbnail = false,
+                CommentInfo ="",
+                CommentCount =0,
+                AuthorsArticles = HomeController.getUserArticles(context,0, 0, User.Identity.Name, 3),
+                IsPreview = true
+            });
         }
     }
 }

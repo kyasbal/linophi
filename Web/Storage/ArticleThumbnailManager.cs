@@ -91,5 +91,11 @@ namespace Web.Storage
 
             return result;
         }
+
+        public async Task RemoveThumbnail(string articleId)
+        {
+            ICloudBlob blobRef = Container.GetBlockBlobReference(articleId);
+            await blobRef.DeleteIfExistsAsync();
+        }
     }
 }

@@ -97,7 +97,7 @@ namespace Web.Api.Article
         [System.Web.Http.HttpPost]
         [ValidateAntiForgeryToken]
         [System.Web.Http.Authorize(Roles = "Administrator")]
-        public async Task<IHttpActionResult> RemoveAllLabel(RemoveAllLabelRequest req)
+        public async Task<IHttpActionResult> RemoveAllLabel(AdministratorArticleRequest req)
         {
             LabelTableManager ltm=new LabelTableManager(new TableStorageConnection());
             await ltm.RemoveArticleLabelAsync(req.ArticleId);
@@ -107,8 +107,33 @@ namespace Web.Api.Article
             await context.SaveChangesAsync();
             return Json(true);
         }
+        [System.Web.Http.HttpPost]
+        [ValidateAntiForgeryToken]
+        [System.Web.Http.Authorize(Roles = "Administrator")]
+        public async Task<IHttpActionResult> RemoveArticle(AdministratorArticleRequest req)
+        {
+            //DB上の削除
+            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            ArticleModel article = await context.Articles.FindAsync(req.ArticleId);
+            context.Articles.Remove(article);
+            await context.SaveChangesAsync();
+            //記事の本文の削除
+            BlobStorageConnection bConnection=new BlobStorageConnection();
+            TableStorageConnection tConnection=new TableStorageConnection();
+            ArticleThumbnailManager thumbnailManager=new ArticleThumbnailManager(bConnection);
+            ArticleBodyTableManager abtm=new ArticleBodyTableManager(bConnection);
+            ArticleMarkupTableManager amtm=new ArticleMarkupTableManager(bConnection);
+            LabelTableManager labelManager=new LabelTableManager(tConnection);
+            ArticleCommentTableManager commentManager=new ArticleCommentTableManager(tConnection);
+            await thumbnailManager.RemoveThumbnail(req.ArticleId);
+            await abtm.RemoveArticle(req.ArticleId);
+            await amtm.RemoveArticle(req.ArticleId);
+            await labelManager.RemoveArticleLabelAsync(req.ArticleId);
+            await commentManager.RemoveCommentsAsync(req.ArticleId);
+            return Json(true);
+        }
 
-    public class RemoveAllLabelRequest
+    public class AdministratorArticleRequest
         {
             public string ArticleId { get; set; }
         }

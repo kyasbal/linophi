@@ -11,19 +11,29 @@ $(function () {
     editorInstance.updateToshow();
     editPage.onChanged();
     $(".edit-submit-button").click(function () {
-        var tagList = new Array();
-        tags.forEach(function (item) {
-            tagList.push(item);
-            return true;
-        });
-        $("#hidden-tag").val(JSON.stringify(tagList));
-        $('.edit-preview > *').removeClass("em");
-        $("#hidden-body").val($(".preview-body").html());
-        $("#hidden-markup").val($(".edit-context").val());
+        prepareSubmit();
         if (isConfirmedTitle)
             $(".edit-form").submit();
     });
+    $(".preview-button").click(function () {
+        console.warn("preview");
+        prepareSubmit();
+        if (isConfirmedTitle)
+            $(".edit-form-preview").submit();
+    });
 });
+
+function prepareSubmit() {
+    var tagList = new Array();
+    tags.forEach(function (item) {
+        tagList.push(item);
+        return true;
+    });
+    $("#hidden-tag").val(JSON.stringify(tagList));
+    $('.edit-preview > *').removeClass("em");
+    $("#hidden-body").val($(".preview-body").html());
+    $("#hidden-markup").val($(".edit-context").val());
+}
 
 function selectEditBody() {
     editPage.CurrentPage = 0 /* EditBody */;
