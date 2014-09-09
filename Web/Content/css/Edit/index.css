@@ -86,10 +86,114 @@
   outline: none;
   border-radius: 300px;
 }
-.bgcg {
-  background-color: whitesmoke;
+.listn,
+.x_listn {
+  list-style-type: decimal;
 }
-.bgcs {
-  background-color: bisque;
+.listd,
+.x_listd {
+  list-style-type: disc;
+}
+.bgcprim,
+.x_bgcprim {
+  padding: 0 10px;
+  color: white;
+  background-color: #428bca !important;
+}
+.bgcsucc,
+.x_bgcsucc {
+  padding: 0 10px;
+  background-color: #dff0d8 !important;
+}
+.bgcinfo,
+.x_bgcinfo {
+  padding: 0 10px;
+  background-color: #d9edf7 !important;
+}
+.bgcwarn,
+.x_bgcwarn {
+  padding: 0 10px;
+  background-color: #fcf8e3 !important;
+}
+.bgcdang,
+.x_bgcdang {
+  padding: 0 10px;
+  background-color: #f2dede !important;
+}
+<<<<<<< HEAD
+.preview-button {
+  text-align: center;
+  background-color: ActiveCaption;
+  color: white;
+  padding: 10px 40px;
+  margin: 10px 40px;
+}
+.preview-button:hover {
+  background-color: dodgerblue;
+  cursor: pointer;
+}
+.edit-button-container {
+  text-align: center;
+=======
+.article-container .red,
+.edit-preview .red,
+.article-container .x_red,
+.edit-preview .x_red {
+  color: red;
+}
+.article-container .blue,
+.edit-preview .blue,
+.article-container .x_blue,
+.edit-preview .x_blue {
+  color: blue;
+}
+.article-container .black,
+.edit-preview .black,
+.article-container .x_black,
+.edit-preview .x_black {
+  color: black;
+}
+.article-container .green,
+.edit-preview .green,
+.article-container .x_green,
+.edit-preview .x_green {
+  color: green;
+}
+.article-container .yellow,
+.edit-preview .yellow,
+.article-container .x_yellow,
+.edit-preview .x_yellow {
+  color: yellow;
+}
+.article-container .white,
+.edit-preview .white,
+.article-container .x_white,
+.edit-preview .x_white {
+  color: white;
+}
+.article-container .pink,
+.edit-preview .pink,
+.article-container .x_pink,
+.edit-preview .x_pink {
+  color: pink;
+}
+.article-container .purple,
+.edit-preview .purple,
+.article-container .x_purple,
+.edit-preview .x_purple {
+  color: purple;
+}
+.article-container .large,
+.edit-preview .large,
+.article-container .x_large,
+.edit-preview .x_large {
+  font-size: large;
+}
+.article-container .small,
+.edit-preview .small,
+.article-container .x_small,
+.edit-preview .x_small {
+  font-size: small;
+>>>>>>> ca99fda06622d3e52078208645bf9a1259727746
 }
 /*# sourceMappingURL=index.css.map */

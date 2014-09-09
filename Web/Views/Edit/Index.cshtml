@@ -14,6 +14,7 @@
     <link href="~/Content/css/Novel/novel-editor.css" rel="stylesheet" />
     <link href="~/Content/css/Novel/Markup.css" rel="stylesheet" />
     <link href="~/Content/css/Markup.css" rel="stylesheet" />
+    <link href="~/Content/css/Home/viewarticle.css" rel="stylesheet" />
 }
 
 @section JS
@@ -46,15 +47,16 @@
 
 
 <div class="edit-bg-overlay">
-
-    @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new { @class = "edit-form editpage-main", enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Preview", "Edit", FormMethod.Post, new { @class = "edit-form-preview editpage-main", enctype = "multipart/form-data",target="_blank" }))
     {
+        using (Html.BeginForm("Index", "Edit", FormMethod.Post, new {@class = "edit-form editpage-main", enctype = "multipart/form-data"}))
+         {
         <div class="edit-title-container">
-            <input type="text" name="Title" value="@(Model == null ? "" : Model.Title)" id="title" class="edit-title" placeholder="タイトル" @(Model != null ? "readonly" : "") />
+                 <input type="text" name="Title" value="@(Model == null ? "" : Model.Title)" id="title" class="edit-title" placeholder="タイトル" @(Model != null ? "readonly" : "") />
         </div>
         <div class="edit-title-chkvalid"></div>
         <div class="edit-tag-container">
-            <input type="text" id="tag" class="edit-tag" placeholder="タグ" value="@(Model==null?"":Model.Tags)">
+                 <input type="text" id="tag" class="edit-tag" placeholder="タグ" value="@(Model == null ? "" : Model.Tags)">
             <div class="edit-tag-chkvalid"></div>
         </div>
         <div class="edit-editted-box"></div>
@@ -76,7 +78,7 @@
                     {
                         @Html.Raw(Model.MarkupString)
                     }
-                </textarea>@*この行にはスペースを作らないこと*@
+</textarea>@*この行にはスペースを作らないこと*@
             </div>
         </div>
         @Html.AntiForgeryToken()
@@ -90,6 +92,10 @@
         {
             @Html.Hidden("Id", Model.ArticleId)
         }
+             <div class="edit-button-container">
+                 <a class="preview-button">プレビュー表示</a>
         <a class="edit-submit-button">投稿する</a>
+             </div>
+         }
     }
 </div>

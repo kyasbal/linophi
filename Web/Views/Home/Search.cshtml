@@ -15,6 +15,7 @@
 @Html.HiddenFor(m=>m.SearchText,new{id="searchedText"})
 @Html.HiddenFor(m => m.Order, new { id = "order" })
 @Html.HiddenFor(m => m.Skip, new { id = "skip" })
+@Html.HiddenFor(m=>m.Count,new {id="count"})
 <div class="contents">
     <div class="wrapper">
         <div class="main">
@@ -33,13 +34,13 @@
                         <h1>@Model.SearchResultText</h1>
                         <form>
                             <select class="search-menu" onchange="searchPageOrderOptionBox.onOptionChange()">
-                                <option selected>検索方法の選択</option>
-                                <option value="0">投稿が新しい順</option>
-                                <option value="3">投稿が古い順</option>
-                                <option value="1">閲覧数が多い順</option>
-                                <option value="4">閲覧数が少ない順</option>
-                                <option value="2">ふせんが多い順</option>
-                                <option value="5">ふせんが少ない順</option>
+                                <option value="0" selected>検索方法の選択</option>
+                                <option value="1">投稿が新しい順</option>
+                                <option value="4">投稿が古い順</option>
+                                <option value="2">閲覧数が多い順</option>
+                                <option value="5">閲覧数が少ない順</option>
+                                <option value="3">ふせんが多い順</option>
+                                <option value="6">ふせんが少ない順</option>
                             </select>
                         </form>
                     </div>

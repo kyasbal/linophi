@@ -3,7 +3,7 @@ var len: number;
 var isTooShortNickName,
     isTooLongNickName,
     isInvalidEmailAddr: boolean;
-
+var isConfirmedFormValue: boolean = false;
 $(function()
 {
     $(".name-box").focusout(function()
@@ -47,9 +47,11 @@ class AccountConfirmation
         if (isEnable)
         {
             $('#regi').removeAttr('disabled').addClass("submit-enabled");
+            isConfirmedFormValue = true;
         } else
         {
             $('#regi').attr('disabled', 'disabled').removeClass("submit-enabled");
+            isConfirmedFormValue = false;
         }
     }    
 }
@@ -80,6 +82,10 @@ $(() =>
 
 $(()=>
 {
+    $("#regi").click(() =>
+    {
+        if (isConfirmedFormValue)$("#regi-form").submit();
+    });
     accountConfirmationPage.changeSubmitStyle(false);
 
     $('#AcceptTerm').click(function()

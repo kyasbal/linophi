@@ -10,7 +10,6 @@
         <script src="~/Scripts/jquery-ui.min.js"></script>
     *@
     <script src="~/Scripts/Chart.js"></script>
-    <script src="~/Scripts/Utility/htmlSpecialCharacters.js"></script>
     <script src="~/Scripts/jquery.alertwindow.js"></script>
     <script src="~/Scripts/Home/CommentIndicator.js"></script>
     <script src="~/Scripts/Home/PostitPaster.js"></script>
@@ -27,6 +26,7 @@
     <link href="~/Content/css/Novel/Markup.css" rel="stylesheet" />
     <link href="~/Content/css/Home/viewarticle.css" rel="stylesheet" />
     <link href="~/Content/css/Markup.css" rel="stylesheet" />
+    <link href="~/Content/css/Edit/index.css" rel="stylesheet" />
 }
 @*facebookボタン用*@
 <div id="fb-root"></div>
@@ -38,7 +38,7 @@
         js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=146218925555159&version=v2.0";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-
+@Html.HiddenFor(m=>m.IsPreview)
 <div class="container">
     <div class="contents set">
         <div class="top">
@@ -47,13 +47,16 @@
                     <div class="viewhead-inner">
                         <div class="topicwordlist set">
                             <ul class="topicwordlistul">
-                                @foreach (TagViewModel tag in Model.Tags)
+                                @if (Model.Tags != null)
                                 {
+                                    foreach (TagViewModel tag in Model.Tags)
+                                     {
                                     <li class="topicwordlistli">
-                                        <a href="@("/Tag?tag="+tag.TagName)" class="topicword">
+                                             <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
                                             @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
                                         </a>
                                     </li>
+                                }
                                 }
                             </ul>
                         </div>
@@ -67,7 +70,7 @@
                             <canvas id="article-graph" width="250" height="250"></canvas>
                             <div class="postit-in-circle">
                                 <span class="navbar-countfv">
-                                    <span class="navbar-countnum font-size-25">@Model.LabelCount</span><br />
+                                    <span class="navbar-countnum font-size-25 label-count">@Model.LabelCount</span><br />
                                     <span class="navbar-countlabel">ふせん</span>
                                 </span>
                             </div>
@@ -88,7 +91,7 @@
                             </span>
                         </div>
                         <div class="navbar-count">
-
+                            
                             <div class="navbar-countnum">
                                 <span class="navbar-countlabel">PV</span>
                                 @if (Model != null)
@@ -102,7 +105,7 @@
                                 {@Model.CommentCount
                                 }
                             </div>
-
+                            
                             <div class="navbar-user">
                                 <span class="user-img">投稿者</span><span class="navbar-userthumb">@Model.Author_IconTag</span>
                                 <span class="navbar-username">
@@ -114,6 +117,19 @@
                                     </a>さん
                                 </span>
                             </div>
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <form method="POST" action="/api/Article/RemoveAllLabel">
+                                    @Html.AntiForgeryToken()
+                                    @Html.HiddenFor(m=>m.ArticleId)
+                                    <input type="submit" value="ラベル全削除"/>
+                                </form>
+                                <form method="POST" action="/api/Article/RemoveArticle">
+                                    @Html.AntiForgeryToken()
+                                    @Html.HiddenFor(m => m.ArticleId)
+                                    <input type="submit" value="この記事を削除" />
+                                </form>
+                            }
 
                         </div>
                         <div class="navbar-bottom">
@@ -124,7 +140,7 @@
                                 <li>更新日時 @Model.Article_UpDate</li>
                             </ul>
                             
-                            
+
                             
                         </div>
                     </div>
@@ -149,47 +165,46 @@
                 </div>
 
                 <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
-                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
+            <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
 
-                <div class="rellist">
-                    <h2>この著者の他の記事</h2>
-                    <div class="separator2"><hr></div>
-                    <ul class="list">
-                        @foreach (var article in Model.AuthorsArticles)
-                        {
-                            <li class="listitem">
-                                <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
-                                <div class="listtxt">
-                                    <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br />
-                                    <span class="listdesc">
+            <div class="rellist">
+                <h2>この著者の他の記事</h2>
+                <div class="separator2"><hr></div>
+                <ul class="list">
+                    @foreach (var article in Model.AuthorsArticles)
+                    {
+                        <li class="listitem">
+                            <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
+                            <div class="listtxt">
+                                <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br />
+                                <span class="listdesc">
                                         @(string.Format("{0}ふせん|{1}view|{2} last updated", article.LabelCount, article.PageView, article.Article_UpDate))
-                                    </span>
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                    <span class="more-read"><a href="@("/UserPage?articleId="+Model.ArticleId)">もっとみる</a></span>
-                </div>
-                <br />
-                <div class="rellist">
-                    <div>ふせんの傾向が似ている投稿</div>
-                    <div class="separator2"><hr></div>
-                    <ul class="list">
-                        <li class="listitem">
-                            <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
-                            <div class="listtxt">
-                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん<span class="separator">|</span>140157 view<span class="separator">|</span>2014/09/04 posted</span>
+                                </span>
                             </div>
                         </li>
-                        <li class="listitem">
-                            <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
-                            <div class="listtxt">
-                                <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん<span class="separator">|</span>101551 view<span class="separator">|</span>2014/09/04 posted</span>
-                            </div>
-                        </li>
-                    </ul>
-                    <span class="more-read">@Html.ActionLink("もっとみる", "more", "Home")</span>
+                    }
+                </ul>
+                <span class="more-read"><a href="@("/UserPage?articleId="+Model.ArticleId)">もっとみる</a></span>
+            </div>
+            <br />
+            <div class="rellist">
+                <div>ふせんの傾向が似ている投稿</div>
+                <div class="separator2"><hr></div>
+                <ul class="list">
+                    <li class="listitem">
+                        <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
+                        <div class="listtxt">
+                            <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん<span class="separator">|</span>140157 view<span class="separator">|</span>2014/09/04 posted</span>
+                        </div>
+                    </li>
+                    <li class="listitem">
+                        <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
+                        <div class="listtxt">
+                            <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん<span class="separator">|</span>101551 view<span class="separator">|</span>2014/09/04 posted</span>
+                        </div>
+                    </li>
+                </ul>
                 </div>
                 <br />
                 <div class="separator1"><hr></div>

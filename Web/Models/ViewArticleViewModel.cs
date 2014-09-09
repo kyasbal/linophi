@@ -29,6 +29,7 @@ namespace Web.Models
         public string CommentInfo { get; set; }
         public int CommentCount { get; set; }
         public List<SearchResultArticle> AuthorsArticles { get; set; }
+        public bool IsPreview { get; set; }
     }
 
     public class TagViewModel

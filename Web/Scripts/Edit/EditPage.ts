@@ -10,21 +10,31 @@ $(() => {
 
         editorInstance.updateToshow();
     editPage.onChanged();
-    $(".edit-submit-button").click(() => {
-        var tagList: string[] = new Array();
-        tags.forEach((item) =>
-        {
-            tagList.push(item);
-            return true;
-        });
-        $("#hidden-tag").val(JSON.stringify(tagList));
-        $('.edit-preview > *').removeClass("em");
-        $("#hidden-body").val($(".preview-body").html());
-        $("#hidden-markup").val($(".edit-context").val());
+    $(".edit-submit-button").click(() =>
+    {
+        prepareSubmit();
         if (isConfirmedTitle) $(".edit-form").submit();
     });
-
+    $(".preview-button").click(() =>
+    {
+        console.warn("preview");
+        prepareSubmit();
+        if (isConfirmedTitle) $(".edit-form-preview").submit();
+    });
 });
+
+function prepareSubmit()
+{
+    var tagList: string[] = new Array();
+    tags.forEach((item) => {
+        tagList.push(item);
+        return true;
+    });
+    $("#hidden-tag").val(JSON.stringify(tagList));
+    $('.edit-preview > *').removeClass("em");
+    $("#hidden-body").val($(".preview-body").html());
+    $("#hidden-markup").val($(".edit-context").val());
+}
 
 
 function selectEditBody() {

@@ -415,7 +415,7 @@ input[type="text"] {
   border: none;
   border-radius: 0.3em;
 }
-.container .contents .contentswrapper .main .article-container p:hover {
+.container .contents .contentswrapper .main p:hover {
   background-color: ghostwhite;
 }
 .container .contents .contentswrapper .main .rellist {
@@ -659,13 +659,13 @@ input[type="text"] {
 .fade-layer > img {
   width: 130px;
 }
-.alert-box form > * {
+.alert-contents > * > * {
   margin-top: 0;
   margin-bottom: 20px;
   display: block;
 }
-.alert-box form > input,
-.alert-box form > textarea {
+.alert-contents input,
+.alert-contents textarea {
   border: 1px solid #ccc;
   border-radius: 2px;
   width: 600px;
@@ -674,11 +674,7 @@ input[type="text"] {
   margin-right: 30px;
   margin-left: 30px;
 }
-.alert-box form > textarea {
+.alert-contents textarea {
   height: 250px;
-}
-.alert-box form > button {
-  margin-left: auto !important;
-  margin-right: auto !important;
 }
 /*# sourceMappingURL=viewarticle.css.map */

@@ -148,14 +148,14 @@ class LinkMarkup extends MarkupBase//URL
     getMarkupString(result: string, id: string): string
     {
         console.warn("link");
-        result = result.replace(/&ensp;/g, "\u0006");
+        result = result.replace(/&ensp;/g, "\u0006h");
         if (result.match(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g))
         {
             result = result.replace(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"/Pages/ContentUpload/ServerCache?url=$1\">");
         }
-        result = result.replace(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_\;]+)([^\w\/:%#\$&\?\(\)~\.=\+\-@\;])(?![>"])/g, "<a href='$1'>$1</a>$2");
+        result = result.replace(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_\;]+)([^\w\/:%#\$&\?\(\)~\.=\+\-@\;])(?![>"'])/g, "<a href='$1'>$1</a>$2");
         result = result.replace(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_\;]+)$/, "<a href='$1'>$1</a>");
-        return result.replace(/\u0006/g, "&ensp;");
+        return result.replace(/\u0006h/g, "&ensp;");
     }
 }
 
@@ -199,6 +199,57 @@ class HrMarkUp extends MarkupBase
     }
 }
 
+//アドレス
+class UrlMarkup extends MarkupBase
+{
+    getMarkupString(result: string): string
+    {
+        if (result.match(/\$\([^)]+\)\{[^}]+}/g))
+        {
+            var url = result.replace(/\$\(([^)]+)\)\{([^}]+)}/g, "$1");
+            url = url.replace(/http/g, "\u0006e");
+            result = result.replace(/\$\(([^)]+)\)\{([^}]+)}/g, "<a href='"+url+"'>$2</a>");
+        }
+        else
+        {
+            var url = result.replace(/\$\(([^)]+)\).*/g, "$1");
+            url = url.replace(/http/g, "\u0006e");
+            result = result.replace(/\$\(([^)]+)\)/g, "<a href=\"" + url+"\">"+url+"</a>");
+        }
+        result = result.replace(/<a[^>]+><\/a>/g, "");
+        console.warn(result);
+        return result;
+    }
+}
+
+//色変え
+class ColorMarkup extends MarkupBase
+{
+    getMarkupString(result: string): string
+    {
+        result = result.replace(/\$color\(([^)]+)\)\{([^}]+)}/g,"<span class=\"$1\">$2</span>");
+        return result;
+    }
+}
+
+class SizeMarkup extends MarkupBase
+{
+    getMarkupString(result: string): string {
+        result = result.replace(/\$size\(([^)]+)\)\{([^}]+)}/g, "<span class=\"$1\">$2</span>");
+        result = result.replace(/<\div>\n<br>/g,"");
+        return result;
+    }
+}
+
+class SizeColorMarkup extends MarkupBase {
+    getMarkupString(result: string): string {
+        result = result.replace(/\$sizecolor\(([^),]+),([^)]+)\)\{([^}]+)}/g, "<span class=\"$1 $2\">$3</span>");
+        return result;
+    }
+}
+
+
+/*
 class BgcMarkup extends MarkupBase
 {
     getMarkupString(result: string): string
@@ -208,7 +259,9 @@ class BgcMarkup extends MarkupBase
         return result;
     }
 }
+*/
 
+/*
 class ListMarkup extends MarkupBase
 {
     getMarkupString(result: string): string
@@ -228,3 +281,4 @@ class ListMarkup extends MarkupBase
         return result;
     }
 }
+*/
