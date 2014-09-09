@@ -86,19 +86,29 @@
   outline: none;
   border-radius: 300px;
 }
-.bgcprim {
-  background-color: #428bca;
+.bgcprim,
+.x_bgcprim {
+  padding: 0 10px;
+  background-color: #428bca !important;
 }
-.bgcsucc {
-  background-color: #dff0d8;
+.bgcsucc,
+.x_bgcsucc {
+  padding: 0 10px;
+  background-color: #dff0d8 !important;
 }
-.bgcinfo {
-  background-color: #d9edf7;
+.bgcinfo,
+.x_bgcinfo {
+  padding: 0 10px;
+  background-color: #d9edf7 !important;
 }
-.bgcwarn {
-  background-color: #fcf8e3;
+.bgcwarn,
+.x_bgcwarn {
+  padding: 0 10px;
+  background-color: #fcf8e3 !important;
 }
-.bgcdang {
-  background-color: #f2dede;
+.bgcdang,
+.x_bgcdang {
+  padding: 0 10px;
+  background-color: #f2dede !important;
 }
 /*# sourceMappingURL=index.css.map */
