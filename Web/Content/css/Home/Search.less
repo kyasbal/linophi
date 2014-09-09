@@ -9,49 +9,83 @@ body {
     background-color: #fff;
 }
 
-.thumbnail{
-    width:100px;
-    height:auto;
+.thumbnail {
+    width: 100px;
+    height: auto;
 }
 
 .contents {
-    padding-bottom:25px;
-    overflow:hidden;
+    padding-bottom: 25px;
+    overflow: hidden;
+
     .wrapper {
         width: 960px;
         margin: 0 auto;
 
         .main {
             float: left;
-            width: 635px;
+            width: 700px;
             padding-bottom: 40px;
+
+
+
+            .page-control {
+                margin: 15px 25px 0 25px;
+                font-size: 25px;
+
+                a {
+                    text-decoration: none;
+                    color: #aaa;
+                }
+
+                .page-before {
+                    float: left;
+                    border: 1px solid #E0F0F0;
+                    border-radius: 20px;
+                    background-color: #E0F0E0;
+                    padding: 5px;
+                }
+
+                .page-after {
+                    float: right;
+                    border: 1px solid #E0F0F0;
+                    border-radius: 20px;
+                    background-color: #E0F0E0;
+                    padding: 5px;
+                }
+            }
 
             .search-result {
 
-                .search-header{
-                    background-color:blanchedalmond;
-                    width:90.5%;
-                    margin-top:30px;
-                    margin-left:0;
-                    padding:20px 30px;
-                    padding-bottom:20px;
-                    form{
-                        margin-top:10px;
-                        margin-left:10px;
-                        select{
-                            border:none;
+                .search-header {
+                    background-color: blanchedalmond;
+                    width: 90.5%;
+                    margin-top: 30px;
+                    margin-left: 0;
+                    padding: 20px 30px;
+                    padding-bottom: 20px;
+
+                    form {
+                        margin-top: 10px;
+                        margin-left: 10px;
+
+                        select {
+                            border: none;
                         }
-                        select:focus{
-                            outline:none;
+
+                        select:focus {
+                            outline: none;
                         }
                     }
                 }
-                .search-header:focus{
-                    outline:none;
+
+                .search-header:focus {
+                    outline: none;
                 }
+
                 .listitem {
                     display: table;
-                    margin: 30px 30px 30px;
+                    margin: 20px 0 20px 20px;
                     padding: 10px;
 
                     .listthum {
@@ -74,7 +108,6 @@ body {
                         vertical-align: middle;
                         table-layout: fixed;
                         width: 100%;
-
                         max-width: 400px;
                         padding-left: 20px;
 
@@ -86,7 +119,7 @@ body {
                             margin-right: 15px;
 
                             a {
-                                word-wrap:break-word;
+                                word-wrap: break-word;
                                 padding: 6px 0;
                                 color: #000;
                             }
@@ -101,19 +134,22 @@ body {
                 .listitem:hover {
                     background-color: antiquewhite;
                 }
-                .my-editted,.search-editted{
-                    margin-top:30px;
-                    background-color:rgba(240,255,240,1);
-                    .adjust{
-                        padding-top:5px;
-                        padding-bottom:10px;
+
+                .my-editted, .search-editted {
+                    margin-top: 30px;
+                    width: 100%;
+                    background-color: rgba(240,255,240,1);
+
+                    .adjust {
+                        padding-top: 5px;
+                        padding-bottom: 10px;
                     }
                 }
             }
         }
 
         .dropbox {
-            margin-top:30px;
+            margin-top: 30px;
             margin-left: 20px;
             float: left;
             background: #F0EBCE;
