@@ -4,7 +4,7 @@
         strlt = '&lt;',
         strquot = '&quot;',
         strgt = '&gt;',
-        strlf = '<br />',
+        strlf = '<br>',
         amp = new RegExp('&', 'g'),
         lt = new RegExp('<', 'g'),
         quot = new RegExp('"', 'g'),

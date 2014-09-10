@@ -98,7 +98,6 @@ var LabelBoxController = (function () {
                 "display": "block",
                 "clear": "both"
             });
-            $(boxSelector).html("");
 
             for (var i = 0, len = sortArray.length; i < len; i++) {
                 $(boxSelector).append(sortArray[i]);
@@ -161,13 +160,15 @@ $(window).load(function () {
     var posY = dropboxPos + 10;
 
     $('.article-container > *').each(function (i) {
-        var $ele = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
+        var $ele = $('.article-container > [class*="p-"]:nth-child(' + (i + 2) + ')');
+        if (!$ele[0])
+            return true;
         var elementName = $ele[0].tagName;
-        var className = $ele.attr("class");
         if (elementName == "hr")
             return true;
 
-        // alert(className);
+        var className = $ele.attr("class");
+
         var eleHeight = $ele.outerHeight(true), elePos = $ele.offset().top;
 
         $('.dropbox').append('<div class="' + className + '"></div>');
@@ -253,16 +254,19 @@ $(window).load(function () {
             $('.dropbox').css("z-index", 0);
         }, 500);
 
-        $('.dropbox > .postit-pasting').css({
-            "z-index": -100,
-            "visibility": "hidden"
-        });
-
         if (pasteMode) {
             var pHeights = dropboxPos;
+            pasteMode = false;
 
-            $('.dropbox > [class*="p-"]').each(function (i) {
-                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')');
+            $('.dropbox > .postit-pasting').css({
+                "z-index": -100,
+                "visibility": "hidden"
+            });
+
+            $('.dropbox > *').each(function (i) {
+                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')');
+                if (!$target[0])
+                    return true;
                 var elementName = $target[0].tagName;
                 if (elementName == "hr")
                     return true;
@@ -280,8 +284,6 @@ $(window).load(function () {
                 pHeights += pHeight;
                 // console.log($target.attr("class"), pHeight, pHeights, posY, src);
             });
-
-            pasteMode = false;
         }
     });
 
