@@ -24,5 +24,7 @@ namespace Web.Models
         public string Id { get; set; }
 
         public HttpPostedFileBase Thumbnail { get; set; }
+
+        public string RelatedArticle { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Web.Storage.Connection
 
         private void SetDevelopmentStorageAccount()
         {
-            if(ConfigurationLoaderFactory.GetConfigurationLoader().IsLocalConfiguration())
+            //if(ConfigurationLoaderFactory.GetConfigurationLoader().IsLocalConfiguration())
                 StorageAccount = new CloudStorageAccount(new StorageCredentials("linophidebug", "7toc3SgBFfxIec093964NqLA1kveLebYHsQZ6S5kwFxGADEmOnX7zuznxDfFdt0Sy7DukzQ8NKj/GPuKk6mLQQ=="), false);
         }
     }

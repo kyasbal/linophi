@@ -9,12 +9,11 @@
 
 @section CSS{
     <meta http-equiv="X-FRAME-OPTIONS" content="SAMEORIGIN" />
-    <link href="~/Content/css/Edit/header.css" rel="stylesheet" />
-    <link href="~/Content/css/Edit/index.css" rel="stylesheet" />
+    <link href="~/Content/css/Edit/WriteArticle.css" rel="stylesheet" />
+    <link href="~/Content/css/Edit/Index.css" rel="stylesheet" />
     <link href="~/Content/css/Novel/novel-editor.css" rel="stylesheet" />
     <link href="~/Content/css/Novel/Markup.css" rel="stylesheet" />
-    <link href="~/Content/css/Markup.css" rel="stylesheet" />
-    <link href="~/Content/css/Home/viewarticle.css" rel="stylesheet" />
+    <link href="~/Content/css/MarkUp.css" rel="stylesheet" />
 }
 
 @section JS
@@ -33,28 +32,15 @@
     <script src="~/Scripts/Novel/sizing.js"></script>
 }
 
-@*
-    .edit-bg-overlay
-      %header
-      .edit-title-container
-      .edit-title-chkvalid
-      .edit-tag-container
-      .edit-preview-container
-        .edit-preview.preview-body
-      .edit-text-container
-      %footer
-*@
-
-
 <div class="edit-bg-overlay">
         @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new {@class = "edit-form editpage-main", enctype = "multipart/form-data"}))
     {
              <div class="edit-title-container">
-                 <input type="text" name="Title" value="@(Model == null ? "" : Model.Title)" id="title" class="edit-title" placeholder="タイトル" @(Model != null ? "readonly" : "") />
+                 <input type="text" name="Title" value="@(Model.Title ?? "")" id="title" class="edit-title" placeholder="タイトル" @(!Model.EditMode.Equals("new") ? "readonly" : "") />
              </div>
              <div class="edit-title-chkvalid"></div>
              <div class="edit-tag-container">
-                 <input type="text" id="tag" class="edit-tag" placeholder="タグ" value="@(Model == null ? "" : Model.Tags)">
+                 <input type="text" id="tag" class="edit-tag" placeholder="タグ" value="@(Model.Tags ?? "")">
                  <div class="edit-tag-chkvalid"></div>
              </div>
              <div class="edit-editted-box"></div>
@@ -71,8 +57,8 @@
 
                  <div class="edit-text-container">
                      <h1>編集</h1>
-                     <textarea class="edit-text edit-context" placeholder="textarea">
-                    @if (Model != null)
+                     <textarea class="edit-text edit-context" placeholder="textarea" >
+                    @if (Model.MarkupString!=null)
                     {
                         @Html.Raw(Model.MarkupString)
                     }
@@ -83,17 +69,43 @@
              @Html.Hidden("Tag", "", new {id = "hidden-tag"})
              @Html.Hidden("Body", "", new {id = "hidden-body"})
              @Html.Hidden("Markup", "", new {id = "hidden-markup"})
-             @Html.Hidden("Mode", Model == null ? "new" :Model.EditMode, new {id = "hidden-mode"})
+             @Html.Hidden("Mode", Model.EditMode, new {id = "hidden-mode"})
+            @Html.HiddenFor(m=>m.RelatedArticle)
              <span class="prev-switch">大きくする→</span>
         <div class="select-thumbnail">サムネイルの選択<input type="file" name="Thumbnail" class="thumbnail" /></div>
-             if (Model != null)
+             if (Model.ArticleId!=null)
              {
                  @Html.Hidden("Id", Model.ArticleId)
              }
-             <div class="edit-button-container">
-                 <a class="preview-button">プレビュー表示</a>
-                 <a class="edit-submit-button">投稿する</a>
-             </div>
+        <div class="edit-button-container">
+            <a class="preview-button">プレビュー表示</a>
+            <a class="edit-submit-button">投稿する</a>
+        </div>
+        <div class="help-container">
+            <h1>簡易ヘルプ</h1>
+            <h2>見出し</h2>
+            <p>#見出し1</p>
+            <h1>見出し1</h1>
+            <p>##見出し2</p>
+            <h2>見出し2</h2>
+            <p>###見出し3</p>
+            <h3>見出し3</h3>
+            <p>####見出し4</p>
+            <h4>見出し4</h4>
+            <p>>引用</p>
+            <blockquote class="quote">引用</blockquote>
+            <p>>引用{引用元}</p>
+            <blockquote class="quote">
+                引用
+                <div class="source">出典:引用元</div>
+            </blockquote>
+            <p>任意のアドレス(http://～～,https://～～)</p>
+            <p>例:http://www.linophi.com</p>
+            <a href="http://www.linophi.com">http://www.linophi.com</a>
+            <p>例:$(http://www.linophi.com){リノフィー}</p>
+            <a href="http://www.linophi.com">リノフィー</a>
+            <p>youtubeやニコ動のリンクは貼ると自動的にプレイヤーが埋め込まれます。</p>
+        </div>
          
     }
 </div>
