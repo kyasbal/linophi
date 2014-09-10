@@ -11,11 +11,11 @@
         }
         <div id="dropmenu">
             <ul>
-                <li><span class="head-button"><a href="/">トップへ</a></span></li>
+                <li><span><a href="/">トップへ</a></span></li>
 
-                <li><span class="head-button">@Html.ActionLink("投稿する", "RedirectToEdit", "Edit")</span></li>
+                <li><span>@Html.ActionLink("投稿する", "RedirectToEdit", "Edit")</span></li>
                 <li>
-                    <span class="head-button">
+                    <span>
                         @{
                             if (!Request.IsAuthenticated)
                             {
@@ -28,7 +28,6 @@
                             else
                             {
                                 @Html.GravatarImg(Request, 24)
-
                                 <a href="/MyPage">@WebPageStatic.GetUserNickName(Request)</a>
                                 @Html.ActionLink("設定", "Config", "Account")
                                 @Html.ActionLink("ログアウト", "Logout", "Account")

@@ -204,6 +204,24 @@
     <Content Include="Content\css\Account\ExternalLoginConfirmation.min.css">
       <DependentUpon>ExternalLoginConfirmation.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Edit\writearticle.css">
+      <DependentUpon>writeArticle.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\writearticle.min.css">
+      <DependentUpon>writearticle.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\header.css">
+      <DependentUpon>header.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\header.min.css">
+      <DependentUpon>header.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\index.css">
+      <DependentUpon>index.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\index.min.css">
+      <DependentUpon>index.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Home\Top.css">
       <DependentUpon>Top.less</DependentUpon>
     </Content>
@@ -249,22 +267,6 @@
     </Content>
     <Content Include="Content\css\Edit\footer.min.css">
       <DependentUpon>footer.css</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Edit\head.css">
-      <DependentUpon>head.less</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Edit\head.min.css">
-      <DependentUpon>head.css</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Edit\header.css" />
-    <Content Include="Content\css\Edit\header.min.css" />
-    <Content Include="Content\css\Edit\index.css" />
-    <Content Include="Content\css\Edit\index.min.css" />
-    <Content Include="Content\css\Home\more.css">
-      <DependentUpon>more.less</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Home\more.min.css">
-      <DependentUpon>more.css</DependentUpon>
     </Content>
     <Content Include="Content\css\Home\MyPage.css">
       <DependentUpon>MyPage.less</DependentUpon>
@@ -335,10 +337,6 @@
     <Content Include="Scripts\Edit\Edit-autoHeight.js" />
     <Content Include="Scripts\Edit\EditPage.js" />
     <Content Include="Scripts\Home\AfterLogin.js" />
-    <Content Include="Content\css\Edit\header.css.map" />
-    <Content Include="Content\css\Edit\header.less" />
-    <Content Include="Content\css\Edit\index.css.map" />
-    <Content Include="Content\css\Edit\index.less" />
     <Content Include="Content\css\Novel\novel-editor.css.map" />
     <Content Include="Content\css\Novel\novel-editor.less" />
     <Content Include="Content\css\Novel\novel-viewer.css.map" />
@@ -357,10 +355,6 @@
     <Content Include="Content\css\Home\Page404.css.map">
       <DependentUpon>Page404.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\head.less" />
-    <Content Include="Content\css\Edit\head.css.map">
-      <DependentUpon>head.css</DependentUpon>
-    </Content>
     <Content Include="Content\css\Novel\Markup.less" />
     <Content Include="Content\css\Novel\Markup.css.map">
       <DependentUpon>Markup.css</DependentUpon>
@@ -376,10 +370,6 @@
     <Content Include="Content\css\shared.less" />
     <Content Include="Content\css\shared.css.map">
       <DependentUpon>shared.css</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Home\more.less" />
-    <Content Include="Content\css\Home\more.css.map">
-      <DependentUpon>more.css</DependentUpon>
     </Content>
     <Content Include="Content\css\Home\MyPage.less" />
     <Content Include="Content\css\Home\MyPage.css.map">
@@ -404,6 +394,18 @@
     <Content Include="Content\css\Account\config.less" />
     <Content Include="Content\css\Account\config.css.map">
       <DependentUpon>config.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\writeArticle.less" />
+    <Content Include="Content\css\Edit\writearticle.css.map">
+      <DependentUpon>writearticle.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\header.less" />
+    <Content Include="Content\css\Edit\header.css.map">
+      <DependentUpon>header.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\index.less" />
+    <Content Include="Content\css\Edit\index.css.map">
+      <DependentUpon>index.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
@@ -559,7 +561,6 @@
     <Content Include="Views\Account\Config.cshtml" />
     <Content Include="Views\Home\Top.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
-    <Content Include="Views\Home\more.cshtml" />
     <Content Include="Views\Home\MyPage.cshtml" />
     <Content Include="Startup\Startup.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
