@@ -59,16 +59,18 @@ $(function () {
             var $form = $('.alert-box');
             if ($(".alert-box textarea").val()) {
                 var $button = $form.find('button');
-                console.info(location.pathname.substr(1), $form.find("input").val(), getParagraphId((Object)(e.currentTarget).className), $form.find("textarea").val());
+                var sendData = {
+                    "ArticleId": location.pathname.substr(1),
+                    "UserName": s($form.find("input").val()) || "no name",
+                    "ParagraphId": getParagraphId((Object)(e.currentTarget).className),
+                    "Comment": s($form.find("textarea").val()) || "no message"
+                };
+                var dd = new Date();
+                var y = dd.getFullYear(), m = dd.getMonth() + 1, d = dd.getDate();
                 $.ajax({
                     url: "/api/Comment/AttachComment",
                     type: "post",
-                    data: {
-                        "ArticleId": location.pathname.substr(1),
-                        "UserName": s($form.find("input").val()) || "no name",
-                        "ParagraphId": getParagraphId((Object)(e.currentTarget).className),
-                        "Comment": s($form.find("textarea").val()) || "no message"
-                    },
+                    data: sendData,
                     timeout: 10000,
                     beforeSend: function () {
                         $button.attr('disabled', 'true');
@@ -78,6 +80,9 @@ $(function () {
                     },
                     success: function () {
                         $form.find("input, textarea").val("");
+
+                        var commentNum = $('.article-container .x_' + sendData.ParagraphId + '-comments .response').length + 1;
+                        $('.article-container .x_' + sendData.ParagraphId + '-comments > button').before('<div class="response">' + '<p class="res-title"> <span>' + commentNum + '</span> <b>' + sendData.UserName + '</b> <small>[' + y + '/' + m + '/' + d + '] ID:更新して表示 </small> </p>' + '<p class="res-text">' + sendData.Comment + '</p>' + '</div>');
                     },
                     error: function () {
                         alert("送信失敗しました");
