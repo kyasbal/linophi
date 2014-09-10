@@ -15,9 +15,9 @@
     <link href="~/Content/css/Home/Search.css" rel="stylesheet" />
     <link href="~/Content/css/Home/MyPage.css" rel="stylesheet" />
 }
-@Html.HiddenFor(m=>m.Order,new{id="order"})
+@Html.HiddenFor(m => m.Order, new { id = "order" })
 @Html.HiddenFor(m => m.Skip, new { id = "skip" })
-
+@Html.HiddenFor(m=>m.Count,new {id="count"});
 
 <div class="contents">
     <div class="wrapper">
@@ -27,7 +27,7 @@
                     <h1>今までに書いた記事</h1>
                     <form>
                         <select class="search-menu" onchange="MyPageSearchOptionBoxManager.onOptionChange()">
-                            <option value="0"selected>検索方法の選択</option>
+                            <option value="0" selected>検索方法の選択</option>
                             <option value="1">投稿が新しい順</option>
                             <option value="4">投稿が古い順</option>
                             <option value="2">閲覧数が多い順</option>
@@ -37,52 +37,59 @@
                         </select>
                     </form>
                 </div>
-                <div class="my-editted"><div class="adjust">
-                    @foreach (var article in Model.articles)
-                    {
-                        <li class="listitem">
-                            <p class="listthumb"><a href=""><img width="60" height="60" src="/Content/imgs/Home/red.jpg"></a></p>
-                            <div class="listtxt">
-                                <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br /><span class="listdesc">@article.PageView view|@article.LabelCount ふせん|@article.Article_UpDate last updated</span>
-                                @if (Model.IsMyPage)
-                                {
-                                    <div class="edit-buttons">
-                                        @using (Html.BeginForm("DeleteArticle","Home",FormMethod.Post,new{id="remove-article-"+article.ArticleId}))
-                                        {
-                                            @Html.AntiForgeryToken()
-                                            @Html.Hidden("articleId",article.ArticleId)
-                                            <a onclick="deleteArticle('@article.ArticleId')">削除</a>
-                                        }
-                                        @using (Html.BeginForm("Index", "Edit", FormMethod.Get, new {id = "append-article-" + article.ArticleId}))
+                <div class="my-editted">
+                    <div class="adjust">
+                        @foreach (var article in Model.articles)
+                        {
+                            <li class="listitem">
+                                <p class="listthumb"><a href=""><img width="60" height="60" src="/Content/imgs/Home/red.jpg"></a></p>
+                                <div class="listtxt">
+                                    <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br /><span class="listdesc">@article.PageView view|@article.LabelCount ふせん|@article.Article_UpDate last updated</span>
+                                    @if (Model.IsMyPage)
+                                    {
+                                        <div class="edit-buttons">
+                                            @using (Html.BeginForm("DeleteArticle", "Home", FormMethod.Post, new { id = "remove-article-" + article.ArticleId }))
                                             {
                                                 @Html.AntiForgeryToken()
-                                                @Html.Hidden("EditMode","append")
+                                                @Html.Hidden("articleId", article.ArticleId)
+                                                <a onclick="deleteArticle('@article.ArticleId')">削除</a>
+                                            }
+                                            @using (Html.BeginForm("Index", "Edit", FormMethod.Get, new { id = "append-article-" + article.ArticleId }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.Hidden("EditMode", "append")
                                                 @Html.Hidden("articleId", article.ArticleId)
                                                 <a onclick="appendArticle('@article.ArticleId') ">追記</a>
                                             }
-                                        @if (User.IsInRole("Administrator"))
-                                        {
-                                            using (Html.BeginForm("Index", "Edit", FormMethod.Get, new {id = "edit-article-" + article.ArticleId}))
+                                            @if (User.IsInRole("Administrator"))
                                             {
-                                                @Html.AntiForgeryToken()
-                                                @Html.Hidden("EditMode", "edit")
-                                                @Html.Hidden("articleId", article.ArticleId)
-                                                <a onclick="editArticle('@article.ArticleId') ">編集</a>
+                                                using (Html.BeginForm("Index", "Edit", FormMethod.Get, new { id = "edit-article-" + article.ArticleId }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    @Html.Hidden("EditMode", "edit")
+                                                    @Html.Hidden("articleId", article.ArticleId)
+                                                    <a onclick="editArticle('@article.ArticleId') ">編集</a>
+                                                }
                                             }
-                                        }
-                                    </div>
-                                }
-                            </div>
-                        </li>
-                        
+                                        </div>
+                                    }
+                                </div>
+                            </li>
 
-                    }
-               </div></div>
+
+                        }
+                    </div>
+                </div>
             </ul>
+            <div class="page-control">
+                <span class="page-before"><a>前に戻る</a></span>
+                <span class="page-after"><a>先に進む</a></span>
+            </div>
         </div>
 
-        <div class="dropbox">
-            @*おすすめ投稿書いてみたり広告入れてみたり自由に使うスペースってことで*@
-        </div>
+
+        @*<div class="dropbox">
+                おすすめ投稿書いてみたり広告入れてみたり自由に使うスペースってことで
+            </div>*@
     </div>
 </div>

@@ -11,6 +11,21 @@ function removeTag(counter, tag) {
         $(".edit-tag-chkvalid").html("");
     }
 }
+
+var TagUtil;
+(function (TagUtil) {
+    function GetTagCount(tag, callbackArg, callback) {
+        $.ajax({
+            url: "/api/Tag/GetTagCount",
+            type: "post",
+            data: { Tag: tag },
+            success: function (d) {
+                callback(d["TagCount"], callbackArg);
+            }
+        });
+    }
+    TagUtil.GetTagCount = GetTagCount;
+})(TagUtil || (TagUtil = {}));
 $(function () {
     // タグをEnterで追加する機能
     $(".edit-tag").keypress(function (e) {
@@ -21,7 +36,10 @@ $(function () {
             if (tagCounter >= 5) {
                 $(".edit-tag-chkvalid").html('<div class="edit-alert">　　タグは５個までしか登録できません。</div>');
             } else if (tag && !tags.contains(tag)) {
-                $(".edit-editted-box").append('<div class="edit-editted-tag-' + tagCounter + '">' + tag + '<span class="edit-tag-delete-' + tagCounter + '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>');
+                $(".edit-editted-box").append('<div class="edit-editted-tag-' + tagCounter + '">' + tag + '<span class="edit-editted-tag-counter-' + tagCounter + '">(?)</span><span class="edit-editted-tag-delete-' + tagCounter + '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>');
+                TagUtil.GetTagCount(tag, tagCounter, function (count, tagCount) {
+                    $(".edit-editted-tag-counter-" + tagCount).text("(" + count + ")");
+                });
                 tags.add(tag);
                 tagCounter++;
             }

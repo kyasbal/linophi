@@ -181,19 +181,18 @@
         });
 
         $('.alert-layer, .alert-contents button').on("click", function (e) {
+            if (alertMode) {
+                if (e.currentTarget.localName == "button")
+                    onOKFunc(e.currentTarget.className.substr(13));
+                alertMode = false;
+            }
+
             $('.alert-layer, .alert-box').css("opacity", 0);
             setTimeout(function () {
                 $('.alert-layer, .alert-box').css("visibility", "hidden");
             }, 200);
+            $('.alert-layer, .alert-box').remove();
 
-            if (alertMode)
-            {
-                onOKFunc(e.currentTarget.className.substr(13));
-                $('.alert-layer, .alert-box').remove();
-
-            }
-
-            alertMode = false;
         });
     }
 })(jQuery);

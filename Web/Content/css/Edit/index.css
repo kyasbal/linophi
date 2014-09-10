@@ -120,21 +120,6 @@
   padding: 0 10px;
   background-color: #f2dede !important;
 }
-<<<<<<< HEAD
-.preview-button {
-  text-align: center;
-  background-color: ActiveCaption;
-  color: white;
-  padding: 10px 40px;
-  margin: 10px 40px;
-}
-.preview-button:hover {
-  background-color: dodgerblue;
-  cursor: pointer;
-}
-.edit-button-container {
-  text-align: center;
-=======
 .article-container .red,
 .edit-preview .red,
 .article-container .x_red,
@@ -194,6 +179,25 @@
 .article-container .x_small,
 .edit-preview .x_small {
   font-size: small;
->>>>>>> ca99fda06622d3e52078208645bf9a1259727746
+}
+.preview-button {
+  text-align: center;
+  background-color: ActiveCaption;
+  color: white;
+  padding: 10px 40px;
+  margin: 10px 40px;
+}
+.preview-button:hover {
+  background-color: dodgerblue;
+  cursor: pointer;
+}
+.edit-button-container {
+  text-align: center;
+}
+.help-container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: aliceblue;
 }
 /*# sourceMappingURL=index.css.map */

@@ -204,6 +204,12 @@
     <Content Include="Content\css\Account\ExternalLoginConfirmation.min.css">
       <DependentUpon>ExternalLoginConfirmation.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Color.css">
+      <DependentUpon>Color.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Color.min.css">
+      <DependentUpon>Color.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Home\Top.css">
       <DependentUpon>Top.less</DependentUpon>
     </Content>
@@ -405,6 +411,10 @@
     <Content Include="Content\css\Account\config.css.map">
       <DependentUpon>config.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Color.less" />
+    <Content Include="Content\css\Color.css.map">
+      <DependentUpon>Color.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
@@ -450,6 +460,7 @@
     <Compile Include="Api\Response\Article\ExistenceResponse.cs" />
     <Compile Include="Api\Response\Article\VerifyTitleRequest.cs" />
     <Compile Include="Api\Response\Article\VerifyTitleResponse.cs" />
+    <Compile Include="Api\TagController.cs" />
     <Compile Include="App_Start\Auth\OAuthAuthenticationConfiguratorManager.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

@@ -23,13 +23,14 @@ $(function () {
 
     // コメントの表示に関する
     $('.article-container > *').each(function (i) {
-        var $ele = $('[class*="p-"]:nth-child(' + (i + 1) + ')');
+        var $ele = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
         var className = $ele.attr("class");
+        console.log(className);
         if (className) {
             var splitted = className.split(" ");
             var isMatched = false;
             for (var j = 0; j < splitted.length; j++) {
-                if (splitted[j].match(/x_[pd]-[a-zA-Z0-9]{10}$/)) {
+                if (splitted[j].match(/(x_)?[pd]-[a-zA-Z0-9]{10}$/)) {
                     isMatched = true;
                     className = splitted[j];
                     break;
@@ -39,15 +40,19 @@ $(function () {
                 $('.article-container .' + className).append('<div class="' + className + '-comments"></div>');
 
                 commentSourceParser.eachDoInComments(getParagraphId(className), function (name, time, id, comment) {
-                    console.log(name, time, id, comment);
                     $('.article-container .' + className + '-comments').append('<div class="response">' + '<p class="res-title"> <span></span> <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' + '<p class="res-text">' + comment + '</p>' + '</div>');
                 });
                 $('.article-container .' + className + '-comments .res-title > span').each(function (j) {
                     $('.' + className + '-comments .response:nth-child(' + (j + 1) + ') span').html((j + 1) + "");
                 });
 
-                console.log(logSelector('.article-container .' + className + '-comments'));
                 $('.article-container .' + className + '-comments').append('<button class="' + className + '">コメントする</button>');
+
+                labelSourceParser.eachByParagraph(getParagraphId(className), function (emotion, count) {
+                    $('.article-container .' + className + '-comments').css({
+                        "background": "red"
+                    });
+                });
             }
         }
     });
@@ -59,16 +64,18 @@ $(function () {
             var $form = $('.alert-box');
             if ($(".alert-box textarea").val()) {
                 var $button = $form.find('button');
-                console.info(location.pathname.substr(1), $form.find("input").val(), getParagraphId((Object)(e.currentTarget).className), $form.find("textarea").val());
+                var sendData = {
+                    "ArticleId": location.pathname.substr(1),
+                    "UserName": s($form.find("input").val()) || "no name",
+                    "ParagraphId": getParagraphId((Object)(e.currentTarget).className),
+                    "Comment": s($form.find("textarea").val()) || "no message"
+                };
+                var dd = new Date();
+                var y = dd.getFullYear(), m = dd.getMonth() + 1, d = dd.getDate();
                 $.ajax({
                     url: "/api/Comment/AttachComment",
                     type: "post",
-                    data: {
-                        "ArticleId": location.pathname.substr(1),
-                        "UserName": s($form.find("input").val()) || "no name",
-                        "ParagraphId": getParagraphId((Object)(e.currentTarget).className),
-                        "Comment": s($form.find("textarea").val()) || "no message"
-                    },
+                    data: sendData,
                     timeout: 10000,
                     beforeSend: function () {
                         $button.attr('disabled', 'true');
@@ -78,6 +85,9 @@ $(function () {
                     },
                     success: function () {
                         $form.find("input, textarea").val("");
+
+                        var commentNum = $('.article-container .x_' + sendData.ParagraphId + '-comments .response').length + 1;
+                        $('.article-container .x_' + sendData.ParagraphId + '-comments > button').before('<div class="response">' + '<p class="res-title"> <span>' + commentNum + '</span> <b>' + sendData.UserName + '</b> <small>[' + y + '/' + m + '/' + d + '] ID:更新して表示 </small> </p>' + '<p class="res-text">' + sendData.Comment + '</p>' + '</div>');
                     },
                     error: function () {
                         alert("送信失敗しました");

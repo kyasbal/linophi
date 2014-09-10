@@ -216,6 +216,7 @@ namespace Web.Controllers
             var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             UserAccount userAccount = await userManager.FindByNameAsync(User.Identity.Name);
             IGravatarLoader gLoader = BasicGravatarLoader.GetBasicGravatarLoader(userAccount);
+            int count = 0;
             return View("~/Views/Home/Index.cshtml",new ViewArticleViewModel()
             {
                 ArticleId = "Preview",
@@ -233,7 +234,7 @@ namespace Web.Controllers
                 UseThumbnail = false,
                 CommentInfo ="[]",
                 CommentCount =0,
-                AuthorsArticles = HomeController.getUserArticles(context,0, 0, User.Identity.Name, 3),
+                AuthorsArticles = HomeController.getUserArticles(context,0, 0, User.Identity.Name,out count, takeCount: 3),
                 IsPreview = true
             });
         }

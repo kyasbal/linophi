@@ -67,7 +67,7 @@ class LabelSourceParser implements ILabelSourceParser
     eachByParagraph(paragraphId: string, handler: ParagraphEachHandler): void
     {
         for (var i = 0; i < this.jsonSource.length; i++) {
-            if (this.jsonSource[i].ParagraphId == paragraphId) {
+            if (this.jsonSource[i].ParagraphId == paragraphId || "p-"+this.jsonSource[i].ParagraphId == paragraphId) {
                 var data = JSON.parse(this.jsonSource[i]["Data"]);
                 data = _.sortBy(data, d => (Object)(d).Value).reverse();
                 for (var j = 0; j < data.length; j++)
@@ -136,7 +136,6 @@ class LabelBoxController implements ILabelBoxController {
                 "display": "block",
                 "clear": "both"
             });
-            $(boxSelector).html("");
 
             for (var i: number = 0, len: number = sortArray.length; i < len; i++) {
                 $(boxSelector).append(sortArray[i]);
@@ -207,11 +206,13 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     var posY: number = dropboxPos + 10;
 
     $('.article-container > *').each((i) => {
-        var $ele: JQuery = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
+        var $ele: JQuery = $('.article-container > [class*="p-"]:nth-child(' + (i + 2) + ')');
+        if (!$ele[0]) return true;
+        var elementName: string = $ele[0].tagName;
+        if (elementName == "hr") return true;
+        
 
         var className = $ele.attr("class");
-
-        // alert(className);
 
         var eleHeight: number = $ele.outerHeight(true),
             elePos: number = $ele.offset().top;
@@ -225,7 +226,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             "width": "180px",
         });
 
-        labelSourceParser.eachByParagraph(className.substr(4), (emotion: string, count: number, itr: number) =>
+        labelSourceParser.eachByParagraph(getParagraphId(className), (emotion: string, count: number, itr: number) =>
         {
             $('.dropbox > .' + className).append(
                 '<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '-d.svg\');background-size:130px 43px;height:43px;width:130px;"><span>' +
@@ -313,19 +314,26 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             $('.dropbox').css("z-index", 0);
         }, 500);
 
-        $('.dropbox > .postit-pasting').css({
-            "z-index": -100,
-            "visibility": "hidden"
-        });
 
 
         if (pasteMode)
         {
             var pHeights: number = dropboxPos;
+            pasteMode = false;
 
-            $('.dropbox > [class*="p-"]').each((i) =>
+        $('.dropbox > .postit-pasting').css({
+            "z-index": -100,
+            "visibility": "hidden"
+        });
+
+            $('.dropbox > *').each((i) =>
             {
-                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')');
+                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')'); // 注意
+                if (!$target[0]) return true;
+                var elementName: string = $target[0].tagName;
+                if (elementName == "hr") return true;
+
+
                 var pHeight: number = $target.outerHeight(true);
 
                 var thisClass: string = $target.attr("class");
@@ -343,7 +351,6 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
                 // console.log($target.attr("class"), pHeight, pHeights, posY, src);
             });
 
-            pasteMode = false;
         }
     });
 

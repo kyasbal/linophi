@@ -1,0 +1,20 @@
+﻿//LESSにおける命名規則
+//色に関する変数
+//一般名-color-部分
+//部分に対して使う文字は以下のような文字を使用する
+//背景色→bg
+//境界線色→border
+//文字色→fore
+//一般名については、他の者が勘違いせず理解できるようなものを使用するが、以下のよう後に関しては以下で統一する。
+//ふせん→label
+//記事→article
+//他にあれば追加せよ
+//mixinに関するものに対しては、サフィックスとしてmixinをつける。
+@tag-color-border:#7ac2a6;
+@tag-color-bg:#fefbfa;
+@tag-color-fore:#000;
+.tag-style-mixin{
+    border:1px solid @tag-color-border;
+    background:@tag-color-bg;
+    color:@tag-color-fore!important;
+}

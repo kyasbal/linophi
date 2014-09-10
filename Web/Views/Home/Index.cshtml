@@ -11,8 +11,8 @@
     *@
     <script src="~/Scripts/Chart.js"></script>
     <script src="~/Scripts/jquery.alertwindow.js"></script>
-    <script src="~/Scripts/Home/CommentIndicator.js"></script>
     <script src="~/Scripts/Home/PostitPaster.js"></script>
+    <script src="~/Scripts/Home/CommentIndicator.js"></script>
     <script src="~/Scripts/Novel/Markups.js"></script>
     <script src="~/Scripts/Novel/novel-editor.js"></script>
     <script src="~/Scripts/Novel/ParagraphFactory.js"></script>
@@ -173,20 +173,30 @@
                 <div class="rellist">
                     <div>関連/反証記事</div>
                     <div class="separator2"><hr></div>
-                    <ul class="list">
-                        @foreach (var article in Model.RelatedArticles)
-                        {
-                            <li class="listitem">
-                                <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
-                                <div class="listtxt">
-                                    <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br />
-                                    <span class="listdesc">
-                                        @(string.Format("{0}ふせん|{1}view|{2} last updated", article.LabelCount, article.PageView, article.Article_UpDate))
-                                    </span>
-                                </div>
-                            </li>
-                        }
-                    </ul>
+                    @if (Model.RelatedArticles.Count != 0)
+                    {
+                        <ul class="list">
+                            @foreach (var article in Model.RelatedArticles)
+                            {
+                                <li class="listitem">
+                                    <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
+                                    <div class="listtxt">
+                                        <h3 class="listtitle"><a href="@("/" + article.ArticleId)">@article.Title</a></h3><br />
+                                        <span class="listdesc">
+                                            @(string.Format("{0}ふせん|{1}view|{2} last updated", article.LabelCount, article.PageView, article.Article_UpDate))
+                                        </span>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="found-article-zero">
+                            <p>このテーマに関する関連/反証記事はまだ書かれていません。</p>
+                            <a class ="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle="+Model.ArticleId)">最初の関連/反証記事を書く</a>
+                        </div>
+                    }
                 </div>
                 <br />
                 <div class="separator1"><hr></div>
@@ -194,20 +204,29 @@
             <div class="rellist">
                 <h2>この著者の他の記事</h2>
                 <div class="separator2"><hr></div>
-                <ul class="list">
-                    @foreach (var article in Model.AuthorsArticles)
-                    {
-                        <li class="listitem">
-                            <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
-                            <div class="listtxt">
-                                <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br />
-                                <span class="listdesc">
+                @if (Model.AuthorsArticles.Count != 0)
+                {
+                    <ul class="list">
+                        @foreach (var article in Model.AuthorsArticles)
+                        {
+                            <li class="listitem">
+                                <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
+                                <div class="listtxt">
+                                    <h3 class="listtitle"><a href="@("/" + article.ArticleId)">@article.Title</a></h3><br />
+                                    <span class="listdesc">
                                         @(string.Format("{0}ふせん|{1}view|{2} last updated", article.LabelCount, article.PageView, article.Article_UpDate))
-                                </span>
-                            </div>
-                        </li>
-                    }
-                </ul>
+                                    </span>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <div class="found-article-zero">
+                        <p>この著者は他に記事を書いていません。</p>
+                    </div>
+                }
                 <span class="more-read"><a href="@("/UserPage?articleId="+Model.ArticleId)">もっとみる</a></span>
             </div>
             <br />

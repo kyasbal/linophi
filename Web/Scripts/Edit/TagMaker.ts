@@ -13,6 +13,27 @@ function removeTag(counter,tag)
         $(".edit-tag-chkvalid").html("");
     }
 }
+
+module TagUtil
+{
+    export interface GetTagCountDelegate
+    {
+        (count:number,callbackArg:any):void;
+    }
+    export function GetTagCount(tag:string,callbackArg:any,callback:GetTagCountDelegate)
+    {
+        $.ajax({
+            url: "/api/Tag/GetTagCount",
+            type: "post",
+            data: { Tag: tag },
+            success: (d) =>
+            {
+                callback(d["TagCount"],callbackArg);
+            }
+           
+        });
+    }
+}
 $(() =>
 {
     // タグをEnterで追加する機能
@@ -29,9 +50,13 @@ $(() =>
             else if (tag && !tags.contains(tag)) {
                 $(".edit-editted-box").append(
                     '<div class="edit-editted-tag-' + tagCounter + '">' + tag +
-                    '<span class="edit-tag-delete-' + tagCounter +
+                    '<span class="edit-editted-tag-counter-'+tagCounter+'">(?)</span><span class="edit-editted-tag-delete-' + tagCounter +
                     '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>'
                     );
+                TagUtil.GetTagCount(tag, tagCounter, (count: number, tagCount: number) =>
+                {
+                    $(".edit-editted-tag-counter-" + tagCount).text("("+count+")");
+                });
                 tags.add(tag);
                 tagCounter++;
             }

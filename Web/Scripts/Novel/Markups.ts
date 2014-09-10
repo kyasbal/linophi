@@ -163,11 +163,11 @@ class YoutubeMarkup extends MarkupBase//ようつべ
 {
     getMarkupString(result: string, id: string): string
     {
-        if (result.match(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/))
+        if (result.match(/https?:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/))
         {
-            var movieId = result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/, "$1");
+            var movieId = result.replace(/https?:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/, "$1");
             frameManager.addIframe(id,"youtube-"+movieId , $("<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/"+movieId+"\" frameborder=\"0\" allowfullscreen></iframe>"));
-            result = result.replace(/https:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/, "<div class=\"d-"+id+" youtube-box iframe-box-" + id + " movie-id-"+movieId+"\" data-movie-id=\""+movieId+"\"></div>");
+            result = result.replace(/https?:\/\/www\.youtube\.com\/watch\?v=([\w\-]+)/, "<div class=\"d-"+id+" youtube-box iframe-box-" + id + " movie-id-"+movieId+"\" data-movie-id=\""+movieId+"\"></div>");
         }
         return result;
     }

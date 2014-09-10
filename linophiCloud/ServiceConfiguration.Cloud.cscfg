@@ -8,7 +8,7 @@
       <Setting name="Facebook-AppID" value="570160583106991" />
       <Setting name="Facebook-AppSecret" value="6706758255976c4aafb7ed059075c623" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=linophi;AccountKey=v2SuurJ84CZmi95smIAktNaHUSGvhAuBq8T78Rr46fR9xZC7xLFWDT3/HWoYTBby8qzVbAd1Ez8p1K7mcPNfvA==" />
-      <Setting name="SQL-ConnectionString" value="Server=tcp:lf1p9izurt.database.windows.net,1433;Database=linophi_debug;User ID=linophi.project@gmail.com@lf1p9izurt;Password=9B56D847-3DA4-4FCD-BAB9-9781681B4D42;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" />
+      <Setting name="SQL-ConnectionString" value="Server=tcp:lf1p9izurt.database.windows.net,1433;Database=linophi_release;User ID=linophi.project@gmail.com@lf1p9izurt;Password=9B56D847-3DA4-4FCD-BAB9-9781681B4D42;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" />
       <Setting name="DefinitionType" value="Cloud"/>
     </ConfigurationSettings>
   </Role>

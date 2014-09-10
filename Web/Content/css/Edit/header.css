@@ -1,4 +1,9 @@
-﻿html {
+﻿.tag-style-mixin {
+  border: 1px solid #7ac2a6;
+  background: #fefbfa;
+  color: #000000 !important;
+}
+html {
   width: 100%;
   height: 100%;
 }
@@ -188,7 +193,7 @@ body {
   background-color: #696969;
   color: #888;
   display: block;
-  margin: 30px auto 10% auto;
+  margin: 30px auto 30px auto;
   vertical-align: middle;
   font-weight: bold;
   text-align: center;
@@ -219,17 +224,20 @@ body {
   display: block !important;
 }
 div[class^="edit-editted-tag"] {
+  border: 1px solid #7ac2a6;
+  background: #fefbfa;
+  color: #000000 !important;
+  margin-left: 5px;
   float: left;
-  margin: 0.7em 0.5em 0;
-  padding: 5px;
-  border: 1px solid #ccc;
-  background: #eee;
-  border-radius: 4px;
+  line-height: 21px;
+  height: 22px;
+  padding: 1px 6px 0;
+  font-size: 11px;
 }
 div[class^="edit-editted-tag"]:first-child {
   margin-left: 0;
 }
-div[class^="edit-editted-tag"] > span {
+div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] {
   padding-left: 10px;
   color: #333;
   cursor: pointer;
