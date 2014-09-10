@@ -163,11 +163,34 @@
                         </div>
                     </div>
                 </div>
-
+                @*本文終了位置*@
+                <div class="write-related-article-container">
+                    <a class="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle="+Model.ArticleId)">関連/反論記事を書く</a>
+                </div>
                 <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
             <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
-
+                <div class="rellist">
+                    <div>関連/反証記事</div>
+                    <div class="separator2"><hr></div>
+                    <ul class="list">
+                        @foreach (var article in Model.RelatedArticles)
+                        {
+                            <li class="listitem">
+                                <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
+                                <div class="listtxt">
+                                    <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br />
+                                    <span class="listdesc">
+                                        @(string.Format("{0}ふせん|{1}view|{2} last updated", article.LabelCount, article.PageView, article.Article_UpDate))
+                                    </span>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <br />
+                <div class="separator1"><hr></div>
+                <br />
             <div class="rellist">
                 <h2>この著者の他の記事</h2>
                 <div class="separator2"><hr></div>
@@ -188,27 +211,6 @@
                 <span class="more-read"><a href="@("/UserPage?articleId="+Model.ArticleId)">もっとみる</a></span>
             </div>
             <br />
-            <div class="rellist">
-                <div>ふせんの傾向が似ている投稿</div>
-                <div class="separator2"><hr></div>
-                <ul class="list">
-                    <li class="listitem">
-                        <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
-                        <div class="listtxt">
-                            <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん<span class="separator">|</span>140157 view<span class="separator">|</span>2014/09/04 posted</span>
-                        </div>
-                    </li>
-                    <li class="listitem">
-                        <p class="listthumb"><a href=""><img width="60" height="60" src="~/Content/imgs/Home/red.jpg"></a></p>
-                        <div class="listtxt">
-                            <h3 class="listtitle"><a href="">xxxxxxxxxxxxxxxxx</a></h3><br /><span class="listdesc">200ふせん<span class="separator">|</span>101551 view<span class="separator">|</span>2014/09/04 posted</span>
-                        </div>
-                    </li>
-                </ul>
-                </div>
-                <br />
-                <div class="separator1"><hr></div>
-                <br />
             </article>
             <div class="dropbox">
                 <div class="postit-pasting"></div>

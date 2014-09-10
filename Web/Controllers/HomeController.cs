@@ -70,8 +70,51 @@ namespace Web.Controllers
                 CommentInfo=commentsAsJson,
                 CommentCount=commentCount,
                 AuthorsArticles=getUserArticles(context,0,0,article.AuthorID,3),
+                RelatedArticles=getRelatedArticles(context,0,0,article,3),
                 IsPreview=false
             };
+        }
+
+        private List<SearchResultArticle> getRelatedArticles(ApplicationDbContext context, int order, int skip, ArticleModel article, int count)
+        {
+            ArticleThumbnailManager thumbnailManager = new ArticleThumbnailManager(new BlobStorageConnection());
+            //直接の関係の記事を探す
+            IQueryable<ArticleModel> query = context.Articles.Where(f => f.RelatedArticleId.Equals(article.ArticleModelId));
+            query = ChangeOrder(order, query);
+            query = query.Skip(skip);
+            List<SearchResultArticle> articles = new List<SearchResultArticle>();
+            foreach (var source in query.Take(count))
+            {
+                articles.Add(new SearchResultArticle()
+                {
+                    ArticleId = source.ArticleModelId,
+                    LabelCount = source.LabelCount,
+                    PageView = source.PageView,
+                    Title = source.Title,
+                    Article_UpDate = source.UpdateTime.ToShortDateString(),
+                    ThumbnailTag = thumbnailManager.GenerateThumnailTag(source.ArticleModelId)
+                });
+            }
+            int remain = count - article.LabelCount;
+            if(article.LabelCount<count)
+            {//取り出すカウントに満たない場合は間接的関連記事でうめる
+                context.Articles.Where(f => f.ThemeId.Equals(article.ThemeId)&&!f.RelatedArticleId.Equals(article.ArticleModelId));
+                query = ChangeOrder(order, query);
+                query = query.Skip(skip);
+                foreach (var source in query.Take(remain))
+                {
+                    articles.Add(new SearchResultArticle()
+                    {
+                        ArticleId = source.ArticleModelId,
+                        LabelCount = source.LabelCount,
+                        PageView = source.PageView,
+                        Title = source.Title,
+                        Article_UpDate = source.UpdateTime.ToShortDateString(),
+                        ThumbnailTag = thumbnailManager.GenerateThumnailTag(source.ArticleModelId)
+                    });
+                }
+            }
+            return articles;
         }
 
         private async Task<IEnumerable<TagViewModel>> getArticleTagModels(ArticleModel article)

@@ -677,4 +677,19 @@ input[type="text"] {
 .alert-contents textarea {
   height: 250px;
 }
+.write-related-article {
+  background-color: #7ac2a6;
+  text-decoration: none!important;
+  color: white!important;
+  padding: 15px 60px;
+  margin: 30px;
+  line-height: 80px;
+  font-size: x-large;
+}
+.write-related-article:hover {
+  background-color: #5f9781;
+}
+.write-related-article-container {
+  text-align: center;
+}
 /*# sourceMappingURL=viewarticle.css.map */

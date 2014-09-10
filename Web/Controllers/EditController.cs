@@ -37,39 +37,46 @@ namespace Web.Controllers
         [HttpGet]
         [Authorize]
         // GET: Edit
-        public async Task<ActionResult> Index(string articleId,string EditMode)
+        public async Task<ActionResult> Index(string articleId="",string EditMode="new",string RelatedArticle="")
         {
-            if(articleId==null||string.IsNullOrWhiteSpace(articleId))
-            return View();
             //記事IDがある場合
             ArticleEditViewModel vm=new ArticleEditViewModel();
-            //対象の記事の取得
-            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
-            ArticleModel articleModel = await context.Articles.FindAsync(articleId);
-            if (!articleModel.AuthorID.Equals(User.Identity.Name))
+            ArticleModel articleModel = null;
+            if(!String.IsNullOrWhiteSpace(articleId))
             {
-                return View("Page403");
+            //対象の記事の取得
+                var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+                 articleModel= await context.Articles.FindAsync(articleId);
+                if (!articleModel.AuthorID.Equals(User.Identity.Name))
+                {
+                    return View("Page403");
+                }
+                await context.Entry(articleModel).Collection(a=>a.Tags).LoadAsync();
             }
-            await context.Entry(articleModel).Collection(a=>a.Tags).LoadAsync();
             if (EditMode.Equals("edit"))
             {
                 ArticleMarkupTableManager amtm = new ArticleMarkupTableManager(new BlobStorageConnection());
                 string markup = await amtm.GetArticleBodyAsync(articleId);
                 vm.MarkupString = markup;
             }
-            else
+            else if (EditMode.Equals("append"))
             {
-                vm.MarkupString = string.Format("---\n\n##{0}追記分\n\n",DateTime.Now);
+                vm.MarkupString = string.Format("---\n\n##{0}追記分\n\n", DateTime.Now);
             }
-            vm.Title = articleModel.Title;
-            string tagsStr = "";
-            foreach (var tag in articleModel.Tags)
+            //newのときはしなくていい処理・・・タグ/タイトル/記事IDの保存
+            if (!EditMode.Equals("new"))
             {
-                tagsStr += tag.TagName + " ";
+                vm.Title = articleModel.Title;
+                string tagsStr = "";
+                foreach (var tag in articleModel.Tags)
+                {
+                    tagsStr += tag.TagName + " ";
+                }
+                vm.Tags = tagsStr;
+                vm.ArticleId = articleId;
             }
-            vm.Tags = tagsStr;
-            vm.ArticleId = articleId;
             vm.EditMode = EditMode;
+            vm.RelatedArticle = RelatedArticle;
             return View(vm);
         }
 
@@ -92,6 +99,17 @@ namespace Web.Controllers
             {
                 if (!ArticleController.IsValidTitle(vm.Title, context).IsOK) return RedirectToAction("Page404", "Home");
                 var article = ArticleModel.GenerateArticle(vm.Title, User.Identity.Name);
+                if (String.IsNullOrWhiteSpace(vm.RelatedArticle))
+                {//関連記事がない場合、新しいテーマとして判断する
+                    article.ThemeId = IdGenerator.getId(10);
+                    article.RelatedArticleId = null;
+                }
+                else
+                {
+                    var relatedArticle =await context.Articles.FindAsync(vm.RelatedArticle);
+                    article.ThemeId = relatedArticle.ThemeId;
+                    article.RelatedArticleId = vm.RelatedArticle;
+                }
                 //タグの処理
                 var tags = System.Web.Helpers.Json.Decode<string[]>(vm.Tag);
                 if (tags.Length > 5) return RedirectToAction("Page404", "Home");

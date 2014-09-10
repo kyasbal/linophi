@@ -39,6 +39,10 @@ namespace Web.Models
         public DateTime UpdateTime { get; set; }
 
         public bool IsDraft { get; set; }
+
+        public string ThemeId { get; set; }
+
+        public string RelatedArticleId { get; set; }
     }
 
     public class ArticleTagModel
