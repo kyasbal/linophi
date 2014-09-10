@@ -192,11 +192,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\Account\config.css">
-      <DependentUpon>config.less</DependentUpon>
+    <Content Include="Content\css\Account\Config.css">
+      <DependentUpon>Config.less</DependentUpon>
     </Content>
-    <Content Include="Content\css\Account\config.min.css">
-      <DependentUpon>config.css</DependentUpon>
+    <Content Include="Content\css\Account\Config.min.css">
+      <DependentUpon>Config.css</DependentUpon>
     </Content>
     <Content Include="Content\css\Account\ExternalLoginConfirmation.css">
       <DependentUpon>ExternalLoginConfirmation.less</DependentUpon>
@@ -204,29 +204,53 @@
     <Content Include="Content\css\Account\ExternalLoginConfirmation.min.css">
       <DependentUpon>ExternalLoginConfirmation.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Account\LogIn.css">
+      <DependentUpon>LogIn.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Account\LogIn.min.css">
+      <DependentUpon>LogIn.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\Footer.css">
+      <DependentUpon>Footer.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\Footer.min.css">
+      <DependentUpon>Footer.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\Header.css">
+      <DependentUpon>Header.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\Header.min.css">
+      <DependentUpon>Header.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\Index.css">
+      <DependentUpon>Index.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\Index.min.css">
+      <DependentUpon>Index.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Edit\writearticle.css">
-      <DependentUpon>writeArticle.less</DependentUpon>
+      <DependentUpon>WriteArticle.less</DependentUpon>
     </Content>
     <Content Include="Content\css\Edit\writearticle.min.css">
       <DependentUpon>writearticle.css</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Edit\header.css">
-      <DependentUpon>header.less</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Edit\header.min.css">
-      <DependentUpon>header.css</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Edit\index.css">
-      <DependentUpon>index.less</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Edit\index.min.css">
-      <DependentUpon>index.css</DependentUpon>
     </Content>
     <Content Include="Content\css\Home\Top.css">
       <DependentUpon>Top.less</DependentUpon>
     </Content>
     <Content Include="Content\css\Home\Top.min.css">
       <DependentUpon>Top.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\ViewArticle.css">
+      <DependentUpon>ViewArticle.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\ViewArticle.min.css">
+      <DependentUpon>ViewArticle.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Shared.css">
+      <DependentUpon>Shared.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Shared.min.css">
+      <DependentUpon>Shared.css</DependentUpon>
     </Content>
     <Content Include="Content\imgs\Home\anger-d.svg" />
     <Content Include="Content\imgs\Home\anger-l.svg" />
@@ -246,12 +270,6 @@
     <Content Include="Content\imgs\logo.png" />
     <Content Include="Content\imgs\test-top.PNG" />
     <Content Include="Scripts\jquery.alertwindow.js" />
-    <Content Include="Content\css\Account\login.css">
-      <DependentUpon>login.less</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Account\login.min.css">
-      <DependentUpon>login.css</DependentUpon>
-    </Content>
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\Home\PrivacyPolicy_TermsOfService.css">
@@ -262,12 +280,6 @@
     </Content>
     <Content Include="Content\imgs\loupe.svg" />
     <Content Include="Scripts\Chart.js" />
-    <Content Include="Content\css\Edit\footer.css">
-      <DependentUpon>footer.less</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Edit\footer.min.css">
-      <DependentUpon>footer.css</DependentUpon>
-    </Content>
     <Content Include="Content\css\Home\MyPage.css">
       <DependentUpon>MyPage.less</DependentUpon>
     </Content>
@@ -286,34 +298,16 @@
     <Content Include="Content\css\Home\Search.min.css">
       <DependentUpon>Search.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Home\viewarticle.css">
-      <DependentUpon>viewarticle.less</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Home\viewarticle.min.css">
-      <DependentUpon>viewarticle.css</DependentUpon>
-    </Content>
     <Content Include="Content\css\Markup.css">
       <DependentUpon>Markup.less</DependentUpon>
     </Content>
     <Content Include="Content\css\Markup.min.css">
       <DependentUpon>Markup.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Novel\Markup.css">
-      <DependentUpon>Markup.less</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Novel\Markup.min.css">
-      <DependentUpon>Markup.css</DependentUpon>
-    </Content>
     <Content Include="Content\css\Novel\novel-editor.css" />
     <Content Include="Content\css\Novel\novel-editor.min.css" />
     <Content Include="Content\css\Novel\novel-viewer.css" />
     <Content Include="Content\css\Novel\novel-viewer.min.css" />
-    <Content Include="Content\css\shared.css">
-      <DependentUpon>shared.less</DependentUpon>
-    </Content>
-    <Content Include="Content\css\shared.min.css">
-      <DependentUpon>shared.css</DependentUpon>
-    </Content>
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\imgs\Home\anger.png" />
     <Content Include="Content\imgs\Home\bethink.png" />
@@ -342,42 +336,22 @@
     <Content Include="Content\css\Novel\novel-viewer.css.map" />
     <Content Include="Content\css\Novel\novel-viewer.less" />
     <Content Include="Content\imgs\Thumbs.db" />
-    <Content Include="Content\css\Home\viewarticle.less" />
-    <Content Include="Content\css\Home\viewarticle.css.map">
-      <DependentUpon>viewarticle.css</DependentUpon>
-    </Content>
     <Content Include="Scripts\Edit\TagMaker.js.map" />
-    <Content Include="Content\css\Edit\footer.less" />
-    <Content Include="Content\css\Edit\footer.css.map">
-      <DependentUpon>footer.css</DependentUpon>
-    </Content>
     <Content Include="Content\css\Home\Page404.less" />
     <Content Include="Content\css\Home\Page404.css.map">
       <DependentUpon>Page404.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Novel\Markup.less" />
-    <Content Include="Content\css\Novel\Markup.css.map">
+    <Content Include="Content\css\Markup.less" />
+    <Content Include="Content\css\Markup.css.map">
       <DependentUpon>Markup.css</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Account\login.less" />
-    <Content Include="Content\css\Account\login.css.map">
-      <DependentUpon>login.css</DependentUpon>
     </Content>
     <Content Include="Content\css\Home\Search.less" />
     <Content Include="Content\css\Home\Search.css.map">
       <DependentUpon>Search.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\shared.less" />
-    <Content Include="Content\css\shared.css.map">
-      <DependentUpon>shared.css</DependentUpon>
-    </Content>
     <Content Include="Content\css\Home\MyPage.less" />
     <Content Include="Content\css\Home\MyPage.css.map">
       <DependentUpon>MyPage.css</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Markup.less" />
-    <Content Include="Content\css\Markup.css.map">
-      <DependentUpon>Markup.css</DependentUpon>
     </Content>
     <Content Include="Content\css\Home\PrivacyPolicy_TermsOfService.less" />
     <Content Include="Content\css\Home\PrivacyPolicy_TermsOfService.css.map">
@@ -391,21 +365,37 @@
     <Content Include="Content\css\Account\ExternalLoginConfirmation.css.map">
       <DependentUpon>ExternalLoginConfirmation.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Account\config.less" />
-    <Content Include="Content\css\Account\config.css.map">
-      <DependentUpon>config.css</DependentUpon>
-    </Content>
-    <Content Include="Content\css\Edit\writeArticle.less" />
+    <Content Include="Content\css\Edit\WriteArticle.less" />
     <Content Include="Content\css\Edit\writearticle.css.map">
       <DependentUpon>writearticle.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\header.less" />
-    <Content Include="Content\css\Edit\header.css.map">
-      <DependentUpon>header.css</DependentUpon>
+    <Content Include="Content\css\Account\Config.less" />
+    <Content Include="Content\css\Account\Config.css.map">
+      <DependentUpon>Config.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\index.less" />
-    <Content Include="Content\css\Edit\index.css.map">
-      <DependentUpon>index.css</DependentUpon>
+    <Content Include="Content\css\Account\LogIn.less" />
+    <Content Include="Content\css\Account\LogIn.css.map">
+      <DependentUpon>LogIn.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\Footer.less" />
+    <Content Include="Content\css\Edit\Footer.css.map">
+      <DependentUpon>Footer.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\Header.less" />
+    <Content Include="Content\css\Edit\Header.css.map">
+      <DependentUpon>Header.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Edit\Index.less" />
+    <Content Include="Content\css\Edit\Index.css.map">
+      <DependentUpon>Index.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\ViewArticle.less" />
+    <Content Include="Content\css\Home\ViewArticle.css.map">
+      <DependentUpon>ViewArticle.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Shared.less" />
+    <Content Include="Content\css\Shared.css.map">
+      <DependentUpon>Shared.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
