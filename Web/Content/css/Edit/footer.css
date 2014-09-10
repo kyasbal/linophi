@@ -9,14 +9,6 @@
   height: 160px;
   width: auto;
 }
-.foot .linophi {
-  font-size: x-large;
-  margin-top: 20px;
-  margin-left: 50%;
-  color: black;
-  font-weight: bold;
-  box-shadow: -10px 0 0 0 #f0f8ff;
-}
 .foot .boxcontainer {
   padding-left: 30%;
   padding-top: 20px;
@@ -43,7 +35,7 @@
 }
 .foot .boxcontainer .box .ulist .list {
   font-weight: normal;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 .foot .boxcontainer:before,
 .foot .boxcontainer:after {
@@ -65,4 +57,4 @@
   margin-top: 20px;
   margin-left: 70%;
 }
-/*# sourceMappingURL=footer.css.map */
+/*# sourceMappingURL=Footer.css.map */

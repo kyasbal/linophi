@@ -1,0 +1,177 @@
+﻿html {
+    width: 100%;
+    height: 100%;
+}
+body {
+    background-image: url("/Content/imgs/bg-common.png");
+    width: 100%;
+    height: 100%;
+}
+
+.edit {
+
+    &-bg-overlay {
+        color: #888;
+        width: 100%;
+        clear:both;
+    }
+
+    &-tab-container {
+        height: 3em;
+        width: 100%;
+
+        ul {
+            position: absolute;
+            top: 50px;
+            right: 10%;
+            height: 3em;
+            width: 450px;
+            li {
+                cursor: pointer;
+                float: left;
+                width: 150px;
+                height: 2em;
+                padding-top: 1em;
+                text-align: center;
+                background-color: rgba(107, 107, 107, 0.4);
+                &:before {
+                    padding: 0 10px 0 0;
+                    content: "❚";
+                }
+                &.selected {
+                    background-color: transparent;
+                }
+            }
+
+        }
+    }
+
+    &-content-bg {
+        width: 100%;
+    }
+
+    &-title {
+        width:70%;
+        float:left;
+        margin: 50px 0 0 9%;
+        padding: 5px;
+        border: 1px solid #888;
+        border-radius: 5px;
+        ::-webkit-input-placeholder, ::-moz-placeholder, :-moz-placeholder, :-ms-input-placeholder { color: #888 }
+        &-container { width: 100%; }
+        &-chkvalid { 
+            color: #f66; 
+            padding-top: 54px;
+        }
+    }
+
+    &-tag {
+        float: left;
+        height: 5%;
+        width: 50%;
+        margin: 15px 0 0;
+        padding: 5px;
+        border: 1px solid #888;
+        border-radius: 5px;
+        ::-webkit-input-placeholder, ::-moz-placeholder, :-moz-placeholder, :-ms-input-placeholder { color: #888 }
+
+        &-container {
+            width: 80%;
+            overflow: hidden;
+            margin: 0 9%;
+        }
+
+        &-chkvalid {
+            color: #f66;
+            padding-top: 20px;
+        }
+    }
+
+    &-editted-box {
+        width: 82%;
+        margin: 0 9%;
+        padding-top: 3px;
+        height: 60px;
+    }
+
+    &-preview {
+        height:500px;
+        width:80%;
+        resize: vertical;
+        margin:0 0 0 auto;
+        padding: 5px;
+        float:right;
+        background-color: #fff;
+        word-break: break-all;
+        ::-webkit-input-placeholder, ::-moz-placeholder, :-moz-placeholder, :-ms-input-placeholder { color: #888 }
+        
+        &-container {
+            overflow:hidden;
+            display:inline-block;
+            *display: inline;
+            *zoom: 1;
+            width: 50%;
+        }
+    }
+
+    &-text {
+        height:500px;
+        width:80%;
+        max-width:80%;
+        margin: 0 0 0 auto;
+        padding: 5px;
+        float:left;
+        border: 1px solid #888;
+        border-radius: 5px;
+        overflow: auto;
+        ::-webkit-input-placeholder, ::-moz-placeholder, :-moz-placeholder, :-ms-input-placeholder { color: #888 }
+        &-container {
+            margin: 0 0 0 0;
+            overflow:hidden;
+            display:inline-block;
+            *display: inline;
+            *zoom: 1;
+            width: 49%;
+        }
+    }
+    &-submit-button {
+        width: 150px;
+        font-size: 15px;
+        padding: 10px 30px;
+        background-color: #696969;
+        color: #888;
+        display:block;
+        margin: 30px auto 10% auto;
+        vertical-align:middle;
+        font-weight: bold;
+        text-align: center;
+        border: none;
+        &-enabled { background: #6ca3fd; }
+
+        &:hover {
+            background-color: #696969;
+            color: #888;
+            cursor:pointer;
+        }
+    }
+
+}
+
+div[class^="edit-editted-tag"] {
+    float: left;
+    margin: 0.7em 0.5em 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    background: #eee;
+    border-radius: 4px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    > span {
+        padding-left: 10px;
+        color: #333;
+        cursor: pointer;
+    }
+}

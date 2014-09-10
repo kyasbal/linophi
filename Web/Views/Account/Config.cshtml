@@ -6,14 +6,13 @@
 
 @section CSS
 {
-    <link href="~/Content/css/Account/config.css" rel="stylesheet" />
+    <link href="~/Content/css/Account/Config.css" rel="stylesheet" />
 }
 
 @using (Html.BeginForm("Config", "Account", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div class="contents">
-        
         <span class="change-username">
             ユーザー名の変更
             <span class="textbox">
@@ -27,7 +26,6 @@
             @Html.CheckBoxFor(m => m.MailMagazine)
             </span>
         </span>
-
         <div>
             <input type="submit" class="button" />
         </div>

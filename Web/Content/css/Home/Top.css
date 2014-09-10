@@ -9,7 +9,6 @@
   padding-top: 30px;
 }
 #top-graph {
-  /*display:inline-block;*/
   float: left;
   margin-left: 10%;
   width: 450px;
@@ -21,7 +20,6 @@
 }
 .container {
   width: 100%;
-  /*background-color:rgba(0,0,0,0.7);*/
   padding: 97px 0 97px 0;
 }
 .container-inner {
@@ -62,7 +60,6 @@ body {
   vertical-align: middle;
 }
 .view-little {
-  /*display:inline-block;*/
   float: right;
   margin-right: 10%;
   width: 400px;

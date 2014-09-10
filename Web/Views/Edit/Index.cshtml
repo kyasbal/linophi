@@ -9,12 +9,11 @@
 
 @section CSS{
     <meta http-equiv="X-FRAME-OPTIONS" content="SAMEORIGIN" />
-    <link href="~/Content/css/Edit/header.css" rel="stylesheet" />
-    <link href="~/Content/css/Edit/index.css" rel="stylesheet" />
+    <link href="~/Content/css/Edit/WriteArticle.css" rel="stylesheet" />
+    <link href="~/Content/css/Edit/Index.css" rel="stylesheet" />
     <link href="~/Content/css/Novel/novel-editor.css" rel="stylesheet" />
     <link href="~/Content/css/Novel/Markup.css" rel="stylesheet" />
-    <link href="~/Content/css/Markup.css" rel="stylesheet" />
-    <link href="~/Content/css/Home/viewarticle.css" rel="stylesheet" />
+    <link href="~/Content/css/MarkUp.css" rel="stylesheet" />
 }
 
 @section JS
@@ -32,19 +31,6 @@
     <script src="~/Scripts/Edit/TagMaker.js"></script>
     <script src="~/Scripts/Novel/sizing.js"></script>
 }
-
-@*
-    .edit-bg-overlay
-      %header
-      .edit-title-container
-      .edit-title-chkvalid
-      .edit-tag-container
-      .edit-preview-container
-        .edit-preview.preview-body
-      .edit-text-container
-      %footer
-*@
-
 
 <div class="edit-bg-overlay">
         @using (Html.BeginForm("Index", "Edit", FormMethod.Post, new {@class = "edit-form editpage-main", enctype = "multipart/form-data"}))
