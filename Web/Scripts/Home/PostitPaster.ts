@@ -242,11 +242,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     $('.postit-list [class]').click((event) =>
     {
         pasteMode = true;
-        console.log($('input[type="hidden"]').val());
-        if (!$('input[type="hidden"]').val())
-        {
-            return false;
-        }
+
         $('.fade-layer').css({
             "visibility": "visible",
             "opacity": 1
@@ -377,7 +373,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     $('.postit-list [class]').hover((event) =>
     {
         var thisClass: string = ((Object)(event.currentTarget)).className;
-        $('.postit-list div.' + thisClass).css("visibility", "visible");
+        $('.postit-list div.' + thisClass).css("visibility", "visible").animate({opacity:1},500);
     }, (event) =>
     {
         var thisClass: string = ((Object)(event.currentTarget)).className;
