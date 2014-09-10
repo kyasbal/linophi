@@ -39,7 +39,8 @@ class AverageColor
             "fun": [255, 179, 58],
             "bethink": [233, 236, 0],
             "good": [161, 231, 62],
-            "noidea": [107, 83, 255]
+            "sad": [129, 200, 255],
+            "noidea": [107, 83, 255],
         };
     }
 
@@ -65,6 +66,22 @@ class AverageColor
             avr[i] = ( sum[i] / (counter||1) )|0;
         }
         return avr;
+    }
+
+    brightness(diff, color: number[]): number[]
+    {
+        for (var i = 0; i < 3; i++)
+        {
+            color[i] += diff;
+            if (color[i] <= 0)
+            {
+                color[i] = 0;
+            } else if (255 <= color[i])
+            {
+                color[i] = 255;
+            }
+        }
+        return color;
     }
 }
 
@@ -131,7 +148,9 @@ $(() =>
 
                 labelSourceParser.eachByParagraph(getParagraphId(className), (emotion, count) =>
                 {
-                    var thisColor = "rgb(" + averageColor.newtralColor(getParagraphId(className)).join(",") + ")";
+                    var thisColor = "rgb(" +
+                        averageColor.brightness(-100, averageColor.newtralColor(getParagraphId(className)))
+                        .join(",") + ")";
                     console.log(thisColor);
                     $('.article-container .' + className + '-comments').css({
                         "background": thisColor
