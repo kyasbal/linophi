@@ -41,8 +41,9 @@ $(() =>
     // コメントの表示に関する
     $('.article-container > *').each((i) =>
     {
-        var $ele: JQuery = $('[class*="p-"]:nth-child(' + (i + 1) + ')');
+        var $ele: JQuery = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
         var className: string = $ele.attr("class");
+        console.log(className);
         if (className)
         {
             var splitted = className.split(" ");
@@ -80,6 +81,13 @@ $(() =>
                 $('.article-container .' + className + '-comments').append(
                     '<button class="' + className + '">コメントする</button>'
                 );
+
+                labelSourceParser.eachByParagraph(getParagraphId(className), (emotion, count) =>
+                {
+                    $('.article-container .' + className + '-comments').css({
+                        "background": "red"
+                    });
+                });
             }
         }
 

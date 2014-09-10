@@ -23,8 +23,9 @@ $(function () {
 
     // コメントの表示に関する
     $('.article-container > *').each(function (i) {
-        var $ele = $('[class*="p-"]:nth-child(' + (i + 1) + ')');
+        var $ele = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
         var className = $ele.attr("class");
+        console.log(className);
         if (className) {
             var splitted = className.split(" ");
             var isMatched = false;
@@ -46,6 +47,12 @@ $(function () {
                 });
 
                 $('.article-container .' + className + '-comments').append('<button class="' + className + '">コメントする</button>');
+
+                labelSourceParser.eachByParagraph(getParagraphId(className), function (emotion, count) {
+                    $('.article-container .' + className + '-comments').css({
+                        "background": "red"
+                    });
+                });
             }
         }
     });

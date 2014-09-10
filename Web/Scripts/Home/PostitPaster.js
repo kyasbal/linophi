@@ -34,7 +34,7 @@ var LabelSourceParser = (function () {
 
     LabelSourceParser.prototype.eachByParagraph = function (paragraphId, handler) {
         for (var i = 0; i < this.jsonSource.length; i++) {
-            if (this.jsonSource[i].ParagraphId == paragraphId) {
+            if (this.jsonSource[i].ParagraphId == paragraphId || "p-" + this.jsonSource[i].ParagraphId == paragraphId) {
                 var data = JSON.parse(this.jsonSource[i]["Data"]);
                 data = _.sortBy(data, function (d) {
                     return (Object)(d).Value;
@@ -180,7 +180,7 @@ $(window).load(function () {
             "width": "180px"
         });
 
-        labelSourceParser.eachByParagraph(className.substr(4), function (emotion, count, itr) {
+        labelSourceParser.eachByParagraph(getParagraphId(className), function (emotion, count, itr) {
             $('.dropbox > .' + className).append('<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '-d.svg\');background-size:130px 43px;height:43px;width:130px;"><span>' + count + '</span></div>');
         });
 

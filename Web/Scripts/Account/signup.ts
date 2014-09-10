@@ -1,7 +1,7 @@
 ﻿var name: string;
 var len: number;
-var isTooShortNickName,
-    isTooLongNickName,
+var isTooShortNickName: boolean,
+    isTooLongNickName: boolean,
     isInvalidEmailAddr: boolean;
 var isConfirmedFormValue: boolean = false;
 $(function()
@@ -13,6 +13,7 @@ $(function()
         if (len <= 3)
         {
             $(".warn2").css("display", "inline");
+            isTooShortNickName = false;
         }
         else
         {
@@ -22,6 +23,7 @@ $(function()
         if (len > 15)
         {
             $(".warn1").css("display", "inline");
+            isTooLongNickName = false;
         }
         else
         {
@@ -53,7 +55,17 @@ class AccountConfirmation
             $('#regi').attr('disabled', 'disabled').removeClass("submit-enabled");
             isConfirmedFormValue = false;
         }
-    }    
+    }
+
+    chkValid()
+    {
+        console.log(isTooShortNickName, isTooLongNickName, isInvalidEmailAddr, $('#AcceptTerm').prop('checked'));
+        if (isTooShortNickName && isTooLongNickName && isInvalidEmailAddr && $('#AcceptTerm').prop('checked')) {
+            accountConfirmationPage.changeSubmitStyle(true);
+        } else {
+            accountConfirmationPage.changeSubmitStyle(false);
+        }
+    }
 }
 
 var accountConfirmationPage: AccountConfirmation;
@@ -71,12 +83,13 @@ $(() =>
         else
         {
             $(".warn3").css("display", "inline");
+            isInvalidEmailAddr = false;
         }
     });
     //ページの高さ調節処理
     accountConfirmationPage = new AccountConfirmation();
     accountConfirmationPage.adjustMargin();
-    $(window).resize(() => { accountConfirmationPage.adjustMargin() });
+    $(window).resize(() => { accountConfirmationPage.adjustMargin(); });
 });
 
 
@@ -88,18 +101,11 @@ $(()=>
     });
     accountConfirmationPage.changeSubmitStyle(false);
 
-    $('#AcceptTerm').click(function()
+    $('#NickName, #Email, #AcceptMail, #AcceptTerm').focusout(() =>
     {
-        if ($(this).prop('checked') == false)
-        {
-            accountConfirmationPage.changeSubmitStyle(false);
-        }
-        else
-        {
-            if (isTooShortNickName == isTooLongNickName == isInvalidEmailAddr == true)
-            {
-                accountConfirmationPage.changeSubmitStyle(true);
-            }
-        }
+        accountConfirmationPage.chkValid();
+    });
+    $('#NickName, #Email, #AcceptMail, #AcceptTerm').focus(() => {
+        accountConfirmationPage.chkValid();
     });
 });
