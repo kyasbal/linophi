@@ -63,7 +63,6 @@ $(() =>
 
                 commentSourceParser.eachDoInComments(getParagraphId(className), (name, time, id, comment) =>
                 {
-                    console.log(name, time, id, comment);
                     $('.article-container .' + className + '-comments').append(
                         '<div class="response">' +
                         '<p class="res-title"> <span></span> <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' +
@@ -78,7 +77,6 @@ $(() =>
                     $('.' + className + '-comments .response:nth-child(' + (j + 1) + ') span').html((j + 1) + "");
                 });
 
-                console.log(logSelector('.article-container .' + className + '-comments'));
                 $('.article-container .' + className + '-comments').append(
                     '<button class="' + className + '">コメントする</button>'
                 );
