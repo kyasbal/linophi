@@ -67,7 +67,7 @@ class LabelSourceParser implements ILabelSourceParser
     eachByParagraph(paragraphId: string, handler: ParagraphEachHandler): void
     {
         for (var i = 0; i < this.jsonSource.length; i++) {
-            if (this.jsonSource[i].ParagraphId == paragraphId) {
+            if (this.jsonSource[i].ParagraphId == paragraphId || "p-"+this.jsonSource[i].ParagraphId == paragraphId) {
                 var data = JSON.parse(this.jsonSource[i]["Data"]);
                 data = _.sortBy(data, d => (Object)(d).Value).reverse();
                 for (var j = 0; j < data.length; j++)
@@ -226,7 +226,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             "width": "180px",
         });
 
-        labelSourceParser.eachByParagraph(className.substr(4), (emotion: string, count: number, itr: number) =>
+        labelSourceParser.eachByParagraph(getParagraphId(className), (emotion: string, count: number, itr: number) =>
         {
             $('.dropbox > .' + className).append(
                 '<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '-d.svg\');background-size:130px 43px;height:43px;width:130px;"><span>' +

@@ -8,12 +8,14 @@ $(function () {
         len = name.length;
         if (len <= 3) {
             $(".warn2").css("display", "inline");
+            isTooShortNickName = false;
         } else {
             $(".warn2").css("display", "none");
             isTooShortNickName = true;
         }
         if (len > 15) {
             $(".warn1").css("display", "inline");
+            isTooLongNickName = false;
         } else {
             $(".warn1").css("display", "none");
             isTooLongNickName = true;
@@ -41,6 +43,15 @@ var AccountConfirmation = (function () {
             isConfirmedFormValue = false;
         }
     };
+
+    AccountConfirmation.prototype.chkValid = function () {
+        console.log(isTooShortNickName, isTooLongNickName, isInvalidEmailAddr, $('#AcceptTerm').prop('checked'));
+        if (isTooShortNickName && isTooLongNickName && isInvalidEmailAddr && $('#AcceptTerm').prop('checked')) {
+            accountConfirmationPage.changeSubmitStyle(true);
+        } else {
+            accountConfirmationPage.changeSubmitStyle(false);
+        }
+    };
     return AccountConfirmation;
 })();
 
@@ -54,6 +65,7 @@ $(function () {
             isInvalidEmailAddr = true;
         } else {
             $(".warn3").css("display", "inline");
+            isInvalidEmailAddr = false;
         }
     });
 
@@ -72,14 +84,11 @@ $(function () {
     });
     accountConfirmationPage.changeSubmitStyle(false);
 
-    $('#AcceptTerm').click(function () {
-        if ($(this).prop('checked') == false) {
-            accountConfirmationPage.changeSubmitStyle(false);
-        } else {
-            if (isTooShortNickName == isTooLongNickName == isInvalidEmailAddr == true) {
-                accountConfirmationPage.changeSubmitStyle(true);
-            }
-        }
+    $('#NickName, #Email, #AcceptMail, #AcceptTerm').focusout(function () {
+        accountConfirmationPage.chkValid();
+    });
+    $('#NickName, #Email, #AcceptMail, #AcceptTerm').focus(function () {
+        accountConfirmationPage.chkValid();
     });
 });
 //# sourceMappingURL=signup.js.map
