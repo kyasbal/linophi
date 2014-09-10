@@ -192,6 +192,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\Account\config.css">
+      <DependentUpon>config.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Account\config.min.css">
+      <DependentUpon>config.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Account\ExternalLoginConfirmation.css">
       <DependentUpon>ExternalLoginConfirmation.less</DependentUpon>
     </Content>
@@ -394,6 +400,10 @@
     <Content Include="Content\css\Account\ExternalLoginConfirmation.less" />
     <Content Include="Content\css\Account\ExternalLoginConfirmation.css.map">
       <DependentUpon>ExternalLoginConfirmation.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Account\config.less" />
+    <Content Include="Content\css\Account\config.css.map">
+      <DependentUpon>config.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />

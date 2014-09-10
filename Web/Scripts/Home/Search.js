@@ -1,6 +1,6 @@
 ﻿var searchPageOrderOptionBox;
 $(function () {
-    var changepage = 20;
+    var changepage = 5;
     searchPageOrderOptionBox = new SearchOrderOptionBox($(".search-menu"), "Search", "searchText");
     searchPageOrderOptionBox.initBoxSelected();
     $(".page-before").click(function () {
