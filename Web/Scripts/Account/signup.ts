@@ -106,6 +106,6 @@ $(()=>
         accountConfirmationPage.chkValid();
     });
     $('#NickName, #Email, #AcceptMail, #AcceptTerm').focus(() => {
-        setTimeout("accountConfirmationPage.chkValid()", 100);
+        setTimeout("accountConfirmationPage.chkValid()", 500);
     });
 });

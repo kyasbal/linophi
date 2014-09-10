@@ -19,7 +19,7 @@ var LabelSourceParser = (function () {
     }
     LabelSourceParser.prototype.getLabelCount = function (paragraphId, emotion) {
         for (var i = 0; i < this.jsonSource.length; i++) {
-            if (this.jsonSource[i]["ParagraphId"] == paragraphId) {
+            if (this.jsonSource[i]["ParagraphId"] == paragraphId || "p-" + this.jsonSource[i]["ParagraphId"] == paragraphId) {
                 var data = JSON.parse(this.jsonSource[i]["Data"]);
                 for (var j = 0; j < data.length; j++) {
                     if (data[j].Key == emotion) {
@@ -73,9 +73,7 @@ var LabelSourceParser = (function () {
 })();
 
 var labelSourceParser;
-$(function () {
-    labelSourceParser = new LabelSourceParser();
-});
+labelSourceParser = new LabelSourceParser();
 
 var LabelBoxController = (function () {
     function LabelBoxController() {

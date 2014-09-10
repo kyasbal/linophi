@@ -12,6 +12,41 @@
     return CommentSourceParser;
 })();
 
+var AverageColor = (function () {
+    function AverageColor() {
+        this.colorValue = {
+            "surprised": [246, 100, 151],
+            "anger": [198, 66, 63],
+            "fun": [255, 179, 58],
+            "bethink": [233, 236, 0],
+            "good": [161, 231, 62],
+            "noidea": [107, 83, 255]
+        };
+    }
+    AverageColor.prototype.newtralColor = function (paragraphId) {
+        var sum = [0, 0, 0], counter = 0;
+
+        for (var emotion in this.colorValue) {
+            var emotionCount = labelSourceParser.getLabelCount(paragraphId, emotion), emotionValue = this.colorValue[emotion];
+            for (var i = 0; i < 3; i++) {
+                sum[i] += emotionCount * emotionValue[i];
+            }
+            counter += emotionCount;
+        }
+
+        var avr = [0, 0, 0];
+        for (var i = 0; i < 3; i++) {
+            avr[i] = (sum[i] / (counter || 1)) | 0;
+        }
+        return avr;
+    };
+    return AverageColor;
+})();
+
+var averageColor = new AverageColor;
+
+console.log(averageColor.newtralColor(getParagraphId("x_p-LSKQxbyY8r")));
+
 function logSelector(selector) {
     var $elemSelector = $(selector);
     console.log("selector:" + selector + "\nlength" + $elemSelector.length);
@@ -25,7 +60,8 @@ $(function () {
     $('.article-container > *').each(function (i) {
         var $ele = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
         var className = $ele.attr("class");
-        console.log(className);
+
+        // console.log(className);
         if (className) {
             var splitted = className.split(" ");
             var isMatched = false;
@@ -46,11 +82,16 @@ $(function () {
                     $('.' + className + '-comments .response:nth-child(' + (j + 1) + ') span').html((j + 1) + "");
                 });
 
-                $('.article-container .' + className + '-comments').append('<button class="' + className + '">コメントする</button>');
+                $('.article-container .' + className + '-comments').append('<button class="' + className + '">コメントする</button>' + '<div class="triangle"></div>');
 
                 labelSourceParser.eachByParagraph(getParagraphId(className), function (emotion, count) {
+                    var thisColor = "rgb(" + averageColor.newtralColor(getParagraphId(className)).join(",") + ")";
+                    console.log(thisColor);
                     $('.article-container .' + className + '-comments').css({
-                        "background": "red"
+                        "background": thisColor
+                    });
+                    $('.article-container .' + className + '-comments .triangle').css({
+                        "border-top-color": thisColor
                     });
                 });
             }

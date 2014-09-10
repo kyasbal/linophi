@@ -27,6 +27,52 @@ class CommentSourceParser implements ICommentSourceParser
     }
 }
 
+class AverageColor
+{
+    private colorValue;
+    constructor()
+    {
+        this.colorValue =
+        {
+            "surprised": [246, 100, 151],
+            "anger": [198, 66, 63],
+            "fun": [255, 179, 58],
+            "bethink": [233, 236, 0],
+            "good": [161, 231, 62],
+            "noidea": [107, 83, 255]
+        };
+    }
+
+    newtralColor(paragraphId: string): number[]
+    {
+        var sum: number[] = [0, 0, 0],
+            counter: number = 0;
+
+        for (var emotion in this.colorValue)
+        {
+            var emotionCount = labelSourceParser.getLabelCount(paragraphId, emotion),
+                emotionValue = this.colorValue[emotion];
+            for (var i = 0; i < 3; i++)
+            {
+                sum[i] += emotionCount * emotionValue[i];
+            }
+            counter += emotionCount;
+        }
+
+        var avr: number[] = [0,0,0];
+        for (var i = 0; i < 3; i++)
+        {
+            avr[i] = ( sum[i] / (counter||1) )|0;
+        }
+        return avr;
+    }
+}
+
+var averageColor: AverageColor = new AverageColor;
+
+console.log(averageColor.newtralColor(getParagraphId("x_p-LSKQxbyY8r")));
+
+
 function logSelector(selector: string):JQuery
 {
     var $elemSelector = $(selector);
@@ -43,7 +89,7 @@ $(() =>
     {
         var $ele: JQuery = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
         var className: string = $ele.attr("class");
-        console.log(className);
+        // console.log(className);
         if (className)
         {
             var splitted = className.split(" ");
@@ -79,13 +125,19 @@ $(() =>
                 });
 
                 $('.article-container .' + className + '-comments').append(
-                    '<button class="' + className + '">コメントする</button>'
+                    '<button class="' + className + '">コメントする</button>' +
+                    '<div class="triangle"></div>'
                 );
 
                 labelSourceParser.eachByParagraph(getParagraphId(className), (emotion, count) =>
                 {
+                    var thisColor = "rgb(" + averageColor.newtralColor(getParagraphId(className)).join(",") + ")";
+                    console.log(thisColor);
                     $('.article-container .' + className + '-comments').css({
-                        "background": "red"
+                        "background": thisColor
+                    });
+                    $('.article-container .' + className + '-comments .triangle').css({
+                        "border-top-color": thisColor
                     });
                 });
             }

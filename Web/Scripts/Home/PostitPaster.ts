@@ -48,7 +48,7 @@ class LabelSourceParser implements ILabelSourceParser
     {
         for (var i = 0; i < this.jsonSource.length; i++)
         {
-            if (this.jsonSource[i]["ParagraphId"]==paragraphId)
+            if (this.jsonSource[i]["ParagraphId"] == paragraphId || "p-"+this.jsonSource[i]["ParagraphId"] == paragraphId)
             {
                 var data = JSON.parse(this.jsonSource[i]["Data"]);
                 for (var j = 0; j < data.length; j++)
@@ -108,9 +108,8 @@ class LabelSourceParser implements ILabelSourceParser
 }
 
 var labelSourceParser: ILabelSourceParser;
-$(() => {
     labelSourceParser = new LabelSourceParser();
-});
+
 
 interface ILabelBoxController
 {
