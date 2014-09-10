@@ -52,6 +52,7 @@ namespace Web.Controllers
             IGravatarLoader gLoader = new BasicGravatarLoader(author.Email);
             int commentCount = 0;
             string commentsAsJson = actm.GetCommentsAsJson(articleId, out commentCount);
+            int count = 0;
             return new ViewArticleViewModel()
             {
                 ArticleId = articleId,
@@ -69,7 +70,7 @@ namespace Web.Controllers
                 UseThumbnail= thumbnail.CheckThumbnailExist(articleId),
                 CommentInfo=commentsAsJson,
                 CommentCount=commentCount,
-                AuthorsArticles=getUserArticles(context,0,0,article.AuthorID,3),
+                AuthorsArticles=getUserArticles(context,0,0,article.AuthorID,out count,takeCount: 3),
                 IsPreview=false
             };
         }
@@ -231,8 +232,9 @@ namespace Web.Controllers
         public  ActionResult MyPage(int order=0,int skip=0)
         {
             var context = Request.GetOwinContext().Get<ApplicationDbContext>();
-            var articles = getUserArticles(context,order, skip, User.Identity.Name, 10);
-            return View(new MyPageViewModel() { Skip=skip,Order = order,articles = articles.ToArray(),IsMyPage = true});
+            int count = 0;
+            var articles = getUserArticles(context,order, skip, User.Identity.Name,out count, takeCount: 10);
+            return View(new MyPageViewModel() { Count = count,Skip=skip,Order = order,articles = articles.ToArray(),IsMyPage = true});
         }
 
         [HttpPost]
@@ -262,15 +264,18 @@ namespace Web.Controllers
             ArticleModel articleModel = await context.Articles.FindAsync(articleId);
             string userId = articleModel.AuthorID;
             if (User.Identity.Name.Equals(userId)) return Redirect("MyPage");
-            var articles = getUserArticles(context,order, skip, userId);
+            int count = 0;
+            var articles = getUserArticles(context,order, skip, userId,out count);
             var user =await Request.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByNameAsync(articleModel.AuthorID);
-            return View("MyPage",new UserPageViewModel() { Skip=skip,Order = order,UserNickName =user.NickName ,articles = articles.ToArray(),IsMyPage=false });
+            return View("MyPage",new UserPageViewModel() { Count = count,Skip=skip,Order = order,UserNickName =user.NickName ,articles = articles.ToArray(),IsMyPage=false });
         }
 
-        public static List<SearchResultArticle> getUserArticles(ApplicationDbContext context,int order, int skip, string userId,int takeCount=10)
+        //TODO パフォーマンス改善
+        public static List<SearchResultArticle> getUserArticles(ApplicationDbContext context, int order, int skip, string userId, out int count, int takeCount = 10)
         {
             ArticleThumbnailManager thumbnailManager=new ArticleThumbnailManager(new BlobStorageConnection());
             IQueryable<ArticleModel> query = context.Articles.Where(f => f.AuthorID.Equals(userId));
+            count = query.Count();
             query = ChangeOrder(order, query);
             query = query.Skip(skip);
             List<SearchResultArticle> articles = new List<SearchResultArticle>();

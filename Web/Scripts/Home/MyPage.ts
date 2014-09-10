@@ -1,6 +1,5 @@
 ﻿var MyPageSearchOptionBoxManager: SearchOrderOptionBox;
-
-$(function ()
+$(()=>
 {
     $(".listitem").hover(function()
     {
@@ -36,3 +35,47 @@ function appendArticle(articleId:string)
 {
     $("#append-article-" + articleId).submit();
 }
+var searchPageOrderOptionBox: SearchOrderOptionBox;
+$(() =>
+{
+    var changepage: number = 10;//前後に何ページ移動するか
+
+    $(".page-before").click(() =>
+    {
+        var order: number = $("#order").val();
+        var skip: number = parseInt($("#skip").val());
+        if (skip - changepage >= 0)
+        {
+            skip = skip - changepage;
+        }
+        else
+        {
+            skip = 0;
+        }
+        window.location.href = "/MyPage?order=" + order + "&skip=" + skip;
+    });
+
+    $(".page-after").click(() =>
+    {
+        var order: number = $("#order").val();
+        var skip: number = parseInt($("#skip").val());
+        skip = skip + changepage;
+        window.location.href = "/MyPage?order=" + order + "&skip=" + skip;
+    });
+
+    $(".main").ready(() =>
+    {
+        var count: number = parseInt($("#count").val());//全体の数
+        var skip: number = parseInt($("#skip").val());//現在の一番上の記事
+        if (skip < changepage)
+        {
+            $(".page-before").hide();
+        }
+        if (skip + changepage > count)
+        {
+            $(".page-after").hide();
+        }
+    });
+});
+
+
