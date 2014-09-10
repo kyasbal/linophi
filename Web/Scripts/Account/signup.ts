@@ -97,7 +97,7 @@ $(()=>
 {
     $("#regi").click(() =>
     {
-        if (isConfirmedFormValue)$("#regi-form").submit();
+        if (isConfirmedFormValue) $("#regi-form").submit();
     });
     accountConfirmationPage.changeSubmitStyle(false);
 
@@ -106,6 +106,6 @@ $(()=>
         accountConfirmationPage.chkValid();
     });
     $('#NickName, #Email, #AcceptMail, #AcceptTerm').focus(() => {
-        accountConfirmationPage.chkValid();
+        setTimeout("accountConfirmationPage.chkValid()", 100);
     });
 });
