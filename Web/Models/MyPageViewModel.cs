@@ -13,5 +13,6 @@ namespace Web.Models
         public int Order { get; set; }
 
         public int Skip { get; set; }
+        public int Count { get; set; }
     }
 }
