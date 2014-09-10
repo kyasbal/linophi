@@ -3,7 +3,7 @@
 		<style type="text/css">
 		.main{
 			font-size: 16px;
-			font-family: Verdana, Roboto, "Droid Sans", "ãƒ’ãƒ©ã‚®ãƒè§’ã‚´", "Hiragino Kaku Gothic ProN", "ãƒ¡ã‚¤ãƒªã‚ª", Meiryo, sans-serif;
+			font-family: Verdana, Roboto, "Droid Sans", "ƒqƒ‰ƒMƒmŠpƒS ProN W3", "Hiragino Kaku Gothic ProN", "ƒƒCƒŠƒI", Meiryo, sans-serif;
 			height:800px;
 			width:700px;
 			margin:0 auto;
@@ -91,36 +91,36 @@
 	<body>
 	<br />
 	<div class="main">
-		<h1>ç™»éŒ²å®Œäº†é€šçŸ¥</h1>
+		<h1>“o˜^Š®—¹’Ê’m</h1>
 		<div class="txt1">
-			ç™»éŒ²ãŒå®Œäº†ã—ã¾ã—ãŸã€‚ç™»éŒ²å†…å®¹ã¯ä»¥ä¸‹ã®é€šã‚Šã«ãªã‚Šã¾ã™ã€‚<br />
+			“o˜^‚ªŠ®—¹‚µ‚Ü‚µ‚½B“o˜^“à—e‚ÍˆÈ‰º‚Ì’Ê‚è‚É‚È‚è‚Ü‚·B<br />
 		</div>
 		<div class="signup">
-			<h2>ç™»éŒ²æƒ…å ±</h2>
+			<h2>“o˜^î•ñ</h2>
 			<img src="http://www.wanpagu.sakura.ne.jp/summer/summer_i89.png">
 			<ul>
-				<li>ãƒ‹ãƒƒã‚¯ãƒãƒ¼ãƒ  ï¼š [user_name] </li>
-				<li>ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ï¼š[mail_address]</li>
-				<li>ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚¿ã‚¤ãƒ—[facebook or twitter]</li>
-				<li>ãƒ¡ãƒ¼ãƒ«é…ä¿¡ï¼š[å—ä¿¡ã™ã‚‹ or å—ä¿¡ã—ãªã„]</li>
+				<li>ƒjƒbƒNƒl[ƒ€ : [user_name] </li>
+				<li>ƒ[ƒ‹ƒAƒhƒŒƒXF[mail_address]</li>
+				<li>ƒAƒJƒEƒ“ƒgƒ^ƒCƒv : [facebook or twitter]</li>
+				<li>ƒƒ‹ƒ}ƒKF[óM or óM‚µ‚È‚¢]</li>
 			</ul>
 		</div>
 
-		<h3>ç™»éŒ²å†…å®¹ã®å¤‰æ›´ ãŠã‚ˆã³ ãƒ¡ãƒ¼ãƒ«é…ä¿¡ã®åœæ­¢</h3>
+		<h3>“o˜^“à—e‚Ì•ÏX ‚¨‚æ‚Ñ ƒ[ƒ‹”zM‚Ì’â~</h3>
 		<div class="txt2">
 		 <a href="http://linophi.com/Account/Config">http://linophi.com/Account/Config</a><br />
-		<p>(ãƒ‹ãƒƒã‚¯ãƒãƒ¼ãƒ ã®å¤‰æ›´ãŒå¯èƒ½ã§ã™ã€‚)</p>
+		<p>i‚ ‚È‚½‚ª“o˜^‚µ‚½E-mailƒAƒhƒŒƒX‚ÆƒpƒXƒ[ƒh‚ª•K—v‚Å‚·Bj</p>
 		</div>
 		<br />
 	
-		<h3>ã€Œlinophiã€ã«ã¤ã„ã¦ã®ãŠå•ã„åˆã‚ã›</h3>
+		<h3>ulinophiv‚É‚Â‚¢‚Ä‚Ì‚¨–â‚¢‡‚í‚¹</h3>
 		<div class="txt2">
 		 <a href="http://linophi.com/Contact">http://linophi.com/Contact</a><br />
-		<p>(ãŠå•ã„åˆã‚ã›ãƒ•ã‚©ãƒ¼ãƒ ã‹ã‚‰ãŠé¡˜ã„è‡´ã—ã¾ã™ã€‚)</p>
+		<p>i‚¨–â‚¢‡‚í‚¹ƒtƒH[ƒ€‚©‚ç‚¨Šè‚¢’v‚µ‚Ü‚·Bj</p>
 		</div>
 		<div class="logo"><img src="http://921d1eb7b61b4939b4434f7887b6589e.cloudapp.net/Content/imgs/logo.png" width="120" height="120"></div>
 		<div class="txt3">
-		é‹å–¶ï¼š<a href="http://beep-project.com">æ±äº¬ç†ç§‘å¤§å­¦beep</a>
+		@‰^‰cF<a href="http://beep-project.com">“Œ‹—‰È‘åŠwbeep</a>
 		</div>
 	</div>
 	</body>

@@ -23,7 +23,7 @@ $(function () {
 
     // コメントの表示に関する
     $('.article-container > *').each(function (i) {
-        var $ele = $('[class^="x_p"]:nth-child(' + (i + 1) + ')');
+        var $ele = $('[class*="p-"]:nth-child(' + (i + 1) + ')');
         var className = $ele.attr("class");
         if (className) {
             var splitted = className.split(" ");
