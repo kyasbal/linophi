@@ -4,12 +4,32 @@
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
 
-@using(Html.BeginForm("Config","Account",FormMethod.Post))
+@section CSS
+{
+    <link href="~/Content/css/Account/config.css" rel="stylesheet" />
+}
+
+@using (Html.BeginForm("Config", "Account", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <h1>ユーザー名の変更</h1>
-    @Html.TextBoxFor(m=>m.NickName)
-    <h1>メールの受信可否の変更</h1>
-    @Html.CheckBoxFor(m=>m.MailMagazine)
-    <input type="submit"/>
+    <div class="contents">
+        
+        <span class="change-username">
+            ユーザー名の変更
+            <span class="textbox">
+                @Html.TextBoxFor(m => m.NickName)
+            </span>
+        </span>
+        <div></div>
+        <span class="change-recivemail">
+            メールの受信可否の変更
+            <span class="check">
+            @Html.CheckBoxFor(m => m.MailMagazine)
+            </span>
+        </span>
+
+        <div>
+            <input type="submit" class="button" />
+        </div>
+    </div>
 }

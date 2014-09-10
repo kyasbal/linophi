@@ -161,7 +161,7 @@ $(window).load(function () {
     var posY = dropboxPos + 10;
 
     $('.article-container > *').each(function (i) {
-        var $ele = $('[class^="x_p-"]:nth-child(' + (i + 1) + ')');
+        var $ele = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
 
         var className = $ele.attr("class");
 
@@ -196,16 +196,17 @@ $(window).load(function () {
         labelType = ((Object)(event.currentTarget)).className;
         src = '/Content/imgs/Home/' + labelType + '-d.svg';
 
+        $('.dropbox').css({
+            "opacity": 0.7,
+            "z-index": 1100
+        });
+
         $('.fade-layer, .dropbox').mousemove(function (e) {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight) {
                 posY = e.pageY;
             }
 
             if (pasteMode) {
-                $('.dropbox').css({
-                    "opacity": 0.7,
-                    "z-index": 1100
-                });
                 $(".dropbox > .postit-pasting").css({
                     "position": "absolute",
                     "top": posY - dropboxPos + "px",
@@ -216,10 +217,11 @@ $(window).load(function () {
                     "background-size": "130px 43px"
                 });
             }
+
             var pHeights = dropboxPos;
 
-            $('.dropbox > [class^="x_p-"]').each(function (i) {
-                var $target = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 2) + ')');
+            $('.dropbox > [class*="p-"]').each(function (i) {
+                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')');
                 var pHeight = $target.outerHeight(true);
                 var bg = "none";
                 if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode)
@@ -256,13 +258,13 @@ $(window).load(function () {
         if (pasteMode) {
             var pHeights = dropboxPos;
 
-            $('.dropbox > [class^="x_p-"]').each(function (i) {
-                var $target = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ')');
+            $('.dropbox > [class*="p-"]').each(function (i) {
+                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')');
                 var pHeight = $target.outerHeight(true);
 
                 var thisClass = $target.attr("class");
 
-                var postitExistence = $('.dropbox > [class^="x_p-"]:nth-child(' + (i + 1) + ') > .' + labelType).length;
+                var postitExistence = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ') > .' + labelType).length;
 
                 if (pHeights <= posY && posY <= pHeights + pHeight) {
                     ajaxManager.sendPostitNumber(articleId, thisClass, labelType, postitExistence, $target, src);
