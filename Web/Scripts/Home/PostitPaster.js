@@ -98,7 +98,6 @@ var LabelBoxController = (function () {
                 "display": "block",
                 "clear": "both"
             });
-            $(boxSelector).html("");
 
             for (var i = 0, len = sortArray.length; i < len; i++) {
                 $(boxSelector).append(sortArray[i]);
@@ -161,11 +160,15 @@ $(window).load(function () {
     var posY = dropboxPos + 10;
 
     $('.article-container > *').each(function (i) {
-        var $ele = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
+        var $ele = $('.article-container > [class*="p-"]:nth-child(' + (i + 2) + ')');
+        if (!$ele[0])
+            return true;
+        var elementName = $ele[0].tagName;
+        if (elementName == "hr")
+            return true;
 
         var className = $ele.attr("class");
 
-        // alert(className);
         var eleHeight = $ele.outerHeight(true), elePos = $ele.offset().top;
 
         $('.dropbox').append('<div class="' + className + '"></div>');
@@ -187,10 +190,11 @@ $(window).load(function () {
     // 貼り付けモードへ
     $('.postit-list [class]').click(function (event) {
         pasteMode = true;
+<<<<<<< HEAD
         console.log($('input[type="hidden"]').val());
-        if (!$('input[type="hidden"]').val()) {
-            return false;
-        }
+=======
+>>>>>>> 693355ec2b813356b177e7133195bd8f21b94291
+
         $('.fade-layer').css({
             "visibility": "visible",
             "opacity": 1
@@ -253,16 +257,23 @@ $(window).load(function () {
             $('.dropbox').css("z-index", 0);
         }, 500);
 
-        $('.dropbox > .postit-pasting').css({
-            "z-index": -100,
-            "visibility": "hidden"
-        });
-
         if (pasteMode) {
             var pHeights = dropboxPos;
+            pasteMode = false;
 
-            $('.dropbox > [class*="p-"]').each(function (i) {
-                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')');
+            $('.dropbox > .postit-pasting').css({
+                "z-index": -100,
+                "visibility": "hidden"
+            });
+
+            $('.dropbox > *').each(function (i) {
+                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')');
+                if (!$target[0])
+                    return true;
+                var elementName = $target[0].tagName;
+                if (elementName == "hr")
+                    return true;
+
                 var pHeight = $target.outerHeight(true);
 
                 var thisClass = $target.attr("class");
@@ -276,8 +287,6 @@ $(window).load(function () {
                 pHeights += pHeight;
                 // console.log($target.attr("class"), pHeight, pHeights, posY, src);
             });
-
-            pasteMode = false;
         }
     });
 
@@ -304,7 +313,7 @@ $(window).load(function () {
     // ふせんを貼る部分をhoverした時の処理
     $('.postit-list [class]').hover(function (event) {
         var thisClass = ((Object)(event.currentTarget)).className;
-        $('.postit-list div.' + thisClass).css("visibility", "visible");
+        $('.postit-list div.' + thisClass).css("visibility", "visible").animate({ opacity: 1 }, 500);
     }, function (event) {
         var thisClass = ((Object)(event.currentTarget)).className;
         $('.postit-list div.' + thisClass).css("visibility", "hidden");

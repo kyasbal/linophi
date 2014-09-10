@@ -136,7 +136,6 @@ class LabelBoxController implements ILabelBoxController {
                 "display": "block",
                 "clear": "both"
             });
-            $(boxSelector).html("");
 
             for (var i: number = 0, len: number = sortArray.length; i < len; i++) {
                 $(boxSelector).append(sortArray[i]);
@@ -207,11 +206,13 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     var posY: number = dropboxPos + 10;
 
     $('.article-container > *').each((i) => {
-        var $ele: JQuery = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
+        var $ele: JQuery = $('.article-container > [class*="p-"]:nth-child(' + (i + 2) + ')');
+        if (!$ele[0]) return true;
+        var elementName: string = $ele[0].tagName;
+        if (elementName == "hr") return true;
+        
 
         var className = $ele.attr("class");
-
-        // alert(className);
 
         var eleHeight: number = $ele.outerHeight(true),
             elePos: number = $ele.offset().top;
@@ -242,11 +243,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     $('.postit-list [class]').click((event) =>
     {
         pasteMode = true;
-        console.log($('input[type="hidden"]').val());
-        if (!$('input[type="hidden"]').val())
-        {
-            return false;
-        }
+
         $('.fade-layer').css({
             "visibility": "visible",
             "opacity": 1
@@ -317,19 +314,26 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             $('.dropbox').css("z-index", 0);
         }, 500);
 
-        $('.dropbox > .postit-pasting').css({
-            "z-index": -100,
-            "visibility": "hidden"
-        });
 
 
         if (pasteMode)
         {
             var pHeights: number = dropboxPos;
+            pasteMode = false;
 
-            $('.dropbox > [class*="p-"]').each((i) =>
+        $('.dropbox > .postit-pasting').css({
+            "z-index": -100,
+            "visibility": "hidden"
+        });
+
+            $('.dropbox > *').each((i) =>
             {
-                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')');
+                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')'); // 注意
+                if (!$target[0]) return true;
+                var elementName: string = $target[0].tagName;
+                if (elementName == "hr") return true;
+
+
                 var pHeight: number = $target.outerHeight(true);
 
                 var thisClass: string = $target.attr("class");
@@ -347,7 +351,6 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
                 // console.log($target.attr("class"), pHeight, pHeights, posY, src);
             });
 
-            pasteMode = false;
         }
     });
 
@@ -380,7 +383,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     $('.postit-list [class]').hover((event) =>
     {
         var thisClass: string = ((Object)(event.currentTarget)).className;
-        $('.postit-list div.' + thisClass).css("visibility", "visible");
+        $('.postit-list div.' + thisClass).css("visibility", "visible").animate({opacity:1},500);
     }, (event) =>
     {
         var thisClass: string = ((Object)(event.currentTarget)).className;
