@@ -243,7 +243,6 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     $('.postit-list [class]').click((event) =>
     {
         pasteMode = true;
-        console.log($('input[type="hidden"]').val());
 
         $('.fade-layer').css({
             "visibility": "visible",
@@ -322,10 +321,10 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             var pHeights: number = dropboxPos;
             pasteMode = false;
 
-            $('.dropbox > .postit-pasting').css({
-                "z-index": -100,
-                "visibility": "hidden"
-            });
+        $('.dropbox > .postit-pasting').css({
+            "z-index": -100,
+            "visibility": "hidden"
+        });
 
             $('.dropbox > *').each((i) =>
             {
@@ -384,7 +383,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     $('.postit-list [class]').hover((event) =>
     {
         var thisClass: string = ((Object)(event.currentTarget)).className;
-        $('.postit-list div.' + thisClass).css("visibility", "visible");
+        $('.postit-list div.' + thisClass).css("visibility", "visible").animate({opacity:1},500);
     }, (event) =>
     {
         var thisClass: string = ((Object)(event.currentTarget)).className;

@@ -190,7 +190,10 @@ $(window).load(function () {
     // 貼り付けモードへ
     $('.postit-list [class]').click(function (event) {
         pasteMode = true;
+<<<<<<< HEAD
         console.log($('input[type="hidden"]').val());
+=======
+>>>>>>> 693355ec2b813356b177e7133195bd8f21b94291
 
         $('.fade-layer').css({
             "visibility": "visible",
@@ -310,7 +313,7 @@ $(window).load(function () {
     // ふせんを貼る部分をhoverした時の処理
     $('.postit-list [class]').hover(function (event) {
         var thisClass = ((Object)(event.currentTarget)).className;
-        $('.postit-list div.' + thisClass).css("visibility", "visible");
+        $('.postit-list div.' + thisClass).css("visibility", "visible").animate({ opacity: 1 }, 500);
     }, function (event) {
         var thisClass = ((Object)(event.currentTarget)).className;
         $('.postit-list div.' + thisClass).css("visibility", "hidden");

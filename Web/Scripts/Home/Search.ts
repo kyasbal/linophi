@@ -1,7 +1,7 @@
 ﻿var searchPageOrderOptionBox: SearchOrderOptionBox;
 $(() =>
 {
-    var changepage: number = 20;//前後に何ページ移動するか　
+    var changepage: number = 5;//前後に何ページ移動するか　
     searchPageOrderOptionBox = new SearchOrderOptionBox($(".search-menu"), "Search", "searchText");
     searchPageOrderOptionBox.initBoxSelected();
     $(".page-before").click(() =>
