@@ -1,28 +1,21 @@
-﻿.article-container,.help-container {
+﻿@import "Color.less";
+.article-container,.help-container {
     padding: 0 40px;
     h1 {
-        box-shadow: -18px 0 #afdbcc, -28px 0 #7ac2a6;
-        font-size: xx-large;
-        margin-bottom: 1em;
-        padding: 0 20px;
-        background-color:ghostwhite; 
+        .header-style-1-mixin;
     }
 
     h2 {
-        box-shadow: -18px 0 aliceblue, -28px 0 skyblue;
-        font-size: x-large;
-        margin-bottom: 1em;
-        padding: 0 20px;
-        background-color:ghostwhite; 
+        .header-style-2-mixin;
     }
-    h3 {
+        h3 {
         border-bottom:1px solid rgba(0,0,0,0.3);
         font-size: large;
         margin-bottom: 1em;
         padding: 0 20px 5px 20px;
         background-color:ghostwhite; 
     }
-    h4 {
+       h4 {
         font-weight:bold;
         font-size: larger;
         margin-bottom: 1em;

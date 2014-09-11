@@ -1,44 +1,38 @@
-﻿.contents {
+﻿@import "../Color.less";
+
+h1{
+    .header-style-1-mixin;
+}
+
+h2{
+    .header-style-2-mixin;
+}
+.contents {
     font-size: 20px;
-    width: 100%;
+    width: 70%;
     height: 100%;
-    margin: 5% 0 3% 20%;
-
-    div {
-        margin: 5% 0 3% 20%;
-
-        .button {
-            height: 50px;
-            width: 120px;
-            font-weight: bold;
-            padding: 5px;
-            color: white;
-            border-style: none;
-            box-shadow: 2px 2px 3px 1px #666;
-            -moz-box-shadow: 2px 2px 3px 1px #666;
-            -webkit-box-shadow: 2px 2px 3px 1px #666;
-            text-shadow: 1px 1px 2px #000;
-            background-color: #aaa;
-            -moz-border-radius: 5px;
-            -webkit-border-radius: 5px;
-            border-radius: 5px;
-            margin: 0 0 3px 5%;
-
-            :hover {
-                opacity: 0.8;
-            }
-        }
+    margin:0 auto;
+    div{
+        text-align:center;
     }
 
     span {
-        margin-left: 30px;
-
+        margin:20px auto;
+        line-height:60px;
         .change-username {
             display: inline;
         }
 
-        .change-recive-mail {
+        .change-recieve-mail {
             display: inline;
         }
     }
+}
+
+.layout{
+    margin:0 auto;
+    }
+
+.config-submit{
+    .submit-button-style-1-mixin;
 }
