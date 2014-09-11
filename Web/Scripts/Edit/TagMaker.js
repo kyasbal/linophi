@@ -1,6 +1,8 @@
 ﻿var tagCounter = 0;
 var tags = new collections.Set();
 
+var focusTitle;
+
 function removeTag(counter, tag) {
     console.warn(tagCounter);
     $('.edit-editted-tag-' + counter).remove();
@@ -25,6 +27,39 @@ var TagUtil;
         });
     }
     TagUtil.GetTagCount = GetTagCount;
+
+    function chkValidTitle() {
+        var _this = this;
+        $.ajax({
+            type: 'post',
+            url: '/Api/Article/IsValidTitle',
+            data: {
+                Title: $(".edit-title").val()
+            },
+            success: function (data) {
+                $(".edit-title-chkvalid").html(data.IsOK ? "" : "　　" + data.ErrorMessage);
+                isConfirmedTitle = data.IsOK;
+
+                var bgColor = isConfirmedTitle ? '#7FFFD4' : '#696969', bgColorHover = isConfirmedTitle ? '#3CB371' : '#696969';
+
+                $(".edit-submit-button").css('background-color', bgColor);
+                $(".edit-submit-button").hover(function () {
+                    $(this).css("background-color", bgColorHover);
+                }, function () {
+                    $(this).css("background-color", bgColor);
+                });
+            },
+            complete: function () {
+                if (focusTitle) {
+                    setTimeout(function () {
+                        _this.chkValidTitle();
+                        console.log("called");
+                    }, 500);
+                }
+            }
+        });
+    }
+    TagUtil.chkValidTitle = chkValidTitle;
 })(TagUtil || (TagUtil = {}));
 $(function () {
     // タグをEnterで追加する機能
@@ -53,34 +88,12 @@ $(function () {
     }
 
     // タイトルが正当かどうかを判定してダメならエラーを返す機能
+    $(".edit-title").focus(function () {
+        focusTitle = true;
+        TagUtil.chkValidTitle();
+    });
     $(".edit-title").focusout(function () {
-        $.ajax({
-            type: 'post',
-            url: '/Api/Article/IsValidTitle',
-            data: {
-                Title: $(".edit-title").val()
-            },
-            success: function (data) {
-                $(".edit-title-chkvalid").html(data.IsOK ? "" : "　　" + data.ErrorMessage);
-                isConfirmedTitle = data.IsOK;
-                if (isConfirmedTitle == false) {
-                    $(".edit-submit-button").css('background-color', '#696969');
-                    $(".edit-submit-button").hover(function () {
-                        $(this).css("background-color", "#696969");
-                    }, function () {
-                        $(this).css("background-color", "#696969");
-                    });
-                }
-                if (isConfirmedTitle == true) {
-                    $(".edit-submit-button").css('background-color', '#7FFFD4');
-                    $(".edit-submit-button").hover(function () {
-                        $(this).css("background-color", "#3CB371");
-                    }, function () {
-                        $(this).css("background-color", "#7FFFD4");
-                    });
-                }
-            }
-        });
+        focusTitle = false;
     });
 });
 //# sourceMappingURL=TagMaker.js.map
