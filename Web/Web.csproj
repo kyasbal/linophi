@@ -577,6 +577,7 @@
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
     <Content Include="Views\Home\TermsOfService.cshtml" />
     <Content Include="Views\Home\UserPage.cshtml" />
+    <Content Include="Views\Home\AllTag.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
