@@ -155,10 +155,10 @@ $(window).load(function () {
     var labelType, src;
     var dropboxPos = $('.contentswrapper').offset().top, dropboxHeight = $('.contentswrapper').outerHeight(true);
 
-    var posY = dropboxPos + 10;
+    var posY = dropboxPos;
 
-    $('.article-container > *').each(function (i) {
-        var $ele = $('.article-container > [class*="p-"]:nth-child(' + (i + 2) + ')');
+    $('.article-container > [class*="p-"]').each(function (i) {
+        var $ele = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
         if (!$ele[0])
             return true;
         var elementName = $ele[0].tagName;
@@ -204,7 +204,7 @@ $(window).load(function () {
 
         $('.fade-layer, .dropbox').mousemove(function (e) {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight) {
-                posY = e.pageY;
+                posY = e.pageY - 20;
             }
 
             if (pasteMode) {
