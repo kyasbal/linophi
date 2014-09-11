@@ -62,10 +62,10 @@ var AverageColor = (function () {
         color.forEach(function (val) {
             sum += val;
         });
-        var avr = (sum / 3) | 0;
+        var avr = sum / 3;
 
         for (var i = 0; i < 3; i++) {
-            color[i] = (color[i] - avr) * ratio + color[i];
+            color[i] = ((color[i] - avr) * ratio + avr) | 0;
         }
         return color;
     };
@@ -114,7 +114,7 @@ $(function () {
                 $('.article-container .' + className + '-comments').append('<button class="' + className + '">コメントする</button>' + '<div class="triangle"></div>');
 
                 labelSourceParser.eachByParagraph(getParagraphId(className), function (emotion, count) {
-                    var thisColor = "rgb(" + averageColor.lightness(-100, averageColor.newtralColor(getParagraphId(className))).join(",") + ")";
+                    var thisColor = "rgb(" + averageColor.lightness(-50, averageColor.saturation(0.2, averageColor.newtralColor(getParagraphId(className)))).join(",") + ")";
                     console.log(thisColor);
                     $('.article-container .' + className + '-comments').css({
                         "background": thisColor

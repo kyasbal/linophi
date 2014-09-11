@@ -98,12 +98,12 @@ class AverageColor
         // ３．それらに平均を足してやる
 
         var sum = 0;
-        color.forEach((val) => { sum += val });
-        var avr = (sum / 3)|0;
+        color.forEach((val) => { sum += val; });
+        var avr = sum / 3;
 
         for (var i = 0; i < 3; i++)
         {
-            color[i] = (color[i] - avr) * ratio + color[i];
+            color[i] = ((color[i] - avr) * ratio + avr)|0;
         }
         return color;
     }
@@ -174,7 +174,7 @@ $(() =>
                 labelSourceParser.eachByParagraph(getParagraphId(className), (emotion, count) =>
                 {
                     var thisColor = "rgb(" +
-                        averageColor.lightness(-100, averageColor.newtralColor(getParagraphId(className)))
+                        averageColor.lightness(-50, averageColor.saturation(0.2, averageColor.newtralColor(getParagraphId(className))))
                         .join(",") + ")";
                     console.log(thisColor);
                     $('.article-container .' + className + '-comments').css({
