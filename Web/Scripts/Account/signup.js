@@ -88,7 +88,7 @@ $(function () {
         accountConfirmationPage.chkValid();
     });
     $('#NickName, #Email, #AcceptMail, #AcceptTerm').focus(function () {
-        setTimeout("accountConfirmationPage.chkValid()", 100);
+        setTimeout("accountConfirmationPage.chkValid()", 500);
     });
 });
 //# sourceMappingURL=signup.js.map
