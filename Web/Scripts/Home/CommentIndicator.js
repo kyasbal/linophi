@@ -42,7 +42,7 @@ var AverageColor = (function () {
         return avr;
     };
 
-    AverageColor.prototype.brightness = function (diff, color) {
+    AverageColor.prototype.lightness = function (diff, color) {
         for (var i = 0; i < 3; i++) {
             color[i] += diff;
             if (color[i] <= 0) {
@@ -50,6 +50,22 @@ var AverageColor = (function () {
             } else if (255 <= color[i]) {
                 color[i] = 255;
             }
+        }
+        return color;
+    };
+
+    AverageColor.prototype.saturation = function (ratio, color) {
+        // １．rgbの平均をとる
+        // ２．rgbそれぞれに対して平均との差分にratioをかける
+        // ３．それらに平均を足してやる
+        var sum = 0;
+        color.forEach(function (val) {
+            sum += val;
+        });
+        var avr = (sum / 3) | 0;
+
+        for (var i = 0; i < 3; i++) {
+            color[i] = (color[i] - avr) * ratio + color[i];
         }
         return color;
     };
@@ -98,7 +114,7 @@ $(function () {
                 $('.article-container .' + className + '-comments').append('<button class="' + className + '">コメントする</button>' + '<div class="triangle"></div>');
 
                 labelSourceParser.eachByParagraph(getParagraphId(className), function (emotion, count) {
-                    var thisColor = "rgb(" + averageColor.brightness(-100, averageColor.newtralColor(getParagraphId(className))).join(",") + ")";
+                    var thisColor = "rgb(" + averageColor.lightness(-100, averageColor.newtralColor(getParagraphId(className))).join(",") + ")";
                     console.log(thisColor);
                     $('.article-container .' + className + '-comments').css({
                         "background": thisColor
