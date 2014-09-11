@@ -202,10 +202,10 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     var dropboxPos: number = $('.contentswrapper').offset().top,
         dropboxHeight: number = $('.contentswrapper').outerHeight(true);
 
-    var posY: number = dropboxPos + 10;
+    var posY: number = dropboxPos;
 
-    $('.article-container > *').each((i) => {
-        var $ele: JQuery = $('.article-container > [class*="p-"]:nth-child(' + (i + 2) + ')');
+    $('.article-container > [class*="p-"]').each((i) => {
+        var $ele: JQuery = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
         if (!$ele[0]) return true;
         var elementName: string = $ele[0].tagName;
         if (elementName == "hr") return true;
@@ -261,7 +261,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight)
             {
-                posY = e.pageY;
+                posY = e.pageY - 20;
             }
 
             if (pasteMode)

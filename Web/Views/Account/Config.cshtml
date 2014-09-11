@@ -15,27 +15,27 @@
 
 <div class="layout">
     @using (Html.BeginForm("Config", "Account", FormMethod.Post,new{@class="config-form"}))
-    {
-        @Html.AntiForgeryToken()
-        <div class="contents">
+{
+    @Html.AntiForgeryToken()
+    <div class="contents">
             <h1>設定</h1>
             <h2>ユーザー情報変更</h2>
-            <span class="change-username">
-                ユーザー名の変更
-                <span class="textbox">
-                    @Html.TextBoxFor(m => m.NickName)
-                </span>
+        <span class="change-username">
+            ユーザー名の変更
+            <span class="textbox">
+                @Html.TextBoxFor(m => m.NickName)
             </span>
-            <div></div>
-            <span class="change-recivemail">
-                メールの受信可否の変更
-                <span class="check">
-                    @Html.CheckBoxFor(m => m.MailMagazine)
-                </span>
+        </span>
+        <div></div>
+        <span class="change-recive-mail">
+            メールの受信可否の変更
+            <span class="check">
+            @Html.CheckBoxFor(m => m.MailMagazine)
             </span>
-            <div>
+        </span>
+        <div>
                 <a class="config-submit">保存</a>
-            </div>
         </div>
-    }
+    </div>
+}
 </div>

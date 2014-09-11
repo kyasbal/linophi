@@ -1,4 +1,9 @@
-﻿.header {
+﻿.tag-style-mixin {
+  border: 1px solid #7ac2a6;
+  background: #fefbfa;
+  color: #000000 !important;
+}
+.header {
   padding-top: 3px;
   background-color: aliceblue;
   border-bottom: 1px solid #f2f2f2;
@@ -54,7 +59,7 @@
   outline: none;
 }
 .header .menu .search .search-text:hover {
-  border: 2px #a4c6fd  !important;
+  border: 2px #a4c6fd !important;
 }
 .header .menu .search .search-button {
   border: 0;
@@ -84,13 +89,39 @@ header #dropmenu ul li {
   vertical-align: middle;
   display: inline-block;
 }
-header #dropmenu ul .gravatar-img {
+header #dropmenu ul-submit-button {
+  width: 150px;
+  font-size: 15px;
+  padding: 10px 30px;
+  background-color: #696969;
+  color: #888;
+  display: block;
+  margin: 30px auto 30px auto;
   vertical-align: middle;
 }
-#login {
+header div[class^="edit-editted-tag"] {
+  border: 1px solid #7ac2a6;
+  background: #fefbfa;
+  color: #000000 !important;
+  margin-left: 5px;
+  float: left;
+  line-height: 21px;
+  height: 22px;
+  padding: 1px 6px 0;
+  font-size: 11px;
+}
+header div[class^="edit-editted-tag"]:first-child {
+  margin-left: 0;
+}
+header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] {
+  padding-left: 10px;
+  color: #333;
+  cursor: pointer;
+}
+header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] #login {
   display: inline;
 }
-.login-form {
+header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] .login-form {
   float: right;
 }
 /*# sourceMappingURL=Header.css.map */
