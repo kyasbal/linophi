@@ -309,8 +309,8 @@ input[type="text"] {
 .container .contents .top .navbar .navbar-user {
   display: inline-block;
   width: 200px;
-  margin-right: -50px;
-  margin-left: 40%;
+  /*margin-right: -50px;
+            margin-left: 40%;*/
 }
 .container .contents .top .navbar-mainwiththumb .navbar-txt {
   margin-bottom: 10px;

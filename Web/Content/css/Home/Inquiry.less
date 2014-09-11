@@ -1,0 +1,60 @@
+﻿@import "../Color.less";
+
+.layout {
+    width: 500px;
+    margin: 0 auto;
+
+    h1 {
+        .header-style-1-mixin;
+        margin-left: -50px;
+        width: 70%;
+    }
+
+    h2 {
+        .header-style-2-mixin;
+        width: 90%;
+    }
+
+    .layout-inner {
+        margin: 30px 0 0 0;
+    }
+
+    input {
+        margin: 10px 0 30px 15%;
+        background-color: #DFECE6;
+        height: 20px;
+        width: 75%;
+        padding: 5px 10px;
+        border: hidden !important;
+        border-radius: 100px;
+        
+    }
+
+    input:focus {
+        color: white;
+        background-color: #92C7A3;
+        outline: none;
+    }
+
+    input:hover {
+        border: 2px #a4c6fd !important;
+    }
+
+
+    textarea {
+        margin: 10px 0 30px 0;
+        padding: 20%;
+        resize: none;
+    }
+
+    a {
+        line-height: 60px;
+        .submit-button-style-1-mixin;
+    }
+
+    .submit-button-container {
+        text-align: center;
+        .submit-inquiry{
+        }
+    }
+}

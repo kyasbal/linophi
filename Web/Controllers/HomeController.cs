@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Mail;
 using System.Net.Mime;
 using System.Threading.Tasks;
 using System.Web;
@@ -355,9 +356,54 @@ namespace Web.Controllers
             return View(new AllTagsResponse() {ThemeTags = themes});
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Inquiry()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Inquiry(InquiryRequest req)
+        {
+
+            MailMessage mailMsg = new MailMessage();
+
+            // To
+            mailMsg.To.Add(new MailAddress(req.Mail, req.Name+"様"));
+
+            // From
+            mailMsg.From = new MailAddress("inquiry@linophi.com", "linophiお問い合わせ");
+
+            // Subject and multipart/alternative Body
+            mailMsg.Subject = "お問い合わせを受け取りました。";
+            string text = "お問い合わせを受け取りました。";
+            string html = @"<p>お問い合わせを受け取りました</p>";
+            mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
+            mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
+
+            // Init SmtpClient and send
+            SmtpClient smtpClient = new SmtpClient("smtp.sendgrid.net", Convert.ToInt32(587));
+            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("sgvniwvl@kke.com", "kyasbal08");
+            smtpClient.Credentials = credentials;
+            smtpClient.Send(mailMsg);
+            return View("InquiryAccepted");
+        }
+
+
         public class AllTagsResponse
         {
              public IQueryable<ArticleTagModel> ThemeTags { get; set; } 
+        }
+
+        public class InquiryRequest
+        {
+             public string Name { get; set; }
+
+            public string Mail { get; set; }
+
+            public string Content { get; set; }
         }
     }
 }
