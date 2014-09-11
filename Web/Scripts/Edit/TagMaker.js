@@ -26,26 +26,26 @@ var TagUtil;
     }
     TagUtil.GetTagCount = GetTagCount;
 
-    function chkValidTitle() {
-        $.ajax({
-            type: 'post',
-            url: '/Api/Article/IsValidTitle',
-            data: {
-                Title: $(".edit-title").val()
-            },
-            success: function (data) {
-                $(".edit-title-chkvalid").html(data.IsOK ? "" : "　　" + data.ErrorMessage);
-                isConfirmedTitle = data.IsOK;
+    function chkValidTitle(val) {
+        var isConfirmedTitle = true;
+        if (val.match(/^\s*$/)) {
+            $(".edit-title-chkvalid").html("　　タイトルが空です");
+            isConfirmedTitle = false;
+        } else if (val.length < 5) {
+            $(".edit-title-chkvalid").html("　　タイトルが短すぎます");
+            isConfirmedTitle = false;
+        } else if (50 <= val.length) {
+            $(".edit-title-chkvalid").html("　　タイトルが長すぎます");
+            isConfirmedTitle = false;
+        }
 
-                var bgColor = isConfirmedTitle ? '#7FFFD4' : '#696969', bgColorHover = isConfirmedTitle ? '#3CB371' : '#696969';
+        var bgColor = isConfirmedTitle ? '#7FFFD4' : '#696969', bgColorHover = isConfirmedTitle ? '#3CB371' : '#696969';
 
-                $(".edit-submit-button").css('background-color', bgColor);
-                $(".edit-submit-button").hover(function () {
-                    $(this).css("background-color", bgColorHover);
-                }, function () {
-                    $(this).css("background-color", bgColor);
-                });
-            }
+        $(".edit-submit-button").css('background-color', bgColor);
+        $(".edit-submit-button").hover(function () {
+            $(this).css("background-color", bgColorHover);
+        }, function () {
+            $(this).css("background-color", bgColor);
         });
     }
     TagUtil.chkValidTitle = chkValidTitle;
@@ -71,14 +71,17 @@ $(function () {
             $target.val("");
         }
     });
-    if ($("#hidden-mode").val() == "edit") {
-        isConfirmedTitle = true;
-        return;
-    }
 
+    //if ($("#hidden-mode").val() == "edit") {
+    //    isConfirmedTitle = true;
+    //    return;
+    //}
     // タイトルが正当かどうかを判定してダメならエラーを返す機能
+    $(".edit-title").focus(function () {
+        TagUtil.chkValidTitle($(".edit-title").val());
+    });
     $(".edit-title").keyup(function () {
-        TagUtil.chkValidTitle();
+        TagUtil.chkValidTitle($(".edit-title").val());
     });
 });
 //# sourceMappingURL=TagMaker.js.map
