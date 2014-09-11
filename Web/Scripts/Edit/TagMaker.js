@@ -1,8 +1,6 @@
 ﻿var tagCounter = 0;
 var tags = new collections.Set();
 
-var focusTitle;
-
 function removeTag(counter, tag) {
     console.warn(tagCounter);
     $('.edit-editted-tag-' + counter).remove();
@@ -29,7 +27,6 @@ var TagUtil;
     TagUtil.GetTagCount = GetTagCount;
 
     function chkValidTitle() {
-        var _this = this;
         $.ajax({
             type: 'post',
             url: '/Api/Article/IsValidTitle',
@@ -48,14 +45,6 @@ var TagUtil;
                 }, function () {
                     $(this).css("background-color", bgColor);
                 });
-            },
-            complete: function () {
-                if (focusTitle) {
-                    setTimeout(function () {
-                        _this.chkValidTitle();
-                        console.log("called");
-                    }, 500);
-                }
             }
         });
     }
@@ -88,12 +77,8 @@ $(function () {
     }
 
     // タイトルが正当かどうかを判定してダメならエラーを返す機能
-    $(".edit-title").focus(function () {
-        focusTitle = true;
+    $(".edit-title").keyup(function () {
         TagUtil.chkValidTitle();
-    });
-    $(".edit-title").focusout(function () {
-        focusTitle = false;
     });
 });
 //# sourceMappingURL=TagMaker.js.map

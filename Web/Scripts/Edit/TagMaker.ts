@@ -1,8 +1,6 @@
 ﻿var tagCounter: number = 0;
 var tags: collections.Set<string> = new collections.Set<string>();
 
-var focusTitle: boolean;
-
 function removeTag(counter,tag)
 {
     console.warn(tagCounter);
@@ -57,14 +55,6 @@ module TagUtil
                 }, function () {
                     $(this).css("background-color", bgColor);
                 });
-            },
-            complete: () => {
-                if (focusTitle) {
-                    setTimeout(() => {
-                        this.chkValidTitle();
-                        console.log("called");
-                    }, 500);
-                }
             }
         });
 
@@ -107,11 +97,7 @@ $(() => {
 
     // タイトルが正当かどうかを判定してダメならエラーを返す機能
 
-    $(".edit-title").focus(() => {
-        focusTitle = true;
+    $(".edit-title").keyup(() => {
         TagUtil.chkValidTitle();
-    });
-    $(".edit-title").focusout(() => {
-        focusTitle = false;
     });
 });
