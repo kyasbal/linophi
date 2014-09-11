@@ -1,6 +1,6 @@
 ﻿@model Web.Models.AccountConfigViewModel
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "ユーザー情報変更";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
 
@@ -8,26 +8,34 @@
 {
     <link href="~/Content/css/Account/Config.css" rel="stylesheet" />
 }
-
-@using (Html.BeginForm("Config", "Account", FormMethod.Post))
+@section JS
 {
-    @Html.AntiForgeryToken()
-    <div class="contents">
-        <span class="change-username">
-            ユーザー名の変更
-            <span class="textbox">
-                @Html.TextBoxFor(m => m.NickName)
-            </span>
-        </span>
-        <div></div>
-        <span class="change-recivemail">
-            メールの受信可否の変更
-            <span class="check">
-            @Html.CheckBoxFor(m => m.MailMagazine)
-            </span>
-        </span>
-        <div>
-            <input type="submit" class="button" value="保存"/>
-        </div>
-    </div>
+    <script src="~/Scripts/Account/Config.js"></script>
 }
+
+<div class="layout">
+    @using (Html.BeginForm("Config", "Account", FormMethod.Post,new{@class="config-form"}))
+    {
+        @Html.AntiForgeryToken()
+        <div class="contents">
+            <h1>設定</h1>
+            <h2>ユーザー情報変更</h2>
+            <span class="change-username">
+                ユーザー名の変更
+                <span class="textbox">
+                    @Html.TextBoxFor(m => m.NickName)
+                </span>
+            </span>
+            <div></div>
+            <span class="change-recivemail">
+                メールの受信可否の変更
+                <span class="check">
+                    @Html.CheckBoxFor(m => m.MailMagazine)
+                </span>
+            </span>
+            <div>
+                <a class="config-submit">保存</a>
+            </div>
+        </div>
+    }
+</div>
