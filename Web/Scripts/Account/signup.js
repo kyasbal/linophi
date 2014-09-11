@@ -3,7 +3,7 @@ var len;
 var isTooShortNickName, isTooLongNickName, isInvalidEmailAddr;
 var isConfirmedFormValue = false;
 $(function () {
-    $(".name-box").focusout(function () {
+    $(".name-box").keyup(function () {
         name = $(this).val();
         len = name.length;
         if (len <= 3) {
@@ -45,12 +45,12 @@ var AccountConfirmation = (function () {
     };
 
     AccountConfirmation.prototype.chkValid = function () {
-        console.log(isTooShortNickName, isTooLongNickName, isInvalidEmailAddr, $('#AcceptTerm').prop('checked'));
         if (isTooShortNickName && isTooLongNickName && isInvalidEmailAddr && $('#AcceptTerm').prop('checked')) {
             accountConfirmationPage.changeSubmitStyle(true);
         } else {
             accountConfirmationPage.changeSubmitStyle(false);
         }
+        console.log(isTooShortNickName, isTooLongNickName, isInvalidEmailAddr, $('#AcceptTerm').prop('checked'));
     };
     return AccountConfirmation;
 })();
@@ -58,7 +58,7 @@ var AccountConfirmation = (function () {
 var accountConfirmationPage;
 
 $(function () {
-    $(".email-box").focusout(function () {
+    $(".email-box").keyup(function () {
         add = $(this).val();
         if (add.match(/^([a-zA-Z0-9\+_\-]+)(\.[a-zA-Z0-9\+_\-]+)*@([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,6}$/g)) {
             $(".warn3").css("display", "none");
@@ -84,11 +84,16 @@ $(function () {
     });
     accountConfirmationPage.changeSubmitStyle(false);
 
+    $('#NickName, #Email').keyup(function () {
+        accountConfirmationPage.chkValid();
+    });
     $('#NickName, #Email, #AcceptMail, #AcceptTerm').focusout(function () {
         accountConfirmationPage.chkValid();
     });
     $('#NickName, #Email, #AcceptMail, #AcceptTerm').focus(function () {
-        setTimeout("accountConfirmationPage.chkValid()", 500);
+        setTimeout(function () {
+            accountConfirmationPage.chkValid();
+        }, 500);
     });
 });
 //# sourceMappingURL=signup.js.map

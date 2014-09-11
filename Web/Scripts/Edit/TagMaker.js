@@ -25,62 +25,71 @@ var TagUtil;
         });
     }
     TagUtil.GetTagCount = GetTagCount;
+
+    function chkValidTitle(val) {
+        var isConfirmedTitle = true;
+        if (val.match(/^\s*$/)) {
+            $(".edit-title-chkvalid").html("　　タイトルが空です");
+            isConfirmedTitle = false;
+        } else if (val.length < 5) {
+            $(".edit-title-chkvalid").html("　　タイトルが短すぎます");
+            isConfirmedTitle = false;
+        } else if (50 <= val.length) {
+            $(".edit-title-chkvalid").html("　　タイトルが長すぎます");
+            isConfirmedTitle = false;
+        }
+
+        var bgColor = isConfirmedTitle ? '#7FFFD4' : '#696969', bgColorHover = isConfirmedTitle ? '#3CB371' : '#696969';
+
+        $(".edit-submit-button").css('background-color', bgColor);
+        $(".edit-submit-button").hover(function () {
+            $(this).css("background-color", bgColorHover);
+        }, function () {
+            $(this).css("background-color", bgColor);
+        });
+    }
+    TagUtil.chkValidTitle = chkValidTitle;
+
+    function addTag() {
+        var $target = $(".edit-tag");
+        var tag = $target.val();
+
+        if (tagCounter >= 5) {
+            $(".edit-tag-chkvalid").html('<div class="edit-alert">　　タグは５個までしか登録できません。</div>');
+        } else if (tag && !tags.contains(tag)) {
+            $(".edit-editted-box").append('<div class="edit-editted-tag-' + tagCounter + '">' + tag + '<span class="edit-editted-tag-counter-' + tagCounter + '">(?)</span><span class="edit-editted-tag-delete-' + tagCounter + '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>');
+            TagUtil.GetTagCount(tag, tagCounter, function (count, tagCount) {
+                $(".edit-editted-tag-counter-" + tagCount).text("(" + count + ")");
+            });
+            tags.add(tag);
+            tagCounter++;
+        }
+
+        $target.val("");
+    }
+    TagUtil.addTag = addTag;
 })(TagUtil || (TagUtil = {}));
 $(function () {
     // タグをEnterで追加する機能
     $(".edit-tag").keypress(function (e) {
         if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-            var $target = $(".edit-tag");
-            var tag = $target.val();
-
-            if (tagCounter >= 5) {
-                $(".edit-tag-chkvalid").html('<div class="edit-alert">　　タグは５個までしか登録できません。</div>');
-            } else if (tag && !tags.contains(tag)) {
-                $(".edit-editted-box").append('<div class="edit-editted-tag-' + tagCounter + '">' + tag + '<span class="edit-editted-tag-counter-' + tagCounter + '">(?)</span><span class="edit-editted-tag-delete-' + tagCounter + '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>');
-                TagUtil.GetTagCount(tag, tagCounter, function (count, tagCount) {
-                    $(".edit-editted-tag-counter-" + tagCount).text("(" + count + ")");
-                });
-                tags.add(tag);
-                tagCounter++;
-            }
-
-            $target.val("");
+            TagUtil.addTag();
         }
     });
-    if ($("#hidden-mode").val() == "edit") {
-        isConfirmedTitle = true;
-        return;
-    }
+    $(".edit-tag").focusout(function () {
+        TagUtil.addTag();
+    });
 
+    //if ($("#hidden-mode").val() == "edit") {  <-何やってるかわからんかった
+    //    isConfirmedTitle = true;
+    //    return;
+    //}
     // タイトルが正当かどうかを判定してダメならエラーを返す機能
-    $(".edit-title").focusout(function () {
-        $.ajax({
-            type: 'post',
-            url: '/Api/Article/IsValidTitle',
-            data: {
-                Title: $(".edit-title").val()
-            },
-            success: function (data) {
-                $(".edit-title-chkvalid").html(data.IsOK ? "" : "　　" + data.ErrorMessage);
-                isConfirmedTitle = data.IsOK;
-                if (isConfirmedTitle == false) {
-                    $(".edit-submit-button").css('background-color', '#696969');
-                    $(".edit-submit-button").hover(function () {
-                        $(this).css("background-color", "#696969");
-                    }, function () {
-                        $(this).css("background-color", "#696969");
-                    });
-                }
-                if (isConfirmedTitle == true) {
-                    $(".edit-submit-button").css('background-color', '#7FFFD4');
-                    $(".edit-submit-button").hover(function () {
-                        $(this).css("background-color", "#3CB371");
-                    }, function () {
-                        $(this).css("background-color", "#7FFFD4");
-                    });
-                }
-            }
-        });
+    $(".edit-title").focus(function () {
+        TagUtil.chkValidTitle($(".edit-title").val());
+    });
+    $(".edit-title").keyup(function () {
+        TagUtil.chkValidTitle($(".edit-title").val());
     });
 });
 //# sourceMappingURL=TagMaker.js.map

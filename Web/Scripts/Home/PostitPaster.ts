@@ -202,9 +202,9 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     var dropboxPos: number = $('.contentswrapper').offset().top,
         dropboxHeight: number = $('.contentswrapper').outerHeight(true);
 
-    var posY: number = dropboxPos;
+    var posY: number = dropboxPos + 10;
 
-    $('.article-container > [class*="p-"]').each((i) => {
+    $('.article-container > *').each((i) => {
         var $ele: JQuery = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
         if (!$ele[0]) return true;
         var elementName: string = $ele[0].tagName;
@@ -261,7 +261,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         {
             if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight)
             {
-                posY = e.pageY - 20;
+                posY = e.pageY;
             }
 
             if (pasteMode)
@@ -280,7 +280,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             var pHeights: number = dropboxPos;
 
             $('.dropbox > [class*="p-"]').each((i) => {
-                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')'); // i == 0のとき１つ目のふせんを表している
+                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')'); // i == 0のとき１つ目のふせんを表している
                 var pHeight: number = $target.outerHeight(true);
                 var bg = "none";
                 if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode)
@@ -327,7 +327,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
             $('.dropbox > *').each((i) =>
             {
-                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')'); // 注意
+                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')'); // 注意
                 if (!$target[0]) return true;
                 var elementName: string = $target[0].tagName;
                 if (elementName == "hr") return true;
