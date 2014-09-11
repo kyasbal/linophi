@@ -490,6 +490,10 @@
     <Compile Include="Migrations\201409100940368_AddTheme.Designer.cs">
       <DependentUpon>201409100940368_AddTheme.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409110213226_AddThemeToTag.cs" />
+    <Compile Include="Migrations\201409110213226_AddThemeToTag.Designer.cs">
+      <DependentUpon>201409110213226_AddThemeToTag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountConfigViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -643,6 +647,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409100940368_AddTheme.resx">
       <DependentUpon>201409100940368_AddTheme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409110213226_AddThemeToTag.resx">
+      <DependentUpon>201409110213226_AddThemeToTag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

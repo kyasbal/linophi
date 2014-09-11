@@ -62,5 +62,7 @@ namespace Web.Models
         public ICollection<ArticleModel> Articles { get; set; } 
 
         public string TagName { get; set; }
+
+        public bool IsThemeTag { get; set; }
     }
 }
