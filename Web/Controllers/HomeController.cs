@@ -76,7 +76,7 @@ namespace Web.Controllers
             };
         }
 
-        private List<SearchResultArticle> getRelatedArticles(ApplicationDbContext context, int order, int skip, ArticleModel article, int count)
+        public static List<SearchResultArticle> getRelatedArticles(ApplicationDbContext context, int order, int skip, ArticleModel article, int count)
         {
             ArticleThumbnailManager thumbnailManager = new ArticleThumbnailManager(new BlobStorageConnection());
             //直接の関係の記事を探す
@@ -346,6 +346,18 @@ namespace Web.Controllers
         public ActionResult TermsOfService()
         {
             return View();
+        }
+
+        public async Task<ActionResult> AllTag()
+        {
+            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            var themes = context.Tags.Where(f =>! f.IsThemeTag).Include(f => f.Articles).OrderBy(f => f.Articles.Count).Where(f=>f.Articles.Count>0);
+            return View(new AllTagsResponse() {ThemeTags = themes});
+        }
+
+        public class AllTagsResponse
+        {
+             public IQueryable<ArticleTagModel> ThemeTags { get; set; } 
         }
     }
 }

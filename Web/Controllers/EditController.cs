@@ -235,7 +235,8 @@ namespace Web.Controllers
                 CommentInfo ="[]",
                 CommentCount =0,
                 AuthorsArticles = HomeController.getUserArticles(context,0, 0, User.Identity.Name,out count, takeCount: 3),
-                IsPreview = true
+                IsPreview = true,
+                RelatedArticles =new List<SearchResultArticle>()
             });
         }
     }

@@ -1,0 +1,13 @@
+﻿@model Web.Controllers.HomeController.AllTagsResponse
+@{
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+    ViewBag.Title = "すべてのタグ";
+}
+
+<h1>テーマタグ</h1>
+@foreach (var tag in Model.ThemeTags)
+{
+    <li>@tag.TagName</li>
+    <li>@tag.Articles.Count</li>
+}
+
