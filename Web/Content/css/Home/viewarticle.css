@@ -49,6 +49,9 @@ input[type="text"] {
   display: block;
   clear: both;
 }
+.theme-tag {
+  border: 1px solid red!important;
+}
 .container .head {
   z-index: 501;
   width: 100%;
@@ -303,37 +306,31 @@ input[type="text"] {
   box-shadow: 0 0 3 0 #666 inset;
   font-family: Tahoma, Verdana, Geneva, Tahoma, sans-serif, sans-serif;
 }
-.container .contents .top .navbar .navbar-sub {
-  float: left;
-  width: 40%;
-  text-align: right;
-  padding-left: 20px;
-}
-.container .contents .top .navbar .navbar-sub .navbar-user {
+.container .contents .top .navbar .navbar-user {
   display: inline-block;
   width: 200px;
   margin-right: -50px;
   margin-left: 40%;
 }
-.container .contents .top .navbar .navbar-mainwiththumb .navbar-txt {
+.container .contents .top .navbar-mainwiththumb .navbar-txt {
   margin-bottom: 10px;
   font-size: 30px;
 }
-.container .contents .top .navbar .navbar-userthumb {
+.container .contents .top .navbar-userthumb {
   margin-right: 10px;
 }
-.container .contents .top .navbar .user-img {
+.container .contents .top .user-img {
   font-size: 11px;
 }
-.container .contents .top .navbar .navbar-username {
+.container .contents .top .navbar-username {
   line-height: 30px;
   vertical-align: middle;
 }
-.container .contents .contentswrapper {
+.container .contentswrapper {
   width: 1040px;
   margin: 0 auto;
 }
-.container .contents .contentswrapper .main {
+.container .contentswrapper .main {
   background-color: aliceblue;
   float: left;
   width: 800px;
@@ -341,34 +338,34 @@ input[type="text"] {
   padding-right: 40px;
   padding-bottom: 40px;
 }
-.container .contents .contentswrapper .main .widgetlist {
+.container .contentswrapper .main .widgetlist {
   position: relative;
   padding-top: 20px;
   padding-bottom: 1px;
 }
-.container .contents .contentswrapper .main .widgetlist .widgettypetitle {
+.container .contentswrapper .main .widgetlist .widgettypetitle {
   margin-bottom: 25px;
 }
-.container .contents .contentswrapper .main .widgetlist .widgettypetitle .widgetitemtitleview {
+.container .contentswrapper .main .widgetlist .widgettypetitle .widgetitemtitleview {
   line-height: 1.3;
   padding-bottom: 5px;
   border-bottom: 2px solid #eaecee;
   font-weight: bold;
   font-size: 20px;
 }
-.container .contents .contentswrapper .main .widgetlist .widgettypetitle p {
+.container .contentswrapper .main .widgetlist .widgettypetitle p {
   word-wrap: break-word;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"] {
+.container .contentswrapper .main .widget > *[class*="p-"] {
   position: relative;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"]:hover {
+.container .contentswrapper .main .widget > *[class*="p-"]:hover {
   background: #ddd;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"]:hover > *[class*="-comments"] {
+.container .contentswrapper .main .widget > *[class*="p-"]:hover > *[class*="-comments"] {
   display: block;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] {
+.container .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] {
   font-size: 10px;
   width: 300px;
   display: none;
@@ -386,7 +383,7 @@ input[type="text"] {
   -webkit-transform: translateY(-30%);
   transform: translateY(-30%);
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .triangle {
+.container .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .triangle {
   width: 0;
   height: 70%;
   content: "";
@@ -397,10 +394,10 @@ input[type="text"] {
   border-top: 10px solid #666;
   border-left: 20px solid transparent;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .response p:hover {
+.container .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .response p:hover {
   background: none;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] button {
+.container .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] button {
   cursor: pointer;
   font-size: 10px;
   font-weight: bold;
@@ -415,45 +412,45 @@ input[type="text"] {
   border: none;
   border-radius: 0.3em;
 }
-.container .contents .contentswrapper .main p:hover {
+.container .contentswrapper .main p:hover {
   background-color: ghostwhite;
 }
-.container .contents .contentswrapper .main .rellist {
+.container .contentswrapper .main .rellist {
   padding-top: 50px;
   position: relative;
   margin: 10px 0 10px 0;
 }
-.container .contents .contentswrapper .main .rellist .separator1 {
+.container .contentswrapper .main .rellist .separator1 {
   margin: 40px 0;
 }
-.container .contents .contentswrapper .main .rellist .separator2 {
+.container .contentswrapper .main .rellist .separator2 {
   margin: 25px 0 40px;
 }
-.container .contents .contentswrapper .main .rellist .list .listitem {
+.container .contentswrapper .main .rellist .list .listitem {
   display: table;
   margin: 30px 30px 30px;
   padding: 10px;
 }
-.container .contents .contentswrapper .main .rellist .list .listitem:first-child {
+.container .contentswrapper .main .rellist .list .listitem:first-child {
   margin-top: 0;
 }
-.container .contents .contentswrapper .main .rellist .list .listitem:hover {
+.container .contentswrapper .main .rellist .list .listitem:hover {
   background-color: antiquewhite;
 }
-.container .contents .contentswrapper .main .rellist .list .listthumb {
+.container .contentswrapper .main .rellist .list .listthumb {
   display: table-cell;
   width: 60px;
   height: 60px;
   padding: 0 15px 0 0;
   vertical-align: top;
 }
-.container .contents .contentswrapper .main .rellist .list .listthumb a {
+.container .contentswrapper .main .rellist .list .listthumb a {
   display: block;
   width: 60px;
   height: 60px;
   overflow: hidden;
 }
-.container .contents .contentswrapper .main .rellist .list .listtxt {
+.container .contentswrapper .main .rellist .list .listtxt {
   display: table-cell;
   vertical-align: middle;
   table-layout: fixed;
@@ -461,32 +458,32 @@ input[type="text"] {
   max-width: 560px;
   padding-left: 20px;
 }
-.container .contents .contentswrapper .main .rellist .list .listtitle {
+.container .contentswrapper .main .rellist .list .listtitle {
   display: inline;
   line-height: 1.1;
   font-size: 20px;
   font-weight: normal;
   margin-right: 15px;
 }
-.container .contents .contentswrapper .main .rellist .list .listtitle a {
+.container .contentswrapper .main .rellist .list .listtitle a {
   padding: 6px 0;
   color: #000;
 }
-.container .contents .contentswrapper .main .rellist .list .listdesc {
+.container .contentswrapper .main .rellist .list .listdesc {
   color: #aaa;
 }
-.container .contents .contentswrapper .main .rellist .more-read {
+.container .contentswrapper .main .rellist .more-read {
   margin-left: 60%;
 }
-.container .contents .contentswrapper .main .rellist .more-read a {
+.container .contentswrapper .main .rellist .more-read a {
   color: black;
   text-decoration: underline;
 }
-.container .contents .contentswrapper .main .rellist .more-read a:hover {
+.container .contentswrapper .main .rellist .more-read a:hover {
   color: #818181;
   text-decoration: underline;
 }
-.container .contents .contentswrapper .dropbox {
+.container .contentswrapper .dropbox {
   position: relative;
   background-color: white;
   float: left;
@@ -508,14 +505,14 @@ input[type="text"] {
   -webkit-user-select: none;
   user-select: none;
 }
-.container .contents .contentswrapper .dropbox > * > * {
+.container .contentswrapper .dropbox > * > * {
   margin-left: -20px;
   padding: 10px 15px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.container .contents .contentswrapper .dropbox > * > * > span {
+.container .contentswrapper .dropbox > * > * > span {
   cursor: default;
   padding: 3px 9px;
   background: #fff;
@@ -524,7 +521,7 @@ input[type="text"] {
   font-weight: bold;
   border-radius: 200px;
 }
-.container .contents .postit {
+.container .postit {
   position: fixed;
   right: 0;
   top: 50%;
@@ -538,22 +535,22 @@ input[type="text"] {
   -webkit-user-select: none;
   user-select: none;
 }
-.container .contents .postit-contents {
+.container .postit-contents {
   background-color: #fdf8f2;
 }
-.container .contents .postit-title {
+.container .postit-title {
   padding: 13px 15px 0;
   color: #000;
   font-weight: bold;
   font-size: 12px;
 }
-.container .contents .postit-list {
+.container .postit-list {
   padding: 15px 30px 9px;
 }
-.container .contents .postit-list > div {
+.container .postit-list > div {
   position: relative;
 }
-.container .contents .postit-list > div > div {
+.container .postit-list > div > div {
   position: absolute;
   visibility: hidden;
   top: 10px;
@@ -564,74 +561,74 @@ input[type="text"] {
   font-size: 12px;
   font-weight: bold;
 }
-.container .contents .postit-list img {
+.container .postit-list img {
   width: 130px;
   height: 43px;
 }
-.container .contents .postit-list > * {
+.container .postit-list > * {
   cursor: pointer;
 }
-.container .contents .postit-pasting {
+.container .postit-pasting {
   z-index: -100;
   height: 43px;
   width: 130px;
   visibility: hidden;
 }
-.container .contents .foot {
+.container .foot {
   width: 100%;
   border-top: 1px solid #e7e7e7;
 }
-.container .contents .foot .foot-inner {
+.container .foot .foot-inner {
   width: 960px;
   margin: 0 auto;
   padding: 25px 0;
 }
-.container .contents .navbar-title {
+.container .navbar-title {
   display: inline;
   font-size: 32px;
   line-height: 38px;
 }
-.container .contents .navbar-username > a {
+.container .navbar-username > a {
   color: #000 !important;
   font-weight: bold;
 }
-.navbar .navbar-username .container .contents > a:link,
-.navbar .navbar-username .container .contents > a:visited {
+.navbar .navbar-username .container > a:link,
+.navbar .navbar-username .container > a:visited {
   text-decoration: none;
 }
-.navbar .navbar-username .container .contents > a:hover,
-.navbar .navbar-username .container .contents > a:active,
-.navbar .navbar-username .container .contents > a:focus {
+.navbar .navbar-username .container > a:hover,
+.navbar .navbar-username .container > a:active,
+.navbar .navbar-username .container > a:focus {
   text-decoration: underline;
 }
-.container .contents a.topicword {
+.container a.topicword {
   cursor: pointer;
 }
-.container .contents a.topicword:hover {
+.container a.topicword:hover {
   background: #f0f0f0;
 }
-.container .contents .list .listtitle a:link,
-.container .contents .list .listtitle a:visited {
+.container .list .listtitle a:link,
+.container .list .listtitle a:visited {
   text-decoration: none;
 }
-.container .contents .list .listtitle a:hover,
-.container .contents .list .listtitle a:active,
-.container .contents .list .listtitle a:focus {
+.container .list .listtitle a:hover,
+.container .list .listtitle a:active,
+.container .list .listtitle a:focus {
   text-decoration: underline;
 }
-.container .contents .list .listdate,
-.container .contents .list .listview {
+.container .list .listdate,
+.container .list .listview {
   display: inline-block;
 }
-.container .contents .main .separator1,
-.container .contents .main .separator2 {
+.container .main .separator1,
+.container .main .separator2 {
   border-top: 1px solid #e7e7e7;
 }
-.container .contents .main .separator1 hr,
-.container .contents .main .separator2 hr {
+.container .main .separator1 hr,
+.container .main .separator2 hr {
   display: none;
 }
-.container .font-size-25 {
+.font-size-25 {
   font-size: 25px;
 }
 .droppable-hover {
@@ -676,5 +673,27 @@ input[type="text"] {
 }
 .alert-contents textarea {
   height: 250px;
+}
+.write-related-article {
+  background-color: #7ac2a6;
+  text-decoration: none!important;
+  color: white!important;
+  padding: 15px 60px;
+  margin: 30px;
+  line-height: 80px;
+  font-size: x-large;
+}
+.write-related-article:hover {
+  background-color: #5f9781;
+}
+.write-related-article-container {
+  text-align: center;
+}
+.found-article-zero {
+  text-align: center;
+}
+.found-article-zero p {
+  display: block;
+  font-size: large;
 }
 /*# sourceMappingURL=ViewArticle.css.map */

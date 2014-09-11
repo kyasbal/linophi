@@ -40,6 +40,7 @@ namespace Web.Models
         public string TagName { get; set; }
 
         public int ArticleCount { get; set; }
+        public bool IsTheme { get; set; }
     }
 
 }

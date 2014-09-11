@@ -131,7 +131,8 @@ namespace Web.Controllers
                 {
                     ArticleCount = tagRef.Articles.Count,
                     TagId = tagRef.ArticleTagModelId,
-                    TagName = tagRef.TagName
+                    TagName = tagRef.TagName,
+                    IsTheme = tagRef.IsThemeTag
                 };
                 count++;
             }

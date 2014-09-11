@@ -47,16 +47,29 @@
                     <div class="viewhead-inner">
                         <div class="topicwordlist set">
                             <ul class="topicwordlistul">
+                                @*タグの列挙部分*@
                                 @if (Model.Tags != null)
                                 {
                                     foreach (TagViewModel tag in Model.Tags)
-                                     {
-                                    <li class="topicwordlistli">
-                                             <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
-                                            @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
-                                        </a>
-                                    </li>
-                                }
+                                    {
+                                        
+                                            if (tag.IsTheme)
+                                            {
+                                                <li class="topicwordlistli">
+                                                    <a href="@("/Tag?tag=" + tag.TagName)" class="topicword theme-tag">
+                                                        @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                        <li class="topicwordlistli">
+                                                            <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
+                                                                @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                                            </a>
+                                                        </li>
+                                                    }
+                                    }
                                 }
                             </ul>
                         </div>
