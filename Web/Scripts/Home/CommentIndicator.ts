@@ -27,6 +27,13 @@ class CommentSourceParser implements ICommentSourceParser
     }
 }
 
+interface IAverageColor
+{
+    newtralColor(paragraphId: string): number[];
+    lightness(diff: number, color: number[]): number[];
+    saturation(diff: number, color: number[]): number[];
+}
+
 class AverageColor
 {
     private colorValue;
@@ -68,7 +75,7 @@ class AverageColor
         return avr;
     }
 
-    brightness(diff, color: number[]): number[]
+    lightness(diff: number, color: number[]): number[]
     {
         for (var i = 0; i < 3; i++)
         {
@@ -83,6 +90,24 @@ class AverageColor
         }
         return color;
     }
+
+    saturation(ratio: number, color: number[]): number[]
+    {
+        // １．rgbの平均をとる
+        // ２．rgbそれぞれに対して平均との差分にratioをかける
+        // ３．それらに平均を足してやる
+
+        var sum = 0;
+        color.forEach((val) => { sum += val });
+        var avr = (sum / 3)|0;
+
+        for (var i = 0; i < 3; i++)
+        {
+            color[i] = (color[i] - avr) * ratio + color[i];
+        }
+        return color;
+    }
+
 }
 
 var averageColor: AverageColor = new AverageColor;
@@ -149,7 +174,7 @@ $(() =>
                 labelSourceParser.eachByParagraph(getParagraphId(className), (emotion, count) =>
                 {
                     var thisColor = "rgb(" +
-                        averageColor.brightness(-100, averageColor.newtralColor(getParagraphId(className)))
+                        averageColor.lightness(-100, averageColor.newtralColor(getParagraphId(className)))
                         .join(",") + ")";
                     console.log(thisColor);
                     $('.article-container .' + className + '-comments').css({
