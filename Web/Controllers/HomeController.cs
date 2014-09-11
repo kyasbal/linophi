@@ -347,5 +347,17 @@ namespace Web.Controllers
         {
             return View();
         }
+
+        public async Task<ActionResult> AllTag()
+        {
+            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            var themes = context.Tags.Where(f =>! f.IsThemeTag).Include(f => f.Articles).OrderBy(f => f.Articles.Count).Where(f=>f.Articles.Count>0);
+            return View(new AllTagsResponse() {ThemeTags = themes});
+        }
+
+        public class AllTagsResponse
+        {
+             public IQueryable<ArticleTagModel> ThemeTags { get; set; } 
+        }
     }
 }
