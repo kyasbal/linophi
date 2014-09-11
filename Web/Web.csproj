@@ -246,6 +246,12 @@
     <Content Include="Content\css\Home\Inquiry.min.css">
       <DependentUpon>Inquiry.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\InquiryAccepted.css">
+      <DependentUpon>InquiryAccepted.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\InquiryAccepted.min.css">
+      <DependentUpon>InquiryAccepted.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Home\Top.css">
       <DependentUpon>Top.less</DependentUpon>
     </Content>
@@ -416,6 +422,10 @@
     <Content Include="Content\css\Home\Inquiry.less" />
     <Content Include="Content\css\Home\Inquiry.css.map">
       <DependentUpon>Inquiry.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\InquiryAccepted.less" />
+    <Content Include="Content\css\Home\InquiryAccepted.css.map">
+      <DependentUpon>InquiryAccepted.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
@@ -610,6 +620,7 @@
     <TypeScriptCompile Include="Scripts\Home\AfterLogin.ts" />
     <TypeScriptCompile Include="Scripts\Home\CommentIndicator.ts" />
     <TypeScriptCompile Include="Scripts\Home\Inquiry.ts" />
+    <TypeScriptCompile Include="Scripts\Home\InquiryAccepted.ts" />
     <TypeScriptCompile Include="Scripts\Home\MovieFixation.ts" />
     <TypeScriptCompile Include="Scripts\Home\MyPage.ts" />
     <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />

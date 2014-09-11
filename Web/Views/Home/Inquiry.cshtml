@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "コンタクト";
+    ViewBag.Title = "お問い合わせ";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
 @section CSS
@@ -15,7 +15,7 @@
     <div class="layout-inner">
         <form method="POST" action="/Inquiry" class="inquiry-form">
             @Html.AntiForgeryToken()
-            <h1>コンタクト</h1>
+            <h1>お問い合わせ</h1>
             <h2>お名前</h2>
             <input type="text" name="Name"/>
             <h2>返信先メールアドレス</h2>
