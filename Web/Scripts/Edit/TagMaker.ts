@@ -58,40 +58,47 @@ module TagUtil
         }, function () {
             $(this).css("background-color", bgColor);
         });
+    }
 
+    export function addTag()
+    {
+        var $target: JQuery = $(".edit-tag");
+        var tag: string = $target.val();
 
+        if (tagCounter >= 5) {
+            $(".edit-tag-chkvalid").html(
+                '<div class="edit-alert">　　タグは５個までしか登録できません。</div>'
+                );
+        }
+        else if (tag && !tags.contains(tag)) {
+            $(".edit-editted-box").append(
+                '<div class="edit-editted-tag-' + tagCounter + '">' + tag +
+                '<span class="edit-editted-tag-counter-' + tagCounter + '">(?)</span><span class="edit-editted-tag-delete-' + tagCounter +
+                '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>'
+                );
+            TagUtil.GetTagCount(tag, tagCounter, (count: number, tagCount: number) => {
+                $(".edit-editted-tag-counter-" + tagCount).text("(" + count + ")");
+            });
+            tags.add(tag);
+            tagCounter++;
+        }
+
+        $target.val("");
     }
 }
 $(() => {
     // タグをEnterで追加する機能
     $(".edit-tag").keypress((e) => {
         if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-            var $target: JQuery = $(".edit-tag");
-            var tag: string = $target.val();
-
-            if (tagCounter >= 5) {
-                $(".edit-tag-chkvalid").html(
-                    '<div class="edit-alert">　　タグは５個までしか登録できません。</div>'
-                );
-            }
-            else if (tag && !tags.contains(tag)) {
-                $(".edit-editted-box").append(
-                    '<div class="edit-editted-tag-' + tagCounter + '">' + tag +
-                    '<span class="edit-editted-tag-counter-'+tagCounter+'">(?)</span><span class="edit-editted-tag-delete-' + tagCounter +
-                    '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>'
-                    );
-                TagUtil.GetTagCount(tag, tagCounter, (count: number, tagCount: number) =>
-                {
-                    $(".edit-editted-tag-counter-" + tagCount).text("("+count+")");
-                });
-                tags.add(tag);
-                tagCounter++;
-            }
-
-            $target.val("");
+            TagUtil.addTag();
         }
     });
-    //if ($("#hidden-mode").val() == "edit") {
+    $(".edit-tag").focusout(() => {
+        TagUtil.addTag();
+    });
+
+
+    //if ($("#hidden-mode").val() == "edit") {  <-何やってるかわからんかった
     //    isConfirmedTitle = true;
     //    return;
     //}
