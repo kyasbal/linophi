@@ -1,4 +1,4 @@
-﻿@tabletPortraitWidthSize: 980px;
+﻿@tabletPortraitWidthSize: 1024px;
 
 ol, ul {
   list-style: none;
@@ -90,6 +90,9 @@ input[type="text"] {
 
         &-inner {
         width: 960px;
+        @media screen and (max-width: @tabletPortraitWidthSize){
+            width: 600px;
+        }
         margin: 0 auto 0 15%;
         padding-bottom: 15px;
 
@@ -245,6 +248,7 @@ input[type="text"] {
                     @navbarCountFontSize: 11px;
 
                     margin: 20px 10px 25px 10px;
+                    margin-left: 0;
                     font-size: 20px;
 
                     .navbar-user {
@@ -279,13 +283,7 @@ input[type="text"] {
                             font-size: @navbarCountFontSize;
                         }
                     }
-
-                    div {
-                        /*display: inline;*/
-                        span {
-                            margin-left: 20px;
-                        }
-                    }
+                }
 
                     .navbar-countfv {
                         display: inline-block;
@@ -629,6 +627,9 @@ input[type="text"] {
       position: fixed;
       right: 0;
       top: 50%;
+      @media screen and (max-width: @tabletPortraitWidthSize){
+          top: 80%;
+      }
       -moz-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       -o-transform: translateY(-50%);
@@ -748,7 +749,7 @@ input[type="text"] {
     .main .separator1 hr, .main .separator2 hr {
       display: none;
     }
-  }
+  
 
   .font-size-25 {
     font-size: 25px;
