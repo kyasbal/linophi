@@ -72,28 +72,25 @@ input[type="text"] {
 
         &-inner {
             position: relative;
-            width: 1080px;
-            height: 200px;
-            margin: 0 auto;
+            /*width: 1080px;*/
+            /*height: 200px;*/
+            /*margin: 0 auto;*/
         }
     }
 
     /*記事の説明部分*/
     .contents {
-        padding-bottom: 25px;
         overflow: hidden;
 
     .top {
         width: 100%;
-        @media screen and (max-width: @tabletPortraitWidthSize){
-            width: @tabletPortraitWidthSize;
-        }
         margin-bottom: 30px;
+        padding-bottom: 10px;
         background-color: rgba(240,255,240,1);
 
         &-inner {
             margin: 0 auto 0 15%;
-            padding-bottom: 15px;
+            padding-bottom: 30px;
 
             .viewhead {
                 width: 100%;
@@ -174,52 +171,16 @@ input[type="text"] {
         }
 
         .navbar {
-            padding-top: 15px;
-            margin: 0 0 0 20px;
-            width: 120%;
 
             &-main {
-                //円グラフ部分
-                div{
-                    display: block;
+                >div{
+                    display: inline-block;
                 }
-                .navbar-thumb {
-                    float: left;
-                    /*margin: 0 0 15px -50px;*/
-
-                    img {
-                        width: 105px;
-                        height: 105px;
-                    }
-
-                    .postit-in-circle {
-                        margin-top: -190px;
-                        margin-left: 65px;
-                        display: block;
-                        background-color: white;
-                        border-radius: 60px; 
-                        -moz-border-radius: 60px;  
-                        -webkit-border-radius: 60px; 
-                        padding: 25px 10px 0 10px;
-                        text-align: center;
-                        width: 100px;
-                        height: 95px;
-                        background-color: white;
-                        border-radius: 60px; 
-                        -moz-border-radius: 60px;  
-                        -webkit-border-radius: 60px; 
-                        box-shadow: 0px 0px 3px 0px #666 inset;
-                        -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-                        -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-                    }
-                }
-
                 //タイトルや投稿者などの詳細情報部分
                 .navbar-detail{
                     float: left;
+                    width: 60%;
                     .navbar-txt {
-                        width: 70%;
-                        margin-top: -13px;
                         padding-bottom: 10px;
 
                         img {
@@ -250,7 +211,7 @@ input[type="text"] {
                         @navbarCountFixedFontSize: 11px;//投稿者・PVなどの決まった言葉のフォントサイズ
                         @navbarCountValueFontSize: 20px;//記事ごとの実際の投稿者の名前やPV数のフォントサイズ
 
-                        div{
+                        >div{
                             margin: 10px;
                         }
 
@@ -392,6 +353,31 @@ input[type="text"] {
                         font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
                     }
                     }
+                //円グラフ部分
+                .navbar-thumb {
+                    float: left;
+                    img {
+                        width: 105px;
+                        height: 105px;
+                    }
+                
+                    .postit-in-circle {
+                                        margin-top: -190px;
+                                        margin-left: 65px;
+                                        display: block;
+                                        background-color: white;
+                                        border-radius: 60px; 
+                                        -moz-border-radius: 60px;  
+                                        -webkit-border-radius: 60px; 
+                                        padding: 25px 10px 0 10px;
+                                        text-align: center;
+                                        width: 100px;
+                                        height: 95px;
+                                        box-shadow: 0px 0px 3px 0px #666 inset;
+                                        -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+                                        -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+                                    }
+                }
             }
         }
     }
@@ -640,9 +626,9 @@ input[type="text"] {
     .postit {
       position: fixed;
       right: 0;
-      top: 50%;
+      top: 60%;
       @media screen and (max-width: @tabletPortraitWidthSize){
-          top: 80%;
+          top: 100%;
       }
       -moz-transform: translateY(-50%);
       -ms-transform: translateY(-50%);

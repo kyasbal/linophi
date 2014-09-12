@@ -63,27 +63,22 @@ input[type="text"] {
 }
 .container .head-inner {
   position: relative;
-  width: 1080px;
-  height: 200px;
-  margin: 0 auto;
+  /*width: 1080px;*/
+  /*height: 200px;*/
+  /*margin: 0 auto;*/
 }
 .container .contents {
-  padding-bottom: 25px;
   overflow: hidden;
 }
 .container .contents .top {
   width: 100%;
   margin-bottom: 30px;
+  padding-bottom: 10px;
   background-color: #f0fff0;
-}
-@media screen and (max-width: 980px) {
-  .container .contents .top {
-    width: 980px;
-  }
 }
 .container .contents .top-inner {
   margin: 0 auto 0 15%;
-  padding-bottom: 15px;
+  padding-bottom: 30px;
 }
 .container .contents .top-inner .viewhead {
   width: 100%;
@@ -151,44 +146,14 @@ input[type="text"] {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
 }
-.container .contents .top .navbar {
-  padding-top: 15px;
-  margin: 0 0 0 20px;
-  width: 120%;
-}
-.container .contents .top .navbar-main div {
-  display: block;
-}
-.container .contents .top .navbar-main .navbar-thumb {
-  float: left;
-  /*margin: 0 0 15px -50px;*/
-}
-.container .contents .top .navbar-main .navbar-thumb img {
-  width: 105px;
-  height: 105px;
-}
-.container .contents .top .navbar-main .navbar-thumb .postit-in-circle {
-  margin-top: -190px;
-  margin-left: 65px;
-  display: block;
-  padding: 25px 10px 0 10px;
-  text-align: center;
-  width: 100px;
-  height: 95px;
-  background-color: white;
-  border-radius: 60px;
-  -moz-border-radius: 60px;
-  -webkit-border-radius: 60px;
-  box-shadow: 0px 0px 3px 0px #666 inset;
-  -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-  -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+.container .contents .top .navbar-main > div {
+  display: inline-block;
 }
 .container .contents .top .navbar-main .navbar-detail {
   float: left;
+  width: 60%;
 }
 .container .contents .top .navbar-main .navbar-detail .navbar-txt {
-  width: 70%;
-  margin-top: -13px;
   padding-bottom: 10px;
 }
 .container .contents .top .navbar-main .navbar-detail .navbar-txt img {
@@ -210,7 +175,7 @@ input[type="text"] {
   color: #000;
   text-decoration: underline;
 }
-.container .contents .top .navbar-main .navbar-detail .navbar-count div {
+.container .contents .top .navbar-main .navbar-detail .navbar-count > div {
   margin: 10px;
 }
 .container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-user .poster {
@@ -323,6 +288,29 @@ input[type="text"] {
   -moz-box-shadow: 0 0 3 0 #666 inset;
   box-shadow: 0 0 3 0 #666 inset;
   font-family: Tahoma, Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+}
+.container .contents .top .navbar-main .navbar-thumb {
+  float: left;
+}
+.container .contents .top .navbar-main .navbar-thumb img {
+  width: 105px;
+  height: 105px;
+}
+.container .contents .top .navbar-main .navbar-thumb .postit-in-circle {
+  margin-top: -190px;
+  margin-left: 65px;
+  display: block;
+  background-color: white;
+  border-radius: 60px;
+  -moz-border-radius: 60px;
+  -webkit-border-radius: 60px;
+  padding: 25px 10px 0 10px;
+  text-align: center;
+  width: 100px;
+  height: 95px;
+  box-shadow: 0px 0px 3px 0px #666 inset;
+  -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+  -moz-box-shadow: 0px 0px 3px 0px #666 inset;
 }
 .container .contents .navbar-mainwiththumb .navbar-txt {
   margin-bottom: 10px;
@@ -527,7 +515,7 @@ input[type="text"] {
 .postit {
   position: fixed;
   right: 0;
-  top: 50%;
+  top: 60%;
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
@@ -540,7 +528,7 @@ input[type="text"] {
 }
 @media screen and (max-width: 980px) {
   .postit {
-    top: 80%;
+    top: 100%;
   }
 }
 .postit-contents {
