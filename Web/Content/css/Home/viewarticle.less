@@ -1,4 +1,6 @@
-﻿ol, ul {
+﻿@tabletPortraitWidthSize: 980px;
+
+ol, ul {
   list-style: none;
 }
 
@@ -62,41 +64,43 @@ input[type="text"] {
 }
 
 .container {
-  .head {
-    z-index: 501;
-    width: 100%;
-    border-top: 3px solid #333;
-    border-bottom: 1px solid #e7e7e7;
+    .head {
+        z-index: 501;
+        width: 100%;
+        border-top: 3px solid #333;
+        border-bottom: 1px solid #e7e7e7;
 
-    &-inner {
-      position: relative;
-      width: 1080px;
-      height: 200px;
-      margin: 0 auto;
+        &-inner {
+            position: relative;
+            width: 1080px;
+            height: 200px;
+            margin: 0 auto;
+        }
     }
-  }
 
-  .contents {
+    /*記事の説明部分*/
+    .contents {
     padding-bottom: 25px;
     overflow: hidden;
 
     .top {
-      margin-bottom: 30px;
-      background-color: rgba(240,255,240,1);
-      height: 350px;
+        width: 95%;
+        height: 350px;
+        margin-bottom: 30px;
+        background-color: rgba(240,255,240,1);
 
-      &-inner {
+        &-inner {
         width: 960px;
         margin: 0 auto 0 15%;
         padding-bottom: 15px;
 
         .viewhead {
-          width: 100%;
-          min-width: 960px;
-          margin: 0 auto;
-          z-index: 500;
+            width: 100%;
+            min-width: 960px;
+            margin: 0 auto;
+            z-index: 500;
 
-          &-inner {
+            &-inner {
             position: relative;
             width: 960px;
             height: 24px;
@@ -105,300 +109,319 @@ input[type="text"] {
             padding: 6px 0;
 
             .topicpath {
-              display: inline-block;
-              margin-right: 12px;
-              vertical-align: top;
+                display: inline-block;
+                margin-right: 12px;
+                vertical-align: top;
 
-              li {
+                li {
                 display: inline;
                 margin: 0 0 0 4px;
                 vertical-align: -1px;
 
                 &:first-child {
-                  margin-left: 0;
-                  padding: 0 13px 0 0;
+                    margin-left: 0;
+                    padding: 0 13px 0 0;
                 }
 
                 a {
-                  color: #4c4c4c;
+                    color: #4c4c4c;
                 }
-              }
+                }
             }
 
             .topicwordlist {
-              display: inline-block;
-              max-height: 24px;
-              padding: 0 0 0 0;
-              border-bottom: 0;
+                display: inline-block;
+                max-height: 24px;
+                padding: 0 0 0 0;
+                border-bottom: 0;
 
-              &ul {
+                &ul {
                 display: inline;
                 border: 3px;
-              }
+                }
 
-              &li {
+                &li {
                 float: left;
                 margin: 0 5px 5px 0;
 
                 .topicword {
-                  position: relative;
-                  display: inline-block;
-                  height: 21px;
-                  line-height: 22px;
-                  padding: 1px 6px 0;
-                  background-color: #fefbfa;
-                  border: 1px solid #7ac2a6;
-                  color: #000 !important;
-                  text-decoration: none !important;
-                  font-size: 11px;
-                  white-space: nowrap;
+                    position: relative;
+                    display: inline-block;
+                    height: 21px;
+                    line-height: 22px;
+                    padding: 1px 6px 0;
+                    background-color: #fefbfa;
+                    border: 1px solid #7ac2a6;
+                    color: #000 !important;
+                    text-decoration: none !important;
+                    font-size: 11px;
+                    white-space: nowrap;
 
-                  &num {
+                    &num {
                     position: relative;
                     top: -1px;
                     display: inline-block;
                     font-weight: normal;
                     font-family: Arial, Helvetica, sans-serif;
                     font-size: 10px;
-                  }
+                    }
                 }
-              }
+                }
             }
-          }
+            }
         }
-      }
+        }
 
-      .navbar {
-        padding-top: 15px;
-        margin: 0 0 0 20px;
-        width: 120%;
+        .navbar {
+            padding-top: 15px;
+            margin: 0 0 0 20px;
+            width: 120%;
 
         &-main {
-          float: left;
-          width: 80%;
+            float: left;
+            width: 80%;
 
-          .navbar-thumb {
-            float: right;
-            margin: 0 15px 15px -50px;
+            //円グラフ部分
+            .navbar-thumb {
+                float: right;//OK!
+                margin: 0 15px 15px -50px;
 
-            img {
-              width: 105px;
-              height: 105px;
+                img {
+                    width: 105px;
+                    height: 105px;
+                }
+
+                .postit-in-circle {
+                    margin-top: -190px;
+                    margin-left: 65px;
+                    display: block;
+                    background-color: white;
+                    border-radius: 60px; 
+                    -moz-border-radius: 60px;  
+                    -webkit-border-radius: 60px; 
+                    padding: 25px 10px 0 10px;
+                    text-align: center;
+                    width: 100px;
+                    height: 95px;
+                    background-color: white;
+                    border-radius: 60px; 
+                    -moz-border-radius: 60px;  
+                    -webkit-border-radius: 60px; 
+                    box-shadow: 0px 0px 3px 0px #666 inset;
+                    -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+                    -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+                }
             }
 
-            .postit-in-circle {
-              margin-top: -190px;
-              margin-left: 65px;
-              display: block;
-              background-color: white;
-              border-radius: 60px; 
-              -moz-border-radius: 60px;  
-              -webkit-border-radius: 60px; 
-              padding: 25px 10px 0 10px;
-              text-align: center;
-              width: 100px;
-              height: 95px;
-              background-color: white;
-              border-radius: 60px; 
-              -moz-border-radius: 60px;  
-              -webkit-border-radius: 60px; 
-              box-shadow: 0px 0px 3px 0px #666 inset;
-              -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-              -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-            }
-          }
+            //タイトルや投稿者などの詳細情報部分
+            .navbar-detail{
 
-          .navbar-bottom {
-            margin-left: 20px;
+                .navbar-txt {
+                    width: 70%;
+                    margin-top: -13px;
+                    padding-bottom: 10px;
 
-            .main_sns li {
-              float: left;
-              margin: 0 15px 0 0;
-            }
+                    img {
+                        width: 100px;
+                        height: 100px;
+                    }
 
-            .main_sns li:first-child {
-            }
+                    .navbar-title {
+                        margin-bottom: 20px;
+                        font-size: 45px;
 
-            .main_sns li iframe {
-              margin: 0;
-              padding: 0;
-            }
-          }
+                        a {
+                            word-wrap: break-word;
+                            margin: 0 15px 0 0;
+                            color: #000;
+                            text-decoration: none;
+                        }
 
-          .navbar-txt {
-            width: 70%;
-            margin-top: -13px;
-            padding-bottom: 10px;
+                        a:hover {
+                            color: #000;
+                            text-decoration: underline;
+                        }
+                    }
+                }
 
-            img {
-              width: 100px;
-              height: 100px;
-            }
+                .navbar-count {
+                margin: 20px 10px 25px 10px;
+                font-size: 20px;
 
-            .navbar-title {
-              margin-bottom: 20px;
-              font-size: 45px;
+                div {
+                    display: inline;
 
-              a {
-                word-wrap: break-word;
-                margin: 0 15px 0 0;
-                color: #000;
-                text-decoration: none;
-              }
+                    span {
+                    margin-left: 20px;
+                    }
+                }
 
-              a:hover {
-                color: #000;
-                text-decoration: underline;
-              }
-            }
-          }
+                .navbar-countcomment {
+                    margin-top: 3px;
+                    line-height: 1;
+                    color: #666;
+                    font-size: 11px;
+                    }
 
-          .navbar-count {
-            margin: 20px 10px 25px 10px;
-            font-size: 20px;
+                .navbar-countfv {
+                    display: inline-block;
+                    margin: 0 auto;
+                    padding: 20px 10px 5px 10px;
+                    vertical-align: top;
+                    text-align: center;
+                    width: 55px;
+                    height: 50px;
+                    background-color: white;
+                    border-radius: 60px; 
+                    -moz-border-radius: 60px;  
+                    -webkit-border-radius: 60px; 
+                    padding: 20px 10px 5px 10px;
+                    vertical-align: top;
+                    text-align: center;
+                    width: 55px;
+                    height: 50px;
+                    background-color: white;
+                    border-radius: 60px; 
+                    -moz-border-radius: 60px;  
+                    -webkit-border-radius: 60px; 
+                    box-shadow: 0px 0px 3px 0px #666 inset;
+                    -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+                    -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+                    }
 
-            div {
-              display: inline;
+                .navbar-countnum {
+                    font-size: 40px;
+                    line-height: 1;
+                    margin-top: -3px;
+                    color: #000;
+                    font-size: 22px;
+                    font-family: Arial, Helvetica, sans-serif;
+                    }
 
-              span {
-                margin-left: 20px;
-              }
-            }
-
-            .navbar-countcomment {
-                margin-top: 3px;
-                line-height: 1;
-                color: #666;
-                font-size: 11px;
-              }
-
-            .navbar-countfv {
-              display: inline-block;
-              margin: 0 auto;
-              padding: 20px 10px 5px 10px;
-              vertical-align: top;
-              text-align: center;
-              width: 55px;
-              height: 50px;
-              background-color: white;
-              border-radius: 60px; 
-              -moz-border-radius: 60px;  
-              -webkit-border-radius: 60px; 
-              padding: 20px 10px 5px 10px;
-              vertical-align: top;
-              text-align: center;
-              width: 55px;
-              height: 50px;
-              background-color: white;
-              border-radius: 60px; 
-              -moz-border-radius: 60px;  
-              -webkit-border-radius: 60px; 
-              box-shadow: 0px 0px 3px 0px #666 inset;
-              -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-              -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-              }
-
-            .navbar-countnum {
-                font-size: 40px;
-                line-height: 1;
-                margin-top: -3px;
-                color: #000;
-                font-size: 22px;
-                font-family: Arial, Helvetica, sans-serif;
-              }
-
-            .navbar-countlabel {
-                margin-top: 3px;
-                line-height: 1;
-                color: #666;
-                font-size: 11px;
-              }
+                .navbar-countlabel {
+                    margin-top: 3px;
+                    line-height: 1;
+                    color: #666;
+                    font-size: 11px;
+                    }
             
-            .navbar-date {
-              display: inline-block;
-              margin: 0 auto;
-              padding: 20px 10px 5px 10px;
-              vertical-align: top;
-              text-align: center;
-              width: 100px;
-              height: 50px;
-              background-color: white;
-              border-radius: 60px; 
-              -moz-border-radius: 60px;  
-              -webkit-border-radius: 60px; 
-              box-shadow: 0px 0px 3px 0px #666 inset;
-              -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-              -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-              font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
+                .navbar-date {
+                    display: inline-block;
+                    margin: 0 auto;
+                    padding: 20px 10px 5px 10px;
+                    vertical-align: top;
+                    text-align: center;
+                    width: 100px;
+                    height: 50px;
+                    background-color: white;
+                    border-radius: 60px; 
+                    -moz-border-radius: 60px;  
+                    -webkit-border-radius: 60px; 
+                    box-shadow: 0px 0px 3px 0px #666 inset;
+                    -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+                    -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+                    font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
 
-              .date {
-                display: block;
-                line-height: 1;
-                margin-top: -3px;
-                color: #000;
-                font-size: 18px;
-                font-family: Arial,Arial, Helvetica, sans-serif,sans-serif;
-              }
+                    .date {
+                    display: block;
+                    line-height: 1;
+                    margin-top: -3px;
+                    color: #000;
+                    font-size: 18px;
+                    font-family: Arial,Arial, Helvetica, sans-serif,sans-serif;
+                    }
 
-              .date-txt {
-                display: block;
-                margin-top: 3px;
-                line-height: 1;
-                color: #666;
-                font-size: 7px;
-              }
+                    .date-txt {
+                    display: block;
+                    margin-top: 3px;
+                    line-height: 1;
+                    color: #666;
+                    font-size: 7px;
+                    }
+                }
+
+                .navbar-Update {
+                    display: inline-block;
+                    margin: 0 auto;
+                    padding: 20px 10px 5px 10px;
+                    vertical-align: top;
+                    text-align: center;
+                    width: 100px;
+                    height: 50px;
+                    background-color: white;
+                    -moz-border-radius: 60px;  
+                    -webkit-border-radius: 60px; 
+                    border-radius: 60px; 
+                    -webkit-box-shadow: 0 0 3 0 #666 inset;
+                    -moz-box-shadow: 0 0 3 0 #666 inset;
+                    box-shadow: 0 0 3 0 #666 inset;
+                    font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
+                }
+                }
+
+                .navbar-bottom {
+                    margin-left: 20px;
+
+                    .main_sns li {
+                        float: left;
+                        margin: 0 15px 0 0;
+                    }
+
+                    .main_sns li iframe {
+                        margin: 0;
+                        padding: 0;
+                    }
+                }
             }
 
-            .navbar-Update {
-              display: inline-block;
-              margin: 0 auto;
-              padding: 20px 10px 5px 10px;
-              vertical-align: top;
-              text-align: center;
-              width: 100px;
-              height: 50px;
-              background-color: white;
-              -moz-border-radius: 60px;  
-              -webkit-border-radius: 60px; 
-              border-radius: 60px; 
-              -webkit-box-shadow: 0 0 3 0 #666 inset;
-              -moz-box-shadow: 0 0 3 0 #666 inset;
-              box-shadow: 0 0 3 0 #666 inset;
-              font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
-            }
-          }
+            /*メディアクエリ*/
+            /*@media screen and (max-width: @tabletPortraitWidthSize){
+                .navbar-detail{
+                    float: left;
+                }
+                .navbar-txt{
+                    width: 30%;
+                    
+                    .navbar-title{
+                        a{
+                            color: red;
+                        }
+                    }
+                }
+            }*/
         }
 
-          .navbar-user {
+            .navbar-user {
             display: inline-block;
             width: 200px;
             margin-right: -50px;
             margin-left: 40%;
-          }
+            }
         }
 
         .navbar-mainwiththumb {
-          .navbar-txt {
+            .navbar-txt {
             margin-bottom: 10px;
             font-size: 30px;
-          }
+            }
         }
 
         .navbar-userthumb {
-          margin-right: 10px;
+            margin-right: 10px;
         }
 
         .user-img {
-          font-size: 11px;
+            font-size: 11px;
         }
 
         .navbar-username {
-          line-height: 30px;
-          vertical-align: middle;
+            line-height: 30px;
+            vertical-align: middle;
         }
-      }
+        }
     }
 
+    /*以下記事部分*/
     .contentswrapper {
       width: 1040px;
       margin: 0 auto;

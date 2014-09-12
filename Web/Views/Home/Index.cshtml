@@ -88,78 +88,81 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="navbar-txt">
-                            <span>
-                                @if (Model.UseThumbnail)
-                                {
-                                    <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)" />
-                                }
-                            </span>
-                            <span class="article-title navbar-title">
-                                <a href="">
-                                    @if (Model != null)
-                                    {@Model.Title
+                        <div class="navbar-detail">
+                            <div class="navbar-txt">
+                                <span>
+                                    @if (Model.UseThumbnail)
+                                    {
+                                        <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)" />
                                     }
-                                </a>
-                            </span>
-                        </div>
-                        <div class="navbar-count">
-                            
-                            <div class="navbar-countnum">
-                                <span class="navbar-countlabel">PV</span>
-                                @if (Model != null)
-                                {@Model.PageView
-                                }
-                            </div>
-
-                            <div class="navbar-countnum">
-                                <span class="navbar-countcomment">コメント</span>
-                                @if (Model != null)
-                                {@Model.CommentCount
-                                }
-                            </div>
-                            
-                            <div class="navbar-user">
-                                <span class="user-img">投稿者</span><span class="navbar-userthumb">@Model.Author_IconTag</span>
-                                <span class="navbar-username">
-                                    <a href="@("/UserPage?articleId="+Model.ArticleId)">
+                                </span>
+                                <span class="article-title navbar-title">
+                                    <a href="">
                                         @if (Model != null)
-                                        {
-                                            @Model.Author
+                                        {@Model.Title
                                         }
-                                    </a>さん
+                                    </a>
                                 </span>
                             </div>
-                            @if (User.IsInRole("Administrator"))
-                            {
-                                <form method="POST" action="/api/Article/RemoveAllLabel">
-                                    @Html.AntiForgeryToken()
-                                    @Html.HiddenFor(m=>m.ArticleId)
-                                    <input type="submit" value="ラベル全削除"/>
-                                </form>
-                                <form method="POST" action="/api/Article/RemoveArticle">
-                                    @Html.AntiForgeryToken()
-                                    @Html.HiddenFor(m => m.ArticleId)
-                                    <input type="submit" value="この記事を削除" />
-                                </form>
-                            }
+                            <div class="navbar-count">
 
-                        </div>
-                        <div class="navbar-bottom">
-                            <ul class="main_sns">
-                                <li><span class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span></li>
-                                <li><a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
-<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script></li>
-                                <li>更新日時 @Model.Article_UpDate</li>
-                            </ul>
-                            
+                                <div class="navbar-countnum">
+                                    <span class="navbar-countlabel">PV</span>
+                                    @if (Model != null)
+                                    {@Model.PageView
+                                    }
+                                </div>
 
-                            
+                                <div class="navbar-countnum">
+                                    <span class="navbar-countcomment">コメント</span>
+                                    @if (Model != null)
+                                    {@Model.CommentCount
+                                    }
+                                </div>
+
+                                <div class="navbar-user">
+                                    <span class="user-img">投稿者</span><span class="navbar-userthumb">@Model.Author_IconTag</span>
+                                    <span class="navbar-username">
+                                        <a href="@("/UserPage?articleId="+Model.ArticleId)">
+                                            @if (Model != null)
+                                            {
+                                                @Model.Author
+                                            }
+                                        </a>さん
+                                    </span>
+                                </div>
+                                @if (User.IsInRole("Administrator"))
+                                {
+                                    <form method="POST" action="/api/Article/RemoveAllLabel">
+                                        @Html.AntiForgeryToken()
+                                        @Html.HiddenFor(m => m.ArticleId)
+                                        <input type="submit" value="ラベル全削除" />
+                                    </form>
+                                    <form method="POST" action="/api/Article/RemoveArticle">
+                                        @Html.AntiForgeryToken()
+                                        @Html.HiddenFor(m => m.ArticleId)
+                                        <input type="submit" value="この記事を削除" />
+                                    </form>
+                                }
+
+                            </div>
+                            <div class="navbar-bottom">
+                                <ul class="main_sns">
+                                    <li><span class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span></li>
+                                    <li>
+                                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
+                                        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+                                    </li>
+                                    <li>更新日時 @Model.Article_UpDate</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </nav>
             </div>
         </div>
+
+        @* 以下記事部分 *@
         <div class="contentswrapper set">
             <article class="main">
                 <div>
