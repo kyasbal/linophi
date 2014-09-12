@@ -84,7 +84,6 @@ input[type="text"] {
     overflow: hidden;
 
     .top {
-        width: 95%;
         height: 350px;
         margin-bottom: 30px;
         background-color: rgba(240,255,240,1);
@@ -178,12 +177,10 @@ input[type="text"] {
             width: 120%;
 
         &-main {
-            float: left;
-            width: 80%;
 
             //円グラフ部分
             .navbar-thumb {
-                float: right;//OK!
+                float: right;
                 margin: 0 15px 15px -50px;
 
                 img {
@@ -250,21 +247,44 @@ input[type="text"] {
                     margin: 20px 10px 25px 10px;
                     font-size: 20px;
 
+                    .navbar-user {
+                        margin-bottom: 10px;
+                        .poster {
+                            font-size: @navbarCountFontSize;
+                        }
+                        .navbar-userthumb {
+                        }
+                        .navbar-username {
+                        }
+                    }
+
                     .navbar-countnum{
                         display: inline;
+                        line-height: 1;
+                        color: #000;
+                        font-size: 22px;
+                        font-family: Arial, Helvetica, sans-serif;
+
+                        .navbar-countlabel {
+                            margin-top: 3px;
+                            line-height: 1;
+                            color: #666;
+                            font-size: @navbarCountFontSize;
+                        }
+
+                        .navbar-countcomment {
+                            margin-top: 3px;
+                            line-height: 1;
+                            color: #666;
+                            font-size: @navbarCountFontSize;
+                        }
                     }
+
                     div {
                         /*display: inline;*/
                         span {
                             margin-left: 20px;
                         }
-                    }
-
-                    .navbar-countcomment {
-                        margin-top: 3px;
-                        line-height: 1;
-                        color: #666;
-                        font-size: @navbarCountFontSize;
                     }
 
                     .navbar-countfv {
@@ -292,21 +312,6 @@ input[type="text"] {
                         -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
                         -moz-box-shadow: 0px 0px 3px 0px #666 inset;
                         }
-
-                    .navbar-countnum {
-                        line-height: 1;
-                        margin-top: -3px;
-                        color: #000;
-                        font-size: 22px;
-                        font-family: Arial, Helvetica, sans-serif;
-                    }
-
-                    .navbar-countlabel {
-                        margin-top: 3px;
-                        line-height: 1;
-                        color: #666;
-                        font-size: @navbarCountFontSize;
-                    }
             
                     .navbar-date {
                         display: inline-block;
@@ -360,21 +365,6 @@ input[type="text"] {
                         box-shadow: 0 0 3 0 #666 inset;
                         font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
                     }
-
-                    .navbar-user {
-                        /*width: 200px;*/
-                        .poster {
-                            font-size: @navbarCountFontSize;
-                        }
-                        .navbar-userthumb {
-                            margin-right: 10px;
-                        }
-                        .navbar-username {
-                            /*line-height: 30px;
-                            vertical-align: middle;*/
-                        }
-                    }
-
                 }
 
                 .navbar-bottom {

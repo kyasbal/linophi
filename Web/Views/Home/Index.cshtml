@@ -107,17 +107,6 @@
 
                             <div class="navbar-count">
 
-                                <div class="navbar-countnum">
-                                    <span class="navbar-countlabel">PV</span>
-                                    @if (Model != null)
-                                    {@Model.PageView
-                                    }
-                                    <span class="navbar-countcomment">コメント</span>
-                                    @if (Model != null)
-                                    {@Model.CommentCount
-                                    }
-                                </div>
-
                                 <div class="navbar-user">
                                     <span class="poster">投稿者</span>
                                     <span class="navbar-userthumb">@Model.Author_IconTag</span>
@@ -129,6 +118,17 @@
                                             }
                                         </a>さん
                                     </span>
+                                </div>
+
+                                <div class="navbar-countnum">
+                                    <span class="navbar-countlabel">PV</span>
+                                    @if (Model != null)
+                                    {@Model.PageView
+                                    }
+                                    <span class="navbar-countcomment">コメント</span>
+                                    @if (Model != null)
+                                    {@Model.CommentCount
+                                    }
                                 </div>
 
                                 @if (User.IsInRole("Administrator"))

@@ -73,7 +73,6 @@ input[type="text"] {
   overflow: hidden;
 }
 .container .contents .top {
-  width: 95%;
   height: 350px;
   margin-bottom: 30px;
   background-color: #f0fff0;
@@ -154,10 +153,6 @@ input[type="text"] {
   margin: 0 0 0 20px;
   width: 120%;
 }
-.container .contents .top .navbar-main {
-  float: left;
-  width: 80%;
-}
 .container .contents .top .navbar-main .navbar-thumb {
   float: right;
   margin: 0 15px 15px -50px;
@@ -209,20 +204,36 @@ input[type="text"] {
   margin: 20px 10px 25px 10px;
   font-size: 20px;
 }
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-user {
+  margin-bottom: 10px;
+}
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-user .poster {
+  font-size: 11px;
+}
 .container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-countnum {
   display: inline;
+  line-height: 1;
+  color: #000;
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-countnum .navbar-countlabel {
+  margin-top: 3px;
+  line-height: 1;
+  color: #666;
+  font-size: 11px;
+}
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-countnum .navbar-countcomment {
+  margin-top: 3px;
+  line-height: 1;
+  color: #666;
+  font-size: 11px;
 }
 .container .contents .top .navbar-main .navbar-detail .navbar-count div {
   /*display: inline;*/
 }
 .container .contents .top .navbar-main .navbar-detail .navbar-count div span {
   margin-left: 20px;
-}
-.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-countcomment {
-  margin-top: 3px;
-  line-height: 1;
-  color: #666;
-  font-size: 11px;
 }
 .container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-countfv {
   display: inline-block;
@@ -239,19 +250,6 @@ input[type="text"] {
   box-shadow: 0px 0px 3px 0px #666 inset;
   -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
   -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-}
-.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-countnum {
-  line-height: 1;
-  margin-top: -3px;
-  color: #000;
-  font-size: 22px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-countlabel {
-  margin-top: 3px;
-  line-height: 1;
-  color: #666;
-  font-size: 11px;
 }
 .container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-date {
   display: inline-block;
@@ -301,19 +299,6 @@ input[type="text"] {
   -moz-box-shadow: 0 0 3 0 #666 inset;
   box-shadow: 0 0 3 0 #666 inset;
   font-family: Tahoma, Verdana, Geneva, Tahoma, sans-serif, sans-serif;
-}
-.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-user {
-  /*width: 200px;*/
-}
-.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-user .poster {
-  font-size: 11px;
-}
-.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-user .navbar-userthumb {
-  margin-right: 10px;
-}
-.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-user .navbar-username {
-  /*line-height: 30px;
-                            vertical-align: middle;*/
 }
 .container .contents .top .navbar-main .navbar-detail .navbar-bottom {
   margin-left: 20px;
