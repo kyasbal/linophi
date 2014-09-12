@@ -55,19 +55,19 @@
 
                                         if (tag.IsTheme)
                                         {
-                                            <li class="topicwordlistli">
-                                                <a href="@("/Tag?tag=" + tag.TagName)" class="topicword theme-tag">
-                                                    @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
-                                                </a>
-                                            </li>
+                                    <li class="topicwordlistli">
+                                        <a href="@("/Tag?tag=" + tag.TagName)" class="topicword theme-tag">
+                                            @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                        </a>
+                                    </li>
                                         }
                                         else
                                         {
-                                            <li class="topicwordlistli">
-                                                <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
-                                                    @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
-                                                </a>
-                                            </li>
+                                    <li class="topicwordlistli">
+                                        <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
+                                            @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                        </a>
+                                    </li>
                                         }
                                     }
                                 }
@@ -79,15 +79,6 @@
             <div class="top-inner">
                 <nav class="navbar set">
                     <div class="navbar-main navbar-mainwiththumb">
-                        <div class="navbar-thumb">
-                            <canvas id="article-graph" width="250" height="250"></canvas>
-                            <div class="postit-in-circle">
-                                <span class="navbar-countfv">
-                                    <span class="navbar-countnum font-size-25 label-count">@Model.LabelCount</span><br />
-                                    <span class="navbar-countlabel">ふせん</span>
-                                </span>
-                            </div>
-                        </div>
                         <div class="navbar-detail">
                             <div class="navbar-txt">
                                 <span class="article-title navbar-title">
@@ -100,13 +91,11 @@
                                 <span>
                                     @if (Model.UseThumbnail)
                                     {
-                                    <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)" />
+                                        <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)" />
                                     }
                                 </span>
                             </div>
-
                             <div class="navbar-count">
-
                                 <div class="navbar-user">
                                     <span class="poster">投稿者</span>
                                     <span class="navbar-userthumb">@Model.Author_IconTag</span>
@@ -119,7 +108,6 @@
                                         </a>さん
                                     </span>
                                 </div>
-
                                 <div class="navbar-countnum">
                                     <span class="navbar-countlabel">PV</span>
                                     @if (Model != null)
@@ -130,7 +118,9 @@
                                     {@Model.CommentCount
                                     }
                                 </div>
-
+                                <div class="navbar-update-time">
+                                    <span class="update-time">更新日時</span>@Model.Article_UpDate
+                                </div>
                                 @if (User.IsInRole("Administrator"))
                                 {
                                     <form method="POST" action="/api/Article/RemoveAllLabel">
@@ -145,7 +135,6 @@
                                     </form>
                                 }
                             </div>
-
                             <div class="navbar-bottom">
                                 <ul class="main_sns">
                                     <li><span class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span></li>
@@ -153,8 +142,16 @@
                                         <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
                                         <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
                                     </li>
-                                    <li>更新日時 @Model.Article_UpDate</li>
                                 </ul>
+                            </div>
+                        </div>
+                        <div class="navbar-thumb">
+                            <canvas id="article-graph" width="250" height="250"></canvas>
+                            <div class="postit-in-circle">
+                                <span class="navbar-countfv">
+                                    <span class="navbar-countnum font-size-25 label-count">@Model.LabelCount</span><br />
+                                    <span class="navbar-countlabel">ふせん</span>
+                                </span>
                             </div>
                         </div>
                     </div>
