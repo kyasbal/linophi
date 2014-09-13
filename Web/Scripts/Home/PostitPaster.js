@@ -182,7 +182,7 @@ $(window).load(function () {
         });
 
         labelSourceParser.eachByParagraph(getParagraphId(className), function (emotion, count, itr) {
-            $('.dropbox > .' + className).append('<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '-d.svg\');background-size:130px 43px;height:43px;width:130px;"><span>' + count + '</span></div>');
+            $('.dropbox > .' + className).append('<div class="' + emotion + '" style="background-image:url(\'Content/imgs/Home/' + emotion + '-d.svg\');background-size:130px 43px;height:43px;width:130px;"><span>' + count + '</span></div>');
         });
 
         labelBoxController.labelPosition($('.dropbox > .' + className + ' > *').length, className);
@@ -198,7 +198,7 @@ $(window).load(function () {
         });
 
         labelType = ((Object)(event.currentTarget)).className;
-        src = '/Content/imgs/Home/' + labelType + '-d.svg';
+        src = 'Content/imgs/Home/' + labelType + '-d.svg';
 
         $('.dropbox').css({
             "opacity": 0.7,
@@ -207,37 +207,35 @@ $(window).load(function () {
 
         $('.fade-layer, .dropbox').mousemove(function (e) {
             if (dropboxPosY <= e.pageY && e.pageY <= dropboxPosY + dropboxHeight) {
-                posY = e.pageY - 20;
+                posY = e.pageY;
             }
 
             if (pasteMode) {
                 $(".dropbox > .postit-pasting").css({
                     "position": "absolute",
-                    "top": posY - dropboxPosY + "px",
+                    "top": posY - dropboxPosY - 20 + "px",
                     "left": "20px",
                     "z-index": 1100,
                     "visibility": "visible",
-                    "background-image": "url(" + src + ")",
+                    "background-image": "url('" + src + "')",
                     "background-size": "130px 43px"
                 });
             }
 
-            var pHeights = dropboxPosY;
             var bg;
             $('.dropbox > [class*="p-"]').each(function (i) {
                 var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')');
                 var pHeight = $target.outerHeight(true);
+                var pPos = ($target.offset() || { "top": NaN }).top;
                 bg = "none";
-                if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode) {
+                console.log(pPos, posY, pPos + pHeight);
+                if (pPos <= posY && posY < pPos + pHeight && pasteMode) {
                     bg = dropboxPosX <= e.pageX && e.pageX <= dropboxPosX + 180 ? "#24ade2" : "#7acbe2";
                 }
-                console.log(e.pageX, dropboxPosX);
 
                 $target.css({
                     "background": bg
                 });
-
-                pHeights += pHeight;
             });
         });
 
@@ -257,7 +255,6 @@ $(window).load(function () {
         }, 500);
 
         if (pasteMode) {
-            var pHeights = dropboxPosY;
             pasteMode = false;
 
             $('.dropbox > .postit-pasting').css({
@@ -273,17 +270,16 @@ $(window).load(function () {
                 if (elementName == "hr")
                     return true;
 
+                var pPos = ($target.offset() || { "top": NaN }).top;
                 var pHeight = $target.outerHeight(true);
 
                 var thisClass = $target.attr("class");
 
                 var postitExistence = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ') > .' + labelType).length;
 
-                if (pHeights <= posY && posY <= pHeights + pHeight) {
+                if (pPos <= posY && posY <= pPos + pHeight) {
                     ajaxManager.sendPostitNumber(articleId, thisClass, labelType, postitExistence, $target, src);
                 }
-
-                pHeights += pHeight;
                 // console.log($target.attr("class"), pHeight, pHeights, posY, src);
             });
         }
