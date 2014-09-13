@@ -45,44 +45,45 @@
     <div class="contents set">
         <div class="top">
             <div class="top-inner">
-                <div class="viewhead">
-                    <div class="viewhead-inner">
-                        <div class="topicwordlist set">
-                            <ul class="topicwordlistul">
-                                @*タグの列挙部分*@
-                                @if (Model.Tags != null)
-                                {
-                                    foreach (TagViewModel tag in Model.Tags)
+                <div class="tag">
+                    <div class="viewhead">
+                        <div class="viewhead-inner">
+                            <div class="topicwordlist set">
+                                <ul class="topicwordlistul">
+                                    @*タグの列挙部分*@
+                                    @if (Model.Tags != null)
                                     {
-                                        if (tag.IsTheme)
+                                        foreach (TagViewModel tag in Model.Tags)
                                         {
-                                            <li class="topicwordlistli">
-                                                <a href="@("/Tag?tag=" + tag.TagName)" class="topicword theme-tag">
-                                                    @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
-                                                </a>
-                                            </li>
-                                        }
-                                        else
-                                        {
-                                            <li class="topicwordlistli">
-                                                <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
-                                                    @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
-                                                </a>
-                                            </li>
+
+                                            if (tag.IsTheme)
+                                            {
+                                                <li class="topicwordlistli">
+                                                    <a href="@("/Tag?tag=" + tag.TagName)" class="topicword theme-tag">
+                                                        @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="topicwordlistli">
+                                                    <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
+                                                        @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                                    </a>
+                                                </li>
+                                            }
                                         }
                                     }
-                                }
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="top-inner">
                 <nav class="navbar set">
                     <div class="navbar-main navbar-mainwiththumb">
                         <div class="navbar-detail">
                             <div class="navbar-txt">
-                                <h1 class="article-title navbar-title"s>
+                                <h1 class="article-title navbar-title">
                                     @if (Model != null)
                                     {@Model.Title
                                     }
@@ -156,7 +157,7 @@
                         </div>
                         <div class="navbar-thumb">
                             <canvas id="article-graph" width="250" height="250"></canvas>
-                            <div class="postit-in-circle">
+                            <div class="inside-circle">
                                 <span class="navbar-countfv">
                                     <span class="navbar-countnum font-size-25 label-count">@Model.LabelCount</span><br />
                                     <span class="navbar-countlabel">ふせん</span>
@@ -200,7 +201,7 @@
                 </script>
                 <div class="rellist">
                     <div>関連/反証記事</div>
-                    <div class="separator2"><hr></div>
+                    <div class="separator"><hr></div>
                     @if (Model.RelatedArticles.Count != 0)
                     {
                         <ul class="list">
@@ -227,11 +228,10 @@
                     }
                 </div>
                 <br />
-                <div class="separator1"><hr></div>
                 <br />
                 <div class="rellist">
                     <h2>この著者の他の記事</h2>
-                    <div class="separator2"><hr></div>
+                    <div class="separator"><hr></div>
                     @if (Model.AuthorsArticles.Count != 0)
                     {
                         <ul class="list">
