@@ -325,16 +325,20 @@ input[type="text"] {
                         }
                         .inside-circle {
                             @insideCircleHeight: 95px;
-                            @insideCirclePaddingTop: 25px; 
+                            @insideCircleWidth: 100px;
+                            @insideCirclePaddingTop: 25px;
+                            @insideCirclePaddingRight: 10px;
+                            @insideCirclePaddingLeft: 10px;
+
                             position: absolute;
-                            width: 100px;
+                            width: @insideCircleWidth;
                             height: @insideCircleHeight;
-                            padding: @insideCirclePaddingTop 10px 0 10px;
-                            text-align: center;
+                            padding: @insideCirclePaddingTop @insideCirclePaddingRight 0 @insideCirclePaddingLeft;
                             bottom: (@articleGraphSize - (@insideCircleHeight + @insideCirclePaddingTop)) / 2;
-                            left: 65px;
-                            display: block;
+                            left: (@articleGraphSize - (@insideCircleWidth + 20px)) / 2;
                             background-color: white;
+                            text-align: center;
+                            display: block;
                             border-radius: 60px; 
                             -moz-border-radius: 60px;  
                             -webkit-border-radius: 60px; 

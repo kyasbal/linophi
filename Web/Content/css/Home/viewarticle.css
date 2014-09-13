@@ -264,11 +264,11 @@ input[type="text"] {
   width: 100px;
   height: 95px;
   padding: 25px 10px 0 10px;
-  text-align: center;
   bottom: 65px;
   left: 65px;
-  display: block;
   background-color: white;
+  text-align: center;
+  display: block;
   border-radius: 60px;
   -moz-border-radius: 60px;
   -webkit-border-radius: 60px;
