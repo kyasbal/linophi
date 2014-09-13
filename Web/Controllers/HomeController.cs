@@ -404,12 +404,7 @@ namespace Web.Controllers
                           
             mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
             mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
-
-            // Init SmtpClient and send
-            SmtpClient smtpClient = new SmtpClient("smtp.sendgrid.net", Convert.ToInt32(587));
-            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("sgvniwvl@kke.com", "kyasbal08");
-            smtpClient.Credentials = credentials;
-            smtpClient.Send(mailMsg);
+            LinophiMailClient.Instance.SendMessage(mailMsg);
             return View("InquiryAccepted");
         }
 

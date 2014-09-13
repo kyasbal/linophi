@@ -536,6 +536,7 @@
     <Compile Include="Storage\Connection\StorageConnectionBase.cs" />
     <Compile Include="Storage\Connection\TableStorageConnection.cs" />
     <Compile Include="Storage\ImageUploaderManager.cs" />
+    <Compile Include="Storage\InquiryCCManager.cs" />
     <Compile Include="Storage\LabelEntity.cs" />
     <Compile Include="Storage\Manager\AzureBlobManagerBase.cs" />
     <Compile Include="Storage\Manager\AzureTableManagerBase.cs" />
@@ -549,6 +550,7 @@
     <Compile Include="Utility\IdGenerator.cs" />
     <Compile Include="Utility\IGravatarLoader.cs" />
     <Compile Include="Utility\ImageResult.cs" />
+    <Compile Include="Utility\LinophiMailClient.cs" />
     <Compile Include="Utility\MathEx.cs" />
     <Compile Include="Utility\WebPageStatic.cs" />
     <Compile Include="WebRole.cs" />
