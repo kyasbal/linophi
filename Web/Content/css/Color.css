@@ -29,4 +29,16 @@
   padding: 0 20px;
   background-color: #f8f8ff;
 }
+.textbox-style-1-mixin {
+  background-color: #dfece6;
+  color: #000000;
+  -moz-transition: background-color ease-in 0.2s;
+  -o-transition: background-color ease-in 0.2s;
+  -webkit-transition: background-color ease-in 0.2s;
+  transition: background-color ease-in 0.2s;
+}
+.textbox-style-1-mixin:focus {
+  background-color: #5f9781;
+  color: #ffffff;
+}
 /*# sourceMappingURL=Color.css.map */

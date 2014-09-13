@@ -131,10 +131,10 @@ class BoldMarkup extends MarkupBase //太字
         var result: string = str;
         var rep: string;
 
-        result = result.replace(/^\*(.*?[^\\])\*/, "<span class=\"b\">$1</span>");
+        result = result.replace(/^\*(.*?[^\\])\*/, "<strong class=\"b\">$1</strong>");
         while (true)//*に挟まれてるのを強調
         {
-            rep = result.replace(/([^\\])\*(.*?[^\\])\*/, "$1<span class=\"b\">$2</span>");
+            rep = result.replace(/([^\\])\*(.*?[^\\])\*/, "$1<strong class=\"b\">$2</strong>");
             if (rep == result) break;
             result = rep;
         }

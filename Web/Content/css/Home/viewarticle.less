@@ -59,8 +59,8 @@ input[type="text"] {
   clear: both;
 }
 
-.theme-tag{
-    border:1px solid red!important;
+.theme-tag {
+    border: 1px solid red !important;
 }
 
 .container {
@@ -77,7 +77,6 @@ input[type="text"] {
             /*margin: 0 auto;*/
     }
   }
-
     /*記事の説明部分*/
   .contents {
     overflow: hidden;
@@ -172,13 +171,14 @@ input[type="text"] {
 
       .navbar {
         &-main {
-                    >div{
+                    > div {
                         display: inline-block;
             }
                     //タイトルや投稿者などの詳細情報部分
-                    .navbar-detail{
+                    .navbar-detail {
               float: left;
                         width: 60%;
+
           .navbar-txt {
             padding-bottom: 10px;
 
@@ -190,27 +190,18 @@ input[type="text"] {
             .navbar-title {
                                 display: inline;
                                 line-height: 38px;
-
-              a {
                                     font-size: 40px;
                 word-wrap: break-word;
                 margin: 0 15px 0 0;
                 color: #000;
                 text-decoration: none;
               }
-
-              a:hover {
-                color: #000;
-                text-decoration: underline;
               }
-            }
-          }
 
           .navbar-count {
-                            @navbarCountFixedFontSize: 12px;//投稿者・PVなどの決まった言葉のフォントサイズ
-                            @navbarCountValueFontSize: 20px;//記事ごとの実際の投稿者の名前やPV数のフォントサイズ
-
-                            >div{
+                            @navbarCountFixedFontSize: 12px; //投稿者・PVなどの決まった言葉のフォントサイズ
+                            @navbarCountValueFontSize: 20px; //記事ごとの実際の投稿者の名前やPV数のフォントサイズ
+                            > div {
                                 margin: 10px;
                             }
 
@@ -218,10 +209,12 @@ input[type="text"] {
                                 .poster {
                                     font-size: @navbarCountFixedFontSize;
                                 }
+
                                 .navbar-userthumb {
                                 }
-                                .navbar-username{
-                                    a{
+
+                                .navbar-username {
+                                    a {
                                         color: #000 !important;
                                         font-weight: bold;
                                         font-size: @navbarCountValueFontSize;
@@ -229,7 +222,7 @@ input[type="text"] {
                                 }
                             }
 
-                            .navbar-countnum{
+                            .navbar-countnum {
                                 display: inline;
                                 line-height: 1;
                                 color: #000;
@@ -241,8 +234,9 @@ input[type="text"] {
                                     color: #000;
                                     font-size: @navbarCountFixedFontSize;
             }
-                                .navbar-username{
-                                    a{
+
+                                .navbar-username {
+                                    a {
                                         color: #000 !important;
                                         font-weight: bold;
                                         font-size: @navbarCountValueFontSize;
@@ -250,7 +244,7 @@ input[type="text"] {
                                 }
                             }
 
-                            .navbar-countnum{
+                            .navbar-countnum {
                                 display: inline;
                                 line-height: 1;
                                 color: #000;
@@ -270,18 +264,20 @@ input[type="text"] {
                                 }
                             }
 
-                            .navbar-update-time{
+                            .navbar-update-time {
                                 font-size: @navbarCountValueFontSize;
-                                .update-time{
+
+                                .update-time {
                                     font-size: @navbarCountFixedFontSize;
                                 }
                             }
                         }
 
                         .navbar-bottom {
-                            li{
+                            li {
                                 display: inline-block;
                             }
+
                             .main_sns li {
                              }
                         
@@ -371,6 +367,7 @@ input[type="text"] {
                     //円グラフ部分
                     .navbar-thumb {
                         float: left;
+
                         img {
                             width: 105px;
                             height: 105px;
@@ -488,11 +485,12 @@ input[type="text"] {
                 font-size: 14px;
                 color: #ddd;
               }
+
               > b {
                 font-weight: bold;
                 font-size: 14px;
+                    }
 
-              }
               > small {
                 font-weight: 100;
                 font-size: 8px;
@@ -506,7 +504,6 @@ input[type="text"] {
               margin-bottom: 5px;
               margin-left: 12px;
               font-size: 12px;
-
             }
 
             .response {
@@ -669,9 +666,11 @@ input[type="text"] {
       position: fixed;
       right: 0;
       top: 60%;
-      @media screen and (max-width: @tabletPortraitWidthSize){
+
+    @media screen and (max-width: @tabletPortraitWidthSize) {
           top: 100%;
       }
+
       -moz-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       -o-transform: translateY(-50%);
@@ -832,30 +831,31 @@ input[type="text"] {
   textarea {
     height: 250px;
   }
-
 }
 
-.write-related-article{
-    background-color:#7ac2a6;
-    text-decoration:none!important;
-    color:white!important;
-    padding:15px 60px;
-    margin:30px;
-    line-height:80px;
-    font-size:x-large;
-    &:hover{
-        background-color:#5f9781;
+.write-related-article {
+    background-color: #7ac2a6;
+    text-decoration: none !important;
+    color: white !important;
+    padding: 15px 60px;
+    margin: 30px;
+    line-height: 80px;
+    font-size: x-large;
+
+    &:hover {
+        background-color: #5f9781;
     }
 }
 
-.write-related-article-container{
-    text-align:center;
+.write-related-article-container {
+    text-align: center;
 }
 
-.found-article-zero{
-    text-align:center;
-    p{
-        display:block;
-        font-size:large;
+.found-article-zero {
+    text-align: center;
+
+    p {
+        display: block;
+        font-size: large;
     }
 }

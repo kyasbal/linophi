@@ -50,7 +50,7 @@ input[type="text"] {
   clear: both;
 }
 .theme-tag {
-  border: 1px solid red!important;
+  border: 1px solid red !important;
 }
 .container {
   /*記事の説明部分*/
@@ -163,17 +163,11 @@ input[type="text"] {
 .container .contents .top .navbar-main .navbar-detail .navbar-txt .navbar-title {
   display: inline;
   line-height: 38px;
-}
-.container .contents .top .navbar-main .navbar-detail .navbar-txt .navbar-title a {
   font-size: 40px;
   word-wrap: break-word;
   margin: 0 15px 0 0;
   color: #000;
   text-decoration: none;
-}
-.container .contents .top .navbar-main .navbar-detail .navbar-txt .navbar-title a:hover {
-  color: #000;
-  text-decoration: underline;
 }
 .container .contents .top .navbar-main .navbar-detail .navbar-count > div {
   margin: 10px;
@@ -373,6 +367,7 @@ input[type="text"] {
   -o-transform: translateY(-20px);
   -webkit-transform: translateY(-20px);
   transform: translateY(-20px);
+<<<<<<< HEAD
 }
 .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] * {
   margin: 0;
@@ -381,6 +376,8 @@ input[type="text"] {
   font-weight: normal;
   font-size: 12px;
   vertical-align: baseline;
+=======
+>>>>>>> 0fb50856875a9053ea0ac73234263f470fde754a
 }
 .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .triangle {
   width: 0;
@@ -410,7 +407,11 @@ input[type="text"] {
   color: #aaa;
 }
 .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .res-text {
+<<<<<<< HEAD
   margin-bottom: 5px;
+=======
+  margin-bottom: 10px;
+>>>>>>> 0fb50856875a9053ea0ac73234263f470fde754a
   margin-left: 12px;
   font-size: 12px;
 }
@@ -692,8 +693,8 @@ a.topicword:hover {
 }
 .write-related-article {
   background-color: #7ac2a6;
-  text-decoration: none!important;
-  color: white!important;
+  text-decoration: none !important;
+  color: white !important;
   padding: 15px 60px;
   margin: 30px;
   line-height: 80px;
