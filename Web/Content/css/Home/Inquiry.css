@@ -72,8 +72,9 @@
 }
 .layout textarea {
   margin: 10px 0 30px 0;
-  padding: 20%;
   resize: none;
+  height: 150px;
+  width: 450px;
 }
 .layout a {
   line-height: 60px;

@@ -374,12 +374,34 @@ namespace Web.Controllers
             mailMsg.To.Add(new MailAddress(req.Mail, req.Name+"様"));
 
             // From
-            mailMsg.From = new MailAddress("inquiry@linophi.com", "linophiお問い合わせ");
+            mailMsg.From = new MailAddress("inquiry@linophi.com", "linophiお問い合わせセンター");
 
             // Subject and multipart/alternative Body
-            mailMsg.Subject = "お問い合わせを受け取りました。";
-            string text = "お問い合わせを受け取りました。";
-            string html = @"<p>お問い合わせを受け取りました</p>";
+            mailMsg.Subject = req.Name + "様からのお問い合わせに対しての返信";
+
+            string text = "この度は＜linophi＞に関するお問い合わせをいただき、誠にありがとうございます。" +
+                          "お問い合わせいただきました内容は、下記の通りです。" +
+                          " お名前 : "+req.Name+" 様" +
+                          "内容 : "+req.Content+
+                          "頂戴いたしましたお問い合わせにつきましては、内容を確認の上、後ほどご回答いたします。" +
+                          "なお、お問い合わせの内容によっては、ご回答まで数日かかる場合やご回答いたしかねる場合がございます。" +
+                          "恐れ入りますが、予めご了承くださいますようお願いいたします。" +
+                          "※このメールには返信できません。" +
+                          "恐れ入りますが、＜linophi＞に関するお問い合わせは下記URLよりお願いいたします。" +
+                          "＜linophi＞:ここにurlを貼る";
+
+            string html = @"<p>この度は＜linophi＞に関するお問い合わせをいただき、誠にありがとうございます。</p>" +
+                          @"<p>お問い合わせいただきました内容は、下記の通りです。</p>" +
+                          @"<p> お名前 : " + req.Name + " 様</p>" +
+                          @"<p>内容: </p>" +
+                          @"<p>" + req.Content + "</p>" +
+                          @"<p>頂戴いたしましたお問い合わせにつきましては、内容を確認の上、後ほどご回答いたします。</p>" +
+                          @"<p>なお、お問い合わせの内容によっては、ご回答まで数日かかる場合やご回答いたしかねる場合がございます。</p>" +
+                          @"<p>恐れ入りますが、予めご了承くださいますようお願いいたします。</p>" +
+                          @"<p>※このメールには返信できません。</p>" +
+                          @"<p>恐れ入りますが、＜linophi＞に関するお問い合わせは下記URLよりお願いいたします。</p>" +
+                          @"<p>＜linophi＞:ここにurlを貼る</p>"; ;
+                          
             mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
             mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
 
