@@ -422,13 +422,7 @@ input[type="text"] {
 }
 .container .contents .contentswrapper .main .rellist .more-read {
   margin-left: 60%;
-}
-.container .contents .contentswrapper .main .rellist .more-read a {
   color: black;
-  text-decoration: underline;
-}
-.container .contents .contentswrapper .main .rellist .more-read a:hover {
-  color: #818181;
   text-decoration: underline;
 }
 .container .contents .contentswrapper .dropbox {
