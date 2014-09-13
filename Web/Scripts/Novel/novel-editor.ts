@@ -937,17 +937,20 @@
         }
         getFormattedHtml(str: string): string
         {
-            var sLength: number = 0;
-            for (var i = 1; i < str.length; i++)
+            var headerLevel: number = 2;
+            for (var i = 2; i < str.length+1; i++)
             {
-                sLength = i;
+                headerLevel = i + 1;
                 if (str.charAt(i) != '#')
                 {
-                    sLength = i;
                     break;
                 }
             }
-            return "<h" + sLength + ">" + str.substr(sLength) + "</h" + sLength + ">";
+            var value = str.substr(headerLevel - 1);
+            if (!value) {
+                value = "&ensp;";
+            }
+            return "<h" + headerLevel + ">" + value + "</h" + headerLevel + ">";
         }
     }
     class QuotePrefix extends PrefixBase

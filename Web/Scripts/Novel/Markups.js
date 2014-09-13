@@ -117,9 +117,9 @@ var BoldMarkup = (function (_super) {
         var result = str;
         var rep;
 
-        result = result.replace(/^\*(.*?[^\\])\*/, "<span class=\"b\">$1</span>");
+        result = result.replace(/^\*(.*?[^\\])\*/, "<strong class=\"b\">$1</strong>");
         while (true) {
-            rep = result.replace(/([^\\])\*(.*?[^\\])\*/, "$1<span class=\"b\">$2</span>");
+            rep = result.replace(/([^\\])\*(.*?[^\\])\*/, "$1<strong class=\"b\">$2</strong>");
             if (rep == result)
                 break;
             result = rep;
