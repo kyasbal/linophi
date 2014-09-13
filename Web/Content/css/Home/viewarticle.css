@@ -63,9 +63,6 @@ input[type="text"] {
 }
 .container .head-inner {
   position: relative;
-  /*width: 1080px;*/
-  /*height: 200px;*/
-  /*margin: 0 auto;*/
 }
 .container .contents {
   overflow: hidden;
@@ -80,7 +77,8 @@ input[type="text"] {
 }
 .container .contents .top-inner .tag .viewhead {
   z-index: 500;
-  padding: 10px 0;
+  /*padding-top: 5px;*/
+  padding: 5px 0;
 }
 .container .contents .top-inner .tag .viewhead-inner {
   position: relative;
@@ -116,11 +114,15 @@ input[type="text"] {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
 }
+.container .contents .top-inner .navbar-main {
+  padding: 5px 0;
+}
 .container .contents .top-inner .navbar-main > div {
   display: inline-block;
 }
 .container .contents .top-inner .navbar-main .navbar-detail {
   width: 60%;
+  vertical-align: top;
 }
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-txt {
   padding-bottom: 10px;
