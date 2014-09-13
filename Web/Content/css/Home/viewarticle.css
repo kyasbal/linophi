@@ -161,14 +161,12 @@ input[type="text"] {
   font-size: 20px;
 }
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-countnum .navbar-countlabel {
-  line-height: 1;
   color: #000;
   font-size: 12px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-countnum .navbar-username a {
-  color: #000 !important;
-  font-weight: bold;
-  font-size: 20px;
+.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-countnum .navbar-countcomment {
+  color: #000;
+  font-size: 12px;
 }
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-update-time {
   font-size: 20px;
