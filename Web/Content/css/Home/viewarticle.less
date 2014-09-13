@@ -78,14 +78,12 @@ input[type="text"] {
         }
     }
 
-    /*記事の説明部分*/
+    /*記事の説明部分(ヘッダ)*/
     .contents {
         overflow: hidden;
 
         .top {
             width: 100%;
-            /*margin-bottom: 30px;*/
-            /*padding-bottom: 10px;*/
             padding: 10px 0;
             background-color: rgba(240,255,240,1);
             &-inner {
@@ -222,14 +220,12 @@ input[type="text"] {
                         }
 
                         .navbar-bottom {
-                            li{
-                                display: inline-block;
+                            ul{
+                                li{
+                                    display: inline-block;
+                                    vertical-align: middle;
+                                }
                             }
-                            .main_sns li {
-                             }
-                        
-                             .main_sns li iframe {
-                             }
                          }
 
                         .navbar-countfv {
@@ -314,6 +310,7 @@ input[type="text"] {
                     //円グラフ部分
                     .navbar-thumb {
                         @articleGraphSize: 250px;
+
                         position: relative;
                         width: @articleGraphSize;
                         height: @articleGraphSize;

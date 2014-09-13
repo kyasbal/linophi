@@ -53,7 +53,7 @@ input[type="text"] {
   border: 1px solid red!important;
 }
 .container {
-  /*記事の説明部分*/
+  /*記事の説明部分(ヘッダ)*/
 }
 .container .head {
   z-index: 501;
@@ -72,8 +72,6 @@ input[type="text"] {
 }
 .container .contents .top {
   width: 100%;
-  /*margin-bottom: 30px;*/
-  /*padding-bottom: 10px;*/
   padding: 10px 0;
   background-color: #f0fff0;
 }
@@ -180,8 +178,9 @@ input[type="text"] {
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-update-time .update-time {
   font-size: 12px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-bottom li {
+.container .contents .top-inner .navbar-main .navbar-detail .navbar-bottom ul li {
   display: inline-block;
+  vertical-align: middle;
 }
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-countfv {
   display: inline-block;
