@@ -186,19 +186,24 @@
                 <div class="write-related-article-container">
                     <a class="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle=" + Model.ArticleId)">関連/反論記事を書く</a>
                 </div>
-                <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi", Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
-                <script>
-                    !function(d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                        if (!d.getElementById(id)) {
-                            js = d.createElement(s);
-                            js.id = id;
-                            js.src = p + '://platform.twitter.com/widgets.js';
-                            fjs.parentNode.insertBefore(js, fjs);
-                        }
-                    }(document, 'script', 'twitter-wjs');
-                </script>
+                <ul class="main-sns">
+                    <li class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi", Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
+                        <script>
+                            !function (d, s, id) {
+                                var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                                if (!d.getElementById(id)) {
+                                    js = d.createElement(s);
+                                    js.id = id;
+                                    js.src = p + '://platform.twitter.com/widgets.js';
+                                    fjs.parentNode.insertBefore(js, fjs);
+                                }
+                            }(document, 'script', 'twitter-wjs');
+                        </script>
+                    </a>
+                </ul>
+                
                 <div class="rellist">
                     <div>関連/反証記事</div>
                     <div class="separator"><hr></div>

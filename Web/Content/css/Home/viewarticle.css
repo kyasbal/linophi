@@ -360,6 +360,13 @@ input[type="text"] {
   border: none;
   border-radius: 0.3em;
 }
+.container .contents .contentswrapper .main .main-sns {
+  margin: 15px 0;
+}
+.container .contents .contentswrapper .main .main-sns li {
+  display: inline-block;
+  vertical-align: middle;
+}
 .container .contents .contentswrapper .main p:hover {
   background-color: ghostwhite;
 }
@@ -614,7 +621,7 @@ a.topicword:hover {
   text-decoration: none !important;
   color: white !important;
   padding: 15px 60px;
-  margin: 30px;
+  margin: 40px;
   line-height: 80px;
   font-size: x-large;
 }
@@ -623,6 +630,7 @@ a.topicword:hover {
 }
 .write-related-article-container {
   text-align: center;
+  margin: 15px;
 }
 .found-article-zero {
   text-align: center;
