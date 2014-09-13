@@ -82,323 +82,301 @@ input[type="text"] {
     .contents {
         overflow: hidden;
 
-    .top {
-        width: 100%;
-        margin-bottom: 30px;
-        padding-bottom: 10px;
-        background-color: rgba(240,255,240,1);
+        .top {
+            width: 100%;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            background-color: rgba(240,255,240,1);
 
-        &-inner {
-            margin: 0 auto 0 15%;
-            padding-bottom: 30px;
+            &-inner {
+                margin: 0 auto 0 15%;
+                padding-bottom: 30px;
 
-            .viewhead {
-                width: 100%;
-                min-width: 960px;
-                margin: 0 auto;
-                z-index: 500;
-
-                &-inner {
-                    position: relative;
-                    width: 960px;
-                    height: 24px;
-                    line-height: 23px;
+                .viewhead {
+                    width: 100%;
+                    min-width: 960px;
                     margin: 0 auto;
-                    padding: 6px 0;
+                    z-index: 500;
 
-                    .topicpath {
-                        display: inline-block;
-                        margin-right: 12px;
-                        vertical-align: top;
+                    &-inner {
+                        position: relative;
+                        width: 960px;
+                        height: 24px;
+                        line-height: 23px;
+                        margin: 0 auto;
+                        padding: 6px 0;
 
-                        li {
-                        display: inline;
-                        margin: 0 0 0 4px;
-                        vertical-align: -1px;
+                        .topicpath {
+                            display: inline-block;
+                            margin-right: 12px;
+                            vertical-align: top;
 
-                        &:first-child {
-                            margin-left: 0;
-                            padding: 0 13px 0 0;
-                        }
-
-                        a {
-                            color: #4c4c4c;
-                        }
-                        }
-                    }
-
-                    .topicwordlist {
-                        display: inline-block;
-                        max-height: 24px;
-                        padding: 0 0 0 0;
-                        border-bottom: 0;
-
-                        &ul {
-                        display: inline;
-                        border: 3px;
-                        }
-
-                        &li {
-                            float: left;
-                            margin: 0 5px 5px 0;
-
-                            .topicword {
-                                position: relative;
-                                display: inline-block;
-                                height: 21px;
-                                line-height: 22px;
-                                padding: 1px 6px 0;
-                                background-color: #fefbfa;
-                                border: 1px solid #7ac2a6;
-                                color: #000 !important;
-                                text-decoration: none !important;
-                                font-size: 11px;
-                                white-space: nowrap;
-
-                                &num {
-                                    position: relative;
-                                    top: -1px;
-                                    display: inline-block;
-                                    font-weight: normal;
-                                    font-family: Arial, Helvetica, sans-serif;
-                                    font-size: 10px;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        .navbar {
-
-            &-main {
-                >div{
-                    display: inline-block;
-                }
-                //タイトルや投稿者などの詳細情報部分
-                .navbar-detail{
-                    float: left;
-                    width: 60%;
-                    .navbar-txt {
-                        padding-bottom: 10px;
-
-                        img {
-                            width: 100px;
-                            height: 100px;
-                        }
-
-                        .navbar-title {
+                            li {
                             display: inline;
-                            line-height: 38px;
+                            margin: 0 0 0 4px;
+                            vertical-align: -1px;
+
+                            &:first-child {
+                                margin-left: 0;
+                                padding: 0 13px 0 0;
+                            }
 
                             a {
-                                font-size: 40px;
-                                word-wrap: break-word;
-                                margin: 0 15px 0 0;
-                                color: #000;
-                                text-decoration: none;
+                                color: #4c4c4c;
+                            }
+                            }
+                        }
+
+                        .topicwordlist {
+                            display: inline-block;
+                            max-height: 24px;
+                            padding: 0 0 0 0;
+                            border-bottom: 0;
+
+                            &ul {
+                            display: inline;
+                            border: 3px;
                             }
 
-                            a:hover {
-                                color: #000;
-                                text-decoration: underline;
+                            &li {
+                                float: left;
+                                margin: 0 5px 5px 0;
+
+                                .topicword {
+                                    position: relative;
+                                    display: inline-block;
+                                    height: 21px;
+                                    line-height: 22px;
+                                    padding: 1px 6px 0;
+                                    background-color: #fefbfa;
+                                    border: 1px solid #7ac2a6;
+                                    color: #000 !important;
+                                    text-decoration: none !important;
+                                    font-size: 11px;
+                                    white-space: nowrap;
+
+                                    &num {
+                                        position: relative;
+                                        top: -1px;
+                                        display: inline-block;
+                                        font-weight: normal;
+                                        font-family: Arial, Helvetica, sans-serif;
+                                        font-size: 10px;
+                                    }
+                                }
                             }
                         }
                     }
+                }
+            }
 
-                    .navbar-count {
-                        @navbarCountFixedFontSize: 11px;//投稿者・PVなどの決まった言葉のフォントサイズ
-                        @navbarCountValueFontSize: 20px;//記事ごとの実際の投稿者の名前やPV数のフォントサイズ
+            .navbar {
+                &-main {
+                    >div{
+                        display: inline-block;
+                    }
+                    //タイトルや投稿者などの詳細情報部分
+                    .navbar-detail{
+                        float: left;
+                        width: 60%;
+                        .navbar-txt {
+                            padding-bottom: 10px;
 
-                        >div{
-                            margin: 10px;
-                        }
-
-                        .navbar-user {
-                            .poster {
-                                font-size: @navbarCountFixedFontSize;
+                            img {
+                                width: 100px;
+                                height: 100px;
                             }
-                            .navbar-userthumb {
-                            }
-                            .navbar-username{
-                                a{
-                                    color: #000 !important;
-                                    font-weight: bold;
-                                    font-size: @navbarCountValueFontSize;
+
+                            .navbar-title {
+                                display: inline;
+                                line-height: 38px;
+
+                                a {
+                                    font-size: 40px;
+                                    word-wrap: break-word;
+                                    margin: 0 15px 0 0;
+                                    color: #000;
+                                    text-decoration: none;
+                                }
+
+                                a:hover {
+                                    color: #000;
+                                    text-decoration: underline;
                                 }
                             }
                         }
 
-                        .navbar-countnum{
-                            display: inline;
-                            line-height: 1;
-                            color: #000;
-                            font-family: Arial, Helvetica, sans-serif;
-                            font-size: @navbarCountValueFontSize;
+                        .navbar-count {
+                            @navbarCountFixedFontSize: 12px;//投稿者・PVなどの決まった言葉のフォントサイズ
+                            @navbarCountValueFontSize: 20px;//記事ごとの実際の投稿者の名前やPV数のフォントサイズ
 
-                            .navbar-countlabel {
-                                line-height: 1;
-                                color: #666;
-                                font-size: @navbarCountFixedFontSize;
+                            >div{
+                                margin: 10px;
                             }
 
-                            .navbar-countcomment {
-                                line-height: 1;
-                                color: #666;
-                                font-size: @navbarCountFixedFontSize;
-                            }
-                        }
-
-                        .navbar-update-time{
-                            font-size: @navbarCountValueFontSize;
-                            .update-time{
-                                font-size: @navbarCountFixedFontSize;
-                            }
-                        }
-                    }
-
-                    .navbar-bottom {
-                        li{
-                            display: inline-block;
-                        }
-                        /*.main_sns li {
-                            float: left;
-                            margin: 0 15px 0 0;
-                            margin-right: 10px;
-                         }
-                        
-                         .main_sns li iframe {
-                            margin: 0;
-                            padding: 0;
-                         }*/
-                     }
-
-                    .navbar-countfv {
-                        display: inline-block;
-                        margin: 0 auto;
-                        padding: 20px 10px 5px 10px;
-                        vertical-align: top;
-                        text-align: center;
-                        width: 55px;
-                        height: 50px;
-                        background-color: white;
-                        border-radius: 60px; 
-                        -moz-border-radius: 60px;  
-                        -webkit-border-radius: 60px; 
-                        padding: 20px 10px 5px 10px;
-                        vertical-align: top;
-                        text-align: center;
-                        width: 55px;
-                        height: 50px;
-                        background-color: white;
-                        border-radius: 60px; 
-                        -moz-border-radius: 60px;  
-                        -webkit-border-radius: 60px; 
-                        box-shadow: 0px 0px 3px 0px #666 inset;
-                        -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-                        -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-                        }
-            
-                    .navbar-date {
-                        display: inline-block;
-                        margin: 0 auto;
-                        padding: 20px 10px 5px 10px;
-                        vertical-align: top;
-                        text-align: center;
-                        width: 100px;
-                        height: 50px;
-                        background-color: white;
-                        border-radius: 60px; 
-                        -moz-border-radius: 60px;  
-                        -webkit-border-radius: 60px; 
-                        box-shadow: 0px 0px 3px 0px #666 inset;
-                        -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-                        -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-                        font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
-
-                        .date {
-                        display: block;
-                        line-height: 1;
-                        margin-top: -3px;
-                        color: #000;
-                        font-size: 18px;
-                        font-family: Arial,Arial, Helvetica, sans-serif,sans-serif;
-                        }
-
-                        .date-txt {
-                        display: block;
-                        margin-top: 3px;
-                        line-height: 1;
-                        color: #666;
-                        font-size: 7px;
-                        }
-                    }
-
-                    .navbar-Update {
-                        display: inline-block;
-                        margin: 0 auto;
-                        padding: 20px 10px 5px 10px;
-                        vertical-align: top;
-                        text-align: center;
-                        width: 100px;
-                        height: 50px;
-                        background-color: white;
-                        -moz-border-radius: 60px;  
-                        -webkit-border-radius: 60px; 
-                        border-radius: 60px; 
-                        -webkit-box-shadow: 0 0 3 0 #666 inset;
-                        -moz-box-shadow: 0 0 3 0 #666 inset;
-                        box-shadow: 0 0 3 0 #666 inset;
-                        font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
-                    }
-                    }
-                //円グラフ部分
-                .navbar-thumb {
-                    float: left;
-                    img {
-                        width: 105px;
-                        height: 105px;
-                    }
-                
-                    .postit-in-circle {
-                                        margin-top: -190px;
-                                        margin-left: 65px;
-                                        display: block;
-                                        background-color: white;
-                                        border-radius: 60px; 
-                                        -moz-border-radius: 60px;  
-                                        -webkit-border-radius: 60px; 
-                                        padding: 25px 10px 0 10px;
-                                        text-align: center;
-                                        width: 100px;
-                                        height: 95px;
-                                        box-shadow: 0px 0px 3px 0px #666 inset;
-                                        -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-                                        -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+                            .navbar-user {
+                                .poster {
+                                    font-size: @navbarCountFixedFontSize;
+                                }
+                                .navbar-userthumb {
+                                }
+                                .navbar-username{
+                                    a{
+                                        color: #000 !important;
+                                        font-weight: bold;
+                                        font-size: @navbarCountValueFontSize;
                                     }
+                                }
+                            }
+
+                            .navbar-countnum{
+                                display: inline;
+                                line-height: 1;
+                                color: #000;
+                                font-family: Arial, Helvetica, sans-serif;
+                                font-size: @navbarCountValueFontSize;
+
+                                .navbar-countlabel {
+                                    line-height: 1;
+                                    color: #000;
+                                    font-size: @navbarCountFixedFontSize;
+                                }
+
+                                .navbar-countcomment {
+                                    line-height: 1;
+                                    color: #000;
+                                    font-size: @navbarCountFixedFontSize;
+                                }
+                            }
+
+                            .navbar-update-time{
+                                font-size: @navbarCountValueFontSize;
+                                .update-time{
+                                    font-size: @navbarCountFixedFontSize;
+                                }
+                            }
+                        }
+
+                        .navbar-bottom {
+                            li{
+                                display: inline-block;
+                            }
+                            .main_sns li {
+                             }
+                        
+                             .main_sns li iframe {
+                             }
+                         }
+
+                        .navbar-countfv {
+                            display: inline-block;
+                            margin: 0 auto;
+                            padding: 20px 10px 5px 10px;
+                            vertical-align: top;
+                            text-align: center;
+                            width: 55px;
+                            height: 50px;
+                            background-color: white;
+                            border-radius: 60px; 
+                            -moz-border-radius: 60px;  
+                            -webkit-border-radius: 60px; 
+                            padding: 20px 10px 5px 10px;
+                            vertical-align: top;
+                            text-align: center;
+                            width: 55px;
+                            height: 50px;
+                            background-color: white;
+                            border-radius: 60px; 
+                            -moz-border-radius: 60px;  
+                            -webkit-border-radius: 60px; 
+                            box-shadow: 0px 0px 3px 0px #666 inset;
+                            -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+                            -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+                            }
+            
+                        .navbar-date {
+                            display: inline-block;
+                            margin: 0 auto;
+                            padding: 20px 10px 5px 10px;
+                            vertical-align: top;
+                            text-align: center;
+                            width: 100px;
+                            height: 50px;
+                            background-color: white;
+                            border-radius: 60px; 
+                            -moz-border-radius: 60px;  
+                            -webkit-border-radius: 60px; 
+                            box-shadow: 0px 0px 3px 0px #666 inset;
+                            -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+                            -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+                            font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
+
+                            .date {
+                            display: block;
+                            line-height: 1;
+                            margin-top: -3px;
+                            color: #000;
+                            font-size: 18px;
+                            font-family: Arial,Arial, Helvetica, sans-serif,sans-serif;
+                            }
+
+                            .date-txt {
+                            display: block;
+                            margin-top: 3px;
+                            line-height: 1;
+                            color: #666;
+                            font-size: 7px;
+                            }
+                        }
+
+                        .navbar-Update {
+                            display: inline-block;
+                            margin: 0 auto;
+                            padding: 20px 10px 5px 10px;
+                            vertical-align: top;
+                            text-align: center;
+                            width: 100px;
+                            height: 50px;
+                            background-color: white;
+                            -moz-border-radius: 60px;  
+                            -webkit-border-radius: 60px; 
+                            border-radius: 60px; 
+                            -webkit-box-shadow: 0 0 3 0 #666 inset;
+                            -moz-box-shadow: 0 0 3 0 #666 inset;
+                            box-shadow: 0 0 3 0 #666 inset;
+                            font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
+                        }
+                        }
+                    //円グラフ部分
+                    .navbar-thumb {
+                        float: left;
+                        img {
+                            width: 105px;
+                            height: 105px;
+                        }
+                
+                        .postit-in-circle {
+                            margin-top: -190px;
+                            margin-left: 65px;
+                            display: block;
+                            background-color: white;
+                            border-radius: 60px; 
+                            -moz-border-radius: 60px;  
+                            -webkit-border-radius: 60px; 
+                            padding: 25px 10px 0 10px;
+                            text-align: center;
+                            width: 100px;
+                            height: 95px;
+                            box-shadow: 0px 0px 3px 0px #666 inset;
+                            -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+                            -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+                        }
+                    }
                 }
-            }
-          }
-        }
-
-          .navbar-user {
-            display: inline-block;
-            width: 200px;
-            /*margin-right: -50px;
-            margin-left: 40%;*/
-          }
+              }
         }
     }
-
-        .navbar-mainwiththumb {
-            .navbar-txt {
-            margin-bottom: 10px;
-            font-size: 30px;
-            }
-        }
-        }
-    }
+}
 
     /*以下記事部分*/
     .contentswrapper {
