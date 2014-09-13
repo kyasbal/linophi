@@ -84,100 +84,64 @@ input[type="text"] {
 
         .top {
             width: 100%;
-            margin-bottom: 30px;
-            padding-bottom: 10px;
+            /*margin-bottom: 30px;*/
+            /*padding-bottom: 10px;*/
+            padding: 10px 0;
             background-color: rgba(240,255,240,1);
-
             &-inner {
-                margin: 0 auto 0 15%;
-                padding-bottom: 30px;
-
-                .viewhead {
-                    width: 100%;
-                    min-width: 960px;
-                    margin: 0 auto;
-                    z-index: 500;
-
-                    &-inner {
-                        position: relative;
-                        width: 960px;
-                        height: 24px;
-                        line-height: 23px;
-                        margin: 0 auto;
-                        padding: 6px 0;
-
-                        .topicpath {
-                            display: inline-block;
-                            margin-right: 12px;
-                            vertical-align: top;
-
-                            li {
-                            display: inline;
-                            margin: 0 0 0 4px;
-                            vertical-align: -1px;
-
-                            &:first-child {
-                                margin-left: 0;
-                                padding: 0 13px 0 0;
-                            }
-
-                            a {
-                                color: #4c4c4c;
-                            }
-                            }
-                        }
-
-                        .topicwordlist {
-                            display: inline-block;
-                            max-height: 24px;
-                            padding: 0 0 0 0;
-                            border-bottom: 0;
-
-                            &ul {
-                            display: inline;
-                            border: 3px;
-                            }
-
-                            &li {
-                                float: left;
-                                margin: 0 5px 5px 0;
-
-                                .topicword {
-                                    position: relative;
-                                    display: inline-block;
-                                    height: 21px;
-                                    line-height: 22px;
-                                    padding: 1px 6px 0;
-                                    background-color: #fefbfa;
-                                    border: 1px solid #7ac2a6;
-                                    color: #000 !important;
-                                    text-decoration: none !important;
-                                    font-size: 11px;
-                                    white-space: nowrap;
-
-                                    &num {
+                margin: 0 0 0 15%;
+                .tag{
+                    .viewhead {
+                                    z-index: 500;
+                                    padding: 10px 0;
+                
+                                    &-inner {
                                         position: relative;
-                                        top: -1px;
-                                        display: inline-block;
-                                        font-weight: normal;
-                                        font-family: Arial, Helvetica, sans-serif;
-                                        font-size: 10px;
+                
+                                        .topicwordlist {
+                                            display: inline-block;
+                                            max-height: 24px;
+                                            padding: 0;
+                                            border-bottom: 0;
+                
+                                            &li {
+                                                float: left;
+                                                margin: 0 5px 0 0;
+                
+                                                .topicword {
+                                                    position: relative;
+                                                    display: inline-block;
+                                                    height: 21px;
+                                                    line-height: 22px;
+                                                    padding: 1px 6px 0;
+                                                    background-color: #fefbfa;
+                                                    border: 1px solid #7ac2a6;
+                                                    color: #000 !important;
+                                                    text-decoration: none !important;
+                                                    font-size: 11px;
+                                                    white-space: nowrap;
+                
+                                                    &num {
+                                                        position: relative;
+                                                        top: -1px;
+                                                        display: inline-block;
+                                                        font-weight: normal;
+                                                        font-family: Arial, Helvetica, sans-serif;
+                                                        font-size: 10px;
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
-                            }
-                        }
-                    }
                 }
-            }
-
-            .navbar {
+                .navbar {
                 &-main {
                     >div{
                         display: inline-block;
                     }
                     //タイトルや投稿者などの詳細情報部分
                     .navbar-detail{
-                        float: left;
                         width: 60%;
                         .navbar-txt {
                             padding-bottom: 10px;
@@ -349,24 +313,31 @@ input[type="text"] {
                         }
                     //円グラフ部分
                     .navbar-thumb {
-                        float: left;
-                        img {
-                            width: 105px;
-                            height: 105px;
+                        @articleGraphSize: 250px;
+                        position: relative;
+                        width: @articleGraphSize;
+                        height: @articleGraphSize;
+                        padding: 0;
+                        margin: 0;
+                        #article-graph{
+                            padding: 0;
+                            margin: 0;
                         }
-                
-                        .postit-in-circle {
-                            margin-top: -190px;
-                            margin-left: 65px;
+                        .inside-circle {
+                            @insideCircleHeight: 95px;
+                            @insideCirclePaddingTop: 25px; 
+                            position: absolute;
+                            width: 100px;
+                            height: @insideCircleHeight;
+                            padding: @insideCirclePaddingTop 10px 0 10px;
+                            text-align: center;
+                            bottom: (@articleGraphSize - (@insideCircleHeight + @insideCirclePaddingTop)) / 2;
+                            left: 65px;
                             display: block;
                             background-color: white;
                             border-radius: 60px; 
                             -moz-border-radius: 60px;  
                             -webkit-border-radius: 60px; 
-                            padding: 25px 10px 0 10px;
-                            text-align: center;
-                            width: 100px;
-                            height: 95px;
                             box-shadow: 0px 0px 3px 0px #666 inset;
                             -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
                             -moz-box-shadow: 0px 0px 3px 0px #666 inset;
@@ -374,6 +345,7 @@ input[type="text"] {
                     }
                 }
               }
+            }
         }
     }
 }
