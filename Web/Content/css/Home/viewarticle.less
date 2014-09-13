@@ -64,149 +64,149 @@ input[type="text"] {
 }
 
 .container {
-    .head {
-        z-index: 501;
-        width: 100%;
-        border-top: 3px solid #333;
-        border-bottom: 1px solid #e7e7e7;
+  .head {
+    z-index: 501;
+    width: 100%;
+    border-top: 3px solid #333;
+    border-bottom: 1px solid #e7e7e7;
 
-        &-inner {
-            position: relative;
+    &-inner {
+      position: relative;
             /*width: 1080px;*/
             /*height: 200px;*/
             /*margin: 0 auto;*/
-        }
     }
+  }
 
     /*記事の説明部分*/
-    .contents {
-        overflow: hidden;
+  .contents {
+    overflow: hidden;
 
-        .top {
+    .top {
             width: 100%;
-            margin-bottom: 30px;
+      margin-bottom: 30px;
             padding-bottom: 10px;
-            background-color: rgba(240,255,240,1);
+      background-color: rgba(240,255,240,1);
 
-            &-inner {
-                margin: 0 auto 0 15%;
+      &-inner {
+        margin: 0 auto 0 15%;
                 padding-bottom: 30px;
 
-                .viewhead {
-                    width: 100%;
-                    min-width: 960px;
-                    margin: 0 auto;
-                    z-index: 500;
+        .viewhead {
+          width: 100%;
+          min-width: 960px;
+          margin: 0 auto;
+          z-index: 500;
 
-                    &-inner {
-                        position: relative;
-                        width: 960px;
-                        height: 24px;
-                        line-height: 23px;
-                        margin: 0 auto;
-                        padding: 6px 0;
+          &-inner {
+            position: relative;
+            width: 960px;
+            height: 24px;
+            line-height: 23px;
+            margin: 0 auto;
+            padding: 6px 0;
 
-                        .topicpath {
-                            display: inline-block;
-                            margin-right: 12px;
-                            vertical-align: top;
+            .topicpath {
+              display: inline-block;
+              margin-right: 12px;
+              vertical-align: top;
 
-                            li {
-                            display: inline;
-                            margin: 0 0 0 4px;
-                            vertical-align: -1px;
+              li {
+                display: inline;
+                margin: 0 0 0 4px;
+                vertical-align: -1px;
 
-                            &:first-child {
-                                margin-left: 0;
-                                padding: 0 13px 0 0;
-                            }
-
-                            a {
-                                color: #4c4c4c;
-                            }
-                            }
-                        }
-
-                        .topicwordlist {
-                            display: inline-block;
-                            max-height: 24px;
-                            padding: 0 0 0 0;
-                            border-bottom: 0;
-
-                            &ul {
-                            display: inline;
-                            border: 3px;
-                            }
-
-                            &li {
-                                float: left;
-                                margin: 0 5px 5px 0;
-
-                                .topicword {
-                                    position: relative;
-                                    display: inline-block;
-                                    height: 21px;
-                                    line-height: 22px;
-                                    padding: 1px 6px 0;
-                                    background-color: #fefbfa;
-                                    border: 1px solid #7ac2a6;
-                                    color: #000 !important;
-                                    text-decoration: none !important;
-                                    font-size: 11px;
-                                    white-space: nowrap;
-
-                                    &num {
-                                        position: relative;
-                                        top: -1px;
-                                        display: inline-block;
-                                        font-weight: normal;
-                                        font-family: Arial, Helvetica, sans-serif;
-                                        font-size: 10px;
-                                    }
-                                }
-                            }
-                        }
-                    }
+                &:first-child {
+                  margin-left: 0;
+                  padding: 0 13px 0 0;
                 }
+
+                a {
+                  color: #4c4c4c;
+                }
+              }
             }
 
-            .navbar {
-                &-main {
+            .topicwordlist {
+              display: inline-block;
+              max-height: 24px;
+              padding: 0 0 0 0;
+              border-bottom: 0;
+
+              &ul {
+                display: inline;
+                border: 3px;
+              }
+
+              &li {
+                float: left;
+                margin: 0 5px 5px 0;
+
+                .topicword {
+                  position: relative;
+                  display: inline-block;
+                  height: 21px;
+                  line-height: 22px;
+                  padding: 1px 6px 0;
+                  background-color: #fefbfa;
+                  border: 1px solid #7ac2a6;
+                  color: #000 !important;
+                  text-decoration: none !important;
+                  font-size: 11px;
+                  white-space: nowrap;
+
+                  &num {
+                    position: relative;
+                    top: -1px;
+                    display: inline-block;
+                    font-weight: normal;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 10px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .navbar {
+        &-main {
                     >div{
                         display: inline-block;
-                    }
+            }
                     //タイトルや投稿者などの詳細情報部分
                     .navbar-detail{
-                        float: left;
+              float: left;
                         width: 60%;
-                        .navbar-txt {
-                            padding-bottom: 10px;
+          .navbar-txt {
+            padding-bottom: 10px;
 
-                            img {
-                                width: 100px;
-                                height: 100px;
-                            }
+            img {
+              width: 100px;
+              height: 100px;
+            }
 
-                            .navbar-title {
+            .navbar-title {
                                 display: inline;
                                 line-height: 38px;
 
-                                a {
+              a {
                                     font-size: 40px;
-                                    word-wrap: break-word;
-                                    margin: 0 15px 0 0;
-                                    color: #000;
-                                    text-decoration: none;
-                                }
+                word-wrap: break-word;
+                margin: 0 15px 0 0;
+                color: #000;
+                text-decoration: none;
+              }
 
-                                a:hover {
-                                    color: #000;
-                                    text-decoration: underline;
-                                }
-                            }
-                        }
+              a:hover {
+                color: #000;
+                text-decoration: underline;
+              }
+            }
+          }
 
-                        .navbar-count {
+          .navbar-count {
                             @navbarCountFixedFontSize: 12px;//投稿者・PVなどの決まった言葉のフォントサイズ
                             @navbarCountValueFontSize: 20px;//記事ごとの実際の投稿者の名前やPV数のフォントサイズ
 
@@ -240,10 +240,31 @@ input[type="text"] {
                                     line-height: 1;
                                     color: #000;
                                     font-size: @navbarCountFixedFontSize;
+            }
+                                .navbar-username{
+                                    a{
+                                        color: #000 !important;
+                                        font-weight: bold;
+                                        font-size: @navbarCountValueFontSize;
+                                    }
+                                }
+                            }
+
+                            .navbar-countnum{
+                                display: inline;
+                                line-height: 1;
+                                color: #000;
+                                font-family: Arial, Helvetica, sans-serif;
+                                font-size: @navbarCountValueFontSize;
+
+                                .navbar-countlabel {
+                                    line-height: 1;
+                                    color: #000;
+                                    font-size: @navbarCountFixedFontSize;
                                 }
 
-                                .navbar-countcomment {
-                                    line-height: 1;
+            .navbar-countcomment {
+                line-height: 1;
                                     color: #000;
                                     font-size: @navbarCountFixedFontSize;
                                 }
@@ -266,95 +287,95 @@ input[type="text"] {
                         
                              .main_sns li iframe {
                              }
-                         }
+              }
 
-                        .navbar-countfv {
-                            display: inline-block;
-                            margin: 0 auto;
-                            padding: 20px 10px 5px 10px;
-                            vertical-align: top;
-                            text-align: center;
-                            width: 55px;
-                            height: 50px;
-                            background-color: white;
-                            border-radius: 60px; 
-                            -moz-border-radius: 60px;  
-                            -webkit-border-radius: 60px; 
-                            padding: 20px 10px 5px 10px;
-                            vertical-align: top;
-                            text-align: center;
-                            width: 55px;
-                            height: 50px;
-                            background-color: white;
-                            border-radius: 60px; 
-                            -moz-border-radius: 60px;  
-                            -webkit-border-radius: 60px; 
-                            box-shadow: 0px 0px 3px 0px #666 inset;
-                            -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-                            -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-                            }
-            
-                        .navbar-date {
-                            display: inline-block;
-                            margin: 0 auto;
-                            padding: 20px 10px 5px 10px;
-                            vertical-align: top;
-                            text-align: center;
-                            width: 100px;
-                            height: 50px;
-                            background-color: white;
-                            border-radius: 60px; 
-                            -moz-border-radius: 60px;  
-                            -webkit-border-radius: 60px; 
-                            box-shadow: 0px 0px 3px 0px #666 inset;
-                            -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-                            -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-                            font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
+            .navbar-countfv {
+              display: inline-block;
+              margin: 0 auto;
+              padding: 20px 10px 5px 10px;
+              vertical-align: top;
+              text-align: center;
+              width: 55px;
+              height: 50px;
+              background-color: white;
+              border-radius: 60px; 
+              -moz-border-radius: 60px;  
+              -webkit-border-radius: 60px; 
+              padding: 20px 10px 5px 10px;
+              vertical-align: top;
+              text-align: center;
+              width: 55px;
+              height: 50px;
+              background-color: white;
+              border-radius: 60px; 
+              -moz-border-radius: 60px;  
+              -webkit-border-radius: 60px; 
+              box-shadow: 0px 0px 3px 0px #666 inset;
+              -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+              -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+              }
 
-                            .date {
-                            display: block;
-                            line-height: 1;
-                            margin-top: -3px;
-                            color: #000;
-                            font-size: 18px;
-                            font-family: Arial,Arial, Helvetica, sans-serif,sans-serif;
-                            }
+            .navbar-date {
+              display: inline-block;
+              margin: 0 auto;
+              padding: 20px 10px 5px 10px;
+              vertical-align: top;
+              text-align: center;
+              width: 100px;
+              height: 50px;
+              background-color: white;
+              border-radius: 60px; 
+              -moz-border-radius: 60px;  
+              -webkit-border-radius: 60px; 
+              box-shadow: 0px 0px 3px 0px #666 inset;
+              -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+              -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+              font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
 
-                            .date-txt {
-                            display: block;
-                            margin-top: 3px;
-                            line-height: 1;
-                            color: #666;
-                            font-size: 7px;
-                            }
-                        }
+              .date {
+                display: block;
+                line-height: 1;
+                margin-top: -3px;
+                color: #000;
+                font-size: 18px;
+                font-family: Arial,Arial, Helvetica, sans-serif,sans-serif;
+              }
 
-                        .navbar-Update {
-                            display: inline-block;
-                            margin: 0 auto;
-                            padding: 20px 10px 5px 10px;
-                            vertical-align: top;
-                            text-align: center;
-                            width: 100px;
-                            height: 50px;
-                            background-color: white;
-                            -moz-border-radius: 60px;  
-                            -webkit-border-radius: 60px; 
-                            border-radius: 60px; 
-                            -webkit-box-shadow: 0 0 3 0 #666 inset;
-                            -moz-box-shadow: 0 0 3 0 #666 inset;
-                            box-shadow: 0 0 3 0 #666 inset;
-                            font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
-                        }
-                        }
+              .date-txt {
+                display: block;
+                margin-top: 3px;
+                line-height: 1;
+                color: #666;
+                font-size: 7px;
+              }
+            }
+
+            .navbar-Update {
+              display: inline-block;
+              margin: 0 auto;
+              padding: 20px 10px 5px 10px;
+              vertical-align: top;
+              text-align: center;
+              width: 100px;
+              height: 50px;
+              background-color: white;
+              -moz-border-radius: 60px;  
+              -webkit-border-radius: 60px; 
+              border-radius: 60px; 
+              -webkit-box-shadow: 0 0 3 0 #666 inset;
+              -moz-box-shadow: 0 0 3 0 #666 inset;
+              box-shadow: 0 0 3 0 #666 inset;
+              font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
+            }
+          }
                     //円グラフ部分
                     .navbar-thumb {
                         float: left;
                         img {
                             width: 105px;
                             height: 105px;
-                        }
-                
+        }
+
                         .postit-in-circle {
                             margin-top: -190px;
                             margin-left: 65px;
@@ -370,13 +391,13 @@ input[type="text"] {
                             box-shadow: 0px 0px 3px 0px #666 inset;
                             -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
                             -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-                        }
-                    }
-                }
-              }
+          }
         }
+        }
+        }
+        }
+      }
     }
-}
 
     /*以下記事部分*/
     .contentswrapper {
@@ -746,7 +767,7 @@ input[type="text"] {
     .main .separator1 hr, .main .separator2 hr {
       display: none;
     }
-  
+
 
   .font-size-25 {
     font-size: 25px;
