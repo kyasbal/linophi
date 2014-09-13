@@ -198,6 +198,23 @@ input[type="text"] {
   color: #000;
   font-size: 12px;
 }
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-countnum .navbar-username a {
+  color: #000 !important;
+  font-weight: bold;
+  font-size: 20px;
+}
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-countnum {
+  display: inline;
+  line-height: 1;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-countnum .navbar-countlabel {
+  line-height: 1;
+  color: #000;
+  font-size: 12px;
+}
 .container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-countnum .navbar-countcomment {
   line-height: 1;
   color: #000;
@@ -341,33 +358,61 @@ input[type="text"] {
   display: block;
 }
 .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] {
-  font-size: 10px;
   width: 300px;
   display: none;
   position: absolute;
   top: 0;
   left: 102%;
   z-index: 9999;
-  padding: 6px 10px;
-  color: #FFFFFF;
+  padding: 10px 14px;
+  color: #fff;
   background: #666;
   border-radius: 0.5em;
-  -moz-transform: translateY(-30%);
-  -ms-transform: translateY(-30%);
-  -o-transform: translateY(-30%);
-  -webkit-transform: translateY(-30%);
-  transform: translateY(-30%);
+  -moz-transform: translateY(-20px);
+  -ms-transform: translateY(-20px);
+  -o-transform: translateY(-20px);
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
+}
+.contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] * {
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  vertical-align: baseline;
 }
 .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .triangle {
   width: 0;
-  height: 70%;
+  height: 100%;
   content: "";
   display: block;
   position: absolute;
   left: -20px;
-  top: 31.5%;
+  top: 20px;
   border-top: 10px solid #666;
   border-left: 20px solid transparent;
+}
+.contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .res-title {
+  margin-bottom: 4px;
+}
+.contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .res-title > span {
+  font-size: 14px;
+  color: #ddd;
+}
+.contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .res-title > b {
+  font-weight: bold;
+  font-size: 14px;
+}
+.contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .res-title > small {
+  font-weight: 100;
+  font-size: 8px;
+  color: #aaa;
+}
+.contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .res-text {
+  margin-bottom: 5px;
+  margin-left: 12px;
+  font-size: 12px;
 }
 .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .response p:hover {
   background: none;
