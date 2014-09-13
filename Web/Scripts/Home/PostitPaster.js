@@ -153,11 +153,14 @@ $(window).load(function () {
     var pasteMode = false;
 
     var labelType, src;
-    var dropboxPos = $('.contentswrapper').offset().top, dropboxHeight = $('.contentswrapper').outerHeight(true);
 
-    var posY = dropboxPos;
+    var dropboxPosX = $('.dropbox').offset().left;
 
-    $('.article-container > [class*="p-"]').each(function (i) {
+    var dropboxPosY = $('.contentswrapper').offset().top, dropboxHeight = $('.contentswrapper').outerHeight(true);
+
+    var posY = dropboxPosY;
+
+    $('.article-container > *').each(function (i) {
         var $ele = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
         if (!$ele[0])
             return true;
@@ -173,7 +176,7 @@ $(window).load(function () {
 
         $('.dropbox > .' + className).css({
             "position": "absolute",
-            "top": elePos - dropboxPos + "px",
+            "top": elePos - dropboxPosY + "px",
             "height": eleHeight + "px",
             "width": "180px"
         });
@@ -203,14 +206,14 @@ $(window).load(function () {
         });
 
         $('.fade-layer, .dropbox').mousemove(function (e) {
-            if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight) {
+            if (dropboxPosY <= e.pageY && e.pageY <= dropboxPosY + dropboxHeight) {
                 posY = e.pageY - 20;
             }
 
             if (pasteMode) {
                 $(".dropbox > .postit-pasting").css({
                     "position": "absolute",
-                    "top": posY - dropboxPos + "px",
+                    "top": posY - dropboxPosY + "px",
                     "left": "20px",
                     "z-index": 1100,
                     "visibility": "visible",
@@ -219,14 +222,16 @@ $(window).load(function () {
                 });
             }
 
-            var pHeights = dropboxPos;
-
+            var pHeights = dropboxPosY;
+            var bg;
             $('.dropbox > [class*="p-"]').each(function (i) {
-                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')');
+                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')');
                 var pHeight = $target.outerHeight(true);
-                var bg = "none";
-                if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode)
-                    bg = "#fcc";
+                bg = "none";
+                if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode) {
+                    bg = dropboxPosX <= e.pageX && e.pageX <= dropboxPosX + 180 ? "#9f998b" : "#d7d1c0";
+                }
+                console.log(e.pageX, dropboxPosX);
 
                 $target.css({
                     "background": bg
@@ -252,7 +257,7 @@ $(window).load(function () {
         }, 500);
 
         if (pasteMode) {
-            var pHeights = dropboxPos;
+            var pHeights = dropboxPosY;
             pasteMode = false;
 
             $('.dropbox > .postit-pasting').css({
@@ -261,7 +266,7 @@ $(window).load(function () {
             });
 
             $('.dropbox > *').each(function (i) {
-                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')');
+                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')');
                 if (!$target[0])
                     return true;
                 var elementName = $target[0].tagName;

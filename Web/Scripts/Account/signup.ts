@@ -6,7 +6,7 @@ var isTooShortNickName: boolean,
 var isConfirmedFormValue: boolean = false;
 $(function()
 {
-    $(".name-box").focusout(function()
+    $(".name-box").keyup(function()
     {
         name = $(this).val();
         len = name.length;
@@ -59,12 +59,13 @@ class AccountConfirmation
 
     chkValid()
     {
-        console.log(isTooShortNickName, isTooLongNickName, isInvalidEmailAddr, $('#AcceptTerm').prop('checked'));
         if (isTooShortNickName && isTooLongNickName && isInvalidEmailAddr && $('#AcceptTerm').prop('checked')) {
             accountConfirmationPage.changeSubmitStyle(true);
         } else {
             accountConfirmationPage.changeSubmitStyle(false);
         }
+        console.log(isTooShortNickName, isTooLongNickName, isInvalidEmailAddr, $('#AcceptTerm').prop('checked'));
+
     }
 }
 
@@ -72,7 +73,7 @@ var accountConfirmationPage: AccountConfirmation;
 
 $(() =>
 {
-    $(".email-box").focusout(function()
+    $(".email-box").keyup(function()
     {
         add = $(this).val();
         if (add.match(/^([a-zA-Z0-9\+_\-]+)(\.[a-zA-Z0-9\+_\-]+)*@([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,6}$/g))
@@ -101,11 +102,18 @@ $(()=>
     });
     accountConfirmationPage.changeSubmitStyle(false);
 
-    $('#NickName, #Email, #AcceptMail, #AcceptTerm').focusout(() =>
+    $('#NickName, #Email').keyup(() =>
     {
         accountConfirmationPage.chkValid();
     });
-    $('#NickName, #Email, #AcceptMail, #AcceptTerm').focus(() => {
-        setTimeout("accountConfirmationPage.chkValid()", 500);
+    $('#NickName, #Email, #AcceptMail, #AcceptTerm').focusout(() => {
+        accountConfirmationPage.chkValid();
+    });
+    $('#NickName, #Email, #AcceptMail, #AcceptTerm').focus(() =>
+    {
+        setTimeout(() =>
+        {
+             accountConfirmationPage.chkValid();
+        }, 500);
     });
 });
