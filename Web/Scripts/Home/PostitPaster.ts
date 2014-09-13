@@ -288,7 +288,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
                 bg = "none";
                 if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode)
                 {
-                    bg = dropboxPosX <= e.pageX && e.pageX <= dropboxPosX + 180 ? "#9f998b" : "#d7d1c0";
+                    bg = dropboxPosX <= e.pageX && e.pageX <= dropboxPosX + 180 ? "#24ade2" : "#7acbe2";
                 }
                 console.log(e.pageX, dropboxPosX);
                 

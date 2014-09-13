@@ -37,6 +37,7 @@ module TagUtil
     export function chkValidTitle(val: string)
     {
         var isConfirmedTitle = true;
+        $(".edit-title-chkvalid").html("");
         if (val.match(/^\s*$/)) {
             $(".edit-title-chkvalid").html("　　タイトルが空です");
             isConfirmedTitle = false;
@@ -47,7 +48,6 @@ module TagUtil
             $(".edit-title-chkvalid").html("　　タイトルが長すぎます");
             isConfirmedTitle = false;
         }
-
 
         var bgColor = isConfirmedTitle ? '#7FFFD4' : '#696969',
             bgColorHover = isConfirmedTitle ? '#3CB371' : '#696969';
