@@ -83,6 +83,7 @@ input[type="text"] {
             width: 100%;
             padding: 10px 0;
             background-color: rgba(240,255,240,1);
+            margin-bottom: 30px;
             &-inner {
                 margin: 0 0 0 15%;
                 .tag{
@@ -173,7 +174,7 @@ input[type="text"] {
                             @navbarCountValueFontSize: 20px;//記事ごとの実際の投稿者の名前やPV数のフォントサイズ
 
                             >div{
-                                margin: 10px;
+                                margin: 15px;
                             }
 
                             .navbar-user {
@@ -348,240 +349,241 @@ input[type="text"] {
               }
             }
         }
+        /*以下記事部分*/
+        .contentswrapper {
+          width: 1040px;
+          margin: 0 auto;
+          margin-bottom: 30px;
+
+          .main {
+            background-color: aliceblue;
+            float: left;
+            width: 800px;
+            padding-left: 20px;
+            padding-right: 40px;
+            padding-bottom: 40px;
+
+            .widgetlist {
+              position: relative;
+              padding-top: 20px;
+              padding-bottom: 1px;
+
+              .widgettypetitle {
+                margin-bottom: 25px;
+
+                .widgetitemtitleview {
+                  line-height: 1.3;
+                  padding-bottom: 5px;
+                  border-bottom: 2px solid #eaecee;
+                  font-weight: bold;
+                  font-size: 20px;
+                }
+
+                p {
+                  word-wrap: break-word;
+                }
+              }
+            }
+
+            .widget > *[class*="p-"] {
+              position: relative;
+
+              &:hover {
+                background: #ddd;
+
+                > *[class*="-comments"] {
+                  display: block;
+                }
+              }
+
+              > *[class*="-comments"] {
+                font-size: 10px;
+                width: 300px;
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 102%;
+                z-index: 9999;
+                padding: 6px 10px;
+                color: #FFFFFF;
+                background: #666;
+                border-radius: 0.5em;
+                -moz-transform: translateY(-30%);
+                -ms-transform: translateY(-30%);
+                -o-transform: translateY(-30%);
+                -webkit-transform: translateY(-30%);
+                transform: translateY(-30%);
+
+                .triangle {
+                  width: 0;
+                  height: 70%;
+                  content: "";
+                  display: block;
+                  position: absolute;
+                  left: -20px;
+                  top: 31.5%;
+                  border-top: 10px solid #666;
+                  border-left: 20px solid transparent;
+                }
+
+                .response {
+                  p:hover {
+                    background: none;
+                  }
+                }
+
+                button {
+                  cursor: pointer;
+                  font-size: 10px;
+                  font-weight: bold;
+                  margin-left: 50%;
+                  -moz-transform: translateX(-50%);
+                  -ms-transform: translateX(-50%);
+                  -o-transform: translateX(-50%);
+                  -webkit-transform: translateX(-50%);
+                  transform: translateX(-50%);
+                  padding: 0.62em 1.2em;
+                  background: #fff;
+                  border: none;
+                  border-radius: 0.3em;
+                }
+              }
+            }
+
+            p:hover {
+              background-color: ghostwhite;
+            }
+
+            .rellist {
+              padding-top: 50px;
+              position: relative;
+              margin: 10px 0 10px 0;
+
+              .separator1 {
+                margin: 40px 0;
+              }
+
+              .separator2 {
+                margin: 25px 0 40px;
+              }
+
+              .list {
+                .listitem {
+                  display: table;
+                  margin: 30px 30px 30px;
+                  padding: 10px;
+                }
+
+                .listitem:first-child {
+                  margin-top: 0;
+                }
+
+                .listitem:hover {
+                  background-color: antiquewhite;
+                }
+
+                .listthumb {
+                  display: table-cell;
+                  width: 60px;
+                  height: 60px;
+                  padding: 0 15px 0 0;
+                  vertical-align: top;
+
+                  a {
+                    display: block;
+                    width: 60px;
+                    height: 60px;
+                    overflow: hidden;
+                  }
+                }
+
+                .listtxt {
+                  display: table-cell;
+                  vertical-align: middle;
+                  table-layout: fixed;
+                  width: 100%;
+                  max-width: 560px;
+                  padding-left: 20px;
+                }
+
+                .listtitle {
+                  display: inline;
+                  line-height: 1.1;
+                  font-size: 20px;
+                  font-weight: normal;
+                  margin-right: 15px;
+
+                  a {
+                    padding: 6px 0;
+                    color: #000;
+                  }
+                }
+
+                .listdesc {
+                  color: #aaa;
+                }
+              }
+
+              .more-read {
+                margin-left: 60%;
+
+                a {
+                  color: black;
+                  text-decoration: underline;
+                }
+
+                a:hover {
+                  color: #818181;
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+
+          .dropbox {
+            position: relative;
+            background-color: white;
+            float: left;
+            width: 180px;
+            padding-bottom: 1000000px;
+            margin-bottom: -1000000px;
+            z-index: 0;
+            opacity: 1;
+            -moz-transition-property: opacity;
+            -o-transition-property: opacity;
+            -webkit-transition-property: opacity;
+            transition-property: opacity;
+            -moz-transition-duration: 500ms;
+            -o-transition-duration: 500ms;
+            -webkit-transition-duration: 500ms;
+            transition-duration: 500ms;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+
+            > * > * {
+              margin-left: -20px;
+              padding: 10px 15px; // spanにmarginかけてもmarginの相殺という現象のせいで消えてしまうから
+              -moz-box-sizing: border-box;
+              -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+
+              > span {
+                cursor: default;
+                padding: 3px 9px;
+                background: #fff;
+                color: #555;
+                font-size: 12px;
+                font-weight: bold;
+                border-radius: 200px;
+              }
+            }
+          }
+        }
     }
 }
 
-    /*以下記事部分*/
-    .contentswrapper {
-      width: 1040px;
-      margin: 0 auto;
-
-      .main {
-        background-color: aliceblue;
-        float: left;
-        width: 800px;
-        padding-left: 20px;
-        padding-right: 40px;
-        padding-bottom: 40px;
-
-        .widgetlist {
-          position: relative;
-          padding-top: 20px;
-          padding-bottom: 1px;
-
-          .widgettypetitle {
-            margin-bottom: 25px;
-
-            .widgetitemtitleview {
-              line-height: 1.3;
-              padding-bottom: 5px;
-              border-bottom: 2px solid #eaecee;
-              font-weight: bold;
-              font-size: 20px;
-            }
-
-            p {
-              word-wrap: break-word;
-            }
-          }
-        }
-
-        .widget > *[class*="p-"] {
-          position: relative;
-
-          &:hover {
-            background: #ddd;
-
-            > *[class*="-comments"] {
-              display: block;
-            }
-          }
-
-          > *[class*="-comments"] {
-            font-size: 10px;
-            width: 300px;
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 102%;
-            z-index: 9999;
-            padding: 6px 10px;
-            color: #FFFFFF;
-            background: #666;
-            border-radius: 0.5em;
-            -moz-transform: translateY(-30%);
-            -ms-transform: translateY(-30%);
-            -o-transform: translateY(-30%);
-            -webkit-transform: translateY(-30%);
-            transform: translateY(-30%);
-
-            .triangle {
-              width: 0;
-              height: 70%;
-              content: "";
-              display: block;
-              position: absolute;
-              left: -20px;
-              top: 31.5%;
-              border-top: 10px solid #666;
-              border-left: 20px solid transparent;
-            }
-
-            .response {
-              p:hover {
-                background: none;
-              }
-            }
-
-            button {
-              cursor: pointer;
-              font-size: 10px;
-              font-weight: bold;
-              margin-left: 50%;
-              -moz-transform: translateX(-50%);
-              -ms-transform: translateX(-50%);
-              -o-transform: translateX(-50%);
-              -webkit-transform: translateX(-50%);
-              transform: translateX(-50%);
-              padding: 0.62em 1.2em;
-              background: #fff;
-              border: none;
-              border-radius: 0.3em;
-            }
-          }
-        }
-
-        p:hover {
-          background-color: ghostwhite;
-        }
-
-        .rellist {
-          padding-top: 50px;
-          position: relative;
-          margin: 10px 0 10px 0;
-
-          .separator1 {
-            margin: 40px 0;
-          }
-
-          .separator2 {
-            margin: 25px 0 40px;
-          }
-
-          .list {
-            .listitem {
-              display: table;
-              margin: 30px 30px 30px;
-              padding: 10px;
-            }
-
-            .listitem:first-child {
-              margin-top: 0;
-            }
-
-            .listitem:hover {
-              background-color: antiquewhite;
-            }
-
-            .listthumb {
-              display: table-cell;
-              width: 60px;
-              height: 60px;
-              padding: 0 15px 0 0;
-              vertical-align: top;
-
-              a {
-                display: block;
-                width: 60px;
-                height: 60px;
-                overflow: hidden;
-              }
-            }
-
-            .listtxt {
-              display: table-cell;
-              vertical-align: middle;
-              table-layout: fixed;
-              width: 100%;
-              max-width: 560px;
-              padding-left: 20px;
-            }
-
-            .listtitle {
-              display: inline;
-              line-height: 1.1;
-              font-size: 20px;
-              font-weight: normal;
-              margin-right: 15px;
-
-              a {
-                padding: 6px 0;
-                color: #000;
-              }
-            }
-
-            .listdesc {
-              color: #aaa;
-            }
-          }
-
-          .more-read {
-            margin-left: 60%;
-
-            a {
-              color: black;
-              text-decoration: underline;
-            }
-
-            a:hover {
-              color: #818181;
-              text-decoration: underline;
-            }
-          }
-        }
-      }
-
-      .dropbox {
-        position: relative;
-        background-color: white;
-        float: left;
-        width: 180px;
-        padding-bottom: 1000000px;
-        margin-bottom: -1000000px;
-        z-index: 0;
-        opacity: 1;
-        -moz-transition-property: opacity;
-        -o-transition-property: opacity;
-        -webkit-transition-property: opacity;
-        transition-property: opacity;
-        -moz-transition-duration: 500ms;
-        -o-transition-duration: 500ms;
-        -webkit-transition-duration: 500ms;
-        transition-duration: 500ms;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        -webkit-user-select: none;
-        user-select: none;
-
-        > * > * {
-          margin-left: -20px;
-          padding: 10px 15px; // spanにmarginかけてもmarginの相殺という現象のせいで消えてしまうから
-          -moz-box-sizing: border-box;
-          -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-
-          > span {
-            cursor: default;
-            padding: 3px 9px;
-            background: #fff;
-            color: #555;
-            font-size: 12px;
-            font-weight: bold;
-            border-radius: 200px;
-          }
-        }
-      }
-    }
 
     .postit {
       position: fixed;
