@@ -368,12 +368,12 @@ input[type="text"] {
 }
 .container .contents .contentswrapper .main .rellist .separator {
   /*margin: 25px 0 40px;*/
-  margin: 5px 0;
+  margin: 10px 0;
 }
 .container .contents .contentswrapper .main .rellist .list .listitem {
   display: table;
-  margin: 30px 30px 30px;
-  padding: 10px;
+  margin: 30px 0;
+  padding: 0 20px;
 }
 .container .contents .contentswrapper .main .rellist .list .listitem:first-child {
   margin-top: 0;
@@ -385,7 +385,7 @@ input[type="text"] {
   display: table-cell;
   width: 60px;
   height: 60px;
-  padding: 0 15px 0 0;
+  /*padding: 0 15px 0 0;*/
   vertical-align: top;
 }
 .container .contents .contentswrapper .main .rellist .list .listthumb a {
@@ -400,7 +400,6 @@ input[type="text"] {
   table-layout: fixed;
   width: 100%;
   max-width: 560px;
-  padding-left: 20px;
 }
 .container .contents .contentswrapper .main .rellist .list .listtitle {
   display: inline;
@@ -417,7 +416,7 @@ input[type="text"] {
   color: #aaa;
 }
 .container .contents .contentswrapper .main .rellist .more-read {
-  margin-left: 60%;
+  float: right;
   color: black;
   text-decoration: underline;
 }

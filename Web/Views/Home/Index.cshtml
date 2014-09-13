@@ -232,22 +232,25 @@
                 <div class="rellist">
                     <h2>この著者の他の記事</h2>
                     <div class="separator"><hr></div>
-                    @if (Model.AuthorsArticles.Count != 0)
+                    @if ((Model.AuthorsArticles.Count-1) != 0)//部長へこれでいい？
                     {
-                        <ul class="list">
-                            @foreach (SearchResultArticle article in Model.AuthorsArticles)
-                            {
-                                <li class="listitem">
-                                    <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
-                                    <div class="listtxt">
-                                        <h3 class="listtitle"><a href="@("/" + article.ArticleId)">@article.Title</a></h3><br />
-                                        <span class="listdesc">
-                                            @(string.Format("{0}ふせん|{1}view|{2} last updated", article.LabelCount, article.PageView, article.Article_UpDate))
-                                        </span>
-                                    </div>
-                                </li>
-                            }
-                        </ul>
+                        <div class="list">
+                            <ul>
+                                @foreach (SearchResultArticle article in Model.AuthorsArticles)
+                                {
+                                    <li class="listitem">
+                                        <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
+                                        <div class="listtxt">
+                                            <h3 class="listtitle"><a href="@("/" + article.ArticleId)">@article.Title</a></h3><br />
+                                            <span class="listdesc">
+                                                @(string.Format("{0}ふせん|{1}view|{2} last updated", article.LabelCount, article.PageView, article.Article_UpDate))
+                                            </span>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                            <span class="more-read"><a href="@("/UserPage?articleId=" + Model.ArticleId)">もっとみる</a></span>
+                        </div>
                     }
                     else
                     {
@@ -255,7 +258,6 @@
                             <p>この著者は他に記事を書いていません。</p>
                         </div>
                     }
-                    <span class="more-read"><a href="@("/UserPage?articleId=" + Model.ArticleId)">もっとみる</a></span>
                 </div>
                 <br />
             </article>
