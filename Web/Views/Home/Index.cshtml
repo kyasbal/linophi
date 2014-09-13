@@ -38,7 +38,7 @@
         js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=146218925555159&version=v2.0";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-@Html.HiddenFor(m=>m.IsPreview)
+@Html.HiddenFor(m => m.IsPreview)
 <div class="container">
     <div class="contents set">
         <div class="top">
@@ -52,23 +52,23 @@
                                 {
                                     foreach (TagViewModel tag in Model.Tags)
                                     {
-                                        
-                                            if (tag.IsTheme)
-                                            {
-                                                <li class="topicwordlistli">
-                                                    <a href="@("/Tag?tag=" + tag.TagName)" class="topicword theme-tag">
-                                                        @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
-                                                    </a>
-                                                </li>
-                                            }
-                                            else
-                                            {
-                                                        <li class="topicwordlistli">
-                                                            <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
-                                                                @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
-                                                            </a>
-                                                        </li>
-                                                    }
+
+                                        if (tag.IsTheme)
+                                        {
+                                    <li class="topicwordlistli">
+                                        <a href="@("/Tag?tag=" + tag.TagName)" class="topicword theme-tag">
+                                            @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                        </a>
+                                    </li>
+                                        }
+                                        else
+                                        {
+                                    <li class="topicwordlistli">
+                                        <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
+                                            @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                        </a>
+                                    </li>
+                                        }
                                     }
                                 }
                             </ul>
@@ -79,12 +79,20 @@
             <div class="top-inner">
                 <nav class="navbar set">
                     <div class="navbar-main navbar-mainwiththumb">
-                        <div class="navbar-thumb">
-                            <canvas id="article-graph" width="250" height="250"></canvas>
-                            <div class="postit-in-circle">
-                                <span class="navbar-countfv">
-                                    <span class="navbar-countnum font-size-25 label-count">@Model.LabelCount</span><br />
-                                    <span class="navbar-countlabel">ふせん</span>
+                        <div class="navbar-detail">
+                            <div class="navbar-txt">
+                                <span class="article-title navbar-title">
+                                     <h1 class="article-title navbar-title">
+                                        @if (Model != null)
+                                        {@Model.Title
+                                        }
+                                    </h1>
+                                </span>
+                                <span>
+                                    @if (Model.UseThumbnail)
+                                    {
+                                        <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)" />
+                                    }
                                 </span>
                             </div>
                         </div>
@@ -95,69 +103,72 @@
                                     <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)" />
                                 }
                             </span>
-                                <h1 class="article-title navbar-title">
+                               
+                            <div class="navbar-count">
+                                <div class="navbar-user">
+                                    <span class="poster">投稿者</span>
+                                    <span class="navbar-userthumb">@Model.Author_IconTag</span>
+                                    <span class="navbar-username">
+                                        <a href="@("/UserPage?articleId="+Model.ArticleId)">
+                                            @if (Model != null)
+                                            {
+                                                @Model.Author
+                                            }
+                                        </a>さん
+                                    </span>
+                                </div>
+                                <div class="navbar-countnum">
+                                    <span class="navbar-countlabel">PV</span>
                                     @if (Model != null)
-                                    {@Model.Title
+                                    {@Model.PageView
                                     }
-                                </h1>
+                               <span class="navbar-countcomment">コメント</span>
+                                    @if (Model != null)
+                                    {@Model.CommentCount
+                                    }
+                                </div>
+                                <div class="navbar-update-time">
+                                    <span class="update-time">更新日時</span>@Model.Article_UpDate
+                                </div>
+                                @if (User.IsInRole("Administrator"))
+                                {
+                                    <form method="POST" action="/api/Article/RemoveAllLabel">
+                                        @Html.AntiForgeryToken()
+                                        @Html.HiddenFor(m => m.ArticleId)
+                                        <input type="submit" value="ラベル全削除" />
+                                    </form>
+                                    <form method="POST" action="/api/Article/RemoveArticle">
+                                        @Html.AntiForgeryToken()
+                                        @Html.HiddenFor(m => m.ArticleId)
+                                        <input type="submit" value="この記事を削除" />
+                                    </form>
+                                }
+                            </div>
+                            <div class="navbar-bottom">
+                                <ul class="main_sns">
+                                    <li><span class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span></li>
+                                    <li>
+                                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
+                                        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="navbar-count">
-                            
-                            <div class="navbar-countnum">
-                                <span class="navbar-countlabel">PV</span>
-                                @if (Model != null)
-                                {@Model.PageView
-                                }
-                            </div>
-
-                            <div class="navbar-countnum">
-                                <span class="navbar-countcomment">コメント</span>
-                                @if (Model != null)
-                                {@Model.CommentCount
-                                }
-                            </div>
-                            
-                            <div class="navbar-user">
-                                <span class="user-img">投稿者</span><span class="navbar-userthumb">@Model.Author_IconTag</span>
-                                <span class="navbar-username">
-                                    <a href="@("/UserPage?articleId="+Model.ArticleId)">
-                                        @if (Model != null)
-                                        {
-                                            @Model.Author
-                                        }
-                                    </a>さん
+                        <div class="navbar-thumb">
+                            <canvas id="article-graph" width="250" height="250"></canvas>
+                            <div class="postit-in-circle">
+                                <span class="navbar-countfv">
+                                    <span class="navbar-countnum font-size-25 label-count">@Model.LabelCount</span><br />
+                                    <span class="navbar-countlabel">ふせん</span>
                                 </span>
                             </div>
-                            @if (User.IsInRole("Administrator"))
-                            {
-                                <form method="POST" action="/api/Article/RemoveAllLabel">
-                                    @Html.AntiForgeryToken()
-                                    @Html.HiddenFor(m=>m.ArticleId)
-                                    <input type="submit" value="ラベル全削除"/>
-                                </form>
-                                <form method="POST" action="/api/Article/RemoveArticle">
-                                    @Html.AntiForgeryToken()
-                                    @Html.HiddenFor(m => m.ArticleId)
-                                    <input type="submit" value="この記事を削除" />
-                                </form>
-                            }
-
-                        </div>
-                        <div class="navbar-bottom">
-                            <ul class="main_sns">
-                                <li><span class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span></li>
-                                <li><a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
-<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script></li>
-                                <li>更新日時 @Model.Article_UpDate</li>
-                            </ul>
-                            
-
-                            
                         </div>
                     </div>
                 </nav>
             </div>
         </div>
+
+        @* 以下記事部分 *@
         <div class="contentswrapper set">
             <article class="main">
                 <div>
@@ -175,8 +186,8 @@
                     <a class="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle="+Model.ArticleId)">関連/反論記事を書く</a>
                 </div>
                 <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-<a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
-            <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
+                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
                 <div class="rellist">
                     <div>関連/反証記事</div>
                     <div class="separator2"><hr></div>
@@ -201,42 +212,42 @@
                     {
                         <div class="found-article-zero">
                             <p>このテーマに関する関連/反証記事はまだ書かれていません。</p>
-                            <a class ="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle="+Model.ArticleId)">最初の関連/反証記事を書く</a>
+                            <a class="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle="+Model.ArticleId)">最初の関連/反証記事を書く</a>
                         </div>
                     }
                 </div>
                 <br />
                 <div class="separator1"><hr></div>
                 <br />
-            <div class="rellist">
-                <h2>この著者の他の記事</h2>
-                <div class="separator2"><hr></div>
-                @if (Model.AuthorsArticles.Count != 0)
-                {
-                    <ul class="list">
-                        @foreach (var article in Model.AuthorsArticles)
-                        {
-                            <li class="listitem">
-                                <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
-                                <div class="listtxt">
-                                    <h3 class="listtitle"><a href="@("/" + article.ArticleId)">@article.Title</a></h3><br />
-                                    <span class="listdesc">
-                                        @(string.Format("{0}ふせん|{1}view|{2} last updated", article.LabelCount, article.PageView, article.Article_UpDate))
-                                    </span>
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                }
-                else
-                {
-                    <div class="found-article-zero">
-                        <p>この著者は他に記事を書いていません。</p>
-                    </div>
-                }
-                <span class="more-read"><a href="@("/UserPage?articleId="+Model.ArticleId)">もっとみる</a></span>
-            </div>
-            <br />
+                <div class="rellist">
+                    <h2>この著者の他の記事</h2>
+                    <div class="separator2"><hr></div>
+                    @if (Model.AuthorsArticles.Count != 0)
+                    {
+                        <ul class="list">
+                            @foreach (var article in Model.AuthorsArticles)
+                            {
+                                <li class="listitem">
+                                    <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
+                                    <div class="listtxt">
+                                        <h3 class="listtitle"><a href="@("/" + article.ArticleId)">@article.Title</a></h3><br />
+                                        <span class="listdesc">
+                                            @(string.Format("{0}ふせん|{1}view|{2} last updated", article.LabelCount, article.PageView, article.Article_UpDate))
+                                        </span>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="found-article-zero">
+                            <p>この著者は他に記事を書いていません。</p>
+                        </div>
+                    }
+                    <span class="more-read"><a href="@("/UserPage?articleId="+Model.ArticleId)">もっとみる</a></span>
+                </div>
+                <br />
             </article>
             <div class="dropbox">
                 <div class="postit-pasting"></div>

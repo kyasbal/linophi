@@ -199,10 +199,13 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     var pasteMode: boolean = false;
 
     var labelType: string, src: string;
-    var dropboxPos: number = $('.contentswrapper').offset().top,
+
+    var dropboxPosX: number = $('.dropbox').offset().left;
+
+    var dropboxPosY: number = $('.contentswrapper').offset().top,
         dropboxHeight: number = $('.contentswrapper').outerHeight(true);
 
-    var posY: number = dropboxPos + 10;
+    var posY: number = dropboxPosY;
 
     $('.article-container > *').each((i) => {
         var $ele: JQuery = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
@@ -220,7 +223,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
         $('.dropbox > .' + className).css({
             "position": "absolute",
-            "top": elePos - dropboxPos + "px",
+            "top": elePos - dropboxPosY + "px",
             "height": eleHeight + "px",
             "width": "180px",
         });
@@ -259,16 +262,16 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
         $('.fade-layer, .dropbox').mousemove((e) =>
         {
-            if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight)
+            if (dropboxPosY <= e.pageY && e.pageY <= dropboxPosY + dropboxHeight)
             {
-                posY = e.pageY;
+                posY = e.pageY - 20;
             }
 
             if (pasteMode)
             {
                 $(".dropbox > .postit-pasting").css({
                     "position": "absolute",
-                    "top": posY - dropboxPos + "px",
+                    "top": posY - dropboxPosY + "px",
                     "left": "20px",
                     "z-index": 1100,
                     "visibility": "visible",
@@ -277,14 +280,17 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
                 });
             }
 
-            var pHeights: number = dropboxPos;
-
+            var pHeights: number = dropboxPosY;
+            var bg;
             $('.dropbox > [class*="p-"]').each((i) => {
                 var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')'); // i == 0のとき１つ目のふせんを表している
                 var pHeight: number = $target.outerHeight(true);
-                var bg = "none";
+                bg = "none";
                 if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode)
-                    bg = "#fcc";
+                {
+                    bg = dropboxPosX <= e.pageX && e.pageX <= dropboxPosX + 180 ? "#24ade2" : "#7acbe2";
+                }
+                console.log(e.pageX, dropboxPosX);
                 
                 $target.css({
                     "background": bg
@@ -317,7 +323,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
         if (pasteMode)
         {
-            var pHeights: number = dropboxPos;
+            var pHeights: number = dropboxPosY;
             pasteMode = false;
 
         $('.dropbox > .postit-pasting').css({

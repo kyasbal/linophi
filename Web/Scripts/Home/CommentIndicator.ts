@@ -93,10 +93,6 @@ class AverageColor
 
     saturation(ratio: number, color: number[]): number[]
     {
-        // １．rgbの平均をとる
-        // ２．rgbそれぞれに対して平均との差分にratioをかける
-        // ３．それらに平均を足してやる
-
         var sum = 0;
         color.forEach((val) => { sum += val; });
         var avr = sum / 3;
@@ -249,5 +245,25 @@ $(() =>
             }
 
         });
+    });
+
+    // 記事の内容やコメント欄をクリックしたときに強制的にコメントを常駐させる機能
+    $("*").on("click", () =>
+    {
+        $('[class*="-comments"]').css({
+            "display": "",
+            "z-index": 9999
+        });
+    });
+
+    $('.article-container > [class*="p-"]:not([class*="-comments"])').on("click", (e) =>
+    {
+        setTimeout(() =>
+        {
+            $('.' + (Object)(e.currentTarget).className + '-comments').css({
+                "display": "block",
+                "z-index": 20000
+            });
+        }, 0);
     });
 });
