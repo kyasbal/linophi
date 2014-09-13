@@ -244,6 +244,7 @@ input[type="text"] {
   font-family: Tahoma, Verdana, Geneva, Tahoma, sans-serif, sans-serif;
 }
 .container .contents .top-inner .navbar-main .navbar-thumb {
+  z-index: 1;
   position: relative;
   width: 250px;
   height: 250px;
@@ -255,6 +256,7 @@ input[type="text"] {
   margin: 0;
 }
 .container .contents .top-inner .navbar-main .navbar-thumb .inside-circle {
+  z-index: -1;
   position: absolute;
   width: 100px;
   height: 95px;

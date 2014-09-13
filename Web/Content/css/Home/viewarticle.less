@@ -297,6 +297,7 @@ input[type="text"] {
                     .navbar-thumb {
                         @articleGraphSize: 250px;
 
+                        z-index: 1;
                         position: relative;
                         width: @articleGraphSize;
                         height: @articleGraphSize;
@@ -313,6 +314,7 @@ input[type="text"] {
                             @insideCirclePaddingRight: 10px;
                             @insideCirclePaddingLeft: 10px;
 
+                            z-index: -1;
                             position: absolute;
                             width: @insideCircleWidth;
                             height: @insideCircleHeight;
