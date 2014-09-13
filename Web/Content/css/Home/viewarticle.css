@@ -50,7 +50,7 @@ input[type="text"] {
   clear: both;
 }
 .theme-tag {
-  border: 1px solid red!important;
+  border: 1px solid red !important;
 }
 .container {
   /*記事の説明部分(ヘッダ)*/
@@ -136,20 +136,14 @@ input[type="text"] {
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-txt .navbar-title {
   display: inline;
   line-height: 38px;
-}
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-txt .navbar-title a {
   font-size: 40px;
   word-wrap: break-word;
   margin: 0 15px 0 0;
   color: #000;
   text-decoration: none;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-txt .navbar-title a:hover {
-  color: #000;
-  text-decoration: underline;
-}
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-count > div {
-  margin: 15px;
+  margin: 15px 0;
 }
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-user .poster {
   font-size: 12px;
@@ -171,10 +165,10 @@ input[type="text"] {
   color: #000;
   font-size: 12px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-countnum .navbar-countcomment {
-  line-height: 1;
-  color: #000;
-  font-size: 12px;
+.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-countnum .navbar-username a {
+  color: #000 !important;
+  font-weight: bold;
+  font-size: 20px;
 }
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-update-time {
   font-size: 20px;
@@ -626,8 +620,8 @@ a.topicword:hover {
 }
 .write-related-article {
   background-color: #7ac2a6;
-  text-decoration: none!important;
-  color: white!important;
+  text-decoration: none !important;
+  color: white !important;
   padding: 15px 60px;
   margin: 30px;
   line-height: 80px;
