@@ -362,15 +362,13 @@ input[type="text"] {
   background-color: ghostwhite;
 }
 .container .contents .contentswrapper .main .rellist {
-  padding-top: 50px;
+  padding-top: 1px;
   position: relative;
   margin: 10px 0 10px 0;
 }
-.container .contents .contentswrapper .main .rellist .separator1 {
-  margin: 40px 0;
-}
-.container .contents .contentswrapper .main .rellist .separator2 {
-  margin: 25px 0 40px;
+.container .contents .contentswrapper .main .rellist .separator {
+  /*margin: 25px 0 40px;*/
+  margin: 5px 0;
 }
 .container .contents .contentswrapper .main .rellist .list .listitem {
   display: table;
@@ -557,11 +555,11 @@ a.topicword:hover {
   display: inline-block;
 }
 .main .separator1,
-.main .separator2 {
+.main .separator {
   border-top: 1px solid #e7e7e7;
 }
 .main .separator1 hr,
-.main .separator2 hr {
+.main .separator hr {
   display: none;
 }
 .font-size-25 {

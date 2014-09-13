@@ -201,7 +201,7 @@
                 </script>
                 <div class="rellist">
                     <div>関連/反証記事</div>
-                    <div class="separator2"><hr></div>
+                    <div class="separator"><hr></div>
                     @if (Model.RelatedArticles.Count != 0)
                     {
                         <ul class="list">
@@ -228,11 +228,10 @@
                     }
                 </div>
                 <br />
-                <div class="separator1"><hr></div>
                 <br />
                 <div class="rellist">
                     <h2>この著者の他の記事</h2>
-                    <div class="separator2"><hr></div>
+                    <div class="separator"><hr></div>
                     @if (Model.AuthorsArticles.Count != 0)
                     {
                         <ul class="list">
