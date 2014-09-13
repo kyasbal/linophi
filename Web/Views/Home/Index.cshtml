@@ -31,13 +31,15 @@
 @*facebookボタン用*@
 <div id="fb-root"></div>
 <script>
-    (function (d, s, id) {
+    (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=146218925555159&version=v2.0";
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 @Html.HiddenFor(m => m.IsPreview)
 <div class="container">
     <div class="contents set">
@@ -52,22 +54,21 @@
                                 {
                                     foreach (TagViewModel tag in Model.Tags)
                                     {
-
                                         if (tag.IsTheme)
                                         {
-                                    <li class="topicwordlistli">
-                                        <a href="@("/Tag?tag=" + tag.TagName)" class="topicword theme-tag">
-                                            @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
-                                        </a>
-                                    </li>
+                                            <li class="topicwordlistli">
+                                                <a href="@("/Tag?tag=" + tag.TagName)" class="topicword theme-tag">
+                                                    @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                                </a>
+                                            </li>
                                         }
                                         else
                                         {
-                                    <li class="topicwordlistli">
-                                        <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
-                                            @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
-                                        </a>
-                                    </li>
+                                            <li class="topicwordlistli">
+                                                <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
+                                                    @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                                </a>
+                                            </li>
                                         }
                                     }
                                 }
@@ -81,35 +82,24 @@
                     <div class="navbar-main navbar-mainwiththumb">
                         <div class="navbar-detail">
                             <div class="navbar-txt">
-                                <span class="article-title navbar-title">
-                                     <h1 class="article-title navbar-title">
-                                        @if (Model != null)
-                                        {@Model.Title
-                                        }
-                                    </h1>
-                                </span>
+                                <h1 class="article-title navbar-title"s>
+                                    @if (Model != null)
+                                    {@Model.Title
+                                    }
+                                </h1>
                                 <span>
                                     @if (Model.UseThumbnail)
                                     {
-                                        <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)" />
+                                        <img src="@("/Pages/ContentUpload/Thumbnail?articleId=" + Model.ArticleId)" />
                                     }
                                 </span>
                             </div>
-                        </div>
-                        <div class="navbar-txt">
-                            <span>
-                                @if (Model.UseThumbnail)
-                                {
-                                    <img src="@("/Pages/ContentUpload/Thumbnail?articleId="+Model.ArticleId)" />
-                                }
-                            </span>
-                               
                             <div class="navbar-count">
                                 <div class="navbar-user">
                                     <span class="poster">投稿者</span>
                                     <span class="navbar-userthumb">@Model.Author_IconTag</span>
                                     <span class="navbar-username">
-                                        <a href="@("/UserPage?articleId="+Model.ArticleId)">
+                                        <a href="@("/UserPage?articleId=" + Model.ArticleId)">
                                             @if (Model != null)
                                             {
                                                 @Model.Author
@@ -122,7 +112,7 @@
                                     @if (Model != null)
                                     {@Model.PageView
                                     }
-                               <span class="navbar-countcomment">コメント</span>
+                                    <span class="navbar-countcomment">コメント</span>
                                     @if (Model != null)
                                     {@Model.CommentCount
                                     }
@@ -148,8 +138,18 @@
                                 <ul class="main_sns">
                                     <li><span class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span></li>
                                     <li>
-                                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
-                                        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+                                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi", Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
+                                        <script>
+                                            !function(d, s, id) {
+                                                var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                                                if (!d.getElementById(id)) {
+                                                    js = d.createElement(s);
+                                                    js.id = id;
+                                                    js.src = p + '://platform.twitter.com/widgets.js';
+                                                    fjs.parentNode.insertBefore(js, fjs);
+                                                }
+                                            }(document, 'script', 'twitter-wjs');
+                                        </script>
                                     </li>
                                 </ul>
                             </div>
@@ -183,18 +183,28 @@
                 </div>
                 @*本文終了位置*@
                 <div class="write-related-article-container">
-                    <a class="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle="+Model.ArticleId)">関連/反論記事を書く</a>
+                    <a class="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle=" + Model.ArticleId)">関連/反論記事を書く</a>
                 </div>
                 <div class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi",Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
-                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi", Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
+                <script>
+                    !function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = p + '://platform.twitter.com/widgets.js';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, 'script', 'twitter-wjs');
+                </script>
                 <div class="rellist">
                     <div>関連/反証記事</div>
                     <div class="separator2"><hr></div>
                     @if (Model.RelatedArticles.Count != 0)
                     {
                         <ul class="list">
-                            @foreach (var article in Model.RelatedArticles)
+                            @foreach (SearchResultArticle article in Model.RelatedArticles)
                             {
                                 <li class="listitem">
                                     <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
@@ -212,7 +222,7 @@
                     {
                         <div class="found-article-zero">
                             <p>このテーマに関する関連/反証記事はまだ書かれていません。</p>
-                            <a class="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle="+Model.ArticleId)">最初の関連/反証記事を書く</a>
+                            <a class="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle=" + Model.ArticleId)">最初の関連/反証記事を書く</a>
                         </div>
                     }
                 </div>
@@ -225,7 +235,7 @@
                     @if (Model.AuthorsArticles.Count != 0)
                     {
                         <ul class="list">
-                            @foreach (var article in Model.AuthorsArticles)
+                            @foreach (SearchResultArticle article in Model.AuthorsArticles)
                             {
                                 <li class="listitem">
                                     <p class="listthumb">@Html.Raw(article.ThumbnailTag)</p>
@@ -245,7 +255,7 @@
                             <p>この著者は他に記事を書いていません。</p>
                         </div>
                     }
-                    <span class="more-read"><a href="@("/UserPage?articleId="+Model.ArticleId)">もっとみる</a></span>
+                    <span class="more-read"><a href="@("/UserPage?articleId=" + Model.ArticleId)">もっとみる</a></span>
                 </div>
                 <br />
             </article>
