@@ -28,6 +28,7 @@ var TagUtil;
 
     function chkValidTitle(val) {
         var isConfirmedTitle = true;
+        $(".edit-title-chkvalid").html("");
         if (val.match(/^\s*$/)) {
             $(".edit-title-chkvalid").html("　　タイトルが空です");
             isConfirmedTitle = false;
