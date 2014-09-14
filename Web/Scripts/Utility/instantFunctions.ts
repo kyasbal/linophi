@@ -26,3 +26,8 @@ var getParagraphId = (seedClass: string): string =>
 {
     return seedClass.replace(/x_/, '');
 }
+
+var getClassName = (seedParagraphId: string): string =>
+{
+    return "x_" + seedParagraphId;
+}
