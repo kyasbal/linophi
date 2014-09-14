@@ -173,9 +173,9 @@ div[class^="edit-editted-tag"] {
 div[class^="edit-editted-tag"]:first-child {
   margin-left: 0;
 }
-div[class^="edit-editted-tag"] > span {
+div[class^="edit-editted-tag"] span[class^="edit-editted-tag-delete-"] {
   padding-left: 10px;
   color: #333;
   cursor: pointer;
 }
-/*# sourceMappingURL=writearticle.css.map */
+/*# sourceMappingURL=WriteArticle.css.map */

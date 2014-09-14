@@ -231,7 +231,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         labelSourceParser.eachByParagraph(getParagraphId(className), (emotion: string, count: number, itr: number) =>
         {
             $('.dropbox > .' + className).append(
-                '<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '-d.svg\');background-size:130px 43px;height:43px;width:130px;"><span>' +
+                '<div class="' + emotion + '" style="background-image:url(\'Content/imgs/Home/' + emotion + '-d.svg\');background-size:130px 43px;height:43px;width:130px;"><span>' +
                     count +
                 '</span></div>'
             );
@@ -252,7 +252,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         });
 
         labelType = ((Object)(event.currentTarget)).className;
-        src = '/Content/imgs/Home/' + labelType + '-d.svg';
+        src = 'Content/imgs/Home/' + labelType + '-d.svg';
 
         $('.dropbox').css({
             "opacity": 0.7,
@@ -264,39 +264,37 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         {
             if (dropboxPosY <= e.pageY && e.pageY <= dropboxPosY + dropboxHeight)
             {
-                posY = e.pageY - 20;
+                posY = e.pageY;
             }
 
             if (pasteMode)
             {
                 $(".dropbox > .postit-pasting").css({
                     "position": "absolute",
-                    "top": posY - dropboxPosY + "px",
+                    "top": posY - dropboxPosY - 20 + "px",
                     "left": "20px",
                     "z-index": 1100,
                     "visibility": "visible",
-                    "background-image": "url(" + src + ")",
+                    "background-image": "url('" + src + "')",
                     "background-size": "130px 43px"
                 });
             }
 
-            var pHeights: number = dropboxPosY;
             var bg;
             $('.dropbox > [class*="p-"]').each((i) => {
                 var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')'); // i == 0のとき１つ目のふせんを表している
                 var pHeight: number = $target.outerHeight(true);
+                var pPos: number = ($target.offset() || { "top": NaN }).top;
                 bg = "none";
-                if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode)
+                console.log(pPos, posY, pPos+pHeight);
+                if (pPos <= posY && posY < pPos + pHeight && pasteMode)
                 {
                     bg = dropboxPosX <= e.pageX && e.pageX <= dropboxPosX + 180 ? "#24ade2" : "#7acbe2";
                 }
-                console.log(e.pageX, dropboxPosX);
                 
                 $target.css({
                     "background": bg
                 });
-
-                pHeights += pHeight;
 
             });
         });
@@ -323,7 +321,6 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
         if (pasteMode)
         {
-            var pHeights: number = dropboxPosY;
             pasteMode = false;
 
         $('.dropbox > .postit-pasting').css({
@@ -338,7 +335,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
                 var elementName: string = $target[0].tagName;
                 if (elementName == "hr") return true;
 
-
+                var pPos: number = ($target.offset() || { "top": NaN }).top;
                 var pHeight: number = $target.outerHeight(true);
 
                 var thisClass: string = $target.attr("class");
@@ -346,12 +343,10 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
                 var postitExistence: number =
                     $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ') > .' + labelType).length;
 
-                if (pHeights <= posY && posY <= pHeights + pHeight) // 対象のｐ要素で貼り付けた時の処理
+                if (pPos <= posY && posY <= pPos + pHeight) // 対象のｐ要素で貼り付けた時の処理
                 {
                     ajaxManager.sendPostitNumber(articleId, thisClass, labelType, postitExistence, $target, src);
                 }
-
-                pHeights += pHeight;
 
                 // console.log($target.attr("class"), pHeight, pHeights, posY, src);
             });
