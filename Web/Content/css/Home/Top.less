@@ -1,9 +1,20 @@
 ﻿.top-container {
-
+  width: 960px;
+  margin: 0 auto;
 }
 
 .top-header {
-
+  height: 120px;
+  padding: 20px 36px;
+  text-align: center;
+  > .top-mainttl {
+    font-size: 48px;
+  }
+  > .top-subttl {
+    position: relative;
+    font-size: 24px;
+    color: #888;
+  }
 }
 
 .top-main {
@@ -11,13 +22,14 @@
 }
 
 .top-contents {
-
+  width: 800px;
 }
 
 .top-topics-flare {
 
   > h2 {
-
+    font-size: 20px;
+    font-weight: bold;
   }
 
   > div {
@@ -34,13 +46,34 @@
 }
 
 .top-title {
+  height: 100px;
+  width: 180px;
+  overflow: hidden;
+  position: relative;
 
   > img {
-
+    margin-left: -20px;
+    margin-top: -10px;
   }
-  
-  > p {
 
+  > h2 {
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    text-shadow:
+       2px  2px 4px rgba(8,8,8,0.6),
+      -2px  2px 4px rgba(8,8,8,0.6),
+       2px -2px 4px rgba(8,8,8,0.6),
+      -2px -2px 4px rgba(8,8,8,0.6);
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    padding-top: 30px;
   }
 }
 
@@ -51,23 +84,12 @@
 }
 
 .top-index {
-
 }
 
 .top-index-box {
-  > h2 {
-
-  }
-  > ul {
-    > li {
-
-    }
-  }
-}
-
-.top-index-box {
-  > h2 {
-
+  width: 400px;
+  > p {
+    font-weight: bold;
   }
   > ul {
     > li {
@@ -77,6 +99,9 @@
 }
 
 .top-sidebar {
+  float: right !important;
+  width: 160px;
+
   > .top-ads {
 
   }
@@ -84,8 +109,13 @@
 
 
 
-.clearfix:after {
-	content: "";
-	display: block;
-	clear: both;
+.clearfix {
+  &:after {
+    content: "";
+	  display: block;
+	  clear: both;
+  }
+  > * {
+    float: left;
+  }
 }
