@@ -72,7 +72,7 @@ namespace Web.Controllers
                 CommentInfo=commentsAsJson,
                 CommentCount=commentCount,
                 RelatedArticles=getRelatedArticles(context,0,0,article,3),
-                AuthorsArticles=getUserArticles(context,0,0,article.AuthorID,out count,takeCount: 3),
+                AuthorsArticles=getUserArticles(context,0,0,article.AuthorID,out count,takeCount: 3,exceptId:article.ArticleModelId),
                 IsPreview=false
             };
         }
@@ -316,10 +316,12 @@ namespace Web.Controllers
         }
 
         //TODO パフォーマンス改善
-        public static List<SearchResultArticle> getUserArticles(ApplicationDbContext context, int order, int skip, string userId, out int count, int takeCount = 10)
+        public static List<SearchResultArticle> getUserArticles(ApplicationDbContext context, int order, int skip, string userId, out int count, int takeCount = 10,string exceptId="")
         {
             ArticleThumbnailManager thumbnailManager=new ArticleThumbnailManager(new BlobStorageConnection());
-            IQueryable<ArticleModel> query = context.Articles.Where(f => f.AuthorID.Equals(userId));
+            IQueryable<ArticleModel> query = String.IsNullOrWhiteSpace(exceptId)
+                ? context.Articles.Where(f => f.AuthorID.Equals(userId))
+                : context.Articles.Where(f => f.AuthorID.Equals(userId) && !f.ArticleModelId.Equals(exceptId));
             count = query.Count();
             query = ChangeOrder(order, query);
             query = query.Skip(skip);
