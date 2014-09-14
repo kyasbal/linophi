@@ -1,145 +1,121 @@
-﻿html{
-    height:100%;
+﻿.top-container {
+  width: 960px;
+  margin: 0 auto;
 }
 
-#top-graph-container{
-    width:49%;
-    height:450px;
-    display:inline-block;
-    vertical-align:middle;
-    padding-top:30px;
-}
-#top-graph{
-    float:left;
-    margin-left:10%;
-    width:450px;
-    height:100%;
-    border:1px solid #ccc;
-    border-radius:230px;
-    -webkit-border-radius:230px;
-    -moz-border-radius:230px;
+.top-header {
+  height: 120px;
+  padding: 20px 36px;
+  text-align: center;
+  > .top-mainttl {
+    font-size: 48px;
+  }
+  > .top-subttl {
+    position: relative;
+    font-size: 24px;
+    color: #888;
+  }
 }
 
-.container{
-    width:100%; 
-    padding:97px 0 97px 0;
+.top-main {
+
+}
+
+.top-contents {
+  width: 800px;
+}
+
+.top-topics-flare {
+
+  > h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  > div {
+
+  }
+}
+
+.top-topics-category {
+
+}
+
+.top-summary {
+
+}
+
+.top-title {
+  height: 100px;
+  width: 180px;
+  overflow: hidden;
+  position: relative;
+
+  > img {
+    margin-left: -20px;
+    margin-top: -10px;
+  }
+
+  > h2 {
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    text-shadow:
+       2px  2px 4px rgba(8,8,8,0.6),
+      -2px  2px 4px rgba(8,8,8,0.6),
+       2px -2px 4px rgba(8,8,8,0.6),
+      -2px -2px 4px rgba(8,8,8,0.6);
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    padding-top: 30px;
+  }
+}
+
+.top-factor {
+  > p {
+
+  }
+}
+
+.top-index {
+}
+
+.top-index-box {
+  width: 400px;
+  > p {
+    font-weight: bold;
+  }
+  > ul {
+    > li {
+
     }
-.container-inner{
-    width:70%;
-    height:80%;
-    margin:auto auto;
-    display:block;
-    padding-bottom:30px;
-    border-radius:10px;
-    -webkit-border-radius:10px;
-    -moz-border-radius:10px;
-    background-color:#fff;
-    box-shadow:rgba(0, 0, 0, 0.1) 1px 0px 14px 0;
-    -webkit-box-shadow:rgba(0, 0, 0, 0.1) 1px 0px 14px 0;
-    -moz-box-shadow:rgba(0, 0, 0, 0.1) 1px 0px 14px 0;
+  }
 }
-body{
-    height:100%;
+
+.top-sidebar {
+  float: right !important;
+  width: 160px;
+
+  > .top-ads {
+
+  }
 }
-.view-title-container{
-    width:80%;
-}
-.view-title{
-    height:25px;
-    margin-left:60px;
-    h1{
-        font-size:30px;
-        font-weight:bold;
-        padding-left:10px;
-        box-shadow: -10px 0 aliceblue, -20px 0 lightblue;
-    }
-}
-.view-little-container{
-    width:49%;
-    height:450px;
-    padding-top:30px;
-    display:inline-block;
-    vertical-align:middle;
-}
-.view-little{
-    float:right;
-    margin-right:10%;
-    width:400px;
-    height:100%;
-    padding:10px;
-    box-shadow:rgb(204, 204, 204) 0px 0px 3px 3px;
-    -webkit-box-shadow:rgb(204, 204, 204) 0px 0px 3px 3px;
-    -moz-box-shadow:rgb(204, 204, 204) 0px 0px 3px 3px;
-    .count-num{
-        font-size:24px;
-        display:inline-block;
-        text-align:center;
-        padding-top:20px;
-        margin-left:20px;
-        border:1px solid #EFEFEF;
-        border-radius:70px;
-        width:100px;
-        height:85px;
-        .label{
-            font-size:15px;
-        }
-    }
-    .text-update{
-         padding:10px;
-         text-align:right;
-         font-size:15px;
-    }
-    h3{
-        font-size:12px;
-        text-align:center;
-    }
-    .text-main{
-        font-size:13px;
-        padding:15px;
-        h1{
-            font-size:17px;
-            margin-left:16px;
-            margin-bottom:10px;
-            box-shadow: -5px 0 #afdbcc, -10px 0 #7ac2a6;
-        }
-    }
-}
-.top-comment-container{
-    margin-right:20px;
-    padding:15px;
-}
-.top-comment {
-    float:right;
-    padding:20px;
-    width:160px;
-    height:40px;
-    background-color:#fff;
-    border:1px solid #000;
-    border-radius:5px;
-    position:relative;
-}
- 
-.top-comment:before {
-    border:10px solid transparent;
-    border-top-color:#fff;
-    border-bottom-width:0;
-    bottom:-9px;
-    content:"";
-    display:block;
-    left:30px;
-    position:absolute;
-    width:0;
-    z-index:1;
-}
- 
-.top-comment:after {
-    border:10px solid transparent;
-    border-top-color:#000;
-    border-bottom-width:0;
-    bottom:-10px;
-    content:"";
-    display:block;
-    left:30px;
-    position:absolute;
-    width:0;
+
+
+
+.clearfix {
+  &:after {
+    content: "";
+	  display: block;
+	  clear: both;
+  }
+  > * {
+    float: left;
+  }
 }
