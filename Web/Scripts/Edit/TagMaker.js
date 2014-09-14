@@ -35,7 +35,7 @@ var TagUtil;
         } else if (val.length < 5) {
             $(".edit-title-chkvalid").html("　　タイトルが短すぎます");
             isConfirmedTitle = false;
-        } else if (50 <= val.length) {
+        } else if (120 < val.length) {
             $(".edit-title-chkvalid").html("　　タイトルが長すぎます");
             isConfirmedTitle = false;
         }
