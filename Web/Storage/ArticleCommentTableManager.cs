@@ -74,6 +74,11 @@ namespace Web.Storage
             return CreateQuery().Where(f => f.PartitionKey.Equals(articleId));
         }
 
+        public int GetCommentCount(string articleId)
+        {
+            return this.GetComments(articleId).Count();
+        }
+
         public string GetCommentsAsJson(string articleId,out int count)
         {
             List<ArticleCommentViewModel> comments=new List<ArticleCommentViewModel>();

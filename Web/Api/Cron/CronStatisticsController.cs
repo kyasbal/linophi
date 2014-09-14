@@ -5,28 +5,37 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Microsoft.AspNet.Identity.Owin;
 using Newtonsoft.Json;
 using Web.Api.Cron.Request;
+using Web.Models;
 using Web.Models.Cron;
+using Web.Storage.Connection;
+using Web.Storage.Cron;
 using Web.Utility;
-
 namespace Web.Api.Cron
 {
     public class CronStatisticsController : ApiController
     {
+        [HttpGet]
         public async Task<IHttpActionResult> ArticleRankingJob(CronRequest req)
         {
-            if (CronRequest.IsCronRequest(req))
-            {
-                string jobID = IdGenerator.getId(10);
+//            if (CronRequest.IsCronRequest(req))
+//            {
+                var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+                TableStorageConnection tConnection = new TableStorageConnection();
                 StatisticsLogModel logModel = StatisticsLogModel.CreateNewModel();
-
+                StatisticsLogModel lastLog = context.StatisticsLog.OrderBy(f=>f.JobTime).Take(1).FirstOrDefault();
+                ArticleStatisticsBasicManager asbm=new ArticleStatisticsBasicManager(tConnection);
+                await asbm.InsertArticleLog(context, logModel.Key, lastLog==null?"":lastLog.Key);
+            context.StatisticsLog.Add(logModel);
+            await context.SaveChangesAsync();
                 return Json(true);
-            }
-            else
-            {
-                return Json(false);
-            }
+//            }
+//            else
+//            {
+//                return Json(false);
+//            }
         }
     }
 }
