@@ -536,7 +536,8 @@
     <Compile Include="Storage\Connection\StorageConnectionBase.cs" />
     <Compile Include="Storage\Connection\TableStorageConnection.cs" />
     <Compile Include="Storage\ImageUploaderManager.cs" />
-    <Compile Include="Storage\InquiryCCManager.cs" />
+    <Compile Include="Storage\InquiryLogManager.cs" />
+    <Compile Include="Storage\InquiryNotifyManager.cs" />
     <Compile Include="Storage\LabelEntity.cs" />
     <Compile Include="Storage\Manager\AzureBlobManagerBase.cs" />
     <Compile Include="Storage\Manager\AzureTableManagerBase.cs" />

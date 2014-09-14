@@ -79,8 +79,13 @@
   padding-left: 10%;
 }
 .header .menu .search .search-text {
+  background-color: #dfece6;
+  color: #000000;
+  -moz-transition: background-color ease-in 0.2s;
+  -o-transition: background-color ease-in 0.2s;
+  -webkit-transition: background-color ease-in 0.2s;
+  transition: background-color ease-in 0.2s;
   margin: 7.5px 0 7.5px 0;
-  background-color: #DFECE6;
   height: 20px;
   width: 200px;
   padding: 5px 10px;
@@ -92,8 +97,10 @@
   border-radius: 100px;
 }
 .header .menu .search .search-text:focus {
-  color: white;
-  background-color: #92C7A3;
+  background-color: #5f9781;
+  color: #ffffff;
+}
+.header .menu .search .search-text:focus {
   outline: none;
 }
 .header .menu .search .search-text:hover {
@@ -162,4 +169,4 @@ header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] #
 header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] .login-form {
   float: right;
 }
-/*# sourceMappingURL=header.css.map */
+/*# sourceMappingURL=Header.css.map */

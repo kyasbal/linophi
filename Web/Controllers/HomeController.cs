@@ -365,9 +365,9 @@ namespace Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Inquiry(InquiryRequest req)
+        public async Task<ActionResult> Inquiry(InquiryRequest req)
         {
-
+            InquiryLogManager.LogInquiry(req.Name, req.Mail, req.Content);
             MailMessage mailMsg = new MailMessage();
 
             // To
@@ -405,6 +405,7 @@ namespace Web.Controllers
             mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
             mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
             LinophiMailClient.Instance.SendMessage(mailMsg);
+            InquiryNotifyManager.SendInquiryNotification(req.Name,req.Mail,req.Content);
             return View("InquiryAccepted");
         }
 
