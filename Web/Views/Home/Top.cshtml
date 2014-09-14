@@ -21,14 +21,14 @@
             %h2
             %div
           .top-topics-category
-            .top-summary
+            .top-summary.clearfix
               .top-title
                 %img
                 %p
               .top-factor
                 %p
                 %p
-            .top-index
+            .top-index.clearfix
               .top-index-box
                 %h2
                 %ul
@@ -44,44 +44,58 @@
 *@
 
 <div class="top-container">
-    <div class="top-header"></div>
+    <div class="top-header">
+        header
+    </div>
+
     <div class="top-main clearfix">
+        
         <div class="top-contents">
             <div class="top-topics-flare">
-                <h2></h2>
-                <div></div>
+                <h2>今燃えている記事</h2>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
             </div>
+
             <div class="top-topics-category">
-                <div class="top-summary">
+                <div class="top-summary clearfix">
                     <div class="top-title">
-                        <img>
-                        <p></p>
+                        <img src="">
+                        <p>イスラム国</p>
                     </div>
                     <div class="top-factor">
-                        <p></p>
-                        <p></p>
+                        <p>事実</p>
+                        <p>事実</p>
                     </div>
-                </div>
-                <div class="top-index">
+                </div><!-- .top-summary -->
+
+                <div class="top-index clearfix">
                     <div class="top-index-box">
-                        <h2></h2>
+                        <h2>HOT</h2>
                         <ul>
-                            <li></li>
-                            <li></li>
+                            <li>記事タイトル</li>
+                            <li>記事タイトル</li>
                         </ul>
                     </div>
                     <div class="top-index-box">
-                        <h2></h2>
+                        <h2>NEW</h2>
                         <ul>
-                            <li></li>
-                            <li></li>
+                            <li>記事タイトル</li>
+                            <li>記事タイトル</li>
                         </ul>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div><!-- .top-index -->
+
+            </div><!-- .top-category -->
+
+        </div><!-- .top-contents -->
+
         <div class="top-sidebar">
-            <div class="ads"></div>
-        </div>
-    </div>
-</div>
+            <div class="ads">
+                広告
+            </div>
+        </div><!-- .top-sidebar -->
+
+    </div><!-- .top-main -->
+</div><!-- .top-container -->
