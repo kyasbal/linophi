@@ -2,6 +2,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Services.Client;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Web.Models.Cron;
 using Web.Utility.Configuration;
 
 namespace Web.Models
@@ -21,6 +22,8 @@ namespace Web.Models
         public DbSet<ArticleModel> Articles { get; set; } 
 
         public DbSet<ArticleTagModel>  Tags { get; set; }
+
+        public DbSet<StatisticsLogModel> StatisticsLog { get; set; } 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
