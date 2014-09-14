@@ -72,7 +72,7 @@ namespace Web.Controllers
                 CommentInfo=commentsAsJson,
                 CommentCount=commentCount,
                 RelatedArticles=getRelatedArticles(context,0,0,article,3),
-                AuthorsArticles=getUserArticles(context,0,0,article.AuthorID,out count,takeCount: 3),
+                AuthorsArticles=getUserArticles(context,0,0,article.AuthorID,out count,takeCount: 3,exceptId:article.ArticleModelId),
                 IsPreview=false
             };
         }
@@ -316,10 +316,12 @@ namespace Web.Controllers
         }
 
         //TODO パフォーマンス改善
-        public static List<SearchResultArticle> getUserArticles(ApplicationDbContext context, int order, int skip, string userId, out int count, int takeCount = 10)
+        public static List<SearchResultArticle> getUserArticles(ApplicationDbContext context, int order, int skip, string userId, out int count, int takeCount = 10,string exceptId="")
         {
             ArticleThumbnailManager thumbnailManager=new ArticleThumbnailManager(new BlobStorageConnection());
-            IQueryable<ArticleModel> query = context.Articles.Where(f => f.AuthorID.Equals(userId));
+            IQueryable<ArticleModel> query = String.IsNullOrWhiteSpace(exceptId)
+                ? context.Articles.Where(f => f.AuthorID.Equals(userId))
+                : context.Articles.Where(f => f.AuthorID.Equals(userId) && !f.ArticleModelId.Equals(exceptId));
             count = query.Count();
             query = ChangeOrder(order, query);
             query = query.Skip(skip);
@@ -379,16 +381,16 @@ namespace Web.Controllers
             // Subject and multipart/alternative Body
             mailMsg.Subject = req.Name + "様からのお問い合わせに対しての返信";
 
-            string text = "この度は＜linophi＞に関するお問い合わせをいただき、誠にありがとうございます。" +
-                          "お問い合わせいただきました内容は、下記の通りです。" +
-                          " お名前 : "+req.Name+" 様" +
-                          "内容 : "+req.Content+
-                          "頂戴いたしましたお問い合わせにつきましては、内容を確認の上、後ほどご回答いたします。" +
-                          "なお、お問い合わせの内容によっては、ご回答まで数日かかる場合やご回答いたしかねる場合がございます。" +
-                          "恐れ入りますが、予めご了承くださいますようお願いいたします。" +
-                          "※このメールには返信できません。" +
-                          "恐れ入りますが、＜linophi＞に関するお問い合わせは下記URLよりお願いいたします。" +
-                          "＜linophi＞:ここにurlを貼る";
+            string text = "この度は＜linophi＞に関するお問い合わせをいただき、誠にありがとうございます。\n" +
+                          "お問い合わせいただきました内容は、下記の通りです。\n" +
+                          " お名前 : "+req.Name+" 様\n" +
+                          "内容 : "+req.Content+"\n"+
+                          "頂戴いたしましたお問い合わせにつきましては、内容を確認の上、後ほどご回答いたします。\n" +
+                          "なお、お問い合わせの内容によっては、ご回答まで数日かかる場合やご回答いたしかねる場合がございます。\n" +
+                          "恐れ入りますが、予めご了承くださいますようお願いいたします。\n" +
+                          "※このメールには返信できません。\n" +
+                          "恐れ入りますが、＜linophi＞に関するお問い合わせは下記URLよりお願いいたします。\n" +
+                          "＜linophi＞:ここにurlを貼る\n";
 
             string html = @"<p>この度は＜linophi＞に関するお問い合わせをいただき、誠にありがとうございます。</p>" +
                           @"<p>お問い合わせいただきました内容は、下記の通りです。</p>" +

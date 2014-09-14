@@ -29,6 +29,8 @@
   padding: 0 20px;
   background-color: #f8f8ff;
 }
+<<<<<<< HEAD
+=======
 .textbox-style-1-mixin {
   background-color: #dfece6;
   color: #000000;
@@ -41,6 +43,7 @@
   background-color: #5f9781;
   color: #ffffff;
 }
+>>>>>>> 9098f58bff632535c4233b4a3753d23c937472e4
 .header {
   padding-top: 3px;
   background-color: aliceblue;
@@ -169,4 +172,4 @@ header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] #
 header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] .login-form {
   float: right;
 }
-/*# sourceMappingURL=Header.css.map */
+/*# sourceMappingURL=header.css.map */

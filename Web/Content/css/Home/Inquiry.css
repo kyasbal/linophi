@@ -45,65 +45,72 @@
   width: 500px;
   margin: 0 auto;
 }
-.layout h1 {
-  box-shadow: -18px 0 #afdbcc, -28px 0 #7ac2a6;
+.layout .inquiry-form {
+  border: 1px solid #dfece6;
+  padding: 25px;
+}
+.layout .inquiry-form h1 {
+  margin: 0 auto;
   font-size: xx-large;
-  margin-bottom: 1em;
   padding: 0 20px;
-  background-color: #f8f8ff;
-  margin-left: -50px;
+  text-align: center;
+  border-bottom: 1px solid #dfece6;
 }
-.layout h2 {
-  box-shadow: -18px 0 #f0f8ff, -28px 0 #87ceeb;
+.layout .inquiry-form h2 {
+  /*.head-shadow(@header-style-2-color-shadow-1,@header-style-2-color-shadow-2);*/
   font-size: x-large;
-  margin-bottom: 1em;
-  padding: 0 20px;
-  background-color: #f8f8ff;
+  padding: 0;
+  margin: 20px 0 0 35px;
+  width: 55%;
+  /*border-top:1px solid @accent-highlight-color-1;*/
+  border-bottom: 1px solid #dfece6;
 }
-.layout .layout-inner {
+.layout .inquiry-form .layout-inner {
   margin: 30px 0 0 0;
 }
-.layout input {
+.layout .inquiry-form input {
   background-color: #dfece6;
   color: #000000;
   -moz-transition: background-color ease-in 0.2s;
   -o-transition: background-color ease-in 0.2s;
   -webkit-transition: background-color ease-in 0.2s;
   transition: background-color ease-in 0.2s;
-  margin: 10px 0 30px 15%;
+  margin: 15px 0 15px 35px;
   height: 20px;
   width: 75%;
   padding: 5px 10px;
-  border: hidden !important;
-  border-radius: 100px;
+  border: none;
 }
-.layout input:focus {
+.layout .inquiry-form input:focus {
   background-color: #5f9781;
   color: #ffffff;
 }
-.layout input:focus {
+.layout .inquiry-form input:focus {
+  background-color: #7ac2a6;
+  color: #ffffff;
   outline: none;
 }
-.layout input:hover {
+.layout .inquiry-form input:hover {
   border: 2px #a4c6fd !important;
 }
-.layout textarea {
-  margin: 10px 0 30px 0;
+.layout .inquiry-form textarea {
+  margin: 17px 0 10px 25px;
   resize: none;
-  height: 150px;
-  width: 450px;
+  height: 200px;
+  width: 400px;
+  border: 1px solid #f0f8ff;
 }
-.layout a {
+.layout .inquiry-form a {
   line-height: 60px;
   background-color: #7ac2a6;
   color: #ffffff;
   padding: 5px 40px;
 }
-.layout a:hover {
+.layout .inquiry-form a:hover {
   background-color: #5f9781;
   cursor: pointer;
 }
-.layout .submit-button-container {
+.layout .inquiry-form .submit-button-container {
   text-align: center;
 }
 /*# sourceMappingURL=Inquiry.css.map */

@@ -4,54 +4,71 @@
     width: 500px;
     margin: 0 auto;
 
-    h1 {
-        .header-style-1-mixin;
-        margin-left: -50px;
-    }
+    .inquiry-form{
+        border:1px solid @accent-highlight-color-1;
+        padding:25px;
 
-    h2 {
-        .header-style-2-mixin;
-    }
+        h1{
+            
+            margin:0 auto; 
+            font-size: xx-large;
+            padding: 0 20px;
+            text-align:center;
+            border-bottom:1px solid @accent-highlight-color-1;
+        }
 
-    .layout-inner {
-        margin: 30px 0 0 0;
-    }
+        h2 {
+            /*.head-shadow(@header-style-2-color-shadow-1,@header-style-2-color-shadow-2);*/
+            font-size: x-large;
+            padding: 0;
+            margin:20px 0 0 35px;
+            width:55%;
+            /*border-top:1px solid @accent-highlight-color-1;*/
+            border-bottom:1px solid @accent-highlight-color-1;
+        }
 
-    input {
-        .textbox-style-1-mixin;
-        margin: 10px 0 30px 15%;
-        height: 20px;
-        width: 75%;
-        padding: 5px 10px;
-        border: hidden !important;
-        border-radius: 100px;
+        .layout-inner {
+            margin: 30px 0 0 0;
+        }
+
+        input {
+            .textbox-style-1-mixin;
+            margin: 15px 0 15px 35px;
+            height: 20px;
+            width: 75%;
+            padding: 5px 10px;
+            border:none;
         
-    }
+        }
 
-    input:focus {
-        outline: none;
-    }
+        input:focus {
+            background-color:@submit-button-style-1-color-bg;
+            color:@submit-button-style-1-color-fore;
+            outline: none;
+        }
 
-    input:hover {
-        border: 2px #a4c6fd !important;
-    }
+        input:hover {
+            border: 2px #a4c6fd !important;
+        }
 
 
-    textarea {
-        margin: 10px 0 30px 0;
-        resize: none;
-        height:150px;
-        width:450px;
-    }
+        textarea {
+            margin: 17px 0 10px 25px;
+            resize: none;
+            height:200px;
+            width:400px;
+            border:1px solid @accent-light-color-2;
+        }
 
-    a {
-        line-height: 60px;
-        .submit-button-style-1-mixin;
-    }
+        a {
+            line-height: 60px;
+            .submit-button-style-1-mixin;
+        }
 
-    .submit-button-container {
-        text-align: center;
-        .submit-inquiry{
+        .submit-button-container {
+            text-align: center;
+            .submit-inquiry{
+            }
         }
     }
 }
