@@ -115,7 +115,7 @@ var AjaxManager = (function () {
             url: "api/Label/AttachLabel",
             data: {
                 "ArticleId": articleId,
-                "ParagraphId": thisClass.substr(4),
+                "ParagraphId": getParagraphId(thisClass),
                 "LabelType": labelType
             },
             success: function (data) {
@@ -129,8 +129,9 @@ var AjaxManager = (function () {
                             $('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').html(String(Number($('.dropbox > .' + thisClass + ' > .' + labelType + ' > span').text()) + 1));
                         });
                     } else {
-                        $target.append('<div class="' + labelType + '" style="background-image:url(' + src + ');background-size:130px 43px;height:43px;width:130px;"><span>1</span></div>');
+                        $target.append('<div class="' + labelType + '" style="background-image:url(\'Content/imgs/Home/' + labelType + '-d.svg\');background-size:130px 43px;height:43px;width:130px;"><span>1</span></div>');
                     }
+                    labelBoxController.labelPosition($('.dropbox > .' + thisClass + ' > *').length, thisClass);
                 } else {
                     $().alertwindow("１つの段落に２つ以上のふせんをつける事はできません", "ok"); // jquery.alertwindow.js
                 }
@@ -228,7 +229,6 @@ $(window).load(function () {
                 var pHeight = $target.outerHeight(true);
                 var pPos = ($target.offset() || { "top": NaN }).top;
                 bg = "none";
-                console.log(pPos, posY, pPos + pHeight);
                 if (pPos <= posY && posY < pPos + pHeight && pasteMode) {
                     bg = dropboxPosX <= e.pageX && e.pageX <= dropboxPosX + 180 ? "#24ade2" : "#7acbe2";
                 }

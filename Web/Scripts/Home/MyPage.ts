@@ -38,7 +38,7 @@ function appendArticle(articleId:string)
 var searchPageOrderOptionBox: SearchOrderOptionBox;
 $(() =>
 {
-    var changepage: number = 10;//前後に何ページ移動するか
+    var changepage: number =10;//前後に何ページ移動するか
 
     $(".page-before").click(() =>
     {
