@@ -25,6 +25,8 @@ namespace Web.Models
 
         public DbSet<StatisticsLogModel> StatisticsLog { get; set; } 
 
+        public DbSet<CurrentRankingModel> CurrentRanking { get; set; } 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 //            modelBuilder.Entity<ArticleModel>()

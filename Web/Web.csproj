@@ -522,11 +522,16 @@
     <Compile Include="Migrations\201409140648060_AddStatisticsLog.Designer.cs">
       <DependentUpon>201409140648060_AddStatisticsLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409141909442_AddCurrentRanking.cs" />
+    <Compile Include="Migrations\201409141909442_AddCurrentRanking.Designer.cs">
+      <DependentUpon>201409141909442_AddCurrentRanking.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountConfigViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ArticleEditViewModel.cs" />
     <Compile Include="Models\ArticleModel.cs" />
+    <Compile Include="Models\Cron\CurrentRanking.cs" />
     <Compile Include="Models\Cron\StatisticsLogModel.cs" />
     <Compile Include="Models\EditViewModel.cs" />
     <Compile Include="Models\MyPageViewModel.cs" />
@@ -693,6 +698,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409140648060_AddStatisticsLog.resx">
       <DependentUpon>201409140648060_AddStatisticsLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409141909442_AddCurrentRanking.resx">
+      <DependentUpon>201409141909442_AddCurrentRanking.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

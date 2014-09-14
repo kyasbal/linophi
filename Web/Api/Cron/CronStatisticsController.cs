@@ -25,11 +25,11 @@ namespace Web.Api.Cron
                 var context = Request.GetOwinContext().Get<ApplicationDbContext>();
                 TableStorageConnection tConnection = new TableStorageConnection();
                 StatisticsLogModel logModel = StatisticsLogModel.CreateNewModel();
-                StatisticsLogModel lastLog = context.StatisticsLog.OrderBy(f=>f.JobTime).Take(1).FirstOrDefault();
-                ArticleStatisticsBasicManager asbm=new ArticleStatisticsBasicManager(tConnection);
-                await asbm.InsertArticleLog(context, logModel.Key, lastLog==null?"":lastLog.Key);
+            StatisticsLogModel lastLog = context.StatisticsLog.OrderByDescending(f => f.JobTime).Take(1).FirstOrDefault();
             context.StatisticsLog.Add(logModel);
             await context.SaveChangesAsync();
+                ArticleStatisticsBasicManager asbm=new ArticleStatisticsBasicManager(tConnection);
+                await asbm.InsertArticleLog(context, logModel.Key, lastLog==null?"":lastLog.Key);
                 return Json(true);
 //            }
 //            else

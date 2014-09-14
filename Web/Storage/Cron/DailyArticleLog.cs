@@ -50,7 +50,7 @@ namespace Web.Storage.Cron
                     article.LabelCountDifferential = articleModel.LabelCount - lastStatisticsBasic.LabelCount;
                     article.PageViewDifferential = articleModel.PageView - lastStatisticsBasic.PageView;
                     article.CommentCountDifferential = commentTable.GetCommentCount(articleId) -
-                                                       lastStatisticsBasic.LabelCount;
+                                                       lastStatisticsBasic.CommentCount;
                     article.LabelCountDifferentialPerTime = article.LabelCountDifferential/timeDifference;
                     article.PageViewDifferentialPerTime = article.PageViewDifferential/timeDifference;
                     article.CommentCountDifferentialPerTime = article.CommentCountDifferential/timeDifference;
