@@ -20,6 +20,8 @@
       <Setting name="Facebook-AppID" />
       <Setting name="Facebook-AppSecret" />
       <Setting name="SQL-ConnectionString" />
+      <Setting name="SendGrid-MailUser"/>
+      <Setting name="SendGrid-MailPass"/>
       <Setting name="DefinitionType" />
     </ConfigurationSettings>
   </WebRole>

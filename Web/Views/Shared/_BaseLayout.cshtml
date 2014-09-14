@@ -1,10 +1,10 @@
 ﻿@using System.Web.Optimization
 <!DOCTYPE html>
-
 <html>
-
-<head>
-    <meta name="charset" content="utf-8" />
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="@ViewBag.Description" />
     <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="noindex,nofollow" />
     <link href="@BundleTable.Bundles.ResolveBundleUrl("~/css/clear")" rel="stylesheet" />
@@ -33,9 +33,6 @@
     <link href="~/Content/css/Edit/Footer.css" rel="stylesheet" />
     <link href="~/Content/css/Edit/Header.css" rel="stylesheet" />
     <link href="~/Content/css/Shared.css" rel="stylesheet" />
-
-    <title>@ViewBag.Title</title>
-    <meta name="description" content="@ViewBag.Description" />
 </head>
     <body>
         @RenderPage("_Header.cshtml")

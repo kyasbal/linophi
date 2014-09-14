@@ -873,15 +873,18 @@ var NovelEditer;
             return "#";
         };
         TitlePrefix.prototype.getFormattedHtml = function (str) {
-            var sLength = 0;
-            for (var i = 1; i < str.length; i++) {
-                sLength = i;
+            var headerLevel = 2;
+            for (var i = 2; i < str.length + 1; i++) {
+                headerLevel = i + 1;
                 if (str.charAt(i) != '#') {
-                    sLength = i;
                     break;
                 }
             }
-            return "<h" + sLength + ">" + str.substr(sLength) + "</h" + sLength + ">";
+            var value = str.substr(headerLevel - 1);
+            if (!value) {
+                value = "&ensp;";
+            }
+            return "<h" + headerLevel + ">" + value + "</h" + headerLevel + ">";
         };
         return TitlePrefix;
     })(PrefixBase);

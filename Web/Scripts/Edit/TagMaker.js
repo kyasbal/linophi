@@ -7,8 +7,8 @@ function removeTag(counter, tag) {
     tags.remove(tag);
     tagCounter--;
 
-    if (tagCounter < 5) {
-        $(".edit-tag-chkvalid").html("");
+    if (tagCounter <= 5) {
+        $('.edit-tag-chkvalid').html("");
     }
 }
 
@@ -28,6 +28,7 @@ var TagUtil;
 
     function chkValidTitle(val) {
         var isConfirmedTitle = true;
+        $(".edit-title-chkvalid").html("");
         if (val.match(/^\s*$/)) {
             $(".edit-title-chkvalid").html("　　タイトルが空です");
             isConfirmedTitle = false;
@@ -54,15 +55,22 @@ var TagUtil;
         var $target = $(".edit-tag");
         var tag = $target.val();
 
-        if (tagCounter >= 5) {
-            $(".edit-tag-chkvalid").html('<div class="edit-alert">　　タグは５個までしか登録できません。</div>');
-        } else if (tag && !tags.contains(tag)) {
-            $(".edit-editted-box").append('<div class="edit-editted-tag-' + tagCounter + '">' + tag + '<span class="edit-editted-tag-counter-' + tagCounter + '">(?)</span><span class="edit-editted-tag-delete-' + tagCounter + '" onClick="removeTag(\'' + tagCounter + '\',\'' + tag + '\')">x</span></div>');
-            TagUtil.GetTagCount(tag, tagCounter, function (count, tagCount) {
-                $(".edit-editted-tag-counter-" + tagCount).text("(" + count + ")");
-            });
-            tags.add(tag);
-            tagCounter++;
+        tag = tag.replace(/　/g, " ");
+        var tagArr = tag.split(" ");
+
+        for (var i = 0, len = tagArr.length; i < len; i++) {
+            if (tagArr[i] && !tags.contains(tagArr[i])) {
+                $(".edit-editted-box").append('<div class="edit-editted-tag-' + tagCounter + '">' + tagArr[i] + '<span class="edit-editted-tag-counter-' + tagCounter + '">(?)</span><span class="edit-editted-tag-delete-' + tagCounter + '" onClick="removeTag(\'' + tagCounter + '\',\'' + tagArr[i] + '\')">x</span></div>');
+                TagUtil.GetTagCount(tagArr[i], tagCounter, function (count, tagCount) {
+                    $(".edit-editted-tag-counter-" + tagCount).text("(" + count + ")");
+                });
+                tags.add(tagArr[i]);
+                tagCounter++;
+
+                if (tagCounter > 5) {
+                    $('.edit-tag-chkvalid').html('<div class="edit-alert">　　タグは５個までしか登録できません。タグの × を押して個数を減らしてください。</div>');
+                }
+            }
         }
 
         $target.val("");

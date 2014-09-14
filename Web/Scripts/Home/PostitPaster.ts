@@ -199,10 +199,13 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
     var pasteMode: boolean = false;
 
     var labelType: string, src: string;
-    var dropboxPos: number = $('.contentswrapper').offset().top,
+
+    var dropboxPosX: number = $('.dropbox').offset().left;
+
+    var dropboxPosY: number = $('.contentswrapper').offset().top,
         dropboxHeight: number = $('.contentswrapper').outerHeight(true);
 
-    var posY: number = dropboxPos + 10;
+    var posY: number = dropboxPosY;
 
     $('.article-container > *').each((i) => {
         var $ele: JQuery = $('.article-container > [class*="p-"]:nth-child(' + (i + 1) + ')');
@@ -220,7 +223,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
         $('.dropbox > .' + className).css({
             "position": "absolute",
-            "top": elePos - dropboxPos + "px",
+            "top": elePos - dropboxPosY + "px",
             "height": eleHeight + "px",
             "width": "180px",
         });
@@ -228,7 +231,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         labelSourceParser.eachByParagraph(getParagraphId(className), (emotion: string, count: number, itr: number) =>
         {
             $('.dropbox > .' + className).append(
-                '<div class="' + emotion + '" style="background-image:url(\'/Content/imgs/Home/' + emotion + '-d.svg\');background-size:130px 43px;height:43px;width:130px;"><span>' +
+                '<div class="' + emotion + '" style="background-image:url(\'Content/imgs/Home/' + emotion + '-d.svg\');background-size:130px 43px;height:43px;width:130px;"><span>' +
                     count +
                 '</span></div>'
             );
@@ -249,7 +252,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
         });
 
         labelType = ((Object)(event.currentTarget)).className;
-        src = '/Content/imgs/Home/' + labelType + '-d.svg';
+        src = 'Content/imgs/Home/' + labelType + '-d.svg';
 
         $('.dropbox').css({
             "opacity": 0.7,
@@ -259,7 +262,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
         $('.fade-layer, .dropbox').mousemove((e) =>
         {
-            if (dropboxPos <= e.pageY && e.pageY <= dropboxPos + dropboxHeight)
+            if (dropboxPosY <= e.pageY && e.pageY <= dropboxPosY + dropboxHeight)
             {
                 posY = e.pageY;
             }
@@ -268,29 +271,30 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
             {
                 $(".dropbox > .postit-pasting").css({
                     "position": "absolute",
-                    "top": posY - dropboxPos + "px",
+                    "top": posY - dropboxPosY - 20 + "px",
                     "left": "20px",
                     "z-index": 1100,
                     "visibility": "visible",
-                    "background-image": "url(" + src + ")",
+                    "background-image": "url('" + src + "')",
                     "background-size": "130px 43px"
                 });
             }
 
-            var pHeights: number = dropboxPos;
-
+            var bg;
             $('.dropbox > [class*="p-"]').each((i) => {
                 var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')'); // i == 0のとき１つ目のふせんを表している
                 var pHeight: number = $target.outerHeight(true);
-                var bg = "none";
-                if (pHeights <= posY && posY <= pHeights + pHeight && pasteMode)
-                    bg = "#fcc";
+                var pPos: number = ($target.offset() || { "top": NaN }).top;
+                bg = "none";
+                console.log(pPos, posY, pPos+pHeight);
+                if (pPos <= posY && posY < pPos + pHeight && pasteMode)
+                {
+                    bg = dropboxPosX <= e.pageX && e.pageX <= dropboxPosX + 180 ? "#24ade2" : "#7acbe2";
+                }
                 
                 $target.css({
                     "background": bg
                 });
-
-                pHeights += pHeight;
 
             });
         });
@@ -317,7 +321,6 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
         if (pasteMode)
         {
-            var pHeights: number = dropboxPos;
             pasteMode = false;
 
         $('.dropbox > .postit-pasting').css({
@@ -332,7 +335,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
                 var elementName: string = $target[0].tagName;
                 if (elementName == "hr") return true;
 
-
+                var pPos: number = ($target.offset() || { "top": NaN }).top;
                 var pHeight: number = $target.outerHeight(true);
 
                 var thisClass: string = $target.attr("class");
@@ -340,12 +343,10 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
                 var postitExistence: number =
                     $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ') > .' + labelType).length;
 
-                if (pHeights <= posY && posY <= pHeights + pHeight) // 対象のｐ要素で貼り付けた時の処理
+                if (pPos <= posY && posY <= pPos + pHeight) // 対象のｐ要素で貼り付けた時の処理
                 {
                     ajaxManager.sendPostitNumber(articleId, thisClass, labelType, postitExistence, $target, src);
                 }
-
-                pHeights += pHeight;
 
                 // console.log($target.attr("class"), pHeight, pHeights, posY, src);
             });
