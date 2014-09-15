@@ -145,8 +145,8 @@ body {
   width: 150px;
   font-size: 15px;
   padding: 10px 30px;
-  background-color: #696969;
-  color: #888;
+  background-color: #ccc;
+  color: #fff;
   display: block;
   margin: 30px auto 10% auto;
   vertical-align: middle;
@@ -154,12 +154,7 @@ body {
   text-align: center;
   border: none;
 }
-.edit-submit-button-enabled {
-  background: #6ca3fd;
-}
 .edit-submit-button:hover {
-  background-color: #696969;
-  color: #888;
   cursor: pointer;
 }
 div[class^="edit-editted-tag"] {
