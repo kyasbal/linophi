@@ -382,33 +382,33 @@ namespace Web.Controllers
             mailMsg.To.Add(new MailAddress(req.Mail, req.Name+"様"));
 
             // From
-            mailMsg.From = new MailAddress("inquiry@linophi.com", "linophiお問い合わせセンター");
+            mailMsg.From = new MailAddress("inquiry@意見.みんな.com", "お問い合わせセンター");
 
             // Subject and multipart/alternative Body
             mailMsg.Subject = req.Name + "様からのお問い合わせに対しての返信";
 
-            string text = "この度は＜linophi＞に関するお問い合わせをいただき、誠にありがとうございます。\n" +
+            string text = "この度は＜意見.みんな＞に関するお問い合わせをいただき、誠にありがとうございます。\n" +
                           "お問い合わせいただきました内容は、下記の通りです。\n" +
-                          " お名前 : "+req.Name+" 様\n" +
-                          "内容 : "+req.Content+"\n"+
+                          " お名前 : \n "+req.Name+" 様\n" +
+                          " ----- 内容 ----- \n "+req.Content+"\n"+
                           "頂戴いたしましたお問い合わせにつきましては、内容を確認の上、後ほどご回答いたします。\n" +
                           "なお、お問い合わせの内容によっては、ご回答まで数日かかる場合やご回答いたしかねる場合がございます。\n" +
                           "恐れ入りますが、予めご了承くださいますようお願いいたします。\n" +
                           "※このメールには返信できません。\n" +
-                          "恐れ入りますが、＜linophi＞に関するお問い合わせは下記URLよりお願いいたします。\n" +
-                          "＜linophi＞:ここにurlを貼る\n";
+                          "恐れ入りますが、＜意見.みんな＞に関するお問い合わせは下記URLよりお願いいたします。\n" +
+                          "＜意見.みんな＞:http://xn--jgu241g.xn--q9jyb4c/　\n";
 
-            string html = @"<p>この度は＜linophi＞に関するお問い合わせをいただき、誠にありがとうございます。</p>" +
+            string html = @"<p>この度は＜意見.みんな＞に関するお問い合わせをいただき、誠にありがとうございます。</p>" +
                           @"<p>お問い合わせいただきました内容は、下記の通りです。</p>" +
                           @"<p> お名前 : " + req.Name + " 様</p>" +
-                          @"<p>内容: </p>" +
+                          @"<p> ----- 内容 ----- </p>" +
                           @"<p>" + req.Content + "</p>" +
                           @"<p>頂戴いたしましたお問い合わせにつきましては、内容を確認の上、後ほどご回答いたします。</p>" +
                           @"<p>なお、お問い合わせの内容によっては、ご回答まで数日かかる場合やご回答いたしかねる場合がございます。</p>" +
                           @"<p>恐れ入りますが、予めご了承くださいますようお願いいたします。</p>" +
                           @"<p>※このメールには返信できません。</p>" +
-                          @"<p>恐れ入りますが、＜linophi＞に関するお問い合わせは下記URLよりお願いいたします。</p>" +
-                          @"<p>＜linophi＞:ここにurlを貼る</p>"; ;
+                          @"<p>恐れ入りますが、＜意見.みんな＞に関するお問い合わせは下記URLよりお願いいたします。</p>" +
+                          @"<p>＜意見.みんな＞:http://xn--jgu241g.xn--q9jyb4c/　</p>"; ;
                           
             mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
             mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
