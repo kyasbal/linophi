@@ -11,15 +11,6 @@ html {
     background-color: #fff;
 }
 
-.main-sns {
-    ul {
-        li {
-            display: inline-block;
-            vertical-align: middle;
-        }
-    }
-}
-
 .container {
     .head {
         z-index: 501;
@@ -60,7 +51,6 @@ html {
                         }
 
                         .topic-word {
-                            border-radius: 10px;
                             position: relative;
                             display: inline-block;
                             height: 21px;
@@ -70,7 +60,7 @@ html {
                             border: @border-green-all;
                             color: #000 !important;
                             text-decoration: none !important;
-                            font-size: 11px;
+                            font-size: 13px;
                             white-space: nowrap;
 
                             &-num {
@@ -97,27 +87,32 @@ html {
                             width: 60%;
                             vertical-align: top;
 
+                            .main-sns {
+                                margin: 30px;
+
+                                ul {
+                                    li {
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                    }
+                                }
+                            }
+
                             .navbar-title {
-                                padding-bottom: 10px;
+                                padding-bottom: 30px;
 
                                 .navbar-title-txt {
                                     display: inline;
-                                    line-height: 38px;
                                     font-size: 40px;
                                     word-wrap: break-word;
                                     margin: 0 15px 0 0;
                                     color: #000;
                                     text-decoration: none;
                                 }
-
-                                img {
-                                    width: 100px;
-                                    height: 100px;
-                                }
                             }
 
                             .navbar-count {
-                                @navbarCountFixedFontSize: 12px; //投稿者・PVなどの決まった言葉のフォントサイズ
+                                @navbarCountFixedFontSize: 11px; //投稿者・PVなどの決まった言葉のフォントサイズ
                                 @navbarCountValueFontSize: 20px; //記事ごとの実際の投稿者の名前やPV数のフォントサイズ
                                 > div {
                                     margin: 15px 0;
@@ -127,9 +122,12 @@ html {
                                     //投稿者
                                     .contributor {
                                         font-size: @navbarCountFixedFontSize;
+                                        margin-right: 20px;
                                     }
 
                                     .navbar-username {
+                                        margin-left: 20px;
+
                                         a {
                                             color: #000 !important;
                                             font-weight: bold;
@@ -138,29 +136,36 @@ html {
                                     }
                                 }
 
-                                .navbar-count-num {
+                                .navbar-page-data {
                                     display: inline;
-                                    line-height: 1;
-                                    color: #000;
-                                    font-family: Arial, Helvetica, sans-serif;
-                                    font-size: @navbarCountValueFontSize;
+                                    margin: 0 15px 0 15px;
 
-                                    .navbar-count-label {
+                                    .navbar-count-num {
+                                        display: inline;
+                                        line-height: 1;
                                         color: #000;
-                                        font-size: @navbarCountFixedFontSize;
+                                        font-family: Arial, Helvetica, sans-serif;
+                                        font-size: @navbarCountValueFontSize;
+
+                                        .navbar-count-label {
+                                            color: #000;
+                                            font-size: @navbarCountFixedFontSize;
+                                        }
+
+                                        .navbar-count-comment {
+                                            margin-left: 10px;
+                                            color: #000;
+                                            font-size: @navbarCountFixedFontSize;
+                                        }
                                     }
 
-                                    .navbar-count-comment {
-                                        color: #000;
-                                        font-size: @navbarCountFixedFontSize;
-                                    }
-                                }
+                                    .navbar-update-time {
+                                        margin-left: 10px;
+                                        font-size: @navbarCountValueFontSize;
 
-                                .navbar-update-time {
-                                    font-size: @navbarCountValueFontSize;
-
-                                    .update-time {
-                                        font-size: @navbarCountFixedFontSize;
+                                        .update-time {
+                                            font-size: @navbarCountFixedFontSize;
+                                        }
                                     }
                                 }
                             }
@@ -206,6 +211,7 @@ html {
                                 -moz-box-shadow: 0px 0px 3px 0px #666 inset;
                                 margin: 0 auto;
                                 vertical-align: top;
+                                font-size:20px;
                             }
                         }
                     }
@@ -226,9 +232,19 @@ html {
                 padding: 0 40px 40px 20px;
                 border: 3px solid @accent-light-color-2;
 
+                .footer-main-sns {
+                    float:right;
+                    ul {
+                        li {
+                            display: inline-block;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+
                 .write-related-article-container {
                     text-align: center;
-                    margin: 15px;
+                    margin: 55px;
 
                     .write-related-article {
                         background-color: @submit-button-style-1-color-bg;
@@ -342,7 +358,7 @@ html {
                     }
 
                     .separator {
-                        margin: 10px 0;
+                        margin: 30px 0;
                     }
 
                     .list {

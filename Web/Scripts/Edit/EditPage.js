@@ -5,6 +5,7 @@ var isConfirmedTitle;
 isConfirmedTitle = false;
 $(function () {
     editPage = new EditPage();
+
     editorInstance = new NovelEditer.NovelEditer($(".edit-context"), $(".preview-body"), $(".preview-context"));
     editorInstance.saveInput();
 
@@ -116,6 +117,7 @@ var EditPageContents;
 })(EditPageContents || (EditPageContents = {}));
 
 var editmode = $('#hidden-mode[name="Mode"]').val();
+console.log(editmode);
 if (editmode == "edit" || editmode == "append") {
     isConfirmedTitle = true;
     $(".edit-submit-button").css('background-color', '#7FFFD4');

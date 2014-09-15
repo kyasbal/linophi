@@ -75,7 +75,6 @@
             @Html.HiddenFor(m=>m.TopicId)
             @Html.HiddenFor(m=>m.RelatedArticle)
              <span class="prev-switch">大きくする→</span>
-        <div class="select-thumbnail">サムネイルの選択<input type="file" name="Thumbnail" class="thumbnail" /></div>
              if (Model.ArticleId!=null)
              {
                  @Html.Hidden("Id", Model.ArticleId)

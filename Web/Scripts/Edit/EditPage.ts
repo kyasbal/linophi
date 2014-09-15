@@ -3,12 +3,14 @@ var editPage: EditPage;
 var editorInstance: NovelEditer.NovelEditer;
 var isConfirmedTitle: boolean;
 isConfirmedTitle = false;
-$(() => {
+$(() =>
+{
     editPage = new EditPage();
+
     editorInstance = new NovelEditer.NovelEditer($(".edit-context"), $(".preview-body"), $(".preview-context"));
     editorInstance.saveInput();
 
-        editorInstance.updateToshow();
+    editorInstance.updateToshow();
     editPage.onChanged();
     $(".edit-submit-button").click(() =>
     {
@@ -112,13 +114,13 @@ enum EditPageContents {
 }
 
 var editmode: string = $('#hidden-mode[name="Mode"]').val();
-if (editmode == "edit" || editmode == "append")
-{
+console.log(editmode);
+if (editmode == "edit" || editmode == "append") {
     isConfirmedTitle = true;
     $(".edit-submit-button").css('background-color', '#7FFFD4');
     $(".edit-submit-button").hover(function () {
         $(this).css("background-color", "#3CB371");
     }, function () {
-        $(this).css("background-color", "#7FFFD4");
-    });
+            $(this).css("background-color", "#7FFFD4");
+        });
 }

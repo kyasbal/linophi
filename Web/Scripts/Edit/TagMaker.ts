@@ -1,6 +1,7 @@
 ﻿var tagCounter: number = 0;
 var tags: collections.Set<string> = new collections.Set<string>();
 
+
 function removeTag(counter,tag)
 {
     console.warn(tagCounter);
@@ -36,7 +37,7 @@ module TagUtil
 
     export function chkValidTitle(val: string)
     {
-        var isConfirmedTitle = true;
+        isConfirmedTitle = true;
         $(".edit-title-chkvalid").html("");
         if (val.match(/^\s*$/)) {
             $(".edit-title-chkvalid").html("　　タイトルが空です");
@@ -104,10 +105,10 @@ $(() => {
     });
 
 
-    //if ($("#hidden-mode").val() == "edit") {  <-何やってるかわからんかった
-    //    isConfirmedTitle = true;
-    //    return;
-    //}
+    if ($("#hidden-mode").val() == "edit") {  
+        isConfirmedTitle = true;
+        return;
+    }
 
 
     // タイトルが正当かどうかを判定してダメならエラーを返す機能
@@ -118,3 +119,4 @@ $(() => {
         TagUtil.chkValidTitle($(".edit-title").val());
     });
 });
+

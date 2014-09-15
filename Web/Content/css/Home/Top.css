@@ -37,8 +37,8 @@ a:visited {
   color: #f5b400;
 }
 .top-header > .top-subttl {
-  margin-top: 80px;
-  margin-left: 40px;
+  margin-top: 50px;
+  margin-left: 70px;
   float: left;
   position: relative;
   font-size: 20px;
@@ -103,23 +103,19 @@ a:visited {
   text-align: center;
 }
 .top-summary {
-  border: thin solid #ddd;
+  border: 1px solid #ddd;
   margin-bottom: 5px;
   padding: 15px;
 }
 .top-title {
   padding: 10px 20px;
-  margin: 20px 0;
+  margin: 0 0 20px;
   background-color: #f5b400;
   height: 30px;
   width: 370px;
   overflow: hidden;
   position: relative;
   left: -50px;
-}
-.top-title > img {
-  margin-left: -20px;
-  margin-top: -10px;
 }
 .top-title > h3 {
   position: absolute;
@@ -136,22 +132,15 @@ a:visited {
   color: #fff;
 }
 .top-factor {
-  width: 500px;
-  padding-left: 20px;
+  padding: 0 24px 16px;
   overflow: hidden;
+  font-size: 13px;
+  color: #444;
 }
 .top-factor > img {
   float: left;
-  display: block;
   width: 200px;
-}
-.top-factor > p {
-  margin-left: 30px;
-  width: 270px;
-  float: left;
-  padding-bottom: 6px;
-  font-size: 13px;
-  color: #444;
+  margin: 0 40px 20px 0;
 }
 .top-factor .test {
   width: 500px;
@@ -171,14 +160,6 @@ a:visited {
   margin-right: 16px;
   padding: 12px 30px;
   font-size: 14px;
-  /*
-      &:nth-child(even) {
-        background: #eee;
-        > small {
-          color: #666;
-        }
-      }
-        */
 }
 .top-index-box > ul > li:hover {
   background: #eee;

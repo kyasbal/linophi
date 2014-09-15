@@ -1,9 +1,5 @@
 ﻿@import "../Color.less";
 
-@top-accent-1: rgb(67, 133, 245);
-@top-accent-2: rgb(220, 68, 55);
-@top-accent-3: rgb(245, 180, 0);
-
 body {
     background-image: url('../../imgs/bgtest-skyblue.png');
 }
@@ -54,8 +50,8 @@ a {
     }
 
     > .top-subttl {
-        margin-top: 80px;
-        margin-left: 40px;
+        margin-top: 50px;
+        margin-left: 70px;
         float: left;
         position: relative;
         font-size: 20px;
@@ -141,26 +137,20 @@ a {
 }
 
 .top-summary {
-    border: thin solid #ddd;
+    border: 1px solid #ddd;
     margin-bottom: 5px;
     padding: 15px;
 }
 
 .top-title {
     padding:10px 20px;
-    margin:20px 0;
+    margin:0 0 20px;
     background-color:@top-accent-3;
     height: 30px;
     width: 370px;
     overflow: hidden;
     position: relative;
     left: -50px;
-    //margin-bottom: 2px;
-    > img {
-        margin-left: -20px;
-        margin-top: -10px;
-    }
-
     > h3 {
         position: absolute;
         top: 50%;
@@ -178,23 +168,15 @@ a {
 }
 
 .top-factor {
-    width: 500px;
-    padding-left: 20px;
+    padding: 0 24px 16px; 
     overflow: hidden;
+    font-size: 13px;
+    color: #444;
 
     > img {
         float: left;
-        display: block;
         width: 200px;
-    }
-
-    > p {
-        margin-left: 30px;
-        width: 270px;
-        float: left;
-        padding-bottom: 6px;
-        font-size: 13px;
-        color: #444;
+        margin: 0 40px 20px 0;
     }
 
     .test {
@@ -231,14 +213,6 @@ a {
                 font-size: 10px;
                 color: #888;
             }
-            /*
-      &:nth-child(even) {
-        background: #eee;
-        > small {
-          color: #666;
-        }
-      }
-        */
         }
     }
 }

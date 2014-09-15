@@ -10,39 +10,6 @@
 {
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/Home/Inquiry.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#myform").validate({
-                rules: {
-                    Name: {
-                        required: true
-                    },
-                    Mail: {
-                        required: true,
-                        email: true
-                    },
-                    Content: {
-                        required: true,
-                        minlength: 10
-                    }
-                },
-                messages: {
-                    Name: {
-                        required: "お名前を入力してください"
-                    },
-                    Mail: {
-                        required: "メールアドレスを入力してください",
-                        email: "正しいメールアドレスを入力してください"
-                    },
-                    Content: {
-                        required: "内容を入力してください",
-                        minlength: "10文字以上入力してください"
-                    }
-                },
-                errorElement: "div",
-            });
-        });
-    </script>
 }
 
 <div class="layout">
