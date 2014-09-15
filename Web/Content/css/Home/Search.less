@@ -1,4 +1,6 @@
-﻿html {
+﻿
+
+html {
     overflow-y: scroll;
 }
 
@@ -6,7 +8,7 @@ body {
     *position: relative;
     font: 15px/1.5 arial,sans-serif;
     width: 100%;
-    background-color: #fff;
+    background-color: @bg-color-2;
 }
 
 .thumbnail {
@@ -26,7 +28,7 @@ body {
             width: 700px;
             padding-bottom: 40px;
 
-            .page-control {
+            /*.page-control {
                 margin: 15px 80px 0 80px;
                 font-size: 25px;
                 a {
@@ -59,13 +61,13 @@ body {
 
                 .page-after:hover{
                     background-color:#F0F8FF;
-                }
+                }*/
             }
 
             .search-result {
 
                 .search-header {
-                    background-color: #fff;
+                    background-color: @bg-color-2;
                     width: 90.5%;
                     margin-top: 30px;
                     margin-left: 0;
@@ -133,20 +135,17 @@ body {
                                 padding: 6px 0;
                                 color: #1A0DAB;
                                 text-decoration:none;
-                                &:hover{
-                                    text-decoration:solid;
-                                }
                             }
                         }
 
                         .listdesc {
-                            color: #006621;
+                            color: @accent-dark-color-1;
                         }
                     }
                 }
 
                 .listitem:hover {
-                    /*background-color: antiquewhite;*/
+                    text-decoration:solid;
                 }
 
                 .my-editted, .search-editted {
@@ -162,7 +161,7 @@ body {
             }
         }
 
-        .dropbox {
+        /*.dropbox {
             margin-top: 30px;
             margin-left: 20px;
             float: left;
@@ -170,6 +169,6 @@ body {
             width: 300px;
             padding-bottom: 1000000px;
             margin-bottom: -1000000px;
-        }
-    }
+        }*/
+
 }
