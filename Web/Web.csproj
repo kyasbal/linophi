@@ -602,6 +602,10 @@
     <Compile Include="Migrations\201409151616432_CurrentRankingTopicId2.Designer.cs">
       <DependentUpon>201409151616432_CurrentRankingTopicId2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409151720434_AddUnknown2.cs" />
+    <Compile Include="Migrations\201409151720434_AddUnknown2.Designer.cs">
+      <DependentUpon>201409151720434_AddUnknown2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountConfigViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -803,6 +807,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409151616432_CurrentRankingTopicId2.resx">
       <DependentUpon>201409151616432_CurrentRankingTopicId2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409151720434_AddUnknown2.resx">
+      <DependentUpon>201409151720434_AddUnknown2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
