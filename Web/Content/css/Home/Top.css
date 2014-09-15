@@ -1,4 +1,17 @@
-﻿.top-container {
+﻿body {
+  background-image: url('../../imgs/bgtest-skyblue.png') !important;
+}
+/*
+@font-face {
+    font-family: 'FontopoNIHONGO';
+    src: url('../../../fonts/FontopoNIHONGO.otf') format('opentype');
+}*/
+a {
+  color: #245fbb;
+}
+.top-container {
+  padding: 0 70px;
+  background: #fff;
   width: 960px;
   margin: 0 auto;
 }
@@ -8,7 +21,21 @@
   text-align: center;
 }
 .top-header > .top-mainttl {
-  font-size: 48px;
+  font-size: 70px;
+}
+.top-header > .top-mainttl > span {
+  /* font-size: 78px;
+      font-weight: bold;
+    font-family: 'FontopoNIHONGO';
+      */
+  /*
+      &:nth-child(2) { color: red; }
+      &:nth-child(3) { color: blue; }
+      &:nth-child(4) { color: green; }
+      */
+}
+.top-header > .top-mainttl > span:nth-child(1) {
+  padding: 0 10px;
 }
 .top-header > .top-subttl {
   position: relative;
@@ -26,7 +53,15 @@
   font-weight: bold;
 }
 .top-topics-category {
+  padding: 20px;
+  margin-right: 20px;
   margin-bottom: 70px;
+  border: 4px solid #ddd;
+  box-sizing: border-box;
+}
+.top-summary {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 5px;
 }
 .top-title {
   height: 100px;
@@ -56,7 +91,7 @@
   text-align: center;
 }
 .top-factor {
-  width: 620px;
+  width: 520px;
 }
 .top-factor > p {
   padding: 0 40px 6px;
@@ -64,7 +99,7 @@
   color: #444;
 }
 .top-index-box {
-  width: 400px;
+  width: 366px;
 }
 .top-index-box > p {
   margin: 0 16px 7px 0;
@@ -93,6 +128,10 @@
 .top-rightbar {
   float: right !important;
   width: 160px;
+}
+.top-rightbar > .top-notification {
+  height: 200px;
+  border: 4px solid #ccc;
 }
 .top-rightbar > .top-ads img {
   display: block;

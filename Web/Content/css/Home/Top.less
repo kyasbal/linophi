@@ -1,4 +1,18 @@
-﻿.top-container {
+﻿body {
+  background-image: url('../../imgs/bgtest-skyblue.png') !important;
+}
+/*
+@font-face {
+    font-family: 'FontopoNIHONGO';
+    src: url('../../../fonts/FontopoNIHONGO.otf') format('opentype');
+}*/
+a {
+  color: #245fbb;
+}
+
+.top-container {
+  padding: 0 70px;
+  background: #fff;
   width: 960px;
   margin: 0 auto;
 }
@@ -8,7 +22,18 @@
   padding: 20px 36px;
   text-align: center;
   > .top-mainttl {
-    font-size: 48px;
+    font-size: 70px;
+    > span {
+      /* font-size: 78px;
+      font-weight: bold;
+    font-family: 'FontopoNIHONGO';
+      */
+      &:nth-child(1) { padding: 0 10px; }/*
+      &:nth-child(2) { color: red; }
+      &:nth-child(3) { color: blue; }
+      &:nth-child(4) { color: green; }
+      */
+    }
   }
   > .top-subttl {
     position: relative;
@@ -38,10 +63,16 @@
 }
 
 .top-topics-category {
+  padding: 20px;
+  margin-right: 20px;
   margin-bottom: 70px;
+  border: 4px solid #ddd;
+  box-sizing: border-box;
 }
 
 .top-summary {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 5px;
 }
 
 .top-title {
@@ -79,7 +110,7 @@
 }
 
 .top-factor {
-  width: 620px;
+  width: 520px;
   > p {
     padding: 0 40px 6px;
     font-size: 11px;
@@ -91,7 +122,7 @@
 }
 
 .top-index-box {
-  width: 400px;
+  width: 366px;
   > p {
     margin: 0 16px 7px 0;
     padding-bottom: 6px;
@@ -123,7 +154,10 @@
 .top-rightbar {
   float: right !important;
   width: 160px;
-
+  > .top-notification {
+    height: 200px;
+    border: 4px solid #ccc;
+  }
   > .top-ads {
     img {
       display: block;
