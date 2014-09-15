@@ -1,7 +1,6 @@
 ﻿header {
   padding-top: 3px;
-  background-color: aliceblue;
-  border-bottom: 1px solid #f2f2f2;
+  background-color: #e4e4e4;
 }
 header #dropmenu {
   float: right;
@@ -17,8 +16,8 @@ header #dropmenu ul li {
 header a {
   display: inline-block;
   width: 100px;
-  color: #000;
-  text-decoration: none;
+  color: #000 !important;
+  text-decoration: none !important;
   text-align: center;
   font-weight: bold;
   box-sizing: border-box;
@@ -52,7 +51,12 @@ header .menu .search .search-container {
 header .menu .search .search-container input {
   padding-left: 10%;
 }
+<<<<<<< HEAD
+header .menu .search .search-text {
+  background-color: #ffffff;
+=======
 header .menu .search .search-container .search-text {
+>>>>>>> origin/master
   color: #000000;
   background-color: #B0E0E6;
   margin: 7.5px 0 7.5px 0;
@@ -66,7 +70,15 @@ header .menu .search .search-container .search-text {
   border: hidden !important;
   border-radius: 100px;
 }
+<<<<<<< HEAD
+header .menu .search .search-text:focus {
+  background-color: #f5fffa;
+  color: #ffffff;
+}
+header .menu .search .search-text:focus {
+=======
 header .menu .search .search-container .search-text:focus {
+>>>>>>> origin/master
   outline: none;
 }
 header .menu .search .search-container .search-text:hover {

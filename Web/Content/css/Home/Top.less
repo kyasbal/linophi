@@ -1,17 +1,19 @@
-﻿@top-accent-1: rgb(67, 133, 245);
+﻿@import "../Color.less";
+
+@top-accent-1: rgb(67, 133, 245);
 @top-accent-2: rgb(220, 68, 55);
 @top-accent-3: rgb(245, 180, 0);
 
 body {
-    background-image: url('../../imgs/bgtest-skyblue.png') !important;
+    background-image: url('../../imgs/bgtest-skyblue.png');
 }
-/*
-@font-face {
-    font-family: 'FontopoNIHONGO';
-    src: url('../../../fonts/FontopoNIHONGO.otf') format('opentype');
-}*/
+
 a {
-    color: #67A6A6;
+    color: @link-normal;
+    text-decoration: none;
+    &:visited {
+        color: @link-visited;
+    }
 }
 
 .top-container {
@@ -30,6 +32,7 @@ a {
     > h1 {
         font-size: 70px;
         float: left;
+        font-family: 'bokutachi';
 
         > span {
             &:nth-child(1) {
@@ -70,12 +73,32 @@ a {
 .top-topics-flare {
     margin: 40px 0 70px;
 
-    > h3 {
+    > h2 {
+        position: relative;
+        width: 370px;
+        left: -16px;
         font-size: 20px;
         font-weight: bold;
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        background: @top-accent-3;
+        color: #fff;
     }
 
-    > div {
+    .top-subject {
+        margin-right: 16px;
+        background-color: #eee;
+        box-shadow: 0 0 5px rgba(221, 221, 221, 0.5) inset;
+
+        > a {
+            color: #444;
+            display: block;
+            padding: 4px 8px;
+            text-decoration: underline;
+            &:hover {
+                background: #ddd;
+            }
+        }
     }
 }
 
@@ -151,13 +174,6 @@ a {
         font-size: 20px;
         font-weight: bold;
         color: #fff;
-        /*
-    text-shadow:
-       2px  2px 4px rgba(8,8,8,0.6),
-      -2px  2px 4px rgba(8,8,8,0.6),
-       2px -2px 4px rgba(8,8,8,0.6),
-      -2px -2px 4px rgba(8,8,8,0.6);
-    text-align: center;*/
     }
 }
 
@@ -206,7 +222,9 @@ a {
             margin-right: 16px;
             padding: 12px 30px;
             font-size: 14px;
-
+            &:hover {
+                background: #eee;
+            }
             > small {
                 float: right;
                 text-align: right;

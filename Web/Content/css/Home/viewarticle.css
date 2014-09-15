@@ -16,13 +16,17 @@ a img {
 }
 a:link,
 a:visited {
+<<<<<<< HEAD
+  color: #0c2a81;
+=======
   color: black;
+>>>>>>> origin/master
   text-decoration: underline;
 }
 a:hover,
 a:active,
 a:focus {
-  color: #2468ce;
+  color: #0c2a81;
   text-decoration: none;
 }
 :focus {
@@ -484,4 +488,49 @@ input[type="text"] {
 .fade-layer > img {
   width: 130px;
 }
+<<<<<<< HEAD
+.alert-contents > * > * {
+  margin-top: 0;
+  margin-bottom: 20px;
+  display: block;
+}
+.alert-contents input,
+.alert-contents textarea {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: 600px;
+  padding: 0.4em 0.8em;
+  color: #444;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+.alert-contents textarea {
+  height: 250px;
+}
+.write-related-article {
+  background-color: #7ac2a6;
+  text-decoration: none !important;
+  color: #ffffff !important;
+  padding: 15px 60px;
+  margin: 40px;
+  line-height: 80px;
+  font-size: x-large;
+}
+.write-related-article:hover {
+  background-color: #5f9781;
+}
+.write-related-article-container {
+  text-align: center;
+  margin: 15px;
+}
+.found-article-zero {
+  text-align: center;
+}
+.found-article-zero p {
+  display: block;
+  font-size: large;
+}
+/*# sourceMappingURL=viewarticle.css.map */
+=======
 /*# sourceMappingURL=ViewArticle.css.map */
+>>>>>>> origin/master
