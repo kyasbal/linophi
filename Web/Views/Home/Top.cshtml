@@ -6,17 +6,19 @@
 @section JS{
     <script src="~/Scripts/Chart.js"></script>
     <script src="~/Scripts/Home/Top.js"></script>
+    <script src="~/Scripts/Home/TopTitle.js"></script>
 }
 
 @section CSS{
-    <link href="~/Content/css/Home/Top.css" rel="stylesheet" />
+    <link href="~/Content/css/Home/Top.min.css" rel="stylesheet" />
+    <link href="~/Content/css/Home/TitleFonts.min.css" rel="stylesheet" />
 }
 
 
 @*
     .top-container
       .top-header
-        %p.top-mainttl
+        %h1
         %p.top-subttl
       .top-main.clearfix
         .top-contents
@@ -52,131 +54,65 @@
           .ads
 *@
 
-<div class="top-container">
-    <div class="top-header">
-        <p class="top-mainttl">意見<span>.</span><span>み</span><span>ん</span><span>な</span></p>
+<article class="top-container">
+    <section class="top-header">
+        <h1>意見<span>.</span><span>み</span><span>ん</span><span>な</span></h1>
         <p class="top-subttl">- みんなで作る主観メディア -</p>
-    </div>
+    </section>
 
     <div class="top-main clearfix">
         
         <div class="top-contents">
-            <div class="top-topics-flare">
+            <section class="top-topics-flare">
                 <h2>今燃えている記事</h2>
                 <div class="top-subject-wrapper clearfix">
                     <div class="top-subject"><a href="#">イスラム国、英国人を予告ど ...</a></div>
                     <div class="top-subject"><a href="#">イスラム国、英国人を予告ど ...</a></div>
                     <div class="top-subject"><a href="#">イスラム国、英国人を予告ど ...</a></div>
                 </div>
-            </div>
+            </section>
 
-            <div class="top-topics-category">
+            <section class="top-topics-category">
+                <h2>今話題のトピック</h2>
                 @foreach (var sectionModel in Model.TopicSections)
                 {
-                <div class="top-summary clearfix">
-                    <div class="top-title">
-                        <img src="@("~/Pages/ContentUpload/TopicThumbnail?topicId="+sectionModel.TopicId)" alt="@sectionModel.TopicTitle" height="140">
-                        <h2>@sectionModel.TopicTitle</h2>
-                    </div>
-                    <div class="top-factor">
-                        @sectionModel.TopicDescription
-                    </div>
-                </div><!-- .top-summary -->
-                <div class="top-index clearfix">
-                    <div class="top-index-box">
-                        <p>HOT</p>
-                        <ul>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                        </ul>
-                    </div>
-                    <div class="top-index-box">
-                        <p>NEW</p>
-                        <ul>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- .top-index -->
+                    <section>
+                        <div class="top-summary clearfix">
+                            <div class="top-title">
+                                <img src="@("~/Pages/ContentUpload/TopicThumbnail?topicId="+sectionModel.TopicId)" alt="@sectionModel.TopicTitle" height="140">
+                                <h3>@sectionModel.TopicTitle</h3>
+                            </div>
+                            <div class="top-factor">
+                                @sectionModel.TopicDescription
+                            </div>
+                        </div><!-- .top-summary -->
+                        <div class="top-index clearfix">
+                            <div class="top-index-box">
+                                <p>HOT</p>
+                                <ul>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                </ul>
+                            </div>
+                            <div class="top-index-box">
+                                <p>NEW</p>
+                                <ul>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- .top-index -->
                 }
-            </div><!-- .top-category -->
-            <div class="top-topics-category">
-                <div class="top-summary clearfix">
-                    <div class="top-title">
-                        <img src="~/Content/imgs/test-h2bg.png" alt="イスラム国" height="140">
-                        <h2>イスラム国問題</h2>
-                    </div>
-                    <div class="top-factor">
-                        <p>事実 イスラーム国（イスラームこく、アラビア語: الدولة الإسلامية‎‎、翻字：ad-Dawlah al-ʾIslāmiyyah、英語: Islamic State、略称：IS）は、イラクとシリアで活動するサラフィー・ジハード主義組織である。欧米諸国などに留まらず、周辺のスンニ派イスラム教諸国からも国家としての承認されていないほか、「イスラーム国」という名称への批判もなされている。</p>
-                        <p>イラク、シリアなどの中東諸国を、サイクス・ピコ協定に代表されるヨーロッパの線引きにより作られた「サイクス・ピコ体制」だとしてこれを否定し、武力によるイスラーム世界の統一を目指している。</p>
-                    </div>
-                </div><!-- .top-summary -->
-
-                <div class="top-index clearfix">
-                    <div class="top-index-box">
-                        <p>HOT</p>
-                        <ul>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                        </ul>
-                    </div>
-                    <div class="top-index-box">
-                        <p>NEW</p>
-                        <ul>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                        </ul>
-                    </div>
-                </div><!-- .top-index -->
-
-            </div><!-- .top-category -->
-            <div class="top-topics-category">
-                <div class="top-summary clearfix">
-                    <div class="top-title">
-                        <img src="~/Content/imgs/test-h2bg.png" alt="イスラム国" height="140">
-                        <h2>イスラム国問題</h2>
-                    </div>
-                    <div class="top-factor">
-                        <p>事実 イスラーム国（イスラームこく、アラビア語: الدولة الإسلامية‎‎、翻字：ad-Dawlah al-ʾIslāmiyyah、英語: Islamic State、略称：IS）は、イラクとシリアで活動するサラフィー・ジハード主義組織である。欧米諸国などに留まらず、周辺のスンニ派イスラム教諸国からも国家としての承認されていないほか、「イスラーム国」という名称への批判もなされている。</p>
-                        <p>イラク、シリアなどの中東諸国を、サイクス・ピコ協定に代表されるヨーロッパの線引きにより作られた「サイクス・ピコ体制」だとしてこれを否定し、武力によるイスラーム世界の統一を目指している。</p>
-                    </div>
-                </div><!-- .top-summary -->
-
-                <div class="top-index clearfix">
-                    <div class="top-index-box">
-                        <p>HOT</p>
-                        <ul>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                        </ul>
-                    </div>
-                    <div class="top-index-box">
-                        <p>NEW</p>
-                        <ul>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                            <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                        </ul>
-                    </div>
-                </div><!-- .top-index -->
-
-            </div><!-- .top-category -->
-
+            </section><!-- .top-category -->
         </div><!-- .top-contents -->
 
-        <div class="top-rightbar">
+        <aside class="top-rightbar">
             <div class="top-notification">
                 jkdhsfjklasghfjk
             </div>
@@ -184,7 +120,6 @@
                 <img src="~/Content/imgs/test-banner.gif">
                 <img src="~/Content/imgs/test-banner.gif">
             </div>
-        </div><!-- .top-rightbar -->
-
+        </aside><!-- .top-rightbar -->
     </div><!-- .top-main -->
-</div><!-- .top-container -->
+</article><!-- .top-container -->

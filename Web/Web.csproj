@@ -715,6 +715,7 @@
     <TypeScriptCompile Include="Scripts\Home\PostitPaster.ts" />
     <TypeScriptCompile Include="Scripts\Home\Search.ts" />
     <TypeScriptCompile Include="Scripts\Home\Top.ts" />
+    <TypeScriptCompile Include="Scripts\Home\TopTitle.ts" />
     <TypeScriptCompile Include="Scripts\Home\UserPage.ts" />
     <TypeScriptCompile Include="Scripts\Home\viewarticle.ts" />
     <TypeScriptCompile Include="Scripts\Novel\IParagraph.ts" />
