@@ -190,7 +190,7 @@ var ajaxManager = new AjaxManager();
 $(window).load(() => // 後読みじゃないとまともにポジションとれない
 {
 
-    var htmlHeight = $('.foot').offset().top + $('.foot').outerHeight();
+    var htmlHeight = ($('.foot').offset()||{top:NaN}).top + $('.foot').outerHeight();
 
     $('html').css({
         "height": htmlHeight + "px"
