@@ -37,7 +37,7 @@ module TagUtil
 
     export function chkValidTitle(val: string)
     {
-        var isConfirmedTitle = true;
+        isConfirmedTitle = true;
         $(".edit-title-chkvalid").html("");
         if (val.match(/^\s*$/)) {
             $(".edit-title-chkvalid").html("　　タイトルが空です");

@@ -3,12 +3,14 @@ var editPage: EditPage;
 var editorInstance: NovelEditer.NovelEditer;
 var isConfirmedTitle: boolean;
 isConfirmedTitle = false;
-$(() => {
+$(() =>
+{
     editPage = new EditPage();
+
     editorInstance = new NovelEditer.NovelEditer($(".edit-context"), $(".preview-body"), $(".preview-context"));
     editorInstance.saveInput();
 
-        editorInstance.updateToshow();
+    editorInstance.updateToshow();
     editPage.onChanged();
     $(".edit-submit-button").click(() =>
     {
@@ -24,10 +26,6 @@ $(() => {
         $(".edit-form").attr("target", "_blank");
         $(".edit-form").attr("action", "/Preview");
         if (isConfirmedTitle) $(".edit-form").submit();
-    });
-    $('#title, #tag, .edit-text').keypress(() =>
-    {
-        chkValidArticle();
     });
 });
 
@@ -56,21 +54,6 @@ function selectConfigure()
 
 function selectEditBelt() {
     editPage.CurrentPage = EditPageContents.EditBelt;
-}
-
-function chkValidArticle() {
-    var editmode: string = $('#hidden-mode[name="Mode"]').val();
-    console.log(editmode);
-    if (editmode == "edit" || editmode == "append") {
-        isConfirmedTitle = true;
-        $(".edit-submit-button").css('background-color', '#7FFFD4');
-        $(".edit-submit-button").hover(function () {
-            $(this).css("background-color", "#3CB371");
-        }, function () {
-                $(this).css("background-color", "#7FFFD4");
-            });
-    }
-
 }
 
 class EditPage {
@@ -130,3 +113,14 @@ enum EditPageContents {
     EditBody,Configure,EditBelt
 }
 
+var editmode: string = $('#hidden-mode[name="Mode"]').val();
+console.log(editmode);
+if (editmode == "edit" || editmode == "append") {
+    isConfirmedTitle = true;
+    $(".edit-submit-button").css('background-color', '#7FFFD4');
+    $(".edit-submit-button").hover(function () {
+        $(this).css("background-color", "#3CB371");
+    }, function () {
+            $(this).css("background-color", "#7FFFD4");
+        });
+}
