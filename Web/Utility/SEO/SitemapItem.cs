@@ -115,7 +115,7 @@ namespace Web.Utility.SEO
         /// <exception cref="System.ArgumentNullException">If the <paramref name="url"/> is null or empty.</exception>
         public SitemapItem(string url, DateTime? lastModified = null, SitemapChangeFrequency? changeFrequency = null, double? priority = null)
         {
-            Url = url;
+            Url = "http://意見.みんな"+url;
             LastModified = lastModified;
             ChangeFrequency = changeFrequency;
             Priority = priority;
