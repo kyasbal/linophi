@@ -39,7 +39,7 @@ namespace Web.ViewModel.Home
                 .OrderBy(f => f.PVCoefficient).Take(3).ToList();
             foreach (var rankingModel in flamedArticlesQuery)
             {
-                flamedArticles.Add(await context.Articles.FindAsync(rankingModel));
+                flamedArticles.Add(await context.Articles.FindAsync(rankingModel.ArticleId));
             }
             viewModel.FlameArticles = flamedArticles.ToArray();
             return viewModel;
