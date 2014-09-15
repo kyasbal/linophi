@@ -60,14 +60,24 @@ module TagUtil {
     }
 
     export function onGoodCondition(validate: boolean) {
-        var bgColor = validate ? '#7FFFD4' : '#696969',
-            bgColorHover = validate ? '#3CB371' : '#696969';
+        var bgColor = validate ? '#1e90ff' : '#ccc',
+            bgColorHover = validate ? '#99ccff' : '#696969';
 
         $(".edit-submit-button").css('background-color', bgColor);
         $(".edit-submit-button").hover(function () {
             $(this).css("background-color", bgColorHover);
         }, function () {
             $(this).css("background-color", bgColor);
+        });
+
+        var bgColor2 = validate ? '#1e90ff' : '#ccc',
+            bgColor2Hover = validate ? '#99ccff' : '#696969';
+
+        $(".preview-button").css('background-color', bgColor2);
+        $(".preview-button").hover(function () {
+            $(this).css("background-color", bgColor2Hover);
+        }, function () {
+            $(this).css("background-color", bgColor2);
         });
     }
 
@@ -103,7 +113,8 @@ module TagUtil {
             });
         }
         isConfirmedTag = isConfirmedTag && conclusiveConfirmedTag;
-        TagUtil.onGoodCondition(isConfirmedTag);
+        validate = isConfirmedTag && isConfirmedTitle;
+        TagUtil.onGoodCondition(validate);
         $target.val("");
     }
 }
