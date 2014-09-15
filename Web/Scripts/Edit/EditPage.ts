@@ -1,8 +1,12 @@
 ﻿/// <reference path="../typings/jquery/jquery.d.ts" />
 var editPage: EditPage;
 var editorInstance: NovelEditer.NovelEditer;
-var isConfirmedTitle: boolean;
+var isConfirmedTitle: boolean,
+    isConfirmedTag: boolean,
+    validate: boolean;
 isConfirmedTitle = false;
+isConfirmedTag = true;
+validate = isConfirmedTitle && isConfirmedTag;
 $(() =>
 {
     editPage = new EditPage();
@@ -17,7 +21,8 @@ $(() =>
         prepareSubmit();
         $(".edit-form").attr("target", "_self");
         $(".edit-form").attr("action", "/Edit");
-        if (isConfirmedTitle) $(".edit-form").submit();
+        validate = isConfirmedTitle && isConfirmedTag;
+        if (validate) $(".edit-form").submit();
     });
     $(".preview-button").click(() =>
     {
@@ -25,7 +30,8 @@ $(() =>
         prepareSubmit();
         $(".edit-form").attr("target", "_blank");
         $(".edit-form").attr("action", "/Preview");
-        if (isConfirmedTitle) $(".edit-form").submit();
+        validate = isConfirmedTitle && isConfirmedTag;
+        if (validate) $(".edit-form").submit();
     });
 });
 

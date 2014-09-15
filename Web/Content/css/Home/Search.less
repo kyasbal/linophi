@@ -28,7 +28,7 @@ body {
             width: 700px;
             padding-bottom: 40px;
 
-            /*.page-control {
+            .page-control {
                 margin: 15px 80px 0 80px;
                 font-size: 25px;
                 a {
@@ -61,7 +61,8 @@ body {
 
                 .page-after:hover{
                     background-color:#F0F8FF;
-                }*/
+                }
+            }
             }
 
             .search-result {
@@ -95,8 +96,10 @@ body {
 
                 .listitem {
                     display: table;
-                    margin: 20px 0 20px 20px;
-                    padding: 20px;
+                    padding: 30px;
+                    border-top: 1px solid #ddd;
+
+                    &:hover { background: @bg-color-2; }
 
                     .listthum {
                         display: table-cell;

@@ -184,9 +184,9 @@
   color: white;
   padding: 10px 40px;
   margin: 10px 40px;
+  background-color: #ccc;
 }
 .preview-button:hover {
-  background-color: dodgerblue;
   cursor: pointer;
 }
 .edit-button-container {

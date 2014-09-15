@@ -243,22 +243,7 @@ html {
                 }
 
                 .write-related-article-container {
-                    text-align: center;
-                    margin: 55px;
-
-                    .write-related-article {
-                        background-color: @submit-button-style-1-color-bg;
-                        text-decoration: none !important;
-                        color: @submit-button-style-1-color-fore !important;
-                        padding: 15px 60px;
-                        margin: 40px;
-                        line-height: 80px;
-                        font-size: x-large;
-
-                        &:hover {
-                            background-color: @submit-button-style-1-color-hover-bg;
-                        }
-                    }
+                    .write-related-article-mixin;
                 }
 
                 .widgetlist {
@@ -350,7 +335,7 @@ html {
 
                     .found-article-zero {
                         text-align: center;
-
+                        .write-related-article-mixin;
                         p {
                             display: block;
                             font-size: large;
