@@ -1,4 +1,5 @@
-﻿@model Web.ViewModel.Home.TopViewModel
+﻿@using Web.ViewModel
+@model Web.ViewModel.Home.TopViewModel
 @{
     ViewBag.Title = "意見.みんな|みんなで作る主観メディア";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
@@ -13,6 +14,10 @@
 @section CSS{
     <link href="~/Content/css/Home/Top.min.css" rel="stylesheet" />
     <link href="~/Content/css/Home/TitleFonts.min.css" rel="stylesheet" />
+}
+
+@section OGP{
+    @Html.RenderOGP(Model)
 }
 
 
@@ -80,58 +85,12 @@
                     <section>
                         <div class="top-summary clearfix">
                             <div class="top-title">
-                                @*<img src="@("~/Pages/ContentUpload/TopicThumbnail?topicId="+sectionModel.TopicId)" alt="@sectionModel.TopicTitle" height="140">*@
-                                <h3>社畜問題</h3>
+                                <h3>@sectionModel.TopicTitle</h3>
                             </div>
                             <div class="top-factor">
                                 @*@sectionModel.TopicDescription*@
-                                <img src="~/Content/imgs/test-h2bg.png">
-                                <p>「社畜」という言葉を見たり耳にしたりした時に、その言葉が一体何を意味するのかがよく分からないと感じたことはないか。この点、wikipediaでは「勤めている会社（営利企業）に飼い慣らされてしまい自分の意思と良心を放棄し奴隷（家畜）と化したサラリーマンの状態を揶揄したもの」と説明されている。</p>
-                                <p class="test">「社畜」という言葉を見たり耳にしたりした時に、その言葉が一体何を意味するのかがよく分からないと感じたことはないか。この点、wikipediaでは「勤めている会社（営利企業）に飼い慣らされてしまい自分の意思と良心を放棄し奴隷（家畜）と化したサラリーマンの状態を揶揄したもの」と説明されている。</p>
-                            </div>
-                        </div><!-- .top-summary -->
-                        <div class="top-index clearfix">
-                            <div class="top-index-box">
-                                <p>HOT</p>
-                                <ul>
-                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                                </ul>
-                            </div>
-                            <div class="top-index-box">
-                                <p>NEW</p>
-                                <ul>
-                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="top-post-this-container">
-                            <a class="top-post-this">関連/反証記事を書く</a>
-                        </div>
-                    </section>
-                    <!-- .top-index -->
-
-                }
-
-                @*<h2>今話題のトピック</h2>*@
-                @foreach (var sectionModel in Model.TopicSections)
-                {
-                    <section>
-                        <div class="top-summary clearfix">
-                            <div class="top-title">
-                                @*<img src="@("~/Pages/ContentUpload/TopicThumbnail?topicId="+sectionModel.TopicId)" alt="@sectionModel.TopicTitle" height="140">*@
-                                <h3>イスラム国問題</h3>
-                            </div>
-                            <div class="top-factor">
-                                @*@sectionModel.TopicDescription*@
-                                <img src="~/Content/imgs/test-h2bg.png">
-                                <p>「社畜」という言葉を見たり耳にしたりした時に、その言葉が一体何を意味するのかがよく分からないと感じたことはないか。この点、wikipediaでは「勤めている会社（営利企業）に飼い慣らされてしまい自分の意思と良心を放棄し奴隷（家畜）と化したサラリーマンの状態を揶揄したもの」と説明されている。</p>
-                                <p class="test">「社畜」という言葉を見たり耳にしたりした時に、その言葉が一体何を意味するのかがよく分からないと感じたことはないか。この点、wikipediaでは「勤めている会社（営利企業）に飼い慣らされてしまい自分の意思と良心を放棄し奴隷（家畜）と化したサラリーマンの状態を揶揄したもの」と説明されている。</p>
+                                <img src="@("/Pages/ContentUpload/TopicThumbnail?topicId="+sectionModel.TopicId)" alt="@sectionModel.TopicTitle" height="140">
+                                @Html.Raw(sectionModel.TopicDescription)
                             </div>
                         </div><!-- .top-summary -->
                         <div class="top-index clearfix">

@@ -20,12 +20,10 @@ namespace Web.Storage.Topic
         public async Task<GetTopicImageResult> getTopicImage(string topicImage)
         {
             CloudBlockBlob blobRef = Container.GetBlockBlobReference(topicImage);
-            using (MemoryStream ms=new MemoryStream())
-            {
+            MemoryStream ms = new MemoryStream();
                 await blobRef.DownloadToStreamAsync(ms);
                 ms.Seek(0, SeekOrigin.Begin);
                 return new GetTopicImageResult(blobRef.Properties.ContentType, ms);
-            }
         }
 
         public class GetTopicImageResult

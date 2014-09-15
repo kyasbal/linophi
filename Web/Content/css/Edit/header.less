@@ -3,9 +3,23 @@
 header {
     padding-top: 3px;
     background-color: @bg-color-2;
-    .search-container {
-        margin: 7.5px 0 7.5px 0;
+    border-bottom: 1px solid #f2f2f2;
+
+    #dropmenu {
+        float: right;
+
+        ul {
+            li {
+                overflow: hidden;
+                float: left;
+                height: 50px;
+                line-height: 40px;
+                vertical-align: middle;
+                display: inline-block;
     }
+        }
+    }
+
     a {
         display: inline-block;
         width: 100px;
@@ -17,6 +31,7 @@ header {
         border-bottom: none;
         .transition-property-mixin();
     }
+
     a:hover {
         color: #818181;
         border-bottom: 5px solid;
@@ -31,12 +46,16 @@ header {
             margin: 5px 0 5px 0;
             position: absolute;
 
+            .search-container {
+                margin: 7.5px 0 7.5px 0;
+
             input {
                 padding-left: 10%;
             }
 
             .search-text {
-                .textbox-style-1-mixin;
+                    color: @textbox-style-1-color-fore;
+                    background-color: #B0E0E6;
                 margin: 7.5px 0 7.5px 0;
                 height: 20px;
                 width: 200px;
@@ -55,6 +74,7 @@ header {
 
             .search-text:hover {
                 border: 2px #a4c6fd !important;
+                    background-color: #ADD8E6;
             }
 
             .search-button {
@@ -69,69 +89,6 @@ header {
             .search-button:focus {
                 outline: none;
             }
-        }
-    }
-}
-
-header {
-    height: 45px;
-    .search {
-        float: left;
-    }
-
-    #dropmenu {
-        float: right;
-
-        ul {
-            li {
-                overflow: hidden;
-                float: left;
-                height: 50px;
-                line-height: 40px;
-                vertical-align: middle;
-                display: inline-block;
-            }
-
-            &-submit-button {
-                width: 150px;
-                font-size: 15px;
-                padding: 10px 30px;
-                background-color: #696969;
-                color: #888;
-                display: block;
-                margin: 30px auto 30px auto;
-                vertical-align: middle;
-            }
-        }
-    }
-
-    div[class^="edit-editted-tag"] {
-        .tag-style-mixin;
-        margin-left: 5px;
-        float: left;
-        line-height: 21px;
-        height: 22px;
-        padding: 1px 6px 0;
-        font-size: 11px;
-
-        &:first-child {
-            margin-left: 0;
-        }
-
-        > span[class^="edit-editted-tag-delete"] {
-            padding-left: 10px;
-            color: #333;
-            cursor: pointer;
-
-            #login {
-                display: inline;
-            }
-
-            > span[class^="edit-editted-tag-count"] {
-            }
-
-            .login-form {
-                float: right;
             }
         }
     }

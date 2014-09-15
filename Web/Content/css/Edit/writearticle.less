@@ -1,4 +1,6 @@
-﻿html {
+﻿@import "../Color.less";
+
+html {
     width: 100%;
     height: 100%;
 }
@@ -172,5 +174,103 @@ div[class^="edit-editted-tag"] {
         padding-left: 10px;
         color: #333;
         cursor: pointer;
+    }
+}
+
+.help-container{
+    padding:40px;
+    .top-title{
+        font-size:16px;
+        font-weight:bold;
+    }
+    .h2_similar{
+        .head-shadow(@header-style-1-color-shadow-1,@header-style-1-color-shadow-2);
+        margin-bottom: 1em;
+        padding: 0 20px;
+        background-color: @header-style-1-color-bg;
+        height:48px;
+        .tutorial_big{
+            display:inline-block;
+            font-size: xx-large;
+            padding:0;
+        }   
+        .tutorial_small{
+            display:inline-block;
+            font-size:medium;
+            padding-left:100px;
+        }
+    }
+
+    .h3_similar{
+        .head-shadow(@header-style-2-color-shadow-1,@header-style-2-color-shadow-2);
+        margin-bottom: 1em;
+        padding: 0 20px;
+        background-color: @header-style-2-color-bg;
+        height:36px;
+        .tutorial_big{
+            display:inline-block;
+            font-size: x-large;
+            padding:0;
+        }   
+        .tutorial_small{
+            display:inline-block;
+            font-size:medium;
+            padding-left:130px;
+        }
+    }
+
+    .h4_similar{
+        border-bottom:1px solid rgba(0,0,0,0.3);
+        margin-bottom: 1em;
+        padding: 7px 20px 0px 20px;
+        background-color:ghostwhite; 
+        height:33px;
+        .tutorial_big{
+            display:inline-block;
+            font-size: large;
+            padding:0;
+        }   
+        .tutorial_small{
+            display:inline-block;
+            font-size:medium;
+            padding-left:150px;
+        }
+    }
+    .h5_similar{     
+        margin-bottom: 1em;
+        padding: 0 20px;
+        background-color:ghostwhite;
+        height:27px;
+        .tutorial_big{
+            display:inline-block;
+            font-weight:bold;
+            font-size: larger;
+            padding:0;
+        }   
+        .tutorial_small{
+            display:inline-block;
+            font-size:medium;
+            padding-left:150px;
+        }
+    }
+
+    .all_address{
+        margin:20px;
+        p{
+            margin:0;
+        }
+        .address_1{
+            width:500px;
+            margin:10px 0 10px 0;
+            padding:10px 0 10px 0;
+            border-top:3px solid #fff;
+            border-bottom:3px solid #fff;
+        }
+        .address_2{
+            width:500px;
+            margin:10px 0 10px 0;
+            padding:10px 0 10px 0;
+            border-bottom:3px solid #fff;
+        }
     }
 }

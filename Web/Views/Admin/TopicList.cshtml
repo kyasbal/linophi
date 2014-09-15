@@ -1,0 +1,35 @@
+﻿@model Web.ViewModel.Admin.TopicListViewModel
+@{
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+@section CSS{
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+}
+<div class="container">
+<table class="table">
+    <thead>
+        <tr>
+            <th>TopicID</th>
+            <th>Topicタイトル</th>
+            <th>TopicDescription</th>
+            <th>炎上指数</th>
+            <th>記事数</th>
+            <th>編集</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in Model.TopicItems)
+        {
+
+            <tr>
+                <td>@data.TopicId</td>
+                <td>@data.TopicTitle</td>
+                <td>@Html.Raw(data.Description)</td>
+                <td>@data.EvaluationOfFire</td>
+                <td>@Model.CountArticleInTopic(data.TopicId)</td>
+                <td><a href="@("/Admin/EditTopic?topicId="+data.TopicId)">編集</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

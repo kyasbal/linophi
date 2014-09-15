@@ -1,60 +1,71 @@
 ﻿@import "../Color";
 
-.foot{
-    height:200px;
-    width:100%;
-    background: @bg-color-2; 
-    bottom:0;
-    position:relative;
-    img{
-        height:160px;
-        width:auto;
+footer {
+    height: 200px;
+    width: 100%;
+    background: @bg-color-2;
+    bottom: 0;
+    position: relative;
+
+    .box-container {
+        padding-left: 30%;
+        padding-top: 20px;
+        margin-left: -5%;
+        overflow: hidden;
+        zoom: 1;
+
+        .vertex {
+            float: left;
+            margin-top: 20px;
+            margin-left: 0;
+            width: 0;
+            height: 120px;
+            border: solid 1px #e5e5e5;
         }
-    .box-container{
-        padding-left:30%;
-        padding-top:20px;
-        margin-left:-5%;
-        overflow:hidden;
-        zoom:1;
-        .vertex{
-            float:left;
-            margin-top:20px;
-            margin-left:0;
-            width:0;
-            height:120px;
-            border:solid 1px #e5e5e5;
+
+        .box {
+            float: left;
+            padding-left: 5%;
+            padding-right: 5%;
+
+            img {
+                height: 160px;
+                width: auto;
         }
-        .box{
-            float:left;
-            padding-left:5%;
-            padding-right:5%;
-            .ulist{
-                font-weight:900;
-                color:#f58971;
-                .list{
-                   font-weight:normal;
-                   margin-top:10px;
+
+            .ulist {
+                font-weight: 900;
+                color: #f58971;
+
+                .list {
+                    font-weight: normal;
+                    margin-top: 10px;
+
+                    a {
+                        color: #000;
+                        text-decoration: underline;
                 }
+
+                    a:hover {
+                        color: #444;
+                        text-decoration: underline;
             }
         }
     }
-    .box-container:before,.box-container:after{
-        content:"";
-        display:table;
     }
-    .box-container:after{
-        clear:both;
     }
-    a{
-        color:#000;
-        text-decoration:underline;
+
+    .box-container:before, .box-container:after {
+        content: "";
+        display: table;
     }
-    a:hover{
-        color:#444;
-        text-decoration:underline;
+
+    .box-container:after {
+        clear: both;
     }
-    .copyright{
-        margin-top:20px;
-        margin-left:70%;
+
+    .copyright {
+        margin-top: 20px;
+        margin-left: 70%;
     }
 }

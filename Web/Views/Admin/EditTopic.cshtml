@@ -1,0 +1,23 @@
+﻿@model Web.ViewModel.Admin.EditTopicViewModel
+
+@{
+    ViewBag.Title = "トピック編集";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+@section CSS
+{
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+}
+
+<div class="container">
+    @using(Html.BeginForm("EditTopic","Admin",FormMethod.Post)){
+        @Html.HiddenFor(f=>f.TopicId)
+    <p>トピックタイトル</p>
+    @Html.TextBoxFor(f => f.EditTarget.TopicTitle)
+    <p>トピック詳細</p>
+    @Html.TextAreaFor(f=>f.EditTarget.Description)
+    <p>炎上指数</p>
+    @Html.TextBoxFor(f=>f.EditTarget.EvaluationOfFire)
+    <input type="submit"/>
+    }
+</div>

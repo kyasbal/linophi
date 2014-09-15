@@ -1,22 +1,18 @@
-﻿.foot {
+﻿footer {
   height: 200px;
   width: 100%;
   background: #e4e4e4;
   bottom: 0;
   position: relative;
 }
-.foot img {
-  height: 160px;
-  width: auto;
-}
-.foot .box-container {
+footer .box-container {
   padding-left: 30%;
   padding-top: 20px;
   margin-left: -5%;
   overflow: hidden;
   zoom: 1;
 }
-.foot .box-container .vertex {
+footer .box-container .vertex {
   float: left;
   margin-top: 20px;
   margin-left: 0;
@@ -24,36 +20,40 @@
   height: 120px;
   border: solid 1px #e5e5e5;
 }
-.foot .box-container .box {
+footer .box-container .box {
   float: left;
   padding-left: 5%;
   padding-right: 5%;
 }
-.foot .box-container .box .ulist {
+footer .box-container .box img {
+  height: 160px;
+  width: auto;
+}
+footer .box-container .box .ulist {
   font-weight: 900;
   color: #f58971;
 }
-.foot .box-container .box .ulist .list {
+footer .box-container .box .ulist .list {
   font-weight: normal;
   margin-top: 10px;
 }
-.foot .box-container:before,
-.foot .box-container:after {
-  content: "";
-  display: table;
-}
-.foot .box-container:after {
-  clear: both;
-}
-.foot a {
+footer .box-container .box .ulist .list a {
   color: #000;
   text-decoration: underline;
 }
-.foot a:hover {
+footer .box-container .box .ulist .list a:hover {
   color: #444;
   text-decoration: underline;
 }
-.foot .copyright {
+footer .box-container:before,
+footer .box-container:after {
+  content: "";
+  display: table;
+}
+footer .box-container:after {
+  clear: both;
+}
+footer .copyright {
   margin-top: 20px;
   margin-left: 70%;
 }
