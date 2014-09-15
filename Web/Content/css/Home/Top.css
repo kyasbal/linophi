@@ -26,6 +26,15 @@ a {
 .top-header > h1 > span:nth-child(1) {
   padding: 0 10px;
 }
+.top-header > h1 > span:nth-child(2) {
+  color: #4385f5;
+}
+.top-header > h1 > span:nth-child(3) {
+  color: #dc4437;
+}
+.top-header > h1 > span:nth-child(4) {
+  color: #f5b400;
+}
 .top-header > .top-subttl {
   position: relative;
   font-size: 24px;
@@ -46,6 +55,7 @@ a {
   margin-right: 20px;
   margin-bottom: 70px;
   border: 4px solid #ddd;
+  border-left: 4px solid #109d59;
   box-sizing: border-box;
 }
 .top-summary {
