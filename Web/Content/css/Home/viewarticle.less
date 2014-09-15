@@ -20,23 +20,6 @@ html {
     }
 }
 
-a {
-    img {
-        vertical-align: top;
-    }
-
-    &:link, &:visited {
-        color: black;
-        text-decoration: underline;
-    }
-
-    &:hover, &:active, &:focus {
-        color: @link-hover;
-        text-decoration: none;
-
-    }
-}
-
 .container {
     .head {
         z-index: 501;
@@ -65,16 +48,19 @@ a {
                     padding: 5px 0;
                     position: relative;
                     display: inline-block;
+
                     .topic-word-list {
                         max-height: 24px;
                         padding: 0;
                         float: left;
                         margin: 0 30px 0 0;
+
                         .theme-tag {
                             border: 1px solid @view-theme-tag !important;
                         }
+
                         .topic-word {
-                            border-radius:10px;
+                            border-radius: 10px;
                             position: relative;
                             display: inline-block;
                             height: 21px;
