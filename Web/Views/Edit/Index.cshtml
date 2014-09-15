@@ -46,25 +46,27 @@
              <div class="edit-editted-box"></div>
 
              //リアルタイムプレビュー
-             <div class="wrapper">
-                 <div class="edit-preview-container">
-                     <div>プレビュー</div>
-                     <div class="edit-preview-container-inner article-container">
-                         <div class="edit-preview preview-body"></div>
-                         <div class="preview-iframes"></div>
-                     </div>
-                 </div>
+        <div class="wrapper">
+            <div class="edit-preview-container">
+                <div>プレビュー</div>
+                <div class="edit-preview-container-inner article-container">
+                    <div class="edit-preview preview-body"></div>
+                    <div class="preview-iframes"></div>
+                </div>
+            </div>
 
-                 <div class="edit-text-container">
-                     <h1>編集</h1>
-                     <textarea class="edit-text edit-context" placeholder="textarea" >
+            <div class="edit-text-container">
+                <h1>編集</h1>
+                <textarea class="edit-text edit-context" placeholder="textarea" >
                     @if (Model.MarkupString!=null)
                     {
                         @Html.Raw(Model.MarkupString)
                     }
 </textarea>@*この行にはスペースを作らないこと*@
-                 </div>
-             </div>
+            </div>
+        </div>
+            
+            
              @Html.AntiForgeryToken()
              @Html.Hidden("Tag", "", new {id = "hidden-tag"})
              @Html.Hidden("Body", "", new {id = "hidden-body"})
@@ -82,16 +84,11 @@
             <a class="edit-submit-button">投稿する</a>
         </div>
         <div class="help-container">
-            <h1>簡易ヘルプ</h1>
-            <h2>見出し</h2>
-            <p>#見出し1</p>
-            <h2>見出し1</h2>
-            <p>##見出し2</p>
-            <h3>見出し2</h3>
-            <p>###見出し3</p>
-            <h4>見出し3</h4>
-            <p>####見出し4</p>
-            <h5>見出し4</h5>
+            <p class="top-title">簡易ヘルプ</p>
+            <div class="h2_similar"><p class="tutorial_big">見出し1</p><p class="tutorial_small">#見出し1</p></div>
+            <div class="h3_similar"><p class="tutorial_big">見出し2</p><p class="tutorial_small">##見出し2</p></div>
+            <div class="h4_similar"><p class="tutorial_big">見出し3</p><p class="tutorial_small">###見出し3</p></div>
+            <div class="h5_similar"><p class="tutorial_big">見出し4</p><p class="tutorial_small">####見出し4</p></div>
             <p>>引用</p>
             <blockquote class="quote">引用</blockquote>
             <p>>引用{引用元}</p>
@@ -99,12 +96,18 @@
                 引用
                 <div class="source">出典:引用元</div>
             </blockquote>
-            <p>任意のアドレス(http://～～,https://～～)</p>
-            <p>例:http://www.linophi.com</p>
-            <a href="http://www.linophi.com">http://www.linophi.com</a>
-            <p>例:$(http://www.linophi.com){リノフィー}</p>
-            <a href="http://www.linophi.com">リノフィー</a>
-            <p>youtubeやニコ動のリンクは貼ると自動的にプレイヤーが埋め込まれます。</p>
+            <div class="all_address">
+                <div class="address_1">
+                    <p>任意のアドレス(http://～～,https://～～)</p>
+                    <p>例:http://www.linophi.com</p>
+                    <a href="http://www.linophi.com">http://www.linophi.com</a>
+                </div>
+                <div class="address_2">
+                    <p>例:$(http://www.linophi.com){リノフィー}</p>
+                    <a href="http://www.linophi.com">リノフィー</a>
+                </div>
+            </div>
+            <p class="top-title">youtubeやニコ動のリンクは貼ると自動的にプレイヤーが埋め込まれます。</p>
         </div>
          
     }
