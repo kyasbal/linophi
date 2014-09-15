@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
 using Web.Models;
 using Web.Models.Topic;
+using Web.Storage.Connection;
+using Web.Storage.Topic;
 using Web.ViewModel.Admin;
 
 namespace Web.Controllers
@@ -55,6 +57,8 @@ namespace Web.Controllers
             await DbContext.SaveChangesAsync();
             DbContext.Topics.Add(vm.EditTarget);
             await DbContext.SaveChangesAsync();
+            TopicThumbnailManager thumbnailManager = new TopicThumbnailManager(new BlobStorageConnection());
+            thumbnailManager.UploadAsync(vm.TopicId,vm.Thumbnail);
             return View(vm);
         }
     }
