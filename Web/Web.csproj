@@ -530,6 +530,10 @@
     <Compile Include="Migrations\201409150433586_AddTopics.Designer.cs">
       <DependentUpon>201409150433586_AddTopics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409150514323_AddColumnToTopics.cs" />
+    <Compile Include="Migrations\201409150514323_AddColumnToTopics.Designer.cs">
+      <DependentUpon>201409150514323_AddColumnToTopics.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountConfigViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -574,6 +578,7 @@
     <Compile Include="Utility\LinophiMailClient.cs" />
     <Compile Include="Utility\MathEx.cs" />
     <Compile Include="Utility\WebPageStatic.cs" />
+    <Compile Include="ViewModel\Home\TopViewModel.cs" />
     <Compile Include="WebRole.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -709,6 +714,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409150433586_AddTopics.resx">
       <DependentUpon>201409150433586_AddTopics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409150514323_AddColumnToTopics.resx">
+      <DependentUpon>201409150514323_AddColumnToTopics.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
