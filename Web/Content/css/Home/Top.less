@@ -3,15 +3,15 @@
 @top-accent-3: rgb(245, 180, 0);
 
 body {
-    background-image: url('../../imgs/bgtest-skyblue.png') !important;
+    background-image: url('../../imgs/bgtest-skyblue.png');
 }
-/*
-@font-face {
-    font-family: 'FontopoNIHONGO';
-    src: url('../../../fonts/FontopoNIHONGO.otf') format('opentype');
-}*/
+
 a {
-    color: #67A6A6;
+    color: #0c2a81;
+    text-decoration: none;
+    &:visited {
+        color: #7b23a9;
+    }
 }
 
 .top-container {
@@ -70,12 +70,26 @@ a {
 .top-topics-flare {
     margin: 40px 0 70px;
 
-    > h3 {
+    > h2 {
         font-size: 20px;
         font-weight: bold;
+        margin-bottom: 20px;
     }
 
-    > div {
+    .top-subject {
+        margin-right: 16px;
+        background-color: #eee;
+        box-shadow: 0 0 5px rgba(221, 221, 221, 0.5) inset;
+
+        > a {
+            color: #444;
+            display: block;
+            padding: 4px 8px;
+            text-decoration: underline;
+            &:hover {
+                background: #ddd;
+            }
+        }
     }
 }
 
