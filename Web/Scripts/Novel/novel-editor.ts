@@ -2,10 +2,9 @@
 {
     var sepalateToken: string = "\n\n";
     var markups: MarkupBase[] = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup(), new HrMarkUp(), new ColorMarkup(), new SizeMarkup(), new SizeColorMarkup(), new UrlMarkup(), new LinkMarkup()];
-    
+
     export class NovelEditer
     {
-        
         private static _endOfLineChar: string[] = ["\n"];
         private static _shiftCaretKeys: number[] = [KeyCodes.KeyCode.ArrowRight, KeyCodes.KeyCode.ArrowLeft, KeyCodes.KeyCode.ArrowDown, KeyCodes.KeyCode.ArrowUp];
         //ユーザーが記述してるエディタ
@@ -24,7 +23,7 @@
 
         //改行コードの位置を示す。
         //テキスト末尾も含む
-        private _paragraphList:collections.LinkedList<number>=new collections.LinkedList<number>();
+        private _paragraphList: collections.LinkedList<number>=new collections.LinkedList<number>();
 
         //段落管理
         private _paragraphManager: ParagraphManager;
@@ -54,15 +53,14 @@
         private _focusLine: string;
 
 
-
-        //キー入力による編集文字列変化の反映処理
+//キー入力による編集文字列変化の反映処理
         saveInput()
         {
             console.info("saveInput is Called...!");
 
-            var currentText: string = this._editorTarget.val();//現在のテキスト
+            var currentText: string = this._editorTarget.val(); //現在のテキスト
             if (currentText != this._lastText)
-        {
+            {
                 var changeInfo: TextChangeInfo = this.checkChangeText(currentText); //変化情報
                 //変化してる最初のパラグラフの頭のインデックス
                 var changeStartIndexOfText: number;
@@ -84,13 +82,11 @@
                         this._paragraphManager.headParagraph = parag;
                         this._paragraphManager.changeCurrentParagraph(parag);
                         parag.updateParagraphIndex();
-                }
-                    else //後方に変化してないのがある
-                {
+                    } else //後方に変化してないのがある
+                    {
                         this._paragraphManager.getParagraphByIndex(changeInfo.changeEndParagrapgIndex).insertPrev(parag);
-                }
-                }
-                else
+                    }
+                } else
                 {
                     this._paragraphManager.removeParagraphRange(changeInfo.changeStartParagraphIndex, changeInfo.changeEndParagrapgIndex);
                     this._paragraphManager.getParagraphByIndex(changeInfo.changeStartParagraphIndex).insertNext(parag);
@@ -98,37 +94,37 @@
             }
 
 
-            var caret: TextRegion = TextRegion.fromCaretInfo(this._editorTarget.caret());//現在のカレット取得
+            var caret: TextRegion = TextRegion.fromCaretInfo(this._editorTarget.caret()); //現在のカレット取得
 
             for (var j = 0; j < this._paragraphList.size(); j++)
-                {
+            {
                 var num: number = this._paragraphList.elementAtIndex(j);
                 if (caret.begin <= num)
                 {
                     this._paragraphManager.changeCurrentParagraphByIndex(j);
                     break;
                 }
-                }
+            }
 
 
             this._lastCaret = caret;
             this.updateToshow();
 
-            console.info("\tcurrent       =\t" + this._paragraphManager.currentParagraph.getParagraphIndex() + ":"+
+            console.info("\tcurrent       =\t" + this._paragraphManager.currentParagraph.getParagraphIndex() + ":" +
                 this._paragraphManager.currentParagraph.rawText);
             var str: string = "";
             for (var i = 0; i < this._paragraphList.size(); i++)
             {
-                str += ", "+this._paragraphList.elementAtIndex(i);
+                str += ", " + this._paragraphList.elementAtIndex(i);
             }
             console.info("endParag:       \t" + str);
-            console.info("\tparagraphCount=\t"+this._paragraphManager.paragraphCount+"\n");
+            console.info("\tparagraphCount=\t" + this._paragraphManager.paragraphCount + "\n");
         }
 
         //テキストの変更箇所を探して、更新します
-        checkChangeText(currentText: string):TextChangeInfo
+        checkChangeText(currentText: string): TextChangeInfo
         {
-            if (this._lastText == "")//空行から変化
+            if (this._lastText == "") //空行から変化
             {
                 this._lastText = currentText;
                 this._paragraphList.clear();
@@ -144,25 +140,25 @@
                 return new TextChangeInfo(null, null);
             }
 
-            if (currentText == "")//全削除
-                    {
+            if (currentText == "") //全削除
+            {
                 this._lastText = "";
                 this._paragraphList.clear();
                 this._paragraphList.add(0);
                 return new TextChangeInfo(null, null);
-                    }
+            }
 
             //変更がない
             if (currentText == this._lastText) return new TextChangeInfo(0, 0);
 
             var parag: Paragraph = this._paragraphManager.headParagraph;
-            var changeStart: number = 0;//変更直前段落
-            var str: string = currentText;//コピー
+            var changeStart: number = 0; //変更直前段落
+            var str: string = currentText; //コピー
             while (true)
             {
                 if (parag.isFinalParagraph)
-                {//最終段落が一致することはない
-                    if (changeStart == 0)//段落が一つしかなかったとき
+                { //最終段落が一致することはない
+                    if (changeStart == 0) //段落が一つしかなかったとき
                     {
                         changeStart = null;
                         break;
@@ -170,24 +166,24 @@
                     changeStart--;
                     break;
                 }
-                if (str.substr(0, parag.rawText.length + 2) == parag.rawText + "\n\n")//段落内容と一致
+                if (str.substr(0, parag.rawText.length + 2) == parag.rawText + "\n\n") //段落内容と一致
                 {
-                    str = str.substr(parag.rawText.length+2);
+                    str = str.substr(parag.rawText.length + 2);
                     parag = parag.nextParagraph;
                     changeStart++;
                     continue;
                 }
-                if (changeStart == 0)//最初の段落で不一致
+                if (changeStart == 0) //最初の段落で不一致
                 {
                     changeStart = null;
                     break;
                 }
-                changeStart--;//不一致の直前
+                changeStart--; //不一致の直前
                 break;
             }
 
-            var changeEnd: number = this._paragraphManager.lastParagraphIndex;//最後の変更点の直後の位置
-            str = currentText;//コピー
+            var changeEnd: number = this._paragraphManager.lastParagraphIndex; //最後の変更点の直後の位置
+            str = currentText; //コピー
             parag = this._paragraphManager.getParagraphByIndex(this._paragraphManager.lastParagraphIndex);
             while (true)
             {
@@ -211,30 +207,30 @@
                 break;
             }
 
-            var ret: TextChangeInfo = new TextChangeInfo(changeStart, changeEnd);//帰り値
+            var ret: TextChangeInfo = new TextChangeInfo(changeStart, changeEnd); //帰り値
 
             //更新処理
             var num = ret.changeStartParagraphIndex;
             if (num == null) num = -1;
             num++;
             while (this._paragraphList.size() > num)
-        {
+            {
                 this._paragraphList.removeElementAtIndex(num);
             }
             for (var k = this.getParagraphStartIndex(num); k < currentText.length; k++)
             {
-                if (currentText.substr(k,sepalateToken.length) == sepalateToken)
+                if (currentText.substr(k, sepalateToken.length) == sepalateToken)
                 {
                     this._paragraphList.add(k);
                 }
-                }
+            }
             this._paragraphList.add(currentText.length);
             this._lastText = currentText;
             return ret;
-            }
+        }
 
         //指定段落の開始インデックスを取得
-        getParagraphStartIndex(paragraphIndex: number):number
+        getParagraphStartIndex(paragraphIndex: number): number
         {
             if (paragraphIndex == 0) return 0;
             return this._paragraphList.elementAtIndex(paragraphIndex - 1) + sepalateToken.length;
@@ -261,7 +257,7 @@
             return count;
         }
 
-        toJSON():string
+        toJSON(): string
         {
             var innerJSON: string = "";
             var cacheParagraph: Paragraph = this._paragraphManager.headParagraph;
@@ -269,7 +265,7 @@
             {
                 innerJSON += cacheParagraph.toJSON();
                 if (!cacheParagraph.isFinalParagraph) innerJSON += ",";
-                if(cacheParagraph.isFinalParagraph)break;
+                if (cacheParagraph.isFinalParagraph)break;
                 cacheParagraph = cacheParagraph.nextParagraph;
             }
             return "[" + innerJSON + "]";
@@ -283,6 +279,7 @@
                 this.updateToshow();
             }
         }
+
         goprevPage()
         {
             var i: number = 1;
@@ -291,26 +288,29 @@
             while (true)
             {
                 cacheHead = cacheHead.prevParagraph;
-                while (i <= this._paragraphManager.lastParagraphIndex + 1) {
+                while (i <= this._paragraphManager.lastParagraphIndex + 1)
+                {
                     this._previewTarget.html(cacheHead.getParagraphHtmls(i));
-                    if (this._previewTarget.width() > this._previewBounds.width()) {
+                    if (this._previewTarget.width() > this._previewBounds.width())
+                    {
                         this._previewTarget.html(cacheHead.getParagraphHtmls(i - 1));
                         break;
                     }
                     i++;
                 }
                 var next = cacheHead.getParagraphFromthis(i);
-                if(next==this._paragraphManager.headParagraph)break;
+                if (next == this._paragraphManager.headParagraph)break;
                 if (cacheHead.isFinalParagraph) break;
                 cacheHead = cacheHead.prevParagraph;
             }
             this._paragraphManager.headParagraph = cacheHead;
         }
     }
+
     export class TextChangeInfo
     {
-        changeStartParagraphIndex:number;//変更の先頭の直前の段落、変更が先頭段落からのときはnull
-        changeEndParagrapgIndex: number;//変更の末尾の直後の段落、変更が最終段落に及ぶときはnull
+        changeStartParagraphIndex: number; //変更の先頭の直前の段落、変更が先頭段落からのときはnull
+        changeEndParagrapgIndex: number; //変更の末尾の直後の段落、変更が最終段落に及ぶときはnull
 
         constructor(start: number, end: number)
         {
@@ -318,14 +318,17 @@
             this.changeEndParagrapgIndex = end;
         }
     }
+
     export class ParagraphManager
     {
         private _paragraphDictionary: collections.Dictionary<string, Paragraph> = new collections.Dictionary<string, Paragraph>();
+
         get ParagraphDictionary(): collections.Dictionary<string, Paragraph>
         {
             return this._paragraphDictionary;
         }
-        //先頭の段落
+
+//先頭の段落
         private _headParagraph: Paragraph;
         //最終段落のインデックス
         private _lastParagraphIndex: number=0;
@@ -343,18 +346,22 @@
         {
             return this._lastParagraphIndex;
         }
-        set lastParagraphIndex(index:number)
+
+        set lastParagraphIndex(index: number)
         {
             this._lastParagraphIndex = index;
         }
+
         get headParagraph(): Paragraph
         {
             return this._headParagraph;
         }
+
         set headParagraph(val: Paragraph)
         {
             this._headParagraph = val;
         }
+
         get currentParagraph(): Paragraph
         {
             return this._currentParagraph;
@@ -365,13 +372,15 @@
         {
             return this._lastParagraphIndex + 1;
         }
-        //ディクショナリへの登録
+
+//ディクショナリへの登録
         registParagraph(parag: Paragraph)
         {
             if (this._paragraphDictionary.containsKey(parag.getId()))return;
             this._paragraphDictionary.setValue(parag.getId(), parag);
-        } 
-        //ディクショナリからの解除
+        }
+
+//ディクショナリからの解除
         unregistParagraph(id: string)
         {
             this._paragraphDictionary.remove(id);
@@ -382,17 +391,18 @@
         {
             if (currentParagraph == null)
                 currentParagraph = this.headParagraph;
-            
+
             this._currentParagraph.isEmphasized = false;
             this._currentParagraph = currentParagraph;
             this._currentParagraph.isEmphasized = true;
             console.info("currentParagraph:" + currentParagraph.rawText);
         }
-        //startからendをつないで、その間を削除。end==nullで後ろ全部
+
+//startからendをつないで、その間を削除。end==nullで後ろ全部
         removeParagraphRange(start: number, end: number)
         {
             var startParag: Paragraph = this.getParagraphByIndex(start);
-            var currentIndex:number = this._currentParagraph.getParagraphIndex();
+            var currentIndex: number = this._currentParagraph.getParagraphIndex();
             if (end == null)
             {
                 if (start < currentIndex)
@@ -410,14 +420,15 @@
             endParag.prevParagraph = startParag;
             this.refreshRegist();
         }
-                
+
         //登録を再確認
         refreshRegist()
         {
             this._paragraphDictionary.clear();
             this._headParagraph.updateParagraphIndex();
         }
-        //現在の段落(とその強調表示)をインデックス指定で変更する
+
+//現在の段落(とその強調表示)をインデックス指定で変更する
         changeCurrentParagraphByIndex(paragraphIndex: number)
         {
             var parag: Paragraph = this._currentParagraph.getParagraphByIndex(paragraphIndex);
@@ -425,20 +436,22 @@
         }
 
         //現在のパラグラフを次に移動する。現在が末尾だったら何もせずfalse
-        moveNext():boolean
+        moveNext(): boolean
         {
             if (this._currentParagraph.isFinalParagraph) return false;
             this.changeCurrentParagraph(this._currentParagraph.nextParagraph);
             return true;
         }
-        //現在のパラグラフを前に移動する。現在が先頭だったら何もせずfalse
-        movePrev():boolean
+
+//現在のパラグラフを前に移動する。現在が先頭だったら何もせずfalse
+        movePrev(): boolean
         {
             if (this._currentParagraph.isFirstParagraph)return false;
             this.changeCurrentParagraph(this._currentParagraph.prevParagraph);
             return true;
         }
-        //末尾に段落を追加する
+
+//末尾に段落を追加する
         addParagraph(parag: Paragraph)
         {
             this.registParagraph(parag);
@@ -451,49 +464,52 @@
             }
             this._currentParagraph.getLastParagraph().insertNext(parag);
         }
-        //指定したインデックスの段落を取得
+
+//指定したインデックスの段落を取得
         getParagraphByIndex(index: number): Paragraph
         {
             return this._headParagraph.getParagraphByIndex(index);
         }
-        //テキストを改行で分割してパラグラフに分ける。先頭を返す
+
+//テキストを改行で分割してパラグラフに分ける。先頭を返す
         createParagraphFromText(str: string): Paragraph
         {
-            var num: number = str.indexOf(sepalateToken);//改行を探す
-            if (num == -1) return new Paragraph(this, str);//改行がなければそのまま返す
+            var num: number = str.indexOf(sepalateToken); //改行を探す
+            if (num == -1) return new Paragraph(this, str); //改行がなければそのまま返す
 
-            var parag: Paragraph = new Paragraph(this, str.substr(0, num));//改行の手前まで
-            if (num == str.length - sepalateToken.length)//改行が末尾ならそれで返す
+            var parag: Paragraph = new Paragraph(this, str.substr(0, num)); //改行の手前まで
+            if (num == str.length - sepalateToken.length) //改行が末尾ならそれで返す
             {
                 parag.insertNext(new Paragraph(this, ""));
                 return parag;
             }
-            str = str.substr(num + sepalateToken.length);//改行の後ろ
+            str = str.substr(num + sepalateToken.length); //改行の後ろ
 
-            while (true)//後ろが""でなければ
+            while (true) //後ろが""でなければ
             {
-                num = str.indexOf(sepalateToken);//改行を探す
-                if (num == -1)//改行がなければ終了
+                num = str.indexOf(sepalateToken); //改行を探す
+                if (num == -1) //改行がなければ終了
                 {
                     parag.insertNext(new Paragraph(this, str));
                     return parag.getFirstParagraph();
                 }
                 parag.insertNext(new Paragraph(this, str.substr(0, num)));
                 parag = parag.nextParagraph;
-                if (num == str.length - sepalateToken.length)//改行が末尾ならそれで返す
+                if (num == str.length - sepalateToken.length) //改行が末尾ならそれで返す
                 {
                     parag.insertNext(new Paragraph(this, ""));
                     return parag.getFirstParagraph();
                 }
-                str = str.substr(num + sepalateToken.length);//改行の後ろ
+                str = str.substr(num + sepalateToken.length); //改行の後ろ
             }
         }
-        //指定したカレット位置を段落上のカレット位置に変換する
-        getCaretPositionAsParag(caretPos: number):CaretPosition
+
+//指定したカレット位置を段落上のカレット位置に変換する
+        getCaretPositionAsParag(caretPos: number): CaretPosition
         {
             var parag: Paragraph = this._headParagraph;
             var paragPos: number = 0;
-            while (parag.rawText.length<caretPos)
+            while (parag.rawText.length < caretPos)
             {
                 if (parag.isFinalParagraph)
                 {
@@ -507,14 +523,15 @@
                 parag = parag.nextParagraph;
             }
             var pos: CaretPosition = new CaretPosition(paragPos, caretPos);
-            if (parag.rawText.length == caretPos)//段落末尾
+            if (parag.rawText.length == caretPos) //段落末尾
             {
                 pos.isParagraphLast = true;
                 if (pos.paragraphIndex == this._lastParagraphIndex)pos.isTextLast = true;
             }
             return pos;
         }
-        //現在のカレットの編集文字列を再読み込み
+
+//現在のカレットの編集文字列を再読み込み
         reLoadParagraph(text: string, caretPos: number)
         {
             this._currentParagraph.paragraphReload(text, caretPos);
@@ -550,7 +567,7 @@
             this.updateCacheHtml();
         }
 
-        getPrevParagraph():IParagraph
+        getPrevParagraph(): IParagraph
         {
             return this.prevParagraph;
         }
@@ -569,6 +586,7 @@
         {
             return this._paragraphIndex;
         }
+
         getId(): string
         {
             return this._iD;
@@ -579,30 +597,32 @@
             var id = "";
             for (var i = 0; i < 10; i++)
             {
-                id+=Paragraph._IdString.substr(Math.floor(Math.random()*Paragraph._IdString.length),1);
+                id += Paragraph._IdString.substr(Math.floor(Math.random() * Paragraph._IdString.length), 1);
             }
             return id;
         }
 
-        toJSON(): string//じっそうしといて
+        toJSON(): string //じっそうしといて
         {
             var jsonObj: any = {
                 prevParagraph: this.isFirstParagraph ? null : this.prevParagraph.getId(),
                 nextParagraph: this.isFinalParagraph ? null : this.nextParagraph.getId(),
                 rawText: this.rawText,
                 paragraphIndex: this._paragraphIndex,
-                id:this._iD
+                id: this._iD
             };
             return JSON.stringify(jsonObj);
         }
-        fromJSON(jsonObj:any): void//じっそうしといて
+
+        fromJSON(jsonObj: any): void //じっそうしといて
         {
-            if (jsonObj.prevParagraph != null && this._manager.ParagraphDictionary.containsKey  (jsonObj.prevParagraph))
+            if (jsonObj.prevParagraph != null && this._manager.ParagraphDictionary.containsKey(jsonObj.prevParagraph))
             {
                 this.prevParagraph = this._manager.ParagraphDictionary.getValue(jsonObj.prevParagraph);
                 this.prevParagraph.nextParagraph = this;
             }
-            if (jsonObj.nextParagraph != null && this._manager.ParagraphDictionary.containsKey(jsonObj.nextParagraph)) {
+            if (jsonObj.nextParagraph != null && this._manager.ParagraphDictionary.containsKey(jsonObj.nextParagraph))
+            {
                 this.nextParagraph = this._manager.ParagraphDictionary.getValue(jsonObj.nextParagraph);
                 this.nextParagraph.prevParagraph = this;
             }
@@ -615,6 +635,7 @@
                 this._manager.ParagraphDictionary.setValue(this._iD, this);
             }
         }
+
         set isEmphasized(isem: boolean)
         {
             this._isEmphasized = isem;
@@ -630,6 +651,7 @@
         {
             return this._rawText;
         }
+
         set rawText(raw: string)
         {
             this._rawText = raw;
@@ -647,20 +669,23 @@
         {
             return this.prevParagraph == null;
         }
-         htmlEnc(s:string) {
-        return s.replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/'/g, '&#39;')
-            .replace(/"/g, '&#34;');
-    }
-        //HTML再生成
+
+        htmlEnc(s: string)
+        {
+            return s.replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/'/g, '&#39;')
+                .replace(/"/g, '&#34;');
+        }
+
+//HTML再生成
         updateCacheHtml()
         {
-            var prefixes: PrefixBase[] = [new QuotePrefix(),new TitlePrefix(),new ListnPrefix(),new ListdPrefix(),new BgcPrimPrefix(),new BgcSuccPrefix(),new BgcInfoPrefix(),new BgcWarnPrefix(),new BgcDangPrefix()/*, new DividerPrefix()*/];
+            var prefixes: PrefixBase[] = [new QuotePrefix(), new TitlePrefix(), new ListnPrefix(), new ListdPrefix(), new BgcPrimPrefix(), new BgcSuccPrefix(), new BgcInfoPrefix(), new BgcWarnPrefix(), new BgcDangPrefix() /*, new DividerPrefix()*/];
             var tag: JQuery;
-            var rawStr: string =this.htmlEnc(this._rawText).replace(/\n/g, "</br>");
-            rawStr=rawStr.replace(/ /g, "&ensp;"); //半角スペースは特殊文字として置き換える
+            var rawStr: string = this.htmlEnc(this._rawText).replace(/\n/g, "</br>");
+            rawStr = rawStr.replace(/ /g, "&ensp;"); //半角スペースは特殊文字として置き換える
             if (Utils.StringUtility.isEmpty(this._rawText))
             {
                 this._cacheHtml = "<br/>";
@@ -681,8 +706,7 @@
             {
                 for (var j = 0; j < markups.length; j++)
                 {
-                    rawStr = markups[j].getMarkupString(rawStr,this._iD);//処理
-
+                    rawStr = markups[j].getMarkupString(rawStr, this._iD); //処理
                 }
                 rawStr = rawStr.replace(/\u0006e/g, "http");
                 tag = $("<p/>");
@@ -695,20 +719,20 @@
 
                 tag.html(rawStr);
             }
-           
+
             tag.addClass("p-" + this._iD);
             if (this.isEmphasized) tag.addClass("em");
             this._cacheHtml = $("<div/>").append(tag).html();
         }
-        //段落番号と最終段落番号の更新。常に整合性を保つ
+
+//段落番号と最終段落番号の更新。常に整合性を保つ
         updateParagraphIndex()
         {
             this._manager.registParagraph(this);
             if (this.prevParagraph != null)
             {
                 this._paragraphIndex = this.prevParagraph._paragraphIndex + 1;
-            }
-            else
+            } else
             {
                 this._paragraphIndex = 0;
                 this._manager.headParagraph = this;
@@ -731,7 +755,8 @@
             this.nextParagraph = next;
             next.updateParagraphIndex();
         }
-         //指定した段落をこの段落の直前に挿入
+
+//指定した段落をこの段落の直前に挿入
         insertPrev(prev: Paragraph)
         {
             this._manager.registParagraph(prev);
@@ -745,7 +770,8 @@
             this.prevParagraph = last;
             prev.updateParagraphIndex();
         }
-        //指定したインデックスの段落を取得
+
+//指定したインデックスの段落を取得
         getParagraphByIndex(index: number): Paragraph
         {
             if (!this.isFirstParagraph) return this._manager.headParagraph.getParagraphByIndex(index);
@@ -768,7 +794,8 @@
             }
             return parag;
         }
-        //この段落リストの末尾を取得
+
+//この段落リストの末尾を取得
         getLastParagraph(): Paragraph
         {
             var parag: Paragraph = this;
@@ -778,7 +805,8 @@
             }
             return parag;
         }
-        //この段落リストの先頭を取得
+
+//この段落リストの先頭を取得
         getFirstParagraph(): Paragraph
         {
             if (this.isFirstParagraph) return this;
@@ -789,7 +817,8 @@
             }
             return parag;
         }
-        //指定した番目までの段落のhtmlを結合して返す。
+
+//指定した番目までの段落のhtmlを結合して返す。
         getParagraphHtmls(count: number): string
         {
             var cachedHtml: string = this._cacheHtml;
@@ -802,7 +831,8 @@
             }
             return cachedHtml;
         }
-        //生テキストを結合して返す。
+
+//生テキストを結合して返す。
         getParagraphRawTexts(count: number): string
         {
             var cachedRawText: string = this.rawText;
@@ -811,17 +841,18 @@
             for (var i = 0; i < count && !currentParagraph.isFinalParagraph; i++)
             {
                 currentParagraph = currentParagraph.nextParagraph;
-                cachedRawText += "\n"+currentParagraph.rawText;//改行をはさんでおく
+                cachedRawText += "\n" + currentParagraph.rawText; //改行をはさんでおく
             }
             return cachedRawText;
         }
-        //この段落を削除する
+
+//この段落を削除する
         removeThis()
         {
             this._manager.unregistParagraph(this._iD);
             if (this.isFinalParagraph)
             {
-                if (this.isFirstParagraph)//この行しかないとき
+                if (this.isFirstParagraph) //この行しかないとき
                 {
                     this.rawText = "";
                     this.updateParagraphIndex();
@@ -838,8 +869,7 @@
                 this.nextParagraph.updateParagraphIndex();
                 if (this._manager.currentParagraph == this) this._manager.changeCurrentParagraph(this.nextParagraph);
                 return;
-            }
-            else
+            } else
             {
                 this.prevParagraph.nextParagraph = this.nextParagraph;
                 this.nextParagraph.prevParagraph = this.prevParagraph;
@@ -847,8 +877,9 @@
                 if (this._manager.currentParagraph == this) this._manager.changeCurrentParagraph(this.prevParagraph);
             }
         }
-        //この段落の指定した位置で、この段落を二つの段落に分ける。分けた前半の段落を返す
-        sepalateParagraph(pos: number):Paragraph
+
+//この段落の指定した位置で、この段落を二つの段落に分ける。分けた前半の段落を返す
+        sepalateParagraph(pos: number): Paragraph
         {
             var front: Paragraph = new Paragraph(this._manager, this._rawText.substr(0, pos));
             var back: Paragraph = new Paragraph(this._manager, this._rawText.substr(pos, this._rawText.length - pos));
@@ -879,14 +910,17 @@
         }
 
         //文字列の指定したカレット位置を含むように段落文を再構成します
-        paragraphReload(text: string, caretPos: number) {
+        paragraphReload(text: string, caretPos: number)
+        {
             var begin: number = caretPos;
             var end = caretPos;
-            for (var i = caretPos-1; i >=0; i--) {
+            for (var i = caretPos - 1; i >= 0; i--)
+            {
                 if (text.charCodeAt(i) == 0x0a) break;
                 begin = i;
             }
-            for (var j = caretPos; j < text.length+1; j++) {
+            for (var j = caretPos; j < text.length + 1; j++)
+            {
                 end = j;
                 if (text.charCodeAt(j) == 0x0a) break;
             }
@@ -935,10 +969,11 @@
         {
             return "#";
         }
+
         getFormattedHtml(str: string): string
         {
             var headerLevel: number = 2;
-            for (var i = 1; i < str.length+1; i++)
+            for (var i = 1; i < str.length + 1; i++)
             {
                 headerLevel = i + 1;
                 if (str.charAt(i) != '#')
@@ -947,19 +982,20 @@
                 }
             }
             var value = str.substr(headerLevel - 1);
-            if (!value) {
+            if (!value)
+            {
                 value = "&nbsp;";
             }
             return "<h" + headerLevel + ">" + value + "</h" + headerLevel + ">";
         }
     }
+
     class QuotePrefix extends PrefixBase
     {
         getPrefixString(): string
         {
-          return "&gt;";
+            return "&gt;";
         }
-
 
 
         getFormattedHtmlImpl(str: string): string
@@ -968,7 +1004,8 @@
             str = str.replace(/&ensp;/g, "\u0006a");
             str = str.replace(/\\{/g, "\u0006b");
             str = str.replace(/\\}/g, "\u0006c");
-            if (str.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g)) {
+            if (str.match(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g))
+            {
                 str = str.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"/Pages/ContentUpload/UploadFromExternal?url=$1\">");
             }
             str = str.replace(/(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-_]+)([^\w\/:%#\$&\?\(\)~\.=\+\-])(?![>"])/g, "<a href='$1'>$1</a>$2");
@@ -982,13 +1019,14 @@
             return "<blockquote><div class=\"quote\">" + str + "</div></blockquote>";
         }
     }
-    
+
     class ListnPrefix extends PrefixBase
     {
         getPrefixString(): string
         {
             return "$listn";
         }
+
         getFormattedHtmlImpl(str: string): string
         {
             str = str.replace(/(.*)/g, "<ol class=\"listn\"><li>$1</li></ol><br>");
@@ -1004,9 +1042,11 @@
     {
         getPrefixString(): string
         {
-            return "$listd"; 
+            return "$listd";
         }
-        getFormattedHtmlImpl(str: string): string {
+
+        getFormattedHtmlImpl(str: string): string
+        {
             str = str.replace(/(.*)/g, "<ul class=\"listd\"><li>$1</li></ul><br>");
             str = str.replace(/<\/br>/g, "</li><li>");
             str = str.replace(/<li><\/li>/g, "");
@@ -1018,7 +1058,8 @@
 
     class BgcPrimPrefix extends PrefixBase
     {
-        getPrefixString(): string {
+        getPrefixString(): string
+        {
             return "$section(prim)";
         }
 
@@ -1037,8 +1078,10 @@
         }
     }
 
-    class BgcSuccPrefix extends PrefixBase {
-        getPrefixString(): string {
+    class BgcSuccPrefix extends PrefixBase
+    {
+        getPrefixString(): string
+        {
             return "$section(succ)";
         }
 
@@ -1057,8 +1100,10 @@
         }
     }
 
-    class BgcInfoPrefix extends PrefixBase {
-        getPrefixString(): string {
+    class BgcInfoPrefix extends PrefixBase
+    {
+        getPrefixString(): string
+        {
             return "$section(info)";
         }
 
@@ -1077,8 +1122,10 @@
         }
     }
 
-    class BgcWarnPrefix extends PrefixBase {
-        getPrefixString(): string {
+    class BgcWarnPrefix extends PrefixBase
+    {
+        getPrefixString(): string
+        {
             return "$section(warn)";
         }
 
@@ -1091,14 +1138,16 @@
             str = str.replace(/<br>/g, "");
             str = str.replace(/\u0006/g, "<\/span><br><span>");
             str = str.replace(/<div class="[^"]*"><\/div>/g, "");
-            str = str.replace(/<div class=\"[\d\s]+\">< \/ div>/g,"");
+            str = str.replace(/<div class=\"[\d\s]+\">< \/ div>/g, "");
             str = str.replace(/<\/div>/g, "</div><br>");
             return str;
         }
     }
 
-    class BgcDangPrefix extends PrefixBase {
-        getPrefixString(): string {
+    class BgcDangPrefix extends PrefixBase
+    {
+        getPrefixString(): string
+        {
             return "$section(dang)";
         }
 
@@ -1116,7 +1165,7 @@
             return str;
         }
     }
-    
+
     /*class DividerPrefix extends PrefixBase
     {
         getPrefixString(): string
@@ -1136,15 +1185,16 @@
         paragraphIndex: number;
         //カレットのある段落での、先頭からの位置
         charIndex: number;
-        isTextLast: boolean = false;//テキストの末尾であることを表す。
-        isParagraphLast:boolean=false;//段落末尾であることを表す。
+        isTextLast: boolean = false; //テキストの末尾であることを表す。
+        isParagraphLast: boolean=false; //段落末尾であることを表す。
         constructor(paragIndex: number, charIndex: number)
         {
             this.paragraphIndex = paragIndex;
             this.charIndex = charIndex;
         }
     }
-    //テキストの選択領域を表すクラス
+
+//テキストの選択領域を表すクラス
     class TextRegion
     {
         public static fromCaretInfo(caret: CaretInfo): TextRegion
