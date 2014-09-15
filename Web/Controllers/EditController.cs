@@ -120,7 +120,7 @@ namespace Web.Controllers
                 }
                 //タグの処理
                 var tags = System.Web.Helpers.Json.Decode<string[]>(vm.Tag);
-                if (tags.Length > 5) return RedirectToAction("Page404", "Home");
+                if (tags.Length > 5||vm.Markup.Length<=400||tags.Any(t=>t.Length>=15)) return RedirectToAction("Page404", "Home");
                 foreach (var tag in tags)
                 {
                     ArticleTagModel tagModel = context.Tags.Where(f => f.TagName.Equals(tag)).SingleOrDefault();

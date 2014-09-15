@@ -6,6 +6,36 @@
     $(window).resize(function () {
         InquiryPage.adjustHeight();
     });
+
+    $("#myform").validate({
+        rules: {
+            Name: {
+                required: true
+            },
+            Mail: {
+                required: true,
+                email: true
+            },
+            Content: {
+                required: true,
+                minlength: 10
+            }
+        },
+        messages: {
+            Name: {
+                required: "お名前を入力してください"
+            },
+            Mail: {
+                required: "メールアドレスを入力してください",
+                email: "正しいメールアドレスを入力してください"
+            },
+            Content: {
+                required: "内容を入力してください",
+                minlength: "10文字以上入力してください"
+            }
+        },
+        errorElement: "div"
+    });
 });
 
 var InquiryPage;

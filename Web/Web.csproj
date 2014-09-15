@@ -252,6 +252,12 @@
     <Content Include="Content\css\Home\InquiryAccepted.min.css">
       <DependentUpon>InquiryAccepted.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\Outline.css">
+      <DependentUpon>Outline.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\Outline.min.css">
+      <DependentUpon>Outline.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Home\TitleFonts.css">
       <DependentUpon>TitleFonts.less</DependentUpon>
     </Content>
@@ -277,6 +283,8 @@
       <DependentUpon>Shared.css</DependentUpon>
     </Content>
     <Content Include="Content\imgs\bgtest-skyblue.png" />
+    <Content Include="Content\imgs\h2.svg" />
+    <Content Include="Content\imgs\h3.svg" />
     <Content Include="Content\imgs\Home\anger-d.svg" />
     <Content Include="Content\imgs\Home\anger-l.svg" />
     <Content Include="Content\imgs\Home\bethink-d.svg" />
@@ -489,6 +497,10 @@
     <Content Include="Content\css\Home\TitleFonts.css.map">
       <DependentUpon>TitleFonts.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\Outline.less" />
+    <Content Include="Content\css\Home\Outline.css.map">
+      <DependentUpon>Outline.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
@@ -547,6 +559,7 @@
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -650,6 +663,7 @@
     <Compile Include="Utility\ImageResult.cs" />
     <Compile Include="Utility\LinophiMailClient.cs" />
     <Compile Include="Utility\MathEx.cs" />
+    <Compile Include="Utility\SEO\SitemapItem.cs" />
     <Compile Include="Utility\WebPageStatic.cs" />
     <Compile Include="ViewModel\Admin\EditTopicViewModel.cs" />
     <Compile Include="ViewModel\Admin\TopicListViewModel.cs" />
@@ -712,6 +726,7 @@
     <Content Include="Views\Admin\TopicList.cshtml" />
     <Content Include="Views\Admin\EditTopic.cshtml" />
     <Content Include="Views\Admin\UserList.cshtml" />
+    <Content Include="Views\Home\Outline.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -765,6 +780,7 @@
   <ItemGroup>
     <Folder Include="Api\Admin\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Sitemap\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201409031548165_AddStupidUpdate.resx">

@@ -7,6 +7,13 @@
   margin-bottom: 1em;
   padding: 0 20px;
   background-color: #ffffff;
+  /*font-size: xx-large;
+        margin-bottom: 1em;
+        padding: 0 1.2em;
+        background-size: 1em 1em;
+        background-color: @header-style-1-color-bg;
+        background-image: url('../imgs/h2.svg');
+        background-repeat: no-repeat;*/
 }
 .article-container h3 {
   box-shadow: -18px 0 #f0f8ff, -28px 0 #87ceeb;
