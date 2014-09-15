@@ -6,17 +6,19 @@
 @section JS{
     <script src="~/Scripts/Chart.js"></script>
     <script src="~/Scripts/Home/Top.js"></script>
+    <script src="~/Scripts/Home/TopTitle.js"></script>
 }
 
 @section CSS{
-    <link href="~/Content/css/Home/Top.css" rel="stylesheet" />
+    <link href="~/Content/css/Home/Top.min.css" rel="stylesheet" />
+    <link href="~/Content/css/Home/TitleFonts.min.css" rel="stylesheet" />
 }
 
 
 @*
     .top-container
       .top-header
-        %p.top-mainttl
+        %h1
         %p.top-subttl
       .top-main.clearfix
         .top-contents
@@ -54,7 +56,7 @@
 
 <div class="top-container">
     <div class="top-header">
-        <p class="top-mainttl">意見<span>.</span><span>み</span><span>ん</span><span>な</span></p>
+        <h1>意見<span>.</span><span>み</span><span>ん</span><span>な</span></h1>
         <p class="top-subttl">- みんなで作る主観メディア -</p>
     </div>
 
