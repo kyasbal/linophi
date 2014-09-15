@@ -175,9 +175,7 @@
                     </div>
                 </div>
                 @*本文終了位置*@
-                <div class="write-related-article-container">
-                    <a class="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle=" + Model.ArticleId)">関連/反論記事を書く</a>
-                </div>
+                
                 <div class="footer-main-sns">
                     <ul>
                         <li class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></li>
@@ -196,6 +194,11 @@
                             </script>
                     </ul>
                 </div>
+
+                <div class="write-related-article-container">
+                    <a class="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle=" + Model.ArticleId)">関連/反論記事を書く</a>
+                </div>
+          
 
                 <div class="related-list">
                     <div>関連/反証記事</div>

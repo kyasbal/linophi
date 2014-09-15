@@ -104,10 +104,10 @@ $(() => {
     });
 
 
-    //if ($("#hidden-mode").val() == "edit") {  <-何やってるかわからんかった
-    //    isConfirmedTitle = true;
-    //    return;
-    //}
+    if ($("#hidden-mode").val() == "edit") {  
+        isConfirmedTitle = true;
+        return;
+    }
 
 
     // タイトルが正当かどうかを判定してダメならエラーを返す機能
