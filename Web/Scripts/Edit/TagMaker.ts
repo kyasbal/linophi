@@ -1,41 +1,35 @@
 ﻿var tagCounter: number = 0;
 var tags: collections.Set<string> = new collections.Set<string>();
 
-function removeTag(counter,tag)
-{
+function removeTag(counter, tag) {
     console.warn(tagCounter);
     $('.edit-editted-tag-' + counter).remove();
     tags.remove(tag);
     tagCounter--;
 
-    if (tagCounter <= 5)
-    {
+    if (tagCounter <= 5) {
         $('.edit-tag-chkvalid').html("");
     }
 }
 
-module TagUtil
-{
-    export interface GetTagCountDelegate
-    {
-        (count:number,callbackArg:any):void;
+module TagUtil {
+    export interface GetTagCountDelegate {
+        (count: number, callbackArg: any): void;
     }
-    export function GetTagCount(tag:string,callbackArg:any,callback:GetTagCountDelegate)
-    {
+
+    export function GetTagCount(tag: string, callbackArg: any, callback: GetTagCountDelegate) {
         $.ajax({
             url: "/api/Tag/GetTagCount",
             type: "post",
             data: { Tag: tag },
-            success: (d) =>
-            {
-                callback(d["TagCount"],callbackArg);
+            success: (d) => {
+                callback(d["TagCount"], callbackArg);
             }
-           
+
         });
     }
 
-    export function chkValidTitle(val: string)
-    {
+    export function chkValidTitle(val: string) {
         isConfirmedTitle = true;
         $(".edit-title-chkvalid").html("");
         if (val.match(/^\s*$/)) {
@@ -48,26 +42,42 @@ module TagUtil
             $(".edit-title-chkvalid").html("　　タイトルが長すぎます");
             isConfirmedTitle = false;
         }
+        validate = isConfirmedTitle && isConfirmedTag;
+        TagUtil.onGoodCondition(validate);
+    }
 
-        var bgColor = isConfirmedTitle ? '#7FFFD4' : '#696969',
-            bgColorHover = isConfirmedTitle ? '#3CB371' : '#696969';
+    export function chkValidTag(val: string) {
+        isConfirmedTag = true;
+        if (120 < val.length) {
+            $('.edit-tag-chkvalid').html(
+                '<div class="edit-alert">　　タグ名が長すぎます</div>'
+                );
+            isConfirmedTag = false;
+        }
+        validate = isConfirmedTitle && isConfirmedTag;
+        TagUtil.onGoodCondition(validate);
+        console.log("val:" + val, "len:" + val.length, "validate:" + validate, "isconfirmedtag:" + isConfirmedTag);
+    }
+
+    export function onGoodCondition(validate: boolean) {
+        var bgColor = validate ? '#7FFFD4' : '#696969',
+            bgColorHover = validate ? '#3CB371' : '#696969';
 
         $(".edit-submit-button").css('background-color', bgColor);
         $(".edit-submit-button").hover(function () {
             $(this).css("background-color", bgColorHover);
         }, function () {
-            $(this).css("background-color", bgColor);
-        });
+                $(this).css("background-color", bgColor);
+            });
     }
 
-    export function addTag()
-    {
+    export function addTag() {
         var $target: JQuery = $(".edit-tag");
         var tag: string = $target.val();
 
         tag = tag.replace(/　/g, " ");
         var tagArr = tag.split(" ");
-
+        var conclusiveConfirmedTag = true;
         for (var i = 0, len = tagArr.length; i < len; i++) {
             if (tagArr[i] && !tags.contains(tagArr[i])) {
                 $(".edit-editted-box").append(
@@ -82,16 +92,22 @@ module TagUtil
                 tagCounter++;
 
                 if (tagCounter > 5) {
+                    conclusiveConfirmedTag = false;
                     $('.edit-tag-chkvalid').html(
                         '<div class="edit-alert">　　タグは５個までしか登録できません。タグの × を押して個数を減らしてください。</div>'
                     );
                 }
             }
+            tagArr.forEach((tagname) => {
+                TagUtil.chkValidTag(tagname);
+            });
         }
-
+        isConfirmedTag = isConfirmedTag && conclusiveConfirmedTag;
+        TagUtil.onGoodCondition(isConfirmedTag);
         $target.val("");
     }
 }
+
 $(() => {
     // タグをEnterで追加する機能
     $(".edit-tag").keypress((e) => {
@@ -104,7 +120,7 @@ $(() => {
     });
 
 
-    if ($("#hidden-mode").val() == "edit") {  
+    if ($("#hidden-mode").val() == "edit") {
         isConfirmedTitle = true;
         return;
     }
@@ -112,9 +128,13 @@ $(() => {
 
     // タイトルが正当かどうかを判定してダメならエラーを返す機能
     $(".edit-title").focus(() => {
+        validate = isConfirmedTitle && isConfirmedTag;
+        TagUtil.onGoodCondition(validate);
         TagUtil.chkValidTitle($(".edit-title").val());
     });
     $(".edit-title").keyup(() => {
+        validate = isConfirmedTitle && isConfirmedTag;
+        TagUtil.onGoodCondition(validate);
         TagUtil.chkValidTitle($(".edit-title").val());
     });
 });

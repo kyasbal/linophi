@@ -22,18 +22,21 @@ a:visited {
 .top-header > h1 {
   font-size: 70px;
   float: left;
+}
+.top-header > h1 a {
+  color: #131313;
   font-family: 'bokutachi';
 }
-.top-header > h1 > span:nth-child(1) {
+.top-header > h1 span:nth-child(1) {
   padding: 0 10px;
 }
-.top-header > h1 > span:nth-child(2) {
+.top-header > h1 span:nth-child(2) {
   color: #4385f5;
 }
-.top-header > h1 > span:nth-child(3) {
+.top-header > h1 span:nth-child(3) {
   color: #dc4437;
 }
-.top-header > h1 > span:nth-child(4) {
+.top-header > h1 span:nth-child(4) {
   color: #f5b400;
 }
 .top-header > .top-subttl {
