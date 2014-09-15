@@ -252,6 +252,12 @@
     <Content Include="Content\css\Home\InquiryAccepted.min.css">
       <DependentUpon>InquiryAccepted.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\Outline.css">
+      <DependentUpon>Outline.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\Outline.min.css">
+      <DependentUpon>Outline.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Home\TitleFonts.css">
       <DependentUpon>TitleFonts.less</DependentUpon>
     </Content>
@@ -491,6 +497,10 @@
     <Content Include="Content\css\Home\TitleFonts.css.map">
       <DependentUpon>TitleFonts.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\Outline.less" />
+    <Content Include="Content\css\Home\Outline.css.map">
+      <DependentUpon>Outline.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
@@ -714,6 +724,7 @@
     <Content Include="Views\Admin\TopicList.cshtml" />
     <Content Include="Views\Admin\EditTopic.cshtml" />
     <Content Include="Views\Admin\UserList.cshtml" />
+    <Content Include="Views\Home\Outline.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
