@@ -3,8 +3,16 @@
   background-color: aliceblue;
   border-bottom: 1px solid #f2f2f2;
 }
-header .search-container {
-  margin: 7.5px 0 7.5px 0;
+header #dropmenu {
+  float: right;
+}
+header #dropmenu ul li {
+  overflow: hidden;
+  float: left;
+  height: 50px;
+  line-height: 40px;
+  vertical-align: middle;
+  display: inline-block;
 }
 header a {
   display: inline-block;
@@ -38,16 +46,15 @@ header .menu .search {
   margin: 5px 0 5px 0;
   position: absolute;
 }
-header .menu .search input {
+header .menu .search .search-container {
+  margin: 7.5px 0 7.5px 0;
+}
+header .menu .search .search-container input {
   padding-left: 10%;
 }
-header .menu .search .search-text {
-  background-color: #dfece6;
+header .menu .search .search-container .search-text {
   color: #000000;
-  -moz-transition: background-color ease-in 0.2s;
-  -o-transition: background-color ease-in 0.2s;
-  -webkit-transition: background-color ease-in 0.2s;
-  transition: background-color ease-in 0.2s;
+  background-color: #B0E0E6;
   margin: 7.5px 0 7.5px 0;
   height: 20px;
   width: 200px;
@@ -59,17 +66,14 @@ header .menu .search .search-text {
   border: hidden !important;
   border-radius: 100px;
 }
-header .menu .search .search-text:focus {
-  background-color: #5f9781;
-  color: #ffffff;
-}
-header .menu .search .search-text:focus {
+header .menu .search .search-container .search-text:focus {
   outline: none;
 }
-header .menu .search .search-text:hover {
+header .menu .search .search-container .search-text:hover {
   border: 2px #a4c6fd !important;
+  background-color: #ADD8E6;
 }
-header .menu .search .search-button {
+header .menu .search .search-container .search-button {
   border: 0;
   width: 20px;
   height: 25px;
@@ -77,59 +81,7 @@ header .menu .search .search-button {
   left: 200px;
   top: 5px;
 }
-header .menu .search .search-button:focus {
+header .menu .search .search-container .search-button:focus {
   outline: none;
-}
-header {
-  height: 45px;
-}
-header .search {
-  float: left;
-}
-header #dropmenu {
-  float: right;
-}
-header #dropmenu ul li {
-  overflow: hidden;
-  float: left;
-  height: 50px;
-  line-height: 40px;
-  vertical-align: middle;
-  display: inline-block;
-}
-header #dropmenu ul-submit-button {
-  width: 150px;
-  font-size: 15px;
-  padding: 10px 30px;
-  background-color: #696969;
-  color: #888;
-  display: block;
-  margin: 30px auto 30px auto;
-  vertical-align: middle;
-}
-header div[class^="edit-editted-tag"] {
-  border: 1px solid #7ac2a6;
-  background: #ffffff;
-  color: #ffffff !important;
-  margin-left: 5px;
-  float: left;
-  line-height: 21px;
-  height: 22px;
-  padding: 1px 6px 0;
-  font-size: 11px;
-}
-header div[class^="edit-editted-tag"]:first-child {
-  margin-left: 0;
-}
-header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] {
-  padding-left: 10px;
-  color: #333;
-  cursor: pointer;
-}
-header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] #login {
-  display: inline;
-}
-header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] .login-form {
-  float: right;
 }
 /*# sourceMappingURL=Header.css.map */
