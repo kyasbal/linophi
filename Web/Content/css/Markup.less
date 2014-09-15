@@ -1,6 +1,57 @@
 ﻿@import "Color.less";
-.article-container,.help-container {
-    padding: 0 40px;
+.article-container{
+    border:2px solid #ccc;
+    padding:0 20px;
+    h2 {
+        .header-style-1-mixin;
+    }
+
+    h3 {
+        .header-style-2-mixin;
+    }
+        h4 {
+        border-bottom:1px solid rgba(0,0,0,0.3);
+        font-size: large;
+        margin-bottom: 1em;
+        padding: 0 20px 5px 20px;
+        background-color:ghostwhite; 
+    }
+
+       h5 {
+        font-weight:bold;
+        font-size: larger;
+        margin-bottom: 1em;
+        padding: 0 20px;
+        background-color:ghostwhite; 
+    }
+    .x_b,.b{
+        font-weight:bold;
+    }
+    p{
+        margin-bottom: 1em;
+    }
+
+    .x_quote,.quote {
+        margin: 0 20px 20px;
+        border-left: solid 4px #808080;
+        padding: 5px;
+        a{
+            color:#808080;
+        }
+        .x_source,.source {
+            margin-bottom: 10px;
+            margin-left: 10px;
+            color: gray;
+            font-size: small;
+        }
+    }
+}
+.help-container {
+    width:600px;
+    /*border:2px solid #ccc;*/
+    padding:40px;
+    margin:20px auto;
+    background-color:#FAFAFA;
     h2 {
         .header-style-1-mixin;
     }

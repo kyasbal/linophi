@@ -25,7 +25,7 @@ a img {
 }
 a:link,
 a:visited {
-  color: #2468ce;
+  color: black;
   text-decoration: underline;
 }
 a:hover,
