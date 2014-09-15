@@ -594,6 +594,10 @@
     <Compile Include="Migrations\201409150514323_AddColumnToTopics.Designer.cs">
       <DependentUpon>201409150514323_AddColumnToTopics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409151606260_CurrentRankingTopicId.cs" />
+    <Compile Include="Migrations\201409151606260_CurrentRankingTopicId.Designer.cs">
+      <DependentUpon>201409151606260_CurrentRankingTopicId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountConfigViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -641,6 +645,7 @@
     <Compile Include="Utility\WebPageStatic.cs" />
     <Compile Include="ViewModel\Admin\EditTopicViewModel.cs" />
     <Compile Include="ViewModel\Admin\TopicListViewModel.cs" />
+    <Compile Include="ViewModel\Admin\UserListViewModel.cs" />
     <Compile Include="ViewModel\Home\TopViewModel.cs" />
     <Compile Include="ViewModel\IMetaBasicOGPViewModel.cs" />
     <Compile Include="ViewModel\MetaBuilder.cs" />
@@ -698,6 +703,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\TopicList.cshtml" />
     <Content Include="Views\Admin\EditTopic.cshtml" />
+    <Content Include="Views\Admin\UserList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -787,6 +793,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409150514323_AddColumnToTopics.resx">
       <DependentUpon>201409150514323_AddColumnToTopics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409151606260_CurrentRankingTopicId.resx">
+      <DependentUpon>201409151606260_CurrentRankingTopicId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

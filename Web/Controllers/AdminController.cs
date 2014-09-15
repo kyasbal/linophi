@@ -59,7 +59,14 @@ namespace Web.Controllers
             await DbContext.SaveChangesAsync();
             TopicThumbnailManager thumbnailManager = new TopicThumbnailManager(new BlobStorageConnection());
             thumbnailManager.UploadAsync(vm.TopicId,vm.Thumbnail);
-            return View(vm);
+            return RedirectToAction("TopicList");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> UserList()
+        {
+            var userAccount = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            return View(new UserListViewModel(userAccount.Users));
         }
     }
 }
