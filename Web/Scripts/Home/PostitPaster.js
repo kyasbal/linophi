@@ -144,7 +144,7 @@ var AjaxManager = (function () {
 var ajaxManager = new AjaxManager();
 
 $(window).load(function () {
-    var htmlHeight = $('.foot').offset().top + $('.foot').outerHeight();
+    var htmlHeight = ($('.foot').offset() || { top: NaN }).top + $('.foot').outerHeight();
 
     $('html').css({
         "height": htmlHeight + "px"

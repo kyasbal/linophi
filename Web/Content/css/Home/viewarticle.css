@@ -1,9 +1,9 @@
-﻿body {
+﻿html {
   overflow-y: scroll;
+  height: 100%;
   *position: relative;
   font: 15px/1.5 arial, sans-serif;
   width: 100%;
-  height: 100%;
   background-color: #fff;
 }
 .main-sns ul li {
@@ -463,5 +463,10 @@ a:focus {
 }
 .fade-layer > img {
   width: 130px;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 /*# sourceMappingURL=ViewArticle.css.map */
