@@ -6,21 +6,16 @@
   height: 100%;
   background-color: #fff;
 }
-<<<<<<< HEAD
 .main-sns ul li {
   display: inline-block;
   vertical-align: middle;
-=======
+}
 a img {
   vertical-align: top;
 }
 a:link,
 a:visited {
-<<<<<<< HEAD
-  color: #0c2a81;
-=======
   color: black;
->>>>>>> origin/master
   text-decoration: underline;
 }
 a:hover,
@@ -28,25 +23,6 @@ a:active,
 a:focus {
   color: #0c2a81;
   text-decoration: none;
-}
-:focus {
-  outline: none;
-}
-input,
-button {
-  border: 0;
-}
-input[type="text"] {
-  -webkit-appearance: none;
-}
-.set:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.theme-tag {
-  border: 1px solid #ff0000 !important;
->>>>>>> 0c1c4aa60979f8f4d94592912d603bc13a6c50ab
 }
 .container {
   /*記事の説明部あ分(ヘッダ)*/
@@ -206,7 +182,7 @@ input[type="text"] {
 .container .contents .contentswrapper .main {
   /*background-color: aliceblue;*/
   float: left;
-  width: 800px;
+  width: 700px;
   padding: 0 40px 40px 20px;
   border: 3px solid #f0f8ff;
 }
@@ -488,49 +464,4 @@ input[type="text"] {
 .fade-layer > img {
   width: 130px;
 }
-<<<<<<< HEAD
-.alert-contents > * > * {
-  margin-top: 0;
-  margin-bottom: 20px;
-  display: block;
-}
-.alert-contents input,
-.alert-contents textarea {
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  width: 600px;
-  padding: 0.4em 0.8em;
-  color: #444;
-  margin-right: 30px;
-  margin-left: 30px;
-}
-.alert-contents textarea {
-  height: 250px;
-}
-.write-related-article {
-  background-color: #7ac2a6;
-  text-decoration: none !important;
-  color: #ffffff !important;
-  padding: 15px 60px;
-  margin: 40px;
-  line-height: 80px;
-  font-size: x-large;
-}
-.write-related-article:hover {
-  background-color: #5f9781;
-}
-.write-related-article-container {
-  text-align: center;
-  margin: 15px;
-}
-.found-article-zero {
-  text-align: center;
-}
-.found-article-zero p {
-  display: block;
-  font-size: large;
-}
-/*# sourceMappingURL=viewarticle.css.map */
-=======
 /*# sourceMappingURL=ViewArticle.css.map */
->>>>>>> origin/master
