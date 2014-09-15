@@ -569,6 +569,7 @@
     <Compile Include="Storage\Manager\AzureTableManagerBase.cs" />
     <Compile Include="Storage\Manager\BlobStorageAttribute.cs" />
     <Compile Include="Storage\Manager\TableStorageAttribute.cs" />
+    <Compile Include="Storage\Topic\TopicThumbnailManager.cs" />
     <Compile Include="Utility\BirthDayInputHelper.cs" />
     <Compile Include="Utility\ChallengeResult.cs" />
     <Compile Include="Utility\Configuration\ConfigurationLoader.cs" />

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using Web.Models;
 using Web.Models.Topic;
@@ -10,7 +12,7 @@ namespace Web.ViewModel.Home
     public class TopViewModel
     {
         private const int TopTakeCount = 3;
-        public static TopViewModel GetTopViewModel(ApplicationDbContext context,bool isDebug)
+        public async static Task<TopViewModel> GetTopViewModel(ApplicationDbContext context,bool isDebug)
         {
             TopViewModel viewModel=new TopViewModel();
             IQueryable<TopicModel> searchedTopics;
@@ -22,6 +24,7 @@ namespace Web.ViewModel.Home
             {
                 searchedTopics = context.Topics.Where(f=>f.IsVisibleToAllUser).OrderBy(f => f.EvaluationOfFire).Take(TopTakeCount);
             }
+            viewModel.TopicSections=new TopicSection[await searchedTopics.CountAsync()];
             int count = 0;
             foreach (var topicModel in searchedTopics)
             {
@@ -33,7 +36,6 @@ namespace Web.ViewModel.Home
 
         public TopViewModel()
         {
-            this.TopicSections=new TopicSection[TopTakeCount];
         }
 
         public TopicSection[] TopicSections { get; set; }

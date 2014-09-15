@@ -146,7 +146,7 @@ namespace Web.Controllers
         {
             if (String.IsNullOrWhiteSpace(id))
             {
-                return View("Top",TopViewModel.GetTopViewModel(Request.GetOwinContext().Get<ApplicationDbContext>(),User.IsInRole("Administrator")));
+                return View("Top",await TopViewModel.GetTopViewModel(Request.GetOwinContext().Get<ApplicationDbContext>(),User.IsInRole("Administrator")));
             }
             else
             {
