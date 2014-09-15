@@ -23,17 +23,6 @@ a {
 .top-header > .top-mainttl {
   font-size: 70px;
 }
-.top-header > .top-mainttl > span {
-  /* font-size: 78px;
-      font-weight: bold;
-    font-family: 'FontopoNIHONGO';
-      */
-  /*
-      &:nth-child(2) { color: red; }
-      &:nth-child(3) { color: blue; }
-      &:nth-child(4) { color: green; }
-      */
-}
 .top-header > .top-mainttl > span:nth-child(1) {
   padding: 0 10px;
 }
