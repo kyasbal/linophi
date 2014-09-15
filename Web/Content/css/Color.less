@@ -30,13 +30,13 @@
 @text-color-2:black;
 
 @bg-color-1:white;
-@bg-color-2:ghostwhite;
 
 
 //タグ
 @tag-color-border:@accent-color-1;
-@tag-color-bg:@bg-color-2;
-@tag-color-fore:@text-color-2;
+@tag-color-bg:@bg-color-1;
+@tag-color-fore:@text-color-1;
+@view-theme-tag:red;
 
 .tag-style-mixin{
     border:1px solid @tag-color-border;
@@ -45,7 +45,15 @@
 }
 
 //リンク系
+@link-normal:#2468ce;
 @link-visited:#2468ce;
+@link-hover:#2468ce;
+
+//ボーダー系
+@border-gray:#e7e7e7;
+@border-gray-all:1px solid @border-gray;
+@border-normal-green:@accent-color-1;
+@border-green-all:1px solid @border-normal-green;
 
 //送信ボタン系
 @submit-button-style-1-color-bg:@accent-color-1;

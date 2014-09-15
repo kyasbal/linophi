@@ -1,7 +1,7 @@
 ﻿.tag-style-mixin {
   border: 1px solid #7ac2a6;
-  background: #f8f8ff;
-  color: #000000 !important;
+  background: #ffffff;
+  color: #ffffff !important;
 }
 .submit-button-style-1-mixin {
   background-color: #7ac2a6;
@@ -93,7 +93,7 @@ input[type="text"] {
   clear: both;
 }
 .theme-tag {
-  border: 1px solid red !important;
+  border: 1px solid #ff0000 !important;
 }
 .container {
   /*記事の説明部分(ヘッダ)*/
@@ -112,11 +112,13 @@ input[type="text"] {
   /*以下記事部分*/
 }
 .container .contents .top {
-  width: 100%;
+  width: 60%;
   padding: 10px 0;
   /*background-color: rgba(240,255,240,1);*/
   border-top: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
+  margin-right: 0;
+  margin-left: 300px;
   margin-bottom: 30px;
 }
 .container .contents .top-inner {
@@ -146,7 +148,7 @@ input[type="text"] {
   height: 21px;
   line-height: 22px;
   padding: 1px 6px 0;
-  background-color: #fefbfa;
+  background-color: #ffffff;
   border: 1px solid #7ac2a6;
   color: #000 !important;
   text-decoration: none !important;
@@ -226,12 +228,12 @@ input[type="text"] {
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-countfv {
   display: inline-block;
   margin: 0 auto;
+  background-color: #ffffff;
   padding: 20px 10px 5px 10px;
   vertical-align: top;
   text-align: center;
   width: 55px;
   height: 50px;
-  background-color: white;
   border-radius: 60px;
   -moz-border-radius: 60px;
   -webkit-border-radius: 60px;
@@ -247,7 +249,7 @@ input[type="text"] {
   text-align: center;
   width: 100px;
   height: 50px;
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 60px;
   -moz-border-radius: 60px;
   -webkit-border-radius: 60px;
@@ -279,7 +281,7 @@ input[type="text"] {
   text-align: center;
   width: 100px;
   height: 50px;
-  background-color: white;
+  background-color: #ffffff;
   -moz-border-radius: 60px;
   -webkit-border-radius: 60px;
   border-radius: 60px;
@@ -308,7 +310,7 @@ input[type="text"] {
   padding: 25px 10px 0 10px;
   bottom: 65px;
   left: 65px;
-  background-color: white;
+  background-color: #ffffff;
   text-align: center;
   display: block;
   border-radius: 60px;
@@ -368,7 +370,7 @@ input[type="text"] {
   left: 102%;
   z-index: 9999;
   padding: 6px 10px;
-  color: #FFFFFF;
+  color: #ffffff;
   background: #666;
   border-radius: 0.5em;
   -moz-transform: translateY(-30%);
@@ -402,7 +404,7 @@ input[type="text"] {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   padding: 0.62em 1.2em;
-  background: #fff;
+  background: #ffffff;
   border: none;
   border-radius: 0.3em;
 }
@@ -414,7 +416,7 @@ input[type="text"] {
   vertical-align: middle;
 }
 .container .contents .contentswrapper .main p:hover {
-  background-color: ghostwhite;
+  background-color: #ffffff;
 }
 .container .contents .contentswrapper .main .rellist {
   padding-top: 1px;
@@ -477,7 +479,7 @@ input[type="text"] {
 }
 .container .contents .contentswrapper .dropbox {
   position: relative;
-  background-color: white;
+  background-color: #ffffff;
   float: left;
   width: 180px;
   padding-bottom: 1000000px;
@@ -507,7 +509,7 @@ input[type="text"] {
 .container .contents .contentswrapper .dropbox > * > * > span {
   cursor: default;
   padding: 3px 9px;
-  background: #fff;
+  background: #ffffff;
   color: #555;
   font-size: 12px;
   font-weight: bold;
@@ -533,7 +535,7 @@ input[type="text"] {
   }
 }
 .postit-contents {
-  background-color: #fdf8f2;
+  background-color: #ffffff;
 }
 .postit-title {
   padding: 13px 15px 0;
@@ -593,7 +595,7 @@ a.topicword {
   cursor: pointer;
 }
 a.topicword:hover {
-  background: #f0f0f0;
+  background: #ffffff;
 }
 .list .listtitle a:link,
 .list .listtitle a:visited {
@@ -665,7 +667,7 @@ a.topicword:hover {
 .write-related-article {
   background-color: #7ac2a6;
   text-decoration: none !important;
-  color: white !important;
+  color: #ffffff !important;
   padding: 15px 60px;
   margin: 40px;
   line-height: 80px;
@@ -685,4 +687,4 @@ a.topicword:hover {
   display: block;
   font-size: large;
 }
-/*# sourceMappingURL=viewarticle.css.map */
+/*# sourceMappingURL=ViewArticle.css.map */
