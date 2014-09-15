@@ -283,7 +283,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
             var bg;
             $('.dropbox > [class*="p-"]').each((i) => {
-                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')'); // i == 0のとき１つ目のふせんを表している
+                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')'); // i == 0のとき１つ目のふせんを表している
                 var pHeight: number = $target.outerHeight(true);
                 var pPos: number = ($target.offset() || { "top": NaN }).top;
                 bg = "none";
@@ -330,7 +330,7 @@ $(window).load(() => // 後読みじゃないとまともにポジションと�
 
             $('.dropbox > *').each((i) =>
             {
-                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')'); // 注意
+                var $target: JQuery = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')'); // 注意
                 if (!$target[0]) return true;
                 var elementName: string = $target[0].tagName;
                 if (elementName == "hr") return true;
