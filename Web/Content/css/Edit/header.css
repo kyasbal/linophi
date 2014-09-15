@@ -1,7 +1,6 @@
 ﻿header {
   padding-top: 3px;
-  background-color: aliceblue;
-  border-bottom: 1px solid #f2f2f2;
+  background-color: #e4e4e4;
 }
 header .search-container {
   margin: 7.5px 0 7.5px 0;
@@ -9,7 +8,7 @@ header .search-container {
 header a {
   display: inline-block;
   width: 100px;
-  color: #000;
+  color: #000 !important;
   text-decoration: none;
   text-align: center;
   font-weight: bold;
@@ -42,7 +41,7 @@ header .menu .search input {
   padding-left: 10%;
 }
 header .menu .search .search-text {
-  background-color: #dfece6;
+  background-color: #ffffff;
   color: #000000;
   -moz-transition: background-color ease-in 0.2s;
   -o-transition: background-color ease-in 0.2s;
@@ -60,7 +59,7 @@ header .menu .search .search-text {
   border-radius: 100px;
 }
 header .menu .search .search-text:focus {
-  background-color: #5f9781;
+  background-color: #f5fffa;
   color: #ffffff;
 }
 header .menu .search .search-text:focus {
@@ -132,4 +131,4 @@ header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] #
 header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] .login-form {
   float: right;
 }
-/*# sourceMappingURL=Header.css.map */
+/*# sourceMappingURL=header.css.map */

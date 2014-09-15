@@ -180,6 +180,9 @@ a:visited {
       }
         */
 }
+.top-index-box > ul > li:hover {
+  background: #eee;
+}
 .top-index-box > ul > li > small {
   float: right;
   text-align: right;

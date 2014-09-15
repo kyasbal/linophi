@@ -25,13 +25,13 @@ a img {
 }
 a:link,
 a:visited {
-  color: #2468ce;
+  color: #0c2a81;
   text-decoration: underline;
 }
 a:hover,
 a:active,
 a:focus {
-  color: #2468ce;
+  color: #0c2a81;
   text-decoration: none;
 }
 :focus {
@@ -644,4 +644,4 @@ a.topicword:hover {
   display: block;
   font-size: large;
 }
-/*# sourceMappingURL=ViewArticle.css.map */
+/*# sourceMappingURL=viewarticle.css.map */

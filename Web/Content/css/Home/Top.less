@@ -1,4 +1,6 @@
-﻿@top-accent-1: rgb(67, 133, 245);
+﻿@import "../Color.less";
+
+@top-accent-1: rgb(67, 133, 245);
 @top-accent-2: rgb(220, 68, 55);
 @top-accent-3: rgb(245, 180, 0);
 
@@ -7,10 +9,10 @@ body {
 }
 
 a {
-    color: #0c2a81;
+    color: @link-normal;
     text-decoration: none;
     &:visited {
-        color: #7b23a9;
+        color: @link-visited;
     }
 }
 
@@ -220,7 +222,9 @@ a {
             margin-right: 16px;
             padding: 12px 30px;
             font-size: 14px;
-
+            &:hover {
+                background: #eee;
+            }
             > small {
                 float: right;
                 text-align: right;
