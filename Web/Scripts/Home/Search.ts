@@ -37,7 +37,7 @@ $(() =>
         {
             $(".page-before").hide();
         }
-        if (skip+changepage>count)
+        if (skip+changepage>=count)
         {
             $(".page-after").hide();
         }
