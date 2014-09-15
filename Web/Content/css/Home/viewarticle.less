@@ -2,61 +2,23 @@
 
 @tabletPortraitWidthSize: 980px;
 
-ol, ul {
-    list-style: none;
-}
-
-img, fieldset {
-    border: none;
-}
-
-img {
-    vertical-align: bottom;
-}
-
-html {
+body {
     overflow-y: scroll;
     height: 100%;
-}
-
-body {
     *position: relative;
     font: 15px/1.5 arial,sans-serif;
     width: 100%;
     height: 100%;
     background-color: #fff;
 }
-//linkが青くなる
-/*a {
-    img {
-        vertical-align: top;
+
+.main-sns {
+    ul {
+        li {
+            display: inline-block;
+            vertical-align: middle;
+        }
     }
-
-    &:link, &:visited {
-        color: @link-normal;
-        text-decoration: underline;
-    }
-
-    &:hover, &:active, &:focus {
-        color: @link-hover;
-        text-decoration: none;
-    }
-}*/
-
-:focus {
-    outline: none;
-}
-
-input, button {
-    border: 0;
-}
-
-input[type="text"] {
-    -webkit-appearance: none;
-}
-
-.theme-tag {
-    border: 1px solid @view-theme-tag !important;
 }
 
 .container {
@@ -77,7 +39,6 @@ input[type="text"] {
         .top {
             width: 60%;
             padding: 10px 0;
-            /*background-color: rgba(240,255,240,1);*/
             border-top: @border-gray-all;
             border-bottom: @border-gray-all;
             margin: 0 0 30px 20%;
@@ -88,20 +49,21 @@ input[type="text"] {
                     padding: 5px 0;
                     position: relative;
                     display: inline-block;
-
-                    .topicwordlistli {
+                    .topic-word-list {
                         max-height: 24px;
                         padding: 0;
-                        border-bottom: 0;
                         float: left;
-                        margin: 0 5px 0 0;
-
-                        .topicword {
+                        margin: 0 30px 0 0;
+                        .theme-tag {
+                            border: 1px solid @view-theme-tag !important;
+                        }
+                        .topic-word {
+                            border-radius:10px;
                             position: relative;
                             display: inline-block;
                             height: 21px;
                             line-height: 22px;
-                            padding: 1px 6px 0;
+                            padding: 1px 6px 0 6px;
                             background-color: @bg-color-1;
                             border: @border-green-all;
                             color: #000 !important;
@@ -109,7 +71,7 @@ input[type="text"] {
                             font-size: 11px;
                             white-space: nowrap;
 
-                            &num {
+                            &-num {
                                 position: relative;
                                 top: -1px;
                                 display: inline-block;
@@ -133,15 +95,10 @@ input[type="text"] {
                             width: 60%;
                             vertical-align: top;
 
-                            .navbar-txt {
+                            .navbar-title {
                                 padding-bottom: 10px;
 
-                                img {
-                                    width: 100px;
-                                    height: 100px;
-                                }
-
-                                .navbar-title {
+                                .navbar-title-txt {
                                     display: inline;
                                     line-height: 38px;
                                     font-size: 40px;
@@ -149,6 +106,11 @@ input[type="text"] {
                                     margin: 0 15px 0 0;
                                     color: #000;
                                     text-decoration: none;
+                                }
+
+                                img {
+                                    width: 100px;
+                                    height: 100px;
                                 }
                             }
 
@@ -160,7 +122,8 @@ input[type="text"] {
                                 }
 
                                 .navbar-user {
-                                    .poster {
+                                    //投稿者
+                                    .contributor {
                                         font-size: @navbarCountFixedFontSize;
                                     }
 
@@ -173,19 +136,19 @@ input[type="text"] {
                                     }
                                 }
 
-                                .navbar-countnum {
+                                .navbar-count-num {
                                     display: inline;
                                     line-height: 1;
                                     color: #000;
                                     font-family: Arial, Helvetica, sans-serif;
                                     font-size: @navbarCountValueFontSize;
 
-                                    .navbar-countlabel {
+                                    .navbar-count-label {
                                         color: #000;
                                         font-size: @navbarCountFixedFontSize;
                                     }
 
-                                    .navbar-countcomment {
+                                    .navbar-count-comment {
                                         color: #000;
                                         font-size: @navbarCountFixedFontSize;
                                     }
@@ -198,93 +161,6 @@ input[type="text"] {
                                         font-size: @navbarCountFixedFontSize;
                                     }
                                 }
-                            }
-
-                            .navbar-bottom {
-                                ul {
-                                    li {
-                                        display: inline-block;
-                                        vertical-align: middle;
-                                    }
-                                }
-                            }
-
-                            .navbar-countfv {
-                                display: inline-block;
-                                margin: 0 auto;
-                                padding: 20px 10px 5px 10px;
-                                vertical-align: top;
-                                text-align: center;
-                                width: 55px;
-                                height: 50px;
-                                background-color: @bg-color-1;
-                                border-radius: 60px;
-                                -moz-border-radius: 60px;
-                                -webkit-border-radius: 60px;
-                                padding: 20px 10px 5px 10px;
-                                vertical-align: top;
-                                text-align: center;
-                                width: 55px;
-                                height: 50px;
-                                border-radius: 60px;
-                                -moz-border-radius: 60px;
-                                -webkit-border-radius: 60px;
-                                box-shadow: 0px 0px 3px 0px #666 inset;
-                                -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-                                -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-                            }
-
-                            .navbar-date {
-                                display: inline-block;
-                                margin: 0 auto;
-                                padding: 20px 10px 5px 10px;
-                                vertical-align: top;
-                                text-align: center;
-                                width: 100px;
-                                height: 50px;
-                                background-color: @bg-color-1;
-                                border-radius: 60px;
-                                -moz-border-radius: 60px;
-                                -webkit-border-radius: 60px;
-                                box-shadow: 0px 0px 3px 0px #666 inset;
-                                -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-                                -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-                                font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
-
-                                .date {
-                                    display: block;
-                                    line-height: 1;
-                                    margin-top: -3px;
-                                    color: #000;
-                                    font-size: 18px;
-                                    font-family: Arial,Arial, Helvetica, sans-serif,sans-serif;
-                                }
-
-                                .date-txt {
-                                    display: block;
-                                    margin-top: 3px;
-                                    line-height: 1;
-                                    color: #666;
-                                    font-size: 7px;
-                                }
-                            }
-
-                            .navbar-Update {
-                                display: inline-block;
-                                margin: 0 auto;
-                                padding: 20px 10px 5px 10px;
-                                vertical-align: top;
-                                text-align: center;
-                                width: 100px;
-                                height: 50px;
-                                background-color: @bg-color-1;
-                                -moz-border-radius: 60px;
-                                -webkit-border-radius: 60px;
-                                border-radius: 60px;
-                                -webkit-box-shadow: 0 0 3 0 #666 inset;
-                                -moz-box-shadow: 0 0 3 0 #666 inset;
-                                box-shadow: 0 0 3 0 #666 inset;
-                                font-family: Tahoma,Verdana, Geneva, Tahoma, sans-serif,sans-serif;
                             }
                         }
                         //円グラフ部分
@@ -326,6 +202,8 @@ input[type="text"] {
                                 box-shadow: 0px 0px 3px 0px #666 inset;
                                 -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
                                 -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+                                margin: 0 auto;
+                                vertical-align: top;
                             }
                         }
                     }
@@ -342,26 +220,34 @@ input[type="text"] {
                 /*background-color: aliceblue;*/
                 float: left;
                 width: 800px;
-                padding-left: 20px;
-                padding-right: 40px;
-                padding-bottom: 40px;
+                padding: 0 40px 40px 20px;
                 border: 3px solid @accent-light-color-2;
+
+                .write-related-article-container {
+                    text-align: center;
+                    margin: 15px;
+
+                    .write-related-article {
+                        background-color: @submit-button-style-1-color-bg;
+                        text-decoration: none !important;
+                        color: @submit-button-style-1-color-fore !important;
+                        padding: 15px 60px;
+                        margin: 40px;
+                        line-height: 80px;
+                        font-size: x-large;
+
+                        &:hover {
+                            background-color: @submit-button-style-1-color-hover-bg;
+                        }
+                    }
+                }
 
                 .widgetlist {
                     position: relative;
-                    padding-top: 20px;
-                    padding-bottom: 1px;
+                    padding: 20px 0 1px 0;
 
                     .widgettypetitle {
                         margin-bottom: 25px;
-
-                        .widgetitemtitleview {
-                            line-height: 1.3;
-                            padding-bottom: 5px;
-                            border-bottom: 2px solid #eaecee;
-                            font-weight: bold;
-                            font-size: 20px;
-                        }
 
                         p {
                             word-wrap: break-word;
@@ -434,26 +320,25 @@ input[type="text"] {
                     }
                 }
 
-                .main-sns {
-                    margin: 15px 0;
-
-                    li {
-                        display: inline-block;
-                        vertical-align: middle;
-                    }
-                }
-
                 p:hover {
                     background-color: @bg-color-1;
                 }
 
-                .rellist {
+                .related-list {
                     padding-top: 1px;
                     position: relative;
                     margin: 10px 0 10px 0;
 
+                    .found-article-zero {
+                        text-align: center;
+
+                        p {
+                            display: block;
+                            font-size: large;
+                        }
+                    }
+
                     .separator {
-                        /*margin: 25px 0 40px;*/
                         margin: 10px 0;
                     }
 
@@ -462,6 +347,13 @@ input[type="text"] {
                             display: table;
                             margin: 30px 0;
                             padding: 0 20px;
+
+                            .listthumb {
+                                display: table-cell;
+                                width: 60px;
+                                height: 60px;
+                                vertical-align: top;
+                            }
                         }
 
                         .listitem:first-child {
@@ -472,51 +364,36 @@ input[type="text"] {
                             background-color: antiquewhite;
                         }
 
-                        .listthumb {
-                            display: table-cell;
-                            width: 60px;
-                            height: 60px;
-                            /*padding: 0 15px 0 0;*/
-                            vertical-align: top;
-
-                            a {
-                                display: block;
-                                width: 60px;
-                                height: 60px;
-                                overflow: hidden;
-                            }
-                        }
-
                         .listtxt {
                             display: table-cell;
                             vertical-align: middle;
                             table-layout: fixed;
                             width: 100%;
                             max-width: 560px;
-                        }
 
-                        .listtitle {
-                            display: inline;
-                            line-height: 1.1;
-                            font-size: 20px;
-                            font-weight: normal;
-                            margin-right: 15px;
+                            .listtitle {
+                                display: inline;
+                                line-height: 1.1;
+                                font-size: 20px;
+                                font-weight: normal;
+                                margin-right: 15px;
 
-                            a {
-                                padding: 6px 0;
-                                color: #000;
+                                a {
+                                    padding: 6px 0;
+                                    color: #000;
+                                }
+
+                                .listdesc {
+                                    color: #aaa;
+                                }
                             }
                         }
 
-                        .listdesc {
-                            color: #aaa;
+                        .more-read {
+                            float: right;
+                            color: black;
+                            text-decoration: underline;
                         }
-                    }
-
-                    .more-read {
-                        float: right;
-                        color: black;
-                        text-decoration: underline;
                     }
                 }
             }
@@ -564,7 +441,6 @@ input[type="text"] {
         }
     }
 }
-
 
 .postit {
     position: fixed;
@@ -644,50 +520,12 @@ input[type="text"] {
     }
 }
 
-.navbar .navbar-username & > a:link, .navbar .navbar-username & > a:visited {
-    text-decoration: none;
-}
-
-.navbar .navbar-username & > a:hover, .navbar .navbar-username & > a:active, .navbar .navbar-username & > a:focus {
-    text-decoration: underline;
-}
-
-a.topicword {
-    cursor: pointer;
-}
-
-a.topicword:hover {
-    background: @bg-color-1;
-}
-
-.list .listtitle a:link, .list .listtitle a:visited {
-    text-decoration: none;
-}
-
-.list .listtitle a:hover, .list .listtitle a:active, .list .listtitle a:focus {
-    text-decoration: underline;
-}
-
-.list .listdate, .list .listview {
-    display: inline-block;
-}
-
-.main .separator1, .main .separator {
+.main .separator, .main .separator {
     border-top: @border-gray-all;
-}
 
-.main .separator1 hr, .main .separator hr {
-    display: none;
-}
-
-
-.font-size-25 {
-    font-size: 25px;
-}
-
-
-.droppable-hover {
-    background: #fdd;
+    hr {
+        display: none;
+    }
 }
 
 .fade-layer {
@@ -711,56 +549,5 @@ a.topicword:hover {
 
     > img {
         width: 130px;
-    }
-}
-
-
-.alert-contents {
-    > * > * {
-        margin-top: 0;
-        margin-bottom: 20px;
-        display: block;
-    }
-
-    input, textarea {
-        border: 1px solid #ccc;
-        border-radius: 2px;
-        width: 600px;
-        padding: 0.4em 0.8em;
-        color: #444;
-        margin-right: 30px;
-        margin-left: 30px;
-    }
-
-    textarea {
-        height: 250px;
-    }
-}
-
-.write-related-article {
-    background-color: @submit-button-style-1-color-bg;
-    text-decoration: none !important;
-    color: @submit-button-style-1-color-fore !important;
-    padding: 15px 60px;
-    margin: 40px;
-    line-height: 80px;
-    font-size: x-large;
-
-    &:hover {
-        background-color: @submit-button-style-1-color-hover-bg;
-    }
-}
-
-.write-related-article-container {
-    text-align: center;
-    margin: 15px;
-}
-
-.found-article-zero {
-    text-align: center;
-
-    p {
-        display: block;
-        font-size: large;
     }
 }
