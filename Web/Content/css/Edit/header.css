@@ -1,10 +1,13 @@
 ﻿header {
   padding-top: 3px;
-  background-color: #e4e4e4;
+  background-color: #ffffff;
   border-bottom: 1px solid #f2f2f2;
+  margin-bottom: 10px;
 }
 header #dropmenu {
   float: right;
+  position: relative;
+  top: -50px;
 }
 header #dropmenu ul li {
   overflow: hidden;
@@ -14,7 +17,17 @@ header #dropmenu ul li {
   vertical-align: middle;
   display: inline-block;
 }
-header a {
+header .header-brand-container {
+  z-index: 100;
+  width: 100%;
+}
+header .header-brand-container a.header-brand {
+  color: dimgray;
+  line-height: 50px;
+  font-size: x-large;
+  font-weight: bold;
+}
+header #dropmenu a {
   display: inline-block;
   width: 100px;
   color: #000 !important;
@@ -33,14 +46,16 @@ header a {
   -o-transition-duration: 0.2s;
   -o-transition-timing-function: liner;
 }
-header a:hover {
+header #dropmenu a:hover {
   color: #818181;
   border-bottom: 5px solid;
 }
 header .menu {
+  text-align: center;
   margin: 0 auto;
   overflow: hidden;
   width: 80%;
+  height: 50px;
 }
 header .menu .search {
   margin: 5px 0 5px 0;
@@ -54,34 +69,43 @@ header .menu .search .search-container input {
 }
 header .menu .search .search-container .search-text {
   color: #000000;
-  background-color: #B0E0E6;
   margin: 7.5px 0 7.5px 0;
   height: 20px;
   width: 200px;
-  padding: 5px 10px;
+  padding: 5px 0px 5px 10px;
   position: absolute;
   left: 10px;
   top: -6px;
   box-sizing: content-box;
-  border: hidden !important;
-  border-radius: 100px;
+  border: 1px solid lightgray;
+  border-radius: 2px;
 }
 header .menu .search .search-container .search-text:focus {
   outline: none;
-}
-header .menu .search .search-container .search-text:hover {
-  border: 2px #a4c6fd !important;
-  background-color: #ADD8E6;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 0 1px inset;
 }
 header .menu .search .search-container .search-button {
   border: 0;
-  width: 20px;
+  border-left: 1px solid lightgray;
+  width: 40px;
   height: 25px;
   position: absolute;
-  left: 200px;
+  left: 180px;
   top: 5px;
+  background-image: url("/Content/imgs/loupe.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+  background-size: contain;
+}
+header .menu .search .search-container .search-button:hover {
+  -moz-transform: translateY(1px);
+  -ms-transform: translateY(1px);
+  -o-transform: translateY(1px);
+  -webkit-transform: translateY(1px);
+  transform: translateY(1px);
 }
 header .menu .search .search-container .search-button:focus {
   outline: none;
 }
-/*# sourceMappingURL=header.css.map */
+/*# sourceMappingURL=Header.css.map */

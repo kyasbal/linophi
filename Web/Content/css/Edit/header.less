@@ -2,12 +2,14 @@
 
 header {
     padding-top: 3px;
-    background-color: @bg-color-2;
+    background-color: @header-color-bg;
     border-bottom: 1px solid #f2f2f2;
-
+    margin-bottom: 10px;
+    
     #dropmenu {
         float: right;
-
+        position:relative;
+        top:-50px;
         ul {
             li {
                 overflow: hidden;
@@ -20,7 +22,17 @@ header {
         }
     }
 
-    a {
+    .header-brand-container{
+        z-index:100;
+        width:100%;
+        a.header-brand{
+            color:dimgray;
+            line-height:50px;
+            font-size:x-large;
+            font-weight:bold;
+        }
+    }
+    #dropmenu a {
         display: inline-block;
         width: 100px;
         color: #000 !important;
@@ -32,16 +44,17 @@ header {
         .transition-property-mixin();
     }
 
-    a:hover {
+    #dropmenu a:hover {
         color: #818181;
         border-bottom: 5px solid;
     }
 
     .menu {
+        text-align:center;
         margin: 0 auto;
         overflow: hidden;
         width: 80%;
-
+        height:50px;
         .search {
             margin: 5px 0 5px 0;
             position: absolute;
@@ -49,46 +62,55 @@ header {
             .search-container {
                 margin: 7.5px 0 7.5px 0;
 
-            input {
-                padding-left: 10%;
-            }
+                input {
+                    padding-left: 10%;
+                }
 
-            .search-text {
+                .search-text {
                     color: @textbox-style-1-color-fore;
-                    background-color: #B0E0E6;
-                margin: 7.5px 0 7.5px 0;
-                height: 20px;
-                width: 200px;
-                padding: 5px 10px;
-                position: absolute;
-                left: 10px;
-                top: -6px;
-                box-sizing: content-box;
-                border: hidden !important;
-                border-radius: 100px;
-            }
+                    margin: 7.5px 0 7.5px 0;
+                    height: 20px;
+                    width: 200px;
+                    padding: 5px 0px 5px 10px;
+                    position: absolute;
+                    left: 10px;
+                    top: -6px;
+                    box-sizing: content-box;
+                    border: 1px solid lightgray;
+                    border-radius: 2px;
+                }
 
-            .search-text:focus {
-                outline: none;
-            }
+                .search-text:focus {
+                    outline: none;
+                    box-shadow: rgba(0,0,0,0.4) 0 0 1px inset;
+                }
 
-            .search-text:hover {
-                border: 2px #a4c6fd !important;
-                    background-color: #ADD8E6;
-            }
+                .search-button {
+                    border: 0;
+                    border-left: 1px solid lightgray;
+                    width: 40px;
+                    height: 25px;
+                    position: absolute;
+                    left: 180px;
+                    top: 5px;
+                    background-image: url("/Content/imgs/loupe.svg");
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-color: @bg-color-1;
+                    background-size: contain;
 
-            .search-button {
-                border: 0;
-                width: 20px;
-                height: 25px;
-                position: absolute;
-                left: 200px;
-                top: 5px;
-            }
+                    &:hover {
+                        -moz-transform: translateY(1px);
+                        -ms-transform: translateY(1px);
+                        -o-transform: translateY(1px);
+                        -webkit-transform: translateY(1px);
+                        transform: translateY(1px);
+                    }
+                }
 
-            .search-button:focus {
-                outline: none;
-            }
+                .search-button:focus {
+                    outline: none;
+                }
             }
         }
     }

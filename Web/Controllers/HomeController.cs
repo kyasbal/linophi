@@ -244,7 +244,7 @@ namespace Web.Controllers
             SearchResultViewModel vm = new SearchResultViewModel();
             List<SearchResultArticle> articles = new List<SearchResultArticle>();
             var query = tagModel.Articles.AsQueryable();
-            var count = await query.CountAsync();
+            var count = query.Count();
             query=ChangeOrder(order, query);
             query=query.Skip(skip);
             foreach (var source in query.Take(10))
