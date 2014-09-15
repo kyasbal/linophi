@@ -29,7 +29,7 @@ namespace Web.ViewModel.Home
             int count = 0;
             foreach (var topicModel in searchedTopics)
             {
-                viewModel.TopicSections[count]=TopicSection.FromModel(topicModel);
+                viewModel.TopicSections[count]=TopicSection.FromModel(context,topicModel);
                 count++;
             }
             return viewModel;
@@ -49,12 +49,23 @@ namespace Web.ViewModel.Home
             public string TopicTitle { get; set; }
             public string TopicDescription { get; set; }
 
-            public static TopicSection FromModel(TopicModel topicModel)
+            public IEnumerable<ArticleModel> FlamedModels { get; set; }
+ 
+            public IEnumerable<ArticleModel> NewModels { get; set; } 
+
+            public static TopicSection FromModel(ApplicationDbContext context,TopicModel topicModel)
             {
                 TopicSection section=new TopicSection();
                 section.TopicTitle = topicModel.TopicTitle;
                 section.TopicId = topicModel.TopicId;
                 section.TopicDescription = topicModel.Description;
+                ArticleModel[] newArticles =
+                    context.Articles.Where(f => !f.IsDraft && f.ThemeId.Equals(topicModel.TopicId))
+                        .OrderBy(f => f.CreationTime)
+                        .Take(3)
+                        .ToArray();
+                List<ArticleModel> flamedArticles=new List<ArticleModel>();
+                section.NewModels = newArticles;
                 return section;
             }
         }

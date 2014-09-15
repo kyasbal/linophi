@@ -42,5 +42,7 @@ namespace Web.Models
 //                });
             base.OnModelCreating(modelBuilder);
         }
+
+
     }
 }
