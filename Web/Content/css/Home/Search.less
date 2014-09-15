@@ -17,7 +17,6 @@ body {
 .contents {
     padding-bottom: 25px;
     overflow: hidden;
-
     .wrapper {
         width: 960px;
         margin: 0 auto;
@@ -58,12 +57,13 @@ body {
             .search-result {
 
                 .search-header {
-                    background-color: blanchedalmond;
+                    background-color: #fff;
                     width: 90.5%;
                     margin-top: 30px;
                     margin-left: 0;
                     padding: 20px 30px;
                     padding-bottom: 20px;
+                    border:1px solid #ccc;
 
                     form {
                         margin-top: 10px;
@@ -86,7 +86,7 @@ body {
                 .listitem {
                     display: table;
                     margin: 20px 0 20px 20px;
-                    padding: 10px;
+                    padding: 20px;
 
                     .listthum {
                         display: table-cell;
@@ -100,7 +100,9 @@ body {
                             width: 60px;
                             height: 60px;
                             overflow: hidden;
+                            
                         }
+                           
                     }
 
                     .listtxt {
@@ -121,28 +123,32 @@ body {
                             a {
                                 word-wrap: break-word;
                                 padding: 6px 0;
-                                color: #000;
+                                color: #1A0DAB;
+                                text-decoration:none;
+                                &:hover{
+                                    text-decoration:solid;
+                                }
                             }
                         }
 
                         .listdesc {
-                            color: #aaa;
+                            color: #006621;
                         }
                     }
                 }
 
                 .listitem:hover {
-                    background-color: antiquewhite;
+                    /*background-color: antiquewhite;*/
                 }
 
                 .my-editted, .search-editted {
                     margin-top: 30px;
                     width: 100%;
-                    background-color: rgba(240,255,240,1);
 
                     .adjust {
                         padding-top: 5px;
                         padding-bottom: 10px;
+                        /*border:1px solid #660000;*/
                     }
                 }
             }
