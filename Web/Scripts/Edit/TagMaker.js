@@ -48,8 +48,6 @@ var TagUtil;
         }, function () {
             $(this).css("background-color", bgColor);
         });
-
-        console.log(isConfirmedTitle);
     }
     TagUtil.chkValidTitle = chkValidTitle;
 

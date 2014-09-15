@@ -58,8 +58,6 @@ module TagUtil
         }, function () {
             $(this).css("background-color", bgColor);
         });
-
-        console.log(isConfirmedTitle);
     }
 
     export function addTag()
@@ -106,7 +104,7 @@ $(() => {
     });
 
 
-    if ($("#hidden-mode").val() == "edit") {
+    if ($("#hidden-mode").val() == "edit") {  
         isConfirmedTitle = true;
         return;
     }

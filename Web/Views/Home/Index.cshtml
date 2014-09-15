@@ -83,16 +83,10 @@
                                     {@Model.Title
                                     }
                                 </h1>
-                                <span>
-                                    @if (Model.UseThumbnail)
-                                    {
-                                        <img src="@("/Pages/ContentUpload/Thumbnail?articleId=" + Model.ArticleId)" />
-                                    }
-                                </span>
                             </div>
 
                             <div class="navbar-count">
-                                <div class="navbar-user">
+                                <span class="navbar-user">
                                     <span class="contributor">投稿者</span>
                                     <span class="navbar-userthumb">@Model.Author_IconTag</span>
                                     <span class="navbar-username">
@@ -103,20 +97,24 @@
                                             }
                                         </a>さん
                                     </span>
-                                </div>
-                                <div class="navbar-count-num">
-                                    <span class="navbar-count-label">PV</span>
-                                    @if (Model != null)
-                                    {@Model.PageView
-                                    }
-                                    <span class="navbar-count-comment">コメント</span>
-                                    @if (Model != null)
-                                    {@Model.CommentCount
-                                    }
-                                </div>
-                                <div class="navbar-update-time">
-                                    <span class="update-time">更新日時</span>@Model.Article_UpDate
-                                </div>
+                                </span>
+                                <span class="navbar-page-data">
+                                    <span class="navbar-count-num">
+                                        <span class="navbar-count-label">PV</span>
+                                        @if (Model != null)
+                                        {@Model.PageView
+                                        }
+                                    </span>
+                                    <span class="navbar-count-num">
+                                        <span class="navbar-count-comment">コメント</span>
+                                        @if (Model != null)
+                                        {@Model.CommentCount
+                                        }
+                                    </span>
+                                    <span class="navbar-update-time">
+                                        <span class="update-time">更新日時</span>@Model.Article_UpDate
+                                    </span>
+                                </span>
                                 @if (User.IsInRole("Administrator"))
                                 {
                                     <form method="POST" action="/api/Article/RemoveAllLabel">
@@ -177,10 +175,8 @@
                     </div>
                 </div>
                 @*本文終了位置*@
-                <div class="write-related-article-container">
-                    <a class="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle=" + Model.ArticleId)">関連/反論記事を書く</a>
-                </div>
-                <div class="main-sns">
+                
+                <div class="footer-main-sns">
                     <ul>
                         <li class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></li>
                         <li>
@@ -198,6 +194,11 @@
                             </script>
                     </ul>
                 </div>
+
+                <div class="write-related-article-container">
+                    <a class="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle=" + Model.ArticleId)">関連/反論記事を書く</a>
+                </div>
+          
 
                 <div class="related-list">
                     <div>関連/反証記事</div>

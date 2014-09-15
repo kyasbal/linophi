@@ -6,10 +6,6 @@
   width: 100%;
   background-color: #fff;
 }
-.main-sns ul li {
-  display: inline-block;
-  vertical-align: middle;
-}
 .container {
   /*記事の説明部あ分(ヘッダ)*/
 }
@@ -49,7 +45,6 @@
   border: 1px solid #ff0000 !important;
 }
 .container .contents .top-inner .tag .topic-word-list .topic-word {
-  border-radius: 10px;
   position: relative;
   display: inline-block;
   height: 21px;
@@ -59,7 +54,7 @@
   border: 1px solid #7ac2a6;
   color: #000 !important;
   text-decoration: none !important;
-  font-size: 11px;
+  font-size: 13px;
   white-space: nowrap;
 }
 .container .contents .top-inner .tag .topic-word-list .topic-word-num {
@@ -80,53 +75,65 @@
   width: 60%;
   vertical-align: top;
 }
+.container .contents .top-inner .navbar-main .navbar-detail .main-sns {
+  margin: 30px;
+}
+.container .contents .top-inner .navbar-main .navbar-detail .main-sns ul li {
+  display: inline-block;
+  vertical-align: middle;
+}
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-title {
-  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-title .navbar-title-txt {
   display: inline;
-  line-height: 38px;
   font-size: 40px;
   word-wrap: break-word;
   margin: 0 15px 0 0;
   color: #000;
   text-decoration: none;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-title img {
-  width: 100px;
-  height: 100px;
-}
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-count > div {
   margin: 15px 0;
 }
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-user .contributor {
-  font-size: 12px;
+  font-size: 11px;
+  margin-right: 20px;
+}
+.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-user .navbar-username {
+  margin-left: 20px;
 }
 .container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-user .navbar-username a {
   color: #000 !important;
   font-weight: bold;
   font-size: 20px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-count-num {
+.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-page-data {
+  display: inline;
+  margin: 0 15px 0 15px;
+}
+.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-count-num {
   display: inline;
   line-height: 1;
   color: #000;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-count-num .navbar-count-label {
+.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-count-num .navbar-count-label {
   color: #000;
-  font-size: 12px;
+  font-size: 11px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-count-num .navbar-count-comment {
+.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-count-num .navbar-count-comment {
+  margin-left: 10px;
   color: #000;
-  font-size: 12px;
+  font-size: 11px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-update-time {
+.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-update-time {
+  margin-left: 10px;
   font-size: 20px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-update-time .update-time {
-  font-size: 12px;
+.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-update-time .update-time {
+  font-size: 11px;
 }
 .container .contents .top-inner .navbar-main .navbar-thumb {
   z-index: 1;
@@ -159,6 +166,7 @@
   -moz-box-shadow: 0px 0px 3px 0px #666 inset;
   margin: 0 auto;
   vertical-align: top;
+  font-size: 20px;
 }
 .container .contents .contentswrapper {
   width: 1040px;
@@ -172,9 +180,16 @@
   padding: 0 40px 40px 20px;
   border: 3px solid #f0f8ff;
 }
+.container .contents .contentswrapper .main .footer-main-sns {
+  float: right;
+}
+.container .contents .contentswrapper .main .footer-main-sns ul li {
+  display: inline-block;
+  vertical-align: middle;
+}
 .container .contents .contentswrapper .main .write-related-article-container {
   text-align: center;
-  margin: 15px;
+  margin: 55px;
 }
 .container .contents .contentswrapper .main .write-related-article-container .write-related-article {
   background-color: #7ac2a6;
@@ -270,7 +285,7 @@
   font-size: large;
 }
 .container .contents .contentswrapper .main .related-list .separator {
-  margin: 10px 0;
+  margin: 30px 0;
 }
 .container .contents .contentswrapper .main .related-list .list .listitem {
   display: table;
@@ -455,4 +470,4 @@
   display: block;
   clear: both;
 }
-/*# sourceMappingURL=viewarticle.css.map */
+/*# sourceMappingURL=ViewArticle.css.map */
