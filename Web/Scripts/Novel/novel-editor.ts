@@ -938,7 +938,7 @@
         getFormattedHtml(str: string): string
         {
             var headerLevel: number = 2;
-            for (var i = 2; i < str.length+1; i++)
+            for (var i = 1; i < str.length+1; i++)
             {
                 headerLevel = i + 1;
                 if (str.charAt(i) != '#')
@@ -948,7 +948,7 @@
             }
             var value = str.substr(headerLevel - 1);
             if (!value) {
-                value = "&ensp;";
+                value = "&nbsp;";
             }
             return "<h" + headerLevel + ">" + value + "</h" + headerLevel + ">";
         }

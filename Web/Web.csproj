@@ -252,6 +252,12 @@
     <Content Include="Content\css\Home\InquiryAccepted.min.css">
       <DependentUpon>InquiryAccepted.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\TitleFonts.css">
+      <DependentUpon>TitleFonts.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Home\TitleFonts.min.css">
+      <DependentUpon>TitleFonts.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Home\Top.css">
       <DependentUpon>Top.less</DependentUpon>
     </Content>
@@ -431,6 +437,58 @@
       <DependentUpon>InquiryAccepted.css</DependentUpon>
     </Content>
     <Content Include="fonts\FontopoNIHONGO.otf" />
+    <Content Include="fonts\title\07YasashisaAntique.otf" />
+    <Content Include="fonts\title\07やさしさゴシックボールド.ttf" />
+    <Content Include="fonts\title\bokutachi.otf" />
+    <Content Include="fonts\title\cheekfont.ttf" />
+    <Content Include="fonts\title\FontopoNIHONGO.otf" />
+    <Content Include="fonts\title\GauFontDonutShop.TTF" />
+    <Content Include="fonts\title\guzuri_1nensei.ttf" />
+    <Content Include="fonts\title\Gyate-Luminescence.ttf" />
+    <Content Include="fonts\title\HOLIDAYM.TTF" />
+    <Content Include="fonts\title\jackeyfont.ttf" />
+    <Content Include="fonts\title\JiyunoTsubasa.ttf" />
+    <Content Include="fonts\title\mamemoji.ttf" />
+    <Content Include="fonts\title\mini-wakuwaku-maru.otf" />
+    <Content Include="fonts\title\mini-wakuwaku.otf" />
+    <Content Include="fonts\title\Pigmo-00.otf" />
+    <Content Include="fonts\title\PixelMplus10-Bold.ttf" />
+    <Content Include="fonts\title\PixelMplus10-Regular.ttf" />
+    <Content Include="fonts\title\PixelMplus12-Bold.ttf" />
+    <Content Include="fonts\title\PixelMplus12-Regular.ttf" />
+    <Content Include="fonts\title\RiiPopkkR.otf" />
+    <Content Include="fonts\title\RiiTN_R.otf" />
+    <Content Include="fonts\title\RiiT_F.otf" />
+    <Content Include="fonts\title\rounded-x-mplus-1c-black.ttf" />
+    <Content Include="fonts\title\rounded-x-mplus-1c-bold.ttf" />
+    <Content Include="fonts\title\rounded-x-mplus-1c-heavy.ttf" />
+    <Content Include="fonts\title\rounded-x-mplus-1c-light.ttf" />
+    <Content Include="fonts\title\rounded-x-mplus-1c-medium.ttf" />
+    <Content Include="fonts\title\rounded-x-mplus-1c-regular.ttf" />
+    <Content Include="fonts\title\yomogifont.otf" />
+    <Content Include="fonts\title\yutapon_coding_081.ttc" />
+    <Content Include="fonts\title\ZinFancyPino-RK.otf" />
+    <Content Include="fonts\title\ZinFree4winﾂ･ZiFAei.otf" />
+    <Content Include="fonts\title\ZinFree4winﾂ･ZiFAhi.otf" />
+    <Content Include="fonts\title\ZinFree4winﾂ･ZiFAka.otf" />
+    <Content Include="fonts\title\ZinFree4winﾂ･zinDigi.otf" />
+    <Content Include="fonts\title\ZInFree_Henawinﾂ･ZinHena-MK.ttf" />
+    <Content Include="fonts\title\ZinFree_Kidwinﾂ･ZinKid-RK.ttf" />
+    <Content Include="fonts\title\ZinHenaBokuryu-CRF.ttf" />
+    <Content Include="fonts\title\ZinPenIto-R.otf" />
+    <Content Include="fonts\title\ZinPenKeba-R.otf" />
+    <Content Include="fonts\title\ZinPointHone-R.otf" />
+    <Content Include="fonts\title\ZinPopGel-RKF.ttf" />
+    <Content Include="fonts\title\ZinRanKaku-R.otf" />
+    <Content Include="fonts\title\ZinRanOogi-R.otf" />
+    <Content Include="fonts\title\えり字.otf" />
+    <Content Include="fonts\title\ゆるもじ.ttf" />
+    <Content Include="fonts\title\るりいろ.ttf" />
+    <Content Include="fonts\title\青柳衡山フォントT.ttf" />
+    <Content Include="Content\css\Home\TitleFonts.less" />
+    <Content Include="Content\css\Home\TitleFonts.css.map">
+      <DependentUpon>TitleFonts.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />

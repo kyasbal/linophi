@@ -37,5 +37,22 @@ namespace Web.Api.Cron
 //                return Json(false);
 //            }
         }
+
+        public async Task<IHttpActionResult> TopicEvaluationUpdateJob()
+        {
+            var context = Request.GetOwinContext().Get<ApplicationDbContext>();
+            foreach (var topicModel in context.Topics)
+            {
+                double sumOfValue = 0;
+                foreach (var source in context.Articles.Where(f => f.ThemeId.Equals(topicModel.TopicId)))
+                {
+                    CurrentRankingModel ranking = await context.CurrentRanking.FindAsync(source.ArticleModelId);
+                    sumOfValue += ranking.PVCoefficient;
+                }
+                topicModel.EvaluationOfFire = sumOfValue;
+            }
+            await context.SaveChangesAsync();
+            return Json(true);
+        }
     }
 }
