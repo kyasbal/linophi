@@ -1,7 +1,9 @@
-﻿footer {
+﻿@import "../Color";
+
+footer {
     height: 200px;
     width: 100%;
-    background: aliceblue;
+    background: @bg-color-2;
     bottom: 0;
     position: relative;
 
@@ -29,7 +31,7 @@
             img {
                 height: 160px;
                 width: auto;
-            }
+        }
 
             .ulist {
                 font-weight: 900;
@@ -42,15 +44,15 @@
                     a {
                         color: #000;
                         text-decoration: underline;
-                    }
+                }
 
                     a:hover {
                         color: #444;
                         text-decoration: underline;
-                    }
-                }
             }
         }
+    }
+    }
     }
 
     .box-container:before, .box-container:after {
