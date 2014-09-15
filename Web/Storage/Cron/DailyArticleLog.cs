@@ -65,7 +65,26 @@ namespace Web.Storage.Cron
                         timeDifference;
                 }
                 await Table.ExecuteAsync(TableOperation.Insert(article));
+                CurrentRankingModel rankingModel = await dbContext.CurrentRanking.FindAsync(articleId);
+                if (rankingModel == null)
+                {
+                    rankingModel = new CurrentRankingModel();
+                    rankingModel.ArticleId = articleId;
+                    rankingModel.CommentCoefficient = article.CommentCountDifferentialDifferentialPerTime;
+                    rankingModel.LabelCoefficient = article.LabelCountDifferentialDifferentialPerTime;
+                    rankingModel.PVCoefficient = article.PageViewDifferentialDifferentialPerTime;
+                    dbContext.CurrentRanking.Add(rankingModel);
+
+                }
+                else
+                {
+                    rankingModel.ArticleId = articleId;
+                    rankingModel.CommentCoefficient = article.CommentCountDifferentialDifferentialPerTime;
+                    rankingModel.LabelCoefficient = article.LabelCountDifferentialDifferentialPerTime;
+                    rankingModel.PVCoefficient = article.PageViewDifferentialDifferentialPerTime;
+                }
             }
+            await dbContext.SaveChangesAsync();
         }
     }
 

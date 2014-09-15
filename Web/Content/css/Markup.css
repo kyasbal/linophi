@@ -20,14 +20,14 @@
   font-size: xx-large;
   margin-bottom: 1em;
   padding: 0 20px;
-  background-color: #f8f8ff;
+  background-color: #ffffff;
 }
 .header-style-2-mixin {
   box-shadow: -18px 0 #f0f8ff, -28px 0 #87ceeb;
   font-size: x-large;
   margin-bottom: 1em;
   padding: 0 20px;
-  background-color: #f8f8ff;
+  background-color: #ffffff;
 }
 .textbox-style-1-mixin {
   background-color: #dfece6;
@@ -51,7 +51,7 @@
   font-size: xx-large;
   margin-bottom: 1em;
   padding: 0 20px;
-  background-color: #f8f8ff;
+  background-color: #ffffff;
 }
 .article-container h3,
 .help-container h3 {
@@ -59,7 +59,7 @@
   font-size: x-large;
   margin-bottom: 1em;
   padding: 0 20px;
-  background-color: #f8f8ff;
+  background-color: #ffffff;
 }
 .article-container h4,
 .help-container h4 {
