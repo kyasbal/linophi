@@ -468,6 +468,8 @@
     <Compile Include="Api\AttachCommentRequest.cs" />
     <Compile Include="Api\CommentController.cs" />
     <Compile Include="Api\Content\ContentUploadController.cs" />
+    <Compile Include="Api\Cron\CronStatisticsController.cs" />
+    <Compile Include="Api\Cron\Request\CronRequest.cs" />
     <Compile Include="Api\Label\LabelController.cs" />
     <Compile Include="Api\Response\Article\ArticleSummaryResponse.cs" />
     <Compile Include="Api\Response\Article\ExistenceRequest.cs" />
@@ -516,11 +518,21 @@
     <Compile Include="Migrations\201409110213226_AddThemeToTag.Designer.cs">
       <DependentUpon>201409110213226_AddThemeToTag.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409140648060_AddStatisticsLog.cs" />
+    <Compile Include="Migrations\201409140648060_AddStatisticsLog.Designer.cs">
+      <DependentUpon>201409140648060_AddStatisticsLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409141909442_AddCurrentRanking.cs" />
+    <Compile Include="Migrations\201409141909442_AddCurrentRanking.Designer.cs">
+      <DependentUpon>201409141909442_AddCurrentRanking.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountConfigViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ArticleEditViewModel.cs" />
     <Compile Include="Models\ArticleModel.cs" />
+    <Compile Include="Models\Cron\CurrentRanking.cs" />
+    <Compile Include="Models\Cron\StatisticsLogModel.cs" />
     <Compile Include="Models\EditViewModel.cs" />
     <Compile Include="Models\MyPageViewModel.cs" />
     <Compile Include="Models\SearchResultViewModel.cs" />
@@ -537,6 +549,7 @@
     <Compile Include="Storage\Connection\BlobStorageConnection.cs" />
     <Compile Include="Storage\Connection\StorageConnectionBase.cs" />
     <Compile Include="Storage\Connection\TableStorageConnection.cs" />
+    <Compile Include="Storage\Cron\DailyArticleLog.cs" />
     <Compile Include="Storage\ImageUploaderManager.cs" />
     <Compile Include="Storage\InquiryLogManager.cs" />
     <Compile Include="Storage\InquiryNotifyManager.cs" />
@@ -682,6 +695,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409110213226_AddThemeToTag.resx">
       <DependentUpon>201409110213226_AddThemeToTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409140648060_AddStatisticsLog.resx">
+      <DependentUpon>201409140648060_AddStatisticsLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409141909442_AddCurrentRanking.resx">
+      <DependentUpon>201409141909442_AddCurrentRanking.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

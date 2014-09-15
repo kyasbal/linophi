@@ -4,27 +4,26 @@
     width: 500px;
     margin: 0 auto;
 
-    .inquiry-form{
-        border:1px solid @accent-highlight-color-1;
-        padding:25px;
+    .inquiry-form {
+        border: 1px solid @accent-highlight-color-1;
+        padding: 25px;
 
-        h1{
-            
-            margin:0 auto; 
+        h1 {
+            margin: 0 auto;
             font-size: xx-large;
             padding: 0 20px;
-            text-align:center;
-            border-bottom:1px solid @accent-highlight-color-1;
+            text-align: center;
+            border-bottom: 1px solid @accent-highlight-color-1;
         }
 
         h2 {
             /*.head-shadow(@header-style-2-color-shadow-1,@header-style-2-color-shadow-2);*/
             font-size: x-large;
             padding: 0;
-            margin:20px 0 0 35px;
-            width:55%;
+            margin: 20px 0 0 35px;
+            width: 55%;
             /*border-top:1px solid @accent-highlight-color-1;*/
-            border-bottom:1px solid @accent-highlight-color-1;
+            border-bottom: 1px solid @accent-highlight-color-1;
         }
 
         .layout-inner {
@@ -32,32 +31,36 @@
         }
 
         input {
-            .textbox-style-1-mixin;
+            background-color: #F0FFFF;
             margin: 15px 0 15px 35px;
             height: 20px;
             width: 75%;
             padding: 5px 10px;
-            border:none;
-        
+            border: none;
+            border-radius:2px;
         }
 
         input:focus {
-            background-color:@submit-button-style-1-color-bg;
-            color:@submit-button-style-1-color-fore;
-            outline: none;
-        }
-
-        input:hover {
-            border: 2px #a4c6fd !important;
-        }
-
+            box-shadow: rgba(113, 135, 164, 0.65098) 0px 0px 1px 1px;
+            -webkit-box-shadow: rgba(113, 135, 164, 0.65098) 0px 0px 1px 1px;
+            -moz-box-shadow: rgba(113, 135, 164, 0.65098) 0px 0px 1px 1px;
+             }
 
         textarea {
             margin: 17px 0 10px 25px;
             resize: none;
-            height:200px;
-            width:400px;
-            border:1px solid @accent-light-color-2;
+            height: 200px;
+            width: 400px;
+            border: 1px solid #F0FFFF;
+            background-color:#F0FFFF;
+            padding:1px;
+            border-radius:2px;
+        }
+
+        textarea:focus{
+            box-shadow: rgba(113, 135, 164, 0.65098) 0px 0px 1px 1px;
+            -webkit-box-shadow: rgba(113, 135, 164, 0.65098) 0px 0px 1px 1px;
+            -moz-box-shadow: rgba(113, 135, 164, 0.65098) 0px 0px 1px 1px;
         }
 
         a {
@@ -67,7 +70,8 @@
 
         .submit-button-container {
             text-align: center;
-            .submit-inquiry{
+
+            .submit-inquiry {
             }
         }
     }

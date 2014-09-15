@@ -26,7 +26,7 @@
 }
 
 .top-topics-flare {
-
+  margin-bottom: 70px;
   > h2 {
     font-size: 20px;
     font-weight: bold;
@@ -38,11 +38,10 @@
 }
 
 .top-topics-category {
-
+  margin-bottom: 70px;
 }
 
 .top-summary {
-
 }
 
 .top-title {
@@ -50,6 +49,7 @@
   width: 180px;
   overflow: hidden;
   position: relative;
+  margin-bottom: 24px;
 
   > img {
     margin-left: -20px;
@@ -57,29 +57,33 @@
   }
 
   > h2 {
-    font-size: 20px;
-    font-weight: bold;
     position: absolute;
-    top: 0;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
     z-index: 1;
     width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
     text-shadow:
        2px  2px 4px rgba(8,8,8,0.6),
       -2px  2px 4px rgba(8,8,8,0.6),
        2px -2px 4px rgba(8,8,8,0.6),
       -2px -2px 4px rgba(8,8,8,0.6);
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
     text-align: center;
-    color: #fff;
-    padding-top: 30px;
   }
 }
 
 .top-factor {
+  width: 620px;
   > p {
-
+    padding: 0 40px 6px;
+    font-size: 11px;
+    color: #444;
   }
 }
 
@@ -89,21 +93,42 @@
 .top-index-box {
   width: 400px;
   > p {
+    margin: 0 16px 7px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #aaa;
     font-weight: bold;
+    font-size: 18px;
   }
   > ul {
     > li {
-
+      margin-right: 16px;
+      padding: 8px 18px;
+      font-size: 14px;
+      > small {
+        float: right;
+        text-align: right;
+        font-size: 10px;
+        color: #888;
+      }
+      &:nth-child(even) {
+        background: #eee;
+        > small {
+          color: #666;
+        }
+      }
     }
   }
 }
 
-.top-sidebar {
+.top-rightbar {
   float: right !important;
   width: 160px;
 
   > .top-ads {
-
+    img {
+      display: block;
+      vertical-align: bottom;
+    }
   }
 }
 

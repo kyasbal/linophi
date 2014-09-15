@@ -11,4 +11,8 @@
 var getParagraphId = function (seedClass) {
     return seedClass.replace(/x_/, '');
 };
+
+var getClassName = function (seedParagraphId) {
+    return "x_" + seedParagraphId;
+};
 //# sourceMappingURL=instantFunctions.js.map

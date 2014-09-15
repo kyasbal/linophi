@@ -36,18 +36,24 @@ body {
 .contents .wrapper .main .page-control .page-before {
   float: left;
   border: 1px solid #E0F0F0;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: #E0F0E0;
   padding: 5px;
   margin-left: 50px;
 }
+.contents .wrapper .main .page-control .page-before:hover {
+  background-color: #F0F8FF;
+}
 .contents .wrapper .main .page-control .page-after {
   float: right;
   border: 1px solid #E0F0F0;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: #E0F0E0;
   padding: 5px;
   margin-right: 50px;
+}
+.contents .wrapper .main .page-control .page-after:hover {
+  background-color: #F0F8FF;
 }
 .contents .wrapper .main .search-result .search-header {
   background-color: #fff;
