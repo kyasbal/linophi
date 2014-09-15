@@ -73,6 +73,7 @@ namespace Web.Storage.Cron
                     rankingModel.CommentCoefficient = article.CommentCountDifferentialDifferentialPerTime;
                     rankingModel.LabelCoefficient = article.LabelCountDifferentialDifferentialPerTime;
                     rankingModel.PVCoefficient = article.PageViewDifferentialDifferentialPerTime;
+                    rankingModel.TopicId = articleModel.ThemeId;
                     dbContext.CurrentRanking.Add(rankingModel);
 
                 }
@@ -82,6 +83,7 @@ namespace Web.Storage.Cron
                     rankingModel.CommentCoefficient = article.CommentCountDifferentialDifferentialPerTime;
                     rankingModel.LabelCoefficient = article.LabelCountDifferentialDifferentialPerTime;
                     rankingModel.PVCoefficient = article.PageViewDifferentialDifferentialPerTime;
+                    rankingModel.TopicId = articleModel.ThemeId;
                 }
             }
             await dbContext.SaveChangesAsync();

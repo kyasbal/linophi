@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Web.Models;
+using Web.Models.Cron;
 using Web.Models.Topic;
 using Web.Utility.Configuration;
 
@@ -29,9 +30,18 @@ namespace Web.ViewModel.Home
             int count = 0;
             foreach (var topicModel in searchedTopics)
             {
-                viewModel.TopicSections[count]=TopicSection.FromModel(context,topicModel);
+                viewModel.TopicSections[count]=await TopicSection.FromModelAsync(context,topicModel);
                 count++;
             }
+            //今もえている記事の生成
+            List<ArticleModel> flamedArticles = new List<ArticleModel>();
+            var flamedArticlesQuery = context.CurrentRanking.Where(f=>true)
+                .OrderBy(f => f.PVCoefficient).Take(3).ToList();
+            foreach (var rankingModel in flamedArticlesQuery)
+            {
+                flamedArticles.Add(await context.Articles.FindAsync(rankingModel.ArticleId));
+            }
+            viewModel.FlameArticles = flamedArticles.ToArray();
             return viewModel;
         }
 
@@ -40,7 +50,7 @@ namespace Web.ViewModel.Home
             )
         {
         }
-
+        public ArticleModel[] FlameArticles { get; set; }
         public TopicSection[] TopicSections { get; set; }
         public class TopicSection
         {
@@ -53,7 +63,7 @@ namespace Web.ViewModel.Home
  
             public IEnumerable<ArticleModel> NewModels { get; set; } 
 
-            public static TopicSection FromModel(ApplicationDbContext context,TopicModel topicModel)
+            public static async Task<TopicSection> FromModelAsync(ApplicationDbContext context,TopicModel topicModel)
             {
                 TopicSection section=new TopicSection();
                 section.TopicTitle = topicModel.TopicTitle;
@@ -64,8 +74,15 @@ namespace Web.ViewModel.Home
                         .OrderBy(f => f.CreationTime)
                         .Take(3)
                         .ToArray();
-                List<ArticleModel> flamedArticles=new List<ArticleModel>();
                 section.NewModels = newArticles;
+                List<ArticleModel> flamedArticles = new List<ArticleModel>();
+                var flamedArticlesQuery = context.CurrentRanking.Where(f => f.TopicId.Equals(topicModel.TopicId))
+                    .OrderBy(f => f.PVCoefficient).Take(3).ToList();
+                foreach (var currentRankingModel in flamedArticlesQuery)
+                {
+                    flamedArticles.Add(await context.Articles.FindAsync(currentRankingModel.ArticleId));
+                }
+                section.FlamedModels = flamedArticles.ToArray();
                 return section;
             }
         }

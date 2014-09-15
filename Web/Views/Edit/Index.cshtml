@@ -72,6 +72,7 @@
              @Html.Hidden("Body", "", new {id = "hidden-body"})
              @Html.Hidden("Markup", "", new {id = "hidden-markup"})
              @Html.Hidden("Mode", Model.EditMode, new {id = "hidden-mode"})
+            @Html.HiddenFor(m=>m.TopicId)
             @Html.HiddenFor(m=>m.RelatedArticle)
              <span class="prev-switch">大きくする→</span>
         <div class="select-thumbnail">サムネイルの選択<input type="file" name="Thumbnail" class="thumbnail" /></div>

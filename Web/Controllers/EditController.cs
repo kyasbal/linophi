@@ -37,7 +37,7 @@ namespace Web.Controllers
         [HttpGet]
         [Authorize]
         // GET: Edit
-        public async Task<ActionResult> Index(string articleId="",string EditMode="new",string RelatedArticle="")
+        public async Task<ActionResult> Index(string topicId="",string articleId="",string EditMode="new",string RelatedArticle="")
         {
             //記事IDがある場合
             ArticleEditViewModel vm=new ArticleEditViewModel();
@@ -77,6 +77,7 @@ namespace Web.Controllers
             }
             vm.EditMode = EditMode;
             vm.RelatedArticle = RelatedArticle;
+            vm.TopicId = topicId;
             return View(vm);
         }
 
@@ -101,7 +102,14 @@ namespace Web.Controllers
                 var article = ArticleModel.GenerateArticle(vm.Title, User.Identity.Name);
                 if (String.IsNullOrWhiteSpace(vm.RelatedArticle))
                 {//関連記事がない場合、新しいテーマとして判断する
-                    article.ThemeId = IdGenerator.getId(10);
+                    if (String.IsNullOrWhiteSpace(vm.TopicId))
+                    {
+                        article.ThemeId = IdGenerator.getId(10);
+                    }
+                    else
+                    {
+                        article.ThemeId = vm.TopicId;
+                    }
                     article.RelatedArticleId = null;
                 }
                 else

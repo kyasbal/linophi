@@ -72,9 +72,10 @@
             <section class="top-topics-flare">
                 <h2>今最も燃えている記事</h2>
                 <div class="top-subject-wrapper clearfix">
-                    <div class="top-subject"><a href="#">イスラム国、英国人を予告ど ...</a></div>
-                    <div class="top-subject"><a href="#">イスラム国、英国人を予告ど ...</a></div>
-                    <div class="top-subject"><a href="#">イスラム国、英国人を予告ど ...</a></div>
+                    @foreach (var topsubject in Model.FlameArticles)
+                    {
+                        <div class="top-subject"><a href="#">@topsubject.Title</a></div>
+                    }
                 </div>
             </section>
 
@@ -97,12 +98,10 @@
                             <div class="top-index-box">
                                 <p>HOT</p>
                                 <ul>
-                                    
-                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
-                                </ul>
+                                    @foreach (var article in sectionModel.FlamedModels)
+                                    {
+                                        <li><a href="@("/"+article.ArticleModelId)">@article.Title</a><small>@article.UpdateTime.ToShortDateString()</small></li>
+                                    }                                </ul>
                             </div>
                             <div class="top-index-box">
                                 <p>NEW</p>
@@ -115,7 +114,7 @@
                             </div>
                         </div>
                         <div class="top-post-this-container">
-                            <a class="top-post-this">関連/反証記事を書く</a>
+                            <a class="top-post-this" href="@("/Edit?topicId="+sectionModel.TopicId)">関連/反証記事を書く</a>
                         </div>
                     </section>
                     <!-- .top-index -->
