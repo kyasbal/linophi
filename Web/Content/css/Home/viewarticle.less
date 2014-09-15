@@ -1,4 +1,6 @@
-﻿@tabletPortraitWidthSize: 980px;
+﻿@import "../Color.less";
+
+@tabletPortraitWidthSize: 980px;
 
 ol, ul {
     list-style: none;
@@ -81,7 +83,9 @@ input[type="text"] {
         .top {
             width: 100%;
             padding: 10px 0;
-            background-color: rgba(240,255,240,1);
+            /*background-color: rgba(240,255,240,1);*/
+            border-top: 1px solid #e7e7e7;
+            border-bottom: 1px solid #e7e7e7;
             margin-bottom: 30px;
             &-inner {
                 margin: 0 0 0 15%;
@@ -343,13 +347,13 @@ input[type="text"] {
           margin-bottom: 30px;
 
           .main {
-            background-color: aliceblue;
+            /*background-color: aliceblue;*/
             float: left;
             width: 800px;
             padding-left: 20px;
             padding-right: 40px;
             padding-bottom: 40px;
-
+            border:3px solid @accent-light-color-2;
             .widgetlist {
               position: relative;
               padding-top: 20px;

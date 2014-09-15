@@ -1,4 +1,6 @@
-﻿html {
+﻿
+
+html {
     overflow-y: scroll;
 }
 
@@ -6,7 +8,7 @@ body {
     *position: relative;
     font: 15px/1.5 arial,sans-serif;
     width: 100%;
-    background-color: #fff;
+    background-color: @bg-color-2;
 }
 
 .thumbnail {
@@ -17,7 +19,6 @@ body {
 .contents {
     padding-bottom: 25px;
     overflow: hidden;
-
     .wrapper {
         width: 960px;
         margin: 0 auto;
@@ -27,7 +28,7 @@ body {
             width: 700px;
             padding-bottom: 40px;
 
-            .page-control {
+            /*.page-control {
                 margin: 15px 80px 0 80px;
                 font-size: 25px;
                 a {
@@ -60,18 +61,19 @@ body {
 
                 .page-after:hover{
                     background-color:#F0F8FF;
-                }
+                }*/
             }
 
             .search-result {
 
                 .search-header {
-                    background-color: blanchedalmond;
+                    background-color: @bg-color-2;
                     width: 90.5%;
                     margin-top: 30px;
                     margin-left: 0;
                     padding: 20px 30px;
                     padding-bottom: 20px;
+                    border:1px solid #ccc;
 
                     form {
                         margin-top: 10px;
@@ -94,7 +96,7 @@ body {
                 .listitem {
                     display: table;
                     margin: 20px 0 20px 20px;
-                    padding: 10px;
+                    padding: 20px;
 
                     .listthum {
                         display: table-cell;
@@ -108,7 +110,9 @@ body {
                             width: 60px;
                             height: 60px;
                             overflow: hidden;
+                            
                         }
+                           
                     }
 
                     .listtxt {
@@ -129,34 +133,35 @@ body {
                             a {
                                 word-wrap: break-word;
                                 padding: 6px 0;
-                                color: #000;
+                                color: #1A0DAB;
+                                text-decoration:none;
                             }
                         }
 
                         .listdesc {
-                            color: #aaa;
+                            color: @accent-dark-color-1;
                         }
                     }
                 }
 
                 .listitem:hover {
-                    background-color: antiquewhite;
+                    text-decoration:solid;
                 }
 
                 .my-editted, .search-editted {
                     margin-top: 30px;
                     width: 100%;
-                    background-color: rgba(240,255,240,1);
 
                     .adjust {
                         padding-top: 5px;
                         padding-bottom: 10px;
+                        /*border:1px solid #660000;*/
                     }
                 }
             }
         }
 
-        .dropbox {
+        /*.dropbox {
             margin-top: 30px;
             margin-left: 20px;
             float: left;
@@ -164,6 +169,6 @@ body {
             width: 300px;
             padding-bottom: 1000000px;
             margin-bottom: -1000000px;
-        }
-    }
+        }*/
+
 }

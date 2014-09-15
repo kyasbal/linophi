@@ -28,12 +28,14 @@
 
 @text-color-1:white;
 @text-color-2:black;
-@bg-color-1:ghostwhite;
+
+@bg-color-1:white;
+@bg-color-2:ghostwhite;
 
 
 //タグ
 @tag-color-border:@accent-color-1;
-@tag-color-bg:@bg-color-1;
+@tag-color-bg:@bg-color-2;
 @tag-color-fore:@text-color-2;
 
 .tag-style-mixin{
@@ -42,6 +44,8 @@
     color:@tag-color-fore!important;
 }
 
+//リンク系
+@link-visited:#2468ce;
 
 //送信ボタン系
 @submit-button-style-1-color-bg:@accent-color-1;
