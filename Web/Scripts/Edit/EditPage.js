@@ -25,6 +25,9 @@ $(function () {
         if (isConfirmedTitle)
             $(".edit-form").submit();
     });
+    $('#title, #tag, .edit-text').keypress(function () {
+        chkValidArticle();
+    });
 });
 
 function prepareSubmit() {
@@ -49,6 +52,20 @@ function selectConfigure() {
 
 function selectEditBelt() {
     editPage.CurrentPage = 2 /* EditBelt */;
+}
+
+function chkValidArticle() {
+    var editmode = $('#hidden-mode[name="Mode"]').val();
+    console.log(editmode);
+    if (editmode == "edit" || editmode == "append") {
+        isConfirmedTitle = true;
+        $(".edit-submit-button").css('background-color', '#7FFFD4');
+        $(".edit-submit-button").hover(function () {
+            $(this).css("background-color", "#3CB371");
+        }, function () {
+            $(this).css("background-color", "#7FFFD4");
+        });
+    }
 }
 
 var EditPage = (function () {
@@ -114,15 +131,4 @@ var EditPageContents;
     EditPageContents[EditPageContents["Configure"] = 1] = "Configure";
     EditPageContents[EditPageContents["EditBelt"] = 2] = "EditBelt";
 })(EditPageContents || (EditPageContents = {}));
-
-var editmode = $('#hidden-mode[name="Mode"]').val();
-if (editmode == "edit" || editmode == "append") {
-    isConfirmedTitle = true;
-    $(".edit-submit-button").css('background-color', '#7FFFD4');
-    $(".edit-submit-button").hover(function () {
-        $(this).css("background-color", "#3CB371");
-    }, function () {
-        $(this).css("background-color", "#7FFFD4");
-    });
-}
 //# sourceMappingURL=EditPage.js.map

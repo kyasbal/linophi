@@ -14,7 +14,7 @@ h2 {
 }
 .contents {
   font-size: 20px;
-  width: 70%;
+  width: 500px;
   height: 100%;
   margin: 0 auto;
 }
@@ -43,4 +43,4 @@ h2 {
   background-color: #5f9781;
   cursor: pointer;
 }
-/*# sourceMappingURL=config.css.map */
+/*# sourceMappingURL=Config.css.map */
