@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using Microsoft.WindowsAzure.Storage.Table;
@@ -18,5 +19,6 @@ namespace Web.Models.Cron
         public double CommentCoefficient { get; set; }
 
         public double LabelCoefficient { get; set; }
+        public string TopicId { get; set; }
     }
 }

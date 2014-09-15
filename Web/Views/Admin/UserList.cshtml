@@ -1,0 +1,41 @@
+﻿@model Web.ViewModel.Admin.UserListViewModel
+
+@{
+    ViewBag.Title = "ユーザーリスト";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+@section CSS{
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+}
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>UserId</th>
+                <th>ニックネーム</th>
+                <th>メールアドレス</th>
+                <th>BAN</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Accounts)
+            {
+                <tr>
+                    <td>
+                        @user.Id
+                    </td>
+                    <td>
+                        @user.NickName
+                    </td>
+                    <td>
+                        <a href="@("mailto:"+user.Email)">@user.Email</a>
+                    </td>
+                    <td>
+                        @user.LockoutEnabled
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
