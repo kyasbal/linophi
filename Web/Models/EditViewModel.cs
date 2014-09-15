@@ -23,6 +23,8 @@ namespace Web.Models
 
         public string Id { get; set; }
 
+        public string TopicId { get; set; }
+
         public HttpPostedFileBase Thumbnail { get; set; }
 
         public string RelatedArticle { get; set; }
