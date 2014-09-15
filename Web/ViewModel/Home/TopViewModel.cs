@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Web;
 using Web.Models;
 using Web.Models.Topic;
+using Web.Utility.Configuration;
 
 namespace Web.ViewModel.Home
 {
-    public class TopViewModel
+    public class TopViewModel:OGPViewModelBase
     {
         private const int TopTakeCount = 3;
         public async static Task<TopViewModel> GetTopViewModel(ApplicationDbContext context,bool isDebug)
@@ -34,7 +35,9 @@ namespace Web.ViewModel.Home
             return viewModel;
         }
 
-        public TopViewModel()
+        public TopViewModel() : base(ConfigurationLoaderFactory.GetConfigurationLoader().GetConfiguration("SiteTitle")
+            ,"","","http://意見.みんな","website",ConfigurationLoaderFactory.GetConfigurationLoader().GetConfiguration("SiteTitle")
+            )
         {
         }
 

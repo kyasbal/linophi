@@ -23,6 +23,7 @@
       <Setting name="SendGrid-MailUser"/>
       <Setting name="SendGrid-MailPass"/>
       <Setting name="DefinitionType" />
+      <Setting name="SiteTitle"/>
     </ConfigurationSettings>
   </WebRole>
 </ServiceDefinition>

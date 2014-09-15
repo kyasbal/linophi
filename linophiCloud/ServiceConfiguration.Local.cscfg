@@ -12,6 +12,7 @@
       <Setting name="SendGrid-MailUser" value="sgvniwvl@kke.com"/>
       <Setting name="SendGrid-MailPass" value="kyasbal08"/>
       <Setting name="DefinitionType" value="Local"/>
+      <Setting name="SiteTitle" value="意見.みんな|みんなで作る主観メディア"/>
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
