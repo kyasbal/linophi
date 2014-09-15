@@ -25,7 +25,7 @@ module TagUtil {
             success: (d) => {
                 callback(d["TagCount"], callbackArg);
             }
-
+           
         });
     }
 
@@ -67,8 +67,8 @@ module TagUtil {
         $(".edit-submit-button").hover(function () {
             $(this).css("background-color", bgColorHover);
         }, function () {
-                $(this).css("background-color", bgColor);
-            });
+            $(this).css("background-color", bgColor);
+        });
     }
 
     export function addTag() {
@@ -120,7 +120,7 @@ $(() => {
     });
 
 
-    if ($("#hidden-mode").val() == "edit") {
+    if ($("#hidden-mode").val() == "edit") {  
         isConfirmedTitle = true;
         return;
     }
@@ -138,3 +138,4 @@ $(() => {
         TagUtil.chkValidTitle($(".edit-title").val());
     });
 });
+
