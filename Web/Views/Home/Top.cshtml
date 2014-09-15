@@ -57,7 +57,7 @@
 <article class="top-container">
     <section class="top-header">
         <h1>意見<span>.</span><span>み</span><span>ん</span><span>な</span></h1>
-        <p class="top-subttl">- みんなで作る主観メディア -</p>
+        <p class="top-subttl">- みんなで作る"主観"メディア -</p>
     </section>
 
     <div class="top-main clearfix">
@@ -73,13 +73,14 @@
             </section>
 
             <section class="top-topics-category">
-                <h2>今話題のトピック</h2>
+                @*<h2>今話題のトピック</h2>*@
                 @foreach (var sectionModel in Model.TopicSections)
                 {
                     <section>
                         <div class="top-summary clearfix">
                             <div class="top-title">
-                                <img src="@("~/Pages/ContentUpload/TopicThumbnail?topicId="+sectionModel.TopicId)" alt="@sectionModel.TopicTitle" height="140">
+                                @*<img src="@("~/Pages/ContentUpload/TopicThumbnail?topicId="+sectionModel.TopicId)" alt="@sectionModel.TopicTitle" height="140">*@
+                                <img src="~/Content/imgs/test-h2bg.png" />
                                 <h3>@sectionModel.TopicTitle</h3>
                             </div>
                             <div class="top-factor">
@@ -108,6 +109,49 @@
                         </div>
                     </section>
                     <!-- .top-index -->
+                    
+                }
+            </section><!-- .top-category -->
+            <section class="top-topics-category">
+                @*<h2>今話題のトピック</h2>*@
+                @foreach (var sectionModel in Model.TopicSections)
+                {
+                    <section>
+                        <div class="top-summary clearfix">
+                            <div class="top-title">
+                                @*<img src="@("~/Pages/ContentUpload/TopicThumbnail?topicId="+sectionModel.TopicId)" alt="@sectionModel.TopicTitle" height="140">*@
+                                <img src="~/Content/imgs/test-h2bg.png" />
+                                <h3>@sectionModel.TopicTitle</h3>
+                            </div>
+                            <div class="top-factor">
+                                @*@sectionModel.TopicDescription*@
+                                <p>「社畜」という言葉を見たり耳にしたりした時に、その言葉が一体何を意味するのかがよく分からないと感じたことはないか。この点、wikipediaでは「勤めている会社（営利企業）に飼い慣らされてしまい自分の意思と良心を放棄し奴隷（家畜）と化したサラリーマンの状態を揶揄したもの」と説明されている。</p>
+                                <p>「社畜」という言葉を見たり耳にしたりした時に、その言葉が一体何を意味するのかがよく分からないと感じたことはないか。この点、wikipediaでは「勤めている会社（営利企業）に飼い慣らされてしまい自分の意思と良心を放棄し奴隷（家畜）と化したサラリーマンの状態を揶揄したもの」と説明されている。</p>
+                            </div>
+                        </div><!-- .top-summary -->
+                        <div class="top-index clearfix">
+                            <div class="top-index-box">
+                                <p>HOT</p>
+                                <ul>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                </ul>
+                            </div>
+                            <div class="top-index-box">
+                                <p>NEW</p>
+                                <ul>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                    <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- .top-index -->
+
                 }
             </section><!-- .top-category -->
         </div><!-- .top-contents -->
