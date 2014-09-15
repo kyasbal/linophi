@@ -279,6 +279,19 @@
 }
 .container .contents .contentswrapper .main .related-list .found-article-zero {
   text-align: center;
+  margin: 55px;
+}
+.container .contents .contentswrapper .main .related-list .found-article-zero .write-related-article {
+  background-color: #7ac2a6;
+  text-decoration: none !important;
+  color: #ffffff !important;
+  padding: 15px 60px;
+  margin: 40px;
+  line-height: 80px;
+  font-size: x-large;
+}
+.container .contents .contentswrapper .main .related-list .found-article-zero .write-related-article:hover {
+  background-color: #5f9781;
 }
 .container .contents .contentswrapper .main .related-list .found-article-zero p {
   display: block;
@@ -470,4 +483,4 @@
   display: block;
   clear: both;
 }
-/*# sourceMappingURL=viewarticle.css.map */
+/*# sourceMappingURL=ViewArticle.css.map */

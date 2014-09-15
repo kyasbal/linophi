@@ -137,13 +137,30 @@
     -webkit-transition-property: border-bottom;
     -webkit-transition-duration: 0.2s;
     -webkit-transition-timing-function: liner;
-
     -moz-transition-property: border-bottom;
     -moz-transition-duration: 0.2s;
     -moz-transition-timing-function: liner;
-
     -o-transition-property: border-bottom;
     -o-transition-duration: 0.2s;
     -o-transition-timing-function: liner;
+}
 
+//関連記事を書くボタン
+.write-related-article-mixin()  {
+    text-align: center;
+    margin: 55px;
+
+    .write-related-article {
+        background-color: @submit-button-style-1-color-bg;
+        text-decoration: none !important;
+        color: @submit-button-style-1-color-fore !important;
+        padding: 15px 60px;
+        margin: 40px;
+        line-height: 80px;
+        font-size: x-large;
+
+        &:hover {
+            background-color: @submit-button-style-1-color-hover-bg;
+        }
+    }
 }
