@@ -18,95 +18,99 @@
 //@accent-light-color-数字:色
 
 //アクセントカラー
-@accent-color-1:#7ac2a6;
-@accent-dark-color-1:#5f9781;
-@accent-light-color-1:#afdbcc;
-@accent-highlight-color-1:#DFECE6;
+@accent-color-1: #7ac2a6;
+@accent-dark-color-1: #5f9781;
+@accent-light-color-1: #afdbcc;
+@accent-highlight-color-1: #DFECE6;
 
-@accent-color-2:skyblue;
-@accent-light-color-2:aliceblue;
+@accent-color-2: skyblue;
+@accent-light-color-2: aliceblue;
 
-@text-color-1:white;
-@text-color-2:black;
+@text-color-1: white;
+@text-color-2: black;
 
-@bg-color-1:white;
+@bg-color-1: white;
 
 
 //タグ
-@tag-color-border:@accent-color-1;
-@tag-color-bg:@bg-color-1;
-@tag-color-fore:@text-color-1;
-@view-theme-tag:red;
+@tag-color-border: @accent-color-1;
+@tag-color-bg: @bg-color-1;
+@tag-color-fore: @text-color-1;
+@view-theme-tag: red;
 
 .tag-style-mixin() {
-    border:1px solid @tag-color-border;
-    background:@tag-color-bg;
-    color:@tag-color-fore!important;
+    border: 1px solid @tag-color-border;
+    background: @tag-color-bg;
+    color: @tag-color-fore !important;
 }
 
 //リンク系
-@link-normal:#2468ce;
-@link-visited:#2468ce;
-@link-hover:#2468ce;
+@link-normal: #2468ce;
+@link-visited: #2468ce;
+@link-hover: #2468ce;
 
 //ボーダー系
-@border-gray:#e7e7e7;
-@border-gray-all:1px solid @border-gray;
-@border-normal-green:@accent-color-1;
-@border-green-all:1px solid @border-normal-green;
+@border-gray: #e7e7e7;
+@border-gray-all: 1px solid @border-gray;
+@border-normal-green: @accent-color-1;
+@border-green-all: 1px solid @border-normal-green;
 
 //送信ボタン系
-@submit-button-style-1-color-bg:@accent-color-1;
-@submit-button-style-1-color-hover-bg:@accent-dark-color-1;
-@submit-button-style-1-color-fore:@text-color-1;
+@submit-button-style-1-color-bg: @accent-color-1;
+@submit-button-style-1-color-hover-bg: @accent-dark-color-1;
+@submit-button-style-1-color-fore: @text-color-1;
+
 .submit-button-style-1-mixin() {
-    background-color:@submit-button-style-1-color-bg;
-    color:@submit-button-style-1-color-fore;
+    background-color: @submit-button-style-1-color-bg;
+    color: @submit-button-style-1-color-fore;
     .submit-button-margin;
-    &:hover{
-        background-color:@submit-button-style-1-color-hover-bg;
-        cursor:pointer;
+
+    &:hover {
+        background-color: @submit-button-style-1-color-hover-bg;
+        cursor: pointer;
     }
 }
 
 .submit-button-margin() {
-    padding:5px 40px;
+    padding: 5px 40px;
 }
 
 
 //見出し系
-.head-shadow(@shadow-1,@shadow-2){
-     box-shadow: -18px 0 @shadow-1, -28px 0 @shadow-2;
-}
-@header-style-1-color-bg:@bg-color-1;
-@header-style-1-color-shadow-1:@accent-light-color-1;
-@header-style-1-color-shadow-2:@accent-color-1;
-.header-style-1-mixin() {
-        .head-shadow(@header-style-1-color-shadow-1,@header-style-1-color-shadow-2);
-        font-size: xx-large;
-        margin-bottom: 1em;
-        padding: 0 20px;
-        background-color:@header-style-1-color-bg; 
+.head-shadow(@shadow-1,@shadow-2) {
+    box-shadow: -18px 0 @shadow-1, -28px 0 @shadow-2;
 }
 
-@header-style-2-color-bg:@bg-color-1;
-@header-style-2-color-shadow-1:@accent-light-color-2;
-@header-style-2-color-shadow-2:@accent-color-2;
+@header-style-1-color-bg: @bg-color-1;
+@header-style-1-color-shadow-1: @accent-light-color-1;
+@header-style-1-color-shadow-2: @accent-color-1;
+
+.header-style-1-mixin() {
+    .head-shadow(@header-style-1-color-shadow-1,@header-style-1-color-shadow-2);
+    font-size: xx-large;
+    margin-bottom: 1em;
+    padding: 0 20px;
+    background-color: @header-style-1-color-bg;
+}
+
+@header-style-2-color-bg: @bg-color-1;
+@header-style-2-color-shadow-1: @accent-light-color-2;
+@header-style-2-color-shadow-2: @accent-color-2;
 
 .header-style-2-mixin() {
-        .head-shadow(@header-style-2-color-shadow-1,@header-style-2-color-shadow-2);
-        font-size: x-large;
-        margin-bottom: 1em;
-        padding: 0 20px;
-        background-color:@header-style-2-color-bg; 
+    .head-shadow(@header-style-2-color-shadow-1,@header-style-2-color-shadow-2);
+    font-size: x-large;
+    margin-bottom: 1em;
+    padding: 0 20px;
+    background-color: @header-style-2-color-bg;
 }
 
 
 //入力ボックス系
-@textbox-style-1-color-bg:@accent-highlight-color-1;
-@textbox-style-1-color-focus-bg:@accent-dark-color-1;
-@textbox-style-1-color-fore:@text-color-2;
-@textbox-style-1-color-focus-fore:@text-color-1;
+@textbox-style-1-color-bg: @accent-highlight-color-1;
+@textbox-style-1-color-focus-bg: @accent-dark-color-1;
+@textbox-style-1-color-fore: @text-color-2;
+@textbox-style-1-color-focus-fore: @text-color-1;
 
 .textbox-style-1-mixin() {
     background-color: @textbox-style-1-color-bg;
@@ -117,7 +121,22 @@
     transition: background-color ease-in 0.2s;
 
     &:focus {
-        background-color:@textbox-style-1-color-focus-bg;
-        color:@textbox-style-1-color-focus-fore;
+        background-color: @textbox-style-1-color-focus-bg;
+        color: @textbox-style-1-color-focus-fore;
     }
+}
+
+.transition-property-mixin() {
+    -webkit-transition-property: border-bottom;
+    -webkit-transition-duration: 0.2s;
+    -webkit-transition-timing-function: liner;
+
+    -moz-transition-property: border-bottom;
+    -moz-transition-duration: 0.2s;
+    -moz-transition-timing-function: liner;
+
+    -o-transition-property: border-bottom;
+    -o-transition-duration: 0.2s;
+    -o-transition-timing-function: liner;
+
 }
