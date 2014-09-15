@@ -270,6 +270,7 @@
     <Content Include="Content\css\Shared.min.css">
       <DependentUpon>Shared.css</DependentUpon>
     </Content>
+    <Content Include="Content\imgs\bgtest-skyblue.png" />
     <Content Include="Content\imgs\Home\anger-d.svg" />
     <Content Include="Content\imgs\Home\anger-l.svg" />
     <Content Include="Content\imgs\Home\bethink-d.svg" />
@@ -429,6 +430,7 @@
     <Content Include="Content\css\Home\InquiryAccepted.css.map">
       <DependentUpon>InquiryAccepted.css</DependentUpon>
     </Content>
+    <Content Include="fonts\FontopoNIHONGO.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
