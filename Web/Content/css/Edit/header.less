@@ -4,7 +4,6 @@
     padding-top: 3px;
     background-color: aliceblue;
     border-bottom: 1px solid #f2f2f2;
-
     .search-container {
         margin: 7.5px 0 7.5px 0;
     }
@@ -18,9 +17,7 @@
         font-weight: bold;
         box-sizing: border-box;
         border-bottom: none;
-        -webkit-transition-property: border-bottom;
-        -webkit-transition-duration: 0.2s;
-        -webkit-transition-timing-function: liner;
+        .transition-property-mixin();
     }
 
     a:hover {

@@ -192,4 +192,10 @@
 .edit-button-container {
   text-align: center;
 }
+.help-container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: aliceblue;
+}
 /*# sourceMappingURL=Index.css.map */
