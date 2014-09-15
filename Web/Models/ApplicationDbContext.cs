@@ -3,6 +3,7 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Services.Client;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Web.Models.Cron;
+using Web.Models.Topic;
 using Web.Utility.Configuration;
 
 namespace Web.Models
@@ -26,6 +27,8 @@ namespace Web.Models
         public DbSet<StatisticsLogModel> StatisticsLog { get; set; } 
 
         public DbSet<CurrentRankingModel> CurrentRanking { get; set; } 
+
+        public DbSet<TopicModel> Topics { get; set; } 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

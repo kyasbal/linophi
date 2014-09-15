@@ -528,6 +528,10 @@
     <Compile Include="Migrations\201409141909442_AddCurrentRanking.Designer.cs">
       <DependentUpon>201409141909442_AddCurrentRanking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409150433586_AddTopics.cs" />
+    <Compile Include="Migrations\201409150433586_AddTopics.Designer.cs">
+      <DependentUpon>201409150433586_AddTopics.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountConfigViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -538,6 +542,7 @@
     <Compile Include="Models\EditViewModel.cs" />
     <Compile Include="Models\MyPageViewModel.cs" />
     <Compile Include="Models\SearchResultViewModel.cs" />
+    <Compile Include="Models\Topic\TopicModel.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\UserPageViewModel.cs" />
     <Compile Include="Models\ViewArticleViewModel.cs" />
@@ -703,6 +708,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409141909442_AddCurrentRanking.resx">
       <DependentUpon>201409141909442_AddCurrentRanking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409150433586_AddTopics.resx">
+      <DependentUpon>201409150433586_AddTopics.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
