@@ -49,6 +49,11 @@
   border: 1px solid #dfece6;
   padding: 25px;
 }
+.layout .inquiry-form div {
+  font-size: 15px;
+  text-align: center;
+  color: red;
+}
 .layout .inquiry-form h1 {
   margin: 0 auto;
   font-size: xx-large;
