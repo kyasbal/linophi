@@ -20,20 +20,21 @@ body {
   height: 100%;
   background-color: #fff;
 }
-a img {
-  vertical-align: top;
-}
-a:link,
-a:visited {
-  color: #2468ce;
-  text-decoration: underline;
-}
-a:hover,
-a:active,
-a:focus {
-  color: #2468ce;
-  text-decoration: none;
-}
+/*a {
+    img {
+        vertical-align: top;
+    }
+
+    &:link, &:visited {
+        color: @link-normal;
+        text-decoration: underline;
+    }
+
+    &:hover, &:active, &:focus {
+        color: @link-hover;
+        text-decoration: none;
+    }
+}*/
 :focus {
   outline: none;
 }
@@ -44,16 +45,11 @@ button {
 input[type="text"] {
   -webkit-appearance: none;
 }
-.set:after {
-  content: "";
-  display: block;
-  clear: both;
-}
 .theme-tag {
   border: 1px solid #ff0000 !important;
 }
 .container {
-  /*記事の説明部分(ヘッダ)*/
+  /*記事の説明部あ分(ヘッダ)*/
 }
 .container .head {
   z-index: 501;
@@ -74,32 +70,22 @@ input[type="text"] {
   /*background-color: rgba(240,255,240,1);*/
   border-top: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
-  margin-right: 0;
-  margin-left: 300px;
-  margin-bottom: 30px;
+  margin: 0 0 30px 20%;
 }
-.container .contents .top-inner {
-  margin: 0 0 0 15%;
-}
-.container .contents .top-inner .tag .viewhead {
+.container .contents .top-inner .tag {
   z-index: 500;
-  /*padding-top: 5px;*/
   padding: 5px 0;
-}
-.container .contents .top-inner .tag .viewhead-inner {
   position: relative;
-}
-.container .contents .top-inner .tag .viewhead-inner .topicwordlist {
   display: inline-block;
+}
+.container .contents .top-inner .tag .topicwordlistli {
   max-height: 24px;
   padding: 0;
   border-bottom: 0;
-}
-.container .contents .top-inner .tag .viewhead-inner .topicwordlistli {
   float: left;
   margin: 0 5px 0 0;
 }
-.container .contents .top-inner .tag .viewhead-inner .topicwordlistli .topicword {
+.container .contents .top-inner .tag .topicwordlistli .topicword {
   position: relative;
   display: inline-block;
   height: 21px;
@@ -112,7 +98,7 @@ input[type="text"] {
   font-size: 11px;
   white-space: nowrap;
 }
-.container .contents .top-inner .tag .viewhead-inner .topicwordlistli .topicwordnum {
+.container .contents .top-inner .tag .topicwordlistli .topicwordnum {
   position: relative;
   top: -1px;
   display: inline-block;

@@ -31,7 +31,7 @@
 @*facebookボタン用*@
 <div id="fb-root"></div>
 <script>
-    (function(d, s, id) {
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s);
@@ -42,44 +42,38 @@
 </script>
 @Html.HiddenFor(m => m.IsPreview)
 <div class="container">
-    <div class="contents set">
+    <div class="contents">
         <div class="top">
             <div class="top-inner">
                 <div class="tag">
-                    <div class="viewhead">
-                        <div class="viewhead-inner">
-                            <div class="topicwordlist set">
-                                <ul class="topicwordlistul">
-                                    @*タグの列挙部分*@
-                                    @if (Model.Tags != null)
-                                    {
-                                        foreach (TagViewModel tag in Model.Tags)
-                                        {
+                    <ul class="topicwordlistul">
+                        @*タグの列挙部分*@
+                        @if (Model.Tags != null)
+                        {
+                            foreach (TagViewModel tag in Model.Tags)
+                            {
 
-                                            if (tag.IsTheme)
-                                            {
-                                                <li class="topicwordlistli">
-                                                    <a href="@("/Tag?tag=" + tag.TagName)" class="topicword theme-tag">
-                                                        @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
-                                                    </a>
-                                                </li>
-                                            }
-                                            else
-                                            {
-                                                <li class="topicwordlistli">
-                                                    <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
-                                                        @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
-                                                    </a>
-                                                </li>
-                                            }
-                                        }
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                                if (tag.IsTheme)
+                                {
+                                    <li class="topicwordlistli">
+                                        <a href="@("/Tag?tag=" + tag.TagName)" class="topicword theme-tag">
+                                            @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                        </a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="topicwordlistli">
+                                        <a href="@("/Tag?tag=" + tag.TagName)" class="topicword">
+                                            @tag.TagName <span class="topicwordnum">(@tag.ArticleCount)</span>
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        }
+                    </ul>
                 </div>
-                <nav class="navbar set">
+                <nav class="navbar">
                     <div class="navbar-main navbar-mainwiththumb">
                         <div class="navbar-detail">
                             <div class="navbar-txt">
@@ -141,7 +135,7 @@
                                     <li>
                                         <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi", Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
                                         <script>
-                                            !function(d, s, id) {
+                                            !function (d, s, id) {
                                                 var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
                                                 if (!d.getElementById(id)) {
                                                     js = d.createElement(s);
@@ -170,7 +164,7 @@
         </div>
 
         @* 以下記事部分 *@
-        <div class="contentswrapper set">
+        <div class="contentswrapper">
             <article class="main">
                 <div>
                     <div class="widgetlist">
@@ -202,7 +196,7 @@
                             }(document, 'script', 'twitter-wjs');
                         </script>
                 </ul>
-                
+
                 <div class="rellist">
                     <div>関連/反証記事</div>
                     <div class="separator"><hr></div>
