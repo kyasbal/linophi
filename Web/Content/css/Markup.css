@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+﻿.article-container,
+=======
 ﻿.tag-style-mixin {
   border: 1px solid #7ac2a6;
   background: #f8f8ff;
@@ -42,6 +45,7 @@
   color: #ffffff;
 }
 .article-container,
+>>>>>>> f1e1eb3f949a909aeae6673402b83d013cb4d69e
 .help-container {
   padding: 0 40px;
 }
