@@ -27,7 +27,7 @@ var TagUtil;
     TagUtil.GetTagCount = GetTagCount;
 
     function chkValidTitle(val) {
-        var isConfirmedTitle = true;
+        isConfirmedTitle = true;
         $(".edit-title-chkvalid").html("");
         if (val.match(/^\s*$/)) {
             $(".edit-title-chkvalid").html("　　タイトルが空です");
@@ -48,6 +48,8 @@ var TagUtil;
         }, function () {
             $(this).css("background-color", bgColor);
         });
+
+        console.log(isConfirmedTitle);
     }
     TagUtil.chkValidTitle = chkValidTitle;
 
@@ -88,10 +90,11 @@ $(function () {
         TagUtil.addTag();
     });
 
-    //if ($("#hidden-mode").val() == "edit") {  <-何やってるかわからんかった
-    //    isConfirmedTitle = true;
-    //    return;
-    //}
+    if ($("#hidden-mode").val() == "edit") {
+        isConfirmedTitle = true;
+        return;
+    }
+
     // タイトルが正当かどうかを判定してダメならエラーを返す機能
     $(".edit-title").focus(function () {
         TagUtil.chkValidTitle($(".edit-title").val());
