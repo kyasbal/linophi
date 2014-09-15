@@ -9,6 +9,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using Web.Storage;
 using Web.Storage.Connection;
+using Web.Storage.Topic;
 using Web.Utility;
 
 namespace Web.Api.Content
@@ -34,6 +35,14 @@ namespace Web.Api.Content
         {
             ArticleThumbnailManager manager=new ArticleThumbnailManager(new BlobStorageConnection());
             return new ImageResult(await manager.DownloadThumbnail(articleId), "image/jpeg");
+        }
+
+        [System.Web.Mvc.HttpGet]
+        public async Task<ActionResult> TopicThumbnail(string topicId)
+        {
+            TopicThumbnailManager manager = new TopicThumbnailManager(new BlobStorageConnection());
+            TopicThumbnailManager.GetTopicImageResult imageResult = await manager.getTopicImage(topicId);
+            return new ImageResult(imageResult.ContentBody, imageResult.ContentType);
         }
     }
 }

@@ -8,20 +8,56 @@
 }
 @section JS
 {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/Home/Inquiry.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#myform").validate({
+                rules: {
+                    Name: {
+                        required: true
+                    },
+                    Mail: {
+                        required: true,
+                        email: true
+                    },
+                    Content: {
+                        required: true,
+                        minlength:10
+                    }
+                },
+                messages: {
+                    Name: {
+                        required: "お名前を入力してください"
+                    },
+                    Mail: {
+                        required: "メールアドレスを入力してください",
+                        email: "正しいメールアドレスを入力してください"
+                    },
+                    Content: {
+                        required: "内容を入力してください",
+                        minlength:"10文字以上入力してください"
+                    }
+                },
+                errorElement: "div",
+            });
+        });
+    </script>
 }
 
 <div class="layout">
     <div class="layout-inner">
-        <form method="POST" action="/Inquiry" class="inquiry-form">
+
+
+        <form method="POST" action="/Inquiry" class="inquiry-form" id="myform">
             @Html.AntiForgeryToken()
             <h1>お問い合わせ</h1>
             <h2>お名前</h2>
-            <input type="text" name="Name"/>
+            <input type="text" name="Name" />
             <h2>返信先メールアドレス</h2>
-            <input type="email" name="Mail"/>
+            <input type="email" name="Mail" />
             <h2>内容</h2>
-            <textarea name="Content"></textarea>
+            <textarea name="Content" ></textarea>
             <div class="submit-button-container">
                 <a class="submit-inquiry">送信</a>
             </div>

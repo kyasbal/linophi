@@ -3,8 +3,8 @@
 =======
 ﻿.tag-style-mixin {
   border: 1px solid #7ac2a6;
-  background: #f8f8ff;
-  color: #000000 !important;
+  background: #ffffff;
+  color: #ffffff !important;
 }
 .submit-button-style-1-mixin {
   background-color: #7ac2a6;
@@ -150,8 +150,8 @@ header #dropmenu ul-submit-button {
 }
 header div[class^="edit-editted-tag"] {
   border: 1px solid #7ac2a6;
-  background: #f8f8ff;
-  color: #000000 !important;
+  background: #ffffff;
+  color: #ffffff !important;
   margin-left: 5px;
   float: left;
   line-height: 21px;

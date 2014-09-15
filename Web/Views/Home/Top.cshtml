@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Web.ViewModel.Home.TopViewModel
+@{
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
 
@@ -70,17 +71,17 @@
             </div>
 
             <div class="top-topics-category">
+                @foreach (var sectionModel in Model.TopicSections)
+                {
                 <div class="top-summary clearfix">
                     <div class="top-title">
-                        <img src="~/Content/imgs/test-h2bg.png" alt="イスラム国" height="140">
-                        <h2>イスラム国問題</h2>
+                        <img src="@("~/Pages/ContentUpload/TopicThumbnail?topicId="+sectionModel.TopicId)" alt="@sectionModel.TopicTitle" height="140">
+                        <h2>@sectionModel.TopicTitle</h2>
                     </div>
                     <div class="top-factor">
-                        <p>事実 イスラーム国（イスラームこく、アラビア語: الدولة الإسلامية‎‎、翻字：ad-Dawlah al-ʾIslāmiyyah、英語: Islamic State、略称：IS）は、イラクとシリアで活動するサラフィー・ジハード主義組織である。欧米諸国などに留まらず、周辺のスンニ派イスラム教諸国からも国家としての承認されていないほか、「イスラーム国」という名称への批判もなされている。</p>
-                        <p>イラク、シリアなどの中東諸国を、サイクス・ピコ協定に代表されるヨーロッパの線引きにより作られた「サイクス・ピコ体制」だとしてこれを否定し、武力によるイスラーム世界の統一を目指している。</p>
+                        @sectionModel.TopicDescription
                     </div>
                 </div><!-- .top-summary -->
-
                 <div class="top-index clearfix">
                     <div class="top-index-box">
                         <p>HOT</p>
@@ -100,8 +101,9 @@
                             <li><a href="#">イスラム国、英国人を予告どおり殺害か ３本目のビデオ公開</a><small>2014.09.14 Sun posted at 09:52 JST</small></li>
                         </ul>
                     </div>
-                </div><!-- .top-index -->
-
+                </div>
+                <!-- .top-index -->
+                }
             </div><!-- .top-category -->
             <div class="top-topics-category">
                 <div class="top-summary clearfix">

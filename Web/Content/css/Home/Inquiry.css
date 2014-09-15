@@ -1,10 +1,11 @@
-<<<<<<< HEAD
 ﻿.layout {
+<<<<<<< HEAD
+=======
 =======
 ﻿.tag-style-mixin {
   border: 1px solid #7ac2a6;
-  background: #f8f8ff;
-  color: #000000 !important;
+  background: #ffffff;
+  color: #ffffff !important;
 }
 .submit-button-style-1-mixin {
   background-color: #7ac2a6;
@@ -46,12 +47,18 @@
 }
 .layout {
 >>>>>>> f1e1eb3f949a909aeae6673402b83d013cb4d69e
+>>>>>>> 24d2e88a52487930e2064df5f607320f64acf3f9
   width: 500px;
   margin: 0 auto;
 }
 .layout .inquiry-form {
   border: 1px solid #dfece6;
   padding: 25px;
+}
+.layout .inquiry-form div.error {
+  font-size: 15px;
+  text-align: center;
+  color: red;
 }
 .layout .inquiry-form h1 {
   margin: 0 auto;

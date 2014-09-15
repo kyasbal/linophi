@@ -33,12 +33,12 @@ a {
     }
 
     &:link, &:visited {
-        color: #2468ce;
+        color: @link-normal;
         text-decoration: underline;
     }
 
     &:hover, &:active, &:focus {
-        color: #2468ce;
+        color: @link-hover;
         text-decoration: none;
     }
 }
@@ -62,7 +62,7 @@ input[type="text"] {
 }
 
 .theme-tag {
-    border: 1px solid red !important;
+    border: 1px solid @view-theme-tag !important;
 }
 
 .container {
@@ -70,7 +70,7 @@ input[type="text"] {
         z-index: 501;
         width: 100%;
         border-top: 3px solid #333;
-        border-bottom: 1px solid #e7e7e7;
+        border-bottom: @border-gray-all;
 
         &-inner {
             position: relative;
@@ -79,13 +79,14 @@ input[type="text"] {
     /*記事の説明部分(ヘッダ)*/
     .contents {
         overflow: hidden;
-
         .top {
-            width: 100%;
+            width: 60%;
             padding: 10px 0;
             /*background-color: rgba(240,255,240,1);*/
-            border-top: 1px solid #e7e7e7;
-            border-bottom: 1px solid #e7e7e7;
+            border-top: @border-gray-all;
+            border-bottom:@border-gray-all;
+            margin-right:0;
+            margin-left:300px;
             margin-bottom: 30px;
             &-inner {
                 margin: 0 0 0 15%;
@@ -114,8 +115,8 @@ input[type="text"] {
                                                     height: 21px;
                                                     line-height: 22px;
                                                     padding: 1px 6px 0;
-                                                    background-color: #fefbfa;
-                                                    border: 1px solid #7ac2a6;
+                                                    background-color: @bg-color-1;
+                                                    border:@border-green-all;
                                                     color: #000 !important;
                                                     text-decoration: none !important;
                                                     font-size: 11px;
@@ -226,7 +227,7 @@ input[type="text"] {
                             text-align: center;
                             width: 55px;
                             height: 50px;
-                            background-color: white;
+                            background-color: @bg-color-1;
                             border-radius: 60px;
                             -moz-border-radius: 60px;
                             -webkit-border-radius: 60px;
@@ -235,7 +236,6 @@ input[type="text"] {
                             text-align: center;
                             width: 55px;
                             height: 50px;
-                            background-color: white;
                             border-radius: 60px;
                             -moz-border-radius: 60px;
                             -webkit-border-radius: 60px;
@@ -252,7 +252,7 @@ input[type="text"] {
                             text-align: center;
                             width: 100px;
                             height: 50px;
-                            background-color: white;
+                            background-color: @bg-color-1;
                             border-radius: 60px;
                             -moz-border-radius: 60px;
                             -webkit-border-radius: 60px;
@@ -287,7 +287,7 @@ input[type="text"] {
                             text-align: center;
                             width: 100px;
                             height: 50px;
-                            background-color: white;
+                            background-color: @bg-color-1;
                             -moz-border-radius: 60px;
                             -webkit-border-radius: 60px;
                             border-radius: 60px;
@@ -325,7 +325,7 @@ input[type="text"] {
                             padding: @insideCirclePaddingTop @insideCirclePaddingRight 0 @insideCirclePaddingLeft;
                             bottom: (@articleGraphSize - (@insideCircleHeight + @insideCirclePaddingTop)) / 2;
                             left: (@articleGraphSize - (@insideCircleWidth + 20px)) / 2;
-                            background-color: white;
+                            background-color: @bg-color-1;
                             text-align: center;
                             display: block;
                             border-radius: 60px; 
@@ -396,7 +396,7 @@ input[type="text"] {
                 left: 102%;
                 z-index: 9999;
                 padding: 6px 10px;
-                color: #FFFFFF;
+                color: @bg-color-1;
                 background: #666;
                 border-radius: 0.5em;
                 -moz-transform: translateY(-30%);
@@ -434,7 +434,7 @@ input[type="text"] {
                   -webkit-transform: translateX(-50%);
                   transform: translateX(-50%);
                   padding: 0.62em 1.2em;
-                  background: #fff;
+                  background: @bg-color-1;
                   border: none;
                   border-radius: 0.3em;
                 }
@@ -450,7 +450,7 @@ input[type="text"] {
             }
 
             p:hover {
-              background-color: ghostwhite;
+              background-color: @bg-color-1;
             }
 
             .rellist {
@@ -529,7 +529,7 @@ input[type="text"] {
 
           .dropbox {
             position: relative;
-            background-color: white;
+            background-color: @bg-color-1;
             float: left;
             width: 180px;
             padding-bottom: 1000000px;
@@ -559,7 +559,7 @@ input[type="text"] {
               > span {
                 cursor: default;
                 padding: 3px 9px;
-                background: #fff;
+                background: @bg-color-1;
                 color: #555;
                 font-size: 12px;
                 font-weight: bold;
@@ -590,7 +590,7 @@ input[type="text"] {
       user-select: none;
 
       &-contents {
-        background-color: #fdf8f2;
+        background-color: @bg-color-1;
     }
 
     &-title {
@@ -639,7 +639,7 @@ input[type="text"] {
 
 .foot {
     width: 100%;
-    border-top: 1px solid #e7e7e7;
+    border-top: @border-gray-all;
 
     .foot-inner {
         width: 960px;
@@ -661,7 +661,7 @@ a.topicword {
 }
 
 a.topicword:hover {
-    background: #f0f0f0;
+    background: @bg-color-1;
 }
 
 .list .listtitle a:link, .list .listtitle a:visited {
@@ -677,7 +677,7 @@ a.topicword:hover {
 }
 
 .main .separator1, .main .separator {
-    border-top: 1px solid #e7e7e7;
+    border-top:@border-gray-all;
 }
 
 .main .separator1 hr, .main .separator hr {
@@ -742,16 +742,16 @@ a.topicword:hover {
 }
 
 .write-related-article {
-    background-color: #7ac2a6;
+    background-color: @submit-button-style-1-color-bg;
     text-decoration: none !important;
-    color: white !important;
+    color: @submit-button-style-1-color-fore !important;
     padding: 15px 60px;
     margin: 40px;
     line-height: 80px;
     font-size: x-large;
 
     &:hover {
-        background-color: #5f9781;
+        background-color: @submit-button-style-1-color-hover-bg;
     }
 }
 

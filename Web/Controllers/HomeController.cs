@@ -14,6 +14,7 @@ using Web.Models;
 using Web.Storage;
 using Web.Storage.Connection;
 using Web.Utility;
+using Web.ViewModel.Home;
 
 namespace Web.Controllers
 {
@@ -145,7 +146,7 @@ namespace Web.Controllers
         {
             if (String.IsNullOrWhiteSpace(id))
             {
-                return View("Top");
+                return View("Top",await TopViewModel.GetTopViewModel(Request.GetOwinContext().Get<ApplicationDbContext>(),User.IsInRole("Administrator")));
             }
             else
             {
