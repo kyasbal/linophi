@@ -1,276 +1,553 @@
 ﻿@import "../Color.less";
 
-html {
-    width: 100%;
-    height: 100%;
-}
+@tabletPortraitWidthSize: 980px;
+
 body {
-    background-image: url("/Content/imgs/bg-common.png");
+    overflow-y: scroll;
+    height: 100%;
+    *position: relative;
+    font: 15px/1.5 arial,sans-serif;
     width: 100%;
     height: 100%;
+    background-color: #fff;
 }
 
-.edit {
-
-    &-bg-overlay {
-        color: #888;
-        width: 100%;
-        clear:both;
+.main-sns {
+    ul {
+        li {
+            display: inline-block;
+            vertical-align: middle;
+        }
     }
+}
 
-    &-tab-container {
-        height: 3em;
+.container {
+    .head {
+        z-index: 501;
         width: 100%;
-        ul {
-            position: absolute;
-            top: 50px;
-            right: 10%;
-            height: 3em;
-            width: 450px;
-            li {
-                cursor: pointer;
-                float: left;
-                width: 150px;
-                height: 2em;
-                padding-top: 1em;
-                text-align: center;
-                background-color: rgba(107, 107, 107, 0.4);
-                &:before {
-                    padding: 0 10px 0 0;
-                    content: "❚";
+        border-top: 3px solid #333;
+        border-bottom: @border-gray-all;
+
+        &-inner {
+            position: relative;
+        }
+    }
+    /*記事の説明部あ分(ヘッダ)*/
+    .contents {
+        overflow: hidden;
+
+        .top {
+            width: 60%;
+            padding: 10px 0;
+            border-top: @border-gray-all;
+            border-bottom: @border-gray-all;
+            margin: 0 0 30px 20%;
+
+            &-inner {
+                .tag {
+                    z-index: 500;
+                    padding: 5px 0;
+                    position: relative;
+                    display: inline-block;
+                    .topic-word-list {
+                        max-height: 24px;
+                        padding: 0;
+                        float: left;
+                        margin: 0 30px 0 0;
+                        .theme-tag {
+                            border: 1px solid @view-theme-tag !important;
+                        }
+                        .topic-word {
+                            border-radius:10px;
+                            position: relative;
+                            display: inline-block;
+                            height: 21px;
+                            line-height: 22px;
+                            padding: 1px 6px 0 6px;
+                            background-color: @bg-color-1;
+                            border: @border-green-all;
+                            color: #000 !important;
+                            text-decoration: none !important;
+                            font-size: 11px;
+                            white-space: nowrap;
+
+                            &-num {
+                                position: relative;
+                                top: -1px;
+                                display: inline-block;
+                                font-weight: normal;
+                                font-family: Arial, Helvetica, sans-serif;
+                                font-size: 10px;
+                            }
+                        }
+                    }
                 }
-                &.selected {
-                    background-color: transparent;
+
+                .navbar {
+                    &-main {
+                        padding: 5px 0;
+
+                        > div {
+                            display: inline-block;
+                        }
+                        //タイトルや投稿者などの詳細情報部分
+                        .navbar-detail {
+                            width: 60%;
+                            vertical-align: top;
+
+                            .navbar-title {
+                                padding-bottom: 10px;
+
+                                .navbar-title-txt {
+                                    display: inline;
+                                    line-height: 38px;
+                                    font-size: 40px;
+                                    word-wrap: break-word;
+                                    margin: 0 15px 0 0;
+                                    color: #000;
+                                    text-decoration: none;
+                                }
+
+                                img {
+                                    width: 100px;
+                                    height: 100px;
+                                }
+                            }
+
+                            .navbar-count {
+                                @navbarCountFixedFontSize: 12px; //投稿者・PVなどの決まった言葉のフォントサイズ
+                                @navbarCountValueFontSize: 20px; //記事ごとの実際の投稿者の名前やPV数のフォントサイズ
+                                > div {
+                                    margin: 15px 0;
+                                }
+
+                                .navbar-user {
+                                    //投稿者
+                                    .contributor {
+                                        font-size: @navbarCountFixedFontSize;
+                                    }
+
+                                    .navbar-username {
+                                        a {
+                                            color: #000 !important;
+                                            font-weight: bold;
+                                            font-size: @navbarCountValueFontSize;
+                                        }
+                                    }
+                                }
+
+                                .navbar-count-num {
+                                    display: inline;
+                                    line-height: 1;
+                                    color: #000;
+                                    font-family: Arial, Helvetica, sans-serif;
+                                    font-size: @navbarCountValueFontSize;
+
+                                    .navbar-count-label {
+                                        color: #000;
+                                        font-size: @navbarCountFixedFontSize;
+                                    }
+
+                                    .navbar-count-comment {
+                                        color: #000;
+                                        font-size: @navbarCountFixedFontSize;
+                                    }
+                                }
+
+                                .navbar-update-time {
+                                    font-size: @navbarCountValueFontSize;
+
+                                    .update-time {
+                                        font-size: @navbarCountFixedFontSize;
+                                    }
+                                }
+                            }
+                        }
+                        //円グラフ部分
+                        .navbar-thumb {
+                            @articleGraphSize: 250px;
+
+                            z-index: 1;
+                            position: relative;
+                            width: @articleGraphSize;
+                            height: @articleGraphSize;
+                            padding: 0;
+                            margin: 0;
+
+                            #article-graph {
+                                padding: 0;
+                                margin: 0;
+                            }
+
+                            .inside-circle {
+                                @insideCircleHeight: 95px;
+                                @insideCircleWidth: 100px;
+                                @insideCirclePaddingTop: 25px;
+                                @insideCirclePaddingRight: 10px;
+                                @insideCirclePaddingLeft: 10px;
+
+                                z-index: -1;
+                                position: absolute;
+                                width: @insideCircleWidth;
+                                height: @insideCircleHeight;
+                                padding: @insideCirclePaddingTop @insideCirclePaddingRight 0 @insideCirclePaddingLeft;
+                                bottom: (@articleGraphSize - (@insideCircleHeight + @insideCirclePaddingTop)) / 2;
+                                left: (@articleGraphSize - (@insideCircleWidth + 20px)) / 2;
+                                background-color: @bg-color-1;
+                                text-align: center;
+                                display: block;
+                                border-radius: 60px;
+                                -moz-border-radius: 60px;
+                                -webkit-border-radius: 60px;
+                                box-shadow: 0px 0px 3px 0px #666 inset;
+                                -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+                                -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+                                margin: 0 auto;
+                                vertical-align: top;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        /*以下記事部分*/
+        .contentswrapper {
+            width: 1040px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+
+            .main {
+                /*background-color: aliceblue;*/
+                float: left;
+                width: 800px;
+                padding: 0 40px 40px 20px;
+                border: 3px solid @accent-light-color-2;
+
+                .write-related-article-container {
+                    text-align: center;
+                    margin: 15px;
+
+                    .write-related-article {
+                        background-color: @submit-button-style-1-color-bg;
+                        text-decoration: none !important;
+                        color: @submit-button-style-1-color-fore !important;
+                        padding: 15px 60px;
+                        margin: 40px;
+                        line-height: 80px;
+                        font-size: x-large;
+
+                        &:hover {
+                            background-color: @submit-button-style-1-color-hover-bg;
+                        }
+                    }
+                }
+
+                .widgetlist {
+                    position: relative;
+                    padding: 20px 0 1px 0;
+
+                    .widgettypetitle {
+                        margin-bottom: 25px;
+
+                        p {
+                            word-wrap: break-word;
+                        }
+                    }
+                }
+
+                .widget > *[class*="p-"] {
+                    position: relative;
+
+                    &:hover {
+                        background: #ddd;
+
+                        > *[class*="-comments"] {
+                            display: block;
+                        }
+                    }
+
+                    > *[class*="-comments"] {
+                        font-size: 10px;
+                        width: 300px;
+                        display: none;
+                        position: absolute;
+                        top: 0;
+                        left: 102%;
+                        z-index: 9999;
+                        padding: 6px 10px;
+                        color: @bg-color-1;
+                        background: #666;
+                        border-radius: 0.5em;
+                        -moz-transform: translateY(-30%);
+                        -ms-transform: translateY(-30%);
+                        -o-transform: translateY(-30%);
+                        -webkit-transform: translateY(-30%);
+                        transform: translateY(-30%);
+
+                        .triangle {
+                            width: 0;
+                            height: 70%;
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            left: -20px;
+                            top: 31.5%;
+                            border-top: 10px solid #666;
+                            border-left: 20px solid transparent;
+                        }
+
+                        .response {
+                            p:hover {
+                                background: none;
+                            }
+                        }
+
+                        button {
+                            cursor: pointer;
+                            font-size: 10px;
+                            font-weight: bold;
+                            margin-left: 50%;
+                            -moz-transform: translateX(-50%);
+                            -ms-transform: translateX(-50%);
+                            -o-transform: translateX(-50%);
+                            -webkit-transform: translateX(-50%);
+                            transform: translateX(-50%);
+                            padding: 0.62em 1.2em;
+                            background: @bg-color-1;
+                            border: none;
+                            border-radius: 0.3em;
+                        }
+                    }
+                }
+
+                p:hover {
+                    background-color: @bg-color-1;
+                }
+
+                .related-list {
+                    padding-top: 1px;
+                    position: relative;
+                    margin: 10px 0 10px 0;
+
+                    .found-article-zero {
+                        text-align: center;
+
+                        p {
+                            display: block;
+                            font-size: large;
+                        }
+                    }
+
+                    .separator {
+                        margin: 10px 0;
+                    }
+
+                    .list {
+                        .listitem {
+                            display: table;
+                            margin: 30px 0;
+                            padding: 0 20px;
+
+                            .listthumb {
+                                display: table-cell;
+                                width: 60px;
+                                height: 60px;
+                                vertical-align: top;
+                            }
+                        }
+
+                        .listitem:first-child {
+                            margin-top: 0;
+                        }
+
+                        .listitem:hover {
+                            background-color: antiquewhite;
+                        }
+
+                        .listtxt {
+                            display: table-cell;
+                            vertical-align: middle;
+                            table-layout: fixed;
+                            width: 100%;
+                            max-width: 560px;
+
+                            .listtitle {
+                                display: inline;
+                                line-height: 1.1;
+                                font-size: 20px;
+                                font-weight: normal;
+                                margin-right: 15px;
+
+                                a {
+                                    padding: 6px 0;
+                                    color: #000;
+                                }
+
+                                .listdesc {
+                                    color: #aaa;
+                                }
+                            }
+                        }
+
+                        .more-read {
+                            float: right;
+                            color: black;
+                            text-decoration: underline;
+                        }
+                    }
                 }
             }
 
+            .dropbox {
+                position: relative;
+                background-color: @bg-color-1;
+                float: left;
+                width: 180px;
+                padding-bottom: 1000000px;
+                margin-bottom: -1000000px;
+                z-index: 0;
+                opacity: 1;
+                -moz-transition-property: opacity;
+                -o-transition-property: opacity;
+                -webkit-transition-property: opacity;
+                transition-property: opacity;
+                -moz-transition-duration: 500ms;
+                -o-transition-duration: 500ms;
+                -webkit-transition-duration: 500ms;
+                transition-duration: 500ms;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -webkit-user-select: none;
+                user-select: none;
+
+                > * > * {
+                    margin-left: -20px;
+                    padding: 10px 15px; // spanにmarginかけてもmarginの相殺という現象のせいで消えてしまうから
+                    -moz-box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+
+                    > span {
+                        cursor: default;
+                        padding: 3px 9px;
+                        background: @bg-color-1;
+                        color: #555;
+                        font-size: 12px;
+                        font-weight: bold;
+                        border-radius: 200px;
+                    }
+                }
+            }
         }
     }
+}
 
-    &-content-bg {
-        width: 100%;
+.postit {
+    position: fixed;
+    right: 0;
+    top: 60%;
+
+    @media screen and (max-width: @tabletPortraitWidthSize) {
+        top: 100%;
+    }
+
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+
+    &-contents {
+        background-color: @bg-color-1;
     }
 
     &-title {
-        width:70%;
-        float:left;
-        margin: 50px 0 0 9%;
-        padding: 5px;
-        border: 1px solid #888;
-        border-radius: 5px;
-        ::-webkit-input-placeholder, ::-moz-placeholder, :-moz-placeholder, :-ms-input-placeholder { color: #888 }
-        &-container { width: 100%; }
-        &-chkvalid { 
-            color: #f66; 
-            padding-top: 54px;
-        }
-    }
-
-    &-tag {
-        float: left;
-        height: 5%;
-        width: 50%;
-        margin: 15px 0 0;
-        padding: 5px;
-        border: 1px solid #888;
-        border-radius: 5px;
-        ::-webkit-input-placeholder, ::-moz-placeholder, :-moz-placeholder, :-ms-input-placeholder { color: #888 }
-
-        &-container {
-            width: 80%;
-            overflow: hidden;
-            margin: 0 9%;
-        }
-
-        &-chkvalid {
-            color: #f66;
-            padding-top: 20px;
-        }
-    }
-
-    &-editted-box {
-        width: 82%;
-        margin: 0 9%;
-        padding-top: 3px;
-        height: 60px;
-    }
-
-    &-preview {
-        height:500px;
-        width:80%;
-        resize: vertical;
-        margin:0 0 0 auto;
-        padding: 5px;
-        float:right;
-        background-color: #fff;
-        word-break: break-all;
-        ::-webkit-input-placeholder, ::-moz-placeholder, :-moz-placeholder, :-ms-input-placeholder { color: #888 }
-        
-        &-container {
-            overflow:hidden;
-            display:inline-block;
-            *display: inline;
-            *zoom: 1;
-            width: 50%;
-        }
-    }
-
-    &-text {
-        height:500px;
-        width:80%;
-        max-width:80%;
-        margin: 0 0 0 auto;
-        padding: 5px;
-        float:left;
-        border: 1px solid #888;
-        border-radius: 5px;
-        overflow: auto;
-        ::-webkit-input-placeholder, ::-moz-placeholder, :-moz-placeholder, :-ms-input-placeholder { color: #888 }
-        &-container {
-            margin: 0 0 0 0;
-            overflow:hidden;
-            display:inline-block;
-            *display: inline;
-            *zoom: 1;
-            width: 49%;
-        }
-    }
-    &-submit-button {
-        width: 150px;
-        font-size: 15px;
-        padding: 10px 30px;
-        background-color: #696969;
-        color: #888;
-        display:block;
-        margin: 30px auto 10% auto;
-        vertical-align:middle;
+        padding: 13px 15px 0;
+        color: #000;
         font-weight: bold;
-        text-align: center;
-        border: none;
-        &-enabled { background: #6ca3fd; }
+        font-size: 12px;
+    }
 
-        &:hover {
-            background-color: #696969;
-            color: #888;
-            cursor:pointer;
+    &-list {
+        padding: 15px 30px 9px;
+
+        > div {
+            position: relative;
+
+            > div {
+                position: absolute;
+                visibility: hidden;
+                top: 10px;
+                left: 10px;
+                padding: 3px 9px;
+                border-radius: 200px;
+                background: rgba(255,255,255,0.7);
+                font-size: 12px;
+                font-weight: bold;
+            }
+        }
+
+        img {
+            width: 130px;
+            height: 43px;
+        }
+
+        > * {
+            cursor: pointer;
         }
     }
 
+    &-pasting {
+        z-index: -100;
+        height: 43px;
+        width: 130px;
+        visibility: hidden;
+    }
 }
 
-div[class^="edit-editted-tag"] {
-    float: left;
-    margin: 0.7em 0.5em 0;
-    padding: 5px;
-    border: 1px solid #ccc;
-    background: #eee;
-    border-radius: 4px;
+.foot {
+    width: 100%;
+    border-top: @border-gray-all;
 
-    &:first-child {
-        margin-left: 0;
-    }
-
-    span[class^="edit-editted-tag-delete-"] {
-        padding-left: 10px;
-        color: #333;
-        cursor: pointer;
+    .foot-inner {
+        width: 960px;
+        margin: 0 auto;
+        padding: 25px 0;
     }
 }
 
-.help-container{
-    padding:40px;
-    .top-title{
-        font-size:16px;
-        font-weight:bold;
-    }
-    .h2_similar{
-        .head-shadow(@header-style-1-color-shadow-1,@header-style-1-color-shadow-2);
-        margin-bottom: 1em;
-        padding: 0 20px;
-        background-color: @header-style-1-color-bg;
-        height:48px;
-        .tutorial_big{
-            display:inline-block;
-            font-size: xx-large;
-            padding:0;
-        }   
-        .tutorial_small{
-            display:inline-block;
-            font-size:medium;
-            padding-left:100px;
-        }
-    }
+.main .separator, .main .separator {
+    border-top: @border-gray-all;
 
-    .h3_similar{
-        .head-shadow(@header-style-2-color-shadow-1,@header-style-2-color-shadow-2);
-        margin-bottom: 1em;
-        padding: 0 20px;
-        background-color: @header-style-2-color-bg;
-        height:36px;
-        .tutorial_big{
-            display:inline-block;
-            font-size: x-large;
-            padding:0;
-        }   
-        .tutorial_small{
-            display:inline-block;
-            font-size:medium;
-            padding-left:130px;
-        }
+    hr {
+        display: none;
     }
+}
 
-    .h4_similar{
-        border-bottom:1px solid rgba(0,0,0,0.3);
-        margin-bottom: 1em;
-        padding: 7px 20px 0px 20px;
-        background-color:ghostwhite; 
-        height:33px;
-        .tutorial_big{
-            display:inline-block;
-            font-size: large;
-            padding:0;
-        }   
-        .tutorial_small{
-            display:inline-block;
-            font-size:medium;
-            padding-left:150px;
-        }
-    }
-    .h5_similar{     
-        margin-bottom: 1em;
-        padding: 0 20px;
-        background-color:ghostwhite;
-        height:27px;
-        .tutorial_big{
-            display:inline-block;
-            font-weight:bold;
-            font-size: larger;
-            padding:0;
-        }   
-        .tutorial_small{
-            display:inline-block;
-            font-size:medium;
-            padding-left:150px;
-        }
-    }
+.fade-layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    -moz-transition-property: opacity;
+    -o-transition-property: opacity;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+    -moz-transition-duration: 500ms;
+    -o-transition-duration: 500ms;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
 
-    .all_address{
-        margin:20px;
-        p{
-            margin:0;
-        }
-        .address_1{
-            width:500px;
-            margin:10px 0 10px 0;
-            padding:10px 0 10px 0;
-            border-top:3px solid #fff;
-            border-bottom:3px solid #fff;
-        }
-        .address_2{
-            width:500px;
-            margin:10px 0 10px 0;
-            padding:10px 0 10px 0;
-            border-bottom:3px solid #fff;
-        }
+    > img {
+        width: 130px;
     }
 }
