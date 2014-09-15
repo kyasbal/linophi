@@ -225,7 +225,7 @@ $(window).load(function () {
 
             var bg;
             $('.dropbox > [class*="p-"]').each(function (i) {
-                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')');
+                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')');
                 var pHeight = $target.outerHeight(true);
                 var pPos = ($target.offset() || { "top": NaN }).top;
                 bg = "none";
@@ -263,7 +263,7 @@ $(window).load(function () {
             });
 
             $('.dropbox > *').each(function (i) {
-                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 1) + ')');
+                var $target = $('.dropbox > [class*="p-"]:nth-child(' + (i + 2) + ')');
                 if (!$target[0])
                     return true;
                 var elementName = $target[0].tagName;

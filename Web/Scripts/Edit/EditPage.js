@@ -1,8 +1,10 @@
 ﻿/// <reference path="../typings/jquery/jquery.d.ts" />
 var editPage;
 var editorInstance;
-var isConfirmedTitle;
+var isConfirmedTitle, isConfirmedTag, validate;
 isConfirmedTitle = false;
+isConfirmedTag = true;
+validate = isConfirmedTitle && isConfirmedTag;
 $(function () {
     editPage = new EditPage();
 
@@ -15,7 +17,8 @@ $(function () {
         prepareSubmit();
         $(".edit-form").attr("target", "_self");
         $(".edit-form").attr("action", "/Edit");
-        if (isConfirmedTitle)
+        validate = isConfirmedTitle && isConfirmedTag;
+        if (validate)
             $(".edit-form").submit();
     });
     $(".preview-button").click(function () {
@@ -23,7 +26,8 @@ $(function () {
         prepareSubmit();
         $(".edit-form").attr("target", "_blank");
         $(".edit-form").attr("action", "/Preview");
-        if (isConfirmedTitle)
+        validate = isConfirmedTitle && isConfirmedTag;
+        if (validate)
             $(".edit-form").submit();
     });
 });

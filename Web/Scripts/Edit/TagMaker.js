@@ -39,8 +39,25 @@ var TagUtil;
             $(".edit-title-chkvalid").html("　　タイトルが長すぎます");
             isConfirmedTitle = false;
         }
+        validate = isConfirmedTitle && isConfirmedTag;
+        TagUtil.onGoodCondition(validate);
+    }
+    TagUtil.chkValidTitle = chkValidTitle;
 
-        var bgColor = isConfirmedTitle ? '#7FFFD4' : '#696969', bgColorHover = isConfirmedTitle ? '#3CB371' : '#696969';
+    function chkValidTag(val) {
+        isConfirmedTag = true;
+        if (120 < val.length) {
+            $('.edit-tag-chkvalid').html('<div class="edit-alert">　　タグ名が長すぎます</div>');
+            isConfirmedTag = false;
+        }
+        validate = isConfirmedTitle && isConfirmedTag;
+        TagUtil.onGoodCondition(validate);
+        console.log("val:" + val, "len:" + val.length, "validate:" + validate, "isconfirmedtag:" + isConfirmedTag);
+    }
+    TagUtil.chkValidTag = chkValidTag;
+
+    function onGoodCondition(validate) {
+        var bgColor = validate ? '#7FFFD4' : '#696969', bgColorHover = validate ? '#3CB371' : '#696969';
 
         $(".edit-submit-button").css('background-color', bgColor);
         $(".edit-submit-button").hover(function () {
@@ -49,7 +66,7 @@ var TagUtil;
             $(this).css("background-color", bgColor);
         });
     }
-    TagUtil.chkValidTitle = chkValidTitle;
+    TagUtil.onGoodCondition = onGoodCondition;
 
     function addTag() {
         var $target = $(".edit-tag");
@@ -57,7 +74,7 @@ var TagUtil;
 
         tag = tag.replace(/　/g, " ");
         var tagArr = tag.split(" ");
-
+        var conclusiveConfirmedTag = true;
         for (var i = 0, len = tagArr.length; i < len; i++) {
             if (tagArr[i] && !tags.contains(tagArr[i])) {
                 $(".edit-editted-box").append('<div class="edit-editted-tag-' + tagCounter + '">' + tagArr[i] + '<span class="edit-editted-tag-counter-' + tagCounter + '">(?)</span><span class="edit-editted-tag-delete-' + tagCounter + '" onClick="removeTag(\'' + tagCounter + '\',\'' + tagArr[i] + '\')">x</span></div>');
@@ -68,15 +85,21 @@ var TagUtil;
                 tagCounter++;
 
                 if (tagCounter > 5) {
+                    conclusiveConfirmedTag = false;
                     $('.edit-tag-chkvalid').html('<div class="edit-alert">　　タグは５個までしか登録できません。タグの × を押して個数を減らしてください。</div>');
                 }
             }
+            tagArr.forEach(function (tagname) {
+                TagUtil.chkValidTag(tagname);
+            });
         }
-
+        isConfirmedTag = isConfirmedTag && conclusiveConfirmedTag;
+        TagUtil.onGoodCondition(isConfirmedTag);
         $target.val("");
     }
     TagUtil.addTag = addTag;
 })(TagUtil || (TagUtil = {}));
+
 $(function () {
     // タグをEnterで追加する機能
     $(".edit-tag").keypress(function (e) {
@@ -95,9 +118,13 @@ $(function () {
 
     // タイトルが正当かどうかを判定してダメならエラーを返す機能
     $(".edit-title").focus(function () {
+        validate = isConfirmedTitle && isConfirmedTag;
+        TagUtil.onGoodCondition(validate);
         TagUtil.chkValidTitle($(".edit-title").val());
     });
     $(".edit-title").keyup(function () {
+        validate = isConfirmedTitle && isConfirmedTag;
+        TagUtil.onGoodCondition(validate);
         TagUtil.chkValidTitle($(".edit-title").val());
     });
 });
