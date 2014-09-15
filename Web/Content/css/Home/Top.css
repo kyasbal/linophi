@@ -60,19 +60,38 @@ a {
   margin-bottom: 70px;
   box-sizing: border-box;
 }
-.top-topics-category:nth-child(2) .top-summary {
-  box-shadow: -50px 0 #4385f5;
+.top-post-this {
+  line-height: 100px;
+  padding: 20px 60px;
+  color: white;
+  background-color: #f5b400;
+}
+.top-topics-category section:nth-child(3n+1) .top-title {
+  background-color: #4385f5;
+}
+.top-topics-category section:nth-child(3n+1) .top-post-this {
+  background-color: #4385f5;
+}
+.top-topics-category section:nth-child(3n+2) .top-title {
+  background-color: #dc4437;
+}
+.top-topics-category section:nth-child(3n+2) .top-post-this {
+  background-color: #dc4437;
+}
+.top-post-this-container {
+  text-align: center;
 }
 .top-summary {
-  border: 4px solid #ddd;
-  border-left: none;
-  box-shadow: -50px 0 #dc4437;
+  border: thin solid #ddd;
   margin-bottom: 5px;
   padding: 15px;
 }
 .top-title {
-  height: 120px;
-  width: 20px;
+  padding: 10px 20px;
+  margin: 20px 0;
+  background-color: #f5b400;
+  height: 30px;
+  width: 370px;
   overflow: hidden;
   position: relative;
   left: -50px;
