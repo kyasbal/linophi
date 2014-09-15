@@ -42,12 +42,8 @@
   padding-left: 10%;
 }
 .header .menu .search .search-text {
-  background-color: #dfece6;
   color: #000000;
-  -moz-transition: background-color ease-in 0.2s;
-  -o-transition: background-color ease-in 0.2s;
-  -webkit-transition: background-color ease-in 0.2s;
-  transition: background-color ease-in 0.2s;
+  background-color: #B0E0E6;
   margin: 7.5px 0 7.5px 0;
   height: 20px;
   width: 200px;
@@ -60,14 +56,11 @@
   border-radius: 100px;
 }
 .header .menu .search .search-text:focus {
-  background-color: #5f9781;
-  color: #ffffff;
-}
-.header .menu .search .search-text:focus {
   outline: none;
 }
 .header .menu .search .search-text:hover {
   border: 2px #a4c6fd !important;
+  background-color: #ADD8E6;
 }
 .header .menu .search .search-button {
   border: 0;
