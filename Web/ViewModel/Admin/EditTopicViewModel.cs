@@ -10,5 +10,7 @@ namespace Web.ViewModel.Admin
     {
         public string TopicId { get; set; }
         public TopicModel EditTarget { get; set; }
+
+        public HttpPostedFileBase Thumbnail { get; set; }
     }
 }

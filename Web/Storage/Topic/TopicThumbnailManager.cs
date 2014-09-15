@@ -38,6 +38,13 @@ namespace Web.Storage.Topic
 
             public Stream ContentBody { get; set; }
         }
+
+        public async Task UploadAsync(string topicId,HttpPostedFileBase thumbnail)
+        {
+            CloudBlockBlob blobRef = Container.GetBlockBlobReference(topicId);
+            blobRef.Properties.ContentType = thumbnail.ContentType;
+            await blobRef.UploadFromStreamAsync(thumbnail.InputStream);
+        }
     }
 
 

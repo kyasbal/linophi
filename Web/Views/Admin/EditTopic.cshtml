@@ -10,7 +10,7 @@
 }
 
 <div class="container">
-    @using(Html.BeginForm("EditTopic","Admin",FormMethod.Post)){
+    @using(Html.BeginForm("EditTopic","Admin",FormMethod.Post,new {enctype="multipart/form-data"})){
         @Html.HiddenFor(f=>f.TopicId)
     <p>トピックタイトル</p>
     @Html.TextBoxFor(f => f.EditTarget.TopicTitle)
@@ -18,6 +18,8 @@
     @Html.TextAreaFor(f=>f.EditTarget.Description)
     <p>炎上指数</p>
     @Html.TextBoxFor(f=>f.EditTarget.EvaluationOfFire)
+        <p>サムネイル</p>
+        <input type="file" name="Thumbnail"/>
     <input type="submit"/>
     }
 </div>
