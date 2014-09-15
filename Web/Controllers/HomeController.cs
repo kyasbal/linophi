@@ -342,6 +342,11 @@ namespace Web.Controllers
             return articles;
         }
 
+        public ActionResult Outline()
+        {
+            return View();
+        }
+
         public ActionResult PrivacyPolicy()
         {
             return View();
