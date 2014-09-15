@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+﻿.header {
+=======
 ﻿.tag-style-mixin {
   border: 1px solid #7ac2a6;
   background: #ffffff;
@@ -42,6 +45,7 @@
   color: #ffffff;
 }
 .header {
+>>>>>>> f1e1eb3f949a909aeae6673402b83d013cb4d69e
   padding-top: 3px;
   background-color: aliceblue;
   border-bottom: 1px solid #f2f2f2;

@@ -23,5 +23,15 @@ namespace Web.Models.Topic
         /// トピックの説明
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// 炎上指数
+        /// </summary>
+        public double EvaluationOfFire { get; set; }
+
+        /// <summary>
+        /// 一般のユーザーに見えるかどうか
+        /// </summary>
+        public bool IsVisibleToAllUser { get; set; }
     }
 }
