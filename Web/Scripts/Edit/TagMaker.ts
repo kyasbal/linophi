@@ -1,6 +1,7 @@
 ﻿var tagCounter: number = 0;
 var tags: collections.Set<string> = new collections.Set<string>();
 
+
 function removeTag(counter,tag)
 {
     console.warn(tagCounter);
@@ -118,3 +119,4 @@ $(() => {
         TagUtil.chkValidTitle($(".edit-title").val());
     });
 });
+

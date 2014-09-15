@@ -1,7 +1,7 @@
 ﻿@import "../Color";
 
 footer {
-    height: 200px;
+    height: 5%;
     width: 100%;
     background: @bg-color-2;
     bottom: 0;
@@ -9,63 +9,24 @@ footer {
 
     .box-container {
         padding-left: 30%;
-        padding-top: 20px;
-        margin-left: -5%;
-        overflow: hidden;
+        padding-top: 1%;
         zoom: 1;
 
-        .vertex {
-            float: left;
-            margin-top: 20px;
-            margin-left: 0;
-            width: 0;
-            height: 120px;
-            border: solid 1px #e5e5e5;
-        }
+        span {
+            a {
+                margin-right: 5%;
+            }
 
-        .box {
-            float: left;
-            padding-left: 5%;
-            padding-right: 5%;
-
-            img {
-                height: 160px;
-                width: auto;
-        }
-
-            .ulist {
-                font-weight: 900;
-                color: #f58971;
-
-                .list {
-                    font-weight: normal;
-                    margin-top: 10px;
-
-                    a {
-                        color: #000;
-                        text-decoration: underline;
-                }
-
-                    a:hover {
-                        color: #444;
-                        text-decoration: underline;
+            a:hover {
+                color: @accent-color-2;
+                border-bottom: 5px solid;
             }
         }
     }
-    }
-    }
+}
 
-    .box-container:before, .box-container:after {
-        content: "";
-        display: table;
-    }
-
-    .box-container:after {
-        clear: both;
-    }
-
-    .copyright {
-        margin-top: 20px;
-        margin-left: 70%;
-    }
+.copyright {
+    margin: 1% 0 1% 0;
+    text-decoration: underline;
+    text-align: center;
 }

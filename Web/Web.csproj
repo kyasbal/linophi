@@ -277,6 +277,8 @@
       <DependentUpon>Shared.css</DependentUpon>
     </Content>
     <Content Include="Content\imgs\bgtest-skyblue.png" />
+    <Content Include="Content\imgs\h2.svg" />
+    <Content Include="Content\imgs\h3.svg" />
     <Content Include="Content\imgs\Home\anger-d.svg" />
     <Content Include="Content\imgs\Home\anger-l.svg" />
     <Content Include="Content\imgs\Home\bethink-d.svg" />
