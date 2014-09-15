@@ -246,6 +246,7 @@ var NovelEditer;
                 this.updateToshow();
             }
         };
+
         NovelEditer.prototype.goprevPage = function () {
             var i = 1;
             var cacheHead = this._paragraphManager.headParagraph;
@@ -275,6 +276,7 @@ var NovelEditer;
         return NovelEditer;
     })();
     _NovelEditer.NovelEditer = NovelEditer;
+
     var TextChangeInfo = (function () {
         function TextChangeInfo(start, end) {
             this.changeStartParagraphIndex = start;
@@ -283,6 +285,7 @@ var NovelEditer;
         return TextChangeInfo;
     })();
     _NovelEditer.TextChangeInfo = TextChangeInfo;
+
     var ParagraphManager = (function () {
         function ParagraphManager() {
             this._paragraphDictionary = new collections.Dictionary();
@@ -310,6 +313,8 @@ var NovelEditer;
             enumerable: true,
             configurable: true
         });
+
+
         Object.defineProperty(ParagraphManager.prototype, "headParagraph", {
             get: function () {
                 return this._headParagraph;
@@ -320,6 +325,8 @@ var NovelEditer;
             enumerable: true,
             configurable: true
         });
+
+
         Object.defineProperty(ParagraphManager.prototype, "currentParagraph", {
             get: function () {
                 return this._currentParagraph;
@@ -515,6 +522,7 @@ var NovelEditer;
         Paragraph.prototype.getParagraphIndex = function () {
             return this._paragraphIndex;
         };
+
         Paragraph.prototype.getId = function () {
             return this._iD;
         };
@@ -537,6 +545,7 @@ var NovelEditer;
             };
             return JSON.stringify(jsonObj);
         };
+
         Paragraph.prototype.fromJSON = function (jsonObj) {
             if (jsonObj.prevParagraph != null && this._manager.ParagraphDictionary.containsKey(jsonObj.prevParagraph)) {
                 this.prevParagraph = this._manager.ParagraphDictionary.getValue(jsonObj.prevParagraph);
@@ -554,6 +563,7 @@ var NovelEditer;
                 this._manager.ParagraphDictionary.setValue(this._iD, this);
             }
         };
+
 
         Object.defineProperty(Paragraph.prototype, "isEmphasized", {
             get: function () {
@@ -579,6 +589,7 @@ var NovelEditer;
             configurable: true
         });
 
+
         Object.defineProperty(Paragraph.prototype, "isFinalParagraph", {
             //これが最終段落か否か
             get: function () {
@@ -596,6 +607,7 @@ var NovelEditer;
             enumerable: true,
             configurable: true
         });
+
         Paragraph.prototype.htmlEnc = function (s) {
             return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/"/g, '&#34;');
         };
@@ -872,6 +884,7 @@ var NovelEditer;
         TitlePrefix.prototype.getPrefixString = function () {
             return "#";
         };
+
         TitlePrefix.prototype.getFormattedHtml = function (str) {
             var headerLevel = 2;
             for (var i = 1; i < str.length + 1; i++) {
@@ -888,6 +901,7 @@ var NovelEditer;
         };
         return TitlePrefix;
     })(PrefixBase);
+
     var QuotePrefix = (function (_super) {
         __extends(QuotePrefix, _super);
         function QuotePrefix() {
@@ -926,6 +940,7 @@ var NovelEditer;
         ListnPrefix.prototype.getPrefixString = function () {
             return "$listn";
         };
+
         ListnPrefix.prototype.getFormattedHtmlImpl = function (str) {
             str = str.replace(/(.*)/g, "<ol class=\"listn\"><li>$1</li></ol><br>");
             str = str.replace(/<\/br>/g, "</li><li>");
@@ -945,6 +960,7 @@ var NovelEditer;
         ListdPrefix.prototype.getPrefixString = function () {
             return "$listd";
         };
+
         ListdPrefix.prototype.getFormattedHtmlImpl = function (str) {
             str = str.replace(/(.*)/g, "<ul class=\"listd\"><li>$1</li></ul><br>");
             str = str.replace(/<\/br>/g, "</li><li>");

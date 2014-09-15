@@ -547,6 +547,7 @@
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -650,6 +651,7 @@
     <Compile Include="Utility\ImageResult.cs" />
     <Compile Include="Utility\LinophiMailClient.cs" />
     <Compile Include="Utility\MathEx.cs" />
+    <Compile Include="Utility\SEO\SitemapItem.cs" />
     <Compile Include="Utility\WebPageStatic.cs" />
     <Compile Include="ViewModel\Admin\EditTopicViewModel.cs" />
     <Compile Include="ViewModel\Admin\TopicListViewModel.cs" />
@@ -765,6 +767,7 @@
   <ItemGroup>
     <Folder Include="Api\Admin\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Sitemap\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201409031548165_AddStupidUpdate.resx">
