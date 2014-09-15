@@ -9,7 +9,7 @@ header a {
   display: inline-block;
   width: 100px;
   color: #000 !important;
-  text-decoration: none;
+  text-decoration: none !important;
   text-align: center;
   font-weight: bold;
   box-sizing: border-box;
@@ -131,4 +131,4 @@ header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] #
 header div[class^="edit-editted-tag"] > span[class^="edit-editted-tag-delete"] .login-form {
   float: right;
 }
-/*# sourceMappingURL=header.css.map */
+/*# sourceMappingURL=Header.css.map */

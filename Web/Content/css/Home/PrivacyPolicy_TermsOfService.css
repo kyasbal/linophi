@@ -39,6 +39,7 @@ body {
 }
 .main-contents .honbun dd p {
   margin: 5px;
+  color: #444;
 }
 .main-contents .honbun dd ul {
   padding-bottom: 7px;
