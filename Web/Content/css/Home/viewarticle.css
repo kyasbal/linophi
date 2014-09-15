@@ -1,47 +1,4 @@
-﻿.tag-style-mixin {
-  border: 1px solid #7ac2a6;
-  background: #ffffff;
-  color: #ffffff !important;
-}
-.submit-button-style-1-mixin {
-  background-color: #7ac2a6;
-  color: #ffffff;
-  padding: 5px 40px;
-}
-.submit-button-style-1-mixin:hover {
-  background-color: #5f9781;
-  cursor: pointer;
-}
-.submit-button-margin {
-  padding: 5px 40px;
-}
-.header-style-1-mixin {
-  box-shadow: -18px 0 #afdbcc, -28px 0 #7ac2a6;
-  font-size: xx-large;
-  margin-bottom: 1em;
-  padding: 0 20px;
-  background-color: #ffffff;
-}
-.header-style-2-mixin {
-  box-shadow: -18px 0 #f0f8ff, -28px 0 #87ceeb;
-  font-size: x-large;
-  margin-bottom: 1em;
-  padding: 0 20px;
-  background-color: #ffffff;
-}
-.textbox-style-1-mixin {
-  background-color: #dfece6;
-  color: #000000;
-  -moz-transition: background-color ease-in 0.2s;
-  -o-transition: background-color ease-in 0.2s;
-  -webkit-transition: background-color ease-in 0.2s;
-  transition: background-color ease-in 0.2s;
-}
-.textbox-style-1-mixin:focus {
-  background-color: #5f9781;
-  color: #ffffff;
-}
-ol,
+﻿ol,
 ul {
   list-style: none;
 }

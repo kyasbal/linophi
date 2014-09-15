@@ -18,6 +18,12 @@ header a {
   -webkit-transition-property: border-bottom;
   -webkit-transition-duration: 0.2s;
   -webkit-transition-timing-function: liner;
+  -moz-transition-property: border-bottom;
+  -moz-transition-duration: 0.2s;
+  -moz-transition-timing-function: liner;
+  -o-transition-property: border-bottom;
+  -o-transition-duration: 0.2s;
+  -o-transition-timing-function: liner;
 }
 header a:hover {
   color: #818181;
