@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model Web.ViewModel.Topic.TopicViewModel
 
 @{
     ViewBag.Title = "title";
@@ -7,12 +7,39 @@
 
 @section CSS
 {
-    
+    <link href="~/Content/css/Topic/Index.css" rel="stylesheet" />
 }
 
+@section OGP
+{
+    @Model.OGPMetaTag
+}
 <article class="layout">
     <section class="inner-header-container">
-        <h1>原発問題</h1>
+        <div class="inner-header"><h1>@Model.Title</h1></div>
+        <div class="top-factor-container">
+            <img src="@Model.Image" />
+            @Html.Raw(Model.Description)
+        </div>
+        <div class="top-index clearfix">
+            <div class="top-index-box">
+                <p>HOT</p>
+                <ul>
+                    <li><a href="/ycGNuPLH6xQx"> 最新版「社畜スイッチ」がひど過ぎる 「お前、仕事ナメてんの？」「家族？二の次だ」</a><small>9/8/2014</small></li>
+                    <li><a href="/T5NWuQ2Alez6">テスト原発記事</a><small>9/16/2014</small></li>
+                    <li><a href="/jduQHEZ7KKbH">Test反証記事</a><small>9/10/2014</small></li>
+                </ul>
+            </div>
+            <div class="top-index-box">
+                <p>NEW</p>
+                <ul>
+                    <li><a href="/ycGNuPLH6xQx"> 最新版「社畜スイッチ」がひど過ぎる 「お前、仕事ナメてんの？」「家族？二の次だ」</a><small>9/8/2014</small></li>
+                    <li><a href="/jduQHEZ7KKbH">Test反証記事</a><small>9/10/2014</small></li>
+                    <li><a href="/T5NWuQ2Alez6">テスト原発記事</a><small>9/16/2014</small></li>
+                </ul>
+            </div>
+        </div>
+
     </section>
 
 </article>

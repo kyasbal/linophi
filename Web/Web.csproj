@@ -282,6 +282,12 @@
     <Content Include="Content\css\Shared.min.css">
       <DependentUpon>Shared.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Topic\Index.css">
+      <DependentUpon>Index.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Topic\Index.min.css">
+      <DependentUpon>Index.css</DependentUpon>
+    </Content>
     <Content Include="Content\imgs\bgtest-skyblue.png" />
     <Content Include="Content\imgs\h2.svg" />
     <Content Include="Content\imgs\h3.svg" />
@@ -502,6 +508,10 @@
     <Content Include="Content\css\Home\Outline.css.map">
       <DependentUpon>Outline.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Topic\Index.less" />
+    <Content Include="Content\css\Topic\Index.css.map">
+      <DependentUpon>Index.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
@@ -685,6 +695,7 @@
     <Compile Include="ViewModel\IMetaBasicOGPViewModel.cs" />
     <Compile Include="ViewModel\MetaBuilder.cs" />
     <Compile Include="ViewModel\OGPMetaRenderer.cs" />
+    <Compile Include="ViewModel\Topic\TopicViewModel.cs" />
     <Compile Include="WebRole.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -739,6 +750,7 @@
     <Content Include="Views\Admin\EditTopic.cshtml" />
     <Content Include="Views\Admin\UserList.cshtml" />
     <Content Include="Views\Home\Outline.cshtml" />
+    <Content Include="Views\Topic\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -793,7 +805,6 @@
     <Folder Include="Api\Admin\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\Sitemap\" />
-    <Folder Include="Views\Topic\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201409031548165_AddStupidUpdate.resx">
