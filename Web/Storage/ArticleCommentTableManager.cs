@@ -92,9 +92,11 @@ namespace Web.Storage
                     Name = comment.UserName,
                     PostTime = comment.CreationTime.ToShortDateString(),
                 });
+            
             }
-            count = comments.Count;
-            return Json.Encode(comments.ToArray());
+           var query=comments.OrderBy(f => f.PostTime);
+            count = comments.Count();
+            return Json.Encode(query.ToArray());
         }
 
         public async Task RemoveCommentsAsync(string articleId)
