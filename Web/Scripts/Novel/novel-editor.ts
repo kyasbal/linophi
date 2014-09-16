@@ -1024,7 +1024,7 @@
     {
         getPrefixString(): string
         {
-            return "$listn";
+            return "$num";
         }
 
         getFormattedHtmlImpl(str: string): string
@@ -1042,7 +1042,7 @@
     {
         getPrefixString(): string
         {
-            return "$listd";
+            return "$dot";
         }
 
         getFormattedHtmlImpl(str: string): string
