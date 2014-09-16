@@ -7,10 +7,6 @@ body {
   width: 100%;
   background-color: #e4e4e4;
 }
-.thumbnail {
-  width: 100px;
-  height: auto;
-}
 .contents {
   padding-bottom: 25px;
   overflow: hidden;
@@ -73,9 +69,7 @@ body {
 .contents .wrapper .search-result .search-header form {
   margin-top: 10px;
   margin-left: 10px;
-}
-.contents .wrapper .search-result .search-header form select {
-  border: none;
+  border: 1px;
 }
 .contents .wrapper .search-result .search-header form select:focus {
   outline: none;

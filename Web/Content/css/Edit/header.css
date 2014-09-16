@@ -17,6 +17,10 @@ header #dropmenu ul li {
   vertical-align: middle;
   display: inline-block;
 }
+header #dropmenu ul li .user-icon img {
+  height: 20px;
+  width: 20px;
+}
 header .header-brand-container {
   z-index: 100;
   width: 100%;
@@ -128,4 +132,4 @@ header .menu .search .search-container .search-button:hover {
 header .menu .search .search-container .search-button:focus {
   outline: none;
 }
-/*# sourceMappingURL=header.css.map */
+/*# sourceMappingURL=Header.css.map */
