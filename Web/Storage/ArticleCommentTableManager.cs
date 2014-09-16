@@ -46,6 +46,7 @@ namespace Web.Storage
 
     public class ArticleCommentViewModel
     {
+        private DateTime _postTimeData;
         public string Comment { get; set; }
 
         public string PostTime { get; set; }
@@ -54,6 +55,12 @@ namespace Web.Storage
 
         public string Name { get; set; }
         public string ParagraphId { get; set; }
+
+        public DateTime PostTimeData
+        {
+            get { return _postTimeData; }
+            set { _postTimeData = value; }
+        }
     }
 
     [TableStorage("Comments")]
@@ -91,10 +98,11 @@ namespace Web.Storage
                     Comment = comment.Comment,
                     Name = comment.UserName,
                     PostTime = comment.CreationTime.ToShortDateString(),
+                    PostTimeData=comment.CreationTime
                 });
             
             }
-           var query=comments.OrderBy(f => f.PostTime);
+            var query = comments.AsQueryable().OrderBy(f=>f.PostTimeData);
             count = comments.Count();
             return Json.Encode(query.ToArray());
         }
