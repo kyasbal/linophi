@@ -76,7 +76,7 @@
                 <div class="top-subject-wrapper clearfix">
                     @foreach (var topsubject in Model.FlameArticles)
                     {
-                        <div class="top-subject"><a href="#">@topsubject.Title</a></div>
+                        <div class="top-subject"><a href="@("/"+topsubject.ArticleModelId)">@topsubject.Title</a></div>
                     }
                 </div>
             </section>

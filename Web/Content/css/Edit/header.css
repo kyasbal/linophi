@@ -17,10 +17,6 @@ header #dropmenu ul li {
   vertical-align: middle;
   display: inline-block;
 }
-<<<<<<< HEAD
-header a {
-  cursor: pointer;
-=======
 header .header-brand-container {
   z-index: 100;
   width: 100%;
@@ -33,7 +29,7 @@ header .header-brand-container a.header-brand {
   text-decoration: none!important;
 }
 header #dropmenu a {
->>>>>>> 0e7f2aebd524ce90db59f2b395659f3acab04f0e
+  cursor: pointer;
   display: inline-block;
   width: 100px;
   color: #000 !important;
@@ -132,4 +128,4 @@ header .menu .search .search-container .search-button:hover {
 header .menu .search .search-container .search-button:focus {
   outline: none;
 }
-/*# sourceMappingURL=Header.css.map */
+/*# sourceMappingURL=header.css.map */
