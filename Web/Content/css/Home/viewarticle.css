@@ -27,6 +27,7 @@ html {
 }
 .container .contents {
   overflow: hidden;
+  width: 100%;
   /*記事の説明部分(ヘッダ)*/
   /*以下記事部分*/
 }
