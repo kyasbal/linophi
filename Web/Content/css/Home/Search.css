@@ -35,34 +35,31 @@ body {
 }
 .contents .wrapper .main .page-control {
   margin: 15px 80px 0 80px;
-  font-size: 25px;
+  font-size: 14px;
 }
-.contents .wrapper .main .page-control a {
+.contents .wrapper .main .page-control span {
+  border-radius: 20px;
+  background-color: #4385f5;
+  padding: 10px 30px 10px 30px;
+}
+.contents .wrapper .main .page-control span a {
   text-decoration: none;
-  color: #aaa;
+  color: #ffffff;
   cursor: pointer;
 }
 .contents .wrapper .main .page-control .page-before {
   float: left;
-  border: 1px solid #E0F0F0;
-  border-radius: 10px;
-  background-color: #E0F0E0;
-  padding: 5px;
   margin-left: 50px;
 }
 .contents .wrapper .main .page-control .page-before:hover {
-  background-color: #F0F8FF;
+  background-color: #0c2a81;
 }
 .contents .wrapper .main .page-control .page-after {
   float: right;
-  border: 1px solid #E0F0F0;
-  border-radius: 10px;
-  background-color: #E0F0E0;
-  padding: 5px;
   margin-right: 50px;
 }
 .contents .wrapper .main .page-control .page-after:hover {
-  background-color: #F0F8FF;
+  background-color: #0c2a81;
 }
 .contents .wrapper .search-result .search-header {
   background-color: #ffffff;
