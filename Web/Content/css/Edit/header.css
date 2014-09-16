@@ -104,8 +104,9 @@ header .menu .search .search-container .search-button:hover {
   -o-transform: translateY(1px);
   -webkit-transform: translateY(1px);
   transform: translateY(1px);
+  cursor: pointer;
 }
 header .menu .search .search-container .search-button:focus {
   outline: none;
 }
-/*# sourceMappingURL=header.css.map */
+/*# sourceMappingURL=Header.css.map */
