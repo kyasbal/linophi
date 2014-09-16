@@ -41,6 +41,7 @@ namespace Web.Storage.Topic
 
         public async Task UploadAsync(string topicId,HttpPostedFileBase thumbnail)
         {
+            if (thumbnail == null) return;
             CloudBlockBlob blobRef = Container.GetBlockBlobReference(topicId);
             blobRef.Properties.ContentType = thumbnail.ContentType;
             await blobRef.UploadFromStreamAsync(thumbnail.InputStream);

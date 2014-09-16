@@ -48,7 +48,7 @@ html {
   max-height: 24px;
   padding: 0;
   float: left;
-  margin: 0 30px 0 0;
+  margin: 0 0.2em 0 0;
 }
 .container .contents .top .tag .topic-word-list .theme-tag {
   border: 1px solid #ff0000 !important;
@@ -521,4 +521,4 @@ html {
     width: 700px;
   }
 }
-/*# sourceMappingURL=viewarticle.css.map */
+/*# sourceMappingURL=ViewArticle.css.map */
