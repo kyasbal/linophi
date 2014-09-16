@@ -1052,7 +1052,7 @@
     {
         getPrefixString(): string
         {
-            return "$section(prim)";
+            return "$prim";
         }
 
         getFormattedHtmlImpl(str: string): string
@@ -1074,7 +1074,7 @@
     {
         getPrefixString(): string
         {
-            return "$section(succ)";
+            return "$succ";
         }
 
         getFormattedHtmlImpl(str: string): string
@@ -1096,7 +1096,7 @@
     {
         getPrefixString(): string
         {
-            return "$section(info)";
+            return "$info";
         }
 
         getFormattedHtmlImpl(str: string): string
@@ -1118,7 +1118,7 @@
     {
         getPrefixString(): string
         {
-            return "$section(warn)";
+            return "$warn";
         }
 
         getFormattedHtmlImpl(str: string): string
@@ -1140,7 +1140,7 @@
     {
         getPrefixString(): string
         {
-            return "$section(dang)";
+            return "$dang";
         }
 
         getFormattedHtmlImpl(str: string): string

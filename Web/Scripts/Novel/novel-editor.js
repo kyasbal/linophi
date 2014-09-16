@@ -976,7 +976,7 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         BgcPrimPrefix.prototype.getPrefixString = function () {
-            return "$section(prim)";
+            return "$prim";
         };
 
         BgcPrimPrefix.prototype.getFormattedHtmlImpl = function (str) {
@@ -1000,7 +1000,7 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         BgcSuccPrefix.prototype.getPrefixString = function () {
-            return "$section(succ)";
+            return "$succ";
         };
 
         BgcSuccPrefix.prototype.getFormattedHtmlImpl = function (str) {
@@ -1024,7 +1024,7 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         BgcInfoPrefix.prototype.getPrefixString = function () {
-            return "$section(info)";
+            return "$info";
         };
 
         BgcInfoPrefix.prototype.getFormattedHtmlImpl = function (str) {
@@ -1048,7 +1048,7 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         BgcWarnPrefix.prototype.getPrefixString = function () {
-            return "$section(warn)";
+            return "$warn";
         };
 
         BgcWarnPrefix.prototype.getFormattedHtmlImpl = function (str) {
@@ -1072,7 +1072,7 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         BgcDangPrefix.prototype.getPrefixString = function () {
-            return "$section(dang)";
+            return "$dang";
         };
 
         BgcDangPrefix.prototype.getFormattedHtmlImpl = function (str) {
