@@ -47,7 +47,7 @@
 @top-accent-3: rgb(245, 180, 0);
 
 //ヘッダー要素
-@header-color-bg:@bg-color-1;
+@header-color-bg: @bg-color-1;
 
 .tag-style-mixin() {
     border: 1px solid @tag-color-border;
@@ -66,8 +66,8 @@
 @border-gray-all: 1px solid @border-gray;
 @border-normal-green: @accent-color-1;
 @border-green-all: 1px solid @border-normal-green;
-@border-ccc:#ccc;
-@border-ccc-all:1px solid @border-ccc;
+@border-ccc: #ccc;
+@border-ccc-all: 1px solid @border-ccc;
 
 //送信ボタン系
 @submit-button-style-1-color-bg: @accent-color-1;
@@ -76,6 +76,7 @@
 @submit-button-style-2-color-bg: @border-ccc;
 @submit-button-style-2-color-hover-bg: @bg-color-2;
 @submit-button-style-2-color-fore: @text-color-2;
+
 .submit-button-style-1-mixin() {
     background-color: @submit-button-style-1-color-bg;
     color: @submit-button-style-1-color-fore;
@@ -87,7 +88,7 @@
     }
 }
 
-.submit-button-style-2-mixin(){
+.submit-button-style-2-mixin() {
     background-color: @submit-button-style-2-color-bg;
     color: @submit-button-style-2-color-fore;
     .submit-button-margin;
@@ -132,48 +133,31 @@
     background-color: @header-style-2-color-bg;
 }
 
-.header-style-3-mixin(){
-    font-size: 25px;
-    margin:10px 10px 15px -10px;
-    padding: 5px 5px 9px 12px;
-    border-left: 10px solid #777;
-    height:30px;
-    width: 100%;
-    border-bottom: 1px dashed #555;
+.header-style-3-mixin() {
+    padding-left: 5px;
+    border: 3px groove #888;
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 1;
+    margin: 30px 20px 10px -10px;
+    padding: 14px 5px 10px 23px;
+    width: 98%;
+    border-radius: 5px;
 }
 
-.header-style-4-mixin(){
-     position: relative;
-     color: #111;
-     background: #ccc;
-     font-size: 20px;
-     line-height: 1;
-     margin: 30px 20px 10px -10px;
-     padding: 14px 5px 10px 50px;
-     border-radius: 22px 0 0 22px;
 
-     &:before {
-     content: "";
-     position: absolute;
-     background: #eee;
-     top: 50%;
-     left: 14px;
-     margin-top :-10px;
-     height: 20px;
-     width: 20px;
-     border-radius: 50%;
-     box-shadow: 1px 1px 1px #777 inset;
-     }
-     /*&:after {
-     content: "";
-     position: absolute;
-     top: 0;
-     right: -22px;
-     height: 0;
-     width: 0;
-     border: 22px solid #ccc;
-         border-right-color: transparent;
-     }*/
+.header-style-4-mixin() {
+    position: relative;
+    font-size: 22px;
+    line-height: 1;
+    margin: 30px 20px 10px -10px;
+    padding: 14px 5px 10px 28px;
+    border-top: 2px solid @border-ccc;
+    border-right: 2px solid @border-ccc;
+    border-left: 2px solid @border-ccc;
+    border-bottom: 3px solid @border-ccc;
+    width: 98%;
+    border-radius: 16px;
 }
 
 //入力ボックス系
@@ -212,7 +196,7 @@
 }
 
 //関連記事を書くボタン
-.write-related-article-mixin()  {
+.write-related-article-mixin() {
     text-align: center;
     margin: 55px;
 
@@ -228,6 +212,42 @@
         &:hover {
             background-color: @submit-button-style-1-color-hover-bg;
         }
+    }
+}
+
+//検索画面のボタン
+.page-control-mixin() {
+    margin: 15px 80px 0 80px;
+    font-size: 14px;
+    //font-weight:bold;
+    span {
+        border-radius: 20px;
+        background-color: @top-accent-1;
+        padding: 10px 30px 10px 30px;
+
+        a {
+            text-decoration: none;
+            color: @text-color-1;
+            cursor: pointer;
+        }
+    }
+
+    .page-before {
+        float: left;
+        margin-left: 50px;
+    }
+
+    .page-before:hover {
+        background-color: #0c2a81;
+    }
+
+    .page-after {
+        float: right;
+        margin-right: 50px;
+    }
+
+    .page-after:hover {
+        background-color:  #0c2a81;
     }
 }
 

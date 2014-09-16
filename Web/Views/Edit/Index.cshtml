@@ -74,7 +74,6 @@
              @Html.Hidden("Mode", Model.EditMode, new {id = "hidden-mode"})
             @Html.HiddenFor(m=>m.TopicId)
             @Html.HiddenFor(m=>m.RelatedArticle)
-             <span class="prev-switch">大きくする→</span>
              if (Model.ArticleId!=null)
              {
                  @Html.Hidden("Id", Model.ArticleId)
@@ -107,7 +106,7 @@
                     <a href="http://www.linophi.com">リノフィー</a>
                 </div>
             </div>
-            <p class="top-title">youtubeやニコ動のリンクは貼ると自動的にプレイヤーが埋め込まれます。</p>
+            <p class="top-title">YouTubeやニコニコ動画のリンクを貼ると自動的にプレイヤーが埋め込まれます。</p>
         </div>
          
     }

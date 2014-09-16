@@ -10,7 +10,7 @@ $(function()
     {
         name = $(this).val();
         len = name.length;
-        if (len <= 3)
+        if (len < 2)
         {
             $(".warn2").css("display", "inline");
             isTooShortNickName = false;
