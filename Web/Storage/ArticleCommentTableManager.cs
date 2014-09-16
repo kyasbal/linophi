@@ -71,7 +71,7 @@ namespace Web.Storage
 
         public IEnumerable<ArticleComment> GetComments(string articleId)
         {
-            return CreateQuery().Where(f => f.PartitionKey.Equals(articleId));
+            return CreateQuery().Where(f => f.PartitionKey.Equals(articleId)).OrderBy(f=>f.Timestamp);
         }
 
         public int GetCommentCount(string articleId)
@@ -94,7 +94,7 @@ namespace Web.Storage
                 });
             
             }
-           var query=comments.OrderBy(f => f.PostTime);
+            var query = comments.AsQueryable();
             count = comments.Count();
             return Json.Encode(query.ToArray());
         }
