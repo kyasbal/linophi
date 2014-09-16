@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
@@ -17,6 +14,7 @@ namespace Web.Controllers
     public class AdminController : Controller
     {
         private ApplicationDbContext dbContext;
+
         public ApplicationDbContext DbContext
         {
             get
@@ -39,6 +37,7 @@ namespace Web.Controllers
             vm.TopicItems = DbContext.Topics;
             return View(vm);
         }
+
         [HttpGet]
         public async Task<ActionResult> EditTopic(string topicId)
         {
@@ -48,17 +47,31 @@ namespace Web.Controllers
             return View(vm);
         }
 
+        [HttpGet]
+        public async Task<ActionResult> AddTopic()
+        {
+            var vm = new EditTopicViewModel();
+            TopicModel topicModel = TopicModel.GenerateNewTopic();
+            vm.TopicId = topicModel.TopicId;
+            vm.EditTarget = topicModel;
+            return View("EditTopic",vm);
+        }
+
         [HttpPost]
         public async Task<ActionResult> EditTopic(EditTopicViewModel vm)
         {
             vm.EditTarget.TopicId = vm.TopicId;
             TopicModel lastModel = await DbContext.Topics.FindAsync(vm.TopicId);
-            DbContext.Topics.Remove(lastModel);
-            await DbContext.SaveChangesAsync();
+            if (lastModel != null)
+            {
+                DbContext.Topics.Remove(lastModel);
+
+                await DbContext.SaveChangesAsync();
+            }
             DbContext.Topics.Add(vm.EditTarget);
             await DbContext.SaveChangesAsync();
-            TopicThumbnailManager thumbnailManager = new TopicThumbnailManager(new BlobStorageConnection());
-            thumbnailManager.UploadAsync(vm.TopicId,vm.Thumbnail);
+            var thumbnailManager = new TopicThumbnailManager(new BlobStorageConnection());
+            await thumbnailManager.UploadAsync(vm.TopicId, vm.Thumbnail);
             return RedirectToAction("TopicList");
         }
 

@@ -3,6 +3,7 @@
   width: 100%;
   bottom: 0;
   position: relative;
+  border-top: 1px solid #cccccc;
 }
 footer .box-container {
   padding-left: 30%;

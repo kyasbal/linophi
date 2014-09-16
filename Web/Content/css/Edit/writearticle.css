@@ -181,87 +181,106 @@ div[class^="edit-editted-tag"] span[class^="edit-editted-tag-delete-"] {
   font-weight: bold;
 }
 .help-container .h2_similar {
-  box-shadow: -18px 0 #afdbcc, -28px 0 #7ac2a6;
-  margin-bottom: 1em;
-  padding: 0 20px;
+  margin: 10px 10px 15px 0;
+  padding: 5px 5px 9px 12px;
+  border-left: 10px solid #777;
+  height: 30px;
+  width: 560px;
+  border-bottom: 1px dashed #555;
   background-color: #ffffff;
-  height: 48px;
 }
-.help-container .h2_similar .tutorial_big {
+.help-container .tutorial_big {
   display: inline-block;
-  font-size: xx-large;
+  font-size: 24px;
   padding: 0;
+  margin-bottom: 0;
 }
-.help-container .h2_similar .tutorial_small {
+.help-container .tutorial_small {
   display: inline-block;
   font-size: medium;
-  padding-left: 100px;
+  padding-left: 124px;
+  margin-bottom: 0;
 }
-.help-container .h3_similar {
-  box-shadow: -18px 0 #f0f8ff, -28px 0 #87ceeb;
-  margin-bottom: 1em;
-  padding: 0 20px;
-  background-color: #ffffff;
-  height: 36px;
+.h3_similar {
+  position: relative;
+  color: #111;
+  background: #ccc;
+  line-height: 1;
+  margin: 30px 20px 10px -10px;
+  padding: 14px 5px 10px 50px;
+  border-radius: 22px 0 0 22px;
+  width: 555px;
 }
-.help-container .h3_similar .tutorial_big {
+.h3_similar:before {
+  content: "";
+  position: absolute;
+  background: #eee;
+  top: 50%;
+  left: 14px;
+  margin-top: -10px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #777 inset;
+}
+.h3_similar .tutorial_big {
   display: inline-block;
-  font-size: x-large;
+  font-size: 20px;
   padding: 0;
 }
-.help-container .h3_similar .tutorial_small {
+.h3_similar .tutorial_small {
   display: inline-block;
   font-size: medium;
-  padding-left: 130px;
+  padding-left: 124px;
 }
-.help-container .h4_similar {
+.h4_similar {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   margin-bottom: 1em;
   padding: 7px 20px 0px 20px;
   background-color: ghostwhite;
   height: 33px;
 }
-.help-container .h4_similar .tutorial_big {
+.h4_similar .tutorial_big {
   display: inline-block;
   font-size: large;
   padding: 0;
 }
-.help-container .h4_similar .tutorial_small {
+.h4_similar .tutorial_small {
   display: inline-block;
   font-size: medium;
   padding-left: 150px;
 }
-.help-container .h5_similar {
+.h5_similar {
   margin-bottom: 1em;
   padding: 0 20px;
   background-color: ghostwhite;
   height: 27px;
 }
-.help-container .h5_similar .tutorial_big {
+.h5_similar .tutorial_big {
   display: inline-block;
   font-weight: bold;
   font-size: larger;
   padding: 0;
 }
-.help-container .h5_similar .tutorial_small {
+.h5_similar .tutorial_small {
   display: inline-block;
   font-size: medium;
   padding-left: 150px;
 }
-.help-container .all_address {
+.all_address {
   margin: 20px;
 }
-.help-container .all_address p {
+.all_address p {
   margin: 0;
 }
-.help-container .all_address .address_1 {
+.all_address .address_1 {
   width: 500px;
   margin: 10px 0 10px 0;
   padding: 10px 0 10px 0;
   border-top: 3px solid #fff;
   border-bottom: 3px solid #fff;
 }
-.help-container .all_address .address_2 {
+.all_address .address_2 {
   width: 500px;
   margin: 10px 0 10px 0;
   padding: 10px 0 10px 0;

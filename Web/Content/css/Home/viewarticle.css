@@ -429,6 +429,7 @@
 .postit-list img {
   width: 130px;
   height: 43px;
+  vertical-align: bottom;
 }
 .postit-list > * {
   cursor: pointer;

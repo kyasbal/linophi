@@ -2,18 +2,19 @@
 
 header {
     padding-top: 3px;
-    //background-color: @bg-color-2;
-    background-color: @accent-light-color-2;
+    background-color: @header-color-bg;
     border-bottom: 1px solid #f2f2f2;
-
+    margin-bottom: 10px;
     #dropmenu {
         float: right;
+        position: relative;
+        top: -50px;
 
         ul {
             li {
                 overflow: hidden;
                 float: left;
-                height: 50px;
+                height: 45px;
                 line-height: 40px;
                 vertical-align: middle;
                 display: inline-block;
@@ -21,7 +22,20 @@ header {
         }
     }
 
-    a {
+    .header-brand-container {
+        z-index: 100;
+        width: 100%;
+
+        a.header-brand {
+            color: dimgray;
+            line-height: 50px;
+            font-size: x-large;
+            font-weight: bold;
+            text-decoration:none!important;
+        }
+    }
+
+    #dropmenu a {
         cursor: pointer;
         display: inline-block;
         width: 100px;
@@ -29,20 +43,40 @@ header {
         text-decoration: none !important;
         text-align: center;
         font-weight: bold;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
         box-sizing: border-box;
         border-bottom: none;
-        .transition-property-mixin();
     }
 
-    a:hover {
+    .header-menu-list-container {
+        li {
+            .border-bottom-transition-property-mixin;
+        }
+
+        li:nth-child(3n):hover {
+            border-bottom: 5px solid @top-accent-1;
+        }
+
+        li:nth-child(3n+1):hover {
+            border-bottom: 5px solid @top-accent-2;
+        }
+
+        li:nth-child(3n+2):hover {
+            border-bottom: 5px solid @top-accent-3;
+        }
+    }
+
+    #dropmenu a:hover {
         color: #818181;
-        border-bottom: 5px solid;
     }
 
     .menu {
+        text-align: center;
         margin: 0 auto;
         overflow: hidden;
         width: 80%;
+        height: 50px;
 
         .search {
             margin: 5px 0 5px 0;
@@ -57,35 +91,45 @@ header {
 
             .search-text {
                     color: @textbox-style-1-color-fore;
-                    background-color: #B0E0E6;
                 margin: 7.5px 0 7.5px 0;
                 height: 20px;
                 width: 200px;
-                padding: 5px 10px;
+                    padding: 5px 0px 5px 10px;
                 position: absolute;
                 left: 10px;
                 top: -6px;
-                box-sizing: content-box;
-                border: hidden !important;
-                border-radius: 100px;
+                    .vend-boxsizing-mixin(content-box);
+                    border: 1px solid lightgray;
+                    border-radius: 2px;
             }
 
             .search-text:focus {
                 outline: none;
-            }
-
-            .search-text:hover {
-                border: 2px #a4c6fd !important;
-                    background-color: #ADD8E6;
+                    box-shadow: rgba(0,0,0,0.4) 0 0 1px inset;
             }
 
             .search-button {
                 border: 0;
-                width: 20px;
+                    border-left: 1px solid lightgray;
+                    width: 40px;
                 height: 25px;
                 position: absolute;
-                left: 200px;
+                    left: 180px;
                 top: 5px;
+                    background-image: url("/Content/imgs/loupe.svg");
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-color: @bg-color-1;
+                    background-size: contain;
+
+                    &:hover {
+                        -moz-transform: translateY(1px);
+                        -ms-transform: translateY(1px);
+                        -o-transform: translateY(1px);
+                        -webkit-transform: translateY(1px);
+                        transform: translateY(1px);
+                        cursor: pointer;
+                    }
             }
 
             .search-button:focus {

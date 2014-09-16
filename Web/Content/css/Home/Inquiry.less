@@ -5,7 +5,7 @@
     margin: 0 auto;
 
     .inquiry-form {
-        border: 1px solid @accent-highlight-color-1;
+        border: @border-ccc-all;
         padding: 25px;
 
         div.error {
@@ -19,7 +19,7 @@
             font-size: xx-large;
             padding: 0 20px;
             text-align: center;
-            border-bottom: 1px solid @accent-highlight-color-1;
+            border-bottom: @border-ccc-all
         }
 
         h2 {
@@ -29,7 +29,7 @@
             margin: 20px 0 0 35px;
             width: 55%;
             /*border-top:1px solid @accent-highlight-color-1;*/
-            border-bottom: 1px solid @accent-highlight-color-1;
+            border-bottom: @border-ccc-all;
         }
 
         .layout-inner {
@@ -37,12 +37,15 @@
         }
 
         input {
-            background-color: #F0FFFF;
+            background-color: @bg-color-1;
             margin: 15px 0 15px 35px;
             height: 20px;
             width: 75%;
             padding: 5px 10px;
-            border: none;
+            border-top: @border-ccc-all;
+            border-bottom: @border-ccc-all;
+            border-right: @border-ccc-all;
+            border-left: @border-ccc-all;
             border-radius: 2px;
         }
 
@@ -57,8 +60,8 @@
             resize: none;
             height: 200px;
             width: 400px;
-            border: 1px solid #F0FFFF;
-            background-color: #F0FFFF;
+            border: @border-ccc-all;
+            background-color: @bg-color-1;
             padding: 1px;
             border-radius: 2px;
         }
@@ -71,7 +74,7 @@
 
         a {
             line-height: 60px;
-            .submit-button-style-1-mixin;
+            .submit-button-style-2-mixin;
         }
 
         .submit-button-container {

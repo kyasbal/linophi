@@ -181,38 +181,59 @@ div[class^="edit-editted-tag"] {
         font-weight:bold;
     }
     .h2_similar{
-        .head-shadow(@header-style-1-color-shadow-1,@header-style-1-color-shadow-2);
-        margin-bottom: 1em;
-        padding: 0 20px;
-        background-color: @header-style-1-color-bg;
-        height:48px;
+        margin:10px 10px 15px 0;
+        padding: 5px 5px 9px 12px;
+        border-left: 10px solid #777;
+        height:30px;
+        width: 560px;
+        border-bottom: 1px dashed #555;
+        background-color:@header-style-1-color-bg;
+        }
         .tutorial_big{
             display:inline-block;
-            font-size: xx-large;
+            font-size: 24px;
             padding:0;
+            margin-bottom:0;
         }   
         .tutorial_small{
             display:inline-block;
             font-size:medium;
-            padding-left:100px;
+            padding-left:124px;
+            margin-bottom:0;
         }
     }
 
+
     .h3_similar{
-        .head-shadow(@header-style-2-color-shadow-1,@header-style-2-color-shadow-2);
-        margin-bottom: 1em;
-        padding: 0 20px;
-        background-color: @header-style-2-color-bg;
-        height:36px;
+        position: relative;
+        color: #111;
+        background: #ccc;
+        line-height: 1;
+        margin: 30px 20px 10px -10px;
+        padding: 14px 5px 10px 50px;
+        border-radius: 22px 0 0 22px;
+        width:555px;
+        &:before {
+        content: "";
+        position: absolute;
+        background: #eee;
+        top: 50%;
+        left: 14px;
+        margin-top :-10px;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        box-shadow: 1px 1px 1px #777 inset;
+        }
         .tutorial_big{
             display:inline-block;
-            font-size: x-large;
+            font-size: 20px;
             padding:0;
         }   
         .tutorial_small{
             display:inline-block;
             font-size:medium;
-            padding-left:130px;
+            padding-left:124px;
         }
     }
 
@@ -270,4 +291,3 @@ div[class^="edit-editted-tag"] {
             border-bottom:3px solid #fff;
         }
     }
-}
