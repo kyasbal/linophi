@@ -1020,16 +1020,12 @@
         }
     }
 
-    class ListnPrefix extends PrefixBase
-    {
-        getPrefixString(): string
-        {
+    class ListnPrefix extends PrefixBase {
+        getPrefixString(): string {
             return "$num";
         }
-
-        getFormattedHtmlImpl(str: string): string
-        {
-            str = str.replace(/\$num\{(.*)}/g, "<ol class=\"listn\"><li>$1</li></ol><br>");
+        getFormattedHtmlImpl(str: string): string {
+            str = str.replace(/(.*)/g, "<ol class=\"num\"><li>$1</li></ol><br>");
             str = str.replace(/<\/br>/g, "</li><li>");
             str = str.replace(/<li><\/li>/g, "");
             str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
@@ -1038,16 +1034,12 @@
         }
     }
 
-    class ListdPrefix extends PrefixBase
-    {
-        getPrefixString(): string
-        {
+    class ListdPrefix extends PrefixBase {
+        getPrefixString(): string {
             return "$dot";
         }
-
-        getFormattedHtmlImpl(str: string): string
-        {
-            str = str.replace(/\$dot\{(.*)}/g, "<ul class=\"listd\"><li>$1</li></ul><br>");
+        getFormattedHtmlImpl(str: string): string {
+            str = str.replace(/(.*)/g, "<ul class=\"dot\"><li>$1</li></ul><br>");
             str = str.replace(/<\/br>/g, "</li><li>");
             str = str.replace(/<li><\/li>/g, "");
             str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");

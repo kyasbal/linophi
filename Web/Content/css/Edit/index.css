@@ -84,8 +84,8 @@
   outline: none;
   border-radius: 300px;
 }
-.listn,
-.x_listn {
+.num,
+.x_num {
   list-style-type: decimal;
 }
 .listd,
