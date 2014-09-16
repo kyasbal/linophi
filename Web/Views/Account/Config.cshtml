@@ -10,32 +10,34 @@
 }
 @section JS
 {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/Account/Config.js"></script>
 }
 
 <div class="layout">
-    @using (Html.BeginForm("Config", "Account", FormMethod.Post,new{@class="config-form"}))
-{
-    @Html.AntiForgeryToken()
-    <div class="contents">
+    @using (Html.BeginForm("Config", "Account", FormMethod.Post, new { @class = "config-form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="contents">
             <h1>設定</h1>
             <h2>ユーザー情報変更</h2>
-        <span class="change-username">
-            ユーザー名の変更
-            <span class="textbox">
-                @Html.TextBoxFor(m => m.NickName)
+            <span class="change-username">
+                ユーザー名の変更
+                <span id="textbox">
+                    @Html.TextBoxFor(m => m.NickName, new { name="name" , @class = "name" })
+                </span>
             </span>
-        </span>
-        <div></div>
-        <span class="change-recieve-mail">
-            メールの受信可否の変更
-            <span class="check">
-            @Html.CheckBoxFor(m => m.MailMagazine)
+            <div></div>
+            <span class="change-recieve-mail">
+                メールの受信可否の変更
+                <span class="check">
+                    @Html.CheckBoxFor(m => m.MailMagazine)
+                </span>
             </span>
-        </span>
-        <div>
+            <div>
                 <a class="config-submit">保存</a>
+                <div class="error-message">ユーザー名は2文字以上15文字以上にしてください</div>
+            </div>
         </div>
-    </div>
-}
+    }
 </div>

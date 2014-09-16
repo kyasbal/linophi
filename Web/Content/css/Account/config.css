@@ -21,6 +21,10 @@ h2 {
 .contents div {
   text-align: center;
 }
+.contents div .error-message {
+  opacity: 0;
+  color: red;
+}
 .contents span {
   margin: 20px auto;
   line-height: 60px;

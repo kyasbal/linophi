@@ -226,23 +226,26 @@ html {
 .container .contents .contentswrapper .main .widgetlist .widgettypetitle p {
   word-wrap: break-word;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"] {
+.container .contents .contentswrapper .main .article-container > *[class*="p-"] {
   position: relative;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"]:hover {
+.container .contents .contentswrapper .main .article-container > *[class*="p-"]:hover {
   background: #ddd;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"]:hover > *[class*="-comments"] {
+.container .contents .contentswrapper .main .article-container > *[class*="p-"]:hover > .article-wrapper {
   display: block;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] {
-  font-size: 10px;
-  width: 300px;
+.container .contents .contentswrapper .main .article-container > *[class*="p-"] > .article-wrapper {
   display: none;
   position: absolute;
   top: 0;
   left: 102%;
   z-index: 9999;
+  padding-bottom: 1000px;
+}
+.container .contents .contentswrapper .main .article-container > *[class*="p-"] > .article-wrapper *[class*="-comments"] {
+  font-size: 10px;
+  width: 300px;
   padding: 6px 10px;
   color: #ffffff;
   background: #666;
@@ -253,9 +256,9 @@ html {
   -webkit-transform: translateY(-30%);
   transform: translateY(-30%);
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .triangle {
+.container .contents .contentswrapper .main .article-container > *[class*="p-"] > .article-wrapper *[class*="-comments"] .triangle {
   width: 0;
-  height: 70%;
+  height: 1000px;
   content: "";
   display: block;
   position: absolute;
@@ -264,10 +267,10 @@ html {
   border-top: 10px solid #666;
   border-left: 20px solid transparent;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] .response p:hover {
+.container .contents .contentswrapper .main .article-container > *[class*="p-"] > .article-wrapper *[class*="-comments"] .response p:hover {
   background: none;
 }
-.container .contents .contentswrapper .main .widget > *[class*="p-"] > *[class*="-comments"] button {
+.container .contents .contentswrapper .main .article-container > *[class*="p-"] > .article-wrapper *[class*="-comments"] button {
   cursor: pointer;
   font-size: 10px;
   font-weight: bold;
@@ -521,4 +524,4 @@ html {
     width: 700px;
   }
 }
-/*# sourceMappingURL=viewarticle.css.map */
+/*# sourceMappingURL=ViewArticle.css.map */
