@@ -74,7 +74,6 @@
              @Html.Hidden("Mode", Model.EditMode, new {id = "hidden-mode"})
             @Html.HiddenFor(m=>m.TopicId)
             @Html.HiddenFor(m=>m.RelatedArticle)
-             <span class="prev-switch">大きくする→</span>
              if (Model.ArticleId!=null)
              {
                  @Html.Hidden("Id", Model.ArticleId)

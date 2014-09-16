@@ -190,6 +190,8 @@
   cursor: pointer;
 }
 .edit-button-container {
+  margin-top: 80px;
+  margin-bottom: -120px;
   text-align: center;
 }
 .help-container {
