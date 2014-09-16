@@ -27,9 +27,11 @@
                         }
                         else
                         {
-                            
+
                             <li>
-                                @Html.GravatarImg(Request, 24)
+                                <span class="user-icon">
+                                    @Html.GravatarImg(Request, 24)
+                                </span>
                                 <a href="/MyPage">@WebPageStatic.GetUserNickName(Request)</a>
                             </li>
                             <li>@Html.ActionLink("設定", "Config", "Account")</li>
