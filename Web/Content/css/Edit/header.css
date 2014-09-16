@@ -10,12 +10,9 @@ header #dropmenu {
   top: -50px;
 }
 header #dropmenu ul li {
+  width: 100%;
   overflow: hidden;
-  float: left;
-  height: 45px;
-  line-height: 40px;
-  vertical-align: middle;
-  display: inline-block;
+  display: inline;
 }
 header #dropmenu ul li .user-icon img {
   height: 20px;
