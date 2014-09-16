@@ -10,6 +10,7 @@
 //記事→article
 //他にあれば追加せよ
 //mixinに関するものに対しては、サフィックスとしてmixinをつける。
+//ベンダプレックス付与用のmixinに関しては、プレフィックスとしてvendをつける
 //アクセントカラーに関しては以下のように命名する
 //@accent-color-数字:色
 //ただし、これに対応する暗色の色が存在するとき
@@ -194,16 +195,19 @@
     }
 }
 
-.transition-property-mixin() {
-    -webkit-transition-property: border-bottom;
-    -webkit-transition-duration: 0.2s;
-    -webkit-transition-timing-function: liner;
+.border-bottom-transition-property-mixin() {
     -moz-transition-property: border-bottom;
-    -moz-transition-duration: 0.2s;
-    -moz-transition-timing-function: liner;
     -o-transition-property: border-bottom;
+    -webkit-transition-property: border-bottom;
+    transition-property: border-bottom;
+    -moz-transition-duration: 0.2s;
     -o-transition-duration: 0.2s;
-    -o-transition-timing-function: liner;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -moz-transition-timing-function: ease-out;
+    -o-transition-timing-function: ease-out;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
 }
 
 //関連記事を書くボタン
@@ -224,4 +228,12 @@
             background-color: @submit-button-style-1-color-hover-bg;
         }
     }
+}
+
+//ベンダプレックス回避用
+
+.vend-boxsizing-mixin(@param) {
+    -moz-box-sizing: @param;
+    -webkit-box-sizing: @param;
+    box-sizing: @param;
 }

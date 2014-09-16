@@ -1,5 +1,4 @@
-﻿
-@using Web.Utility
+﻿@using Web.Utility
 
 <header>
     <div class="menu">
@@ -15,29 +14,28 @@
                 <a class="header-brand" href="/">意見.みんな</a>
             </div>
             <div id="dropmenu">
-                <ul>
-                    <li><span>@Html.ActionLink("投稿する", "RedirectToEdit", "Edit")</span></li>
-                    <li>
-                        <span>
-                            @{
-                                if (!Request.IsAuthenticated)
-                                {
-                                    using (Html.BeginForm("Login", "Account", FormMethod.Get, new { @class = "login-form" }))
-                                    {
-                                        @Html.Hidden("returnUrl", Request.Url)
-                                        <a onclick="$('.login-form').submit();">ログイン</a>
-                                    }
-                                }
-                                else
-                                {
-                                    @Html.GravatarImg(Request, 24)
-                                    <a href="/MyPage">@WebPageStatic.GetUserNickName(Request)</a>
-                                    @Html.ActionLink("設定", "Config", "Account")
-                                    @Html.ActionLink("ログアウト", "Logout", "Account")
-                                }
+                <ul class="header-menu-list-container">
+                    <li>@Html.ActionLink("投稿する", "RedirectToEdit", "Edit")</li>
+                    @{
+                        if (!Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("Login", "Account", FormMethod.Get, new { @class = "login-form" }))
+                            {
+                                @Html.Hidden("returnUrl", Request.Url)
+                                <li><a onclick="$('.login-form').submit();">ログイン</a></li>
                             }
-                        </span>
-                    </li>
+                        }
+                        else
+                        {
+                            
+                            <li>
+                                @Html.GravatarImg(Request, 24)
+                                <a href="/MyPage">@WebPageStatic.GetUserNickName(Request)</a>
+                            </li>
+                            <li>@Html.ActionLink("設定", "Config", "Account")</li>
+                            <li>@Html.ActionLink("ログアウト", "Logout", "Account")</li>
+                        }
+                    }
                 </ul>
             </div>
         </div>

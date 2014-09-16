@@ -88,7 +88,11 @@ a:visited {
   line-height: 100px;
   padding: 20px 60px;
   color: white;
+  font-size: large;
   background-color: #f5b400;
+}
+.top-post-this:visited {
+  color: white;
 }
 .top-topics-category section:nth-child(3n+1) .top-title {
   background-color: #4385f5;
