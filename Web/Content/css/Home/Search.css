@@ -57,6 +57,9 @@ body {
 .contents .wrapper .main .page-control .page-after:hover {
   background-color: #0c2a81;
 }
+.contents .wrapper .search-result .search-editted {
+  background-color: white;
+}
 .contents .wrapper .search-result .search-header {
   background-color: #ffffff;
   width: 90.5%;
