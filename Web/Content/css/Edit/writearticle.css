@@ -114,11 +114,10 @@ body {
   display: inline-block;
   *display: inline;
   *zoom: 1;
-  width: 50%;
 }
 .edit-text {
   height: 500px;
-  width: 80%;
+  width: 700px;
   max-width: 80%;
   margin: 0 0 0 auto;
   padding: 5px;

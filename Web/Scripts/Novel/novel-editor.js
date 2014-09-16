@@ -942,7 +942,7 @@ var NovelEditer;
         };
 
         ListnPrefix.prototype.getFormattedHtmlImpl = function (str) {
-            str = str.replace(/(.*)/g, "<ol class=\"listn\"><li>$1</li></ol><br>");
+            str = str.replace(/\$listn\{(.*)}/g, "<ol class=\"listn\"><li>$1</li></ol><br>");
             str = str.replace(/<\/br>/g, "</li><li>");
             str = str.replace(/<li><\/li>/g, "");
             str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
@@ -962,7 +962,7 @@ var NovelEditer;
         };
 
         ListdPrefix.prototype.getFormattedHtmlImpl = function (str) {
-            str = str.replace(/(.*)/g, "<ul class=\"listd\"><li>$1</li></ul><br>");
+            str = str.replace(/\$listd\{(.*)}/g, "<ul class=\"listd\"><li>$1</li></ul><br>");
             str = str.replace(/<\/br>/g, "</li><li>");
             str = str.replace(/<li><\/li>/g, "");
             str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
