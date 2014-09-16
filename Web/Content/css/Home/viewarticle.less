@@ -1,6 +1,10 @@
 ﻿@import "../Color.less";
 
-@tabletPortraitWidthSize: 980px;
+@articleGraphSize: 250px;
+
+@smartPhonePortraitWidthSize: 480px;
+@tabletPortraitWidthSize: 768px;
+@pcWidthSize: 1024px;
 
 html {
     overflow-y: scroll;
@@ -17,6 +21,7 @@ html {
         width: 100%;
         border-top: 3px solid #333;
         border-bottom: @border-gray-all;
+        margin-bottom: 50px;
 
         &-inner {
             position: relative;
@@ -27,13 +32,11 @@ html {
         overflow: hidden;
 
         .top {
-            width: 60%;
+            width:95%;
+            margin: 30px auto;
             padding: 10px 0;
             border-top: @border-gray-all;
             border-bottom: @border-gray-all;
-            margin: 0 0 30px 20%;
-
-            &-inner {
                 .tag {
                     z-index: 500;
                     padding: 5px 0;
@@ -74,17 +77,11 @@ html {
                         }
                     }
                 }
-
-                .navbar {
-                    &-main {
+            .navbar-main {
                         padding: 5px 0;
-
-                        > div {
-                            display: inline-block;
-                        }
                         //タイトルや投稿者などの詳細情報部分
                         .navbar-detail {
-                            width: 60%;
+                            width: 100%;
                             vertical-align: top;
 
                             .main-sns {
@@ -109,8 +106,7 @@ html {
                                     color: #000;
                                     text-decoration: none;
                                 }
-                            }
-
+                            	}
                             .navbar-count {
                                 @navbarCountFixedFontSize: 11px; //投稿者・PVなどの決まった言葉のフォントサイズ
                                 @navbarCountValueFontSize: 20px; //記事ごとの実際の投稿者の名前やPV数のフォントサイズ
@@ -172,14 +168,12 @@ html {
                         }
                         //円グラフ部分
                         .navbar-thumb {
-                            @articleGraphSize: 250px;
-
-                            z-index: 1;
-                            position: relative;
                             width: @articleGraphSize;
                             height: @articleGraphSize;
+                    margin: 0 auto;
                             padding: 0;
-                            margin: 0;
+                    z-index: 1;
+                    position: relative;
 
                             #article-graph {
                                 padding: 0;
@@ -214,15 +208,17 @@ html {
                                 font-size:20px;
                             }
                         }
+                .navbar-thumb:after{
+                    clear: both;
                     }
                 }
             }
-        }
         /*以下記事部分*/
         .contentswrapper {
             width: 1040px;
             margin: 0 auto;
             margin-bottom: 30px;
+            clear: left;
 
             .main {
                 /*background-color: aliceblue;*/
@@ -570,10 +566,49 @@ html {
         width: 130px;
     }
 }
-
-
 .clearfix:after {
     content: "";
     display: block;
     clear: both;
+}
+
+.container{
+    .contents{
+        @media screen and (min-width: @smartPhonePortraitWidthSize){
+        }
+
+        @media screen and (min-width: @tabletPortraitWidthSize){
+            .top{
+                width: 90%;
+                background-color: red;
+                .navbar-main{
+                    overflow: hidden;
+                    .navbar-detail{
+                        width: ((@tabletPortraitWidthSize - @articleGraphSize)*100 / @tabletPortraitWidthSize);
+                        float: left;
+                    }
+                    .navbar-thumb{
+                        float: right;
+                    }
+                }
+            }
+        }
+        
+        @media screen and (min-width: @pcWidthSize){
+            .top{
+                width: 1000px;
+
+                .navbar-main{
+                    overflow: hidden;
+                    .navbar-detail{
+                        width: 700px;
+                        float: left;
+                    }
+                    .navbar-thumb{
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
 }
