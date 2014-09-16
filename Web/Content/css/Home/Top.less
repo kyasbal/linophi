@@ -151,14 +151,15 @@ a {
 }
 
 .top-title {
-    padding:10px 20px;
-    margin:0 0 20px;
-    background-color:@top-accent-3;
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    background-color: @top-accent-3;
     height: 30px;
     width: 370px;
     overflow: hidden;
     position: relative;
     left: -50px;
+
     > h3 {
         position: absolute;
         top: 50%;
@@ -172,6 +173,18 @@ a {
         font-size: 20px;
         font-weight: bold;
         color: #fff;
+
+        a {
+            color: #fff;
+
+            &:visited {
+                color: #fff;
+            }
+
+            &:hover {
+                text-decoration:underline;
+            }
+        }
     }
 }
 

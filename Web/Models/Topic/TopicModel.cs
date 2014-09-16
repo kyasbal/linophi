@@ -37,6 +37,8 @@ namespace Web.Models.Topic
         [AllowHtml]
         public string LongDescription { get; set; }
 
+        public string RawTextDescription { get; set; }
+
         /// <summary>
         /// 炎上指数
         /// </summary>

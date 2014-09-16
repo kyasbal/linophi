@@ -635,6 +635,10 @@
     <Compile Include="Migrations\201409161929449_AddLongDescriptionToTopicModel.Designer.cs">
       <DependentUpon>201409161929449_AddLongDescriptionToTopicModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409162107083_AddRawTextDescription.cs" />
+    <Compile Include="Migrations\201409162107083_AddRawTextDescription.Designer.cs">
+      <DependentUpon>201409162107083_AddRawTextDescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountConfigViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -857,6 +861,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409161929449_AddLongDescriptionToTopicModel.resx">
       <DependentUpon>201409161929449_AddLongDescriptionToTopicModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409162107083_AddRawTextDescription.resx">
+      <DependentUpon>201409162107083_AddRawTextDescription.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

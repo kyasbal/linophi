@@ -19,27 +19,31 @@
         <div class="inner-header"><h1>@Model.Title</h1></div>
         <div class="top-factor-container">
             <img src="@Model.Image" />
-            @Html.Raw(Model.Description)
-        </div>
-        <div class="top-index clearfix">
-            <div class="top-index-box">
-                <p>HOT</p>
-                <ul>
-                    <li><a href="/ycGNuPLH6xQx"> 最新版「社畜スイッチ」がひど過ぎる 「お前、仕事ナメてんの？」「家族？二の次だ」</a><small>9/8/2014</small></li>
-                    <li><a href="/T5NWuQ2Alez6">テスト原発記事</a><small>9/16/2014</small></li>
-                    <li><a href="/jduQHEZ7KKbH">Test反証記事</a><small>9/10/2014</small></li>
-                </ul>
-            </div>
-            <div class="top-index-box">
-                <p>NEW</p>
-                <ul>
-                    <li><a href="/ycGNuPLH6xQx"> 最新版「社畜スイッチ」がひど過ぎる 「お前、仕事ナメてんの？」「家族？二の次だ」</a><small>9/8/2014</small></li>
-                    <li><a href="/jduQHEZ7KKbH">Test反証記事</a><small>9/10/2014</small></li>
-                    <li><a href="/T5NWuQ2Alez6">テスト原発記事</a><small>9/16/2014</small></li>
-                </ul>
-            </div>
+            @Html.Raw(Model.HtmlDescription)
         </div>
 
+    </section>
+    <section class="fact-container clearfix">
+        <div class="top-index-box">
+            <h2>HOT</h2>
+            <ul>
+                @foreach (var article in Model.HotModels.Take(20))
+                {
+                    <li><a href="@("/"+article.ArticleModelId)">@article.Title</a><small>@article.UpdateTime.ToShortDateString()</small></li>
+                }                </ul>
+        </div>
+        <div class="top-index-box">
+            <h2>NEW</h2>
+            <ul>
+                @foreach (var article in Model.NewArticles.Take(20))
+                {
+                    <li><a href="@("/"+article.ArticleModelId)">@article.Title</a><small>@article.UpdateTime.ToShortDateString()</small></li>
+                }
+            </ul>
+        </div>
+    </section>
+    <section class="button-write-article-container">
+        <a class="topic-post-this" href="@("/Edit?topicId="+Model.TopicId)">関連/反証記事を書く</a>
     </section>
 
 </article>

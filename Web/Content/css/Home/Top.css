@@ -138,6 +138,15 @@ a:visited {
   font-weight: bold;
   color: #fff;
 }
+.top-title > h3 a {
+  color: #fff;
+}
+.top-title > h3 a:visited {
+  color: #fff;
+}
+.top-title > h3 a:hover {
+  text-decoration: underline;
+}
 .top-factor {
   padding: 0 24px 16px;
   overflow: hidden;
