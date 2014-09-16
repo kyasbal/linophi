@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 .layout .inquiry-form {
-  border: 1px solid #dfece6;
+  border: 1px solid #cccccc;
   padding: 25px;
 }
 .layout .inquiry-form div.error {
@@ -16,7 +16,7 @@
   font-size: xx-large;
   padding: 0 20px;
   text-align: center;
-  border-bottom: 1px solid #dfece6;
+  border-bottom: 1px solid #cccccc;
 }
 .layout .inquiry-form h2 {
   /*.head-shadow(@header-style-2-color-shadow-1,@header-style-2-color-shadow-2);*/
@@ -25,18 +25,21 @@
   margin: 20px 0 0 35px;
   width: 55%;
   /*border-top:1px solid @accent-highlight-color-1;*/
-  border-bottom: 1px solid #dfece6;
+  border-bottom: 1px solid #cccccc;
 }
 .layout .inquiry-form .layout-inner {
   margin: 30px 0 0 0;
 }
 .layout .inquiry-form input {
-  background-color: #F0FFFF;
+  background-color: #ffffff;
   margin: 15px 0 15px 35px;
   height: 20px;
   width: 75%;
   padding: 5px 10px;
-  border: none;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
   border-radius: 2px;
 }
 .layout .inquiry-form input:focus {
@@ -49,8 +52,8 @@
   resize: none;
   height: 200px;
   width: 400px;
-  border: 1px solid #F0FFFF;
-  background-color: #F0FFFF;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
   padding: 1px;
   border-radius: 2px;
 }
@@ -61,12 +64,12 @@
 }
 .layout .inquiry-form a {
   line-height: 60px;
-  background-color: #7ac2a6;
-  color: #ffffff;
+  background-color: #cccccc;
+  color: #000000;
   padding: 5px 40px;
 }
 .layout .inquiry-form a:hover {
-  background-color: #5f9781;
+  background-color: #e4e4e4;
   cursor: pointer;
 }
 .layout .inquiry-form .submit-button-container {

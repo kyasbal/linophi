@@ -65,12 +65,16 @@
 @border-gray-all: 1px solid @border-gray;
 @border-normal-green: @accent-color-1;
 @border-green-all: 1px solid @border-normal-green;
+@border-ccc:#ccc;
+@border-ccc-all:1px solid @border-ccc;
 
 //送信ボタン系
 @submit-button-style-1-color-bg: @accent-color-1;
 @submit-button-style-1-color-hover-bg: @accent-dark-color-1;
 @submit-button-style-1-color-fore: @text-color-1;
-
+@submit-button-style-2-color-bg: @border-ccc;
+@submit-button-style-2-color-hover-bg: @bg-color-2;
+@submit-button-style-2-color-fore: @text-color-2;
 .submit-button-style-1-mixin() {
     background-color: @submit-button-style-1-color-bg;
     color: @submit-button-style-1-color-fore;
@@ -78,6 +82,17 @@
 
     &:hover {
         background-color: @submit-button-style-1-color-hover-bg;
+        cursor: pointer;
+    }
+}
+
+.submit-button-style-2-mixin(){
+    background-color: @submit-button-style-2-color-bg;
+    color: @submit-button-style-2-color-fore;
+    .submit-button-margin;
+
+    &:hover {
+        background-color: @submit-button-style-2-color-hover-bg;
         cursor: pointer;
     }
 }
