@@ -15,6 +15,7 @@ header #dropmenu ul li {
   display: inline-block;
 }
 header a {
+  cursor: pointer;
   display: inline-block;
   width: 100px;
   color: #000 !important;
@@ -84,4 +85,4 @@ header .menu .search .search-container .search-button {
 header .menu .search .search-container .search-button:focus {
   outline: none;
 }
-/*# sourceMappingURL=header.css.map */
+/*# sourceMappingURL=Header.css.map */
