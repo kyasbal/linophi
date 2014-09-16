@@ -32,8 +32,14 @@ header #dropmenu .header-menu-list-container li:nth-child(3n+1):hover {
 header #dropmenu .header-menu-list-container li:nth-child(3n+2):hover {
   border-bottom: 5px solid #f5b400;
 }
+header #dropmenu li {
+  overflow: hidden;
+  line-height: 50px;
+  display: inline;
+}
 header #dropmenu li a {
   cursor: pointer;
+  display: inline-block;
   width: 100px;
   color: #000 !important;
   text-decoration: none !important;
