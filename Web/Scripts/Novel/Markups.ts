@@ -194,7 +194,7 @@ class HrMarkUp extends MarkupBase
 {
     getMarkupString(result: string): string
     {
-        result = result.replace(/-----/, "<hr>");
+        result = result.replace(/----/, "<hr>");
         return result;
     }
 }
