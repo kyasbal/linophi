@@ -136,7 +136,6 @@ var LinkMarkup = (function (_super) {
         _super.apply(this, arguments);
     }
     LinkMarkup.prototype.getMarkupString = function (result, id) {
-        console.warn("link");
         result = result.replace(/&ensp;/g, "\u0006h");
         if (result.match(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g)) {
             result = result.replace(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g, "<Img Src=\"/Pages/ContentUpload/ServerCache?url=$1\">");
@@ -202,20 +201,36 @@ var UrlMarkup = (function (_super) {
         _super.apply(this, arguments);
     }
     UrlMarkup.prototype.getMarkupString = function (result) {
-        if (result.match(/\$\([^)]+\)\{[^}]+}/g)) {
-            var url = result.replace(/\$\(([^)]+)\)\{([^}]+)}/g, "$1");
+        if (result.match(/\$url\([^)]+\)\{[^}]+}/g)) {
+            var url = result.replace(/\$url\(([^)]+)\)\{([^}]+)}/g, "$1");
             url = url.replace(/http/g, "\u0006e");
-            result = result.replace(/\$\(([^)]+)\)\{([^}]+)}/g, "<a href='" + url + "'>$2</a>");
+            result = result.replace(/\$url\(([^)]+)\)\{([^}]+)}/g, "<a href='" + url + "'>$2</a>");
         } else {
-            var url = result.replace(/\$\(([^)]+)\).*/g, "$1");
+            var url = result.replace(/\$url\(([^)]+)\).*/g, "$1");
             url = url.replace(/http/g, "\u0006e");
-            result = result.replace(/\$\(([^)]+)\)/g, "<a href=\"" + url + "\">" + url + "</a>");
+            result = result.replace(/\$url\(([^)]+)\)/g, "<a href=\"" + url + "\">" + url + "</a>");
         }
         result = result.replace(/<a[^>]+><\/a>/g, "");
-        console.warn(result);
         return result;
     };
     return UrlMarkup;
+})(MarkupBase);
+
+//画像あどれす
+var ImgMarkup = (function (_super) {
+    __extends(ImgMarkup, _super);
+    function ImgMarkup() {
+        _super.apply(this, arguments);
+    }
+    ImgMarkup.prototype.getMarkupString = function (result) {
+        var img = result.replace(/\$img\(([^)]+)\).*/g, "$1");
+        img = img.replace(/http/g, "\u0006e");
+        var up = "/Pages/ContentUpload/ServerCache?url=";
+        up = up + img;
+        result = result.replace(/\$img\(([^)]+)\)/g, "<img src=\"" + up + "\">");
+        return result;
+    };
+    return ImgMarkup;
 })(MarkupBase);
 
 //色変え
