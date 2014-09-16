@@ -44,97 +44,95 @@
 <div class="container">
     <div class="contents clearfix">
         <div class="top">
-            <div class="top-inner">
-                <div class="tag">
-                    <ul>
-                        @*タグの列挙部分*@
-                        @if (Model.Tags != null)
+            <div class="tag">
+                <ul>
+                    @*タグの列挙部分*@
+                    @if (Model.Tags != null)
                         {
                             foreach (TagViewModel tag in Model.Tags)
                             {
 
                                 if (tag.IsTheme)
                                 {
-                                    <li class="topic-word-list">
-                                        <a href="@("/Tag?tag=" + tag.TagName)" class="topic-word theme-tag">
-                                            @tag.TagName <span class="topic-word-num">(@tag.ArticleCount)</span>
-                                        </a>
-                                    </li>
+                        <li class="topic-word-list">
+                            <a href="@("/Tag?tag=" + tag.TagName)" class="topic-word theme-tag">
+                                @tag.TagName <span class="topic-word-num">(@tag.ArticleCount)</span>
+                            </a>
+                        </li>
                                 }
                                 else
                                 {
-                                    <li class="topic-word-list">
-                                        <a href="@("/Tag?tag=" + tag.TagName)" class="topic-word">
-                                            @tag.TagName <span class="topic-word-num">(@tag.ArticleCount)</span>
-                                        </a>
-                                    </li>
+                        <li class="topic-word-list">
+                            <a href="@("/Tag?tag=" + tag.TagName)" class="topic-word">
+                                @tag.TagName <span class="topic-word-num">(@tag.ArticleCount)</span>
+                            </a>
+                        </li>
                                 }
                             }
                         }
-                    </ul>
-                </div>
-                <nav class="navbar clearfix">
-                    <div class="navbar-main navbar-mainwiththumb">
-                        <div class="navbar-detail">
+                </ul>
+            </div>
+            <nav class="navbar-main navbar-mainwiththumb clearfix">
+                <div class="navbar-detail">
 
-                            <div class="navbar-title">
-                                <h1 class="navbar-title-txt">
-                                    @if (Model != null)
+                    <div class="navbar-title">
+                        <h1 class="navbar-title-txt">
+                            @if (Model != null)
                                     {@Model.Title
                                     }
-                                </h1>
-                            </div>
+                        </h1>
+                    </div>
 
-                            <div class="navbar-count">
-                                <span class="navbar-user">
-                                    <span class="contributor">投稿者</span>
-                                    <span class="navbar-userthumb">@Model.Author_IconTag</span>
-                                    <span class="navbar-username">
-                                        <a href="@("/UserPage?articleId=" + Model.ArticleId)">
-                                            @if (Model != null)
+                    <div class="navbar-count">
+                        <span class="navbar-user">
+                            <span class="contributor">投稿者</span>
+                            <span class="navbar-userthumb">@Model.Author_IconTag</span>
+                            <span class="navbar-username">
+                                <a href="@("/UserPage?articleId=" + Model.ArticleId)">
+                                    @if (Model != null)
                                             {
-                                                @Model.Author
+                                        @Model.Author
                                             }
-                                        </a>さん
-                                    </span>
-                                </span>
-                                <span class="navbar-page-data">
-                                    <span class="navbar-count-num">
-                                        <span class="navbar-count-label">PV</span>
-                                        @if (Model != null)
+                                </a>さん
+                            </span>
+                        </span>
+                        <span class="navbar-page-data">
+                            <span class="navbar-count-num">
+                                <span class="navbar-count-label">PV</span>
+                                @if (Model != null)
                                         {@Model.PageView
                                         }
-                                    </span>
-                                    <span class="navbar-count-num">
-                                        <span class="navbar-count-comment">コメント</span>
-                                        @if (Model != null)
+                            </span>
+                            <span class="navbar-count-num">
+                                <span class="navbar-count-comment">コメント</span>
+                                @if (Model != null)
                                         {@Model.CommentCount
                                         }
-                                    </span>
-                                    <span class="navbar-update-time">
-                                        <span class="update-time">更新日時</span>@Model.Article_UpDate
-                                    </span>
-                                </span>
-                                @if (User.IsInRole("Administrator"))
+                            </span>
+                            <span class="navbar-update-time">
+                                <span class="update-time">更新日時</span>@Model.Article_UpDate
+                            </span>
+                        </span>
+                        @if (User.IsInRole("Administrator"))
                                 {
-                                    <form method="POST" action="/api/Article/RemoveAllLabel">
-                                        @Html.AntiForgeryToken()
-                                        @Html.HiddenFor(m => m.ArticleId)
-                                        <input type="submit" value="ラベル全削除" />
-                                    </form>
-                                    <form method="POST" action="/api/Article/RemoveArticle">
-                                        @Html.AntiForgeryToken()
-                                        @Html.HiddenFor(m => m.ArticleId)
-                                        <input type="submit" value="この記事を削除" />
-                                    </form>
+                                <form method="POST" action="/api/Article/RemoveAllLabel">
+                                    @Html.AntiForgeryToken()
+                                    @Html.HiddenFor(m => m.ArticleId)
+                                    <input type="submit" value="ラベル全削除" />
+                                </form>
+                                <form method="POST" action="/api/Article/RemoveArticle">
+                                    @Html.AntiForgeryToken()
+                                    @Html.HiddenFor(m => m.ArticleId)
+                                    <input type="submit" value="この記事を削除" />
+                                </form>
                                 }
-                            </div>
-                            <div class="main-sns">
-                                <ul>
-                                    <li><span class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span></li>
-                                    <li>
-                                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi", Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
-                                        <script>
+                    </div>
+                    <div class="main-sns">
+                        <ul>
+                            <li><span class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span></li>
+                            <li>
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-text="@(String.Format("{0} - 記事共有サイトlinophi", Model.Title))" data-size="large" data-hashtags="linophi" data-dnt="true">Tweet</a>
+                                <script>
                                             !function (d, s, id) {
                                                 var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
                                                 if (!d.getElementById(id)) {
@@ -144,21 +142,19 @@
                                                     fjs.parentNode.insertBefore(js, fjs);
                                                 }
                                             }(document, 'script', 'twitter-wjs');
-                                        </script>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="navbar-thumb">
-                            <canvas id="article-graph" width="250" height="250"></canvas>
-                            <div class="inside-circle">
-                                <span class="navbar-count-num">@Model.LabelCount</span><br />
-                                <span class="navbar-count-label">ふせん</span>
-                            </div>
-                        </div>
+                                </script>
+                            </li>
+                        </ul>
                     </div>
-                </nav>
-            </div>
+                </div>
+                <div class="navbar-thumb">
+                    <canvas id="article-graph" width="250" height="250"></canvas>
+                    <div class="inside-circle">
+                        <span class="navbar-count-num">@Model.LabelCount</span><br />
+                        <span class="navbar-count-label">ふせん</span>
+                    </div>
+                </div>
+            </nav>
         </div>
 
         @* 以下記事部分 *@
@@ -175,7 +171,7 @@
                     </div>
                 </div>
                 @*本文終了位置*@
-                
+
                 <div class="footer-main-sns">
                     <ul>
                         <li class="fb-like" data-href="@Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></li>
@@ -198,7 +194,7 @@
                 <div class="write-related-article-container">
                     <a class="write-related-article" href="@("/Edit?EditMode=new&RelatedArticle=" + Model.ArticleId)">関連/反論記事を書く</a>
                 </div>
-          
+
 
                 <div class="related-list">
                     <div>関連/反証記事</div>
