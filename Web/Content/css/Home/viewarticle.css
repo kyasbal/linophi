@@ -1,4 +1,13 @@
-﻿html {
+﻿/*
+    ●書き方
+    モバイルファーストという書き方で書いているので、@smartPhonePortraitWidthSize以下と全部(スマホ・タブレット・PC)に共通のデザインは、
+    通常通り(基本レイアウト)に書く。
+    個別対応させたいものは、ファイル一番下にあるMediaQueriesによる分岐部分に書く。
+
+    但し、今のところ(9/16/18:37現在)topしか分岐していないので、それ以外は基本レイアウトに書いても問題ない。
+*/
+/*基本レイアウト*/
+html {
   overflow-y: scroll;
   height: 100%;
   *position: relative;
@@ -6,45 +15,45 @@
   width: 100%;
   background-color: #fff;
 }
-.container {
-  /*記事の説明部あ分(ヘッダ)*/
-}
 .container .head {
   z-index: 501;
   width: 100%;
   border-top: 3px solid #333;
   border-bottom: 1px solid #e7e7e7;
+  margin-bottom: 50px;
 }
 .container .head-inner {
   position: relative;
 }
 .container .contents {
   overflow: hidden;
+  width: 100%;
+  /*記事の説明部分(ヘッダ)*/
   /*以下記事部分*/
 }
 .container .contents .top {
-  width: 60%;
+  width: 95%;
+  margin: 30px auto;
   padding: 10px 0;
   border-top: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
-  margin: 0 0 30px 20%;
 }
-.container .contents .top-inner .tag {
+.container .contents .top .tag {
   z-index: 500;
   padding: 5px 0;
   position: relative;
   display: inline-block;
 }
-.container .contents .top-inner .tag .topic-word-list {
+.container .contents .top .tag .topic-word-list {
   max-height: 24px;
   padding: 0;
   float: left;
   margin: 0 30px 0 0;
 }
-.container .contents .top-inner .tag .topic-word-list .theme-tag {
+.container .contents .top .tag .topic-word-list .theme-tag {
   border: 1px solid #ff0000 !important;
 }
-.container .contents .top-inner .tag .topic-word-list .topic-word {
+.container .contents .top .tag .topic-word-list .topic-word {
   position: relative;
   display: inline-block;
   height: 21px;
@@ -57,7 +66,7 @@
   font-size: 13px;
   white-space: nowrap;
 }
-.container .contents .top-inner .tag .topic-word-list .topic-word-num {
+.container .contents .top .tag .topic-word-list .topic-word-num {
   position: relative;
   top: -1px;
   display: inline-block;
@@ -65,89 +74,89 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
 }
-.container .contents .top-inner .navbar-main {
+.container .contents .top .navbar-main {
   padding: 5px 0;
 }
-.container .contents .top-inner .navbar-main > div {
-  display: inline-block;
-}
-.container .contents .top-inner .navbar-main .navbar-detail {
-  width: 60%;
+.container .contents .top .navbar-main .navbar-detail {
+  width: 100%;
   vertical-align: top;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .main-sns {
+.container .contents .top .navbar-main .navbar-detail .main-sns {
   margin: 30px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .main-sns ul li {
+.container .contents .top .navbar-main .navbar-detail .main-sns ul li {
   display: inline-block;
   vertical-align: middle;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-title {
+.container .contents .top .navbar-main .navbar-detail .navbar-title {
   padding-bottom: 30px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-title .navbar-title-txt {
+.container .contents .top .navbar-main .navbar-detail .navbar-title .navbar-title-txt {
   display: inline;
   font-size: 40px;
   word-wrap: break-word;
-  margin: 0 15px 0 0;
+  margin: 0 0 0 0;
   color: #000;
   text-decoration: none;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count > div {
+.container .contents .top .navbar-main .navbar-detail .navbar-count > div {
   margin: 15px 0;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-user .contributor {
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-user {
+  display: block;
+}
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-user .contributor {
   font-size: 11px;
   margin-right: 20px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-user .navbar-username {
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-user .navbar-username {
   margin-left: 20px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-user .navbar-username a {
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-user .navbar-username a {
   color: #000 !important;
   font-weight: bold;
   font-size: 20px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-page-data {
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-page-data {
   display: inline;
   margin: 0 15px 0 15px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-count-num {
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-count-num {
   display: inline;
   line-height: 1;
   color: #000;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-count-num .navbar-count-label {
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-count-num .navbar-count-label {
   color: #000;
   font-size: 11px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-count-num .navbar-count-comment {
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-count-num .navbar-count-comment {
   margin-left: 10px;
   color: #000;
   font-size: 11px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-update-time {
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-update-time {
   margin-left: 10px;
   font-size: 20px;
 }
-.container .contents .top-inner .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-update-time .update-time {
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-page-data .navbar-update-time .update-time {
   font-size: 11px;
 }
-.container .contents .top-inner .navbar-main .navbar-thumb {
-  z-index: 1;
-  position: relative;
+.container .contents .top .navbar-main .navbar-thumb {
   width: 250px;
   height: 250px;
+  margin: 0 auto;
+  padding: 0;
+  z-index: 1;
+  position: relative;
+}
+.container .contents .top .navbar-main .navbar-thumb #article-graph {
   padding: 0;
   margin: 0;
 }
-.container .contents .top-inner .navbar-main .navbar-thumb #article-graph {
-  padding: 0;
-  margin: 0;
-}
-.container .contents .top-inner .navbar-main .navbar-thumb .inside-circle {
+.container .contents .top .navbar-main .navbar-thumb .inside-circle {
   z-index: -1;
   position: absolute;
   width: 100px;
@@ -168,10 +177,14 @@
   vertical-align: top;
   font-size: 20px;
 }
+.container .contents .top .navbar-main .navbar-thumb:after {
+  clear: both;
+}
 .container .contents .contentswrapper {
   width: 1040px;
   margin: 0 auto;
   margin-bottom: 30px;
+  clear: left;
 }
 .container .contents .contentswrapper .main {
   /*background-color: aliceblue;*/
@@ -395,7 +408,7 @@
   -webkit-user-select: none;
   user-select: none;
 }
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 768px) {
   .postit {
     top: 100%;
   }
@@ -429,6 +442,7 @@
 .postit-list img {
   width: 130px;
   height: 43px;
+  vertical-align: bottom;
 }
 .postit-list > * {
   cursor: pointer;
@@ -483,4 +497,28 @@
   display: block;
   clear: both;
 }
-/*# sourceMappingURL=viewarticle.css.map */
+/*以下MediaQueriesによる分岐*/
+@media screen and (min-width: 768px) {
+  .container .contents .top {
+    width: 90%;
+  }
+  .container .contents .top .navbar-main {
+    overflow: hidden;
+  }
+  .container .contents .top .navbar-main .navbar-detail {
+    width: 60%;
+    float: left;
+  }
+  .container .contents .top .navbar-main .navbar-thumb {
+    float: right;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container .contents .top {
+    width: 1000px;
+  }
+  .container .contents .top .navbar-main .navbar-detail {
+    width: 700px;
+  }
+}
+/*# sourceMappingURL=ViewArticle.css.map */

@@ -5,16 +5,16 @@ header {
     background-color: @header-color-bg;
     border-bottom: 1px solid #f2f2f2;
     margin-bottom: 10px;
-    
     #dropmenu {
         float: right;
-        position:relative;
-        top:-50px;
+        position: relative;
+        top: -50px;
+
         ul {
             li {
                 overflow: hidden;
                 float: left;
-                height: 50px;
+                height: 45px;
                 line-height: 40px;
                 vertical-align: middle;
                 display: inline-block;
@@ -22,39 +22,62 @@ header {
         }
     }
 
-    .header-brand-container{
-        z-index:100;
-        width:100%;
-        a.header-brand{
-            color:dimgray;
-            line-height:50px;
-            font-size:x-large;
-            font-weight:bold;
+    .header-brand-container {
+        z-index: 100;
+        width: 100%;
+
+        a.header-brand {
+            color: dimgray;
+            line-height: 50px;
+            font-size: x-large;
+            font-weight: bold;
+            text-decoration:none!important;
         }
     }
+
     #dropmenu a {
+        cursor: pointer;
         display: inline-block;
         width: 100px;
         color: #000 !important;
         text-decoration: none !important;
         text-align: center;
         font-weight: bold;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
         box-sizing: border-box;
         border-bottom: none;
-        .transition-property-mixin();
+    }
+
+    .header-menu-list-container {
+        li {
+            .border-bottom-transition-property-mixin;
+        }
+
+        li:nth-child(3n):hover {
+            border-bottom: 5px solid @top-accent-1;
+        }
+
+        li:nth-child(3n+1):hover {
+            border-bottom: 5px solid @top-accent-2;
+        }
+
+        li:nth-child(3n+2):hover {
+            border-bottom: 5px solid @top-accent-3;
+        }
     }
 
     #dropmenu a:hover {
         color: #818181;
-        border-bottom: 5px solid;
     }
 
     .menu {
-        text-align:center;
+        text-align: center;
         margin: 0 auto;
         overflow: hidden;
         width: 80%;
-        height:50px;
+        height: 50px;
+
         .search {
             margin: 5px 0 5px 0;
             position: absolute;
@@ -62,37 +85,37 @@ header {
             .search-container {
                 margin: 7.5px 0 7.5px 0;
 
-                input {
-                    padding-left: 10%;
-                }
+            input {
+                padding-left: 10%;
+            }
 
-                .search-text {
+            .search-text {
                     color: @textbox-style-1-color-fore;
-                    margin: 7.5px 0 7.5px 0;
-                    height: 20px;
-                    width: 200px;
+                margin: 7.5px 0 7.5px 0;
+                height: 20px;
+                width: 200px;
                     padding: 5px 0px 5px 10px;
-                    position: absolute;
-                    left: 10px;
-                    top: -6px;
-                    box-sizing: content-box;
+                position: absolute;
+                left: 10px;
+                top: -6px;
+                    .vend-boxsizing-mixin(content-box);
                     border: 1px solid lightgray;
                     border-radius: 2px;
-                }
+            }
 
-                .search-text:focus {
-                    outline: none;
+            .search-text:focus {
+                outline: none;
                     box-shadow: rgba(0,0,0,0.4) 0 0 1px inset;
-                }
+            }
 
-                .search-button {
-                    border: 0;
+            .search-button {
+                border: 0;
                     border-left: 1px solid lightgray;
                     width: 40px;
-                    height: 25px;
-                    position: absolute;
+                height: 25px;
+                position: absolute;
                     left: 180px;
-                    top: 5px;
+                top: 5px;
                     background-image: url("/Content/imgs/loupe.svg");
                     background-position: center;
                     background-repeat: no-repeat;
@@ -105,13 +128,13 @@ header {
                         -o-transform: translateY(1px);
                         -webkit-transform: translateY(1px);
                         transform: translateY(1px);
-                        cursor:pointer;
+                        cursor: pointer;
                     }
-                }
+            }
 
-                .search-button:focus {
-                    outline: none;
-                }
+            .search-button:focus {
+                outline: none;
+            }
             }
         }
     }

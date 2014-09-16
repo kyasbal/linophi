@@ -230,7 +230,7 @@ $(window).load(function () {
                 var pPos = ($target.offset() || { "top": NaN }).top;
                 bg = "none";
                 if (pPos <= posY && posY < pPos + pHeight && pasteMode) {
-                    bg = dropboxPosX <= e.pageX && e.pageX <= dropboxPosX + 180 ? "#24ade2" : "#7acbe2";
+                    bg = dropboxPosX <= e.pageX && e.pageX <= dropboxPosX + 180 ? "#24ade2" : "#c2c2bc";
                 }
 
                 $target.css({

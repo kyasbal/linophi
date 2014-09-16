@@ -12,11 +12,15 @@ header #dropmenu {
 header #dropmenu ul li {
   overflow: hidden;
   float: left;
-  height: 50px;
+  height: 45px;
   line-height: 40px;
   vertical-align: middle;
   display: inline-block;
 }
+<<<<<<< HEAD
+header a {
+  cursor: pointer;
+=======
 header .header-brand-container {
   z-index: 100;
   width: 100%;
@@ -26,29 +30,46 @@ header .header-brand-container a.header-brand {
   line-height: 50px;
   font-size: x-large;
   font-weight: bold;
+  text-decoration: none!important;
 }
 header #dropmenu a {
+>>>>>>> 0e7f2aebd524ce90db59f2b395659f3acab04f0e
   display: inline-block;
   width: 100px;
   color: #000 !important;
   text-decoration: none !important;
   text-align: center;
   font-weight: bold;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border-bottom: none;
-  -webkit-transition-property: border-bottom;
-  -webkit-transition-duration: 0.2s;
-  -webkit-transition-timing-function: liner;
+}
+header .header-menu-list-container li {
   -moz-transition-property: border-bottom;
-  -moz-transition-duration: 0.2s;
-  -moz-transition-timing-function: liner;
   -o-transition-property: border-bottom;
+  -webkit-transition-property: border-bottom;
+  transition-property: border-bottom;
+  -moz-transition-duration: 0.2s;
   -o-transition-duration: 0.2s;
-  -o-transition-timing-function: liner;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -moz-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+header .header-menu-list-container li:nth-child(3n):hover {
+  border-bottom: 5px solid #4385f5;
+}
+header .header-menu-list-container li:nth-child(3n+1):hover {
+  border-bottom: 5px solid #dc4437;
+}
+header .header-menu-list-container li:nth-child(3n+2):hover {
+  border-bottom: 5px solid #f5b400;
 }
 header #dropmenu a:hover {
   color: #818181;
-  border-bottom: 5px solid;
 }
 header .menu {
   text-align: center;
@@ -76,6 +97,8 @@ header .menu .search .search-container .search-text {
   position: absolute;
   left: 10px;
   top: -6px;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   border: 1px solid lightgray;
   border-radius: 2px;
