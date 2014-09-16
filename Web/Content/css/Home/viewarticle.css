@@ -399,8 +399,9 @@ html {
 }
 .postit {
   position: fixed;
+  z-index: 1000;
   right: 0;
-  top: 60%;
+  top: 50%;
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
