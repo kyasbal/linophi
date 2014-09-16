@@ -496,6 +496,24 @@ html {
 .fade-layer > img {
   width: 130px;
 }
+.alert-contents > * > * {
+  margin-top: 0;
+  margin-bottom: 20px;
+  display: block;
+}
+.alert-contents input,
+.alert-contents textarea {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: 600px;
+  padding: 0.4em 0.8em;
+  color: #444;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+.alert-contents textarea {
+  height: 250px;
+}
 .clearfix:after {
   content: "";
   display: block;
