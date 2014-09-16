@@ -144,16 +144,20 @@ $(() =>
             }
             if (isMatched&&className)
             {
-                $('.article-container .' + className).append('<div class="' + className + '-comments"></div>');
+                $('.article-container .' + className).append(
+                    '<div class="article-wrapper">' +
+                        '<div class="' + className + '-comments"></div>' +
+                    '</div>'
+                );
 
                 commentSourceParser.eachDoInComments(getParagraphId(className), (name, time, id, comment) =>
                 {
                     $('.article-container .' + className + '-comments').append(
                         '<div class="response">' +
-                        '<p class="res-title"> <span></span> <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' +
-                        '<p class="res-text">' +
-                        comment +
-                        '</p>' +
+                            '<p class="res-title"> <span></span> <b>' + name + '</b> <small>[' + time + '] ID:' + id + ' </small> </p>' +
+                            '<p class="res-text">' +
+                                comment +
+                            '</p>' +
                         '</div>'
                     );
                 });
@@ -247,23 +251,23 @@ $(() =>
         });
     });
 
-    // 記事の内容やコメント欄をクリックしたときに強制的にコメントを常駐させる機能
-    $("*").on("click", () =>
-    {
-        $('[class*="-comments"]').css({
-            "display": "",
-            "z-index": 9999
-        });
-    });
+    //// 記事の内容やコメント欄をクリックしたときに強制的にコメントを常駐させる機能
+    //$("*").on("click", () =>
+    //{
+    //    $('[class*="-comments"]').css({
+    //        "display": "",
+    //        "z-index": 9999
+    //    });
+    //});
 
-    $('.article-container > [class*="p-"]:not([class*="-comments"])').on("click", (e) =>
-    {
-        setTimeout(() =>
-        {
-            $('.' + (Object)(e.currentTarget).className + '-comments').css({
-                "display": "block",
-                "z-index": 20000
-            });
-        }, 0);
-    });
+    //$('.article-container > [class*="p-"]:not([class*="-comments"])').on("click", (e) =>
+    //{
+    //    setTimeout(() =>
+    //    {
+    //        $('.' + (Object)(e.currentTarget).className + '-comments').css({
+    //            "display": "block",
+    //            "z-index": 20000
+    //        });
+    //    }, 0);
+    //});
 });

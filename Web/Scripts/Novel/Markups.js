@@ -189,7 +189,7 @@ var HrMarkUp = (function (_super) {
         _super.apply(this, arguments);
     }
     HrMarkUp.prototype.getMarkupString = function (result) {
-        result = result.replace(/-----/, "<hr>");
+        result = result.replace(/----/, "<hr>");
         return result;
     };
     return HrMarkUp;
