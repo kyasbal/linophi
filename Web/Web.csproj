@@ -299,6 +299,7 @@
     <Content Include="Content\imgs\Home\sad-l.svg" />
     <Content Include="Content\imgs\Home\surprised-d.svg" />
     <Content Include="Content\imgs\Home\surprised-l.svg" />
+    <Content Include="Content\imgs\linoris.png" />
     <Content Include="Content\imgs\test-banner.gif" />
     <Content Include="Content\imgs\test-h2bg.png" />
     <Content Include="Scripts\Home\CommentIndicator.js" />
@@ -560,6 +561,7 @@
     <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SitemapController.cs" />
+    <Compile Include="Controllers\TopicController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -663,6 +665,17 @@
     <Compile Include="Utility\ImageResult.cs" />
     <Compile Include="Utility\LinophiMailClient.cs" />
     <Compile Include="Utility\MathEx.cs" />
+    <Compile Include="Utility\OGP\ArticleOGPRenderer.cs" />
+    <Compile Include="Utility\OGP\BasicOGPPageData.cs" />
+    <Compile Include="Utility\OGP\BasicOGPSiteData.cs" />
+    <Compile Include="Utility\OGP\BasicOGPSiteMetaPageMetaMerger.cs" />
+    <Compile Include="Utility\OGP\IOGPBasicMetaData.cs" />
+    <Compile Include="Utility\OGP\IOGPPageData.cs" />
+    <Compile Include="Utility\OGP\IOGPSiteMeta.cs" />
+    <Compile Include="Utility\OGP\IOGPSiteMetaPageMetaMerger.cs" />
+    <Compile Include="Utility\OGP\MetaDictionary.cs" />
+    <Compile Include="Utility\OGP\OGPSiteMetaAttribute.cs" />
+    <Compile Include="Utility\OGP\SummaryTwitterCardRenderer.cs" />
     <Compile Include="Utility\SEO\SitemapItem.cs" />
     <Compile Include="Utility\WebPageStatic.cs" />
     <Compile Include="ViewModel\Admin\EditTopicViewModel.cs" />
@@ -672,7 +685,6 @@
     <Compile Include="ViewModel\IMetaBasicOGPViewModel.cs" />
     <Compile Include="ViewModel\MetaBuilder.cs" />
     <Compile Include="ViewModel\OGPMetaRenderer.cs" />
-    <Compile Include="ViewModel\OGPViewModelBase.cs" />
     <Compile Include="WebRole.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -781,6 +793,7 @@
     <Folder Include="Api\Admin\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\Sitemap\" />
+    <Folder Include="Views\Topic\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201409031548165_AddStupidUpdate.resx">
