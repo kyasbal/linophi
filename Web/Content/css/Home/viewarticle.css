@@ -6,9 +6,6 @@
   width: 100%;
   background-color: #fff;
 }
-.container {
-  /*記事の説明部あ分(ヘッダ)*/
-}
 .container .head {
   z-index: 501;
   width: 100%;
@@ -21,6 +18,7 @@
 }
 .container .contents {
   overflow: hidden;
+  /*記事の説明部分(ヘッダ)*/
   /*以下記事部分*/
 }
 .container .contents .top {
@@ -87,12 +85,15 @@
   display: inline;
   font-size: 40px;
   word-wrap: break-word;
-  margin: 0 15px 0 0;
+  margin: 0 0 0 0;
   color: #000;
   text-decoration: none;
 }
 .container .contents .top .navbar-main .navbar-detail .navbar-count > div {
   margin: 15px 0;
+}
+.container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-user {
+  display: block;
 }
 .container .contents .top .navbar-main .navbar-detail .navbar-count .navbar-user .contributor {
   font-size: 11px;
@@ -475,13 +476,12 @@
 @media screen and (min-width: 768px) {
   .container .contents .top {
     width: 90%;
-    background-color: red;
   }
   .container .contents .top .navbar-main {
     overflow: hidden;
   }
   .container .contents .top .navbar-main .navbar-detail {
-    width: 67.44791667px;
+    width: 60%;
     float: left;
   }
   .container .contents .top .navbar-main .navbar-thumb {
@@ -492,15 +492,8 @@
   .container .contents .top {
     width: 1000px;
   }
-  .container .contents .top .navbar-main {
-    overflow: hidden;
-  }
   .container .contents .top .navbar-main .navbar-detail {
     width: 700px;
-    float: left;
-  }
-  .container .contents .top .navbar-main .navbar-thumb {
-    float: right;
   }
 }
 /*# sourceMappingURL=ViewArticle.css.map */
