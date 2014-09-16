@@ -6,6 +6,17 @@
 @tabletPortraitWidthSize: 768px;
 @pcWidthSize: 1024px;
 
+/*
+    ●書き方
+    モバイルファーストという書き方で書いているので、@smartPhonePortraitWidthSize以下と全部(スマホ・タブレット・PC)に共通のデザインは、
+    通常通り(基本レイアウト)に書く。
+    個別対応させたいものは、ファイル一番下にあるMediaQueriesによる分岐部分に書く。
+
+    但し、今のところ(9/16/18:37現在)topしか分岐していないので、それ以外は基本レイアウトに書いても問題ない。
+*/
+
+
+/*基本レイアウト*/
 html {
     overflow-y: scroll;
     height: 100%;
@@ -575,6 +586,7 @@ html {
     clear: both;
 }
 
+/*以下MediaQueriesによる分岐*/
 .container{
     .contents{
         @media screen and (min-width: @smartPhonePortraitWidthSize){
