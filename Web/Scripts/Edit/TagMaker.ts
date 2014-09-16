@@ -31,12 +31,13 @@ module TagUtil {
 
     export function chkValidTitle(val: string) {
         isConfirmedTitle = true;
+        val=val.replace(/\s/g, "");
         $(".edit-title-chkvalid").html("");
-        if (val.match(/.*\s{2,}.*/))
-        {
-            $(".edit-title-chkvalid").html("　　空白は２つ以上繋げられません");
-            isConfirmedTitle = false;
-        }
+        //if (val.match(/.*\s{2,}.*/))
+        //{
+        //    $(".edit-title-chkvalid").html("　　空白は２つ以上繋げられません");
+        //    isConfirmedTitle = false;
+        //}
         if (val.match(/^\s*$/)) {
             $(".edit-title-chkvalid").html("　　タイトルが空です");
             isConfirmedTitle = false;
