@@ -203,25 +203,17 @@ div[class^="edit-editted-tag"] span[class^="edit-editted-tag-delete-"] {
 }
 .h3_similar {
   position: relative;
-  color: #111;
-  background: #ccc;
+  background: #ffffff;
+  font-size: 22px;
   line-height: 1;
-  margin: 30px 20px 10px -10px;
-  padding: 14px 5px 10px 50px;
-  border-radius: 22px 0 0 22px;
-  width: 555px;
-}
-.h3_similar:before {
-  content: "";
-  position: absolute;
-  background: #eee;
-  top: 50%;
-  left: 14px;
-  margin-top: -10px;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  box-shadow: 1px 1px 1px #777 inset;
+  margin: 30px 20px 10px 0;
+  padding: 14px 5px 10px 20px;
+  border-top: 2px solid #cccccc;
+  border-right: 2px solid #cccccc;
+  border-left: 2px solid #cccccc;
+  border-bottom: 3px solid #cccccc;
+  width: 550px;
+  border-radius: 16px;
 }
 .h3_similar .tutorial_big {
   display: inline-block;
