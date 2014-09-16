@@ -42,192 +42,194 @@ html {
     .contents {
         overflow: hidden;
         width: 100%;
-
         /*記事の説明部分(ヘッダ)*/
         .top {
-            width:95%;
+            width: 95%;
             margin: 30px auto;
             padding: 10px 0;
             border-top: @border-gray-all;
             border-bottom: @border-gray-all;
-                .tag {
-                    z-index: 500;
-                    padding: 5px 0;
-                    position: relative;
-                    display: inline-block;
 
-                    .topic-word-list {
-                        max-height: 24px;
-                        padding: 0;
-                        float: left;
-                        margin: 0 0.2em 0 0;
+            .tag {
+                z-index: 500;
+                padding: 5px 0;
+                position: relative;
+                display: inline-block;
 
-                        .theme-tag {
-                            border: 1px solid @view-theme-tag !important;
-                        }
+                .topic-word-list {
+                    max-height: 24px;
+                    padding: 0;
+                    float: left;
+                    margin: 0 0.2em 0 0;
 
-                        .topic-word {
-                            position: relative;
-                            display: inline-block;
-                            height: 21px;
-                            line-height: 22px;
-                            padding: 1px 6px 0 6px;
-                            background-color: @bg-color-1;
-                            border: @border-green-all;
-                            color: #000 !important;
-                            text-decoration: none !important;
-                            font-size: 13px;
-                            white-space: nowrap;
-
-                            &-num {
-                                position: relative;
-                                top: -1px;
-                                display: inline-block;
-                                font-weight: normal;
-                                font-family: Arial, Helvetica, sans-serif;
-                                font-size: 10px;
-                            }
-                        }
+                    .theme-tag {
+                        border: 1px solid @view-theme-tag !important;
                     }
-                }
-            .navbar-main {
-                        padding: 5px 0;
-                        //タイトルや投稿者などの詳細情報部分
-                        .navbar-detail {
-                    width: 100%;
-                            vertical-align: top;
 
-                            .main-sns {
-                                margin: 30px;
+                    .topic-word {
+                        position: relative;
+                        display: inline-block;
+                        height: 21px;
+                        line-height: 22px;
+                        padding: 1px 6px 0 6px;
+                        background-color: @bg-color-1;
+                        border: @border-green-all;
+                        color: #000 !important;
+                        text-decoration: none !important;
+                        font-size: 13px;
+                        white-space: nowrap;
 
-                                ul {
-                                    li {
-                                        display: inline-block;
-                                        vertical-align: middle;
-                                    }
-                                }
-                            }
-
-                            .navbar-title {
-                                padding-bottom: 30px;
-
-                                .navbar-title-txt {
-                                    display: inline;
-                                    font-size: 40px;
-                                    word-wrap: break-word;
-                            margin: 0 0 0 0;
-                                    color: #000;
-                                    text-decoration: none;
-                                }
-                            }
-                            .navbar-count {
-                                @navbarCountFixedFontSize: 11px; //投稿者・PVなどの決まった言葉のフォントサイズ
-                                @navbarCountValueFontSize: 20px; //記事ごとの実際の投稿者の名前やPV数のフォントサイズ
-                                > div {
-                                    margin: 15px 0;
-                                }
-
-                                .navbar-user {
-                            display: block;
-                                    //投稿者
-                                    .contributor {
-                                        font-size: @navbarCountFixedFontSize;
-                                        margin-right: 20px;
-                                    }
-
-                                    .navbar-username {
-                                        margin-left: 20px;
-
-                                        a {
-                                            color: #000 !important;
-                                            font-weight: bold;
-                                            font-size: @navbarCountValueFontSize;
-                                        }
-                                    }
-                                }
-
-                                .navbar-page-data {
-                                    display: inline;
-                                    margin: 0 15px 0 15px;
-
-                                    .navbar-count-num {
-                                        display: inline;
-                                        line-height: 1;
-                                        color: #000;
-                                        font-family: Arial, Helvetica, sans-serif;
-                                        font-size: @navbarCountValueFontSize;
-
-                                        .navbar-count-label {
-                                            color: #000;
-                                            font-size: @navbarCountFixedFontSize;
-                                        }
-
-                                        .navbar-count-comment {
-                                            margin-left: 10px;
-                                            color: #000;
-                                            font-size: @navbarCountFixedFontSize;
-                                        }
-                                    }
-
-                                    .navbar-update-time {
-                                        margin-left: 10px;
-                                        font-size: @navbarCountValueFontSize;
-
-                                        .update-time {
-                                            font-size: @navbarCountFixedFontSize;
-                                        }
-                                    }
-                                }
-                            }
+                        &-num {
+                            position: relative;
+                            top: -1px;
+                            display: inline-block;
+                            font-weight: normal;
+                            font-family: Arial, Helvetica, sans-serif;
+                            font-size: 10px;
                         }
-                        //円グラフ部分
-                        .navbar-thumb {
-                            width: @articleGraphSize;
-                            height: @articleGraphSize;
-                    margin: 0 auto;
-                            padding: 0;
-                    z-index: 1;
-                    position: relative;
-
-                            #article-graph {
-                                padding: 0;
-                                margin: 0;
-                            }
-
-                            .inside-circle {
-                                @insideCircleHeight: 95px;
-                                @insideCircleWidth: 100px;
-                                @insideCirclePaddingTop: 25px;
-                                @insideCirclePaddingRight: 10px;
-                                @insideCirclePaddingLeft: 10px;
-
-                                z-index: -1;
-                                position: absolute;
-                                width: @insideCircleWidth;
-                                height: @insideCircleHeight;
-                                padding: @insideCirclePaddingTop @insideCirclePaddingRight 0 @insideCirclePaddingLeft;
-                                bottom: (@articleGraphSize - (@insideCircleHeight + @insideCirclePaddingTop)) / 2;
-                                left: (@articleGraphSize - (@insideCircleWidth + 20px)) / 2;
-                                background-color: @bg-color-1;
-                                text-align: center;
-                                display: block;
-                                border-radius: 60px;
-                                -moz-border-radius: 60px;
-                                -webkit-border-radius: 60px;
-                                box-shadow: 0px 0px 3px 0px #666 inset;
-                                -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
-                                -moz-box-shadow: 0px 0px 3px 0px #666 inset;
-                                margin: 0 auto;
-                                vertical-align: top;
-                                font-size:20px;
-                            }
-                        }
-                .navbar-thumb:after{
-                    clear: both;
                     }
                 }
             }
 
+            .navbar-main {
+                padding: 5px 0;
+                //タイトルや投稿者などの詳細情報部分
+                .navbar-detail {
+                    width: 100%;
+                    vertical-align: top;
+
+                    .main-sns {
+                        margin: 30px;
+
+                        ul {
+                            li {
+                                display: inline-block;
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+
+                    .navbar-title {
+                        padding-bottom: 30px;
+
+                        .navbar-title-txt {
+                            display: inline;
+                            font-size: 40px;
+                            word-wrap: break-word;
+                            margin: 0 0 0 0;
+                            color: #000;
+                            text-decoration: none;
+                        }
+                    }
+
+                    .navbar-count {
+                        @navbarCountFixedFontSize: 11px; //投稿者・PVなどの決まった言葉のフォントサイズ
+                        @navbarCountValueFontSize: 20px; //記事ごとの実際の投稿者の名前やPV数のフォントサイズ
+                        > div {
+                            margin: 15px 0;
+                        }
+
+                        .navbar-user {
+                            display: block;
+                            //投稿者
+                            .contributor {
+                                font-size: @navbarCountFixedFontSize;
+                                margin-right: 20px;
+                            }
+
+                            .navbar-username {
+                                margin-left: 20px;
+
+                                a {
+                                    color: #000 !important;
+                                    font-weight: bold;
+                                    font-size: @navbarCountValueFontSize;
+                                }
+                            }
+                        }
+
+                        .navbar-page-data {
+                            display: inline;
+                            margin: 0 15px 0 15px;
+
+                            .navbar-count-num {
+                                display: inline;
+                                line-height: 1;
+                                color: #000;
+                                font-family: Arial, Helvetica, sans-serif;
+                                font-size: @navbarCountValueFontSize;
+
+                                .navbar-count-label {
+                                    color: #000;
+                                    font-size: @navbarCountFixedFontSize;
+                                }
+
+                                .navbar-count-comment {
+                                    margin-left: 10px;
+                                    color: #000;
+                                    font-size: @navbarCountFixedFontSize;
+                                }
+                            }
+
+                            .navbar-update-time {
+                                margin-left: 10px;
+                                font-size: @navbarCountValueFontSize;
+
+                                .update-time {
+                                    font-size: @navbarCountFixedFontSize;
+                                }
+                            }
+                        }
+                    }
+                }
+                //円グラフ部分
+                .navbar-thumb {
+                    width: @articleGraphSize;
+                    height: @articleGraphSize;
+                    margin: 0 auto;
+                    padding: 0;
+                    z-index: 1;
+                    position: relative;
+
+                    #article-graph {
+                        padding: 0;
+                        margin: 0;
+                    }
+
+                    .inside-circle {
+                        @insideCircleHeight: 95px;
+                        @insideCircleWidth: 100px;
+                        @insideCirclePaddingTop: 25px;
+                        @insideCirclePaddingRight: 10px;
+                        @insideCirclePaddingLeft: 10px;
+
+                        z-index: -1;
+                        position: absolute;
+                        width: @insideCircleWidth;
+                        height: @insideCircleHeight;
+                        padding: @insideCirclePaddingTop @insideCirclePaddingRight 0 @insideCirclePaddingLeft;
+                        bottom: (@articleGraphSize - (@insideCircleHeight + @insideCirclePaddingTop)) / 2;
+                        left: (@articleGraphSize - (@insideCircleWidth + 20px)) / 2;
+                        background-color: @bg-color-1;
+                        text-align: center;
+                        display: block;
+                        border-radius: 60px;
+                        -moz-border-radius: 60px;
+                        -webkit-border-radius: 60px;
+                        box-shadow: 0px 0px 3px 0px #666 inset;
+                        -webkit-box-shadow: 0px 0px 3px 0px #666 inset;
+                        -moz-box-shadow: 0px 0px 3px 0px #666 inset;
+                        margin: 0 auto;
+                        vertical-align: top;
+                        font-size: 20px;
+                    }
+                }
+
+                .navbar-thumb:after {
+                    clear: both;
+                }
+            }
+        }
         /*以下記事部分*/
         .contentswrapper {
             width: 1040px;
@@ -244,7 +246,8 @@ html {
                 border: 3px solid @accent-light-color-2;
 
                 .footer-main-sns {
-                    float:right;
+                    float: right;
+
                     ul {
                         li {
                             display: inline-block;
@@ -270,67 +273,71 @@ html {
                     }
                 }
 
-                .widget > *[class*="p-"] {
+                .article-container > *[class*="p-"] {
                     position: relative;
 
                     &:hover {
                         background: #ddd;
 
-                        > *[class*="-comments"] {
+                        > .article-wrapper {
                             display: block;
                         }
                     }
 
-                    > *[class*="-comments"] {
-                        font-size: 10px;
-                        width: 300px;
+                    > .article-wrapper {
                         display: none;
                         position: absolute;
                         top: 0;
                         left: 102%;
                         z-index: 9999;
-                        padding: 6px 10px;
-                        color: @bg-color-1;
-                        background: #666;
-                        border-radius: 0.5em;
-                        -moz-transform: translateY(-30%);
-                        -ms-transform: translateY(-30%);
-                        -o-transform: translateY(-30%);
-                        -webkit-transform: translateY(-30%);
-                        transform: translateY(-30%);
+                        padding-bottom: 1000px;
 
-                        .triangle {
-                            width: 0;
-                            height: 70%;
-                            content: "";
-                            display: block;
-                            position: absolute;
-                            left: -20px;
-                            top: 31.5%;
-                            border-top: 10px solid #666;
-                            border-left: 20px solid transparent;
-                        }
-
-                        .response {
-                            p:hover {
-                                background: none;
-                            }
-                        }
-
-                        button {
-                            cursor: pointer;
+                        *[class*="-comments"] {
                             font-size: 10px;
-                            font-weight: bold;
-                            margin-left: 50%;
-                            -moz-transform: translateX(-50%);
-                            -ms-transform: translateX(-50%);
-                            -o-transform: translateX(-50%);
-                            -webkit-transform: translateX(-50%);
-                            transform: translateX(-50%);
-                            padding: 0.62em 1.2em;
-                            background: @bg-color-1;
-                            border: none;
-                            border-radius: 0.3em;
+                            width: 300px;
+                            padding: 6px 10px;
+                            color: @bg-color-1;
+                            background: #666;
+                            border-radius: 0.5em;
+                            -moz-transform: translateY(-30%);
+                            -ms-transform: translateY(-30%);
+                            -o-transform: translateY(-30%);
+                            -webkit-transform: translateY(-30%);
+                            transform: translateY(-30%);
+
+                            .triangle {
+                                width: 0;
+                                height: 1000px;
+                                content: "";
+                                display: block;
+                                position: absolute;
+                                left: -20px;
+                                top: 31.5%;
+                                border-top: 10px solid #666;
+                                border-left: 20px solid transparent;
+                            }
+
+                            .response {
+                                p:hover {
+                                    background: none;
+                                }
+                            }
+
+                            button {
+                                cursor: pointer;
+                                font-size: 10px;
+                                font-weight: bold;
+                                margin-left: 50%;
+                                -moz-transform: translateX(-50%);
+                                -ms-transform: translateX(-50%);
+                                -o-transform: translateX(-50%);
+                                -webkit-transform: translateX(-50%);
+                                transform: translateX(-50%);
+                                padding: 0.62em 1.2em;
+                                background: @bg-color-1;
+                                border: none;
+                                border-radius: 0.3em;
+                            }
                         }
                     }
                 }
@@ -347,6 +354,7 @@ html {
                     .found-article-zero {
                         text-align: center;
                         .write-related-article-mixin;
+
                         p {
                             display: block;
                             font-size: large;
@@ -567,6 +575,7 @@ html {
         width: 130px;
     }
 }
+
 .clearfix:after {
     content: "";
     display: block;
@@ -574,36 +583,40 @@ html {
 }
 
 /*以下MediaQueriesによる分岐*/
-.container{
-    .contents{
-        @media screen and (min-width: @smartPhonePortraitWidthSize){
+.container {
+    .contents {
+        @media screen and (min-width: @smartPhonePortraitWidthSize) {
         }
 
-        @media screen and (min-width: @tabletPortraitWidthSize){
-            .top{
+        @media screen and (min-width: @tabletPortraitWidthSize) {
+            .top {
                 width: 90%;
-                .navbar-main{
+
+                .navbar-main {
                     overflow: hidden;
-                    .navbar-detail{
+
+                    .navbar-detail {
                         width: 60%;
                         float: left;
                     }
-                    .navbar-thumb{
+
+                    .navbar-thumb {
                         float: right;
                     }
                 }
             }
         }
-        
-        @media screen and (min-width: @pcWidthSize){
-            .top{
+
+        @media screen and (min-width: @pcWidthSize) {
+            .top {
                 width: 1000px;
 
-                .navbar-main{
-                    .navbar-detail{
+                .navbar-main {
+                    .navbar-detail {
                         width: 700px;
                     }
-                    .navbar-thumb{
+
+                    .navbar-thumb {
                     }
                 }
             }
