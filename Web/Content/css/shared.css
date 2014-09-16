@@ -2,10 +2,9 @@
   height: 100%;
 }
 body {
-    position: relative;
-    font: 15px/1.5 arial, sans-serif;
-    width: 100%;
-    background-color: #fff;
-    /*background-image: url('../imgs/bgtest-skyblue.png');*/
+  position: relative;
+  font: 15px/1.5 arial, sans-serif;
+  width: 100%;
+  background-image: url('../imgs/bgtest-skyblue.png');
 }
 /*# sourceMappingURL=Shared.css.map */
