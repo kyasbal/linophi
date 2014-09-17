@@ -7,7 +7,6 @@
 header #dropmenu {
   float: right;
   position: relative;
-  top: -50px;
 }
 header #dropmenu .header-menu-list-container li {
   -moz-transition-property: border-bottom;
