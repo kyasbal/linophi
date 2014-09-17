@@ -6,6 +6,7 @@ header {
     background-color: @header-color-bg;
     border-bottom: 1px solid #f2f2f2;
     margin-bottom: 10px;
+
     #dropmenu {
         float: right;
         position: relative;
@@ -32,9 +33,10 @@ header {
             line-height: 50px;
             font-size: x-large;
             font-weight: bold;
-            text-decoration:none!important;
+            text-decoration: none !important;
         }
     }
+
     #dropmenu a {
         cursor: pointer;
         display: inline-block;
@@ -86,42 +88,43 @@ header {
             .search-container {
                 margin: 7.5px 0 7.5px 0;
 
-            input {
-                padding-left: 10%;
-            }
+                input {
+                    padding-left: 10%;
+                }
 
-            .search-text {
+                .search-text {
                     color: @textbox-style-1-color-fore;
-                margin: 7.5px 0 7.5px 0;
-                height: 20px;
-                width: 200px;
+                    margin: 7.5px 0 7.5px 0;
+                    height: 20px;
+                    width: 200px;
                     padding: 5px 0 5px 10px;
-                position: absolute;
-                left: 10px;
-                top: -6px;
+                    position: absolute;
+                    left: 10px;
+                    top: -6px;
                     .vend-boxsizing-mixin(content-box);
                     border: 1px solid lightgray;
                     border-radius: 2px;
-            }
+                }
 
-            .search-text:focus {
-                outline: none;
+                .search-text:focus {
+                    outline: none;
                     box-shadow: rgba(0,0,0,0.4) 0 0 1px inset;
-            }
+                }
 
-            .search-button {
-                border: 0;
+                .search-button {
+                    border: 0;
                     border-left: 1px solid lightgray;
                     width: 40px;
-                height: 25px;
-                position: absolute;
+                    height: 25px;
+                    position: absolute;
                     left: 180px;
-                top: 5px;
+                    top: 5px;
                     background-image: url("/Content/imgs/loupe.svg");
                     background-position: center;
                     background-repeat: no-repeat;
                     background-color: @bg-color-1;
                     background-size: contain;
+
 
                     &:hover {
                         -moz-transform: translateY(1px);
@@ -131,11 +134,11 @@ header {
                         transform: translateY(1px);
                         cursor: pointer;
                     }
-            }
+                }
 
-            .search-button:focus {
-                outline: none;
-            }
+                .search-button:focus {
+                    outline: none;
+                }
             }
         }
     }

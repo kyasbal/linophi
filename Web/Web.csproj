@@ -308,6 +308,8 @@
     <Content Include="Content\imgs\linoris.png" />
     <Content Include="Content\imgs\test-banner.gif" />
     <Content Include="Content\imgs\test-h2bg.png" />
+    <Content Include="Content\imgs\top-bg.png" />
+    <Content Include="Content\imgs\worn_dots.png" />
     <Content Include="Scripts\Home\CommentIndicator.js" />
     <Content Include="Content\imgs\logo.png" />
     <Content Include="Content\imgs\test-top.PNG" />
