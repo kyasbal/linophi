@@ -806,6 +806,7 @@
     <TypeScriptCompile Include="Scripts\Utility\AspectRatioStretcher.ts" />
     <TypeScriptCompile Include="Scripts\Utility\HeightStretcher.ts" />
     <TypeScriptCompile Include="Scripts\Utility\instantFunctions.ts" />
+    <TypeScriptCompile Include="Scripts\Utility\Li2Link.ts" />
     <TypeScriptCompile Include="Scripts\Utility\SearchOrderOptionBox.ts" />
     <TypeScriptCompile Include="Scripts\View\index.ts" />
   </ItemGroup>
