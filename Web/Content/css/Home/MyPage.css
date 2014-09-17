@@ -2,62 +2,63 @@
   width: 100%;
   height: 100%;
 }
-.search-header {
+.main .search-header {
   border: 1px solid #ccc;
-  padding-left: 30px;
-  padding-top: 20px;
+  padding: 20px 0 0 30px;
   height: 70px;
   margin-bottom: 30px;
   background-color: white;
+  width: 630px;
 }
-select {
+.main .search-header select {
   border: double solid 2px;
 }
-.listitem {
-  width: 650px;
+.main .my-editted .search-result .listitem {
+  width: 600px;
+  background-color: white;
 }
-.edit-buttons {
+.main .my-editted .search-result .listitem .listtxt .edit-buttons {
   clear: both;
   display: block;
   text-align: right;
   visibility: hidden;
   margin-top: -30px;
 }
-.edit-buttons a {
+.main .my-editted .search-result .listitem .listtxt .edit-buttons a {
   font-weight: bold;
   height: 10px;
 }
-.edit-buttons a:hover {
+.main .my-editted .search-result .listitem .listtxt .edit-buttons a:hover {
   color: #818181;
   text-decoration: none;
   cursor: pointer;
 }
-.page-control {
+.main .page-control {
   margin: 15px 80px 0 80px;
   font-size: 14px;
 }
-.page-control span {
+.main .page-control span {
   border-radius: 20px;
   background-color: #4385f5;
   padding: 10px 30px 10px 30px;
 }
-.page-control span a {
+.main .page-control span a {
   text-decoration: none;
   color: #ffffff;
   cursor: pointer;
 }
-.page-control .page-before {
+.main .page-control .page-before {
   float: left;
   margin-left: 50px;
 }
-.page-control .page-before:hover {
+.main .page-control .page-before:hover {
   background-color: #0c2a81;
 }
-.page-control .page-after {
+.main .page-control .page-after {
   float: right;
   margin-right: 50px;
 }
-.page-control .page-after:hover {
+.main .page-control .page-after:hover {
   background-color: #0c2a81;
 }
 /*# sourceMappingURL=MyPage.css.map */
