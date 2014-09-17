@@ -5,14 +5,9 @@ body {
   *position: relative;
   font: 15px/1.5 arial, sans-serif;
   width: 100%;
-  background-color: #e4e4e4;
-}
-.thumbnail {
-  width: 100px;
-  height: auto;
 }
 .contents {
-  padding-bottom: 25px;
+  padding: 20px 0 0 30px;
   overflow: hidden;
   /*.dropbox {
             margin-top: 30px;
@@ -61,21 +56,19 @@ body {
 .contents .wrapper .main .page-control .page-after:hover {
   background-color: #0c2a81;
 }
+.contents .wrapper .search-result .search-editted {
+  background-color: white;
+}
 .contents .wrapper .search-result .search-header {
   background-color: #ffffff;
   width: 90.5%;
-  margin-top: 30px;
-  margin-left: 0;
-  padding: 20px 30px;
-  padding-bottom: 20px;
+  margin: 30px 0 0 0;
+  padding: 20px 30px 20px 30px;
   border: 1px solid #ccc;
 }
 .contents .wrapper .search-result .search-header form {
-  margin-top: 10px;
-  margin-left: 10px;
-}
-.contents .wrapper .search-result .search-header form select {
-  border: none;
+  margin: 10px 0 0 10px;
+  border: 1px;
 }
 .contents .wrapper .search-result .search-header form select:focus {
   outline: none;
@@ -87,6 +80,7 @@ body {
   display: table;
   padding: 30px;
   border-top: 1px solid #ddd;
+  cursor: pointer;
 }
 .contents .wrapper .search-result .listitem:hover {
   background: #e4e4e4;
@@ -138,7 +132,6 @@ body {
 }
 .contents .wrapper .search-result .my-editted .adjust,
 .contents .wrapper .search-result .search-editted .adjust {
-  padding-top: 5px;
   padding-bottom: 10px;
   /*border:1px solid #660000;*/
 }

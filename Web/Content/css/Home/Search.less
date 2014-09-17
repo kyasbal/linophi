@@ -8,16 +8,11 @@ body {
     *position: relative;
     font: 15px/1.5 arial,sans-serif;
     width: 100%;
-    background-color: @bg-color-2;
-}
-
-.thumbnail {
-    width: 100px;
-    height: auto;
+   // background-color: @bg-color-2;
 }
 
 .contents {
-    padding-bottom: 25px;
+    padding:20px 0 0 30px;
     overflow: hidden;
 
     .wrapper {
@@ -36,21 +31,22 @@ body {
 
         .search-result {
 
+            .search-editted{
+                background-color:white;
+            }
+
             .search-header {
                 background-color: @bg-color-1;
                 width: 90.5%;
-                margin-top: 30px;
-                margin-left: 0;
-                padding: 20px 30px;
-                padding-bottom: 20px;
+                margin:30px 0 0 0;
+                padding: 20px 30px 20px 30px;
                 border: 1px solid #ccc;
 
                 form {
-                    margin-top: 10px;
-                    margin-left: 10px;
+                    margin:10px 0 0 10px;
+                    border: 1px;
 
                     select {
-                        border: none;
                     }
 
                     select:focus {
@@ -67,7 +63,7 @@ body {
                 display: table;
                 padding: 30px;
                 border-top: 1px solid #ddd;
-
+                cursor: pointer;
                 &:hover {
                     background: @bg-color-2;
                 }
@@ -125,7 +121,7 @@ body {
                 width: 100%;
 
                 .adjust {
-                    padding-top: 5px;
+                    //padding-top: 5px;
                     padding-bottom: 10px;
                     /*border:1px solid #660000;*/
                 }

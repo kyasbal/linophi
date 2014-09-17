@@ -238,7 +238,7 @@ html {
             clear: left;
 
             .main {
-                /*background-color: aliceblue;*/
+                background: #fff;
                 float: left;
                 // width: 800px;
                 width: 700px;
@@ -467,8 +467,9 @@ html {
 
 .postit {
     position: fixed;
+    z-index: 1000;
     right: 0;
-    top: 60%;
+    top: 50%;
 
     @media screen and (max-width: @tabletPortraitWidthSize) {
         top: 100%;
@@ -574,6 +575,29 @@ html {
     > img {
         width: 130px;
     }
+}
+
+.alert-contents {
+  > * > * {
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: block;
+  }
+    
+  input, textarea {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    width: 600px;
+    padding: 0.4em 0.8em;
+    color: #444;
+    margin-right: 30px;
+    margin-left: 30px;
+  }
+
+  textarea {
+    height: 250px;
+  }
+
 }
 
 .clearfix:after {

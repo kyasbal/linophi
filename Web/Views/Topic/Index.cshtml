@@ -1,0 +1,49 @@
+﻿@model Web.ViewModel.Topic.TopicViewModel
+
+@{
+    ViewBag.Title = Model.Title+"|意見.みんな";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+@section CSS
+{
+    <link href="~/Content/css/Topic/Index.css" rel="stylesheet" />
+}
+
+@section OGP
+{
+    @Model.OGPMetaTag
+}
+<article class="layout">
+    <section class="inner-header-container">
+        <div class="inner-header"><h1>@Model.Title</h1></div>
+        <div class="top-factor-container">
+            <img src="@Model.Image" />
+            @Html.Raw(Model.HtmlDescription)
+        </div>
+
+    </section>
+    <section class="fact-container clearfix">
+        <div class="top-index-box">
+            <h2>HOT</h2>
+            <ul>
+                @foreach (var article in Model.HotModels.Take(20))
+                {
+                    <li><a href="@("/"+article.ArticleModelId)">@article.Title</a><small>@article.UpdateTime.ToShortDateString()</small></li>
+                }                </ul>
+        </div>
+        <div class="top-index-box">
+            <h2>NEW</h2>
+            <ul>
+                @foreach (var article in Model.NewArticles.Take(20))
+                {
+                    <li><a href="@("/"+article.ArticleModelId)">@article.Title</a><small>@article.UpdateTime.ToShortDateString()</small></li>
+                }
+            </ul>
+        </div>
+    </section>
+    <section class="button-write-article-container">
+        <a class="topic-post-this" href="@("/Edit?topicId="+Model.TopicId)">関連/反証記事を書く</a>
+    </section>
+
+</article>

@@ -17,32 +17,32 @@
 }
 @Html.HiddenFor(m => m.Order, new { id = "order" })
 @Html.HiddenFor(m => m.Skip, new { id = "skip" })
-@Html.HiddenFor(m=>m.Count,new {id="count"});
+@Html.HiddenFor(m => m.Count, new { id = "count" });
 
 <div class="contents">
     <div class="wrapper">
         <div class="main">
-            <ul class="search-result">
-                <div class="search-header">
-                    <h1>今までに書いた記事</h1>
-                    <form>
-                        <select class="search-menu" onchange="MyPageSearchOptionBoxManager.onOptionChange()">
-                            <option value="0" selected>検索方法の選択</option>
-                            <option value="1">投稿が新しい順</option>
-                            <option value="4">投稿が古い順</option>
-                            <option value="2">閲覧数が多い順</option>
-                            <option value="5">閲覧数が少ない順</option>
-                            <option value="3">ふせんが多い順</option>
-                            <option value="6">ふせんが少ない順</option>
-                        </select>
-                    </form>
-                </div>
-                <div class="my-editted">
-                    <div class="adjust">
+
+            <div class="search-header">
+                <h1>今までに書いた記事</h1>
+                <form>
+                    <select class="search-menu" onchange="MyPageSearchOptionBoxManager.onOptionChange()">
+                        <option value="0" selected>検索方法の選択</option>
+                        <option value="1">投稿が新しい順</option>
+                        <option value="4">投稿が古い順</option>
+                        <option value="2">閲覧数が多い順</option>
+                        <option value="5">閲覧数が少ない順</option>
+                        <option value="3">ふせんが多い順</option>
+                        <option value="6">ふせんが少ない順</option>
+                    </select>
+                </form>
+            </div>
+            <div class="my-editted">
+                <div class="adjust">
+                    <ul class="search-result">
                         @foreach (var article in Model.articles)
                         {
                             <li class="listitem">
-                                <p class="listthumb"><a href=""><img width="60" height="60" src="/Content/imgs/Home/red.jpg"></a></p>
                                 <div class="listtxt">
                                     <h3 class="listtitle"><a href="@("/"+article.ArticleId)">@article.Title</a></h3><br /><span class="listdesc">@article.PageView view|@article.LabelCount ふせん|@article.Article_UpDate last updated</span>
                                     @if (Model.IsMyPage)
@@ -78,9 +78,10 @@
 
 
                         }
-                    </div>
+                    </ul>
                 </div>
-            </ul>
+            </div>
+
             <div class="page-control">
                 <span class="page-before"><a>前に戻る</a></span>
                 <span class="page-after"><a>先に進む</a></span>

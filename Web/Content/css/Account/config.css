@@ -17,6 +17,8 @@ h2 {
   width: 500px;
   height: 100%;
   margin: 0 auto;
+  border: 1px solid black;
+  padding: 50px 100px 0 100px;
 }
 .contents div {
   text-align: center;
@@ -47,4 +49,4 @@ h2 {
   background-color: #5f9781;
   cursor: pointer;
 }
-/*# sourceMappingURL=Config.css.map */
+/*# sourceMappingURL=config.css.map */

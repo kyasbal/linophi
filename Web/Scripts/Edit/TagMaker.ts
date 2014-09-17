@@ -65,6 +65,7 @@ module TagUtil {
         console.log("val:" + val, "len:" + val.length, "validate:" + validate, "isconfirmedtag:" + isConfirmedTag);
     }
 
+
     export function onGoodCondition(validate: boolean) {
         var bgColor = validate ? '#1e90ff' : '#ccc',
             bgColorHover = validate ? '#99ccff' : '#696969';
