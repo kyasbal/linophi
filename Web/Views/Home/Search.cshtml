@@ -9,13 +9,13 @@
 }
 
 @section JS{
-<script src="~/Scripts/Utility/SearchOrderOptionBox.js"></script>
+    <script src="~/Scripts/Utility/SearchOrderOptionBox.js"></script>
     <script src="~/Scripts/Home/Search.js"></script>
 }
-@Html.HiddenFor(m=>m.SearchText,new{id="searchedText"})
+@Html.HiddenFor(m => m.SearchText, new { id = "searchedText" })
 @Html.HiddenFor(m => m.Order, new { id = "order" })
 @Html.HiddenFor(m => m.Skip, new { id = "skip" })
-@Html.HiddenFor(m=>m.Count,new {id="count"})
+@Html.HiddenFor(m => m.Count, new { id = "count" })
 <div class="contents">
     <div class="wrapper">
         <div class="main">
@@ -44,6 +44,8 @@
                             </select>
                         </form>
                     </div>
+
+
                     <div class="search-editted">
                         <div class="adjust">
                             @foreach (var article in Model.Articles)
@@ -65,8 +67,10 @@
             </div>
         </div>
 
-@*        <div class="dropbox">*@
-@*            $1$おすすめ投稿書いてみたり広告入れてみたり自由に使うスペースってことで#1#*@
-@*        </div>*@
+
+
+        @*        <div class="dropbox">*@
+        @*            $1$おすすめ投稿書いてみたり広告入れてみたり自由に使うスペースってことで#1#*@
+        @*        </div>*@
     </div>
 </div>

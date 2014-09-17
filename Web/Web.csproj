@@ -216,16 +216,16 @@
     <Content Include="Content\css\Account\LogIn.min.css">
       <DependentUpon>LogIn.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\Footer.css">
+    <Content Include="Content\css\Footer.css">
       <DependentUpon>Footer.less</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\Footer.min.css">
+    <Content Include="Content\css\Footer.min.css">
       <DependentUpon>Footer.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\Header.css">
+    <Content Include="Content\css\Header.css">
       <DependentUpon>Header.less</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\Header.min.css">
+    <Content Include="Content\css\Header.min.css">
       <DependentUpon>Header.css</DependentUpon>
     </Content>
     <Content Include="Content\css\Edit\Index.css">
@@ -419,12 +419,12 @@
     <Content Include="Content\css\Account\LogIn.css.map">
       <DependentUpon>LogIn.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\Footer.less" />
-    <Content Include="Content\css\Edit\Footer.css.map">
+    <Content Include="Content\css\Footer.less" />
+    <Content Include="Content\css\Footer.css.map">
       <DependentUpon>Footer.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\Header.less" />
-    <Content Include="Content\css\Edit\Header.css.map">
+    <Content Include="Content\css\Header.less" />
+    <Content Include="Content\css\Header.css.map">
       <DependentUpon>Header.css</DependentUpon>
     </Content>
     <Content Include="Content\css\Edit\Index.less" />
