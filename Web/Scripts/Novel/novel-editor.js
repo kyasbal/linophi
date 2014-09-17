@@ -924,7 +924,7 @@ var NovelEditer;
             str = str.replace(/\u0006a/g, "&ensp;");
             str = str.replace(/\n/g, "</br>");
             str = str.replace(/(.*)({.*})(.*)/g, "$1$3$2");
-            str = str.replace(/{(.*?)}/g, "<p class=\"source\">出典：$1</p>");
+            str = str.replace(/{(.*?)}/g, "<p class=\"source\"><nobr>出典：</nobr>$1</p>");
             str = str.replace(/\u0006b/g, "{");
             str = str.replace(/\u0006c/g, "}");
             return "<blockquote><div class=\"quote\">" + str + "</div></blockquote>";
