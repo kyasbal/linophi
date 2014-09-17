@@ -29,6 +29,7 @@ body {
   padding-bottom: 40px;
 }
 .contents .wrapper .main .page-control {
+  cursor: pointer;
   margin: 15px 80px 0 80px;
   font-size: 14px;
 }

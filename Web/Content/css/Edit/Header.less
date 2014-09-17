@@ -1,5 +1,4 @@
-﻿@import "../Color.less";
-
+﻿@import "../Color";
 
 header {
     padding-top: 3px;
@@ -12,66 +11,54 @@ header {
         position: relative;
         top: -50px;
 
-        ul {
+        .header-menu-list-container {
             li {
-                overflow: hidden;
-                float: left;
-                height: 45px;
-                line-height: 40px;
-                vertical-align: middle;
-                display: inline-block;
+                .border-bottom-transition-property-mixin;
+            }
+
+            li:nth-child(3n):hover {
+                border-bottom: 5px solid @top-accent-1;
+            }
+
+            li:nth-child(3n+1):hover {
+                border-bottom: 5px solid @top-accent-2;
+            }
+
+            li:nth-child(3n+2):hover {
+                border-bottom: 5px solid @top-accent-3;
             }
         }
-    }
 
-    .header-brand-container {
-        z-index: 100;
-        width: 100%;
 
-        a.header-brand {
-            color: dimgray;
-            line-height: 50px;
-            font-size: x-large;
-            font-weight: bold;
-            text-decoration: none !important;
-        }
-    }
-
-    #dropmenu a {
-        cursor: pointer;
-        display: inline-block;
-        width: 100px;
-        color: #000 !important;
-        text-decoration: none !important;
-        text-align: center;
-        font-weight: bold;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        border-bottom: none;
-    }
-
-    .header-menu-list-container {
         li {
-            cursor: pointer;
-            .border-bottom-transition-property-mixin;
-        }
+            overflow: hidden;
+            line-height: 50px;
+            display: inline;
+            a {
+                cursor: pointer;
+                display: inline-block;
+                width: 100px;
+                color: #000 !important;
+                text-decoration: none !important;
+                text-align: center;
+                font-weight: bold;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                border-bottom: none;
+            }
 
-        li:nth-child(3n):hover {
-            border-bottom: 5px solid @top-accent-1;
-        }
+            a:hover {
+                color: #818181;
+            }
 
-        li:nth-child(3n+1):hover {
-            border-bottom: 5px solid @top-accent-2;
+            .user-icon {
+                img {
+                    height: 20px;
+                    width: 20px;
+                }
+            }
         }
-
-        li:nth-child(3n+2):hover {
-            border-bottom: 5px solid @top-accent-3;
-        }
-    }
-
-    #dropmenu a:hover {
-        color: #818181;
     }
 
     .menu {
@@ -80,6 +67,19 @@ header {
         overflow: hidden;
         width: 80%;
         height: 50px;
+
+        .header-brand-container {
+            z-index: 100;
+            width: 100%;
+
+            a.header-brand {
+                color: dimgray;
+                line-height: 50px;
+                font-size: x-large;
+                font-weight: bold;
+                text-decoration: none !important;
+            }
+        }
 
         .search {
             margin: 5px 0 5px 0;
@@ -97,7 +97,7 @@ header {
                     margin: 7.5px 0 7.5px 0;
                     height: 20px;
                     width: 200px;
-                    padding: 5px 0 5px 10px;
+                    padding: 5px 0px 5px 10px;
                     position: absolute;
                     left: 10px;
                     top: -6px;
@@ -124,7 +124,6 @@ header {
                     background-repeat: no-repeat;
                     background-color: @bg-color-1;
                     background-size: contain;
-
 
                     &:hover {
                         -moz-transform: translateY(1px);
