@@ -75,7 +75,10 @@
                 <div class="top-subject-wrapper clearfix">
                     @foreach (var topsubject in Model.FlameArticles)
                     {
-                        <div class="top-subject"><a href="@("/"+topsubject.ArticleModelId)">@topsubject.Title</a></div>
+                        <div class="top-subject">
+                            <a href="@("/"+topsubject.ArticleModelId)">@topsubject.Title</a>
+                            <span>記事の概要を表示</span>
+                        </div>
                     }
                 </div>
             </section>
