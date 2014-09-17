@@ -121,6 +121,7 @@ a:visited {
   border: 1px solid #ddd;
   margin-bottom: 5px;
   padding: 15px;
+  z-index: 2;
 }
 .top-title {
   background-color: white !important;
