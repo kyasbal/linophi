@@ -28,12 +28,12 @@ a {
     text-align: center;
 
     > h1 {
-        font-size: 70px;
+        font-size: 65px;
         float: left;
 
         a {
             color: #131313;
-            font-family: 'bokutachi';
+            font-family: '游明朝';
         }
 
         span {
@@ -126,12 +126,12 @@ a {
     padding: 20px 60px;
     color: white;
     font-size: large;
-    background-color: @top-accent-3;
 
     &:visited {
         color: white;
     }
 }
+
 
 .top-topics-category section:nth-child(3n+1) {
     .top-title {
@@ -140,6 +140,10 @@ a {
 
     .top-post-this {
         background-color: @top-accent-1;
+    }
+
+    .top-post-this:hover{
+        background-color:@top-accent-darken-1;
     }
 }
 
@@ -162,20 +166,24 @@ a {
     border: 1px solid #ddd;
     margin-bottom: 5px;
     padding: 15px;
+    z-index:2;
 }
 
 .top-title {
-    padding: 10px 20px;
+    background-color:white !important;
+    /*padding: 10px 20px;
     margin: 0 0 20px;
     background-color: @top-accent-3;
     height: 30px;
     width: 370px;
     overflow: hidden;
     position: relative;
-    left: -50px;
+    left: -50px;*/
 
     > h3 {
-        position: absolute;
+        background-color:white;
+        margin-bottom:30px;
+        /*position: absolute;
         top: 50%;
         -moz-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
@@ -187,17 +195,26 @@ a {
         font-size: 20px;
         font-weight: bold;
         color: #fff;
-
+        */
         a {
+            font-size: 20px;
+            font-weight: bold;
+            padding:10px 150px 10px 50px;
+            margin-right:-100px;
+            margin-bottom:-100px;
+            background-color: @top-accent-1;
+            overflow: hidden;
+            position: relative;
+            top:5px;
+            left:-50px;
             color: #fff;
 
             &:visited {
                 color: #fff;
             }
-
-            &:hover {
-                text-decoration: underline;
-            }
+        }
+        a:hover{
+            background-color:@top-accent-darken-1;
         }
     }
 }

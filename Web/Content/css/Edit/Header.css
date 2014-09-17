@@ -7,9 +7,41 @@
 header #dropmenu {
   float: right;
   position: relative;
-  top: -50px;
 }
-header #dropmenu .header-menu-list-container li {
+header #dropmenu ul li {
+  overflow: hidden;
+  float: left;
+  height: 45px;
+  line-height: 40px;
+  vertical-align: middle;
+  display: inline-block;
+}
+header .header-brand-container {
+  z-index: 100;
+  width: 100%;
+}
+header .header-brand-container a.header-brand {
+  color: dimgray;
+  line-height: 50px;
+  font-size: x-large;
+  font-weight: bold;
+  text-decoration: none!important;
+}
+header #dropmenu a {
+  cursor: pointer;
+  display: inline-block;
+  width: 100px;
+  color: #000 !important;
+  text-decoration: none !important;
+  text-align: center;
+  font-weight: bold;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-bottom: none;
+}
+header .header-menu-list-container li {
+  cursor: pointer;
   -moz-transition-property: border-bottom;
   -o-transition-property: border-bottom;
   -webkit-transition-property: border-bottom;
@@ -23,39 +55,17 @@ header #dropmenu .header-menu-list-container li {
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
-header #dropmenu .header-menu-list-container li:nth-child(3n):hover {
+header .header-menu-list-container li:nth-child(3n):hover {
   border-bottom: 5px solid #4385f5;
 }
-header #dropmenu .header-menu-list-container li:nth-child(3n+1):hover {
+header .header-menu-list-container li:nth-child(3n+1):hover {
   border-bottom: 5px solid #dc4437;
 }
-header #dropmenu .header-menu-list-container li:nth-child(3n+2):hover {
+header .header-menu-list-container li:nth-child(3n+2):hover {
   border-bottom: 5px solid #f5b400;
 }
-header #dropmenu li {
-  overflow: hidden;
-  line-height: 50px;
-  display: inline;
-}
-header #dropmenu li a {
-  cursor: pointer;
-  display: inline-block;
-  width: 100px;
-  color: #000 !important;
-  text-decoration: none !important;
-  text-align: center;
-  font-weight: bold;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  border-bottom: none;
-}
-header #dropmenu li a:hover {
+header #dropmenu a:hover {
   color: #818181;
-}
-header #dropmenu li .user-icon img {
-  height: 20px;
-  width: 20px;
 }
 header .menu {
   text-align: center;
@@ -63,17 +73,6 @@ header .menu {
   overflow: hidden;
   width: 80%;
   height: 50px;
-}
-header .menu .header-brand-container {
-  z-index: 100;
-  width: 100%;
-}
-header .menu .header-brand-container a.header-brand {
-  color: dimgray;
-  line-height: 50px;
-  font-size: x-large;
-  font-weight: bold;
-  text-decoration: none !important;
 }
 header .menu .search {
   margin: 5px 0 5px 0;
@@ -90,7 +89,7 @@ header .menu .search .search-container .search-text {
   margin: 7.5px 0 7.5px 0;
   height: 20px;
   width: 200px;
-  padding: 5px 0px 5px 10px;
+  padding: 5px 0 5px 10px;
   position: absolute;
   left: 10px;
   top: -6px;
