@@ -70,7 +70,7 @@ namespace Web.ViewModel.Home
                 section.TopicDescription = topicModel.Description;
                 ArticleModel[] newArticles =
                     context.Articles.Where(f => !f.IsDraft && f.ThemeId.Equals(topicModel.TopicId))
-                        .OrderBy(f => f.CreationTime)
+                        .OrderByDescending(f => f.CreationTime)
                         .Take(3)
                         .ToArray();
                 section.NewModels = newArticles;

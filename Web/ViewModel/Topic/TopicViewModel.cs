@@ -18,7 +18,7 @@ namespace Web.ViewModel.Topic
             var context = req.GetOwinContext().Get<ApplicationDbContext>();
             TopicModel topic = await context.Topics.FindAsync(topicId);
             if (topic == null) return null;
-            TopicViewModel vm = new TopicViewModel(req, topic.TopicTitle, topic.LongDescription,
+            TopicViewModel vm = new TopicViewModel(req, topic.TopicTitle, topic.RawTextDescription,
                 "/Pages/ContentUpload/TopicThumbnail?topicId=" + topicId);
             vm.HtmlDescription = topic.LongDescription;
             IOrderedQueryable<ArticleModel> newArticleQuery =
