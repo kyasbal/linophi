@@ -9,7 +9,7 @@ a:visited {
   color: #7b23a9;
 }
 .top-container {
-  box-shadow: 0 0 50px 70px #fff;
+  padding: 0 70px;
   background: #fff;
   width: 960px;
   margin: 0 auto;
