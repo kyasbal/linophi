@@ -120,6 +120,22 @@
   padding: 0 10px;
   background-color: #f2dede !important;
 }
+.article-container h2,
+.edit-preview h2,
+.article-container h3,
+.edit-preview h3,
+.article-container h4,
+.edit-preview h4,
+.article-container h5,
+.edit-preview h5,
+.article-container p,
+.edit-preview p {
+  margin-bottom: 1.5em;
+}
+.article-container p,
+.edit-preview p {
+  line-height: 1.5em;
+}
 .article-container .red,
 .edit-preview .red,
 .article-container .x_red,
