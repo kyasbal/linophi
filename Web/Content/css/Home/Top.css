@@ -55,7 +55,7 @@ a:visited {
 }
 .top-topics-flare > h2 {
   position: relative;
-  width: 370px;
+  width: 320px;
   left: -16px;
   font-size: 20px;
   font-weight: bold;
@@ -65,13 +65,14 @@ a:visited {
   color: #fff;
 }
 .top-topics-flare .top-subject-wrapper .top-subject {
-  float: none;
-  margin: 0 20px 20px 0;
   background-color: #eee;
+  float: none;
+  margin: 0 20px 15px 0;
+  padding: 0 5px 10px 0;
   box-shadow: 0 0 5px rgba(221, 221, 221, 0.5) inset;
 }
-.top-topics-flare .top-subject-wrapper .top-subject span {
-  padding-left: 20px;
+.top-topics-flare .top-subject-wrapper .top-subject div {
+  margin-left: 60%;
 }
 .top-topics-flare .top-subject-wrapper .top-subject > a {
   color: #444;
