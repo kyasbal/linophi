@@ -81,6 +81,7 @@ body {
   display: table;
   padding: 30px;
   border-top: 1px solid #ddd;
+  cursor: pointer;
 }
 .contents .wrapper .search-result .listitem:hover {
   background: #e4e4e4;

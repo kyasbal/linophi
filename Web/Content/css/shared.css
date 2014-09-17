@@ -5,6 +5,7 @@ body {
   position: relative;
   font: 15px/1.5 arial, sans-serif;
   width: 100%;
-  background-image: url('../imgs/bgtest-skyblue.png');
+  background-color: #fff;
+  background-image: url('../imgs/worn_dots.png');
 }
-/*# sourceMappingURL=shared.css.map */
+/*# sourceMappingURL=Shared.css.map */

@@ -187,7 +187,7 @@ html {
   clear: left;
 }
 .container .contents .contentswrapper .main {
-  /*background-color: aliceblue;*/
+  background: #fff;
   float: left;
   width: 700px;
   padding: 0 40px 40px 20px;
