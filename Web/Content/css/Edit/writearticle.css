@@ -3,7 +3,6 @@
   height: 100%;
 }
 body {
-  background-image: url("/Content/imgs/bg-common.png");
   width: 100%;
   height: 100%;
 }
@@ -279,4 +278,4 @@ div[class^="edit-editted-tag"] span[class^="edit-editted-tag-delete-"] {
   padding: 10px 0 10px 0;
   border-bottom: 3px solid #fff;
 }
-/*# sourceMappingURL=writearticle.css.map */
+/*# sourceMappingURL=WriteArticle.css.map */

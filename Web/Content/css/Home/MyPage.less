@@ -4,41 +4,51 @@ html {
     width: 100%;
     height: 100%;
 }
-.search-header{
-    border: 1px solid #ccc;
-    padding-left:30px;
-    padding-top:20px;
-    height:70px;
-    margin-bottom:30px;
-}
 
-select{
-    border: double solid 2px;
-}
+.main {
 
-.listitem{
-    width:650px;
-}
-
-.edit-buttons {
-    clear: both;
-    display: block;
-    text-align: right;
-    visibility: hidden;
-    margin-top: -30px;
-
-    a {
-        font-weight: bold;
-        height: 10px;
-
-        &:hover {
-            color: #818181;
-            text-decoration: none;
-            cursor: pointer;
+    .search-header {
+        border: 1px solid #ccc;
+        padding:20px 0 0 30px;
+        height: 70px;
+        margin-bottom: 30px;
+        background-color: white;
+        width: 630px;
+        select {
+            border: double solid 2px;
         }
     }
-}
 
-.page-control {
-    .page-control-mixin;
+    .my-editted {
+        .search-result {
+            .listitem {
+                width: 600px;
+                background-color:white;
+                .listtxt {
+                    .edit-buttons {
+                        clear: both;
+                        display: block;
+                        text-align: right;
+                        visibility: hidden;
+                        margin-top: -30px;
+
+                        a {
+                            font-weight: bold;
+                            height: 10px;
+
+                            &:hover {
+                                color: #818181;
+                                text-decoration: none;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .page-control {
+        .page-control-mixin;
+    }
 }
