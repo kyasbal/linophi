@@ -1,63 +1,10 @@
-﻿@import "Color.less";
+﻿
+@import "Color.less";
 
 header {
     padding-top: 3px;
     background-color: @header-color-bg;
     border-bottom: 1px solid #f2f2f2;
-    margin-bottom: 10px;
-
-    #dropmenu {
-        float: right;
-        position: relative;
-        top: -50px;
-
-        .header-menu-list-container {
-            li {
-                .border-bottom-transition-property-mixin;
-            }
-
-            li:nth-child(3n):hover {
-                border-bottom: 5px solid @top-accent-1;
-            }
-
-            li:nth-child(3n+1):hover {
-                border-bottom: 5px solid @top-accent-2;
-            }
-
-            li:nth-child(3n+2):hover {
-                border-bottom: 5px solid @top-accent-3;
-            }
-        }
-
-        li {
-            overflow: hidden;
-            line-height: 50px;
-            display: inline;
-            a {
-                cursor: pointer;
-                display: inline;
-                color: #000 !important;
-                text-decoration: none !important;
-                text-align: center;
-                font-weight: bold;
-                -moz-box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                box-sizing: border-box;
-                border-bottom: none;
-            }
-
-            a:hover {
-                color: #818181;
-            }
-
-            .user-icon {
-                img {
-                    height: 20px;
-                    width: 20px;
-                }
-            }
-        }
-    }
 
     .menu {
         text-align: center;
@@ -66,25 +13,12 @@ header {
         width: 80%;
         height: 50px;
 
-        .header-brand-container {
-            z-index: 100;
-            width: 100%;
-
-            a.header-brand {
-                color: dimgray;
-                line-height: 50px;
-                font-size: x-large;
-                font-weight: bold;
-                text-decoration: none !important;
-            }
-        }
-
         .search {
-            margin: 5px 0 5px 0;
+            margin: 5px 0 0 0;
             position: absolute;
 
             .search-container {
-                margin: 7.5px 0 7.5px 0;
+                /*margin: 7.5px 0 7.5px 0;*/
 
                 input {
                     padding-left: 10%;
@@ -94,14 +28,13 @@ header {
                     color: @textbox-style-1-color-fore;
                     margin: 7.5px 0 7.5px 0;
                     height: 20px;
-                    width: 200px;
-                    padding: 5px 0px 5px 10px;
+                    padding: 5px 0 5px 10px;
                     position: absolute;
                     left: 10px;
                     top: -6px;
                     .vend-boxsizing-mixin(content-box);
                     border: 1px solid lightgray;
-                    border-radius: 2px;
+                    /*border-radius: 2px;*/
                 }
 
                 .search-text:focus {
@@ -135,6 +68,77 @@ header {
 
                 .search-button:focus {
                     outline: none;
+                }
+            }
+        }
+
+        .header-brand-container {
+            z-index: 100;
+            width: 100%;
+
+            a.header-brand {
+                color: dimgray;
+                line-height: 50px;
+                font-size: x-large;
+                font-weight: bold;
+                text-decoration: none !important;
+            }
+        }
+
+        #dropmenu {
+            float: right;
+            position: relative;
+            top: -50px;
+
+            .header-menu-list-container {
+                li {
+                    .border-bottom-transition-property-mixin;
+                    overflow: hidden;
+                    line-height: 50px;
+                    display: inline;
+                    margin-right: 20px;
+
+                    a {
+                        cursor: pointer;
+                        display: inline;
+                        color: #000 !important;
+                        text-decoration: none !important;
+                        text-align: center;
+                        font-weight: bold;
+                        -moz-box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        box-sizing: border-box;
+                        border-bottom: none;
+                    }
+
+                    a:hover {
+                        color: #818181;
+                    }
+
+                    .user-icon {
+                        img {
+                            height: 20px;
+                            width: 20px;
+                        }
+                    }
+                }
+
+                li:nth-child(3n):hover {
+                    a {
+                        border-bottom: 5px solid @top-accent-1;
+                    }
+                }
+
+                li:nth-child(3n+1):hover {
+                    a {
+                        border-bottom: 5px solid @top-accent-2;
+                    }
+                }
+
+                li:nth-child(3n+2):hover {
+                    a {
+                        border-bottom: 5px solid @top-accent-3;
+                    }
                 }
             }
         }

@@ -30,10 +30,13 @@
                         {
                             <li>@Html.ActionLink("投稿する", "RedirectToEdit", "Edit")</li>
                             <li>
-                                <span class="user-icon">
-                                    @Html.GravatarImg(Request, 24)
-                                </span>
-                                <a href="/MyPage">@WebPageStatic.GetUserNickName(Request)</a>
+                               
+                                <a href="/MyPage">
+                                    <span class="user-icon">
+                                        @Html.GravatarImg(Request, 24)
+                                    </span>
+                                    @WebPageStatic.GetUserNickName(Request)
+                                </a>
                             </li>
                             <li>@Html.ActionLink("設定", "Config", "Account")</li>
                             <li>@Html.ActionLink("ログアウト", "Logout", "Account")</li>
