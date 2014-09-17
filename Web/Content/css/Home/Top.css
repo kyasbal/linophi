@@ -64,19 +64,23 @@ a:visited {
   background: #f5b400;
   color: #fff;
 }
-.top-topics-flare .top-subject {
-  margin-right: 16px;
-  margin-bottom: 16px;
+.top-topics-flare .top-subject-wrapper .top-subject {
+  float: none;
+  margin: 0 20px 20px 0;
   background-color: #eee;
   box-shadow: 0 0 5px rgba(221, 221, 221, 0.5) inset;
 }
-.top-topics-flare .top-subject > a {
+.top-topics-flare .top-subject-wrapper .top-subject span {
+  padding-left: 20px;
+}
+.top-topics-flare .top-subject-wrapper .top-subject > a {
   color: #444;
   display: block;
   padding: 4px 8px;
   text-decoration: underline;
+  overflow: hidden;
 }
-.top-topics-flare .top-subject > a:hover {
+.top-topics-flare .top-subject-wrapper .top-subject > a:hover {
   background: #ddd;
 }
 .top-topics-category {
