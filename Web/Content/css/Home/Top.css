@@ -108,6 +108,7 @@ a:visited {
 }
 .top-post-this-container {
   text-align: center;
+  margin-bottom: 90px;
 }
 .top-summary {
   border: 1px solid #ddd;
@@ -164,6 +165,7 @@ a:visited {
   font-size: 18px;
 }
 .top-index-box > ul > li {
+  cursor: pointer;
   margin-right: 16px;
   padding: 12px 30px;
   font-size: 14px;
