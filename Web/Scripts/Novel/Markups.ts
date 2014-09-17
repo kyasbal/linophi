@@ -147,7 +147,6 @@ class LinkMarkup extends MarkupBase//URL
 {
     getMarkupString(result: string, id: string): string
     {
-        console.warn("link");
         result = result.replace(/&ensp;/g, "\u0006h");
         if (result.match(/(https?:\/\/[＠@\w\/:%#\$&\?\(\)~\.=\+\-_]+(\.jpg|\.jpeg|\.gif|\.png))/g))
         {
@@ -204,20 +203,33 @@ class UrlMarkup extends MarkupBase
 {
     getMarkupString(result: string): string
     {
-        if (result.match(/\$\([^)]+\)\{[^}]+}/g))
+        if (result.match(/\$url\([^)]+\)\{[^}]+}/g))
         {
-            var url = result.replace(/\$\(([^)]+)\)\{([^}]+)}/g, "$1");
+            var url = result.replace(/\$url\(([^)]+)\)\{([^}]+)}/g, "$1");
             url = url.replace(/http/g, "\u0006e");
-            result = result.replace(/\$\(([^)]+)\)\{([^}]+)}/g, "<a href='"+url+"'>$2</a>");
+            result = result.replace(/\$url\(([^)]+)\)\{([^}]+)}/g, "<a href='"+url+"'>$2</a>");
         }
         else
         {
-            var url = result.replace(/\$\(([^)]+)\).*/g, "$1");
+            var url = result.replace(/\$url\(([^)]+)\).*/g, "$1");
             url = url.replace(/http/g, "\u0006e");
-            result = result.replace(/\$\(([^)]+)\)/g, "<a href=\"" + url+"\">"+url+"</a>");
+            result = result.replace(/\$url\(([^)]+)\)/g, "<a href=\"" + url+"\">"+url+"</a>");
         }
         result = result.replace(/<a[^>]+><\/a>/g, "");
-        console.warn(result);
+        return result;
+    }
+}
+
+//画像あどれす
+class ImgMarkup extends MarkupBase
+{
+    getMarkupString(result: string): string
+    {
+        var img = result.replace(/\$img\(([^)]+)\).*/g, "$1");
+        img = img.replace(/http/g, "\u0006e");
+        var up = "/Pages/ContentUpload/ServerCache?url=";
+        up = up + img;
+        result = result.replace(/\$img\(([^)]+)\)/g, "<img src=\"" +up+ "\">");
         return result;
     }
 }

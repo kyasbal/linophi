@@ -1,0 +1,80 @@
+﻿body {
+  background-image: url("/Content/imgs/bgtest-skyblue.png");
+}
+.layout {
+  background-color: #ffffff;
+  width: 960px;
+  padding: 20px 20px;
+  margin: 0 auto;
+}
+.inner-header-container {
+  width: 740px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+.inner-header-container .inner-header {
+  margin-left: -50px;
+  width: 370px;
+  background-color: #7ac2a6;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+.inner-header-container .inner-header h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+.fact-container {
+  width: 740px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+.fact-container h2 {
+  font-weight: bold;
+}
+.top-index-box {
+  width: 366px;
+}
+.top-index-box > p {
+  margin: 0 16px 7px 0;
+  padding-left: 40px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #aaa;
+  font-weight: bold;
+  font-size: 18px;
+}
+.top-index-box > ul > li {
+  margin-right: 16px;
+  padding: 12px 30px;
+  font-size: 14px;
+}
+.top-index-box > ul > li:hover {
+  background: #eee;
+}
+.top-index-box > ul > li > small {
+  float: right;
+  text-align: right;
+  font-size: 10px;
+  color: #888;
+}
+.button-write-article-container {
+  text-align: center;
+}
+.button-write-article-container a {
+  line-height: 100px;
+  padding: 20px 60px;
+  color: white;
+  font-size: large;
+  background-color: #7ac2a6;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.clearfix > * {
+  float: left;
+}
+/*# sourceMappingURL=Index.css.map */

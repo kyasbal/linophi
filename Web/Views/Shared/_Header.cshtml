@@ -14,22 +14,26 @@
                 <a class="header-brand" href="/">意見.みんな</a>
             </div>
             <div id="dropmenu">
+                @*投稿するが2つあるのを消さないように*@
+
                 <ul class="header-menu-list-container">
-                    <li>@Html.ActionLink("投稿する", "RedirectToEdit", "Edit")</li>
                     @{
                         if (!Request.IsAuthenticated)
                         {
                             using (Html.BeginForm("Login", "Account", FormMethod.Get, new { @class = "login-form" }))
                             {
                                 @Html.Hidden("returnUrl", Request.Url)
+                                <li>@Html.ActionLink("投稿する", "RedirectToEdit", "Edit")</li>
                                 <li><a onclick="$('.login-form').submit();">ログイン</a></li>
                             }
                         }
                         else
                         {
-                            
+                            <li>@Html.ActionLink("投稿する", "RedirectToEdit", "Edit")</li>
                             <li>
-                                @Html.GravatarImg(Request, 24)
+                                <span class="user-icon">
+                                    @Html.GravatarImg(Request, 24)
+                                </span>
                                 <a href="/MyPage">@WebPageStatic.GetUserNickName(Request)</a>
                             </li>
                             <li>@Html.ActionLink("設定", "Config", "Account")</li>

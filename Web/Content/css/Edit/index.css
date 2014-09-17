@@ -84,12 +84,14 @@
   outline: none;
   border-radius: 300px;
 }
-.listn,
-.x_listn {
+.num,
+.x_num {
+  margin-left: 20px;
   list-style-type: decimal;
 }
-.listd,
-.x_listd {
+.dot,
+.x_dot {
+  margin-left: 20px;
   list-style-type: disc;
 }
 .bgcprim,
@@ -190,6 +192,8 @@
   cursor: pointer;
 }
 .edit-button-container {
+  margin-top: 80px;
+  margin-bottom: -120px;
   text-align: center;
 }
 .help-container {

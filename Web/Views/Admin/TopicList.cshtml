@@ -13,6 +13,8 @@
                 <th>TopicID</th>
                 <th>Topicタイトル</th>
                 <th>TopicDescription</th>
+                <th>LongDescription</th>
+                <th>TextDescription</th>
                 <th>炎上指数</th>
                 <th>記事数</th>
                 <th>編集</th>
@@ -26,6 +28,8 @@
                     <td>@data.TopicId</td>
                     <td>@data.TopicTitle</td>
                     <td>@Html.Raw(data.Description)</td>
+                    <td>@Html.Raw(data.LongDescription)</td>
+                    <td>@data.RawTextDescription</td>
                     <td>@data.EvaluationOfFire</td>
                     <td>@Model.CountArticleInTopic(data.TopicId)</td>
                     <td><a href="@("/Admin/EditTopic?topicId="+data.TopicId)" class="btn btn-warning">編集</a></td>

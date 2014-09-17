@@ -3,23 +3,23 @@
   width: 100%;
   bottom: 0;
   position: relative;
-  border-top: 1px solid #cccccc;
+  /*border-top:2px groove #ccc;*/
 }
 footer .box-container {
-  padding-left: 30%;
-  padding-top: 1%;
+  padding-top: 20px;
   zoom: 1;
 }
 footer .box-container span a {
   color: #000000;
-  margin-right: 5%;
+  margin-left: 15%;
   text-decoration: underline;
 }
 footer .box-container span a:hover {
+  /*color:@text-color-1;*/
   text-decoration: none;
 }
 .copyright {
-  margin: 1% 0 1% 0;
+  margin: 10px 0 10px 0;
   text-align: center;
 }
 /*# sourceMappingURL=footer.css.map */

@@ -1,7 +1,4 @@
-﻿body {
-  background-image: url('../../imgs/bgtest-skyblue.png');
-}
-a {
+﻿a {
   color: #0c2a81;
   text-decoration: none;
 }
@@ -138,6 +135,15 @@ a:visited {
   font-size: 20px;
   font-weight: bold;
   color: #fff;
+}
+.top-title > h3 a {
+  color: #fff;
+}
+.top-title > h3 a:visited {
+  color: #fff;
+}
+.top-title > h3 a:hover {
+  text-decoration: underline;
 }
 .top-factor {
   padding: 0 24px 16px;

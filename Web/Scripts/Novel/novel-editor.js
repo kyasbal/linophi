@@ -7,7 +7,7 @@
 var NovelEditer;
 (function (_NovelEditer) {
     var sepalateToken = "\n\n";
-    var markups = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup(), new HrMarkUp(), new ColorMarkup(), new SizeMarkup(), new SizeColorMarkup(), new UrlMarkup(), new LinkMarkup()];
+    var markups = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup(), new HrMarkUp(), new ColorMarkup(), new SizeMarkup(), new SizeColorMarkup(), new UrlMarkup(), new ImgMarkup(), new LinkMarkup()];
 
     var NovelEditer = (function () {
         function NovelEditer(editorTarget, previewTarget, previewBounds) {
@@ -938,11 +938,10 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         ListnPrefix.prototype.getPrefixString = function () {
-            return "$listn";
+            return "$num";
         };
-
         ListnPrefix.prototype.getFormattedHtmlImpl = function (str) {
-            str = str.replace(/\$listn\{(.*)}/g, "<ol class=\"listn\"><li>$1</li></ol><br>");
+            str = str.replace(/(.*)/g, "<ol class=\"num\"><li>$1</li></ol><br>");
             str = str.replace(/<\/br>/g, "</li><li>");
             str = str.replace(/<li><\/li>/g, "");
             str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
@@ -958,11 +957,10 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         ListdPrefix.prototype.getPrefixString = function () {
-            return "$listd";
+            return "$dot";
         };
-
         ListdPrefix.prototype.getFormattedHtmlImpl = function (str) {
-            str = str.replace(/\$listd\{(.*)}/g, "<ul class=\"listd\"><li>$1</li></ul><br>");
+            str = str.replace(/(.*)/g, "<ul class=\"dot\"><li>$1</li></ul><br>");
             str = str.replace(/<\/br>/g, "</li><li>");
             str = str.replace(/<li><\/li>/g, "");
             str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
@@ -978,7 +976,7 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         BgcPrimPrefix.prototype.getPrefixString = function () {
-            return "$section(prim)";
+            return "$prim";
         };
 
         BgcPrimPrefix.prototype.getFormattedHtmlImpl = function (str) {
@@ -1002,7 +1000,7 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         BgcSuccPrefix.prototype.getPrefixString = function () {
-            return "$section(succ)";
+            return "$succ";
         };
 
         BgcSuccPrefix.prototype.getFormattedHtmlImpl = function (str) {
@@ -1026,7 +1024,7 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         BgcInfoPrefix.prototype.getPrefixString = function () {
-            return "$section(info)";
+            return "$info";
         };
 
         BgcInfoPrefix.prototype.getFormattedHtmlImpl = function (str) {
@@ -1050,7 +1048,7 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         BgcWarnPrefix.prototype.getPrefixString = function () {
-            return "$section(warn)";
+            return "$warn";
         };
 
         BgcWarnPrefix.prototype.getFormattedHtmlImpl = function (str) {
@@ -1074,7 +1072,7 @@ var NovelEditer;
             _super.apply(this, arguments);
         }
         BgcDangPrefix.prototype.getPrefixString = function () {
-            return "$section(dang)";
+            return "$dang";
         };
 
         BgcDangPrefix.prototype.getFormattedHtmlImpl = function (str) {

@@ -216,16 +216,16 @@
     <Content Include="Content\css\Account\LogIn.min.css">
       <DependentUpon>LogIn.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\Footer.css">
+    <Content Include="Content\css\Footer.css">
       <DependentUpon>Footer.less</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\Footer.min.css">
+    <Content Include="Content\css\Footer.min.css">
       <DependentUpon>Footer.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\Header.css">
+    <Content Include="Content\css\Header.css">
       <DependentUpon>Header.less</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\Header.min.css">
+    <Content Include="Content\css\Header.min.css">
       <DependentUpon>Header.css</DependentUpon>
     </Content>
     <Content Include="Content\css\Edit\Index.css">
@@ -282,6 +282,12 @@
     <Content Include="Content\css\Shared.min.css">
       <DependentUpon>Shared.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Topic\Index.css">
+      <DependentUpon>Index.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\Topic\Index.min.css">
+      <DependentUpon>Index.css</DependentUpon>
+    </Content>
     <Content Include="Content\imgs\bgtest-skyblue.png" />
     <Content Include="Content\imgs\h2.svg" />
     <Content Include="Content\imgs\h3.svg" />
@@ -299,6 +305,7 @@
     <Content Include="Content\imgs\Home\sad-l.svg" />
     <Content Include="Content\imgs\Home\surprised-d.svg" />
     <Content Include="Content\imgs\Home\surprised-l.svg" />
+    <Content Include="Content\imgs\linoris.png" />
     <Content Include="Content\imgs\test-banner.gif" />
     <Content Include="Content\imgs\test-h2bg.png" />
     <Content Include="Scripts\Home\CommentIndicator.js" />
@@ -412,12 +419,12 @@
     <Content Include="Content\css\Account\LogIn.css.map">
       <DependentUpon>LogIn.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\Footer.less" />
-    <Content Include="Content\css\Edit\Footer.css.map">
+    <Content Include="Content\css\Footer.less" />
+    <Content Include="Content\css\Footer.css.map">
       <DependentUpon>Footer.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\Edit\Header.less" />
-    <Content Include="Content\css\Edit\Header.css.map">
+    <Content Include="Content\css\Header.less" />
+    <Content Include="Content\css\Header.css.map">
       <DependentUpon>Header.css</DependentUpon>
     </Content>
     <Content Include="Content\css\Edit\Index.less" />
@@ -501,6 +508,10 @@
     <Content Include="Content\css\Home\Outline.css.map">
       <DependentUpon>Outline.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Topic\Index.less" />
+    <Content Include="Content\css\Topic\Index.css.map">
+      <DependentUpon>Index.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Edit\TagMaker.js" />
     <Content Include="Scripts\Home\PostitPaster.js" />
@@ -560,6 +571,7 @@
     <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SitemapController.cs" />
+    <Compile Include="Controllers\TopicController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -619,6 +631,14 @@
     <Compile Include="Migrations\201409151720434_AddUnknown2.Designer.cs">
       <DependentUpon>201409151720434_AddUnknown2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409161929449_AddLongDescriptionToTopicModel.cs" />
+    <Compile Include="Migrations\201409161929449_AddLongDescriptionToTopicModel.Designer.cs">
+      <DependentUpon>201409161929449_AddLongDescriptionToTopicModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409162107083_AddRawTextDescription.cs" />
+    <Compile Include="Migrations\201409162107083_AddRawTextDescription.Designer.cs">
+      <DependentUpon>201409162107083_AddRawTextDescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountConfigViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -663,6 +683,17 @@
     <Compile Include="Utility\ImageResult.cs" />
     <Compile Include="Utility\LinophiMailClient.cs" />
     <Compile Include="Utility\MathEx.cs" />
+    <Compile Include="Utility\OGP\ArticleOGPRenderer.cs" />
+    <Compile Include="Utility\OGP\BasicOGPPageData.cs" />
+    <Compile Include="Utility\OGP\BasicOGPSiteData.cs" />
+    <Compile Include="Utility\OGP\BasicOGPSiteMetaPageMetaMerger.cs" />
+    <Compile Include="Utility\OGP\IOGPBasicMetaData.cs" />
+    <Compile Include="Utility\OGP\IOGPPageData.cs" />
+    <Compile Include="Utility\OGP\IOGPSiteMeta.cs" />
+    <Compile Include="Utility\OGP\IOGPSiteMetaPageMetaMerger.cs" />
+    <Compile Include="Utility\OGP\MetaDictionary.cs" />
+    <Compile Include="Utility\OGP\OGPSiteMetaAttribute.cs" />
+    <Compile Include="Utility\OGP\SummaryTwitterCardRenderer.cs" />
     <Compile Include="Utility\SEO\SitemapItem.cs" />
     <Compile Include="Utility\WebPageStatic.cs" />
     <Compile Include="ViewModel\Admin\EditTopicViewModel.cs" />
@@ -672,7 +703,7 @@
     <Compile Include="ViewModel\IMetaBasicOGPViewModel.cs" />
     <Compile Include="ViewModel\MetaBuilder.cs" />
     <Compile Include="ViewModel\OGPMetaRenderer.cs" />
-    <Compile Include="ViewModel\OGPViewModelBase.cs" />
+    <Compile Include="ViewModel\Topic\TopicViewModel.cs" />
     <Compile Include="WebRole.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -727,6 +758,7 @@
     <Content Include="Views\Admin\EditTopic.cshtml" />
     <Content Include="Views\Admin\UserList.cshtml" />
     <Content Include="Views\Home\Outline.cshtml" />
+    <Content Include="Views\Topic\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -827,6 +859,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409151720434_AddUnknown2.resx">
       <DependentUpon>201409151720434_AddUnknown2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409161929449_AddLongDescriptionToTopicModel.resx">
+      <DependentUpon>201409161929449_AddLongDescriptionToTopicModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409162107083_AddRawTextDescription.resx">
+      <DependentUpon>201409162107083_AddRawTextDescription.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

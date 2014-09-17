@@ -1,7 +1,7 @@
 ﻿module NovelEditer
 {
     var sepalateToken: string = "\n\n";
-    var markups: MarkupBase[] = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup(), new HrMarkUp(), new ColorMarkup(), new SizeMarkup(), new SizeColorMarkup(), new UrlMarkup(), new LinkMarkup()];
+    var markups: MarkupBase[] = [new BoldMarkup(), new YoutubeMarkup(), new NikonikoMarkup(), new HrMarkUp(), new ColorMarkup(), new SizeMarkup(), new SizeColorMarkup(), new UrlMarkup(),new ImgMarkup(), new LinkMarkup()];
 
     export class NovelEditer
     {
@@ -1020,16 +1020,12 @@
         }
     }
 
-    class ListnPrefix extends PrefixBase
-    {
-        getPrefixString(): string
-        {
-            return "$listn";
+    class ListnPrefix extends PrefixBase {
+        getPrefixString(): string {
+            return "$num";
         }
-
-        getFormattedHtmlImpl(str: string): string
-        {
-            str = str.replace(/\$listn\{(.*)}/g, "<ol class=\"listn\"><li>$1</li></ol><br>");
+        getFormattedHtmlImpl(str: string): string {
+            str = str.replace(/(.*)/g, "<ol class=\"num\"><li>$1</li></ol><br>");
             str = str.replace(/<\/br>/g, "</li><li>");
             str = str.replace(/<li><\/li>/g, "");
             str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
@@ -1038,16 +1034,12 @@
         }
     }
 
-    class ListdPrefix extends PrefixBase
-    {
-        getPrefixString(): string
-        {
-            return "$listd";
+    class ListdPrefix extends PrefixBase {
+        getPrefixString(): string {
+            return "$dot";
         }
-
-        getFormattedHtmlImpl(str: string): string
-        {
-            str = str.replace(/\$listd\{(.*)}/g, "<ul class=\"listd\"><li>$1</li></ul><br>");
+        getFormattedHtmlImpl(str: string): string {
+            str = str.replace(/(.*)/g, "<ul class=\"dot\"><li>$1</li></ul><br>");
             str = str.replace(/<\/br>/g, "</li><li>");
             str = str.replace(/<li><\/li>/g, "");
             str = str.replace(/\\{(.*)<\/li>/g, "<br><span>$1</span>");
@@ -1060,7 +1052,7 @@
     {
         getPrefixString(): string
         {
-            return "$section(prim)";
+            return "$prim";
         }
 
         getFormattedHtmlImpl(str: string): string
@@ -1082,7 +1074,7 @@
     {
         getPrefixString(): string
         {
-            return "$section(succ)";
+            return "$succ";
         }
 
         getFormattedHtmlImpl(str: string): string
@@ -1104,7 +1096,7 @@
     {
         getPrefixString(): string
         {
-            return "$section(info)";
+            return "$info";
         }
 
         getFormattedHtmlImpl(str: string): string
@@ -1126,7 +1118,7 @@
     {
         getPrefixString(): string
         {
-            return "$section(warn)";
+            return "$warn";
         }
 
         getFormattedHtmlImpl(str: string): string
@@ -1148,7 +1140,7 @@
     {
         getPrefixString(): string
         {
-            return "$section(dang)";
+            return "$dang";
         }
 
         getFormattedHtmlImpl(str: string): string

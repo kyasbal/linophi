@@ -11,160 +11,128 @@ body {
     background-color: @bg-color-2;
 }
 
-.thumbnail {
-    width: 100px;
-    height: auto;
-}
-
 .contents {
     padding-bottom: 25px;
     overflow: hidden;
+
     .wrapper {
         width: 960px;
         margin: 0 auto;
+
+         
 
         .main {
             float: left;
             width: 700px;
             padding-bottom: 40px;
 
+           
+
             .page-control {
-                margin: 15px 80px 0 80px;
-                font-size: 25px;
-                a {
-                    text-decoration: none;
-                    color: #aaa;
-                    cursor:pointer;
-                }
-
-                .page-before {
-                    float: left;
-                    border: 1px solid #E0F0F0;
-                    border-radius: 10px;
-                    background-color: #E0F0E0;
-                    padding: 5px;
-                    margin-left:50px;
-                }
-
-                .page-before:hover{
-                    background-color:#F0F8FF;
-                }
-
-                .page-after {
-                    float: right;
-                    border: 1px solid #E0F0F0;
-                    border-radius: 10px;
-                    background-color: #E0F0E0;
-                    padding: 5px;
-                    margin-right:50px;
-                }
-
-                .page-after:hover{
-                    background-color:#F0F8FF;
-                }
-            }
-            }
-
-            .search-result {
-
-                .search-header {
-                    background-color: @bg-color-1;
-                    width: 90.5%;
-                    margin-top: 30px;
-                    margin-left: 0;
-                    padding: 20px 30px;
-                    padding-bottom: 20px;
-                    border:1px solid #ccc;
-
-                    form {
-                        margin-top: 10px;
-                        margin-left: 10px;
-
-                        select {
-                            border: none;
-                        }
-
-                        select:focus {
-                            outline: none;
-                        }
-                    }
-                }
-
-                .search-header:focus {
-                    outline: none;
-                }
-
-                .listitem {
-                    display: table;
-                    padding: 30px;
-                    border-top: 1px solid #ddd;
-
-                    &:hover { background: @bg-color-2; }
-
-                    .listthum {
-                        display: table-cell;
-                        width: 60px;
-                        height: 60px;
-                        padding: 0 15px 0 0;
-                        vertical-align: top;
-
-                        a {
-                            display: block;
-                            width: 60px;
-                            height: 60px;
-                            overflow: hidden;
-                            
-                        }
-                           
-                    }
-
-                    .listtxt {
-                        display: table-cell;
-                        vertical-align: middle;
-                        table-layout: fixed;
-                        width: 100%;
-                        max-width: 400px;
-                        padding-left: 20px;
-
-                        .listtitle {
-                            display: inline;
-                            line-height: 1.1;
-                            font-size: 20px;
-                            font-weight: normal;
-                            margin-right: 15px;
-
-                            a {
-                                word-wrap: break-word;
-                                padding: 6px 0;
-                                color: #1A0DAB;
-                                text-decoration:none;
-                            }
-                        }
-
-                        .listdesc {
-                            color: @accent-dark-color-1;
-                        }
-                    }
-                }
-
-                .listitem:hover {
-                    text-decoration:solid;
-                }
-
-                .my-editted, .search-editted {
-                    margin-top: 30px;
-                    width: 100%;
-
-                    .adjust {
-                        padding-top: 5px;
-                        padding-bottom: 10px;
-                        /*border:1px solid #660000;*/
-                    }
-                }
+                .page-control-mixin;
             }
         }
 
-        /*.dropbox {
+        .search-result {
+
+            .search-editted{
+                background-color:white;
+            }
+
+            .search-header {
+                background-color: @bg-color-1;
+                width: 90.5%;
+                margin:30px 0 0 20px;
+                padding: 20px 30px 20px 30px;
+                border: 1px solid #ccc;
+
+                form {
+                    margin:10px 0 0 10px;
+                    border: 1px;
+
+                    select {
+                    }
+
+                    select:focus {
+                        outline: none;
+                    }
+                }
+            }
+
+            .search-header:focus {
+                outline: none;
+            }
+
+            .listitem {
+                display: table;
+                padding: 30px;
+                border-top: 1px solid #ddd;
+
+                &:hover {
+                    background: @bg-color-2;
+                }
+
+                .listthum {
+                    display: table-cell;
+                    width: 60px;
+                    height: 60px;
+                    padding: 0 15px 0 0;
+                    vertical-align: top;
+
+                    a {
+                        display: block;
+                        width: 60px;
+                        height: 60px;
+                        overflow: hidden;
+                    }
+                }
+
+                .listtxt {
+                    display: table-cell;
+                    vertical-align: middle;
+                    table-layout: fixed;
+                    width: 100%;
+                    max-width: 400px;
+                    padding-left: 20px;
+
+                    .listtitle {
+                        display: inline;
+                        line-height: 1.1;
+                        font-size: 20px;
+                        font-weight: normal;
+                        margin-right: 15px;
+
+                        a {
+                            word-wrap: break-word;
+                            padding: 6px 0;
+                            color: #1A0DAB;
+                            text-decoration: none;
+                        }
+                    }
+
+                    .listdesc {
+                        color: @accent-dark-color-1;
+                    }
+                }
+            }
+
+            .listitem:hover {
+                text-decoration: solid;
+            }
+
+            .my-editted, .search-editted {
+                margin-top: 30px;
+                width: 100%;
+
+                .adjust {
+                    padding-top: 5px;
+                    padding-bottom: 10px;
+                    /*border:1px solid #660000;*/
+                }
+            }
+        }
+    }
+    /*.dropbox {
             margin-top: 30px;
             margin-left: 20px;
             float: left;
@@ -173,5 +141,4 @@ body {
             padding-bottom: 1000000px;
             margin-bottom: -1000000px;
         }*/
-
 }

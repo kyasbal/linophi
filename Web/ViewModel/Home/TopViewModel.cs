@@ -8,15 +8,16 @@ using Web.Models;
 using Web.Models.Cron;
 using Web.Models.Topic;
 using Web.Utility.Configuration;
+using Web.Utility.OGP;
 
 namespace Web.ViewModel.Home
 {
-    public class TopViewModel:OGPViewModelBase
+    public class TopViewModel:BasicOGPSupportedViewModel
     {
         private const int TopTakeCount = 3;
-        public async static Task<TopViewModel> GetTopViewModel(ApplicationDbContext context,bool isDebug)
+        public async static Task<TopViewModel> GetTopViewModel(HttpRequestBase req,ApplicationDbContext context,bool isDebug)
         {
-            TopViewModel viewModel=new TopViewModel();
+            TopViewModel viewModel=new TopViewModel(req);
             IQueryable<TopicModel> searchedTopics;
             if (isDebug)
             {
@@ -45,9 +46,7 @@ namespace Web.ViewModel.Home
             return viewModel;
         }
 
-        public TopViewModel() : base(ConfigurationLoaderFactory.GetConfigurationLoader().GetConfiguration("SiteTitle")
-            ,"","","http://意見.みんな","website",ConfigurationLoaderFactory.GetConfigurationLoader().GetConfiguration("SiteTitle")
-            )
+        public TopViewModel(HttpRequestBase req) : base(req)
         {
         }
         public ArticleModel[] FlameArticles { get; set; }
@@ -71,7 +70,7 @@ namespace Web.ViewModel.Home
                 section.TopicDescription = topicModel.Description;
                 ArticleModel[] newArticles =
                     context.Articles.Where(f => !f.IsDraft && f.ThemeId.Equals(topicModel.TopicId))
-                        .OrderBy(f => f.CreationTime)
+                        .OrderByDescending(f => f.CreationTime)
                         .Take(3)
                         .ToArray();
                 section.NewModels = newArticles;
@@ -85,6 +84,13 @@ namespace Web.ViewModel.Home
                 section.FlamedModels = flamedArticles.ToArray();
                 return section;
             }
+        }
+
+        protected override void GetOGPPageData(out string title, out string description, out string image)
+        {
+            title = "意見.みんな|みんなで作る主観メディア";
+            description = "ここにTOPの説明が載ります。";
+            image = "/Content/imgs/linoris.png";
         }
     }
 }

@@ -17,9 +17,15 @@ h2 {
   width: 500px;
   height: 100%;
   margin: 0 auto;
+  border: 1px solid black;
+  padding: 50px 100px 0 100px;
 }
 .contents div {
   text-align: center;
+}
+.contents div .error-message {
+  opacity: 0;
+  color: red;
 }
 .contents span {
   margin: 20px auto;
@@ -43,4 +49,4 @@ h2 {
   background-color: #5f9781;
   cursor: pointer;
 }
-/*# sourceMappingURL=config.css.map */
+/*# sourceMappingURL=Config.css.map */

@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は、以下の属性セットによって 
 // 制御されます。アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更します。
+using Web.Utility.OGP;
+
 [assembly: AssemblyTitle("Web")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
@@ -33,3 +35,7 @@ using System.Runtime.InteropServices;
 // 既定値にすることができます:
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+[assembly :OGPSiteName("意見.みんな|みんなで作る主観メディア")]
+[assembly :OGPDefaultLocale("ja-jp")]
+[assembly :OGPDefaultImage("http://意見.みんな/Content/linoris.png")]

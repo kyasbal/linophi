@@ -1,10 +1,28 @@
-﻿$(function () {
+﻿var name;
+var length;
+
+$(function () {
     $(window).resize(function () {
         LoginPage.adjustHeight();
     });
     ConfigPage.adjustHeight();
     $(".config-submit").click(function () {
         $(".config-form").submit();
+    });
+
+    $(".name").keyup(function () {
+        name = $(this).val();
+        length = name.length;
+        if (length < 2) {
+            $(".config-submit").css('display', 'none');
+            $(".error-message").css('opacity', 1);
+        } else if (length > 15) {
+            $(".config-submit").css('display', 'none');
+            $(".error-message").css('opacity', 1);
+        } else {
+            $(".config-submit").css('display', 'inline');
+            $(".error-message").css('opacity', 0);
+        }
     });
 });
 

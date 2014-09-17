@@ -7,13 +7,22 @@ h1{
 h2{
     .header-style-2-mixin;
 }
+
+
 .contents {
     font-size: 20px;
     width: 500px;
     height: 100%;
     margin:0 auto;
+    border:1px solid black;
+    padding:50px 100px 0 100px;
     div{
         text-align:center;
+
+        .error-message{
+            opacity:0;
+            color:red;
+        }
     }
 
     span {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Web.Utility;
 
 namespace Web.Models.Topic
@@ -27,14 +28,21 @@ namespace Web.Models.Topic
         /// </summary>
         public string TopicTitle { get; set; }
 
+        [AllowHtml]
         /// <summary>
         /// トピックの説明
         /// </summary>
         public string Description { get; set; }
 
+        [AllowHtml]
+        public string LongDescription { get; set; }
+
+        public string RawTextDescription { get; set; }
+
         /// <summary>
         /// 炎上指数
         /// </summary>
+      
         public double EvaluationOfFire { get; set; }
 
         /// <summary>
