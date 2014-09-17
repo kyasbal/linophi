@@ -49,6 +49,10 @@
 @top-accent-darken-1: rgb(27, 93, 205);
 @top-accent-lighten-1: rgb(107, 173, 255);
 
+@top-accent-darken-2: rgb(180, 28, 15);
+@top-accent-lighten-2: rgb(255, 108, 95);
+
+
 
 //ヘッダー要素
 @header-color-bg: @bg-color-1;
@@ -137,13 +141,13 @@
     background-color: @header-style-2-color-bg;
 }
 
-.header-style-3-mixin() {
+.header-style-3-mixin(@bg-color,@shadow-color,@hover-color) {
     position: relative;
-    font-size: 24px;
+    font-size: 32px;
     padding: 0.3em 60px;
     left: -60px;
     margin-bottom: 20px;
-    background-color: @top-accent-1;
+    background-color: @bg-color;
     color: @text-color-1;
 
     &:before {
@@ -152,18 +156,18 @@
         left: 0;
         border-width: 10px;
         border-style: solid;
-        border-color: @top-accent-darken-1 @top-accent-darken-1 rgba(0,0,0, 0) rgba(0,0,0, 0);
+        border-color: @shadow-color @shadow-color rgba(0,0,0, 0) rgba(0,0,0, 0);
         content: "";
     }
 
     &:hover {
-        background: @top-accent-lighten-1 !important;
+        background: @hover-color !important;
     }
 }
 
 
 .header-style-4-mixin() {
-    font-size: 32px;
+    font-size: 28px;
     margin-bottom: 1em;
     padding: 0.2em;
     background-color: @header-style-2-color-bg;

@@ -75,7 +75,10 @@
                 <div class="top-subject-wrapper clearfix">
                     @foreach (var topsubject in Model.FlameArticles)
                     {
-                        <div class="top-subject"><a href="@("/"+topsubject.ArticleModelId)">@topsubject.Title</a></div>
+                        <div class="top-subject">
+                            <a href="@("/"+topsubject.ArticleModelId)">@topsubject.Title</a>
+                            <span>記事の概要を表示</span>
+                        </div>
                     }
                 </div>
             </section>
@@ -102,7 +105,8 @@
                                     @foreach (var article in sectionModel.FlamedModels)
                                     {
                                         <li><a href="@("/"+article.ArticleModelId)">@article.Title</a><small>@article.UpdateTime.ToShortDateString()</small></li>
-                                    }                                </ul>
+                                    }
+                                </ul>
                             </div>
                             <div class="top-index-box">
                                 <p>NEW</p>

@@ -28,7 +28,7 @@ a {
     text-align: center;
 
     > h1 {
-        font-size: 70px;
+        font-size: 65px;
         float: left;
 
         a {
@@ -87,20 +87,27 @@ a {
         color: #fff;
     }
 
-    .top-subject {
-        margin-right: 16px;
-        margin-bottom: 16px;
-        background-color: #eee;
-        box-shadow: 0 0 5px rgba(221, 221, 221, 0.5) inset;
+    .top-subject-wrapper {
+        .top-subject {
+            float: none;
+            margin: 0 20px 20px 0;
+            background-color: #eee;
+            box-shadow: 0 0 5px rgba(221, 221, 221, 0.5) inset;
 
-        > a {
-            color: #444;
-            display: block;
-            padding: 4px 8px;
-            text-decoration: underline;
+            span {
+                padding-left:20px;
+            }
 
-            &:hover {
-                background: #ddd;
+            > a {
+                color: #444;
+                display: block;
+                padding: 4px 8px;
+                text-decoration: underline;
+                overflow: hidden;
+
+                &:hover {
+                    background: #ddd;
+                }
             }
         }
     }
