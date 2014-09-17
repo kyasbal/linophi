@@ -4,18 +4,19 @@
     padding: 0 20px;
 
     h2 {
-        .header-style-3-mixin();
+        .header-style-3-mixin(@top-accent-1,@top-accent-darken-1,@top-accent-lighten-1);
     }
 
     h3 {
-        .header-style-4-mixin();
+        .header-style-3-mixin(@top-accent-2,@top-accent-darken-2,@top-accent-lighten-2);
+        font-size: 24px;
     }
 
 
     h4 {
         border-top: 4px solid rgba(0,0,0,0.3);
         border-bottom: 1px solid rgba(0,0,0, 0.2);
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
         margin-bottom: 1em;
         padding: 8px 20px;
