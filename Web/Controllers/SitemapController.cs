@@ -29,7 +29,7 @@ namespace Web.Controllers
             }
             foreach (var topicModel in dbContext.Topics)
             {
-                sitemaps.Add(new SitemapItem("/Topic/" + topicModel.TopicId, changeFrequency: SitemapChangeFrequency.Daily, lastModified: topicModel.UpdateTime));
+                sitemaps.Add(new SitemapItem("/Topic/" + topicModel.TopicId, changeFrequency: SitemapChangeFrequency.Daily));
             }
             return new SitemapResult(sitemaps);
         }
