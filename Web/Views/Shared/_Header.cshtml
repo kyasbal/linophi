@@ -19,7 +19,7 @@
                     @{
                         if (!Request.IsAuthenticated)
                         {
-                            using (Html.BeginForm("LogIn", "Account", FormMethod.Get, new { @class = "login-form" }))
+                            using (Html.BeginForm("Login", "Account", FormMethod.Get, new { @class = "login-form" }))
                             {
                                 @Html.Hidden("returnUrl", Request.Url)
                                 <li>@Html.ActionLink("投稿する", "RedirectToEdit", "Edit")</li>

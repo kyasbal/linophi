@@ -12,12 +12,12 @@ using Web.Utility.OGP;
 
 namespace Web.ViewModel.Home
 {
-    public class TopViewModel : BasicOGPSupportedViewModel
+    public class TopViewModel:BasicOGPSupportedViewModel
     {
         private const int TopTakeCount = 3;
-        public async static Task<TopViewModel> GetTopViewModel(HttpRequestBase req, ApplicationDbContext context, bool isDebug)
+        public async static Task<TopViewModel> GetTopViewModel(HttpRequestBase req,ApplicationDbContext context,bool isDebug)
         {
-            TopViewModel viewModel = new TopViewModel(req);
+            TopViewModel viewModel=new TopViewModel(req);
             IQueryable<TopicModel> searchedTopics;
             if (isDebug)
             {
@@ -25,18 +25,18 @@ namespace Web.ViewModel.Home
             }
             else
             {
-                searchedTopics = context.Topics.Where(f => f.IsVisibleToAllUser).OrderBy(f => f.EvaluationOfFire).Take(TopTakeCount);
+                searchedTopics = context.Topics.Where(f=>f.IsVisibleToAllUser).OrderBy(f => f.EvaluationOfFire).Take(TopTakeCount);
             }
-            viewModel.TopicSections = new TopicSection[await searchedTopics.CountAsync()];
+            viewModel.TopicSections=new TopicSection[await searchedTopics.CountAsync()];
             int count = 0;
             foreach (var topicModel in searchedTopics)
             {
-                viewModel.TopicSections[count] = await TopicSection.FromModelAsync(context, topicModel);
+                viewModel.TopicSections[count]=await TopicSection.FromModelAsync(context,topicModel);
                 count++;
             }
             //今もえている記事の生成
             List<ArticleModel> flamedArticles = new List<ArticleModel>();
-            var flamedArticlesQuery = context.CurrentRanking.Where(f => true)
+            var flamedArticlesQuery = context.CurrentRanking.Where(f=>true)
                 .OrderBy(f => f.PVCoefficient).Take(3).ToList();
             foreach (var rankingModel in flamedArticlesQuery)
             {
@@ -46,8 +46,7 @@ namespace Web.ViewModel.Home
             return viewModel;
         }
 
-        public TopViewModel(HttpRequestBase req)
-            : base(req)
+        public TopViewModel(HttpRequestBase req) : base(req)
         {
         }
         public ArticleModel[] FlameArticles { get; set; }
@@ -60,18 +59,18 @@ namespace Web.ViewModel.Home
             public string TopicDescription { get; set; }
 
             public IEnumerable<ArticleModel> FlamedModels { get; set; }
+ 
+            public IEnumerable<ArticleModel> NewModels { get; set; } 
 
-            public IEnumerable<ArticleModel> NewModels { get; set; }
-
-            public static async Task<TopicSection> FromModelAsync(ApplicationDbContext context, TopicModel topicModel)
+            public static async Task<TopicSection> FromModelAsync(ApplicationDbContext context,TopicModel topicModel)
             {
-                TopicSection section = new TopicSection();
+                TopicSection section=new TopicSection();
                 section.TopicTitle = topicModel.TopicTitle;
                 section.TopicId = topicModel.TopicId;
                 section.TopicDescription = topicModel.Description;
                 ArticleModel[] newArticles =
                     context.Articles.Where(f => !f.IsDraft && f.ThemeId.Equals(topicModel.TopicId))
-                        .OrderBy(f => f.CreationTime)
+                        .OrderByDescending(f => f.CreationTime)
                         .Take(3)
                         .ToArray();
                 section.NewModels = newArticles;
